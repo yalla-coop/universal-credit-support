@@ -1,5 +1,5 @@
 const Home = () => {
-  return <h1>welcome to HUde App</h1>;
+  return <h1>Universal Credit App!</h1>;
 };
 
 export default Home;
