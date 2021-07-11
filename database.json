@@ -1,0 +1,11 @@
+{
+  "dev": {
+      "driver": "pg",
+      "url": {
+          "ENV": "DB_URL"
+      },
+      "ssl": {
+          "rejectUnauthorized": false
+      }
+  }
+}
