@@ -25,15 +25,13 @@ export const Field = styled.div`
     border-radius: 0;
     padding: ${({ theme }) => theme.spacings[3]};
     overflow-x: hidden;
-    border: ${({ theme }) => theme.borders.inputs};
-    border-color: ${({ theme, open, color, focus, error }) => {
-      if (error) return theme.colors.error;
-      return open || focus
-        ? theme.colors.blue
-        : theme.colors[color] || theme.colors.gray5;
+    border: 1px solid;
+    border-color: ${({ theme, error }) => {
+      if (error) return theme.colors.secondaryMain;
+      return theme.colors.primaryMid;
     }};
     border-radius: ${({ theme }) => theme.borders.radius};
-    background: ${({ theme }) => theme.colors.gray2};
+    background: ${({ theme }) => theme.colors.white};
   }
 
   .ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
@@ -58,7 +56,7 @@ export const Field = styled.div`
   .ant-select-arrow,
   .ant-select-clear,
   .ant-select-selection-item-remove {
-    color: ${({ theme }) => theme.colors.gray7};
+    color: ${({ theme }) => theme.colors.primaryMain};
     width: 20px;
     display: flex;
     align-items: center;
@@ -76,7 +74,7 @@ export const Field = styled.div`
   .ant-select-multiple .ant-select-selection-placeholder,
   .ant-select-selection-placeholder {
     font-size: 1rem;
-    color: ${({ theme }) => theme.colors.gray7};
+    color: ${({ theme }) => theme.colors.primaryMid};
     padding-left: ${({ theme }) => theme.spacings[3]};
     text-align: left;
   }
@@ -84,7 +82,7 @@ export const Field = styled.div`
   // STYLE SELECTED ITEM IN SINGLE DROPDOWN
   .ant-select-single.ant-select-show-arrow .ant-select-selection-item {
     font-size: 16px;
-    color: ${({ theme }) => theme.colors.gray9};
+    color: ${({ theme }) => theme.colors.neutralPrimary};
 
     // SEEMS WEIRD BUT YOU NEED TO DO THIS TO FORCE THE WIDTH TO STAY CONTAINED
     width: 1px;
@@ -101,11 +99,7 @@ export const Answer = styled.div`
 export const Option = styled(AntdOption)`
   font-size: 16px;
   font-weight: normal;
-  background-color: ${({ theme, isSelected }) =>
-    isSelected ? theme.colors.gray2 : theme.colors.white};
-
   padding: 0.5rem 1rem;
-  color: ${({ theme }) => theme.colors.gray9};
   display: flex;
   align-items: center;
   white-space: normal;

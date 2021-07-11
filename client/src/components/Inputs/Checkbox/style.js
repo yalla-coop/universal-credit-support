@@ -6,9 +6,19 @@ export const Field = styled.div`
   width: ${({ w }) => w || '100%'};
   opacity: ${({ disabled }) => (disabled ? '0.5' : '1')};
 
+  .ant-checkbox-inner {
+    background-color: ${({ theme }) =>
+      `${theme.colors.secondaryLight} !important`};
+    border-color: ${({ theme }) => `${theme.colors.secondaryMain} !important`};
+  }
+
   .ant-checkbox-checked .ant-checkbox-inner {
-    background-color: ${({ theme, color }) =>
-      color ? theme.colors[color] : theme.colors.black};
+    background-color: ${({ theme }) => `${theme.colors.white} !important`};
+    border-color: ${({ theme }) => `${theme.colors.primaryMain} !important`};
+  }
+
+  .ant-checkbox-checked .ant-checkbox-inner:after {
+    border-color: ${({ theme }) => `${theme.colors.primaryMain} !important`};
   }
 
   .ant-checkbox-wrapper:hover .ant-checkbox-inner,
@@ -32,7 +42,7 @@ export const Field = styled.div`
   }
 
   .ant-checkbox {
-    font-size: 16px;
+    font-size: 32px;
   }
 
   .ant-checkbox-inner::after {

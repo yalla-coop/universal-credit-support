@@ -6,12 +6,14 @@ import * as T from '../Typography';
 // ICONS
 
 import GoBack from './icons/GoBack';
+import ArrowDown from './icons/ArrowDown';
 
 const Icon = (props) => {
   const { icon, color, text, jc, weight = 'bold' } = props;
 
   const IconMap = {
     goBack: GoBack,
+    arrowDown: ArrowDown,
   };
 
   if (!IconMap[icon]) {

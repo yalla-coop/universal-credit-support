@@ -1,8 +1,9 @@
+const secondaryMain = '#E55D3E';
 export default {
   primaryMain: '#0C428D',
   primaryMid: '#C8DDFF',
   primaryLight: '#F7FBFF',
-  secondaryMain: '#E55D3E',
+  secondaryMain,
   secondaryMid: '#FDDDD7',
   secondaryLight: '#FFF5F3',
   tertiaryMain: '#00836C',
@@ -13,4 +14,5 @@ export default {
   neutralSecondary: '#252525',
   neutralTertiary: '#3A3F3E',
   white: '#ffffff',
+  error: secondaryMain,
 };

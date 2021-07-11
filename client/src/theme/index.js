@@ -1,6 +1,5 @@
 import globalStyle from './global-style';
 import colors from './colors';
-import gradients from './gradients';
 import borders from './borders';
 import shadows from './shadows';
 
@@ -58,7 +57,6 @@ const theme = {
   media,
   breakpoints,
   constants,
-  gradients,
   borders,
   shadows,
   maxWidths,

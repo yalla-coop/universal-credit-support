@@ -1,8 +1,8 @@
 import colors from './colors';
 const borders = {
-  inputs: `1px solid ${colors.gray5};`,
+  inputs: `1px solid ${colors.primaryMid};`,
   error: `1px solid ${colors.error};`,
-  radius: '10px',
+  radius: '6px',
 };
 
 export default borders;
