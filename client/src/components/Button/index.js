@@ -34,7 +34,6 @@ const Button = ({
       disabled={disabled}
       isLoading={loading}
       onClick={onClick}
-      customColor={customColor}
       {...props}
     >
       {icon && <Icon icon={icon} />}

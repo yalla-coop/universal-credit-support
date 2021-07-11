@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from 'react';
 
 import Button from '.';
@@ -34,26 +35,16 @@ Secondary.args = {
   loading: false,
 };
 
-export const Tertiary = Template.bind({});
-Tertiary.args = {
+export const Loading = Template.bind({});
+Loading.args = {
   label: 'Button',
-  variant: 'tertiary',
   disabled: false,
-  loading: false,
+  loading: true,
 };
 
-export const Remove = Template.bind({});
-Remove.args = {
+export const Disable = Template.bind({});
+Disable.args = {
   label: 'Button',
-  variant: 'remove',
-  disabled: false,
-  loading: false,
-};
-
-export const Default = Template.bind({});
-Default.args = {
-  label: 'Button',
-  variant: 'default',
-  disabled: false,
+  disabled: true,
   loading: false,
 };
