@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { H1, H2, H3, H4, H5, P, Link } from '.';
+import { H1, H2, P, Link } from '.';
 
 export default {
   title: 'Common Components/Typography',
@@ -92,32 +92,6 @@ const Heading2 = (args) => <H2 {...args}>Heading 2</H2>;
 export const h2 = Heading2.bind({});
 h2.args = {
   color: 'black',
-};
-
-const Heading3 = (args) => <H3 {...args}>Heading 3</H3>;
-
-export const h3 = Heading3.bind({});
-h3.args = {
-  color: 'black',
-};
-
-const Heading4 = (args) => <H4 {...args}>Heading 4</H4>;
-
-export const h4 = Heading4.bind({});
-h4.args = {
-  color: 'black',
-};
-
-const Heading5 = (args) => (
-  <H5 {...args} level={5}>
-    Heading 5
-  </H5>
-);
-
-export const h5 = Heading5.bind({});
-h5.args = {
-  color: 'black',
-  caps: true,
 };
 
 const bodyLargeTemplate = (args) => <P {...args}>Display/body large</P>;
