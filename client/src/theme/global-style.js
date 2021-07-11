@@ -48,12 +48,11 @@ const style = css`
   p,
   a {
     margin: 0;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Rubik', sans-serif;
   }
 
   code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-      monospace;
+    font-family: 'Rubik', sans-serif;
   }
 
   html {
