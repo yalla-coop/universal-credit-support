@@ -8,7 +8,7 @@ const Card = ({
   direction = 'left',
   content,
   children,
-  title = 'test',
+  title,
   withTick,
   to = '/',
   ...props
