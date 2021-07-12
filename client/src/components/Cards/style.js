@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 
 export const Container = styled.div`
   width: 100%;
-  padding: 36px 36px 36px 188px;
   padding: ${({ direction }) =>
     direction === 'right' ? '36px 188px 36px 36px' : '36px 36px 36px 188px'};
   display: flex;
