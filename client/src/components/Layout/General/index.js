@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import * as S from './style';
 import { ReactComponent as TextLogo } from '../../assets/logo.svg';
 import Navbar from '../../Navbar';
-import { Link } from 'react-router-dom';
 import GoBack from '../../GoBack';
 import theme from '../../../theme';
 
@@ -12,9 +11,9 @@ const General = ({ children, goBack, maxWidth, ...props }) => {
     <>
       <S.Wrapper>
         <S.Header>
-          <Link to="/">
+          <S.Link to="/">
             <TextLogo />
-          </Link>
+          </S.Link>
           <Navbar />
         </S.Header>
       </S.Wrapper>

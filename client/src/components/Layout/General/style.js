@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { Link as RLink } from 'react-router-dom';
 
 export const Header = styled.header`
   width: 100%;
@@ -42,4 +43,9 @@ export const Content = styled.main`
     padding: ${({ theme: { spacings } }) =>
       `${spacings[6]} 37px ${spacings[8]} 38px`};
   }
+`;
+
+export const Link = styled(RLink)`
+  color: ${({ theme }) => theme.colors.neutralPrimary};
+  display: flex;
 `;
