@@ -11,12 +11,12 @@ const Template = (args) => (
   </div>
 );
 
-export const WithTick = Template.bind({});
+export const isCompleted = Template.bind({});
 
-WithTick.args = {
+isCompleted.args = {
   content:
     'You can check your eligibility to claim Universal Credit with an eligibility calculator.',
-  withTick: true,
+  isCompleted: true,
   title: 'Check Eligibility',
 };
 
@@ -47,12 +47,12 @@ Tertiary.args = {
   title: 'Check Eligibility',
 };
 
-export const WithTickRight = Template.bind({});
+export const IsCompletedRight = Template.bind({});
 
-WithTickRight.args = {
+IsCompletedRight.args = {
   content:
     'You can check your eligibility to claim Universal Credit with an eligibility calculator.',
-  withTick: true,
+  isCompleted: true,
   title: 'Check Eligibility',
   direction: 'right',
 };

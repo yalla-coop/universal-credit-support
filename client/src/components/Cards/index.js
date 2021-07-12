@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom';
 
 const Card = ({
   variant = 'primary',
-  direction = 'left',
+  direction = 'right',
   content,
   children,
   title,
-  withTick,
+  isCompleted,
   to = '/',
   ...props
 }) => {
@@ -17,7 +17,7 @@ const Card = ({
   const borderColor = `${variant}Mid`;
   const circleColor = `${variant}Main`;
   const renderChild = () => {
-    if (withTick) {
+    if (isCompleted) {
       return (
         <>
           <Icon icon="tick" color="white" />
@@ -43,7 +43,19 @@ const Card = ({
     <S.Wrapper bgColor={bgColor} {...props}>
       <Link to={to}>
         <S.Container direction={direction}>
-          <T.P small>{content}</T.P>
+          {isCompleted && (
+            <T.P
+              weight="bold"
+              color="neutralTertiary"
+              style={{ alignSelf: 'flex-start' }}
+              mb="2"
+            >
+              Completed!
+            </T.P>
+          )}
+          <T.P small color="neutralTertiary">
+            {content}
+          </T.P>
           <S.Circle
             circleColor={circleColor}
             borderColor={borderColor}
