@@ -1,4 +1,13 @@
 import styled from '@emotion/styled';
+import setMargin from './../../helpers/set-margin';
+
+export const Wrapper = styled.div`
+  ${setMargin};
+  width: 100%;
+  background: ${({ theme, bgColor }) => theme.colors[bgColor]};
+  display: flex;
+  justify-content: center;
+`;
 
 export const Container = styled.div`
   width: 100%;
@@ -10,7 +19,7 @@ export const Container = styled.div`
   min-height: 152px;
   border: none;
   position: relative;
-  background: ${({ theme, bgColor }) => theme.colors[bgColor]};
+  max-width: 600px;
 `;
 
 export const Circle = styled.div`

@@ -40,18 +40,20 @@ const Card = ({
     );
   };
   return (
-    <Link to={to}>
-      <S.Container bgColor={bgColor} direction={direction}>
-        <T.P small>{content}</T.P>
-        <S.Circle
-          circleColor={circleColor}
-          borderColor={borderColor}
-          direction={direction}
-        >
-          {renderChild()}
-        </S.Circle>
-      </S.Container>
-    </Link>
+    <S.Wrapper bgColor={bgColor} {...props}>
+      <Link to={to}>
+        <S.Container direction={direction}>
+          <T.P small>{content}</T.P>
+          <S.Circle
+            circleColor={circleColor}
+            borderColor={borderColor}
+            direction={direction}
+          >
+            {renderChild()}
+          </S.Circle>
+        </S.Container>
+      </Link>
+    </S.Wrapper>
   );
 };
 

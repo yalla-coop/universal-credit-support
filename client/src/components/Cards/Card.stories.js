@@ -6,7 +6,7 @@ export default {
 };
 
 const Template = (args) => (
-  <div style={{ width: 375, margin: '200px auto' }}>
+  <div style={{ margin: '200px auto' }}>
     <Card {...args} m="2" />
   </div>
 );
