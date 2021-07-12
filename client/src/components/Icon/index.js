@@ -7,6 +7,8 @@ import * as T from '../Typography';
 
 import GoBack from './icons/GoBack';
 import ArrowDown from './icons/ArrowDown';
+import Close from './icons/Close';
+import Phone from './icons/Phone';
 
 const Icon = (props) => {
   const { icon, color, text, jc, weight = 'bold' } = props;
@@ -14,6 +16,8 @@ const Icon = (props) => {
   const IconMap = {
     goBack: GoBack,
     arrowDown: ArrowDown,
+    close: Close,
+    phone: Phone,
   };
 
   if (!IconMap[icon]) {

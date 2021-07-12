@@ -14,18 +14,23 @@ export default {
 
 const Template = (args) => <Icon {...args} />;
 
-export const Email = Template.bind({});
-Email.args = {
-  icon: 'add',
+export const ArrowDown = Template.bind({});
+ArrowDown.args = {
+  icon: 'arrowDown',
   width: 50,
   height: 50,
-  text: '',
 };
 
-export const WithText = Template.bind({});
-WithText.args = {
-  icon: 'download',
-  width: 16,
-  height: 16,
-  text: 'Download video',
+export const Close = Template.bind({});
+Close.args = {
+  icon: 'close',
+  width: 50,
+  height: 50,
+};
+
+export const Phone = Template.bind({});
+Phone.args = {
+  icon: 'phone',
+  width: 50,
+  height: 50,
 };
