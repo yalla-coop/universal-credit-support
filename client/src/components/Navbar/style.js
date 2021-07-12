@@ -38,7 +38,7 @@ export const Drawer = styled(AntDrawer)`
       left: 0;
       right: 0;
       height: ${({ theme }) => theme.spacings[1]};
-      background: ${({ theme }) => theme.gradients.rainbowHorizontal};
+      background: ${({ theme }) => theme.colors.secondaryMain};
     }
   }
 `;

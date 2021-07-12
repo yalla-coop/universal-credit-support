@@ -24,7 +24,7 @@ const Head1 = styled(Title)`
   font-size: 24px !important;
   line-height: 32px !important;
   font-weight: ${({ weight }) =>
-    weight === 'bold' ? '900 !important' : '300 !important'};
+    weight === 'bold' ? '800 !important' : '400 !important'};
 `;
 export const H1 = (props) => <Head1 {...props} level={1} />;
 
@@ -34,7 +34,7 @@ const Head2 = styled(Title)`
   font-size: 20px !important;
   line-height: 42px !important;
   font-weight: ${({ weight }) =>
-    weight === 'bold' ? '900 !important' : '300 !important'};
+    weight === 'bold' ? '800 !important' : '400 !important'};
 `;
 export const H2 = (props) => <Head2 {...props} level={2} />;
 
