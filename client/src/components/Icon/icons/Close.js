@@ -1,7 +1,7 @@
 const Close = ({ width, height, color, ...props }) => (
   <svg
-    width={width || '12'}
-    height={height || '6'}
+    width={width || '14'}
+    height={height || '14'}
     viewBox="0 0 16 16"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"

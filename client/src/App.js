@@ -26,6 +26,12 @@ function App() {
               Component={Pages.Home}
               layout="general"
             />
+            <Route
+              exact
+              path={navRoutes.STEPS.STEP1}
+              Component={Pages.Home}
+              layout="steps"
+            />
           </Switch>
         </Router>
         {/* <CookieBot domainGroupId={domainGroupId} /> */}

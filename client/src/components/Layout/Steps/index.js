@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import * as S from './style';
 import { ReactComponent as TextLogo } from '../../assets/logo.svg';
-import Navbar from '../../Navbar';
+import Icon from '../../Icon';
 import GoBack from '../../GoBack';
 import theme from '../../../theme';
 
-const General = ({ children, goBack, maxWidth, ...props }) => {
+const Steps = ({ children, goBack, maxWidth }) => {
   return (
     <>
       <S.Wrapper>
@@ -14,7 +14,9 @@ const General = ({ children, goBack, maxWidth, ...props }) => {
           <S.Link to="/">
             <TextLogo />
           </S.Link>
-          <Navbar />
+          <S.Link to="/">
+            <Icon icon="close" />
+          </S.Link>
         </S.Header>
       </S.Wrapper>
       <S.Content maxWidth={maxWidth}>
@@ -33,8 +35,8 @@ const General = ({ children, goBack, maxWidth, ...props }) => {
   );
 };
 
-General.propTypes = {
+Steps.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default General;
+export default Steps;
