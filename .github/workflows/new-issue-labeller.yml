@@ -1,0 +1,17 @@
+name: "Add labels to new issues"
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: andymckay/labeler@1.0.2
+      with:
+        repo-token: "${{ secrets.GITHUB_TOKEN }}"
+        add-labels: "backlog"
+        ignore-if-assigned: true
