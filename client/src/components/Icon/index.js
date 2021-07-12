@@ -10,15 +10,15 @@ import ArrowDown from './icons/ArrowDown';
 import Close from './icons/Close';
 import Phone from './icons/Phone';
 
+export const IconMap = {
+  goBack: GoBack,
+  arrowDown: ArrowDown,
+  close: Close,
+  phone: Phone,
+};
+
 const Icon = (props) => {
   const { icon, color, text, jc, weight = 'bold' } = props;
-
-  const IconMap = {
-    goBack: GoBack,
-    arrowDown: ArrowDown,
-    close: Close,
-    phone: Phone,
-  };
 
   if (!IconMap[icon]) {
     // eslint-disable-next-line no-console

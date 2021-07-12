@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Icon from '.';
+import Icon, { IconMap } from '.';
 
 export default {
   title: 'Common Components/Icon',
@@ -12,25 +12,19 @@ export default {
   },
 };
 
-const Template = (args) => <Icon {...args} />;
+const Template = (args) => (
+  <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+    {Object.keys(IconMap).map((key) => (
+      <div style={{ width: 200, margin: 20 }} key={key}>
+        <Icon icon={key} {...args} />
+        <span style={{ marginTop: 20 }}>{key}</span>
+      </div>
+    ))}
+  </div>
+);
 
-export const ArrowDown = Template.bind({});
-ArrowDown.args = {
-  icon: 'arrowDown',
-  width: 50,
-  height: 50,
-};
-
-export const Close = Template.bind({});
-Close.args = {
-  icon: 'close',
-  width: 50,
-  height: 50,
-};
-
-export const Phone = Template.bind({});
-Phone.args = {
-  icon: 'phone',
-  width: 50,
-  height: 50,
+export const Icons = Template.bind({});
+Icons.args = {
+  width: 25,
+  height: 25,
 };
