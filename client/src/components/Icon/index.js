@@ -9,12 +9,14 @@ import GoBack from './icons/GoBack';
 import ArrowDown from './icons/ArrowDown';
 import Close from './icons/Close';
 import Phone from './icons/Phone';
+import Tick from './icons/Tick';
 
 export const IconMap = {
   goBack: GoBack,
   arrowDown: ArrowDown,
   close: Close,
   phone: Phone,
+  tick: Tick,
 };
 
 const Icon = (props) => {
