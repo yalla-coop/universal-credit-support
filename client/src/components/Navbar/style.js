@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { H4 } from '../Typography';
+import { H2 } from '../Typography';
 import { Link as RouterLink } from 'react-router-dom';
 import { Drawer as AntDrawer } from 'antd';
 
@@ -18,7 +18,7 @@ export const Div = styled.div`
   }
 `;
 
-export const Head4 = styled(H4)`
+export const Head4 = styled(H2)`
   display: inline;
 `;
 
