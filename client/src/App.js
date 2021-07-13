@@ -31,6 +31,12 @@ function App() {
                   Component={Pages.Home}
                   layout="general"
                 />
+                <Route
+                  exact
+                  path={navRoutes.STEPS.STEP}
+                  Component={Pages.Step}
+                  layout="general"
+                />
               </Switch>
             </Router>
           </StepsProvider>

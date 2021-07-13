@@ -13,7 +13,7 @@ export default {
   selectYourLanguage: 'Select your language',
   completed: 'Completed!',
   nextStep: 'Next step',
-  callUsLinkText: 'Stuck? Call us for advice', //ToDo change CallUsLink component text
+  callUsLinkText: 'Stuck? Call us for advice',
 
   // STEPS
   checkEligibility: {

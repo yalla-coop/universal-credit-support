@@ -6,5 +6,16 @@ import GoBack from './GoBack';
 import * as Typography from './Typography';
 import * as Inputs from './Inputs';
 import * as Icon from './Icon';
+import CallUsLink from './CallUsLink';
 
-export { Button, Grid, Layout, Route, GoBack, Typography, Inputs, Icon };
+export {
+  Button,
+  Grid,
+  Layout,
+  Route,
+  GoBack,
+  Typography,
+  Inputs,
+  Icon,
+  CallUsLink,
+};
