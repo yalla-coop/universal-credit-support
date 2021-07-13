@@ -5,8 +5,9 @@ import Route from './Route';
 import GoBack from './GoBack';
 import * as Typography from './Typography';
 import * as Inputs from './Inputs';
-import * as Icon from './Icon';
+import Icon from './Icon';
 import CallUsLink from './CallUsLink';
+import Modal from './Modal';
 
 export {
   Button,
@@ -18,4 +19,5 @@ export {
   Inputs,
   Icon,
   CallUsLink,
+  Modal,
 };
