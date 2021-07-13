@@ -12,6 +12,7 @@ const initialSteps = [
     ],
     isCompleted: false,
     externalLink: true,
+    externalButtonLink: 'ELIGIBILITY_CALCULATOR',
   },
   {
     id: '2',
@@ -23,6 +24,7 @@ const initialSteps = [
     ],
     isCompleted: false,
     externalLink: true,
+    externalButtonLink: 'CREATE_UNIVERSAL_CREDIT_ACCOUNT',
   },
   {
     id: '3',
@@ -33,6 +35,7 @@ const initialSteps = [
       { value: 'item3', isChecked: false },
     ],
     isCompleted: false,
+    externalButtonLink: 'GOV_UK_VERIFY',
   },
   {
     id: '4',
@@ -43,6 +46,7 @@ const initialSteps = [
       { value: 'item3', isChecked: false },
     ],
     isCompleted: false,
+    externalButtonLink: 'ONLINE_APPLICATION_FORM',
   },
   {
     id: '5',
