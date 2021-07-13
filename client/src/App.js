@@ -7,6 +7,7 @@ import * as Pages from './pages';
 import { navRoutes } from './constants';
 import { ScrollToTop } from './helpers';
 import LangProvider from './context/lang';
+import StepsProvider from './context/steps';
 
 // import CookieBot from 'react-cookiebot';
 
@@ -20,17 +21,25 @@ function App() {
       <Global styles={globalStyle} />
       <ThemeProvider theme={theme}>
         <LangProvider>
-          <Router basename={process.env.PUBLIC_URL}>
-            <ScrollToTop />
-            <Switch>
-              <Route
-                exact
-                path={navRoutes.GENERAL.HOME}
-                Component={Pages.Home}
-                layout="general"
-              />
-            </Switch>
-          </Router>
+          <StepsProvider>
+            <Router basename={process.env.PUBLIC_URL}>
+              <ScrollToTop />
+              <Switch>
+                <Route
+                  exact
+                  path={navRoutes.GENERAL.HOME}
+                  Component={Pages.Home}
+                  layout="general"
+                />
+                <Route
+                  exact
+                  path={navRoutes.STEPS.STEP}
+                  Component={Pages.Step}
+                  layout="general"
+                />
+              </Switch>
+            </Router>
+          </StepsProvider>
         </LangProvider>
         {/* <CookieBot domainGroupId={domainGroupId} /> */}
       </ThemeProvider>

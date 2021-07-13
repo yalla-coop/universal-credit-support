@@ -6,7 +6,6 @@ import theme from '../../theme';
 
 import * as S from './style';
 import Icon from '../Icon';
-import Image from '../Image';
 
 const NavItems = ({ setOpen }) => {
   return (
@@ -50,9 +49,6 @@ const Navbar = () => {
           }}
         />
         <NavItems setOpen={setOpen} />
-        <S.RainbowContainer>
-          <Image image="rainbow" customStyle={{ width: '100%' }} />
-        </S.RainbowContainer>
       </S.Drawer>
     </>
   );

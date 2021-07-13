@@ -26,6 +26,7 @@ export const Container = styled.div`
 export const Circle = styled.div`
   width: 188px;
   height: 188px;
+  padding: 0 20px;
   background: ${({ theme, circleColor }) => theme.colors[circleColor]};
   position: absolute;
   border-radius: 50%;
