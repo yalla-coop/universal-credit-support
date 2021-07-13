@@ -2,19 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import * as S from './style';
 import { ReactComponent as TextLogo } from '../../assets/logo.svg';
-import Navbar from '../../Navbar';
+import { useMediaQuery } from 'react-responsive';
+
+// import Navbar from '../../Navbar';
 import GoBack from '../../GoBack';
 import theme from '../../../theme';
 
 const General = ({ children, goBack, maxWidth, ...props }) => {
+  const isTablet = useMediaQuery({
+    query: `(max-width: ${theme.breakpoints.tablet})`,
+  });
   return (
     <>
       <S.Wrapper>
-        <S.Header>
+        <S.Header isTablet={isTablet}>
           <S.Link to="/">
             <TextLogo />
           </S.Link>
-          <Navbar />
+          {/* <Navbar /> */}
         </S.Header>
       </S.Wrapper>
       <S.Content maxWidth={maxWidth}>

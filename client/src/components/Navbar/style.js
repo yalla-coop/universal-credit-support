@@ -42,11 +42,3 @@ export const Drawer = styled(AntDrawer)`
     }
   }
 `;
-
-export const RainbowContainer = styled.div`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 1;
-`;

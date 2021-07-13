@@ -4,10 +4,11 @@ import { Link as RLink } from 'react-router-dom';
 export const Header = styled.header`
   width: 100%;
   background: white;
-  padding: ${({ theme: { spacings } }) => `${spacings[6]} ${spacings[10]}`};
+  padding: ${({ theme: { spacings } }) => `${spacings[9]} 0px`};
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 425px;
   &:after {
     content: '';
     position: absolute;
@@ -15,7 +16,8 @@ export const Header = styled.header`
     left: 0;
     right: 0;
     height: ${({ theme: { spacings } }) => spacings[1]};
-    background: ${({ theme: { gradients } }) => '#F7FBFF'};
+    background: ${({ theme, isTablet }) =>
+      isTablet ? theme.colors.primaryLight : theme.colors.white};
   }
   ${({ theme }) => theme.media.tablet} {
     padding: ${({ theme: { spacings } }) =>
@@ -29,6 +31,9 @@ export const Header = styled.header`
 
 export const Wrapper = styled.div`
   position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 `;
 
 export const Content = styled.main`
