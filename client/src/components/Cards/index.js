@@ -3,6 +3,30 @@ import * as T from '../Typography';
 import Icon from '../Icon';
 import { Link } from 'react-router-dom';
 
+const renderChild = (isCompleted, title) => {
+  if (isCompleted) {
+    return (
+      <>
+        <Icon icon="tick" color="white" />
+        <T.P
+          weight="bold"
+          color="white"
+          mt="4"
+          ta="center"
+          style={{ maxWidth: 150 }}
+        >
+          {title}
+        </T.P>
+      </>
+    );
+  }
+  return (
+    <T.H1 weight="bold" color="white" ta="center">
+      {title}
+    </T.H1>
+  );
+};
+
 const Card = ({
   variant = 'primary',
   direction = 'right',
@@ -10,38 +34,17 @@ const Card = ({
   children,
   title,
   isCompleted,
+  handleClick,
+  isJustCompletedOne,
   to = '/',
   ...props
 }) => {
   const bgColor = `${variant}Light`;
   const borderColor = `${variant}Mid`;
   const circleColor = `${variant}Main`;
-  const renderChild = () => {
-    if (isCompleted) {
-      return (
-        <>
-          <Icon icon="tick" color="white" />
-          <T.P
-            weight="bold"
-            color="white"
-            mt="4"
-            ta="center"
-            style={{ maxWidth: 150 }}
-          >
-            {title}
-          </T.P>
-        </>
-      );
-    }
-    return (
-      <T.H1 weight="bold" color="white" ta="center">
-        {title}
-      </T.H1>
-    );
-  };
   return (
-    <S.Wrapper bgColor={bgColor} {...props}>
-      <Link to={to}>
+    <S.Wrapper bgColor={bgColor} onClick={handleClick} {...props}>
+      <Link to={to} style={{ color: 'transparent' }}>
         <S.Container direction={direction}>
           {isCompleted && (
             <T.P
@@ -60,8 +63,9 @@ const Card = ({
             circleColor={circleColor}
             borderColor={borderColor}
             direction={direction}
+            isJustCompletedOne={isJustCompletedOne}
           >
-            {renderChild()}
+            {renderChild(isCompleted, title)}
           </S.Circle>
         </S.Container>
       </Link>
