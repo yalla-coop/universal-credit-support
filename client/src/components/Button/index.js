@@ -40,6 +40,7 @@ const Button = ({
       disabled={disabled}
       isLoading={loading}
       onClick={onClick}
+      as={external ? 'a' : 'button'}
       {...props}
     >
       {icon && <Icon icon={icon} />}

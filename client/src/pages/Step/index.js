@@ -29,7 +29,7 @@ function Step() {
     <Modal>
       <S.Container>
         <Row>
-          <Col w={[4, 4, 12]}>
+          <Col w={[4, 12, 12]}>
             <S.PageHead>
               <T.H2 weight="bold">
                 {t(`${step.name}.secondaryTitle`, lang)}
@@ -41,14 +41,13 @@ function Step() {
           </Col>
         </Row>
         <Row>
-          <Col w={[4, 4, 6]}>
+          <Col w={[4, 12, 6]}>
             <div style={{ width: '100%' }}>
               {step.externalButtonLink && (
                 <Button
                   variant="primary"
                   text={t(`${step.name}.externalButtonTitle`, lang)}
                   to={n.EXTERNAL[step.externalButtonLink]}
-                  as="a"
                   target="_blank"
                   rel="noopener noreferrer"
                   external

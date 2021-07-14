@@ -42,7 +42,7 @@ export const Content = styled.main`
     maxWidth || maxWidths.desktop};
   padding: ${({ theme: { spacings } }) => `${spacings[8]} ${spacings[10]}`};
   ${({ theme }) => theme.media.tablet} {
-    padding: ${({ theme: { spacings } }) => `${spacings[7]} ${spacings[9]}`};
+    padding: ${({ theme: { spacings } }) => `${spacings[7]} 0`};
   }
   ${({ theme }) => theme.media.mobile} {
     padding: ${({ theme: { spacings } }) =>
