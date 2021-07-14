@@ -18,14 +18,20 @@ const Button = ({
   disabled,
   to,
   customColor,
+  external,
   ...props
 }) => {
   const history = useHistory();
 
   const onClick = (e) => {
+    if (external) return;
     if (to) history.push(to);
     if (handleClick instanceof Function) handleClick(e);
   };
+
+  if (external) {
+    props.href = to;
+  }
 
   return (
     <S.Button
@@ -34,6 +40,7 @@ const Button = ({
       disabled={disabled}
       isLoading={loading}
       onClick={onClick}
+      as={external ? 'a' : 'button'}
       {...props}
     >
       {icon && <Icon icon={icon} />}

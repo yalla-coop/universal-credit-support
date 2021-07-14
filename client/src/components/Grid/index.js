@@ -8,11 +8,9 @@ const Col = ({ w = [], children, display = 'flex', ...props }) => (
 );
 
 const Row = ({ jc, jcT, jcM, children, inner, ...props }) => (
-  <div>
-    <S.Row jc={jc} jcT={jcT} jcM={jcM} inner={inner} {...props}>
-      {children}
-    </S.Row>
-  </div>
+  <S.Row jc={jc} jcT={jcT} jcM={jcM} inner={inner} {...props}>
+    {children}
+  </S.Row>
 );
 
 Row.propTypes = {

@@ -32,8 +32,8 @@ export const Field = styled.div`
     background: ${({ theme }) => theme.colors.white};
     border-color: ${({ theme, error }) =>
       error ? theme.colors.error : theme.colors.gray5};
-    width: 16px;
-    height: 16px;
+    width: 32px;
+    height: 32px;
   }
 
   .ant-checkbox-input {
@@ -49,6 +49,8 @@ export const Field = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 12px;
+    height: 20px;
   }
 
   .ant-checkbox-wrapper {
