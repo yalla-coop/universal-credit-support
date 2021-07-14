@@ -5,14 +5,45 @@ import { useLang } from '../../context/lang';
 import { useSteps } from '../../context/steps';
 import { navRoutes as n } from '../../constants';
 
+import { useEffect, useState } from 'react';
+
 import * as S from './style';
 
 const Home = () => {
+  const [scrollValue, setScrollValue] = useState(null);
+
   const { lang, langOptions, setLang } = useLang();
-  const { steps } = useSteps();
-
+  const {
+    steps,
+    setScrollTo,
+    scrollTo,
+    justCompleteOne,
+    setJustCompleteOne,
+  } = useSteps();
   const currentStep = steps.find((step) => !step.isCompleted);
+  const prevCompleteStep = steps.indexOf(currentStep) - 1;
 
+  useEffect(() => {
+    const listener = () => {
+      setScrollValue(window.scrollY);
+    };
+    if (justCompleteOne || scrollTo) {
+      if (justCompleteOne) {
+        window.scrollTo(0, parseInt(scrollTo));
+
+        window.scrollTo({
+          top: parseInt(scrollTo) + 180,
+          left: 0,
+          behavior: 'smooth',
+        });
+      } else {
+        window.scrollTo(0, parseInt(scrollTo));
+      }
+    }
+    window.addEventListener('scroll', listener);
+    return () => window.removeEventListener('scroll', listener);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <>
       <S.PageHead>
@@ -40,6 +71,7 @@ const Home = () => {
           : step.name === currentStep.name
           ? 'secondary'
           : 'primary';
+        let isJustCompletedOne = i === prevCompleteStep;
         return (
           <Card
             key={step.id}
@@ -49,7 +81,12 @@ const Home = () => {
             variant={variant}
             direction={i % 2 === 0 ? 'left' : 'right'}
             mt="7"
+            isJustCompletedOne={isJustCompletedOne}
             to={n.STEPS.STEP.replace(':id', step.id)}
+            handleClick={() => {
+              setScrollTo(scrollValue);
+              setJustCompleteOne(false);
+            }}
           />
         );
       })}
