@@ -16,14 +16,15 @@ import { navRoutes as n } from '../../constants';
 
 import * as S from './style';
 
+const { Checkbox } = Inputs;
+const { Row, Col } = Grid;
+
 function Step() {
   const params = useParams();
   const { lang } = useLang();
-  const { steps, checkUncheckItem } = useSteps();
+  const { steps, checkUncheckItem, setJustCompleteOne } = useSteps();
 
   const step = steps.find((s) => s.id === params.id);
-  const { Checkbox } = Inputs;
-  const { Row, Col } = Grid;
 
   return (
     <Modal>
@@ -71,6 +72,9 @@ function Step() {
                 variant="secondary"
                 text={t('nextStep', lang)}
                 to={n.GENERAL.HOME}
+                handleClick={() => {
+                  setJustCompleteOne(true);
+                }}
               />
             )}
             {!step.isCompleted && step.externalLink && (
