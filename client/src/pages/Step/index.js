@@ -40,7 +40,7 @@ function Step() {
             </S.PageHead>
           </Col>
         </Row>
-        <Row>
+        <Row style={{ flex: 1 }}>
           <Col w={[4, 12, 6]}>
             <div style={{ width: '100%' }}>
               {step.externalButtonLink && (
