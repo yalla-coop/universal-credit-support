@@ -7,6 +7,10 @@ export const Wrapper = styled.a`
   text-decoration: underline;
   display: flex;
   align-items: center;
+  justify-content: flex-start;
+  ${({ theme }) => theme.media.mobile} {
+    justify-content: center;
+  }
 `;
 
 export const Text = styled.span`

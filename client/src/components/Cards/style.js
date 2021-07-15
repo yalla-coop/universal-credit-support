@@ -27,12 +27,21 @@ export const Container = styled.div`
     direction === 'right' ? '36px 188px 36px 36px' : '36px 36px 36px 188px'};
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   min-height: 152px;
   border: none;
   position: relative;
   max-width: 600px;
+  ${({ theme }) => theme.media.tablet} {
+    padding: ${({ direction }) =>
+      direction === 'right' ? '24px 188px 24px 24px' : '24px 24px 24px 188px'};
+  }
+  ${({ theme }) => theme.media.mobile} {
+    max-width: auto;
+    padding: ${({ direction }) =>
+      direction === 'right' ? '18px 180px 18px 18px' : '18px 18px 18px 180px'};
+  }
 `;
 
 export const Circle = styled.div`

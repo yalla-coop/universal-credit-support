@@ -93,7 +93,7 @@ export const Answer = styled.div`
 `;
 
 export const OptionStyle = `
-  font-size: 16px;
+  font-size: 14px;
   font-weight: normal;
   padding: 0.5rem 1rem;
   display: flex;

@@ -137,7 +137,9 @@ const Dropdown = ({
           suffixIcon={
             search ? (
               <Icon icon="search" width="24" height="24" color="black" />
-            ) : undefined
+            ) : (
+              <Icon icon="arrowDown" width="12" height="6" />
+            )
           }
           showSearch={addNew || search}
         >

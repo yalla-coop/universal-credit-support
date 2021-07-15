@@ -4,7 +4,8 @@ import { Link as RLink } from 'react-router-dom';
 export const Header = styled.header`
   width: 100%;
   background: white;
-  padding: ${({ theme: { spacings } }) => `${spacings[9]} 0px`};
+  padding: ${({ theme: { spacings } }) =>
+    `${spacings[9]} 0px ${spacings[3]} 0`};
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -20,12 +21,12 @@ export const Header = styled.header`
       isTablet ? theme.colors.primaryLight : theme.colors.white};
   }
   ${({ theme }) => theme.media.tablet} {
-    padding: ${({ theme: { spacings } }) =>
-      `40px ${spacings[7]} 40px ${spacings[9]}`};
+    padding: ${({ theme: { spacings } }) => `40px ${spacings[7]} 40px 0`};
   }
   ${({ theme }) => theme.media.mobile} {
+    max-width: auto;
     padding: ${({ theme: { spacings } }) =>
-      `${spacings[6]} 37px ${spacings[4]} 38px`};
+      `${spacings[6]} 37px ${spacings[4]} 24px`};
   }
 `;
 
@@ -34,6 +35,9 @@ export const Wrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+  ${({ theme }) => theme.media.mobile} {
+    justify-content: flex-start;
+  }
 `;
 
 export const Content = styled.main`
