@@ -15,7 +15,7 @@ const renderChild = (isCompleted, title) => {
           color="white"
           mt="4"
           ta="center"
-          style={{ maxWidth: 150 }}
+          style={{ maxWidth: 120 }}
         >
           {title}
         </T.P>

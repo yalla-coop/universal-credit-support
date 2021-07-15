@@ -67,7 +67,9 @@ function Step() {
                 />
               ))}
             </div>
-            <div style={{ width: '100%', height: '58px' }}>
+            <div
+              style={{ width: '100%', height: '58px', alignSelf: 'flex-end' }}
+            >
               {step.isCompleted && (
                 <Button
                   variant="secondary"

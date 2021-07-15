@@ -30,7 +30,7 @@ const Home = () => {
         <S.HeadContainer>
           {' '}
           <T.H1 weight="bold">{t('universalCreditOverview', lang)}</T.H1>
-          <T.P weight="bold" mt="6" mb="2">
+          <T.P weight="bold" isSmall mt="6" mb="2">
             {t('selectYourLanguage', lang)}
           </T.P>
           <S.DropdownContainer>
@@ -40,7 +40,7 @@ const Home = () => {
               handleChange={setLang}
             />
           </S.DropdownContainer>
-          <T.P mt="6" mb="6">
+          <T.P mt="6" mb="6" mbT="4" mbM="2">
             {t('overviewText', lang)}
           </T.P>
         </S.HeadContainer>

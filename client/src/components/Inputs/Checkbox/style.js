@@ -10,11 +10,15 @@ export const Field = styled.div`
     background-color: ${({ theme }) =>
       `${theme.colors.secondaryLight} !important`};
     border-color: ${({ theme }) => `${theme.colors.secondaryMain} !important`};
+    border-radius: 6px;
+    border-width: 2px;
   }
 
   .ant-checkbox-checked .ant-checkbox-inner {
     background-color: ${({ theme }) => `${theme.colors.white} !important`};
     border-color: ${({ theme }) => `${theme.colors.primaryMain} !important`};
+    border-radius: 6px;
+    border-width: 2px;
   }
 
   .ant-checkbox-checked .ant-checkbox-inner:after {
@@ -49,8 +53,10 @@ export const Field = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 12px;
+    width: 8px;
     height: 20px;
+    margin-top: -2px;
+    border-width: 3px;
   }
 
   .ant-checkbox-wrapper {

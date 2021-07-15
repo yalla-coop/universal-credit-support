@@ -3,7 +3,7 @@ import { Link as RLink } from 'react-router-dom';
 
 export const Container = styled.div`
   flex: 1;
-  height: 90vh;
+  height: 95vh;
   display: flex;
   flex-direction: column;
   padding: ${({ theme }) => theme.spacings[2]};

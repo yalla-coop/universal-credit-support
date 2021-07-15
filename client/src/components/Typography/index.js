@@ -21,7 +21,7 @@ const commonStyle = ({ theme, color, caps, ta, ...props }) => `
 const Head1 = styled(Title)`
   ${setMargin};
   ${commonStyle};
-  font-size: 24px !important;
+  font-size: 32px !important;
   line-height: 32px !important;
   font-weight: ${({ weight }) =>
     weight === 'bold' ? '800 !important' : '400 !important'};

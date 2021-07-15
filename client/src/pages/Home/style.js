@@ -4,7 +4,7 @@ export const PageHead = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-  padding-left: 24px;
+  padding: 0 24px;
 `;
 
 export const HeadContainer = styled.div`
