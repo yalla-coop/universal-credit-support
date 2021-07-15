@@ -20,12 +20,11 @@ export const Header = styled.header`
       isTablet ? theme.colors.primaryLight : theme.colors.white};
   }
   ${({ theme }) => theme.media.tablet} {
-    padding: ${({ theme: { spacings } }) =>
-      `40px ${spacings[7]} 40px ${spacings[9]}`};
+    padding: ${({ theme: { spacings } }) => `40px ${spacings[7]} 40px 0`};
   }
   ${({ theme }) => theme.media.mobile} {
     padding: ${({ theme: { spacings } }) =>
-      `${spacings[6]} 37px ${spacings[4]} 38px`};
+      `${spacings[6]} 37px ${spacings[4]} 0`};
   }
 `;
 
