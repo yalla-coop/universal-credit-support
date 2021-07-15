@@ -1,3 +1,5 @@
+import { useEffect, useRef } from 'react';
+
 import Card from '../../components/Cards';
 import { Typography as T, Inputs as I } from '../../components';
 import { t } from '../../helpers';
@@ -5,45 +7,23 @@ import { useLang } from '../../context/lang';
 import { useSteps } from '../../context/steps';
 import { navRoutes as n } from '../../constants';
 
-import { useEffect, useState } from 'react';
-
 import * as S from './style';
 
 const Home = () => {
-  const [scrollValue, setScrollValue] = useState(null);
-
   const { lang, langOptions, setLang } = useLang();
-  const {
-    steps,
-    setScrollTo,
-    scrollTo,
-    justCompleteOne,
-    setJustCompleteOne,
-  } = useSteps();
+  const { steps, justCompletedId, setJustCompletedId } = useSteps();
   const currentStep = steps.find((step) => !step.isCompleted);
-  const prevCompleteStep = steps.indexOf(currentStep) - 1;
+  const currentStepRef = useRef();
 
   useEffect(() => {
-    const listener = () => {
-      setScrollValue(window.scrollY);
-    };
-    if (justCompleteOne || scrollTo) {
-      if (justCompleteOne) {
-        window.scrollTo(0, parseInt(scrollTo));
-
-        window.scrollTo({
-          top: parseInt(scrollTo) + 180,
-          left: 0,
-          behavior: 'smooth',
-        });
-      } else {
-        window.scrollTo(0, parseInt(scrollTo));
-      }
+    if (currentStepRef.current && justCompletedId) {
+      currentStepRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+      });
     }
-    window.addEventListener('scroll', listener);
-    return () => window.removeEventListener('scroll', listener);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [justCompletedId]);
+
   return (
     <>
       <S.PageHead>
@@ -66,12 +46,15 @@ const Home = () => {
         </S.HeadContainer>
       </S.PageHead>
       {steps.map((step, i) => {
+        const isCurrentStep = step.name === currentStep.name;
         const variant = step.isCompleted
           ? 'tertiary'
-          : step.name === currentStep.name
+          : isCurrentStep
           ? 'secondary'
           : 'primary';
-        let isJustCompletedOne = i === prevCompleteStep;
+        const isJustCompletedOne = step.id === justCompletedId;
+        // To only add ref to the currentStep
+        const currentRef = isCurrentStep ? currentStepRef : null;
         return (
           <Card
             key={step.id}
@@ -83,9 +66,9 @@ const Home = () => {
             mt="7"
             isJustCompletedOne={isJustCompletedOne}
             to={n.STEPS.STEP.replace(':id', step.id)}
+            ref={currentRef}
             handleClick={() => {
-              setScrollTo(scrollValue);
-              setJustCompleteOne(false);
+              setJustCompletedId('');
             }}
           />
         );

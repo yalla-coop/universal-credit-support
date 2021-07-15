@@ -1,10 +1,6 @@
 import styled from '@emotion/styled';
 import setMargin from '../../../helpers/set-margin';
 
-import { Select as AntdSelect } from 'antd';
-
-const { Option: AntdOption } = AntdSelect;
-
 export const Field = styled.div`
   ${setMargin};
   width: ${({ w }) => w || '100%'};
@@ -96,7 +92,7 @@ export const Answer = styled.div`
   width: 100%;
 `;
 
-export const Option = styled(AntdOption)`
+export const OptionStyle = `
   font-size: 16px;
   font-weight: normal;
   padding: 0.5rem 1rem;

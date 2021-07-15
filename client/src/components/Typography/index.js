@@ -38,10 +38,11 @@ const Head2 = styled(Title)`
 `;
 export const H2 = (props) => <Head2 {...props} level={2} />;
 
-export const P = styled(Paragraph)`
+export const P = styled(({ isSmall, ...props }) => <Paragraph {...props} />)`
   ${setMargin};
   ${commonStyle};
-  font-size: ${({ small }) => (small ? '14px !important' : '16px !important')};
+  font-size: ${({ isSmall }) =>
+    isSmall ? '14px !important' : '16px !important'};
   line-height: ${({ weight }) => (weight === 'bold' ? '24px' : '160%')};
   font-weight: ${({ weight }) => (weight ? weights[weight] : '400 !important')};
   pre {

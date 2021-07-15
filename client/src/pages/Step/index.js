@@ -22,7 +22,7 @@ const { Row, Col } = Grid;
 function Step() {
   const params = useParams();
   const { lang } = useLang();
-  const { steps, checkUncheckItem, setJustCompleteOne } = useSteps();
+  const { steps, checkUncheckItem, setJustCompletedId } = useSteps();
 
   const step = steps.find((s) => s.id === params.id);
 
@@ -54,7 +54,7 @@ function Step() {
                   external
                 />
               )}
-              <T.P small weight="bold" mt="7" mb="5">
+              <T.P isSmall weight="bold" mt="7" mb="5">
                 {t('informationYouWillNeed', lang)}
               </T.P>
               {step.checkListItems.map((item) => (
@@ -67,24 +67,26 @@ function Step() {
                 />
               ))}
             </div>
-            {step.isCompleted && (
-              <Button
-                variant="secondary"
-                text={t('nextStep', lang)}
-                to={n.GENERAL.HOME}
-                handleClick={() => {
-                  setJustCompleteOne(true);
-                }}
-              />
-            )}
-            {!step.isCompleted && step.externalLink && (
-              <CallUsLink
-                text={t('callUsLinkText', lang)}
-                href={n.EXTERNAL.CALL_US}
-                target="_blank"
-                rel="noopener noreferrer"
-              />
-            )}
+            <div style={{ width: '100%', height: '58px' }}>
+              {step.isCompleted && (
+                <Button
+                  variant="secondary"
+                  text={t('nextStep', lang)}
+                  to={n.GENERAL.HOME}
+                  handleClick={() => {
+                    setJustCompletedId(step.id);
+                  }}
+                />
+              )}
+              {!step.isCompleted && step.externalLink && (
+                <CallUsLink
+                  text={t('callUsLinkText', lang)}
+                  href={n.EXTERNAL.CALL_US}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                />
+              )}
+            </div>
           </Col>
         </Row>
       </S.Container>
