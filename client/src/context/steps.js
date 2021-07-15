@@ -81,6 +81,7 @@ const StepsContext = createContext({
 
 const StepsProvider = ({ children, ...props }) => {
   const [steps, setSteps] = useState(getStepsFromStorage);
+  const [justCompletedId, setJustCompletedId] = useState('');
 
   const checkUncheckItem = (stepName, itemKey) => {
     setSteps((prevSteps) => {
@@ -116,7 +117,12 @@ const StepsProvider = ({ children, ...props }) => {
     });
   };
 
-  const value = { steps, checkUncheckItem };
+  const value = {
+    steps,
+    checkUncheckItem,
+    justCompletedId,
+    setJustCompletedId,
+  };
   return (
     <StepsContext.Provider value={value} {...props}>
       {children}

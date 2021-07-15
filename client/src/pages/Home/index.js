@@ -1,3 +1,5 @@
+import { useEffect, useRef } from 'react';
+
 import Card from '../../components/Cards';
 import { Typography as T, Inputs as I } from '../../components';
 import { t } from '../../helpers';
@@ -9,9 +11,18 @@ import * as S from './style';
 
 const Home = () => {
   const { lang, langOptions, setLang } = useLang();
-  const { steps } = useSteps();
-
+  const { steps, justCompletedId, setJustCompletedId } = useSteps();
   const currentStep = steps.find((step) => !step.isCompleted);
+  const currentStepRef = useRef();
+
+  useEffect(() => {
+    if (currentStepRef.current && justCompletedId) {
+      currentStepRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+      });
+    }
+  }, [justCompletedId]);
 
   return (
     <>
@@ -35,11 +46,15 @@ const Home = () => {
         </S.HeadContainer>
       </S.PageHead>
       {steps.map((step, i) => {
+        const isCurrentStep = step.name === currentStep.name;
         const variant = step.isCompleted
           ? 'tertiary'
-          : step.name === currentStep.name
+          : isCurrentStep
           ? 'secondary'
           : 'primary';
+        const isJustCompletedOne = step.id === justCompletedId;
+        // To only add ref to the currentStep
+        const currentRef = isCurrentStep ? currentStepRef : null;
         return (
           <Card
             key={step.id}
@@ -49,7 +64,12 @@ const Home = () => {
             variant={variant}
             direction={i % 2 === 0 ? 'left' : 'right'}
             mt="7"
+            isJustCompletedOne={isJustCompletedOne}
             to={n.STEPS.STEP.replace(':id', step.id)}
+            ref={currentRef}
+            handleClick={() => {
+              setJustCompletedId('');
+            }}
           />
         );
       })}

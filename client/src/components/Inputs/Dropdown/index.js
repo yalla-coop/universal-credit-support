@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { Select as AntdSelect } from 'antd';
+import { css } from '@emotion/react';
+
 import * as T from '../../Typography';
 import * as S from './style';
 import * as CS from './../style';
 import Icon from '../../Icon';
 
-const { OptGroup: AntdOptGroup } = AntdSelect;
+const { OptGroup: AntdOptGroup, Option: AntdOption } = AntdSelect;
 
 const Dropdown = ({
   handleChange,
@@ -49,7 +51,10 @@ const Dropdown = ({
           key={groupLabel}
         >
           {_options.map((opt) => (
-            <S.Option
+            <AntdOption
+              className={css`
+                ${S.OptionStyle}
+              `}
               key={`${groupLabel}_${opt.label}`}
               value={opt.value}
               points={opt.points}
@@ -57,7 +62,7 @@ const Dropdown = ({
               {...options}
             >
               {opt.label}
-            </S.Option>
+            </AntdOption>
           ))}
         </AntdOptGroup>
       ));
@@ -66,9 +71,17 @@ const Dropdown = ({
       const { value: _value, label: _label } = options;
 
       return (
-        <S.Option key={_value} value={_value} label={_label} {...options}>
+        <AntdOption
+          className={css`
+            ${S.OptionStyle}
+          `}
+          key={_value}
+          value={_value}
+          label={_label}
+          {...options}
+        >
           {_label}
-        </S.Option>
+        </AntdOption>
       );
     });
   };

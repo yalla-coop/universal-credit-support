@@ -2,7 +2,7 @@ import { createContext, useState, useContext } from 'react';
 
 const langOptions = [
   { value: 'english', label: 'English' },
-  { value: 'french', label: 'French' },
+  // { value: 'french', label: 'French' },
 ];
 
 const initialLang = 'english';

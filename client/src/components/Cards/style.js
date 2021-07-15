@@ -1,5 +1,17 @@
 import styled from '@emotion/styled';
+import { keyframes } from '@emotion/react';
+
 import setMargin from './../../helpers/set-margin';
+
+const bounce = (start) => keyframes`
+  0% {
+    background-color: currentColor;
+  }
+
+  100% {
+    background-color: ${start};
+  }
+`;
 
 export const Wrapper = styled.div`
   ${setMargin};
@@ -40,4 +52,6 @@ export const Circle = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  animation: ${(props) => props.isJustCompletedOne && bounce(props.circleColor)}
+    3s ease;
 `;
