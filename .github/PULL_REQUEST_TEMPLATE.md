@@ -18,7 +18,7 @@ e.g. Will a database need to be rebuilt (and is this ok if existing data), add e
 
 #### Quick Pull Request Checklist
 
-Please make sure you ensure the following has been done before marking your PR as awaiting-review. For full checklist and process review, please refer to Process Guide (#8)
+Please make sure you ensure the following has been done before marking your PR as awaiting-review. 
 
 - Branch is up to date with develop
 - Project runs
