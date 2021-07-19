@@ -46,7 +46,7 @@ const Home = () => {
         </S.HeadContainer>
       </S.PageHead>
       {steps.map((step, i) => {
-        const isCurrentStep = step.name === currentStep.name;
+        const isCurrentStep = currentStep && step.name === currentStep.name;
         const variant = step.isCompleted
           ? 'tertiary'
           : isCurrentStep
@@ -54,7 +54,10 @@ const Home = () => {
           : 'primary';
         const isJustCompletedOne = step.id === justCompletedId;
         // To only add ref to the currentStep
-        const currentRef = isCurrentStep ? currentStepRef : null;
+        let currentRef = isCurrentStep ? currentStepRef : null;
+        if (i === steps.length - 1 && step.isCompleted) {
+          currentRef = currentStepRef;
+        }
         return (
           <Card
             key={step.id}

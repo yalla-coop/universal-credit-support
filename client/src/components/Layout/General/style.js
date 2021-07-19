@@ -43,8 +43,6 @@ export const Wrapper = styled.div`
 export const Content = styled.main`
   width: 100%;
   overflow: hidden;
-  max-width: ${({ maxWidth, theme: { maxWidths } }) =>
-    maxWidth || maxWidths.desktop};
   padding: ${({ theme: { spacings } }) => `${spacings[8]} 0`};
   ${({ theme }) => theme.media.tablet} {
     padding: ${({ theme: { spacings } }) => `${spacings[7]} 0`};
