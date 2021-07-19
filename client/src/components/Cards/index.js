@@ -29,6 +29,33 @@ const renderChild = (isCompleted, title) => {
   );
 };
 
+const FormattedContent = ({ txt }) => {
+  const arr = txt.split(/(<strong[a-z, A-Z]*>)/);
+  let insideStrongTag = false;
+  let underline = false;
+
+  return (
+    <>
+      {arr.map((part) => {
+        if (part.includes('strong')) {
+          insideStrongTag = !insideStrongTag;
+
+          if (part.includes('underline')) {
+            underline = true;
+          }
+          return null;
+        }
+
+        if (insideStrongTag) {
+          return <S.Strong underline={underline}>{part}</S.Strong>;
+        }
+
+        return part;
+      })}
+    </>
+  );
+};
+
 const Card = forwardRef(
   (
     {
@@ -48,6 +75,7 @@ const Card = forwardRef(
     const bgColor = `${variant}Light`;
     const borderColor = `${variant}Mid`;
     const circleColor = `${variant}Main`;
+
     return (
       <S.Wrapper bgColor={bgColor} onClick={handleClick} {...props} ref={ref}>
         <Link to={to} style={{ color: 'transparent' }}>
@@ -63,7 +91,7 @@ const Card = forwardRef(
               </T.P>
             )}
             <T.P isSmall color="neutralTertiary">
-              {content}
+              <FormattedContent txt={content} />
             </T.P>
             <S.Circle
               circleColor={circleColor}
