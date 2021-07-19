@@ -9,9 +9,11 @@ const EXTERNAL = {
   CALL_US: '//www.google.com/',
   ELIGIBILITY_CALCULATOR: '//www.google.com/ELIGIBILITY_CALCULATOR',
   CREATE_UNIVERSAL_CREDIT_ACCOUNT:
-    '//www.google.com/CREATE_UNIVERSAL_CREDIT_ACCOUNT',
-  GOV_UK_VERIFY: '//www.google.com/GOV_UK_VERIFY',
-  ONLINE_APPLICATION_FORM: '//www.google.com/ONLINE_APPLICATION_FORM',
+    'https://www.universal-credit.service.gov.uk',
+  // GOV_UK_VERIFY: '//www.google.com/GOV_UK_VERIFY',
+  ONLINE_APPLICATION_FORM: 'https://www.universal-credit.service.gov.uk',
+  MAKE_YOUR_CLAIM: 'https://www.universal-credit.service.gov.uk/sign-in',
+  GETTING_YOUR_FIRST_PAYMENT: 'https://www.universal-credit.service.gov.uk',
 };
 
 const STEPS = {
