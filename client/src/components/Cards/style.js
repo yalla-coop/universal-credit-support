@@ -64,3 +64,8 @@ export const Circle = styled.div`
   animation: ${(props) => props.isJustCompletedOne && bounce(props.circleColor)}
     3s ease;
 `;
+
+export const Strong = styled.strong`
+  font-weight: bold !important;
+  text-decoration: ${({ underline }) => (underline ? 'underline' : 'none')};
+`;

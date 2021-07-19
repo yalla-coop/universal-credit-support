@@ -16,6 +16,8 @@ export default {
   callUsLinkText: 'Stuck? Call us for advice',
 
   // STEPS
+  // In subtitle field you can wrap any part of the text with
+  // <strong>some bold text<strong> or <strong underline>ss<strong>
   checkEligibility: {
     title: 'Check Eligibility',
     secondaryTitle: 'Check eligibility (optional)',
@@ -24,7 +26,7 @@ export default {
     externalButtonTitle: 'Eligibility Calculator',
     checkListItems: {
       incomeDetails: 'Income details',
-      detailsOfAnySavings: 'Details of any savings',
+      detailsOfAnySavings: 'Details of any capital and savings',
       housingCosts: 'Housing costs',
       childcareCosts: 'Childcare costs',
       incomeOthersDetails:
@@ -61,6 +63,7 @@ export default {
         'Details of your home e.g. the information on your tenancy agreement',
       housingCosts: 'Housing costs',
       childrenBenefit: 'Benefit reference numbers for your children',
+      incomeDetails: 'Income details',
       capitalDetails:
         'Details of any capital and savings - includes money in your current account',
       responsibilities:
@@ -83,8 +86,8 @@ export default {
         'Details of any credit agreements e.g. dates you took out your mobile phone contract or a credit card',
     },
   },
-  check: {
-    title: 'Check',
+  attendInterview: {
+    title: 'Attend Interview',
     secondaryTitle: 'Attend Interview',
     subtitle:
       "This might be in person or by phone. Phone the number above to arrange your interview. If you haven't been able to verify your identity online you might need to have an extra interview just to sort that out first",
@@ -101,7 +104,7 @@ export default {
     title: 'Apply',
     secondaryTitle: 'Apply for an advance (optional)',
     subtitle:
-      "Don't be scared about applying for this if you definitely do need it! But make sure you go in with your eyes open. Taking an Advance is optional and it is a loan and it will be taken from your UC at an amount set by the DWP.",
+      "Don't be scared about applying for this if you definitely do need it! But make sure you go in with your eyes open. Taking an Advance is optional and it is a <strong underline>loan<strong> and it will be taken from your UC at an amount <strong underline>set by the DWP.<strong>",
     externalButtonTitle: 'Apply for advance',
     checkListItems: {
       accountInfo: 'Account log in information (created in the Apply step)',
@@ -114,7 +117,7 @@ export default {
     title: 'First Payment',
     secondaryTitle: 'Getting your first payment',
     subtitle:
-      "First payment  is made 1 month and 7 days after you submitted your claim. Make sure you have done the things you need listed below or you won't get paid!",
+      "<strong>First payment<strong> is made 1 month and 7 days after you submitted your claim. Make sure you have done the things you need listed below or you won't get paid!",
     externalButtonTitle: 'Check account',
     checkListItems: {
       accountInfo:

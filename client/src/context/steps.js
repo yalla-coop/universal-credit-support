@@ -39,6 +39,7 @@ const initialSteps = [
       { value: 'homeDetails', isChecked: false },
       { value: 'housingCosts', isChecked: false },
       { value: 'childrenBenefit', isChecked: false },
+      { value: 'incomeDetails', isChecked: false },
       { value: 'capitalDetails', isChecked: false },
       { value: 'responsibilities', isChecked: false },
       { value: 'bankAccountDetails', isChecked: false },
@@ -46,7 +47,7 @@ const initialSteps = [
     ],
     isCompleted: false,
     externalLink: true,
-    externalButtonLink: 'CREATE_UNIVERSAL_CREDIT_ACCOUNT',
+    externalButtonLink: 'MAKE_YOUR_CLAIM',
   },
   {
     id: '4',
@@ -59,13 +60,13 @@ const initialSteps = [
   },
   {
     id: '5',
-    name: 'check',
+    name: 'attendInterview',
     checkListItems: [
       { value: 'nationalNumber', isChecked: false },
       { value: 'needs', isChecked: false },
       { value: 'limitations', isChecked: false },
     ],
-    externalButtonLink: 'Call 0800 328 5644',
+    externalButtonLink: 'Call_0800_328_5644',
     isCompleted: false,
   },
   {
