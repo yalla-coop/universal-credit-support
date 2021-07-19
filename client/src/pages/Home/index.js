@@ -46,7 +46,7 @@ const Home = () => {
         </S.HeadContainer>
       </S.PageHead>
       {steps.map((step, i) => {
-        const isCurrentStep = step.name === currentStep.name;
+        const isCurrentStep = currentStep && step.name === currentStep.name;
         const variant = step.isCompleted
           ? 'tertiary'
           : isCurrentStep
