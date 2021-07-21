@@ -16,7 +16,7 @@ const Image = ({
   width,
   height,
   margin,
-  alt = 'Therapy Illustration',
+  alt = 'Illustration',
   customStyle,
   ...props
 }) => {

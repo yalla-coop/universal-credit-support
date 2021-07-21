@@ -13,6 +13,7 @@ import { useSteps } from '../../context/steps';
 import { useLang } from '../../context/lang';
 import { t } from '../../helpers';
 import { navRoutes as n } from '../../constants';
+import { ReactComponent as TextLogo } from '../../components/assets/logo.svg';
 
 import * as S from './style';
 
@@ -29,16 +30,19 @@ function Step() {
   return (
     <Modal>
       <S.Container>
-        <Row>
+        <Row mb="4" mt="2">
           <Col w={[4, 12, 12]}>
             <S.PageHead>
-              <T.H2 weight="bold">
-                {t(`${step.name}.secondaryTitle`, lang)}
-              </T.H2>
+              <TextLogo />
               <S.Link to="/">
                 <Icon icon="close" />
               </S.Link>
             </S.PageHead>
+          </Col>
+        </Row>
+        <Row mb="5">
+          <Col w={[4, 12, 12]}>
+            <T.H2 weight="bold">{t(`${step.name}.secondaryTitle`, lang)}</T.H2>
           </Col>
         </Row>
         <Row style={{ flex: 1 }}>
@@ -96,7 +100,7 @@ function Step() {
               </Col>
             ) : (
               step.externalLink && (
-                <Col w={[4, 12, 6]}>
+                <Col w={[4, 12, 6]} mt="6" mb="7">
                   <CallUsLink
                     text={t('callUsLinkText', lang)}
                     href={n.EXTERNAL.CALL_US}
