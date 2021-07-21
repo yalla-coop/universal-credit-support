@@ -8,7 +8,8 @@ In this repo you can find links to all documentation required. For those working
 ## Link to app
 There is currently a MVP version live here: https://universal-credit-claim.netlify.app
 
-## Tech stack
+
+## Tech stack
 
 As a summary:
 - Front end >> ReactJS
