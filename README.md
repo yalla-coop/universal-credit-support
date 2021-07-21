@@ -5,6 +5,9 @@
 ## Summary
 In this repo you can find links to all documentation required. For those working on the project who need real log ins and production env vars, please refer to the Resources issue #1
 
+## Link to app
+There is currently a MVP version live here: https://universal-credit-claim.netlify.app
+
 ## Tech stack
 
 As a summary:
