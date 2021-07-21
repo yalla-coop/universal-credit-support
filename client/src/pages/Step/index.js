@@ -48,7 +48,7 @@ function Step() {
         <Row style={{ flex: 1 }}>
           <div style={{ width: '100%' }}>
             {step.externalButtonLink && (
-              <Row inner>
+              <Row inner mb="7">
                 <Col w={[4, 12, 6]}>
                   <Button
                     variant="primary"
@@ -61,7 +61,7 @@ function Step() {
                 </Col>
               </Row>
             )}
-            <T.P isSmall weight="bold" mt="7" mb="5">
+            <T.P isSmall weight="bold" mb="5">
               {t('informationYouWillNeed', lang)}
             </T.P>
             <Row inner>
@@ -88,7 +88,7 @@ function Step() {
             }}
           >
             {step.isCompleted ? (
-              <Col w={[4, 12, 6]}>
+              <Col w={[4, 12, 6]} mt="6" mb="7">
                 <Button
                   variant="secondary"
                   text={t('nextStep', lang)}
@@ -100,7 +100,7 @@ function Step() {
               </Col>
             ) : (
               step.externalLink && (
-                <Col w={[4, 12, 6]} mt="6" mb="7">
+                <Col w={[4, 12, 6]} mt="6" mb="6">
                   <CallUsLink
                     text={t('callUsLinkText', lang)}
                     href={n.EXTERNAL.CALL_US}
