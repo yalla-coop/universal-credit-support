@@ -6,6 +6,7 @@ export const Wrapper = styled.a`
   color: ${({ color, theme }) => theme.colors[color] || color || '#1A202C'};
   text-decoration: underline;
   display: flex;
+  width: 100%;
   align-items: center;
   justify-content: flex-start;
   ${({ theme }) => theme.media.mobile} {

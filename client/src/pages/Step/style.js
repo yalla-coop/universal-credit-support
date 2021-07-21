@@ -10,7 +10,7 @@ export const Container = styled.div`
   padding-left: ${({ theme }) => theme.spacings[4]};
   ${({ theme }) => theme.media.tablet} {
     padding: 0;
-    padding-left: ${({ theme }) => theme.spacings[2]};
+    padding-left: ${({ theme }) => theme.spacings[1]};
   }
 `;
 

@@ -78,7 +78,7 @@ export default {
     title: 'Verify Identity',
     secondaryTitle: 'Verify identity',
     subtitle:
-      'Before your claim can be considered, you will need to ‘verify’ your identity. The online system will automatically direct you to Gov UK Verify.',
+      'Before your claim can be considered, you will need to ‘verify’ your identity. When you finish your application they will automatically direct you to Gov UK Verify.',
     // externalButtonTitle: 'GOV UK Verify',
     checkListItems: {
       ID: 'ID (e.g. Passport / Driving Licence / Debit or Credit card)',
@@ -90,7 +90,7 @@ export default {
     title: 'Attend Interview',
     secondaryTitle: 'Attend Interview',
     subtitle:
-      "This might be in person or by phone. Phone the number above to arrange your interview. If you haven't been able to verify your identity online you might need to have an extra interview just to sort that out first",
+      "This might be in person or by phone. If you haven't been able to verify your identity online you might need to have an extra interview to sort that out first.",
     externalButtonTitle: 'Call 0800 328 5644',
 
     checkListItems: {
@@ -101,10 +101,10 @@ export default {
     },
   },
   apply: {
-    title: 'Apply',
+    title: 'Get an advance',
     secondaryTitle: 'Apply for an advance (optional)',
     subtitle:
-      "Don't be scared about applying for this if you definitely do need it! But make sure you go in with your eyes open. Taking an Advance is optional and it is a <strong underline>loan<strong> and it will be taken from your UC at an amount <strong underline>set by the DWP.<strong>",
+      'Taking an Advance is optional and it is a <strong underline>loan<strong> and it will be taken from your UC at an amount <strong underline>set by the DWP.<strong>',
     externalButtonTitle: 'Apply for advance',
     checkListItems: {
       accountInfo: 'Account log in information (created in the Apply step)',
@@ -117,7 +117,7 @@ export default {
     title: 'First Payment',
     secondaryTitle: 'Getting your first payment',
     subtitle:
-      "<strong>First payment<strong> is made 1 month and 7 days after you submitted your claim. Make sure you have done the things you need listed below or you won't get paid!",
+      "<strong>First payment<strong> is made 1 month and 7 days after you submitted your claim. Make sure you have done the things you need to do listed on this step or you won't get paid!",
     externalButtonTitle: 'Check account',
     checkListItems: {
       accountInfo:
