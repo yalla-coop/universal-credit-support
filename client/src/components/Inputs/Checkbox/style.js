@@ -61,6 +61,6 @@ export const Field = styled.div`
 
   .ant-checkbox-wrapper {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
   }
 `;
