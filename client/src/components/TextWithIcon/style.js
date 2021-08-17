@@ -30,4 +30,20 @@ export const Text = styled.span`
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
+  color: ${({ color, theme }) => theme.colors[color] || color || '#1A202C'};
+`;
+
+export const Button = styled.button`
+  ${setMargin};
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  ${({ theme }) => theme.media.mobile} {
+    justify-content: center;
+  }
 `;

@@ -19,6 +19,7 @@ import Open from './icons/Open';
 import ForwardArrow from './icons/ForwardArrow';
 import Add from './icons/Add';
 import Question from './icons/Question';
+import CircleArrow from './icons/CircleArrow';
 
 export const IconMap = {
   goBack: GoBack,
@@ -35,6 +36,7 @@ export const IconMap = {
   forwardArrow: ForwardArrow,
   add: Add,
   question: Question,
+  circleArrow: CircleArrow,
 };
 
 const Icon = (props) => {

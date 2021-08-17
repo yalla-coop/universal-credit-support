@@ -8,18 +8,38 @@ import * as T from '../Typography';
 // import * as T from '../Typography';
 
 const TextWithIcon = ({
-  color = 'neutralPrimary',
+  color = 'neutralMain',
   iconColor = 'secondaryMain',
   to,
   icon = 'phone',
   text = 'Stuck? Call us for advice',
   external,
   underline,
-
+  isButton,
+  direction,
+  handleClick,
+  weight,
   ...props
 }) => {
+  if (isButton)
+    return (
+      <S.Button {...props} onClick={handleClick}>
+        {icon && (
+          <Icon
+            icon={icon}
+            color={iconColor}
+            mr="11.5px"
+            direction={direction}
+          />
+        )}
+        <T.H3 weight={weight} color={color}>
+          {text}
+        </T.H3>
+      </S.Button>
+    );
+
   return (
-    <S.Wrapper>
+    <S.Wrapper {...props}>
       {icon && <Icon icon={icon} color={iconColor} mr="11.5px" />}
       <T.Link
         to={to}
@@ -28,7 +48,7 @@ const TextWithIcon = ({
         underline={underline}
         {...props}
       >
-        <S.Text>{text}</S.Text>
+        <S.Text color={color}>{text}</S.Text>
       </T.Link>
     </S.Wrapper>
   );

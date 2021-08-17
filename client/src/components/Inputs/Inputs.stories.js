@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 import { Row, Col } from '../Grid';
-import { BasicInput, Textarea, Dropdown, Checkbox, Rate } from './index';
+import {
+  BasicInput,
+  Textarea,
+  Dropdown,
+  Checkbox,
+  Rate,
+  InputCMS,
+} from './index';
 
 export default {
   title: 'Common Components/Input',
@@ -142,6 +149,27 @@ const RateExample = (args) => {
 export const rate = RateExample.bind({});
 rate.args = {
   value: 3, // initial value
+  disabled: false,
+  allowClear: false,
+  error: '',
+};
+
+// INPUT CMS INPUT
+const InputCMSExample = (args) => {
+  const [value, setValue] = useState('');
+
+  return (
+    <Row>
+      <Col w={[4, 6, 4]}>
+        <InputCMS {...args} value={value} handleChange={setValue} />
+      </Col>
+    </Row>
+  );
+};
+
+export const inputCMS = InputCMSExample.bind({});
+rate.args = {
+  value: 4, // initial value
   disabled: false,
   allowClear: false,
   error: '',
