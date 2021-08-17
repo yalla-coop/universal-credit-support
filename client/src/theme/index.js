@@ -27,10 +27,6 @@ export const spacings = {
   11: '120px',
 };
 
-const gradients = {
-  primary: 'linear-gradient(90deg, #1A202B 0%, #3B557A 98.89%)',
-};
-
 export const screensWidth = {
   mobileXS: 374,
   mobile: 580,
