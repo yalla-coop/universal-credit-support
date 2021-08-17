@@ -10,6 +10,11 @@ import ArrowDown from './icons/ArrowDown';
 import Close from './icons/Close';
 import Phone from './icons/Phone';
 import Tick from './icons/Tick';
+import Time from './icons/Time';
+import Checklist1 from './icons/Checklist1';
+import Checklist2 from './icons/Checklist2';
+import Menu from './icons/Menu';
+import Flag from './icons/Flag';
 
 export const IconMap = {
   goBack: GoBack,
@@ -17,6 +22,11 @@ export const IconMap = {
   close: Close,
   phone: Phone,
   tick: Tick,
+  time: Time,
+  checklist1: Checklist1,
+  checklist2: Checklist2,
+  menu: Menu,
+  flag: Flag,
 };
 
 const Icon = (props) => {
