@@ -7,20 +7,34 @@ import setMargin from './../../helpers/set-margin';
 export const Button = styled.button`
   ${setMargin};
   display: flex;
-  justify-content: center;
+  justify-content: ${({ variant, icon }) =>
+    variant === 'tertiary' && icon ? 'space-between' : 'center'};
+  flex-direction: ${({ variant, icon }) =>
+    variant === 'tertiary' && icon ? 'row-reverse' : 'row'};
   align-items: center;
   width: ${({ w }) => w || '100%'};
-  height: 58px;
-  color: ${theme.colors.white};
+  height: ${({ icon, variant }) => {
+    if (icon && variant === 'primary') {
+      return '67px';
+    } else if (variant === 'tertiary') {
+      return '52px';
+    } else {
+      return '58px';
+    }
+  }};
+  color: ${({ variant }) =>
+    variant === 'primary' ? theme.colors.white : theme.colors.neutralMain};
   position: relative;
   background: ${({ variant }) =>
+    variant === 'primary' ? theme.gradients.primary : 'transparent'};
+  border: ${({ variant }) =>
     variant === 'secondary'
-      ? theme.colors.tertiaryMain
-      : theme.colors.primaryMain};
-  border: none;
+      ? `2px solid ${theme.colors.borderSecondary}`
+      : `2px solid ${theme.colors.borderPrimary}`};
   border-radius: 12px;
   font-size: 1rem;
   font-weight: bold;
+  padding: 0 14px;
 
   /* clicking style */
   :active {
