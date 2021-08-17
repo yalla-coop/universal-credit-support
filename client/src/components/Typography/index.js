@@ -6,7 +6,8 @@ const { Title, Paragraph } = Typography;
 
 const weights = {
   bold: '700 !important',
-  regular: '400 !impotant',
+  semi: '600 !important',
+  regular: '400 !important',
   light: '300 !important',
 };
 
@@ -21,35 +22,56 @@ const commonStyle = ({ theme, color, caps, ta, ...props }) => `
 const Head1 = styled(Title)`
   ${setMargin};
   ${commonStyle};
+  font-family: hero-new-hairline, sans-serif;
   font-size: 32px !important;
-  line-height: 32px !important;
-  font-weight: ${({ weight }) =>
-    weight === 'bold' ? '800 !important' : '400 !important'};
+  line-height: 44px !important;
+  font-weight: ${({ weight }) => (weight ? weights[weight] : '700 !important')};
+
+  ${({ theme }) => theme.media.mobile} {
+    font-size: 22px !important;
+    line-height: 32px !important;
+  }
 `;
 export const H1 = (props) => <Head1 {...props} level={1} />;
 
 const Head2 = styled(Title)`
   ${setMargin};
   ${commonStyle};
+  font-family: hero-new-hairline, sans-serif;
   font-size: 20px !important;
-  line-height: 42px !important;
-  font-weight: ${({ weight }) =>
-    weight === 'bold' ? '800 !important' : '400 !important'};
+  line-height: 24px !important;
+  font-weight: ${({ weight }) => (weight ? weights[weight] : '600 !important')};
 `;
 export const H2 = (props) => <Head2 {...props} level={2} />;
+
+const Head3 = styled(Title)`
+  ${setMargin};
+  ${commonStyle};
+  font-family: hero-new-hairline, sans-serif;
+  font-size: 16px !important;
+  line-height: 24px !important;
+  font-weight: ${({ weight }) => (weight ? weights[weight] : '600 !important')};
+`;
+export const H3 = (props) => <Head3 {...props} level={3} />;
 
 export const P = styled(({ isSmall, ...props }) => <Paragraph {...props} />)`
   ${setMargin};
   ${commonStyle};
-  font-size: ${({ isSmall }) =>
-    isSmall ? '14px !important' : '16px !important'};
-  line-height: ${({ weight }) => (weight === 'bold' ? '24px' : '160%')};
+  font-size: 16px !important;
+  line-height: 24px !important;
   font-weight: ${({ weight }) => (weight ? weights[weight] : '400 !important')};
   pre {
     background: none;
     border: none;
     padding: 0;
     margin: 0;
+  }
+
+  ${({ theme }) => theme.media.mobile} {
+    font-size: ${({ isSmall }) =>
+      isSmall ? '14px !important' : '16px !important'};
+    line-height: ${({ isSmall }) =>
+      isSmall ? '20px !important' : '24px !important'};
   }
 `;
 
@@ -67,7 +89,7 @@ export const Link = styled(AntdLink)`
   ${setMargin};
   ${commonStyle};
   font-size: 16px !important;
-  line-height: 150% !important;
+  line-height: 24px !important;
   font-weight: ${({ weight }) => (weight ? weights[weight] : '400 !important')};
   border-bottom: ${({ underline }) =>
     underline ? '1px solid' : 'none'} !important;
