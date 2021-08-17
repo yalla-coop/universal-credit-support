@@ -78,7 +78,7 @@ export const Field = styled.div`
   // STYLE SELECTED ITEM IN SINGLE DROPDOWN
   .ant-select-single.ant-select-show-arrow .ant-select-selection-item {
     font-size: 16px;
-    color: ${({ theme }) => theme.colors.neutralPrimary};
+    color: ${({ theme }) => theme.colors.neutralMain};
 
     // SEEMS WEIRD BUT YOU NEED TO DO THIS TO FORCE THE WIDTH TO STAY CONTAINED
     width: 1px;

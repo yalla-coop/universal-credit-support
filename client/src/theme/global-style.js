@@ -1,16 +1,25 @@
 import { css } from '@emotion/react';
 
 const style = css`
-  @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&display=swap');
+  @font-face {
+    font-family: 'Heebo', sans-serif;
+    src: url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&display=swap');
+  }
+
+  @font-face {
+    font-family: 'hero-new-hairline', sans-serif;
+    src: url('https://use.typekit.net/kqe2fbu.css');
+  }
+
   pre {
-    font-family: 'Mulish', sans-serif;
+    font-family: 'Heebo', sans-serif;
     font-size: 1em;
   }
 
   code,
   kbd,
   samp {
-    font-family: 'Mulish', sans-serif;
+    font-family: 'Heebo', sans-serif;
     font-size: 1em;
   }
 
@@ -21,7 +30,7 @@ const style = css`
   body {
     margin: 0;
     padding: 0;
-    font-family: 'Mulish', sans-serif;
+    font-family: 'Heebo', sans-serif;
     word-wrap: break-word;
     min-height: 100% important;
     height: 100%;
@@ -44,15 +53,18 @@ const style = css`
   h3,
   h4,
   h5,
-  h6,
+  h6 {
+    margin: 0;
+    font-family: 'hero-new-hairline', sans-serif;
+  }
   p,
   a {
     margin: 0;
-    font-family: 'Mulish', sans-serif;
+    font-family: 'Heebo', sans-serif;
   }
 
   code {
-    font-family: 'Mulish', sans-serif;
+    font-family: 'Heebo', sans-serif;
   }
 
   html {

@@ -48,10 +48,10 @@ const Home = () => {
       {steps.map((step, i) => {
         const isCurrentStep = currentStep && step.name === currentStep.name;
         const variant = step.isCompleted
-          ? 'tertiary'
+          ? 'neutral'
           : isCurrentStep
-          ? 'secondary'
-          : 'primary';
+          ? 'primary'
+          : 'secondary';
         const isJustCompletedOne = step.id === justCompletedId;
         // To only add ref to the currentStep
         let currentRef = isCurrentStep ? currentStepRef : null;
