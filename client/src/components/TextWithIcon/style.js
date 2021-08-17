@@ -38,7 +38,8 @@ export const Button = styled.button`
   background: none;
   outline: none;
   border: none;
-  cursor: pointer;
+  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
+  opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
   display: flex;
   width: 100%;
   align-items: center;

@@ -50,3 +50,10 @@ export const Label = styled.label`
   flex-wrap: wrap;
   align-items: center;
 `;
+
+export const OptionalTag = styled.span`
+  ${setMargin};
+  display: inline-block;
+  font-weight: 400 !important;
+  color: ${({ theme }) => theme.colors.neutralDark};
+`;

@@ -154,14 +154,21 @@ rate.args = {
   error: '',
 };
 
+const initState = {
+  title: '',
+  description: '',
+  things: [],
+  tips: [],
+};
+
 // INPUT CMS INPUT
 const InputCMSExample = (args) => {
-  const [value, setValue] = useState('');
+  const [formState, setFormState] = useState('');
 
   return (
     <Row>
       <Col w={[4, 6, 4]}>
-        <InputCMS {...args} value={value} handleChange={setValue} />
+        <InputCMS {...args} formState={formState} handleChange={setFormState} />
       </Col>
     </Row>
   );

@@ -4,5 +4,6 @@ import Dropdown from './Dropdown';
 import Checkbox from './Checkbox';
 import Rate from './Rate';
 import InputCMS from './InputCMS';
+import InputArray from './InputArray';
 
-export { BasicInput, Textarea, Dropdown, Checkbox, Rate, InputCMS };
+export { BasicInput, Textarea, Dropdown, Checkbox, Rate, InputCMS, InputArray };
