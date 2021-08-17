@@ -29,8 +29,9 @@ export const Button = styled.button`
     variant === 'primary' ? theme.gradients.primary : 'transparent'};
   border: ${({ variant }) =>
     variant === 'secondary'
-      ? `2px solid ${theme.colors.borderSecondary}`
-      : `2px solid ${theme.colors.borderPrimary}`};
+      ? theme.colors.neutralMain
+      : theme.colors.primaryMain};
+  border: none;
   border-radius: 12px;
   font-size: 1rem;
   font-weight: bold;

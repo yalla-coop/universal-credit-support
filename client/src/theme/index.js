@@ -2,6 +2,7 @@ import globalStyle from './global-style';
 import colors from './colors';
 import borders from './borders';
 import shadows from './shadows';
+import gradients from './gradients';
 
 const constants = {
   columns: { mobile: 4, tablet: 12, desktop: 12 },
@@ -22,6 +23,8 @@ export const spacings = {
   7: '48px',
   8: '64px',
   9: '80px',
+  10: '96px',
+  11: '120px',
 };
 
 const gradients = {
