@@ -9,10 +9,10 @@ const renderChild = (isCompleted, title) => {
   if (isCompleted) {
     return (
       <>
-        <Icon icon="tick" color="white" />
+        <Icon icon="tick" color="neutralMain" />
         <T.P
           weight="bold"
-          color="white"
+          color="neutralMain"
           mt="4"
           ta="center"
           style={{ maxWidth: 120 }}
@@ -72,9 +72,11 @@ const Card = forwardRef(
     },
     ref
   ) => {
+    console.log('variant', variant);
     const bgColor = `${variant}Light`;
     const borderColor = `${variant}Mid`;
-    const circleColor = `${variant}Main`;
+    const circleColor =
+      variant === 'neutral' ? `${variant}Mid` : `${variant}Main`;
 
     return (
       <S.Wrapper bgColor={bgColor} onClick={handleClick} {...props} ref={ref}>
@@ -83,14 +85,14 @@ const Card = forwardRef(
             {isCompleted && (
               <T.P
                 weight="bold"
-                color="neutralTertiary"
+                color="neutralMain"
                 style={{ alignSelf: 'flex-start' }}
                 mb="2"
               >
                 Completed!
               </T.P>
             )}
-            <T.P isSmall color="neutralTertiary">
+            <T.P isSmall color="neutralMain">
               <FormattedContent txt={content} />
             </T.P>
             <S.Circle

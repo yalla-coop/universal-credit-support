@@ -15,7 +15,7 @@ export const Button = styled.button`
   position: relative;
   background: ${({ variant }) =>
     variant === 'secondary'
-      ? theme.colors.tertiaryMain
+      ? theme.colors.neutralMain
       : theme.colors.primaryMain};
   border: none;
   border-radius: 12px;

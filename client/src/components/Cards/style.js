@@ -63,6 +63,7 @@ export const Circle = styled.div`
   flex-direction: column;
   animation: ${(props) => props.isJustCompletedOne && bounce(props.circleColor)}
     3s ease;
+  color: red;
 `;
 
 export const Strong = styled.strong`

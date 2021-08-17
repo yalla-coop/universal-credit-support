@@ -54,6 +54,6 @@ export const Content = styled.main`
 `;
 
 export const Link = styled(RLink)`
-  color: ${({ theme }) => theme.colors.neutralPrimary};
+  color: ${({ theme }) => theme.colors.neutralMain};
   display: flex;
 `;

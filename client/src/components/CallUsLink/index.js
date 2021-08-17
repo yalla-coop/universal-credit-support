@@ -5,7 +5,7 @@ import Icon from '../Icon';
 import * as S from './style';
 
 const CallUsLink = ({
-  color = 'neutralPrimary',
+  color = 'neutralMain',
   href,
   icon = 'phone',
   iconColor = 'secondaryMain',

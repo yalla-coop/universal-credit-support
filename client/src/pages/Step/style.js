@@ -22,6 +22,6 @@ export const PageHead = styled.div`
 `;
 
 export const Link = styled(RLink)`
-  color: ${({ theme }) => theme.colors.neutralPrimary};
+  color: ${({ theme }) => theme.colors.neutralMain};
   display: flex;
 `;
