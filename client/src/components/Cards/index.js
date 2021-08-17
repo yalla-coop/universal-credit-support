@@ -72,7 +72,6 @@ const Card = forwardRef(
     },
     ref
   ) => {
-    console.log('variant', variant);
     const bgColor = `${variant}Light`;
     const borderColor = `${variant}Mid`;
     const circleColor =
