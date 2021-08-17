@@ -10,7 +10,7 @@ const commonStyle = `
 `;
 
 export const commonBorderStyle = ({ theme, error, disabled }) => `
-  border: ${theme.borders.inputs};
+  border: ${error ? theme.borders.error : theme.borders.inputs};
   border-radius: ${theme.borders.radius};
 `;
 

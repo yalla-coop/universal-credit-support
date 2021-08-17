@@ -75,7 +75,7 @@ textArea.args = {
 
 // DROPDOWN
 const DropdownExample = (args) => {
-  const [selected, setSelected] = useState(['Option 1']);
+  const [selected, setSelected] = useState([]);
 
   return (
     <Row>

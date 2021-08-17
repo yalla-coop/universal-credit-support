@@ -120,9 +120,10 @@ const style = css`
   }
 
   .ant-input:focus,
-  .ant-input-password:hover,
-  .ant-input-search:hover,
-  .ant-input-affix-wrapper:hover {
+  .ant-input-password:focus,
+  .ant-input-search:focus,
+  .ant-input-affix-wrapper:focus,
+  .ant-select-selector:focus {
     border-color: inherit !important;
     outline: 0;
     -webkit-box-shadow: 0 0 0 0px rgba(87, 168, 233, 0.2);
@@ -132,7 +133,8 @@ const style = css`
   .ant-input:hover,
   .ant-input-password:hover,
   .ant-input-search:hover,
-  .ant-input-affix-wrapper:hover {
+  .ant-input-affix-wrapper:hover,
+  .ant-select-selector:hover {
     border-color: inherit !important;
     outline: 0;
     -webkit-box-shadow: 0 0 0 0px rgba(87, 168, 233, 0.2);
