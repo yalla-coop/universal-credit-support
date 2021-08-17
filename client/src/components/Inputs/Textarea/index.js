@@ -11,7 +11,7 @@ const Textarea = ({
   value,
   handleChange,
   helper,
-  color = 'gray9',
+  color = 'neutralMain',
   w, // width
   disabled,
   rows,
@@ -31,10 +31,15 @@ const Textarea = ({
     <CS.Field w={w} disabled={disabled} {...m}>
       {label && (
         <CS.Label htmlFor={label}>
-          <T.P color={color} m="0" mb="2">
+          <T.H3 color={color} m="0" mb={helper ? '1' : '2'}>
             {label}
-          </T.P>
+          </T.H3>
         </CS.Label>
+      )}
+      {helper && (
+        <T.P isSmall color="neutralDark" mb="2">
+          {helper}
+        </T.P>
       )}
       <S.TextArea
         type={type}
@@ -48,11 +53,7 @@ const Textarea = ({
         error={error}
         {...props}
       />
-      {helper && (
-        <T.P color={color} mt="2">
-          {helper}
-        </T.P>
-      )}
+
       {error && (
         <T.P color="error" m="0" mt="1">
           {error}

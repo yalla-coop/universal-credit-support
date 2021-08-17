@@ -4,37 +4,47 @@ import * as CS from '../style';
 import { Input as AntdInput } from 'antd';
 
 const InputCommonStyle = ({ theme, error, disabled }) => `
-border: ${theme.borders.inputs};
-border-color: ${error ? theme.colors.error : theme.colors.gray5};
-border-radius: ${theme.borders.radius};
-
 width: 100%;
 padding: ${theme.spacings[3]};
 line-height: 24px;
 
-color: ${theme.colors.gray9};
-font-size: 16px;
-
 cursor: ${disabled && 'not-allowed'};
-background: ${theme.colors.gray2};
+
+transition: all 0.3s ease;
 
 :focus {
   outline: none;
-  border-color: ${theme.colors.blue};
+  border-color: ${theme.colors.secondaryMain};
+}
+
+:hover {
+  outline: none;
+  border-color: ${theme.colors.secondaryMain};
 }
 `;
 
 export const Input = styled.input`
   ${setMargin};
   ${CS.placeholderStyle};
+  ${CS.commonBorderStyle};
   ${InputCommonStyle};
 `;
 
 export const PasswordInput = styled(AntdInput.Password)`
   ${setMargin};
   ${CS.placeholderStyle};
+  ${CS.commonBorderStyle};
   ${InputCommonStyle};
   input {
     background-color: inherit;
   }
+`;
+
+export const InfoWrapper = styled.button`
+  margin-bottom: ${({ theme }) => theme.spacings[2]};
+  margin-left: ${({ theme }) => theme.spacings[2]};
+  display: flex;
+  background: none;
+  border: none;
+  cursor: pointer;
 `;

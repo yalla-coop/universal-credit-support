@@ -1,6 +1,9 @@
+import { useState } from 'react';
 import * as T from '../../Typography';
 import * as CS from '../style';
 import * as S from './style';
+import Icon from '../../Icon';
+import Info from '../../Info';
 
 const BasicInput = ({
   type = 'text',
@@ -11,7 +14,7 @@ const BasicInput = ({
   value,
   handleChange,
   helper,
-  color = 'gray9',
+  color = 'neutralMain',
   w, // width
   disabled,
   autoComplete,
@@ -19,6 +22,8 @@ const BasicInput = ({
   showPasswordInfo,
   ...props
 }) => {
+  const [passwordInfoOpen, setPasswordInfoOpen] = useState(false);
+
   const decideColor = () => {
     if (error) return 'error';
     return color;
@@ -32,10 +37,28 @@ const BasicInput = ({
     <CS.Field w={w} disabled={disabled} {...m}>
       {label && (
         <CS.Label htmlFor={label}>
-          <T.P color={color} m="0" mb="2">
+          <T.H3 color={color} m="0" mb={helper ? '1' : '2'}>
             {label}
-          </T.P>
+          </T.H3>
+          {showPasswordInfo && type === 'password' && (
+            <S.InfoWrapper
+              type="button"
+              onClick={(e) => setPasswordInfoOpen((prev) => !prev)}
+            >
+              <Icon
+                icon="questionMark"
+                color="primaryMain"
+                width="16"
+                height="16"
+              />
+            </S.InfoWrapper>
+          )}
         </CS.Label>
+      )}
+      {helper && (
+        <T.P isSmall color="neutralDark" mb="2">
+          {helper}
+        </T.P>
       )}
       <Component
         type={type}
@@ -49,15 +72,35 @@ const BasicInput = ({
         error={error}
         {...props}
       />
-      {helper && (
-        <T.P color={color} mt="2">
-          {helper}
-        </T.P>
-      )}
       {error && (
         <T.P color="error" m="0" mt="1">
           {error}
         </T.P>
+      )}
+      {passwordInfoOpen && (
+        <Info
+          title="Password must contain:"
+          body={
+            <>
+              <T.P color="gray9" m={0}>
+                - a minimum of 8 characters
+              </T.P>
+              <T.P color="gray9" m={0}>
+                - one capital letter
+              </T.P>
+              <T.P color="gray9" m={0}>
+                - one lowercase letter
+              </T.P>
+              <T.P color="gray9" m={0}>
+                - one number
+              </T.P>
+              <T.P color="gray9" m={0}>
+                - one non alphabetical or numeric character
+              </T.P>
+            </>
+          }
+          m={{ mt: 5 }}
+        />
       )}
     </CS.Field>
   );

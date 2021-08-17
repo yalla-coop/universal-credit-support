@@ -118,6 +118,26 @@ const style = css`
   .grecaptcha-badge {
     visibility: hidden;
   }
+
+  .ant-input:focus,
+  .ant-input-password:hover,
+  .ant-input-search:hover,
+  .ant-input-affix-wrapper:hover {
+    border-color: inherit !important;
+    outline: 0;
+    -webkit-box-shadow: 0 0 0 0px rgba(87, 168, 233, 0.2);
+    box-shadow: 0 0 0 0px rgba(87, 168, 233, 0.2);
+  }
+
+  .ant-input:hover,
+  .ant-input-password:hover,
+  .ant-input-search:hover,
+  .ant-input-affix-wrapper:hover {
+    border-color: inherit !important;
+    outline: 0;
+    -webkit-box-shadow: 0 0 0 0px rgba(87, 168, 233, 0.2);
+    box-shadow: 0 0 0 0px rgba(87, 168, 233, 0.2);
+  }
 `;
 
 export default style;
