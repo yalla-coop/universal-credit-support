@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as S from './style';
-import { ReactComponent as TextLogo } from '../../assets/logo.svg';
+import { ReactComponent as MobileLogo } from '../../assets/MobileLogo.svg';
+import { ReactComponent as DesktopLogo } from '../../assets/DesktopLogo.svg';
 import { useMediaQuery } from 'react-responsive';
 
 // import Navbar from '../../Navbar';
@@ -16,9 +17,7 @@ const General = ({ children, goBack, maxWidth, ...props }) => {
     <>
       <S.Wrapper>
         <S.Header isTablet={isTablet}>
-          <S.Link to="/">
-            <TextLogo />
-          </S.Link>
+          <S.Link to="/">{isTablet ? <MobileLogo /> : <DesktopLogo />}</S.Link>
           {/* <Navbar /> */}
         </S.Header>
       </S.Wrapper>
