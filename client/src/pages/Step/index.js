@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
-
+import { useMediaQuery } from 'react-responsive';
 import {
-  CallUsLink,
+  TextWithIcon,
   Modal,
   Icon,
   Typography as T,
@@ -13,7 +13,9 @@ import { useSteps } from '../../context/steps';
 import { useLang } from '../../context/lang';
 import { t } from '../../helpers';
 import { navRoutes as n } from '../../constants';
-import { ReactComponent as TextLogo } from '../../components/assets/logo.svg';
+import { ReactComponent as MobileLogo } from '../../components/assets/MobileLogo.svg';
+import { ReactComponent as DesktopLogo } from '../../components/assets/DesktopLogo.svg';
+import { breakpoints } from '../../theme';
 
 import * as S from './style';
 
@@ -27,13 +29,16 @@ function Step() {
 
   const step = steps.find((s) => s.id === params.id);
   const desktopColWidth = step.checkListItems.length > 5 ? 6 : 12;
+  const isTablet = useMediaQuery({
+    query: `(max-width: ${breakpoints.tablet})`,
+  });
   return (
     <Modal>
       <S.Container>
         <Row mb="4" mt="2">
           <Col w={[4, 12, 12]}>
             <S.PageHead>
-              <TextLogo />
+              {isTablet ? <MobileLogo /> : <DesktopLogo />}
               <S.Link to="/">
                 <Icon icon="close" />
               </S.Link>
@@ -101,11 +106,13 @@ function Step() {
             ) : (
               step.externalLink && (
                 <Col w={[4, 12, 6]} mt="6" mb="6">
-                  <CallUsLink
+                  <TextWithIcon
                     text={t('callUsLinkText', lang)}
-                    href={n.EXTERNAL.CALL_US}
+                    to={n.EXTERNAL.CALL_US}
                     target="_blank"
                     rel="noopener noreferrer"
+                    external
+                    underline
                   />
                 </Col>
               )
