@@ -24,6 +24,10 @@ export const spacings = {
   9: '80px',
 };
 
+const gradients = {
+  primary: 'linear-gradient(90deg, #1A202B 0%, #3B557A 98.89%)',
+};
+
 export const screensWidth = {
   mobileXS: 374,
   mobile: 580,
@@ -60,6 +64,7 @@ const theme = {
   borders,
   shadows,
   maxWidths,
+  gradients,
 };
 
 export { globalStyle };

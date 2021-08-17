@@ -16,4 +16,7 @@ export default {
   white: '#ffffff',
   modalBackground: '#255599b3',
   error: secondaryMain,
+  borderPrimary: '#FC6244',
+  borderSecondary: '#5A666A',
+  neutralMain: '#1A202B',
 };
