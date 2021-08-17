@@ -6,7 +6,7 @@ import GoBack from './GoBack';
 import * as Typography from './Typography';
 import * as Inputs from './Inputs';
 import Icon from './Icon';
-import CallUsLink from './CallUsLink';
+import TextWithIcon from './TextWithIcon';
 import Modal from './Modal';
 
 export {
@@ -18,6 +18,6 @@ export {
   Typography,
   Inputs,
   Icon,
-  CallUsLink,
+  TextWithIcon,
   Modal,
 };

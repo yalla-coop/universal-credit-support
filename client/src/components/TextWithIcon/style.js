@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import setMargin from '../../helpers/set-margin';
-import { Link as TypoLink } from '../Typography';
 
 // export const Wrapper = styled.a`
 //   ${setMargin};
@@ -17,10 +16,6 @@ import { Link as TypoLink } from '../Typography';
 
 export const Wrapper = styled.div`
   ${setMargin};
-  ${
-    '' /* color: ${({ color, theme }) => theme.colors[color] || color || '#1A202C'}; */
-  }
-  ${'' /* text-decoration: underline; */}
   display: flex;
   width: 100%;
   align-items: center;
@@ -30,16 +25,9 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const Link = styled(TypoLink)`
-  ${({ theme }) => theme.media.mobile} {
-    margin: 0 !important;
-  }
-`;
-
 export const Text = styled.span`
   font-style: normal;
-  font-weight: normal;
+  font-weight: 500;
   font-size: 16px;
-  ${'' /* line-height: 24px;
-  margin-left: 11.5px; */}
+  line-height: 24px;
 `;

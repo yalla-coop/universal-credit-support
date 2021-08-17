@@ -3,34 +3,33 @@ import PropTypes from 'prop-types';
 import Icon from '../Icon';
 
 import * as S from './style';
+import * as T from '../Typography';
 
 // import * as T from '../Typography';
 
 const TextWithIcon = ({
   color = 'neutralPrimary',
+  iconColor = 'secondaryMain',
   to,
   icon = 'phone',
-  iconColor = 'secondaryMain',
   text = 'Stuck? Call us for advice',
   external,
   underline,
+
   ...props
 }) => {
   return (
     <S.Wrapper>
-      {icon && (
-        <Icon icon={icon} color={iconColor} style={{ marginRight: 12 }} />
-      )}
-      <S.Link
-        href={to}
+      {icon && <Icon icon={icon} color={iconColor} mr="11.5px" />}
+      <T.Link
+        to={to}
         color={color}
         external={external}
         underline={underline}
         {...props}
       >
-        asd
         <S.Text>{text}</S.Text>
-      </S.Link>
+      </T.Link>
     </S.Wrapper>
   );
 };

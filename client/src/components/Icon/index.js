@@ -15,6 +15,9 @@ import Checklist1 from './icons/Checklist1';
 import Checklist2 from './icons/Checklist2';
 import Menu from './icons/Menu';
 import Flag from './icons/Flag';
+import Open from './icons/Open';
+import ForwardArrow from './icons/ForwardArrow';
+import Add from './icons/Add';
 
 export const IconMap = {
   goBack: GoBack,
@@ -27,6 +30,9 @@ export const IconMap = {
   checklist2: Checklist2,
   menu: Menu,
   flag: Flag,
+  open: Open,
+  forwardArrow: ForwardArrow,
+  add: Add,
 };
 
 const Icon = (props) => {
