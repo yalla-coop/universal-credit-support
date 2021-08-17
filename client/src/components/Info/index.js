@@ -16,16 +16,15 @@ const Info = ({
   ...props
 }) => {
   return (
-    <S.CardWrapper noBorder={noBorder} {...m}>
-      <T.P color="white">?</T.P>
+    <S.CardWrapper {...m}>
       <S.Content>
         {title && (
-          <T.P bold color="gray9" mb="0">
+          <T.P weight="bold" isSmall color="neutralMain" mb="0">
             {title}
           </T.P>
         )}
         {body && typeof body === 'string' ? (
-          <T.P mb="0" color="gray9">
+          <T.P isSmall mb="0" color="neutralMain">
             {body}
           </T.P>
         ) : (

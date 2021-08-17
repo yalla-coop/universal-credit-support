@@ -46,8 +46,8 @@ const BasicInput = ({
               onClick={(e) => setPasswordInfoOpen((prev) => !prev)}
             >
               <Icon
-                icon="questionMark"
-                color="primaryMain"
+                icon="question"
+                color="secondaryMain"
                 width="16"
                 height="16"
               />
@@ -82,24 +82,24 @@ const BasicInput = ({
           title="Password must contain:"
           body={
             <>
-              <T.P color="gray9" m={0}>
+              <T.P isSmall color="neutralMain" m={0}>
                 - a minimum of 8 characters
               </T.P>
-              <T.P color="gray9" m={0}>
+              <T.P isSmallcolor="neutralMain" m={0}>
                 - one capital letter
               </T.P>
-              <T.P color="gray9" m={0}>
+              <T.P isSmallcolor="neutralMain" m={0}>
                 - one lowercase letter
               </T.P>
-              <T.P color="gray9" m={0}>
+              <T.P isSmallcolor="neutralMain" m={0}>
                 - one number
               </T.P>
-              <T.P color="gray9" m={0}>
+              <T.P isSmall color="neutralMain" m={0}>
                 - one non alphabetical or numeric character
               </T.P>
             </>
           }
-          m={{ mt: 5 }}
+          m={{ mt: 4 }}
         />
       )}
     </CS.Field>
