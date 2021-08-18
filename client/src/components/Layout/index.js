@@ -5,6 +5,7 @@ import General from './General';
 
 const Layout = ({ layout, ...props }) => {
   switch (layout) {
+    case 'step':
     case 'general':
     default:
       return <General {...props} />;

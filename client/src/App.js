@@ -35,7 +35,7 @@ function App() {
                   exact
                   path={navRoutes.STEPS.STEP}
                   Component={Pages.Step}
-                  layout="general"
+                  layout="step"
                 />
               </Switch>
             </Router>
