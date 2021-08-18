@@ -33,6 +33,23 @@ function App() {
                 />
                 <Route
                   exact
+                  path="/test"
+                  Component={() => <p>content comes here!!</p>}
+                  layout="splitScreen"
+                  side="left"
+                  gradient="secondary"
+                  showColorOnMobile
+                />
+                <Route
+                  exact
+                  path="/test1"
+                  Component={() => <p>content comes here!!</p>}
+                  layout="splitScreen"
+                  side="left"
+                  color="#006370"
+                />
+                <Route
+                  exact
                   path={navRoutes.STEPS.STEP}
                   Component={Pages.Step}
                   layout="step"
