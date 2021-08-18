@@ -27,23 +27,12 @@ const Home = () => {
   return (
     <>
       <S.PageHead>
-        <S.HeadContainer>
-          {' '}
-          <T.H1 weight="bold">{t('universalCreditOverview', lang)}</T.H1>
-          <T.P weight="bold" isSmall mt="6" mb="2">
-            {t('selectYourLanguage', lang)}
-          </T.P>
-          <S.DropdownContainer>
-            <I.Dropdown
-              options={langOptions}
-              selected={lang}
-              handleChange={setLang}
-            />
-          </S.DropdownContainer>
-          <T.P mt="6" mb="6" mbT="4" mbM="2">
-            {t('overviewText', lang)}
-          </T.P>
-        </S.HeadContainer>
+        <S.HeaderText>
+          <T.H2 weight="bold" color="white">
+            Are you trying to work out how you actually claim for Universal
+            Credit and feeling a bit lost?
+          </T.H2>
+        </S.HeaderText>
       </S.PageHead>
       {steps.map((step, i) => {
         const isCurrentStep = currentStep && step.name === currentStep.name;
