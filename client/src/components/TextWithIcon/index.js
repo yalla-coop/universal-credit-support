@@ -26,12 +26,7 @@ const TextWithIcon = ({
     return (
       <S.Button {...props} onClick={handleClick} disabled={disabled}>
         {icon && (
-          <Icon
-            icon={icon}
-            color={iconColor}
-            mr="11.5px"
-            direction={direction}
-          />
+          <Icon icon={icon} color={iconColor} mr="2" direction={direction} />
         )}
         <T.H3 weight={weight} color={color}>
           {text}

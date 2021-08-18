@@ -21,6 +21,7 @@ import Add from './icons/Add';
 import Question from './icons/Question';
 import CircleArrow from './icons/CircleArrow';
 import Bulb from './icons/Bulb';
+import BulletArrow from './icons/BulletArrow';
 
 export const IconMap = {
   goBack: GoBack,
@@ -39,6 +40,7 @@ export const IconMap = {
   question: Question,
   circleArrow: CircleArrow,
   bulb: Bulb,
+  bulletArrow: BulletArrow,
 };
 
 const Icon = (props) => {

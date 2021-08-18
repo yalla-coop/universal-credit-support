@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Tips, Checklist } from '.';
 
 export default {
@@ -16,11 +17,20 @@ tips.args = {
   tips: ['tip 1', 'tip 2', 'tip 3', 'tip 4', 'tip 5'],
 };
 
-const ChecklistExamples = (args) => (
-  <div style={{ width: '300px' }}>
-    <Checklist {...args} m="2" />
-  </div>
-);
+const ChecklistExamples = (args) => {
+  const [checked, setChecked] = useState(false);
+
+  return (
+    <div style={{ width: '300px', margin: '20px' }}>
+      <Checklist
+        {...args}
+        m="2"
+        handleChange={() => setChecked(!checked)}
+        completed={checked}
+      />
+    </div>
+  );
+};
 
 export const checklist = ChecklistExamples.bind({});
 checklist.args = {

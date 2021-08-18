@@ -35,20 +35,20 @@ const getColor = (index) => {
   return colorArray[_index];
 };
 
-const Tips = ({ tips = [] }) => {
+const Tips = ({ tips = [], ...props }) => {
   return (
-    <>
+    <S.Section {...props}>
       {tips.map((tip, index) => (
-        <S.Section key={index} color={getColor(index)} mb="3">
+        <S.Tip key={index} color={getColor(index)} mb="3">
           <Icon icon="bulb" color={getColor(index).icon} mr="2" />
           {typeof tip === 'string' ? (
             <T.H3 color={getColor(index).text}>{tip}</T.H3>
           ) : (
             tip
           )}
-        </S.Section>
+        </S.Tip>
       ))}
-    </>
+    </S.Section>
   );
 };
 

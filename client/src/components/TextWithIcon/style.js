@@ -18,7 +18,7 @@ export const Wrapper = styled.div`
   ${setMargin};
   display: flex;
   width: 100%;
-  align-items: center;
+  align-items: ${({ ai }) => ai || 'center'};
   justify-content: flex-start;
   ${({ theme }) => theme.media.mobile} {
     justify-content: center;
