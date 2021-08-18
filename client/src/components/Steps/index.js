@@ -56,7 +56,7 @@ const FormattedContent = ({ txt }) => {
   );
 };
 
-const Card = forwardRef(
+const Step = forwardRef(
   (
     {
       variant = 'primary',
@@ -72,7 +72,6 @@ const Card = forwardRef(
     },
     ref
   ) => {
-    console.log('variant', variant);
     const bgColor = `${variant}Light`;
     const borderColor = `${variant}Mid`;
     const circleColor =
@@ -110,4 +109,4 @@ const Card = forwardRef(
   }
 );
 
-export default Card;
+export default Step;
