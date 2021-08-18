@@ -19,6 +19,7 @@ const Button = ({
   to,
   customColor,
   external,
+  iconProps,
   ...props
 }) => {
   const history = useHistory();
@@ -32,7 +33,6 @@ const Button = ({
   if (external) {
     props.href = to;
   }
-
   return (
     <S.Button
       type="button"
@@ -41,9 +41,10 @@ const Button = ({
       isLoading={loading}
       onClick={onClick}
       as={external ? 'a' : 'button'}
+      icon={icon}
       {...props}
     >
-      {icon && <Icon icon={icon} />}
+      {icon && <Icon icon={icon} mr="9.5px" {...iconProps} />}
       {text}
       {loading && <S.Loading variant={variant} indicator={antIcon} />}
     </S.Button>

@@ -4,23 +4,50 @@ import theme from '../../theme';
 import * as T from '../Typography';
 import setMargin from './../../helpers/set-margin';
 
+export const decideBackground = (variant) => {
+  switch (variant) {
+    case 'primary':
+      return theme.gradients.secondary;
+    case 'secondary':
+      return theme.colors.neutralSurface;
+    case 'tertiary':
+      return theme.colors.white;
+    default:
+      return 'transparent';
+  }
+};
+
 export const Button = styled.button`
   ${setMargin};
   display: flex;
-  justify-content: center;
+  justify-content: ${({ variant, icon }) =>
+    variant === 'tertiary' && icon ? 'space-between' : 'center'};
+  flex-direction: ${({ variant, icon }) =>
+    variant === 'tertiary' && icon ? 'row-reverse' : 'row'};
   align-items: center;
   width: ${({ w }) => w || '100%'};
-  height: 58px;
-  color: ${theme.colors.white};
+  height: ${({ icon, variant }) => {
+    if (icon && variant === 'primary') {
+      return '67px';
+    } else if (variant === 'tertiary') {
+      return '52px';
+    } else {
+      return '58px';
+    }
+  }};
+  color: ${({ variant }) =>
+    variant === 'primary' ? theme.colors.white : theme.colors.neutralMain};
   position: relative;
-  background: ${({ variant }) =>
+  background: ${({ variant }) => decideBackground(variant)};
+  border: 2px solid;
+  border-color: ${({ variant }) =>
     variant === 'secondary'
-      ? theme.colors.neutralMain
+      ? theme.colors.neutralDark
       : theme.colors.primaryMain};
-  border: none;
   border-radius: 12px;
   font-size: 1rem;
   font-weight: bold;
+  padding: 0 14px;
 
   /* clicking style */
   :active {
