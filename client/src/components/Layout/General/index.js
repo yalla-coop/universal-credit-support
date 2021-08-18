@@ -5,9 +5,12 @@ import { ReactComponent as MobileLogo } from '../../assets/MobileLogo.svg';
 import { ReactComponent as DesktopLogo } from '../../assets/DesktopLogo.svg';
 import { useMediaQuery } from 'react-responsive';
 
+import * as T from '../../Typography';
 // import Navbar from '../../Navbar';
 import GoBack from '../../GoBack';
 import theme from '../../../theme';
+
+import EnglishLang from '../../assets/EN.png';
 
 const General = ({ children, goBack, maxWidth, ...props }) => {
   const isTablet = useMediaQuery({
@@ -18,6 +21,12 @@ const General = ({ children, goBack, maxWidth, ...props }) => {
       <S.Wrapper>
         <S.Header isTablet={isTablet}>
           <S.Link to="/">{isTablet ? <MobileLogo /> : <DesktopLogo />}</S.Link>
+          <S.LangButton>
+            <T.P isSmall weight="bold" mr="4px">
+              EN
+            </T.P>
+            <img src={EnglishLang} alt="language" />
+          </S.LangButton>
           {/* <Navbar /> */}
         </S.Header>
       </S.Wrapper>
