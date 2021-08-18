@@ -20,6 +20,7 @@ const BasicInput = ({
   autoComplete,
   m, // margins
   showPasswordInfo,
+  optional,
   ...props
 }) => {
   const [passwordInfoOpen, setPasswordInfoOpen] = useState(false);
@@ -36,10 +37,11 @@ const BasicInput = ({
   return (
     <CS.Field w={w} disabled={disabled} {...m}>
       {label && (
-        <CS.Label htmlFor={label}>
-          <T.H3 color={color} m="0" mb={helper ? '1' : '2'}>
+        <CS.Label htmlFor={label} mb={helper ? '1' : '2'}>
+          <T.H3 color={color} m="0">
             {label}
           </T.H3>
+          {optional && <CS.OptionalTag ml="1">(optional)</CS.OptionalTag>}
           {showPasswordInfo && type === 'password' && (
             <S.InfoWrapper
               type="button"

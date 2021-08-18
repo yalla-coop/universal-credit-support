@@ -23,9 +23,9 @@ const Dropdown = ({
   selected,
   multi,
   m,
-  bold,
   search,
   addNew,
+  optional,
   allowClear = true,
 }) => {
   const [open, setOpen] = useState(false);
@@ -109,10 +109,11 @@ const Dropdown = ({
       {...m}
     >
       {label && (
-        <CS.Label htmlFor={label}>
-          <T.H3 color={color} m="0" mb={helper ? '1' : '2'}>
+        <CS.Label htmlFor={label} mb={helper ? '1' : '2'}>
+          <T.H3 color={color} m="0">
             {label}
           </T.H3>
+          {optional && <CS.OptionalTag ml="1">(optional)</CS.OptionalTag>}
         </CS.Label>
       )}
       {helper && (

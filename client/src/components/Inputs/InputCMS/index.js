@@ -15,10 +15,7 @@ const InputCMS = ({
 
   const { title, description, things, tips } = formState;
 
-  const updateState = (val, key) => {
-    console.log('val', val, key);
-    handleChange({ ...formState, [key]: val });
-  };
+  const updateState = (val, key) => handleChange({ ...formState, [key]: val });
 
   return (
     <>
@@ -57,6 +54,14 @@ const InputCMS = ({
               handleChange={(val) => updateState(val, 'things')}
               optional
               mb="5"
+            />
+            <InputArray
+              label="Tips"
+              name="tips"
+              values={tips}
+              handleChange={(val) => updateState(val, 'tips')}
+              optional
+              mb="4"
             />
           </>
         )}

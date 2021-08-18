@@ -37,6 +37,7 @@ basic.args = {
   helper: 'Helper text',
   placeholder: 'Type your name...',
   type: 'text',
+  optional: false,
   m: { mt: '0' }, // mt, mtT, mtM, mb, mbT, ....
 };
 
@@ -77,6 +78,7 @@ textArea.args = {
   placeholder: 'Unique biography...',
   type: 'text',
   rows: 5,
+  optional: false,
   m: { mt: '0' }, // mt, mtT, mtM, mb, mbT, ....
 };
 
@@ -109,6 +111,7 @@ dropdown.args = {
   bold: false,
   search: false,
   addNew: false,
+  optional: false,
 };
 
 // CHECKBOX
@@ -180,4 +183,5 @@ rate.args = {
   disabled: false,
   allowClear: false,
   error: '',
+  optional: false,
 };

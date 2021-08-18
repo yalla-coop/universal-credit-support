@@ -2,6 +2,10 @@ import styled from '@emotion/styled';
 import * as CS from '../style';
 import setMargin from '../../../helpers/set-margin';
 
+export const Container = styled.div`
+  ${setMargin};
+`;
+
 export const InputField = styled.div`
   ${setMargin};
   display: flex;

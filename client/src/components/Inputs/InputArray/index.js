@@ -16,6 +16,7 @@ const InputArray = ({
   disabled,
   color = 'neutralMain',
   autoComplete,
+  ...props
 }) => {
   const updateValues = (value, index) => {
     console.log('updateValues', value, index);
@@ -38,7 +39,7 @@ const InputArray = ({
   };
 
   return (
-    <>
+    <S.Container {...props}>
       {label && (
         <CS.Label htmlFor={label}>
           <T.H3 color={color} m="0" mb={helper ? '1' : '2'}>
@@ -78,7 +79,7 @@ const InputArray = ({
           disabled || values[values.length - 1] === '' || !values.length
         }
       />
-    </>
+    </S.Container>
   );
 };
 
