@@ -1,6 +1,5 @@
 import * as T from '../Typography';
 import * as S from './style';
-import Icon from '../Icon';
 
 const Info = ({
   error,

@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import * as T from '../../Typography';
 import * as S from './style';
 
 import { BasicInput, InputArray } from '../index';

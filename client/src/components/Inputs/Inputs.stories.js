@@ -160,13 +160,13 @@ rate.args = {
 const initState = {
   title: '',
   description: '',
-  things: [],
-  tips: [],
+  things: [''],
+  tips: [''],
 };
 
 // INPUT CMS INPUT
 const InputCMSExample = (args) => {
-  const [formState, setFormState] = useState('');
+  const [formState, setFormState] = useState(initState);
 
   return (
     <Row>

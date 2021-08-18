@@ -19,7 +19,6 @@ const InputArray = ({
   ...props
 }) => {
   const updateValues = (value, index) => {
-    console.log('updateValues', value, index);
     if (index === undefined) {
       return handleChange([...values, value]);
     }
@@ -31,7 +30,6 @@ const InputArray = ({
   };
 
   const removeValue = (index) => {
-    console.log('inde', index);
     return handleChange([
       ...values.slice(0, index),
       ...values.slice(index + 1),
