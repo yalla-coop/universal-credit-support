@@ -4,6 +4,19 @@ import theme from '../../theme';
 import * as T from '../Typography';
 import setMargin from './../../helpers/set-margin';
 
+export const decideBackground = (variant) => {
+  switch (variant) {
+    case 'primary':
+      return theme.gradients.secondary;
+    case 'secondary':
+      return theme.colors.neutralSurface;
+    case 'tertiary':
+      return theme.colors.white;
+    default:
+      return 'transparent';
+  }
+};
+
 export const Button = styled.button`
   ${setMargin};
   display: flex;
@@ -25,13 +38,12 @@ export const Button = styled.button`
   color: ${({ variant }) =>
     variant === 'primary' ? theme.colors.white : theme.colors.neutralMain};
   position: relative;
-  background: ${({ variant }) =>
-    variant === 'primary' ? theme.gradients.primary : 'transparent'};
-  border: ${({ variant }) =>
+  background: ${({ variant }) => decideBackground(variant)};
+  border: 2px solid;
+  border-color: ${({ variant }) =>
     variant === 'secondary'
-      ? theme.colors.neutralMain
+      ? theme.colors.neutralDark
       : theme.colors.primaryMain};
-  border: none;
   border-radius: 12px;
   font-size: 1rem;
   font-weight: bold;
