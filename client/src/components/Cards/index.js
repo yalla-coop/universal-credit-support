@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import * as S from './style';
 import * as T from '../Typography';
 import Icon from '../Icon';
+import TextWithIcon from '../TextWithIcon';
 
 const renderChild = (isCompleted, title) => {
   if (isCompleted) {
@@ -64,10 +65,12 @@ const Card = forwardRef(
       content,
       children,
       title,
+      description,
       isCompleted,
       handleClick,
       isJustCompletedOne,
       to = '/',
+      optional,
       ...props
     },
     ref
@@ -76,6 +79,29 @@ const Card = forwardRef(
     const borderColor = `${variant}Mid`;
     const circleColor =
       variant === 'neutral' ? `${variant}Mid` : `${variant}Main`;
+
+    if (optional)
+      return (
+        <S.Wrapper onClick={handleClick} mb="4" {...props} ref={ref}>
+          <S.StyledLink to={to} style={{ color: 'transparent', width: '100%' }}>
+            <S.OptionalContainer>
+              <T.H2 color="neutralMain" mb="4">
+                {title}
+              </T.H2>
+              <T.P color="neutralDark" mb="4">
+                {description}
+              </T.P>
+              <TextWithIcon
+                icon="forwardArrow"
+                text="Check here"
+                iconColor="primaryMain"
+                color="neutralDark"
+                to={to}
+              />
+            </S.OptionalContainer>
+          </S.StyledLink>
+        </S.Wrapper>
+      );
 
     return (
       <S.Wrapper bgColor={bgColor} onClick={handleClick} {...props} ref={ref}>

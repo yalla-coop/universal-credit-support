@@ -14,7 +14,7 @@ export const Header = styled.header`
   max-width: 425px;
   ${({ theme }) => theme.media.tablet} {
     padding: ${({ theme: { spacings } }) =>
-      `${spacings[8]} ${spacings[7]} 40px 0`};
+      `${spacings[7]} ${spacings[7]} 40px 0`};
   }
   ${({ theme }) => theme.media.mobile} {
     max-width: auto;

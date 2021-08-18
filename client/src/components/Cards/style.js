@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { keyframes } from '@emotion/react';
+import { Link } from 'react-router-dom';
 
 import setMargin from './../../helpers/set-margin';
 
@@ -17,6 +18,30 @@ export const Wrapper = styled.div`
   ${setMargin};
   width: 100%;
   background: ${({ theme, bgColor }) => theme.colors[bgColor]};
+  display: flex;
+  justify-content: center;
+`;
+
+export const OptionalContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 580px;
+
+  padding: ${({ theme: { spacings } }) => `0 ${spacings[7]}`};
+
+  ${({ theme }) => theme.media.mobile} {
+    padding: ${({ theme: { spacings } }) => spacings[6]};
+    border-radius: 0px 8px 8px 0;
+    max-width: 90vw;
+    margin: 0;
+  }
+`;
+
+export const StyledLink = styled(Link)`
+  color: transparent;
+  width: 100%;
   display: flex;
   justify-content: center;
 `;

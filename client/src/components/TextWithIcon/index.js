@@ -5,8 +5,6 @@ import Icon from '../Icon';
 import * as S from './style';
 import * as T from '../Typography';
 
-// import * as T from '../Typography';
-
 const TextWithIcon = ({
   color = 'neutralPrimary',
   iconColor = 'secondaryMain',

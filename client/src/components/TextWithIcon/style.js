@@ -20,14 +20,11 @@ export const Wrapper = styled.div`
   width: 100%;
   align-items: center;
   justify-content: flex-start;
-  ${({ theme }) => theme.media.mobile} {
-    justify-content: center;
-  }
 `;
 
 export const Text = styled.span`
   font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 16px;
   line-height: 24px;
 `;

@@ -1,10 +1,12 @@
 import { createContext, useState, useContext } from 'react';
 
+// TO DO -> content to come from server
 const initialSteps = [
-  // keys here should match the translation keys
   {
     id: '1',
     name: 'checkEligibility',
+    title: 'Wait! Should I apply?',
+    description: `Let's find out with a quick and easy benefit calculator`,
     checkListItems: [
       { value: 'incomeDetails', isChecked: false },
       { value: 'detailsOfAnySavings', isChecked: false },
@@ -15,6 +17,7 @@ const initialSteps = [
     isCompleted: false,
     externalLink: true,
     externalButtonLink: 'ELIGIBILITY_CALCULATOR',
+    optional: true,
   },
   {
     id: '2',
@@ -104,7 +107,8 @@ const storeStepsIntoStorage = (steps) => {
 const getStepsFromStorage = () => {
   const steps = JSON.parse(localStorage.getItem('steps'));
   if (steps && steps.length) {
-    return steps;
+    // TO DO -> UPDATE ONCE WE'VE UPDATED HOW TO UPDATE STORAGE
+    return initialSteps;
   } else {
     storeStepsIntoStorage(initialSteps);
     return initialSteps;
