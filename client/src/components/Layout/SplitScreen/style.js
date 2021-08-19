@@ -7,7 +7,6 @@ export const Main = styled.main`
   position: relative;
   display: flex;
   flex: 1;
-  background: red;
   flex-direction: ${({ side }) => (side === 'right' ? 'row-reverse' : 'row')};
   ${({ theme }) => theme.media.mobile} {
     flex-direction: column;

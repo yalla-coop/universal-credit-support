@@ -1,4 +1,5 @@
-import { GENERAL } from '../../constants/nav-routes';
+import { SUPER_ADMIN, ADMIN } from '../../constants/nav-routes';
+import t from '../../constants/translations';
 
 import * as S from './style';
 
@@ -9,14 +10,32 @@ const handleClick = (cb) => {
   return;
 };
 
-const Routes = ({ setOpen }) => {
+const decideRoutes = (role) => {
+  switch (role) {
+    case 'claimants':
+      return ADMIN;
+    case 'admin':
+      return ADMIN;
+    case 'superAdmin':
+      return SUPER_ADMIN;
+    default:
+      // for now
+      return SUPER_ADMIN;
+  }
+};
+
+const Routes = ({ setOpen, role }) => {
+  const routesObject = decideRoutes(role);
+  const menuRoutes = Object.keys(routesObject);
   return (
     <>
-      <S.Link to={GENERAL['HOME']} onClick={() => handleClick(setOpen)}>
-        <S.Head4 weight="bold" color="gray8">
-          Home
-        </S.Head4>
-      </S.Link>
+      {menuRoutes.map((r) => (
+        <S.Link to={routesObject[r]} onClick={() => handleClick(setOpen)}>
+          <S.Head3 weight="bold" color="neutralMain">
+            {t.english[r]}
+          </S.Head3>
+        </S.Link>
+      ))}
     </>
   );
 };
