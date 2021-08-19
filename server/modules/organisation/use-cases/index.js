@@ -1,7 +1,5 @@
-import signup from './signup';
-import login from './login';
-import resetPasswordLink from './reset-password-link';
-import updatePassword from './update-password';
-import getAccountInfo from './get-account-info';
+import createOrganisation from './create-organisation';
+import getOrganisation from './get-organisation';
+import updateOrganisation from './update-organisation';
 
-export { signup, login, resetPasswordLink, updatePassword, getAccountInfo };
+export { createOrganisation, getOrganisation, updateOrganisation };
