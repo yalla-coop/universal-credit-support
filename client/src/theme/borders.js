@@ -6,7 +6,7 @@ const borders = {
   dashed: `1.5px dashed ${colors.neutralMid};`,
   card: `1px solid ${colors.neutralLight};`,
   radius: '6px',
-  radiusLarge: '6px',
+  radiusLarge: '12px',
 };
 
 export default borders;
