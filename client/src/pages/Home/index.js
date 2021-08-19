@@ -38,9 +38,11 @@ const Home = () => {
     claiming: [],
     afterClaiming: [],
   });
-  const [completedClaim, setCompletedClaim] = useState(false);
+  const [showAfterClaim, setShowAfterClaim] = useState(false);
   const currentStep = fullSteps.find((step) => !step.isCompleted);
   const currentStepRef = useRef();
+
+  const completedClaim = currentStep.stage === 'afterClaiming';
 
   const formatText = (text) => {
     if (!text) return '';
@@ -75,13 +77,6 @@ const Home = () => {
     return { variant, currentRef, isJustCompletedOne, isCurrentStep };
   };
 
-  const completedClaimSteps = () => {
-    const incompleteSteps = steps.claiming?.filter((step) => !step.isCompleted);
-    console.log('STe', incompleteSteps);
-    if (!steps || incompleteSteps.length === 0) return setCompletedClaim(true);
-    return setCompletedClaim(false);
-  };
-
   useEffect(() => {
     if (currentStepRef.current && justCompletedId) {
       currentStepRef.current.scrollIntoView({
@@ -89,8 +84,6 @@ const Home = () => {
         block: 'center',
       });
     }
-    completedClaimSteps();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [justCompletedId]);
 
   useEffect(() => {

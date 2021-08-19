@@ -173,8 +173,8 @@ const updateStepsInStorage = (stepsFromLocal, newSteps) => {
 const getStepsFromStorage = () => {
   const steps = JSON.parse(localStorage.getItem('steps'));
   if (steps && steps.length) {
-    updateStepsInStorage(steps, initialSteps);
-    return initialSteps;
+    const updatedSteps = updateStepsInStorage(steps, initialSteps);
+    return updatedSteps;
   } else {
     storeStepsIntoStorage(initialSteps);
     return initialSteps;
@@ -220,6 +220,7 @@ const StepsProvider = ({ children, ...props }) => {
       });
 
       storeStepsIntoStorage(newSteps);
+      console.log('new', newSteps);
       return newSteps;
     });
   };
