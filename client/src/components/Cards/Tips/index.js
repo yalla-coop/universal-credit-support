@@ -30,19 +30,23 @@ const colorArray = [
 ];
 
 // create function that programmatically cycles through the colorArray in order
-const getColor = (index) => {
-  const _index = index % colorArray.length;
+const getColor = (index, startingColor) => {
+  const _index = (index + startingColor) % colorArray.length;
   return colorArray[_index];
 };
 
-const Tips = ({ tips = [], ...props }) => {
+const Tips = ({ tips = [], startingColor = 0, ...props }) => {
   return (
     <S.Section {...props}>
       {tips.map((tip, index) => (
-        <S.Tip key={index} color={getColor(index)} mb="3">
-          <Icon icon="bulb" color={getColor(index).icon} mr="2" />
+        <S.Tip key={index} color={getColor(index, startingColor)} mb="3">
+          <Icon
+            icon="bulb"
+            color={getColor(index, startingColor).icon}
+            mr="2"
+          />
           {typeof tip === 'string' ? (
-            <T.H3 color={getColor(index).text}>{tip}</T.H3>
+            <T.H3 color={getColor(index, startingColor).text}>{tip}</T.H3>
           ) : (
             tip
           )}

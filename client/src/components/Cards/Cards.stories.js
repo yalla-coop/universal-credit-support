@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Tips, Checklist } from '.';
+import * as T from '../Typography';
 
 export default {
   title: 'Common Components/Cards',
@@ -15,6 +16,29 @@ const TipsExample = (args) => (
 export const tips = TipsExample.bind({});
 tips.args = {
   tips: ['tip 1', 'tip 2', 'tip 3', 'tip 4', 'tip 5'],
+  startingColor: 0,
+};
+
+const TipsExample2 = (args) => (
+  <div style={{ width: '300px' }}>
+    <Tips {...args} m="2" />
+  </div>
+);
+
+export const tips2 = TipsExample2.bind({});
+tips2.args = {
+  tips: [
+    <a
+      href="mailto:hydefoundation@
+    hyde-housing.co.uk"
+    >
+      <T.H3 color="neutralMain">
+        Interested in more specific statistics? Get in touch with
+        hydefoundation@hyde-housing.co.uk
+      </T.H3>
+    </a>,
+  ],
+  startingColor: 3,
 };
 
 const ChecklistExamples = (args) => {
