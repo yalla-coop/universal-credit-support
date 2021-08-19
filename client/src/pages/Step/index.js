@@ -2,7 +2,6 @@ import { useParams } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import {
   TextWithIcon,
-  Modal,
   Icon,
   Typography as T,
   Button,
@@ -23,7 +22,7 @@ import { GENERAL } from '../../constants/nav-routes';
 const { Checkbox } = Inputs;
 const { Row, Col } = Grid;
 
-function Step(props) {
+function Step() {
   const params = useParams();
   const { lang } = useLang();
   const { steps, checkUncheckItem, setJustCompletedId } = useSteps();
@@ -34,14 +33,16 @@ function Step(props) {
     query: `(max-width: ${breakpoints.tablet})`,
   });
   return (
-    <Modal {...props}>
+    <>
       <S.Container>
         <Row mb="4" mt="2">
           <Col w={[4, 12, 12]}>
             <S.PageHead>
-              {isTablet ? <MobileLogo /> : <DesktopLogo />}
               <S.Link to={GENERAL.HOME}>
-                <Icon icon="close" />
+                {isTablet ? <MobileLogo /> : <DesktopLogo />}
+              </S.Link>
+              <S.Link to={GENERAL.HOME}>
+                <Icon icon="close" width={16} height={16} />
               </S.Link>
             </S.PageHead>
           </Col>
@@ -121,7 +122,7 @@ function Step(props) {
           </Row>
         </Row>
       </S.Container>
-    </Modal>
+    </>
   );
 }
 
