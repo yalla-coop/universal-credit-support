@@ -32,8 +32,6 @@ const style = css`
     padding: 0;
     font-family: 'Heebo', sans-serif;
     word-wrap: break-word;
-    min-height: 100% important;
-    height: 100%;
   }
 
   /* to override body margin from antd */
@@ -70,8 +68,6 @@ const style = css`
   html {
     box-sizing: border-box;
     -webkit-text-size-adjust: 100%;
-    min-height: 100% important;
-    height: 100%;
   }
 
   *,

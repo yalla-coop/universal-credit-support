@@ -1,8 +1,9 @@
 import errorMsgs from './error-msgs';
+import menuItems from './menu-items';
 
 export default {
   ...errorMsgs,
-
+  ...menuItems,
   // Home page
   universalCreditOverview: 'Universal Credit Overview!',
   overviewText:
