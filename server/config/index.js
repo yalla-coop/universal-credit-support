@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 import common from './common';
 import server from './server';
 // import database from './database';
-// import aws from './aws';
+import aws from './aws';
 // import emails from './emails';
 // import sqreen from './sqreen';
 
@@ -27,7 +27,7 @@ export default {
   common: common(),
   server: server(),
   // database: database(),
-  // aws: aws(),
+  aws: aws(),
   // emails: emails(),
   // sqreen: sqreen(),
 };
