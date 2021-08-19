@@ -2,12 +2,8 @@ import styled from '@emotion/styled';
 import { Link as RLink } from 'react-router-dom';
 
 export const Container = styled.div`
-  flex: 1;
-  height: 95vh;
-  display: flex;
-  flex-direction: column;
-  padding: ${({ theme }) => theme.spacings[2]};
-  padding-left: ${({ theme }) => theme.spacings[4]};
+  overflow: hidden;
+  padding-right: ${({ theme }) => theme.spacings[9]};
   ${({ theme }) => theme.media.tablet} {
     padding: 0;
     padding-left: ${({ theme }) => theme.spacings[1]};
