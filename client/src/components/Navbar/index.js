@@ -1,30 +1,37 @@
 import { useState } from 'react';
-import { useMediaQuery } from 'react-responsive';
 
 import NavRoutes from './NavRoutes';
-import theme from '../../theme';
 
 import * as S from './style';
 import Icon from '../Icon';
 
-const NavItems = ({ setOpen }) => {
+// import { ReactComponent as MobileLogo } from '../assets/MobileLogo.svg';
+// import { ReactComponent as DesktopLogo } from '../assets/DesktopLogo.svg';
+import YallaLogo from '../assets/YallaLogo.png';
+
+const NavItems = ({ setOpen, ...props }) => {
   return (
     <S.Div>
       <NavRoutes setOpen={setOpen} />
     </S.Div>
   );
 };
-const Navbar = () => {
-  const [open, setOpen] = useState(false);
-  const isTablet = useMediaQuery({
-    query: `(max-width: ${theme.breakpoints.tablet})`,
-  });
 
-  return !isTablet ? (
+export const DesktopNav = () => (
+  <S.DesktopContainer>
+    <S.LogoLink to="/">
+      {/* <DesktopLogo /> */}
+      <img src={YallaLogo} alt="logo" />
+    </S.LogoLink>
     <NavItems />
-  ) : (
-    <>
-      <Icon icon="menu" width={20} height={20} onClick={() => setOpen(true)} />
+  </S.DesktopContainer>
+);
+
+export const MobileNav = () => {
+  const [open, setOpen] = useState(false);
+  return (
+    <S.MobileContainer>
+      <Icon icon="menu" width={33} height={33} onClick={() => setOpen(true)} />
       <S.Drawer
         title="Basic Drawer"
         placement={'right'}
@@ -37,7 +44,7 @@ const Navbar = () => {
         drawerStyle={{ background: 'white', display: 'flex' }}
       >
         <Icon
-          icon="cross"
+          icon="close"
           width={18}
           height={18}
           onClick={() => setOpen(false)}
@@ -48,10 +55,13 @@ const Navbar = () => {
             zIndex: 2,
           }}
         />
-        <NavItems setOpen={setOpen} />
+        <div style={{ marginTop: -24 }}>
+          <S.LogoLink to="/">
+            <img src={YallaLogo} alt="logo" />
+          </S.LogoLink>
+          <NavItems setOpen={setOpen} style={{ border: '1px solid red' }} />
+        </div>
       </S.Drawer>
-    </>
+    </S.MobileContainer>
   );
 };
-
-export default Navbar;
