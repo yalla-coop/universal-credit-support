@@ -11,6 +11,7 @@ import GoBack from '../../GoBack';
 import theme from '../../../theme';
 
 import EnglishLang from '../../assets/EN.png';
+import { GENERAL } from '../../../constants/nav-routes';
 
 const General = ({ children, goBack, maxWidth, ...props }) => {
   const isTablet = useMediaQuery({
@@ -20,7 +21,9 @@ const General = ({ children, goBack, maxWidth, ...props }) => {
     <>
       <S.Wrapper>
         <S.Header isTablet={isTablet}>
-          <S.Link to="/">{isTablet ? <MobileLogo /> : <DesktopLogo />}</S.Link>
+          <S.Link to={GENERAL.HOME}>
+            {isTablet ? <MobileLogo /> : <DesktopLogo />}
+          </S.Link>
           <S.LangButton>
             <T.P isSmall weight="bold" mr="4px">
               EN

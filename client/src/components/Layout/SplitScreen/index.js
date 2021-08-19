@@ -6,6 +6,7 @@ import { ReactComponent as DesktopLogo } from '../../assets/DesktopLogo.svg';
 import { useMediaQuery } from 'react-responsive';
 
 import theme from '../../../theme';
+import { GENERAL } from '../../../constants/nav-routes';
 
 const SplitScreen = ({
   children,
@@ -28,7 +29,7 @@ const SplitScreen = ({
         showColorOnMobile={showColorOnMobile}
       />
       <S.ContentHalf>
-        <S.Link to="/" showColorOnMobile={showColorOnMobile}>
+        <S.Link to={GENERAL.HOME} showColorOnMobile={showColorOnMobile}>
           {isTablet ? <MobileLogo /> : <DesktopLogo />}
         </S.Link>
         {children}

@@ -18,6 +18,7 @@ import { ReactComponent as DesktopLogo } from '../../components/assets/DesktopLo
 import { breakpoints } from '../../theme';
 
 import * as S from './style';
+import { GENERAL } from '../../constants/nav-routes';
 
 const { Checkbox } = Inputs;
 const { Row, Col } = Grid;
@@ -39,7 +40,7 @@ function Step(props) {
           <Col w={[4, 12, 12]}>
             <S.PageHead>
               {isTablet ? <MobileLogo /> : <DesktopLogo />}
-              <S.Link to="/">
+              <S.Link to={GENERAL.HOME}>
                 <Icon icon="close" />
               </S.Link>
             </S.PageHead>

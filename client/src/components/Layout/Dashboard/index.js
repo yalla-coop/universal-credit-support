@@ -5,6 +5,7 @@ import { ReactComponent as MobileLogo } from '../../assets/MobileLogo.svg';
 import { ReactComponent as DesktopLogo } from '../../assets/DesktopLogo.svg';
 import { useMediaQuery } from 'react-responsive';
 import { DesktopNav, MobileNav } from '../../Navbar';
+import { GENERAL } from '../../../constants/nav-routes';
 
 import theme from '../../../theme';
 
@@ -33,7 +34,7 @@ const SplitScreen = ({
       </S.MenuWrapper>
       <S.ContentHalf>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <S.Link to="/" showColorOnMobile={showColorOnMobile}>
+          <S.Link to={GENERAL.HOME} showColorOnMobile={showColorOnMobile}>
             {isTablet ? <MobileLogo /> : <DesktopLogo />}
           </S.Link>
           {showMobileMenu && <MobileNav />}

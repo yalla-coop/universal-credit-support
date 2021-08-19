@@ -4,6 +4,7 @@ import NavRoutes from './NavRoutes';
 
 import * as S from './style';
 import Icon from '../Icon';
+import { GENERAL } from '../../constants/nav-routes';
 
 // import { ReactComponent as MobileLogo } from '../assets/MobileLogo.svg';
 // import { ReactComponent as DesktopLogo } from '../assets/DesktopLogo.svg';
@@ -19,7 +20,7 @@ const NavItems = ({ setOpen, ...props }) => {
 
 export const DesktopNav = () => (
   <S.DesktopContainer>
-    <S.LogoLink to="/">
+    <S.LogoLink to={GENERAL.HOME}>
       {/* <DesktopLogo /> */}
       <img src={YallaLogo} alt="logo" />
     </S.LogoLink>
@@ -56,7 +57,7 @@ export const MobileNav = () => {
           }}
         />
         <div style={{ marginTop: -24 }}>
-          <S.LogoLink to="/">
+          <S.LogoLink to={GENERAL.HOME}>
             <img src={YallaLogo} alt="logo" />
           </S.LogoLink>
           <NavItems setOpen={setOpen} style={{ border: '1px solid red' }} />
