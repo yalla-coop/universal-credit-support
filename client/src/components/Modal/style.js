@@ -16,9 +16,7 @@ export const Background = styled.div`
 export const Container = styled.div`
   padding: ${({ theme }) => theme.spacings[6]};
   background: ${({ theme }) => theme.colors.white};
-  ${({ theme }) => theme.media.tablet} {
-    min-width: 100vw;
-  }
+  width: 100%;
 `;
 
 export const SideDiv = styled.div`
