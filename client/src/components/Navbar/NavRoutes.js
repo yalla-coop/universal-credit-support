@@ -1,6 +1,6 @@
 import { SUPER_ADMIN, ADMIN } from '../../constants/nav-routes';
 import t from '../../constants/translations';
-
+import R from '../../constants/roles';
 import * as S from './style';
 
 const handleClick = (cb) => {
@@ -12,11 +12,9 @@ const handleClick = (cb) => {
 
 const decideRoutes = (role) => {
   switch (role) {
-    case 'claimants':
+    case R.ADMIN:
       return ADMIN;
-    case 'admin':
-      return ADMIN;
-    case 'superAdmin':
+    case R.SUPER_ADMIN:
       return SUPER_ADMIN;
     default:
       // for now
