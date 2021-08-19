@@ -18,9 +18,15 @@ const dataToComeFromServer = {
 
 const Home = () => {
   const { lang, langOptions, setLang } = useLang();
-  const { steps, justCompletedId, setJustCompletedId } = useSteps();
+  const { steps: fullSteps, justCompletedId, setJustCompletedId } = useSteps();
   const [landingContent, setLandingContent] = useState({});
-  const currentStep = steps.find((step) => !step.isCompleted);
+  const [steps, setSteps] = useState({
+    beforeClaiming: [],
+    claiming: [],
+    afterClaiming: [],
+  });
+  const { beforeClaiming, claiming, afterClaiming } = steps;
+  const currentStep = fullSteps.find((step) => !step.isCompleted);
   const currentStepRef = useRef();
 
   const formatText = (text) => {
@@ -41,6 +47,23 @@ const Home = () => {
     );
   };
 
+  const getStepStatus = (step, i) => {
+    const isCurrentStep = currentStep && step.name === currentStep.name;
+    const variant = step.isCompleted
+      ? 'neutral'
+      : isCurrentStep
+      ? 'primary'
+      : 'secondary';
+    const isJustCompletedOne = step.id === justCompletedId;
+    // To only add ref to the currentStep
+    let currentRef = isCurrentStep ? currentStepRef : null;
+    if (i === steps.length - 1 && step.isCompleted) {
+      currentRef = currentStepRef;
+    }
+
+    return { variant, currentRef, isJustCompletedOne };
+  };
+
   useEffect(() => {
     if (currentStepRef.current && justCompletedId) {
       currentStepRef.current.scrollIntoView({
@@ -53,6 +76,15 @@ const Home = () => {
   useEffect(() => {
     // TO DO - api to get data from server
     setLandingContent(dataToComeFromServer);
+    const stepsObj = fullSteps.reduce((acc, curr) => {
+      const { stage } = curr;
+      if (!acc[stage]) {
+        acc[stage] = [];
+      }
+      acc[stage].push(curr);
+      return acc;
+    }, {});
+    setSteps(stepsObj);
   }, []);
 
   return (
@@ -68,20 +100,13 @@ const Home = () => {
         {formatText(landingContent.subtitle)}{' '}
         <S.StyledText>{landingContent.instructions}</S.StyledText>
       </S.Intro>
-      {steps.map((step, i) => {
-        console.log('ste', step, steps);
-        const isCurrentStep = currentStep && step.name === currentStep.name;
-        const variant = step.isCompleted
-          ? 'neutral'
-          : isCurrentStep
-          ? 'primary'
-          : 'secondary';
-        const isJustCompletedOne = step.id === justCompletedId;
-        // To only add ref to the currentStep
-        let currentRef = isCurrentStep ? currentStepRef : null;
-        if (i === steps.length - 1 && step.isCompleted) {
-          currentRef = currentStepRef;
-        }
+
+      {/* BEFORE CLAIMING */}
+      {steps.beforeClaiming?.map((step, i) => {
+        const { variant, currentRef, isJustCompletedOne } = getStepStatus(
+          step,
+          i
+        );
 
         return (
           <Card
@@ -96,7 +121,63 @@ const Home = () => {
             isJustCompletedOne={isJustCompletedOne}
             to={n.STEPS.STEP.replace(':id', step.id)}
             ref={currentRef}
-            optional={step.optional}
+            isOptional={step.isOptional}
+            handleClick={() => {
+              setJustCompletedId('');
+            }}
+          />
+        );
+      })}
+
+      {/* CLAIMING */}
+      {steps.claiming?.map((step, i) => {
+        const { variant, currentRef, isJustCompletedOne } = getStepStatus(
+          step,
+          i
+        );
+
+        return (
+          <Card
+            key={step.id}
+            title={step.title}
+            description={step.description}
+            content={t(`${step.name}.subtitle`, lang)}
+            isCompleted={step.isCompleted}
+            variant={variant}
+            direction={i % 2 === 0 ? 'left' : 'right'}
+            mt="7"
+            isJustCompletedOne={isJustCompletedOne}
+            to={n.STEPS.STEP.replace(':id', step.id)}
+            ref={currentRef}
+            isOptional={step.isOptional}
+            handleClick={() => {
+              setJustCompletedId('');
+            }}
+          />
+        );
+      })}
+
+      {/* AFTER CLAIMING */}
+      {steps.afterClaiming?.map((step, i) => {
+        const { variant, currentRef, isJustCompletedOne } = getStepStatus(
+          step,
+          i
+        );
+
+        return (
+          <Card
+            key={step.id}
+            title={step.title}
+            description={step.description}
+            content={t(`${step.name}.subtitle`, lang)}
+            isCompleted={step.isCompleted}
+            variant={variant}
+            direction={i % 2 === 0 ? 'left' : 'right'}
+            mt="7"
+            isJustCompletedOne={isJustCompletedOne}
+            to={n.STEPS.STEP.replace(':id', step.id)}
+            ref={currentRef}
+            isOptional={step.isOptional}
             handleClick={() => {
               setJustCompletedId('');
             }}

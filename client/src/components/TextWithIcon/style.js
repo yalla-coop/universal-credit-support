@@ -24,7 +24,7 @@ export const Wrapper = styled.div`
 
 export const Text = styled.span`
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 16px;
   line-height: 24px;
 `;

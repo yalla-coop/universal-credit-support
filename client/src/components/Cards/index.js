@@ -24,36 +24,13 @@ const renderChild = (isCompleted, title) => {
     );
   }
   return (
-    <T.H1 weight="bold" color="white" ta="center">
+    <T.H2
+      weight="bold"
+      color={isCompleted ? 'neutralMain' : 'white'}
+      ta="center"
+    >
       {title}
-    </T.H1>
-  );
-};
-
-const FormattedContent = ({ txt }) => {
-  const arr = txt.split(/(<strong[a-z, A-Z]*>)/);
-  let insideStrongTag = false;
-  let underline = false;
-
-  return (
-    <>
-      {arr.map((part) => {
-        if (part.includes('strong')) {
-          insideStrongTag = !insideStrongTag;
-
-          if (part.includes('underline')) {
-            underline = true;
-          }
-          return null;
-        }
-
-        if (insideStrongTag) {
-          return <S.Strong underline={underline}>{part}</S.Strong>;
-        }
-
-        return part;
-      })}
-    </>
+    </T.H2>
   );
 };
 
@@ -70,7 +47,7 @@ const Card = forwardRef(
       handleClick,
       isJustCompletedOne,
       to = '/',
-      optional,
+      isOptional,
       ...props
     },
     ref
@@ -80,7 +57,9 @@ const Card = forwardRef(
     const circleColor =
       variant === 'neutral' ? `${variant}Mid` : `${variant}Main`;
 
-    if (optional)
+    console.log('STUFF', title, description);
+
+    if (isOptional)
       return (
         <S.Wrapper onClick={handleClick} mb="4" {...props} ref={ref}>
           <S.StyledLink to={to} style={{ color: 'transparent', width: '100%' }}>
@@ -95,7 +74,7 @@ const Card = forwardRef(
                 icon="forwardArrow"
                 text="Check here"
                 iconColor="primaryMain"
-                color="neutralDark"
+                color="neutralMain"
                 to={to}
               />
             </S.OptionalContainer>
@@ -118,7 +97,7 @@ const Card = forwardRef(
               </T.P>
             )}
             <T.P isSmall color="neutralMain">
-              <FormattedContent txt={content} />
+              {description}
             </T.P>
             <S.Circle
               circleColor={circleColor}
