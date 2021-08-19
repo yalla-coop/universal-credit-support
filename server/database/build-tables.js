@@ -8,7 +8,7 @@ const buildTables = async () => {
   await init.buildMigrations();
 
   await models.users.createTable();
-  await models.images.createTable();
+  await models.media.createTable();
   await models.organisations.createTable();
   await models.landingPageContent.createTable();
   await models.steps.createTable();

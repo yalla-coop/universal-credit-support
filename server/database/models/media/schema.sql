@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS "images" CASCADE;
+DROP TABLE IF EXISTS "media" CASCADE;
 
-CREATE TABLE "images" (
+CREATE TABLE "media" (
   "id" SERIAL PRIMARY KEY,
   "key" TEXT NOT NULL UNIQUE, --S3 unique key
   "file_name" VARCHAR,
@@ -13,6 +13,6 @@ CREATE TABLE "images" (
 );
 
 CREATE TRIGGER set_timestamp
-BEFORE UPDATE ON "images"
+BEFORE UPDATE ON "media"
 FOR EACH ROW
 EXECUTE PROCEDURE trigger_set_timestamp();

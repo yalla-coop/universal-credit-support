@@ -17,7 +17,7 @@ CREATE TABLE "organisations" (
     -- ]
   "benifit_calc_link" TEXT,
   "benifit_calc_label" VARCHAR,
-  "logo_id" INTEGER REFERENCES images(id),
+  "logo_id" INTEGER REFERENCES media(id),
   "colors" JSON,
     -- { 
     --   main: '222',
