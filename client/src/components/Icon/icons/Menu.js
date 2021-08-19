@@ -10,23 +10,23 @@ const Menu = ({ width, height, color, ...props }) => (
     <path
       d="M5.15625 9.97974H27.8438"
       stroke={color || '#1A202B'}
-      stroke-width="2.0625"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
+      strokeWidth="2.0625"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
     />
     <path
       d="M5.15625 15.9678H27.8438"
       stroke={color || '#1A202B'}
-      stroke-width="2.0625"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
+      strokeWidth="2.0625"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
     />
     <path
       d="M5.15625 21.9556H27.8438"
       stroke={color || '#1A202B'}
-      stroke-width="2.0625"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
+      strokeWidth="2.0625"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
     />
   </svg>
 );

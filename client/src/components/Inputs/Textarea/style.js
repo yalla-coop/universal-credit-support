@@ -26,3 +26,12 @@ export const TextArea = styled(AntdTextArea)`
     border-color: ${({ theme }) => theme.colors.blue};
   }
 `;
+
+export const InfoWrapper = styled.button`
+  margin-bottom: ${({ theme }) => theme.spacings[2]};
+  margin-left: ${({ theme }) => theme.spacings[2]};
+  display: flex;
+  background: none;
+  border: none;
+  cursor: pointer;
+`;

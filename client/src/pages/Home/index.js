@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-import Card from '../../components/Cards';
+import Step from '../../components/Steps';
 import { Typography as T, Inputs as I } from '../../components';
 import { t } from '../../helpers';
 import { useLang } from '../../context/lang';
@@ -59,7 +59,7 @@ const Home = () => {
           currentRef = currentStepRef;
         }
         return (
-          <Card
+          <Step
             key={step.id}
             title={t(`${step.name}.title`, lang)}
             content={t(`${step.name}.subtitle`, lang)}

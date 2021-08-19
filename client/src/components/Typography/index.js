@@ -7,6 +7,7 @@ const { Title, Paragraph } = Typography;
 const weights = {
   bold: '700 !important',
   semi: '600 !important',
+  medium: '500 !important',
   regular: '400 !important',
   light: '300 !important',
 };

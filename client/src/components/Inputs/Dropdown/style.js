@@ -23,8 +23,8 @@ export const Field = styled.div`
     overflow-x: hidden;
     border: 1px solid;
     border-color: ${({ theme, error }) => {
-      if (error) return theme.colors.secondaryMain;
-      return theme.colors.primaryMid;
+      if (error) return theme.colors.error;
+      return theme.colors.secondaryMain;
     }};
     border-radius: ${({ theme }) => theme.borders.radius};
     background: ${({ theme }) => theme.colors.white};
@@ -52,13 +52,13 @@ export const Field = styled.div`
   .ant-select-arrow,
   .ant-select-clear,
   .ant-select-selection-item-remove {
-    color: ${({ theme }) => theme.colors.primaryMain};
+    color: ${({ theme }) => theme.colors.secondaryMain};
     width: 20px;
     display: flex;
     align-items: center;
 
     svg {
-      width: 20px;
+      width: 16px;
       height: 15px;
       transition: all ease 0.5s;
       transform: ${({ open, multi, search }) =>
@@ -70,7 +70,7 @@ export const Field = styled.div`
   .ant-select-multiple .ant-select-selection-placeholder,
   .ant-select-selection-placeholder {
     font-size: 1rem;
-    color: ${({ theme }) => theme.colors.primaryMid};
+    color: ${({ theme }) => theme.colors.neutralDark};
     padding-left: ${({ theme }) => theme.spacings[3]};
     text-align: left;
   }
@@ -85,7 +85,8 @@ export const Field = styled.div`
   }
 `;
 
-export const menuStyle = styled``;
+export const menuStyle = styled`
+`;
 
 export const Answer = styled.div`
   flex-direction: column;

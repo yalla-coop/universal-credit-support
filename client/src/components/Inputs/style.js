@@ -9,22 +9,31 @@ const commonStyle = `
   line-height: 150%;
 `;
 
+export const commonBorderStyle = ({ theme, error, disabled }) => `
+  border: ${error ? theme.borders.error : theme.borders.inputs};
+  border-radius: ${theme.borders.radius};
+`;
+
 export const placeholderStyle = ({ theme }) => `
   ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
     ${commonStyle};
-    color: ${theme.colors.gray7};
+    font-family: 'Heebo', sans-serif;
+    color: ${theme.colors.neutralDark};
   }
   ::-moz-placeholder { /* Firefox 19+ */
     ${commonStyle};
-    color: ${theme.colors.gray7};
+    font-family: 'Heebo', sans-serif;
+    color: ${theme.colors.neutralDark};
   }
   :-ms-input-placeholder { /* IE 10+ */
     ${commonStyle};
-    color: ${theme.colors.gray7};
+    font-family: 'Heebo', sans-serif;
+    color: ${theme.colors.neutralDark};
   }
   :-moz-placeholder { /* Firefox 18- */
     ${commonStyle};
-    color: ${theme.colors.gray7};
+    font-family: 'Heebo', sans-serif;
+    color: ${theme.colors.neutralDark};
   }
 `;
 
@@ -40,4 +49,11 @@ export const Label = styled.label`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+`;
+
+export const OptionalTag = styled.span`
+  ${setMargin};
+  display: inline-block;
+  font-weight: 400 !important;
+  color: ${({ theme }) => theme.colors.neutralDark};
 `;
