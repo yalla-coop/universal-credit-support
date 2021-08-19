@@ -122,7 +122,7 @@ const Home = () => {
         );
 
         return (
-          <Card
+          <Step
             key={step.id}
             title={step.title}
             description={step.description}
@@ -150,7 +150,7 @@ const Home = () => {
         );
 
         return (
-          <Card
+          <Step
             key={step.id}
             title={step.title}
             description={step.description}

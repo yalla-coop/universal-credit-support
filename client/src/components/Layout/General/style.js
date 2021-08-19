@@ -28,7 +28,6 @@ export const Wrapper = styled.div`
   position: relative;
   width: 100%;
   display: flex;
-  height: 372px;
   justify-content: center;
   background: ${({ theme }) => theme.gradients.primary};
   ${({ theme }) => theme.media.mobile} {

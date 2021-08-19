@@ -24,12 +24,12 @@ const General = ({ children, goBack, maxWidth, ...props }) => {
           <S.Link to={GENERAL.HOME}>
             {isTablet ? <MobileLogo /> : <DesktopLogo />}
           </S.Link>
-          <S.LangButton>
+          {/* <S.LangButton>
             <T.P isSmall weight="bold" mr="4px">
               EN
             </T.P>
             <img src={EnglishLang} alt="language" />
-          </S.LangButton>
+          </S.LangButton> */}
           {/* <Navbar /> */}
         </S.Header>
       </S.Wrapper>
