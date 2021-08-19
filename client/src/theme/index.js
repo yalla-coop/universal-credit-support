@@ -25,6 +25,7 @@ export const spacings = {
   9: '80px',
   10: '96px',
   11: '120px',
+  12: '144px',
 };
 
 export const screensWidth = {

@@ -8,6 +8,8 @@ import { useSteps } from '../../context/steps';
 import { navRoutes as n } from '../../constants';
 
 import Icon from '../../components/Icon';
+import HelpButton from '../../components/HelpButton';
+import TextWithIcon from '../../components/TextWithIcon';
 
 import * as S from './style';
 
@@ -111,7 +113,7 @@ const Home = () => {
       </S.PageHead>
       <S.Section>
         {formatText(landingContent.subtitle)}{' '}
-        <S.StyledText>{landingContent.instructions}</S.StyledText>
+        <S.StyledText mb="3">{landingContent.instructions}</S.StyledText>
       </S.Section>
 
       {/* BEFORE CLAIMING */}
@@ -187,34 +189,47 @@ const Home = () => {
             ]
           }
         </S.StyledText>
+        {!completedClaim && !showAfterClaim && (
+          <S.Container>
+            <TextWithIcon
+              icon="bulletArrow"
+              iconColor="primaryMain"
+              isButton
+              handleClick={() => setShowAfterClaim(true)}
+              text="View steps"
+            />
+          </S.Container>
+        )}
       </S.Section>
 
-      {steps.afterClaiming?.map((step, i) => {
-        const { variant, currentRef, isJustCompletedOne } = getStepStatus(
-          step,
-          i
-        );
+      {(completedClaim || showAfterClaim) &&
+        steps.afterClaiming?.map((step, i) => {
+          const { variant, currentRef, isJustCompletedOne } = getStepStatus(
+            step,
+            i
+          );
 
-        return (
-          <Step
-            key={step.id}
-            title={step.title}
-            description={step.description}
-            content={t(`${step.name}.subtitle`, lang)}
-            isCompleted={step.isCompleted}
-            variant={variant}
-            direction={i % 2 === 0 ? 'left' : 'right'}
-            mt="7"
-            isJustCompletedOne={isJustCompletedOne}
-            to={n.STEPS.STEP.replace(':id', step.id)}
-            ref={currentRef}
-            isOptional={step.isOptional}
-            handleClick={() => {
-              setJustCompletedId('');
-            }}
-          />
-        );
-      })}
+          return (
+            <Step
+              key={step.id}
+              title={step.title}
+              description={step.description}
+              content={t(`${step.name}.subtitle`, lang)}
+              isCompleted={step.isCompleted}
+              variant={variant}
+              direction={i % 2 === 0 ? 'left' : 'right'}
+              mt="7"
+              isJustCompletedOne={isJustCompletedOne}
+              to={n.STEPS.STEP.replace(':id', step.id)}
+              ref={currentRef}
+              isOptional={step.isOptional}
+              handleClick={() => {
+                setJustCompletedId('');
+              }}
+            />
+          );
+        })}
+      <HelpButton />
     </>
   );
 };

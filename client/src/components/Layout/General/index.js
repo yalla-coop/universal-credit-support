@@ -10,10 +10,10 @@ import * as T from '../../Typography';
 import GoBack from '../../GoBack';
 import theme from '../../../theme';
 
-import EnglishLang from '../../assets/EN.png';
+// import EnglishLang from '../../assets/EN.png';
 import { GENERAL } from '../../../constants/nav-routes';
 
-const General = ({ children, goBack, maxWidth, ...props }) => {
+const General = ({ children, goBack, maxWidth, showHelp, ...props }) => {
   const isTablet = useMediaQuery({
     query: `(max-width: ${theme.breakpoints.tablet})`,
   });

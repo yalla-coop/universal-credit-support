@@ -11,7 +11,7 @@ export const Header = styled.header`
   align-items: center;
   position: absolute;
   top: 0;
-  max-width: 425px;
+  max-width: 580px;
 
   ${({ theme }) => theme.media.tablet} {
     padding: ${({ theme: { spacings } }) =>
@@ -31,7 +31,6 @@ export const Wrapper = styled.div`
   justify-content: center;
   background: ${({ theme }) => theme.gradients.primary};
   ${({ theme }) => theme.media.mobile} {
-    height: 315px;
     justify-content: flex-start;
   }
 `;

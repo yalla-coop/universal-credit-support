@@ -7,7 +7,7 @@ export const PageHead = styled.header`
   display: flex;
   justify-content: center;
   background: ${({ theme }) => theme.gradients.primary};
-  padding-top: ${({ theme: { spacings } }) => spacings[11]};
+  padding-top: ${({ theme: { spacings } }) => spacings[12]};
   padding-bottom: ${({ theme: { spacings } }) => spacings[8]};
 
   ${({ theme }) => theme.media.mobile} {
@@ -50,9 +50,18 @@ export const Section = styled.section`
 export const StyledText = styled(T.P)`
   max-width: 580px;
   color: ${({ theme: { colors } }) => colors.neutralDark};
-  padding: ${({ theme: { spacings } }) => `${spacings[4]} ${spacings[7]}`};
+  padding: ${({ theme: { spacings } }) =>
+    `${spacings[4]} ${spacings[7]} 0  ${spacings[7]}`};
 `;
 
 export const Span = styled.span`
   color: ${({ theme: { colors } }) => colors.neutralMain};
+`;
+
+export const Container = styled.div`
+  width: 100%;
+  max-width: 580px;
+  padding: ${({ theme: { spacings } }) => `${spacings[4]} ${spacings[7]}`};
+  display: flex;
+  justify-content: flex-start;
 `;
