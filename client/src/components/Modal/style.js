@@ -17,7 +17,6 @@ export const Container = styled.div`
   padding: ${({ theme }) => theme.spacings[6]};
   background: ${({ theme }) => theme.colors.white};
   ${({ theme }) => theme.media.tablet} {
-    width: 100vw;
     min-width: 100vw;
   }
 `;
