@@ -50,6 +50,19 @@ function App() {
                 />
                 <Route
                   exact
+                  path="/test2"
+                  Component={() => <p>content comes here!!</p>}
+                  layout="dashboard"
+                />
+                <Route
+                  exact
+                  path="/test3"
+                  Component={() => <p>content comes here!!</p>}
+                  layout="dashboard"
+                  showMobileMenu
+                />
+                <Route
+                  exact
                   path={navRoutes.STEPS.STEP}
                   Component={Pages.Step}
                   layout="step"
