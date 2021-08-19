@@ -7,6 +7,8 @@ import { useLang } from '../../context/lang';
 import { useSteps } from '../../context/steps';
 import { navRoutes as n } from '../../constants';
 
+import Icon from '../../components/Icon';
+
 import * as S from './style';
 
 const dataToComeFromServer = {
@@ -14,6 +16,17 @@ const dataToComeFromServer = {
   Credit and feeling a bit lost?`,
   subtitle: `Don’t worry, we’ve got you! Click on each step below to work your way through the process.`,
   instructions: `Everything will be saved as you go so you can leave this tool and come back anytime. Always remember you can contact us whenever just by clicking that useful ‘Help Me!’ button.`,
+};
+
+const afterClaimContent = {
+  title: {
+    completed: 'You’re all done!',
+    notCompleted: `What should I do once I am granted Universal Credit?`,
+  },
+  text: {
+    completed: `Got your Universal Credit? Great news! Check out these steps on what to do next:`,
+    notCompleted: `Once you’ve completed your claim there are few additional steps you can take. Open this when you’re completed the above steps`,
+  },
 };
 
 const Home = () => {
@@ -25,22 +38,20 @@ const Home = () => {
     claiming: [],
     afterClaiming: [],
   });
-  const { beforeClaiming, claiming, afterClaiming } = steps;
+  const [completedClaim, setCompletedClaim] = useState(false);
   const currentStep = fullSteps.find((step) => !step.isCompleted);
   const currentStepRef = useRef();
 
   const formatText = (text) => {
     if (!text) return '';
-    console.log('test', text);
     const arr = text.split(/\. |\! |\? /gm);
-    console.log('test', arr);
     const firstSentence = arr[0];
     if (!arr[1]) return <T.H2 color="primaryMain">{firstSentence}</T.H2>;
 
     const remainder = arr.slice(1).join(' ');
     return (
       <>
-        <T.H2 color="primaryMain" mr="2">
+        <T.H2 color="primaryMain" mb="2" mr="2">
           {firstSentence}! <S.Span>{remainder}</S.Span>
         </T.H2>
       </>
@@ -61,7 +72,14 @@ const Home = () => {
       currentRef = currentStepRef;
     }
 
-    return { variant, currentRef, isJustCompletedOne };
+    return { variant, currentRef, isJustCompletedOne, isCurrentStep };
+  };
+
+  const completedClaimSteps = () => {
+    const incompleteSteps = steps.claiming?.filter((step) => !step.isCompleted);
+    console.log('STe', incompleteSteps);
+    if (!steps || incompleteSteps.length === 0) return setCompletedClaim(true);
+    return setCompletedClaim(false);
   };
 
   useEffect(() => {
@@ -71,6 +89,8 @@ const Home = () => {
         block: 'center',
       });
     }
+    completedClaimSteps();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [justCompletedId]);
 
   useEffect(() => {
@@ -96,10 +116,10 @@ const Home = () => {
           </T.H2>
         </S.HeaderText>
       </S.PageHead>
-      <S.Intro>
+      <S.Section>
         {formatText(landingContent.subtitle)}{' '}
         <S.StyledText>{landingContent.instructions}</S.StyledText>
-      </S.Intro>
+      </S.Section>
 
       {/* BEFORE CLAIMING */}
       {steps.beforeClaiming?.map((step, i) => {
@@ -158,6 +178,24 @@ const Home = () => {
       })}
 
       {/* AFTER CLAIMING */}
+      <S.Section mt="7">
+        <Icon icon="flag" />
+        <T.H2 color="neutralMain" mb="1">
+          {
+            afterClaimContent.title[
+              completedClaim ? 'completed' : 'notCompleted'
+            ]
+          }
+        </T.H2>
+        <S.StyledText>
+          {
+            afterClaimContent.text[
+              completedClaim ? 'completed' : 'notCompleted'
+            ]
+          }
+        </S.StyledText>
+      </S.Section>
+
       {steps.afterClaiming?.map((step, i) => {
         const { variant, currentRef, isJustCompletedOne } = getStepStatus(
           step,

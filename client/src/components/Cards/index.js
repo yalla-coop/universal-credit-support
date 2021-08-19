@@ -57,11 +57,9 @@ const Card = forwardRef(
     const circleColor =
       variant === 'neutral' ? `${variant}Mid` : `${variant}Main`;
 
-    console.log('STUFF', title, description);
-
     if (isOptional)
       return (
-        <S.Wrapper onClick={handleClick} mb="4" {...props} ref={ref}>
+        <S.Wrapper onClick={handleClick} mb="8" {...props} ref={ref}>
           <S.StyledLink to={to} style={{ color: 'transparent', width: '100%' }}>
             <S.OptionalContainer>
               <T.H2 color="neutralMain" mb="4">

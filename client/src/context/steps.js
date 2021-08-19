@@ -90,10 +90,9 @@ const initialSteps = [
   {
     id: '6',
     stage: 'afterClaiming',
-    name: 'payment',
-    title: 'Getting your first payment',
-    description:
-      'First payment is made 1 month and 7 days after you submitted your claim...',
+    name: 'advance',
+    title: 'Want to apply for an advance?',
+    description: `Don't be scared about applying for this if you definitely do need it!`,
     checkListItems: [
       { value: 'accountInfo', isChecked: false },
       { value: 'phone', isChecked: false },

@@ -23,12 +23,12 @@ export const Wrapper = styled.div`
 `;
 
 export const OptionalContainer = styled.div`
+  ${setMargin};
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   max-width: 580px;
-
   padding: ${({ theme: { spacings } }) => `0 ${spacings[7]}`};
 
   ${({ theme }) => theme.media.mobile} {

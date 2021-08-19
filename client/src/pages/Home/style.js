@@ -34,7 +34,7 @@ export const HeaderText = styled.div`
   }
 `;
 
-export const Intro = styled.section`
+export const Section = styled.section`
   ${setMargin}
   display: flex;
   flex-direction: column;
@@ -50,7 +50,7 @@ export const Intro = styled.section`
 export const StyledText = styled(T.P)`
   max-width: 580px;
   color: ${({ theme: { colors } }) => colors.neutralDark};
-  padding: ${({ theme: { spacings } }) => `${spacings[5]} ${spacings[7]}`};
+  padding: ${({ theme: { spacings } }) => `${spacings[4]} ${spacings[7]}`};
 `;
 
 export const Span = styled.span`
