@@ -1,7 +1,17 @@
 import styled from '@emotion/styled';
-import setMargin from '../../../helpers/set-margin';
 import * as CS from '../style';
-import { Input as AntdInput } from 'antd';
+import setMargin from '../../../helpers/set-margin';
+
+export const Container = styled.div`
+  ${setMargin};
+`;
+
+export const InputField = styled.div`
+  ${setMargin};
+  display: flex;
+  align-items: center;
+  width: 100%;
+`;
 
 const InputCommonStyle = ({ theme, error, disabled }) => `
 width: 100%;
@@ -30,21 +40,11 @@ export const Input = styled.input`
   ${InputCommonStyle};
 `;
 
-export const PasswordInput = styled(AntdInput.Password)`
+export const Button = styled.button`
   ${setMargin};
-  ${CS.placeholderStyle};
-  ${CS.commonBorderStyle};
-  ${InputCommonStyle};
-  input {
-    background-color: inherit;
-  }
-`;
-
-export const InfoWrapper = styled.button`
-  margin-bottom: ${({ theme }) => theme.spacings[2]};
-  margin-left: ${({ theme }) => theme.spacings[2]};
-  display: flex;
-  background: none;
+  outline: none;
   border: none;
-  cursor: pointer;
+  background: none;
+  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
+  opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
 `;

@@ -1,7 +1,7 @@
 import Card from '.';
 
 export default {
-  title: 'Common Components/Card',
+  title: 'Common Components/Steps',
   component: Card,
 };
 
