@@ -29,4 +29,12 @@ export const Default = Template.bind({});
 Default.args = {
   width: 25,
   height: 25,
+  customContacts: [
+    {
+      title: 'Hyde Customer Support',
+      availability: 'Available 9am to 5pm Mon to Fri',
+      contact: '02078451234',
+      type: 'phone',
+    },
+  ],
 };

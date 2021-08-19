@@ -12,7 +12,7 @@ export default {
   neutralSurface: '#FBF9F5',
   white: '#ffffff',
   modalBackground: '#255599b3',
-  error: '#3B557A',
+  error: '#FC6244',
   borderPrimary: '#FC6244',
   borderSecondary: '#5A666A',
 };

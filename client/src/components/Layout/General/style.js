@@ -12,6 +12,7 @@ export const Header = styled.header`
   position: absolute;
   top: 0;
   max-width: 425px;
+
   ${({ theme }) => theme.media.tablet} {
     padding: ${({ theme: { spacings } }) =>
       `${spacings[7]} ${spacings[7]} 40px 0`};
@@ -27,8 +28,11 @@ export const Wrapper = styled.div`
   position: relative;
   width: 100%;
   display: flex;
+  height: 372px;
   justify-content: center;
+  background: ${({ theme }) => theme.gradients.primary};
   ${({ theme }) => theme.media.mobile} {
+    height: 315px;
     justify-content: flex-start;
   }
 `;
@@ -48,4 +52,13 @@ export const Content = styled.main`
 export const Link = styled(RLink)`
   color: ${({ theme }) => theme.colors.neutralMain};
   display: flex;
+`;
+
+export const LangButton = styled.button`
+  border: none;
+  background: transparent;
+  align-self: baseline;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 `;

@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 import { Row, Col } from '../Grid';
-import { BasicInput, Textarea, Dropdown, Checkbox, Rate } from './index';
+import {
+  BasicInput,
+  Textarea,
+  Dropdown,
+  Checkbox,
+  Rate,
+  InputCMS,
+} from './index';
 
 export default {
   title: 'Common Components/Input',
@@ -30,6 +37,7 @@ basic.args = {
   helper: 'Helper text',
   placeholder: 'Type your name...',
   type: 'text',
+  optional: false,
   m: { mt: '0' }, // mt, mtT, mtM, mb, mbT, ....
 };
 
@@ -70,12 +78,13 @@ textArea.args = {
   placeholder: 'Unique biography...',
   type: 'text',
   rows: 5,
+  optional: false,
   m: { mt: '0' }, // mt, mtT, mtM, mb, mbT, ....
 };
 
 // DROPDOWN
 const DropdownExample = (args) => {
-  const [selected, setSelected] = useState(['Option 1']);
+  const [selected, setSelected] = useState([]);
 
   return (
     <Row>
@@ -102,6 +111,7 @@ dropdown.args = {
   bold: false,
   search: false,
   addNew: false,
+  optional: false,
 };
 
 // CHECKBOX
@@ -145,4 +155,33 @@ rate.args = {
   disabled: false,
   allowClear: false,
   error: '',
+};
+
+const initState = {
+  title: '',
+  description: '',
+  things: [''],
+  tips: [''],
+};
+
+// INPUT CMS INPUT
+const InputCMSExample = (args) => {
+  const [formState, setFormState] = useState(initState);
+
+  return (
+    <Row>
+      <Col w={[4, 6, 4]}>
+        <InputCMS {...args} formState={formState} handleChange={setFormState} />
+      </Col>
+    </Row>
+  );
+};
+
+export const inputCMS = InputCMSExample.bind({});
+rate.args = {
+  value: 4, // initial value
+  disabled: false,
+  allowClear: false,
+  error: '',
+  optional: false,
 };

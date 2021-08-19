@@ -25,11 +25,12 @@ export const Button = styled.button`
 export const Modal = styled.section`
   z-index: 100;
   position: fixed;
-  right: ${({ theme: { spacings } }) => spacings[4]};
+  right: ${({ theme: { spacings } }) => spacings[3]};
+  margin-left: 20px;
   bottom: ${({ theme: { spacings } }) => spacings[4]};
   border: 0;
   border-radius: ${({ theme: { borders } }) => borders.radiusLarge};
-  min-width: 300px;
+  min-width: 280px;
   max-width: 450px;
   box-sizing: border-box;
   overflow: hidden;

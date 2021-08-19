@@ -4,6 +4,17 @@ import * as S from './style';
 import * as T from '../Typography';
 import Icon from '../Icon';
 
+const formatLink = (type, contact) => {
+  switch (type) {
+    case 'email':
+      return `mailto:${contact}`;
+    case 'phone':
+      return `tel:${contact}`;
+    default:
+      return contact;
+  }
+};
+
 const HelpButton = ({ position = {}, customContacts = [], ...props }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -17,19 +28,25 @@ const HelpButton = ({ position = {}, customContacts = [], ...props }) => {
           </S.CloseButton>
         </S.Header>
         <S.Content>
-          <T.P color="neutralDark" mb="4">
+          <T.P color="neutralDark" mb="6">
             We all need to speak to someone sometimes! Use any of the contact
             details below to find a person to chat with.
           </T.P>
-          {customContacts.map(({ title, availability, contact }) => (
-            <S.ContactItem>
+          {customContacts.map(({ title, availability, contact, type }) => (
+            <S.ContactItem mb="5">
               <T.H3 color="neutralMain">{title}</T.H3>
               <T.P color="neutralDark" isSmall>
                 {availability}
               </T.P>
-              <T.P weight="bold" color="secondaryMain" isSmall>
+              <T.Link
+                external
+                weight="bold"
+                color="secondaryMain"
+                isSmall
+                to={formatLink(type, contact)}
+              >
                 {contact}
-              </T.P>
+              </T.Link>
             </S.ContactItem>
           ))}
           <S.ContactItem mb="4">
@@ -37,9 +54,15 @@ const HelpButton = ({ position = {}, customContacts = [], ...props }) => {
             <T.P color="neutralDark" isSmall>
               Available 24/7
             </T.P>
-            <T.P weight="bold" color="secondaryMain" isSmall>
+            <T.Link
+              external
+              weight="bold"
+              color="secondaryMain"
+              isSmall
+              to={formatLink('phone', '02071231234')}
+            >
               020 7123 1234
-            </T.P>
+            </T.Link>
           </S.ContactItem>
         </S.Content>
       </S.Modal>

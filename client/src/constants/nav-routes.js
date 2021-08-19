@@ -2,6 +2,22 @@ const GENERAL = {
   HOME: '/',
 };
 
+const admin = '/admin';
+
+const ADMIN = {
+  HOME: `${admin}/home`,
+  EDIT_DETAILS: `${admin}/edit-details`,
+  CUSTOMISE_LOG_OUT: `${admin}/customise-log-out`,
+};
+
+const SUPER_ADMIN = {
+  HOME: `${admin}/home`,
+  EDIT_CONTENT: `${admin}/edit-content`,
+  EDIT_DETAILS: `${admin}/edit-details`,
+  ORGANISATIONS: `${admin}/organisations`,
+  CUSTOMISE_LOG_OUT: `${admin}/customise-log-out`,
+};
+
 const EXTERNAL = {
   TERMS_OF_USE: '//www.google.com/',
   PRIVACY_POLICY: '//www.google.com/',
@@ -22,4 +38,4 @@ const STEPS = {
   STEP: '/steps/:id',
 };
 
-export { GENERAL, EXTERNAL, STEPS };
+export { GENERAL, EXTERNAL, STEPS, ADMIN, SUPER_ADMIN };

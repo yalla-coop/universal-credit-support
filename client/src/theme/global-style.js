@@ -32,8 +32,6 @@ const style = css`
     padding: 0;
     font-family: 'Heebo', sans-serif;
     word-wrap: break-word;
-    min-height: 100% important;
-    height: 100%;
   }
 
   /* to override body margin from antd */
@@ -70,8 +68,6 @@ const style = css`
   html {
     box-sizing: border-box;
     -webkit-text-size-adjust: 100%;
-    min-height: 100% important;
-    height: 100%;
   }
 
   *,
@@ -117,6 +113,28 @@ const style = css`
   // Remove recaptcha badge
   .grecaptcha-badge {
     visibility: hidden;
+  }
+
+  .ant-input:focus,
+  .ant-input-password:focus,
+  .ant-input-search:focus,
+  .ant-input-affix-wrapper:focus,
+  .ant-select-selector:focus {
+    border-color: inherit !important;
+    outline: 0;
+    -webkit-box-shadow: 0 0 0 0px rgba(87, 168, 233, 0.2);
+    box-shadow: 0 0 0 0px rgba(87, 168, 233, 0.2);
+  }
+
+  .ant-input:hover,
+  .ant-input-password:hover,
+  .ant-input-search:hover,
+  .ant-input-affix-wrapper:hover,
+  .ant-select-selector:hover {
+    border-color: inherit !important;
+    outline: 0;
+    -webkit-box-shadow: 0 0 0 0px rgba(87, 168, 233, 0.2);
+    box-shadow: 0 0 0 0px rgba(87, 168, 233, 0.2);
   }
 `;
 

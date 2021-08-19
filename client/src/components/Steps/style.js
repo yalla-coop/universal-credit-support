@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { keyframes } from '@emotion/react';
 import { Link } from 'react-router-dom';
 
-import setMargin from './../../helpers/set-margin';
+import setMargin from '../../helpers/set-margin';
 
 const bounce = (start) => keyframes`
   0% {
