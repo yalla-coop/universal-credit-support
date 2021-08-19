@@ -8,6 +8,8 @@ DROP TABLE IF EXISTS "content_audit_log" CASCADE;
 CREATE TABLE "content_audit_log" (
   "id" SERIAL PRIMARY KEY,
   "user_id" INTEGER REFERENCES users(id),
+  "step_id" INTEGER REFERENCES steps(id),
+  "landing_page_content_id" INTEGER REFERENCES landing_page_content(id),
   "type" content_audit_log_types NOT NULL,
   "updated_content" JSON,
     -- { 
