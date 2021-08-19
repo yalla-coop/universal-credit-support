@@ -1,5 +1,6 @@
 import { query } from '../connect';
 import * as T from '../../constants';
+import dummyData from './dummy-data';
 
 const createUser = async ({
   firstName,
@@ -35,24 +36,21 @@ const createUser = async ({
   return res.rows[0];
 };
 
-// 123456Aa password
-const password = '$2a$08$23ik.euo.8EM.tqkX/43ke539bnaWX/2vK8nsbrdlYl0UhGMwCR92';
-
 const createUsers = async () => {
   const superAdmin = await createUser({
-    firstName: 'super',
-    lastName: 'admin',
-    email: 'superadmin@hyde.co.uk',
-    backupEmail: 'superadmin@hyde.co.uk',
-    password,
+    firstName: dummyData.hydeSuperAdmin.firstName,
+    lastName: dummyData.hydeSuperAdmin.lastName,
+    email: dummyData.hydeSuperAdmin.email,
+    backupEmail: dummyData.hydeSuperAdmin.backupEmail,
+    password: dummyData.password,
     role: T.userRoles.SUPER_ADMIN,
   });
   const admin1 = await createUser({
-    firstName: 'Joe',
-    lastName: 'admin',
-    email: 'admin1@hyde.co.uk',
-    backupEmail: 'admin1@hyde.co.uk',
-    password,
+    firstName: dummyData.admin1.firstName,
+    lastName: dummyData.admin1.lastName,
+    email: dummyData.admin1.email,
+    backupEmail: dummyData.admin1.backupEmail,
+    password: dummyData.password,
     role: T.userRoles.ADMIN,
   });
 

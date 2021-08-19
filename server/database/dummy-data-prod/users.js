@@ -1,5 +1,6 @@
 import { query } from '../connect';
 import * as T from '../../constants';
+import prodData from './prod-data';
 
 const createUser = async ({
   firstName,
@@ -35,16 +36,13 @@ const createUser = async ({
   return res.rows[0];
 };
 
-// 123456Aa password
-const password = '$2a$08$23ik.euo.8EM.tqkX/43ke539bnaWX/2vK8nsbrdlYl0UhGMwCR92';
-
 const createUsers = async () => {
   const superAdmin = await createUser({
-    firstName: 'super',
-    lastName: 'admin',
-    email: 'superadmin@hyde.co.uk',
-    backupEmail: 'superadmin@hyde.co.uk',
-    password,
+    firstName: prodData.hydeSuperAdmin.firstName,
+    lastName: prodData.hydeSuperAdmin.lastName,
+    email: prodData.hydeSuperAdmin.email,
+    backupEmail: prodData.hydeSuperAdmin.backupEmail,
+    password: prodData.password,
     role: T.userRoles.SUPER_ADMIN,
   });
 
