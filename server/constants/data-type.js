@@ -10,3 +10,9 @@ export const userStatuses = {
   ACTIVE: 'ACTIVE',
   DELETED: 'DELETED',
 };
+
+export const contactLinksTypes = {
+  PHONE: 'PHONE',
+  WEBCHAT_LINK: 'WEBCHAT_LINK',
+  LINK: 'LINK',
+};
