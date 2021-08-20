@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
 import createUsers from './users';
 import createOrganisations from './organisations';
+import createLandingPage from '../dummy-data-prod/landingPageContent';
 
 if (process.env.NODE_ENV !== 'production') {
   dotenv.config();
@@ -9,7 +10,8 @@ if (process.env.NODE_ENV !== 'production') {
 const buildData = async () => {
   const createdData = {};
   createdData.users = await createUsers(createdData);
-  createdData.users = await createOrganisations(createdData);
+  createdData.organisations = await createOrganisations(createdData);
+  createdData.landingPage = await createLandingPage(createdData);
 
   return createdData;
 };

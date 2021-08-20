@@ -3,9 +3,11 @@ DROP TABLE IF EXISTS "steps" CASCADE;
 CREATE TABLE "steps" (
   "id" SERIAL PRIMARY KEY,
   "stage" stage_types,
-  "order" INTEGER,
+  "step_order" INT,
   "title" TEXT,
   "description" TEXT,
+  "page_title" TEXT,
+  "page_description" TEXT,
   "how_long_does_it_take" JSON,
     -- {
     --   time_range_text: '' //30 to 45 mins
