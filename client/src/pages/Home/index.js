@@ -55,7 +55,7 @@ const Home = () => {
     const remainder = arr.slice(1).join(' ');
     return (
       <>
-        <T.H2 color="primaryMain" mb="2" mr="2">
+        <T.H2 color="primaryMain" mb="2" mr="2" mt="2">
           {firstSentence}! <S.Span>{remainder}</S.Span>
         </T.H2>
       </>
