@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import * as S from './style';
 import * as T from '../Typography';
 import Icon from '../Icon';
+import TextWithIcon from '../TextWithIcon';
 
 const renderChild = (isCompleted, title) => {
   if (isCompleted) {
@@ -23,40 +24,17 @@ const renderChild = (isCompleted, title) => {
     );
   }
   return (
-    <T.H1 weight="bold" color="white" ta="center">
+    <T.H2
+      weight="bold"
+      color={isCompleted ? 'neutralMain' : 'white'}
+      ta="center"
+    >
       {title}
-    </T.H1>
+    </T.H2>
   );
 };
 
-const FormattedContent = ({ txt }) => {
-  const arr = txt.split(/(<strong[a-z, A-Z]*>)/);
-  let insideStrongTag = false;
-  let underline = false;
-
-  return (
-    <>
-      {arr.map((part) => {
-        if (part.includes('strong')) {
-          insideStrongTag = !insideStrongTag;
-
-          if (part.includes('underline')) {
-            underline = true;
-          }
-          return null;
-        }
-
-        if (insideStrongTag) {
-          return <S.Strong underline={underline}>{part}</S.Strong>;
-        }
-
-        return part;
-      })}
-    </>
-  );
-};
-
-const Step = forwardRef(
+const Card = forwardRef(
   (
     {
       variant = 'primary',
@@ -64,10 +42,12 @@ const Step = forwardRef(
       content,
       children,
       title,
+      description,
       isCompleted,
       handleClick,
       isJustCompletedOne,
       to = '/',
+      isOptional,
       ...props
     },
     ref
@@ -76,6 +56,29 @@ const Step = forwardRef(
     const borderColor = `${variant}Mid`;
     const circleColor =
       variant === 'neutral' ? `${variant}Mid` : `${variant}Main`;
+
+    if (isOptional)
+      return (
+        <S.Wrapper onClick={handleClick} mb="8" {...props} ref={ref}>
+          <S.StyledLink to={to} style={{ color: 'transparent', width: '100%' }}>
+            <S.OptionalContainer>
+              <T.H2 color="neutralMain" mb="4">
+                {title}
+              </T.H2>
+              <T.P color="neutralDark" mb="4">
+                {description}
+              </T.P>
+              <TextWithIcon
+                icon="forwardArrow"
+                text="Check here"
+                iconColor="primaryMain"
+                color="neutralMain"
+                to={to}
+              />
+            </S.OptionalContainer>
+          </S.StyledLink>
+        </S.Wrapper>
+      );
 
     return (
       <S.Wrapper bgColor={bgColor} onClick={handleClick} {...props} ref={ref}>
@@ -92,7 +95,7 @@ const Step = forwardRef(
               </T.P>
             )}
             <T.P isSmall color="neutralMain">
-              <FormattedContent txt={content} />
+              {description}
             </T.P>
             <S.Circle
               circleColor={circleColor}
@@ -109,4 +112,4 @@ const Step = forwardRef(
   }
 );
 
-export default Step;
+export default Card;

@@ -8,13 +8,14 @@ export const Button = styled.button`
   color: ${({ theme }) => theme.colors.white};
   border-radius: 12px 12px 0px 0px;
   transform: rotate(-90deg);
-  position: absolute;
+  position: fixed;
   right: ${({ position }) => position.right || 0};
-  top: ${({ position }) => position.top || '50%'};
+  top: ${({ position }) => position.top || '65%'};
   left: ${({ position }) => position.left && position.left};
   bottom: ${({ position }) => position.bottom && position.bottom};
   padding: 0;
   margin: 0;
+  margin-right: ${({ mr }) => mr || '-20px'};
   border: 0;
   display: flex;
   justify-content: center;
@@ -27,7 +28,7 @@ export const Modal = styled.section`
   position: fixed;
   right: ${({ theme: { spacings } }) => spacings[3]};
   margin-left: 20px;
-  bottom: ${({ theme: { spacings } }) => spacings[4]};
+  bottom: ${({ theme: { spacings } }) => spacings[5]};
   border: 0;
   border-radius: ${({ theme: { borders } }) => borders.radiusLarge};
   min-width: 280px;
