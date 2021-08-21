@@ -65,6 +65,7 @@ export const Span = styled.span`
 `;
 
 export const Container = styled.div`
+  ${setMargin};
   width: 100%;
   max-width: 580px;
   padding: ${({ theme: { spacings } }) => `${spacings[4]} ${spacings[7]}`};

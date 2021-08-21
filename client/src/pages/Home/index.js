@@ -32,7 +32,7 @@ const afterClaimContent = {
 };
 
 const Home = () => {
-  const { lang, langOptions, setLang } = useLang();
+  const { lang } = useLang();
   const { steps: fullSteps, justCompletedId, setJustCompletedId } = useSteps();
   const [landingContent, setLandingContent] = useState({});
   const [steps, setSteps] = useState({
@@ -174,7 +174,7 @@ const Home = () => {
 
       {/* AFTER CLAIMING */}
       <S.Section mt="7">
-        <Icon icon="flag" />
+        <Icon icon="flag" mt="6" mb="5" mbM="0" mtM="5" />
         <T.H2 color="neutralMain" mb="1">
           {
             afterClaimContent.title[
@@ -190,7 +190,7 @@ const Home = () => {
           }
         </S.StyledText>
         {!completedClaim && !showAfterClaim && (
-          <S.Container>
+          <S.Container mt="4">
             <TextWithIcon
               icon="bulletArrow"
               iconColor="primaryMain"

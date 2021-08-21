@@ -42,7 +42,9 @@ const TextWithIcon = ({
         underline={underline}
         {...props}
       >
-        <S.Text color={color}>{text}</S.Text>
+        <T.H3 weight={weight} color={color}>
+          {text}
+        </T.H3>
       </T.Link>
     </S.Wrapper>
   );
