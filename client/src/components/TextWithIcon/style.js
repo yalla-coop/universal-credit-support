@@ -42,6 +42,6 @@ export const Button = styled.button`
   align-items: center;
   justify-content: flex-start;
   ${({ theme }) => theme.media.mobile} {
-    justify-content: center;
+    justify-content: ${({ jc }) => jc || 'center'};
   }
 `;

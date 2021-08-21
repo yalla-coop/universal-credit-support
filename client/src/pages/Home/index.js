@@ -197,6 +197,8 @@ const Home = () => {
               isButton
               handleClick={() => setShowAfterClaim(true)}
               text="View steps"
+              jc="flex-start"
+              weight="500"
             />
           </S.Container>
         )}
