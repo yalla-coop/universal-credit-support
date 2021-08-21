@@ -1,8 +1,8 @@
 import dotenv from 'dotenv';
 import createUsers from './users';
 import createOrganisations from './organisations';
-import createLandingPage from './landingPageContent';
-import createSteps from './stepsContent';
+import createLandingPage from './landing-page-content';
+import createSteps from './steps-content';
 
 if (process.env.NODE_ENV !== 'production') {
   dotenv.config();

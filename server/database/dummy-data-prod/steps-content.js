@@ -1,4 +1,5 @@
 import { query } from '../connect';
+import * as T from '../../constants';
 
 const createSteps = async ({
   stage,
@@ -60,7 +61,7 @@ const createSteps = async ({
 
 const addStepContent = async () => {
   const eligibilityContent = {
-    stage: 'BEFORE_CLAIMING',
+    stage: T.stageTypes.BEFORE_CLAIMING,
     stepOrder: 1,
     title: 'Wait! Should I apply?',
     description: `Let's find out with a quick and easy benefit calculator`,
@@ -70,7 +71,7 @@ const addStepContent = async () => {
     WhereDoYouNeedToGo: {
       link:
         'https://www.entitledto.co.uk/benefits-calculator/Intro/Home?cid=0af743fb-414d-4559-a0c9-b88d26a88671',
-      type: 'LINK',
+      type: T.linkTypes.LINK,
       title: `Our Benefit Calculator`,
     },
     thingsYouWillNeed: [],
@@ -125,7 +126,7 @@ const addStepContent = async () => {
 
   // CLAIMING
   const createAccountContent = {
-    stage: 'CLAIMING',
+    stage: T.stageTypes.CLAIMING,
     stepOrder: 2,
     title: `Create account`,
     description: `Create an account on the Government website if you haven’t already. You’ll want to do this as soon as possible!`,
@@ -134,7 +135,7 @@ const addStepContent = async () => {
     howLongDoesItTake: { timeRangeText: `5 to 10 minutes` },
     WhereDoYouNeedToGo: {
       link: 'https://www.universal-credit.service.gov.uk',
-      type: 'LINK',
+      type: T.linkTypes.LINK,
       title: `Create account`,
     },
     thingsYouWillNeed: [
@@ -160,13 +161,7 @@ const addStepContent = async () => {
         ],
       },
     ],
-    whatYouWillNeedToKnow: [
-      { title: ``, description: ``, thisCanInclude: [], tips: [] },
-      { title: ``, description: ``, thisCanInclude: [], tips: [] },
-      { title: ``, description: ``, thisCanInclude: [], tips: [] },
-      { title: ``, description: ``, thisCanInclude: [], tips: [] },
-      { title: ``, description: ``, thisCanInclude: [], tips: [] },
-    ],
+    whatYouWillNeedToKnow: [],
     topTip: '',
     otherTips: [
       `You now have 28 days in which to make and submit the claim. The start date will be from the date the claim is submitted.`,
@@ -174,7 +169,7 @@ const addStepContent = async () => {
   };
 
   const makeTheClaimContent = {
-    stage: 'CLAIMING',
+    stage: T.stageTypes.CLAIMING,
     stepOrder: 3,
     title: `Make the claim`,
     description: `Now it’s time to complete the main part of the application form. Let’s do this!`,
@@ -183,7 +178,7 @@ const addStepContent = async () => {
     howLongDoesItTake: { timeRangeText: `30 to 45 minutes` },
     WhereDoYouNeedToGo: {
       link: 'https://www.universal-credit.service.gov.uk/sign-in',
-      type: 'LINK',
+      type: T.linkTypes.LINK,
       title: `Make the claim`,
     },
     thingsYouWillNeed: [
@@ -301,7 +296,7 @@ const addStepContent = async () => {
   };
 
   const verifyIdentityContent = {
-    stage: 'CLAIMING',
+    stage: T.stageTypes.CLAIMING,
     stepOrder: 4,
     title: `Verify Identity`,
     description: `Claim submitted! Now to be considered, you’ll need to ‘verify’ your identity`,
@@ -310,7 +305,7 @@ const addStepContent = async () => {
     howLongDoesItTake: { timeRangeText: `5 to 15 minutes` },
     WhereDoYouNeedToGo: {
       link: 'https://www.universal-credit.service.gov.uk/sign-in',
-      type: 'LINK',
+      type: T.linkTypes.LINK,
       title: `Gov UK Verify`,
     },
     thingsYouWillNeed: [
@@ -342,13 +337,7 @@ const addStepContent = async () => {
         ],
       },
     ],
-    whatYouWillNeedToKnow: [
-      { title: ``, description: ``, thisCanInclude: [], tips: [] },
-      { title: ``, description: ``, thisCanInclude: [], tips: [] },
-      { title: ``, description: ``, thisCanInclude: [], tips: [] },
-      { title: ``, description: ``, thisCanInclude: [], tips: [] },
-      { title: ``, description: ``, thisCanInclude: [], tips: [] },
-    ],
+    whatYouWillNeedToKnow: [],
     topTip: `Don't worry if you can't do this, you can do it at the interview, but make sure sign back into the UC online account and click the ‘I can’t do this online’ in the 'To-do-list task`,
     otherTips: [
       `If you already have a government gateway account, you can use this to verify your identity instead `,
@@ -356,7 +345,7 @@ const addStepContent = async () => {
   };
 
   const attendInterviewContent = {
-    stage: 'CLAIMING',
+    stage: T.stageTypes.CLAIMING,
     stepOrder: 5,
     title: `Attend Interview`,
     description: `Nearly there! The final step to accessing your Universal Credit is an interview`,
@@ -365,7 +354,7 @@ const addStepContent = async () => {
     howLongDoesItTake: { timeRangeText: `` },
     WhereDoYouNeedToGo: {
       link: '0800 328 5644',
-      type: 'PHONE',
+      type: T.linkTypes.PHONE,
       title: `0800 328 5644`,
     },
     thingsYouWillNeed: [
@@ -410,13 +399,7 @@ const addStepContent = async () => {
         ],
       },
     ],
-    whatYouWillNeedToKnow: [
-      { title: ``, description: ``, thisCanInclude: [], tips: [] },
-      { title: ``, description: ``, thisCanInclude: [], tips: [] },
-      { title: ``, description: ``, thisCanInclude: [], tips: [] },
-      { title: ``, description: ``, thisCanInclude: [], tips: [] },
-      { title: ``, description: ``, thisCanInclude: [], tips: [] },
-    ],
+    whatYouWillNeedToKnow: [],
     topTip: `Put on the kettle and enjoy some mindfulness! You can sometimes have to wait a while on the phone, but it's worth it!`,
     otherTips: [
       `Just remember to be honest, don't worry about trying to make out you can do more than you can.`,
@@ -426,7 +409,7 @@ const addStepContent = async () => {
 
   // AFTER CLAIMING
   const advanceContent = {
-    stage: 'AFTER_CLAIMING',
+    stage: T.stageTypes.AFTER_CLAIMING,
     stepOrder: 6,
     title: `Want to apply for an advance payment?`,
     description: `Don’t be scared about applying for this if you definitely do need it!`,
@@ -435,7 +418,7 @@ const addStepContent = async () => {
     howLongDoesItTake: { timeRangeText: `` },
     WhereDoYouNeedToGo: {
       link: 'https://www.universal-credit.service.gov.uk',
-      type: 'LINK',
+      type: T.linkTypes.LINK,
       title: `Apply for advance`,
     },
     thingsYouWillNeed: [
@@ -446,16 +429,14 @@ const addStepContent = async () => {
         tips: [],
       },
       { title: `Mobile phone`, description: ``, thisCanInclude: [], tips: [] },
-      { title: ``, description: ``, thisCanInclude: [], tips: [] },
-      { title: ``, description: ``, thisCanInclude: [], tips: [] },
-      { title: ``, description: ``, thisCanInclude: [], tips: [] },
     ],
     whatYouWillNeedToKnow: [
-      { title: ``, description: ``, thisCanInclude: [], tips: [] },
-      { title: ``, description: ``, thisCanInclude: [], tips: [] },
-      { title: ``, description: ``, thisCanInclude: [], tips: [] },
-      { title: ``, description: ``, thisCanInclude: [], tips: [] },
-      { title: ``, description: ``, thisCanInclude: [], tips: [] },
+      {
+        title: `Details of your job centre where you have had your interview and identity checked`,
+        description: ``,
+        thisCanInclude: [],
+        tips: [],
+      },
     ],
     topTip: '',
     otherTips: [
@@ -465,7 +446,7 @@ const addStepContent = async () => {
   };
 
   const firstPaymentContent = {
-    stage: 'AFTER_CLAIMING',
+    stage: T.stageTypes.AFTER_CLAIMING,
     stepOrder: 7,
     title: `Getting your first payment`,
     description: `Make sure you have done the things you need to get paid!`,
@@ -474,7 +455,7 @@ const addStepContent = async () => {
     howLongDoesItTake: { timeRangeText: `` },
     WhereDoYouNeedToGo: {
       link: 'https://www.universal-credit.service.gov.uk',
-      type: 'LINK',
+      type: T.linkTypes.LINK,
       title: `Check your UC account`,
     },
     thingsYouWillNeed: [
@@ -487,10 +468,6 @@ const addStepContent = async () => {
         ],
         tips: [],
       },
-      { title: ``, description: ``, thisCanInclude: [], tips: [] },
-      { title: ``, description: ``, thisCanInclude: [], tips: [] },
-      { title: ``, description: ``, thisCanInclude: [], tips: [] },
-      { title: ``, description: ``, thisCanInclude: [], tips: [] },
     ],
     whatYouWillNeedToKnow: [
       {
@@ -505,9 +482,6 @@ const addStepContent = async () => {
         thisCanInclude: [],
         tips: [],
       },
-      { title: ``, description: ``, thisCanInclude: [], tips: [] },
-      { title: ``, description: ``, thisCanInclude: [], tips: [] },
-      { title: ``, description: ``, thisCanInclude: [], tips: [] },
     ],
     topTip: `Any limitation you have told your work coach about, make sure to put it in your journal as well, to keep a record of your conversations.`,
     otherTips: [
