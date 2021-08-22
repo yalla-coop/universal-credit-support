@@ -8,17 +8,70 @@ const initialSteps = [
     name: 'checkEligibility',
     title: 'Wait! Should I apply?',
     description: `Let's find out with a quick and easy benefit calculator`,
+    pageTitle: `Should you claim?`,
+    pageDescription: `Using the benefit calculator enables you to find out an estimate of how much Universal Credit you may be entitled to.`,
+    thingsYouWillNeed: [],
     checkListItems: [
-      { value: 'incomeDetails', isChecked: false },
-      { value: 'detailsOfAnySavings', isChecked: false },
-      { value: 'housingCosts', isChecked: false },
-      { value: 'childcareCosts', isChecked: false },
-      { value: 'incomeOthersDetails', isChecked: false },
+      {
+        title: `Income details`,
+        description: ``,
+        thisCanInclude: [
+          `Salaries from an employer or self-employment`,
+          `Other Benefits you and/or your partner already receive`,
+          `Private pensions`,
+        ],
+        tips: [`Benefit income and salaries can be found on P60s/P45s`],
+        isChecked: false,
+        stage: 'whatYouWillNeedToKnow',
+      },
+      {
+        title: `Details of any capital, savings and investments`,
+        description: ``,
+        thisCanInclude: [],
+        tips: [
+          `This includes ALL money you hold anywhere, including in current bank accounts, ISAs and property you own that you don’t live in`,
+        ],
+        isChecked: false,
+        stage: 'whatYouWillNeedToKnow',
+      },
+      {
+        title: `Housing costs`,
+        description: `You can get this from your landlord or mortgage provider.`,
+        thisCanInclude: [
+          `How much rent you are charged and how often`,
+          `How much service charges you are charged and how often`,
+          `Mortgage payments`,
+          `Ground rent`,
+        ],
+        tips: [],
+        isChecked: false,
+        stage: 'whatYouWillNeedToKnow',
+      },
+      {
+        title: `Childcare costs`,
+        description: ``,
+        thisCanInclude: [],
+        tips: [],
+        isChecked: false,
+        stage: 'whatYouWillNeedToKnow',
+      },
+      {
+        title: `Income details of any other adults living in the property that are not lodgers e.g. grown up children, elderly parents`,
+        description: ``,
+        thisCanInclude: [],
+        tips: [],
+        isChecked: false,
+        stage: 'whatYouWillNeedToKnow',
+      },
     ],
-    isCompleted: true,
+    isCompleted: false,
     externalLink: true,
     externalButtonLink: 'ELIGIBILITY_CALCULATOR',
     isOptional: true,
+    topTip: `The more accurate the information you give the more accurate the estimate will be.`,
+    howLongDoesItTake: {
+      timeRangeText: '15 to 25 minutes',
+    },
   },
   {
     id: '2',
@@ -134,7 +187,7 @@ const compareCheckListItems = (checkListItemsFromLocal, checkListItems) => {
   const updatedCheckListItems = checkListItems.map((checkListItem) => {
     const existing = checkListItemsFromLocal.find(
       (checkListItemFromLocal) =>
-        checkListItem.value === checkListItemFromLocal.value
+        checkListItem.title === checkListItemFromLocal.title
     );
     if (existing) {
       return {
@@ -191,6 +244,7 @@ const StepsProvider = ({ children, ...props }) => {
   const [justCompletedId, setJustCompletedId] = useState('');
 
   const checkUncheckItem = (stepName, itemKey) => {
+    console.log('TEST', stepName, itemKey);
     setSteps((prevSteps) => {
       const newSteps = prevSteps.map((step) => {
         if (step.name === stepName) {
@@ -200,7 +254,7 @@ const StepsProvider = ({ children, ...props }) => {
           const newCheckListItems = step.checkListItems.map((item) => {
             const newItem = { ...item };
 
-            if (newItem.value === itemKey) {
+            if (newItem.title === itemKey) {
               newItem.isChecked = !item.isChecked;
             }
 

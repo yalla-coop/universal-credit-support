@@ -8,6 +8,7 @@ import * as Inputs from './Inputs';
 import Icon from './Icon';
 import TextWithIcon from './TextWithIcon';
 import HelpButton from './HelpButton';
+import * as Cards from './Cards';
 
 export {
   Button,
@@ -20,4 +21,5 @@ export {
   Icon,
   TextWithIcon,
   HelpButton,
+  Cards,
 };

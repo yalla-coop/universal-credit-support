@@ -7,7 +7,7 @@ const colorArray = [
     bg: 'neutralSurface',
     border: 'neutralMid',
     text: 'neutralMain',
-    icon: 'neutralMid',
+    icon: 'neutralDark',
   },
   {
     bg: 'secondaryLight',
@@ -46,7 +46,7 @@ const Tips = ({ tips = [], startingColor = 0, ...props }) => {
             mr="2"
           />
           {typeof tip === 'string' ? (
-            <T.H3 color={getColor(index, startingColor).text}>{tip}</T.H3>
+            <T.H3 color={getColor(index, startingColor).text}>Tip! {tip}</T.H3>
           ) : (
             tip
           )}
