@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import { ADMIN } from '../../constants/nav-routes';
 
@@ -16,13 +16,13 @@ const { Row, Col } = Grid;
 function CreateUniqueLink({ success }) {
   const [uniqueSlug, setUniqueSlug] = useState('');
   const [loading, setLoading] = useState(false);
-  const [submitAttempt, setSubmitAttempt] = useState(false);
+  const submitAttempt = useRef(false);
   const [errors, setErrors] = useState({});
   const history = useHistory();
 
   const validate = (value = uniqueSlug) => {
     try {
-      if (submitAttempt) {
+      if (submitAttempt.current) {
         validateCreateUniqueLink({
           uniqueSlug: value,
         });
@@ -45,7 +45,7 @@ function CreateUniqueLink({ success }) {
 
   const handleSubmit = async () => {
     try {
-      setSubmitAttempt(true);
+      submitAttempt.current = true;
 
       validateCreateUniqueLink({
         uniqueSlug,
@@ -103,7 +103,7 @@ function CreateUniqueLink({ success }) {
           </T.P>
           <T.P color="neutralDark" mb={6}>
             To change your unique link edit the text in the input field below.
-            Your link will then be https://www.uc-helper.com/[insert-your-
+            Your link will then be {window.location.host}/[insert-your-
             organisation-name here]).
           </T.P>
           <div>
