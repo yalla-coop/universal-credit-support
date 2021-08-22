@@ -11,14 +11,9 @@ import Icon from '../../components/Icon';
 import HelpButton from '../../components/HelpButton';
 import TextWithIcon from '../../components/TextWithIcon';
 
-import * as S from './style';
+import { LandingPage } from '../../api-calls';
 
-const dataToComeFromServer = {
-  title: `Are you trying to work out how you actually claim for Universal
-  Credit and feeling a bit lost?`,
-  subtitle: `Don’t worry, we’ve got you! Click on each step below to work your way through the process.`,
-  instructions: `Everything will be saved as you go so you can leave this tool and come back anytime. Always remember you can contact us whenever just by clicking that useful ‘Help Me!’ button.`,
-};
+import * as S from './style';
 
 const afterClaimContent = {
   title: {
@@ -41,10 +36,12 @@ const Home = () => {
     afterClaiming: [],
   });
   const [showAfterClaim, setShowAfterClaim] = useState(false);
+  const [fetchError, setFetchError] = useState('');
+
   const currentStep = fullSteps.find((step) => !step.isCompleted);
   const currentStepRef = useRef();
 
-  const completedClaim = currentStep.stage === 'afterClaiming';
+  const completedClaim = currentStep?.stage === 'afterClaiming';
 
   const formatText = (text) => {
     if (!text) return '';
@@ -89,8 +86,20 @@ const Home = () => {
   }, [justCompletedId]);
 
   useEffect(() => {
-    // TO DO - api to get data from server
-    setLandingContent(dataToComeFromServer);
+    let mounted = true;
+    async function fetchData() {
+      const { data, error } = await LandingPage.getLandingPageContent({});
+      if (mounted) {
+        if (error) {
+          setFetchError(error.message);
+        } else {
+          setLandingContent(data);
+        }
+      }
+    }
+
+    fetchData();
+
     const stepsObj = fullSteps.reduce((acc, curr) => {
       const { stage } = curr;
       if (!acc[stage]) {
@@ -99,7 +108,12 @@ const Home = () => {
       acc[stage].push(curr);
       return acc;
     }, {});
-    setSteps(stepsObj);
+    if (mounted) {
+      setSteps(stepsObj);
+    }
+    return () => {
+      mounted = false;
+    };
   }, []);
 
   return (
@@ -107,7 +121,7 @@ const Home = () => {
       <S.PageHead>
         <S.HeaderText>
           <T.H2 weight="bold" color="white">
-            {landingContent.title}
+            {landingContent.headline}
           </T.H2>
         </S.HeaderText>
       </S.PageHead>
