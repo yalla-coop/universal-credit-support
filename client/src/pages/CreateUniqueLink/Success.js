@@ -1,4 +1,4 @@
-import { Typography as T, Button, Grid, Icon } from '../../components';
+import { Typography as T, Button, Grid, TextWithIcon } from '../../components';
 import { ADMIN } from '../../constants/nav-routes';
 
 import * as S from './style';
@@ -9,7 +9,7 @@ function CreateUniqueLinkSuccess({ uniqueSlug }) {
   return (
     <S.Container>
       <Row>
-        <Col w={[4, 12, 9]}>
+        <Col w={[4, 11, 9]}>
           <T.H1 color="neutralMain" mb={6}>
             Success!
           </T.H1>
@@ -18,23 +18,15 @@ function CreateUniqueLinkSuccess({ uniqueSlug }) {
             the details at any time. Your tool is now ready to be shared with
             your team by sharing your unique link below:
           </T.P>
-
-          <S.LinkWrapper
-            href={`${window.location.host}/${uniqueSlug}`}
-            target="_blank"
-          >
-            <Icon icon="open" width="30" height="30" color="primaryMain" />
-            <T.Link
-              color="neutralMain"
-              ml={5}
+          <S.LinkWrapper>
+            <TextWithIcon
+              iconColor="primaryMain"
+              to={`${window.location.host}/${uniqueSlug}`}
+              icon="open"
+              text={`${window.location.host}/${uniqueSlug}`}
+              external
               underline
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-              }}
-            >
-              {window.location.host}/{uniqueSlug}
-            </T.Link>
+            />
           </S.LinkWrapper>
           <Button
             to={ADMIN.HOME}

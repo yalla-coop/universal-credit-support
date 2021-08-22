@@ -38,7 +38,7 @@ function CreateUniqueLink({ success }) {
   };
 
   const handleUniqueLink = (value) => {
-    const cleanValue = value.trim().toLowerCase();
+    const cleanValue = value.trimStart().replace(' ', '-').toLowerCase();
     validate(cleanValue);
     setUniqueSlug(cleanValue);
   };
@@ -92,7 +92,7 @@ function CreateUniqueLink({ success }) {
   return (
     <S.Container>
       <Row>
-        <Col w={[4, 12, 8]}>
+        <Col w={[4, 11, 8]}>
           <T.H1 color="neutralMain" mb={6}>
             Create unique link
           </T.H1>

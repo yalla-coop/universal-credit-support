@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const Container = styled.div``;
 
-export const LinkWrapper = styled.a`
+export const LinkWrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.neutralSurface};
   display: flex;
   border-radius: 12px;
