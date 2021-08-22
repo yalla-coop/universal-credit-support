@@ -1,5 +1,8 @@
-import { useReducer, useEffect } from 'react';
+import { useReducer, useEffect, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
+import { breakpoints } from '../../theme';
+
 import {
   Grid,
   Typography as T,
@@ -19,7 +22,6 @@ const initialState = {
   password: '',
   httpError: '',
   validationErrs: {},
-  submitAttempt: false,
 };
 
 function reducer(state, newState) {
@@ -28,11 +30,17 @@ function reducer(state, newState) {
 const cleanEmail = (email) => email.toLowerCase().trim();
 
 const Login = () => {
+  const submitAttempt = useRef(false);
   const [state, setState] = useReducer(reducer, initialState);
-  const { email, password, validationErrs, httpError, submitAttempt } = state;
+  const { email, password, validationErrs, httpError } = state;
   const history = useHistory();
+
+  const isMobile = useMediaQuery({
+    query: `(max-width: ${breakpoints.mobile})`,
+  });
+
   useEffect(() => {
-    if (submitAttempt) {
+    if (submitAttempt.current) {
       validateForm();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -74,7 +82,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setState({ submitAttempt: true });
+    submitAttempt.current = true;
 
     const isValid = validateForm();
     if (isValid) {
@@ -106,22 +114,32 @@ const Login = () => {
             placeholder="Type your password..."
             margins={{ mt: '2', mb: '1' }}
             type="password"
-            showForgetPassword
             value={password}
             handleChange={(input) => setState({ password: input })}
             error={validationErrs.password}
           />
+          <T.Link
+            to={R.GENERAL.FORGET_PASSWORD}
+            color="neutralDark"
+            style={{ display: 'block' }}
+            mt="3"
+            ml="2"
+          >
+            Forget password?
+          </T.Link>
         </Col>
       </Row>
-      <Row mt="7" mtT="6" style={{ flex: 1, alignItems: 'flex-end' }}>
-        {httpError && (
-          <Col w={[4, 12, 12]}>
+      <Row
+        mt="7"
+        mtT="6"
+        style={{ flex: Number(isMobile), alignItems: 'flex-end' }}
+      >
+        <Col w={[4, 11, 6]} style={{ alignItems: 'flex-end' }}>
+          {!httpError && (
             <T.P mb="2" color="error">
               {httpError}
             </T.P>
-          </Col>
-        )}
-        <Col w={[4, 11, 6]} style={{ alignItems: 'flex-end' }}>
+          )}
           <Button
             variant="primary"
             disabled={false}
