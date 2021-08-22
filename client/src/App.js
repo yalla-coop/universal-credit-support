@@ -38,6 +38,14 @@ function App() {
                   Component={Pages.Step}
                   layout="step"
                 />
+                <Route
+                  exact
+                  path={navRoutes.ADMIN.LOGIN}
+                  Component={Pages.Login}
+                  layout="splitScreen"
+                  side="left"
+                  gradient="secondary"
+                />
               </Switch>
             </Router>
           </StepsProvider>
