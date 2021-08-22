@@ -30,6 +30,7 @@ function App() {
                   path={navRoutes.GENERAL.HOME}
                   Component={Pages.Home}
                   layout="general"
+                  showHelp
                 />
                 <Route
                   exact

@@ -5,8 +5,6 @@ import Icon from '../Icon';
 import * as S from './style';
 import * as T from '../Typography';
 
-// import * as T from '../Typography';
-
 const TextWithIcon = ({
   color = 'neutralMain',
   iconColor = 'secondaryMain',
@@ -44,7 +42,9 @@ const TextWithIcon = ({
         underline={underline}
         {...props}
       >
-        <S.Text color={color}>{text}</S.Text>
+        <T.H3 weight={weight} color={color}>
+          {text}
+        </T.H3>
       </T.Link>
     </S.Wrapper>
   );

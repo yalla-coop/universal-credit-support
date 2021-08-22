@@ -10,3 +10,20 @@ export const userStatuses = {
   ACTIVE: 'ACTIVE',
   DELETED: 'DELETED',
 };
+
+export const contactLinksTypes = {
+  PHONE: 'PHONE',
+  WEBCHAT_LINK: 'WEBCHAT_LINK',
+  LINK: 'LINK',
+};
+
+export const stageTypes = {
+  BEFORE_CLAIMING: 'BEFORE_CLAIMING',
+  CLAIMING: 'CLAIMING',
+  AFTER_CLAIMING: 'AFTER_CLAIMING',
+};
+
+export const linkTypes = {
+  LINK: 'LINK',
+  PHONE: 'PHONE',
+};
