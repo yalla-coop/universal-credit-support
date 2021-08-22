@@ -4,6 +4,7 @@ import * as CS from '../style';
 import * as S from './style';
 import Icon from '../../Icon';
 import Info from '../../Info';
+import { GENERAL } from '../../../constants/nav-routes';
 
 const BasicInput = ({
   type = 'text',
@@ -21,6 +22,7 @@ const BasicInput = ({
   m, // margins
   showPasswordInfo,
   optional,
+  showForgetPassword,
   ...props
 }) => {
   const [passwordInfoOpen, setPasswordInfoOpen] = useState(false);
@@ -78,6 +80,17 @@ const BasicInput = ({
         <T.P color="error" m="0" mt="1">
           {error}
         </T.P>
+      )}
+      {showForgetPassword && (
+        <T.Link
+          to={GENERAL.FORGET_PASSWORD}
+          color="neutralDark"
+          style={{ display: 'block' }}
+          mt="3"
+          ml="2"
+        >
+          Forget password?
+        </T.Link>
       )}
       {passwordInfoOpen && (
         <Info
