@@ -70,7 +70,7 @@ const HelpButton = ({ position = {}, customContacts = [], ...props }) => {
 
   return (
     <S.Button position={position} onClick={() => setIsOpen(true)}>
-      <T.H3 color="white">Help</T.H3>
+      <T.H3 color="white">Help me!</T.H3>
     </S.Button>
   );
 };

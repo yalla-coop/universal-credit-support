@@ -7,6 +7,7 @@ import {
   Button,
   Inputs,
   Grid,
+  HelpButton,
 } from '../../components';
 import { useSteps } from '../../context/steps';
 import { useLang } from '../../context/lang';
@@ -120,6 +121,7 @@ function Step() {
           )}
         </Row>
       </Row>
+      <HelpButton />
     </S.Container>
   );
 }
