@@ -46,6 +46,13 @@ function App() {
                   side="left"
                   gradient="secondary"
                 />
+                <Route
+                  exact
+                  path={navRoutes.ADMIN.DASHBOARD}
+                  Component={Pages.Dashboard}
+                  layout="dashboard"
+                  showMobileMenu
+                />
               </Switch>
             </Router>
           </StepsProvider>
