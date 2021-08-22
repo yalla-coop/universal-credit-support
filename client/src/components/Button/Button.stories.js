@@ -21,7 +21,6 @@ const Template = (args) => {
 
 export const PrimaryWithIcon = Template.bind({});
 PrimaryWithIcon.args = {
-  label: 'Button',
   variant: 'primary',
   disabled: false,
   loading: false,
@@ -30,7 +29,6 @@ PrimaryWithIcon.args = {
 };
 export const Primary = Template.bind({});
 Primary.args = {
-  label: 'Button',
   variant: 'primary',
   disabled: false,
   loading: false,
@@ -39,7 +37,6 @@ Primary.args = {
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-  label: 'Button',
   variant: 'secondary',
   disabled: false,
   loading: false,
@@ -48,7 +45,6 @@ Secondary.args = {
 
 export const Tertiary = Template.bind({});
 Tertiary.args = {
-  label: 'Button',
   variant: 'tertiary',
   disabled: false,
   loading: false,
@@ -59,7 +55,6 @@ Tertiary.args = {
 
 export const Loading = Template.bind({});
 Loading.args = {
-  label: 'Button',
   disabled: false,
   loading: true,
   text: 'Click',
@@ -67,7 +62,6 @@ Loading.args = {
 
 export const Disable = Template.bind({});
 Disable.args = {
-  label: 'Button',
   disabled: true,
   loading: false,
   text: 'Click',
