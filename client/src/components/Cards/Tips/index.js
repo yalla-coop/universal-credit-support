@@ -2,6 +2,8 @@ import * as S from './style';
 import * as T from '../../Typography';
 import Icon from '../../Icon';
 
+import { Row, Col } from '../../Grid';
+
 const colorArray = [
   {
     bg: 'neutralSurface',
@@ -35,24 +37,28 @@ const getColor = (index, startingColor) => {
   return colorArray[_index];
 };
 
-const Tips = ({ tips = [], startingColor = 0, ...props }) => {
+const Tips = ({ tips = [], startingColor = 0, cols, inner, ...props }) => {
   return (
-    <S.Section {...props}>
+    <Row {...props} inner={inner}>
       {tips.map((tip, index) => (
-        <S.Tip key={index} color={getColor(index, startingColor)} mb="3">
-          <Icon
-            icon="bulb"
-            color={getColor(index, startingColor).icon}
-            mr="2"
-          />
-          {typeof tip === 'string' ? (
-            <T.H3 color={getColor(index, startingColor).text}>Tip! {tip}</T.H3>
-          ) : (
-            tip
-          )}
-        </S.Tip>
+        <Col w={cols || [4, 12, 12]} key={index} inner>
+          <S.Tip key={index} color={getColor(index, startingColor)} mb="3">
+            <Icon
+              icon="bulb"
+              color={getColor(index, startingColor).icon}
+              mr="2"
+            />
+            {typeof tip === 'string' ? (
+              <T.H3 color={getColor(index, startingColor).text}>
+                Tip! {tip}
+              </T.H3>
+            ) : (
+              tip
+            )}
+          </S.Tip>
+        </Col>
       ))}
-    </S.Section>
+    </Row>
   );
 };
 

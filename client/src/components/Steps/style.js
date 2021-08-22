@@ -66,7 +66,7 @@ export const Container = styled.div`
   ${({ theme }) => theme.media.mobile} {
     max-width: auto;
     padding: ${({ direction }) =>
-      direction === 'right' ? '18px 200px 18px 20px' : '18px 20px 18px 200px'};
+      direction === 'right' ? '18px 190px 18px 20px' : '18px 20px 18px 190px'};
   }
 `;
 

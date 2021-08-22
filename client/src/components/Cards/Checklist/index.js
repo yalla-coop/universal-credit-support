@@ -73,7 +73,7 @@ const Checklist = ({
           </S.ExtraDetails>
         )}
       </S.Section>
-      {expanded && tips && <Tips tips={tips} mb="3" />}
+      {expanded && tips && <Tips tips={tips} mb="3" inner />}
     </>
   );
 };

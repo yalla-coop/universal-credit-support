@@ -76,6 +76,9 @@ const initialSteps = [
       type: 'LINK',
       title: `Our Benefit Calculator`,
     },
+    otherTips: [
+      `Keep hold of any documents you dig out to help you work out the bits you need to know for the calculator. These are often needed in the application so having them stored can be helpful to make things quicker!`,
+    ],
   },
   {
     id: '2',
@@ -84,15 +87,51 @@ const initialSteps = [
     title: 'Create account',
     description:
       'Create an account on the Government website. You’ll want to do this as soon as possible!',
+    pageTitle: ``,
+    pageDescription: ``,
     checkListItems: [
-      { value: 'anEmailAddress', isChecked: false },
-      { value: 'bankAccountDetails', isChecked: false },
-      { value: 'accessPhone', isChecked: false },
-      { value: 'partnerLinkingCode', isChecked: false },
+      {
+        title: `Email address`,
+        description: `This should be the bank account that your Universal Credit will be paid into. You can set up a free bank account in most high street banks or an online bank if you don’t already have one.`,
+        thisCanInclude: [],
+        tips: [],
+        stage: 'thingsYouWillNeed',
+        isChecked: false,
+      },
+      { title: `Bank account`, description: ``, thisCanInclude: [], tips: [] },
+      {
+        title: `Access to your mobile phone (if you have one)`,
+        description: ``,
+        thisCanInclude: [],
+        tips: [],
+        stage: 'thingsYouWillNeed',
+        isChecked: false,
+      },
+      {
+        title: `Your partner's Universal Credit linking code (if you have a partner and they have one)`,
+        description: ``,
+        thisCanInclude: [],
+        tips: [
+          `If with a partner BOTH will need to do this separately and then the accounts will need to be ‘LINKED’ via a linking code that will be given on the screen during this process.`,
+        ],
+        stage: 'thingsYouWillNeed',
+        isChecked: false,
+      },
     ],
     isCompleted: false,
-    externalLink: true,
-    externalButtonLink: 'CREATE_UNIVERSAL_CREDIT_ACCOUNT',
+    howLongDoesItTake: {
+      timeRangeText: '15 to 25 minutes',
+    },
+    whereDoYouNeedToGo: {
+      link:
+        'https://www.entitledto.co.uk/benefits-calculator/Intro/Home?cid=0af743fb-414d-4559-a0c9-b88d26a88671',
+      type: 'LINK',
+      title: `Our Benefit Calculator`,
+    },
+    topTip: '',
+    otherTips: [
+      `You now have 28 days in which to make and submit the claim. The start date will be from the date the claim is submitted.`,
+    ],
   },
   {
     id: '3',
