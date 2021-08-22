@@ -1,9 +1,16 @@
 import { useReducer, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Grid, Typography as T, Inputs as I } from '../../components';
+import {
+  Grid,
+  Typography as T,
+  Inputs as I,
+  Button,
+  TextWithIcon,
+} from '../../components';
 import validate from '../../validation/schemas/login';
 import { Users } from '../../api-calls';
 
+import { navRoutes as R } from '../../constants';
 const { Row, Col } = Grid;
 
 const initialState = {
@@ -23,7 +30,6 @@ const Login = () => {
   const [state, setState] = useReducer(reducer, initialState);
   const { email, password, validationErrs, httpError, submitAttempt } = state;
   const history = useHistory();
-
   useEffect(() => {
     if (submitAttempt) {
       validateForm();
@@ -48,7 +54,7 @@ const Login = () => {
   };
 
   const handleLogin = async () => {
-    const { data, error } = await Users.login({
+    const { error } = await Users.login({
       email: cleanEmail(email),
       password,
     });
@@ -61,39 +67,80 @@ const Login = () => {
       }
     } else {
       // after that the user should be directed to its dashboard
+      history.push(R.ADMIN.HOME);
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setState({ submitAttempt: true });
+
+    const isValid = validateForm();
+    if (isValid) {
+      handleLogin();
     }
   };
 
   return (
-    <>
+    <form onSubmit={handleSubmit}>
       <T.H1 weight="bold">Log in</T.H1>
-      <Row>
+      <Row mt="7">
         <Col w={[4, 11, 6]}>
-          {' '}
           <I.BasicInput
-            label="Email"
-            placeholder=""
+            label="Email address"
+            placeholder="Type your email..."
             margins={{ mt: '2', mb: '1' }}
             type="email"
             value={email}
             autoFocus
-            handleChange={(e) => setState({ email: e.target.value })}
+            handleChange={(input) => setState({ email: input })}
             error={validationErrs.email}
           />
         </Col>
+      </Row>
+      <Row mt="7">
         <Col w={[4, 11, 6]}>
           <I.BasicInput
             label="Password"
-            placeholder=""
+            placeholder="Type your password..."
             margins={{ mt: '2', mb: '1' }}
             type="password"
+            showForgetPassword
             value={password}
-            handleChange={(e) => setState({ password: e.target.value })}
+            handleChange={(input) => setState({ password: input })}
             error={validationErrs.password}
           />
         </Col>
       </Row>
-    </>
+      <Row mt="7">
+        {httpError && (
+          <Col w={[4, 12, 12]}>
+            <T.P mb="2" color="error">
+              {httpError}
+            </T.P>
+          </Col>
+        )}
+        <Col w={[4, 11, 6]}>
+          <Button
+            variant="primary"
+            disabled={false}
+            loading={false}
+            text="Login"
+            type="submit"
+          />
+        </Col>
+      </Row>
+      <Row mt="6">
+        <Col w={[4, 11, 6]}>
+          <TextWithIcon
+            to={R.ADMIN.SIGNUP}
+            text="Don’t have an account? Sign up"
+            icon="forwardArrow"
+            iconColor="primaryMain"
+          />
+        </Col>
+      </Row>
+    </form>
   );
 };
 
