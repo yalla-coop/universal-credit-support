@@ -7,6 +7,7 @@ import {
   Button,
   TextWithIcon,
 } from '../../components';
+import * as S from './style';
 import validate from '../../validation/schemas/login';
 import { Users } from '../../api-calls';
 
@@ -82,7 +83,7 @@ const Login = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <S.Form onSubmit={handleSubmit}>
       <T.H1 weight="bold">Log in</T.H1>
       <Row mt="7">
         <Col w={[4, 11, 6]}>
@@ -98,7 +99,7 @@ const Login = () => {
           />
         </Col>
       </Row>
-      <Row mt="7">
+      <Row mt="7" mtT="6">
         <Col w={[4, 11, 6]}>
           <I.BasicInput
             label="Password"
@@ -112,7 +113,7 @@ const Login = () => {
           />
         </Col>
       </Row>
-      <Row mt="7">
+      <Row mt="7" mtT="6" style={{ flex: 1, alignItems: 'flex-end' }}>
         {httpError && (
           <Col w={[4, 12, 12]}>
             <T.P mb="2" color="error">
@@ -120,7 +121,7 @@ const Login = () => {
             </T.P>
           </Col>
         )}
-        <Col w={[4, 11, 6]}>
+        <Col w={[4, 11, 6]} style={{ alignItems: 'flex-end' }}>
           <Button
             variant="primary"
             disabled={false}
@@ -140,7 +141,7 @@ const Login = () => {
           />
         </Col>
       </Row>
-    </form>
+    </S.Form>
   );
 };
 
