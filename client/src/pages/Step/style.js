@@ -4,10 +4,6 @@ import setMargin from '../../helpers/set-margin';
 
 export const Container = styled.div`
   overflow: hidden;
-  ${({ theme }) => theme.media.tablet} {
-    padding: 0;
-    padding-left: ${({ theme }) => theme.spacings[1]};
-  }
 `;
 
 export const PageHead = styled.div`

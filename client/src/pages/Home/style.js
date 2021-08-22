@@ -49,7 +49,7 @@ export const Section = styled.section`
   h2 {
     max-width: 580px;
     padding: ${({ theme: { spacings } }) =>
-      `${spacings[7]} ${spacings[7]} 0 ${spacings[7]}`};
+      `${spacings[7]} ${spacings[6]} 0 ${spacings[6]}`};
   }
 `;
 
@@ -57,7 +57,7 @@ export const StyledText = styled(T.P)`
   max-width: 580px;
   color: ${({ theme: { colors } }) => colors.neutralDark};
   padding: ${({ theme: { spacings } }) =>
-    `${spacings[4]} ${spacings[7]} 0  ${spacings[7]}`};
+    `${spacings[4]} ${spacings[6]} 0  ${spacings[6]}`};
 `;
 
 export const Span = styled.span`
@@ -68,7 +68,7 @@ export const Container = styled.div`
   ${setMargin};
   width: 100%;
   max-width: 580px;
-  padding: ${({ theme: { spacings } }) => `${spacings[4]} ${spacings[7]}`};
+  padding: ${({ theme: { spacings } }) => `${spacings[4]} ${spacings[6]}`};
   display: flex;
   justify-content: flex-start;
 `;

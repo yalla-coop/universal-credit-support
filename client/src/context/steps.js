@@ -121,7 +121,7 @@ const initialSteps = [
     id: '4',
     stage: 'claiming',
     name: 'verifyIdentity',
-    title: 'Verify Idenity',
+    title: 'Verify Identity',
     description: `Claim submitted! Now to be considered, you'll need to 'verify' your identity.`,
     checkListItems: [
       { value: 'ID', isChecked: false },

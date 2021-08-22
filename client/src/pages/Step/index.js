@@ -32,6 +32,7 @@ const Step = () => {
     whatYouWillNeedToKnow: [],
   });
   const [loaded, setLoaded] = useState(false);
+  const [stuck, setStuck] = useState(false);
 
   const params = useParams();
   const { lang } = useLang();
@@ -69,7 +70,7 @@ const Step = () => {
 
   return (
     <S.Container>
-      <Row mb="4" mt="2">
+      <Row mb="8" mbM="5">
         <Col w={[4, 12, 12]}>
           <S.PageHead>
             <S.Link to={GENERAL.HOME}>
@@ -82,11 +83,11 @@ const Step = () => {
         </Col>
       </Row>
       <S.InnerContainer>
-        <Row mb="5">
+        <Row mb="8" mbM="7">
           <Col w={[4, 12, 6]}>
-            <T.H2 weight="bold" mb="5">
+            <T.H1 weight="bold" mb="5">
               {step.pageTitle || step.title}
-            </T.H2>
+            </T.H1>
             <T.P color="neutralDark" mbT="5">
               {step.pageDescription || step.description}
             </T.P>
@@ -97,7 +98,7 @@ const Step = () => {
         </Row>
 
         {step.howLongDoesItTake && (
-          <Row mb="8">
+          <Row mb="8" mbM="7">
             <Col w={[4, 6, 6]}>
               <S.SectionHeader mb="2">
                 <Icon
@@ -116,7 +117,7 @@ const Step = () => {
           </Row>
         )}
 
-        <Row mb="8">
+        <Row mb="8" mbM="7">
           <Col w={[4, 12, 12]}>
             <S.SectionHeader mb="5">
               <Icon
@@ -149,7 +150,7 @@ const Step = () => {
         </Row>
 
         {checklist.whatYouWillNeedToKnow?.length > 0 && (
-          <Row mb="8">
+          <Row mb="8" mbM="7">
             <Col w={[4, 12, 12]} ai="flex-start">
               <S.SectionHeader mb="5">
                 <Icon
@@ -198,7 +199,7 @@ const Step = () => {
                 </T.P>
               </Col>
             </Row>
-            <Row mb="7">
+            <Row>
               <Col w={[4, 12, 6]}>
                 <Button
                   variant="primary"
@@ -216,44 +217,35 @@ const Step = () => {
           </>
         )}
 
-        <Row style={{ flex: 1 }}>
-          <Row
-            inner
-            style={{
-              width: '100%',
-              minHeight: '58px',
-              alignSelf: 'flex-end',
-            }}
-          >
-            {step.isCompleted ? (
-              <Col w={[4, 12, 6]} mt="6" mb="7">
-                <Button
-                  variant="secondary"
-                  text={t('nextStep', lang)}
-                  to={n.GENERAL.HOME}
-                  handleClick={() => {
-                    setJustCompletedId(step.id);
-                  }}
-                />
-              </Col>
-            ) : (
-              step.externalLink && (
-                <Col w={[4, 12, 6]} mt="6" mb="6">
-                  <TextWithIcon
-                    text={t('callUsLinkText', lang)}
-                    to={n.EXTERNAL.CALL_US}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    external
-                    underline
-                  />
-                </Col>
-              )
-            )}
-          </Row>
+        <Row>
+          <Col w={[4, 12, 6]} mt="8" mtM="7" mb="5">
+            <TextWithIcon
+              text={t('callUsLinkText', lang)}
+              isButton
+              handleClick={() => setStuck(true)}
+              underline
+              iconColor="primaryMain"
+              weight="medium"
+              mr="3"
+              jc="center"
+            />
+          </Col>
+        </Row>
+
+        <Row>
+          <Col w={[4, 12, 6]} mt="6" mb="7">
+            <Button
+              variant="secondary"
+              text="Mark as complete"
+              to={n.GENERAL.HOME}
+              handleClick={() => {
+                setJustCompletedId(step.id);
+              }}
+            />
+          </Col>
         </Row>
       </S.InnerContainer>
-      <HelpButton />
+      <HelpButton parentState={stuck} parentFunc={() => setStuck(false)} />
     </S.Container>
   );
 };

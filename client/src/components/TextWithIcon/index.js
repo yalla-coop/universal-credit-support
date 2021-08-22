@@ -18,15 +18,21 @@ const TextWithIcon = ({
   handleClick,
   weight,
   disabled,
+  mr,
   ...props
 }) => {
   if (isButton)
     return (
       <S.Button {...props} onClick={handleClick} disabled={disabled}>
         {icon && (
-          <Icon icon={icon} color={iconColor} mr="2" direction={direction} />
+          <Icon
+            icon={icon}
+            color={iconColor}
+            mr={mr || '2'}
+            direction={direction}
+          />
         )}
-        <T.H3 weight={weight} color={color}>
+        <T.H3 weight={weight} color={color} td={underline && 'underline'}>
           {text}
         </T.H3>
       </S.Button>
