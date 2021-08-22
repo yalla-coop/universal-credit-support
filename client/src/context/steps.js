@@ -98,7 +98,14 @@ const initialSteps = [
         stage: 'thingsYouWillNeed',
         isChecked: false,
       },
-      { title: `Bank account`, description: ``, thisCanInclude: [], tips: [] },
+      {
+        title: `Bank account`,
+        description: ``,
+        thisCanInclude: [],
+        tips: [],
+        stage: 'thingsYouWillNeed',
+        isChecked: false,
+      },
       {
         title: `Access to your mobile phone (if you have one)`,
         description: ``,
@@ -287,7 +294,6 @@ const StepsProvider = ({ children, ...props }) => {
   const [justCompletedId, setJustCompletedId] = useState('');
 
   const checkUncheckItem = (stepName, itemKey) => {
-    console.log('TEST', stepName, itemKey);
     setSteps((prevSteps) => {
       const newSteps = prevSteps.map((step) => {
         if (step.name === stepName) {
@@ -317,7 +323,6 @@ const StepsProvider = ({ children, ...props }) => {
       });
 
       storeStepsIntoStorage(newSteps);
-      console.log('new', newSteps);
       return newSteps;
     });
   };
