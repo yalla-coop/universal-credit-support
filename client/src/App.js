@@ -8,6 +8,7 @@ import { navRoutes } from './constants';
 import { ScrollToTop } from './helpers';
 import LangProvider from './context/lang';
 import StepsProvider from './context/steps';
+import { AuthProvider } from './context/auth';
 
 // import CookieBot from 'react-cookiebot';
 
@@ -22,53 +23,73 @@ function App() {
       <ThemeProvider theme={theme}>
         <LangProvider>
           <StepsProvider>
-            <Router basename={process.env.PUBLIC_URL}>
-              <ScrollToTop />
-              <Switch>
-                <Route
-                  exact
-                  path={navRoutes.GENERAL.HOME}
-                  Component={Pages.Home}
-                  layout="general"
-                />
-                <Route
-                  exact
-                  path="/test"
-                  Component={() => <p>content comes here!!</p>}
-                  layout="splitScreen"
-                  side="left"
-                  gradient="secondary"
-                  showColorOnMobile
-                />
-                <Route
-                  exact
-                  path="/test1"
-                  Component={() => <p>content comes here!!</p>}
-                  layout="splitScreen"
-                  side="left"
-                  color="#006370"
-                />
-                <Route
-                  exact
-                  path="/test2"
-                  Component={() => <p>content comes here!!</p>}
-                  layout="dashboard"
-                />
-                <Route
-                  exact
-                  path="/test3"
-                  Component={() => <p>content comes here!!</p>}
-                  layout="dashboard"
-                  showMobileMenu
-                />
-                <Route
-                  exact
-                  path={navRoutes.STEPS.STEP}
-                  Component={Pages.Step}
-                  layout="step"
-                />
-              </Switch>
-            </Router>
+            <AuthProvider>
+              <Router basename={process.env.PUBLIC_URL}>
+                <ScrollToTop />
+                <Switch>
+                  <Route
+                    exact
+                    path={navRoutes.GENERAL.HOME}
+                    Component={Pages.Home}
+                    layout="general"
+                  />
+                  <Route
+                    exact
+                    path="/test"
+                    Component={() => <p>content comes here!!</p>}
+                    layout="splitScreen"
+                    side="left"
+                    gradient="secondary"
+                    showColorOnMobile
+                  />
+                  <Route
+                    exact
+                    path="/test1"
+                    Component={() => <p>content comes here!!</p>}
+                    layout="splitScreen"
+                    side="left"
+                    color="#006370"
+                  />
+                  <Route
+                    exact
+                    path="/test2"
+                    Component={() => <p>content comes here!!</p>}
+                    layout="dashboard"
+                  />
+                  <Route
+                    exact
+                    path="/test3"
+                    Component={() => <p>content comes here!!</p>}
+                    layout="dashboard"
+                    showMobileMenu
+                  />
+                  <Route
+                    exact
+                    path={navRoutes.STEPS.STEP}
+                    Component={Pages.Step}
+                    layout="step"
+                  />
+                  <Route
+                    exact
+                    path={navRoutes.ADMIN.CREATE_UNIQUE_LINK}
+                    Component={Pages.CreateUniqueLink}
+                    layout="splitScreen"
+                    gradient="secondary"
+                    // isPrivate
+                    // allowedRoles={[ADMIN]}
+                  />
+                  <Route
+                    exact
+                    path={navRoutes.ADMIN.CREATE_UNIQUE_LINK_SUCCESS}
+                    Component={Pages.CreateUniqueLink}
+                    layout="splitScreen"
+                    gradient="secondary"
+                    success
+                    // isPrivate
+                  />
+                </Switch>
+              </Router>
+            </AuthProvider>
           </StepsProvider>
         </LangProvider>
         {/* <CookieBot domainGroupId={domainGroupId} /> */}
