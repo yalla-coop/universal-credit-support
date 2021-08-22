@@ -3,7 +3,6 @@ import { Link as RLink } from 'react-router-dom';
 
 export const Container = styled.div`
   overflow: hidden;
-  padding-right: ${({ theme }) => theme.spacings[9]};
   ${({ theme }) => theme.media.tablet} {
     padding: 0;
     padding-left: ${({ theme }) => theme.spacings[1]};

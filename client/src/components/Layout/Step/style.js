@@ -22,11 +22,25 @@ export const SideDiv = styled.div`
 export const ContentHalf = styled.div`
   flex: 1;
   background: ${({ theme }) => theme.colors.white};
-  padding: ${({ theme: { spacings: s } }) =>
-    `${s[9]} ${s[0]} ${s[11]} ${s[11]}`};
+  padding: ${({
+    theme: {
+      spacings: s,
+      constants: {
+        layout: { step },
+      },
+    },
+  }) =>
+    `${s[9]} ${step.rightPadding.desktop} ${s[11]} ${step.leftPadding.desktop}}`};
   ${({ theme }) => theme.media.mobile} {
-    padding: ${({ theme: { spacings } }) =>
-      `${spacings[6]} 37px ${spacings[7]} 38px`};
+    padding: ${({
+      theme: {
+        spacings,
+        constants: {
+          layout: { step },
+        },
+      },
+    }) =>
+      `${spacings[6]} ${step.rightPadding.mobile} ${spacings[7]} ${step.rightPadding.mobile}`};
   }
 `;
 

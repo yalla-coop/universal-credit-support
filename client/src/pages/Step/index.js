@@ -33,96 +33,94 @@ function Step() {
     query: `(max-width: ${breakpoints.tablet})`,
   });
   return (
-    <>
-      <S.Container>
-        <Row mb="4" mt="2">
-          <Col w={[4, 12, 12]}>
-            <S.PageHead>
-              <S.Link to={GENERAL.HOME}>
-                {isTablet ? <MobileLogo /> : <DesktopLogo />}
-              </S.Link>
-              <S.Link to={GENERAL.HOME}>
-                <Icon icon="close" width={16} height={16} />
-              </S.Link>
-            </S.PageHead>
-          </Col>
-        </Row>
-        <Row mb="5">
-          <Col w={[4, 12, 12]}>
-            <T.H2 weight="bold">{t(`${step.name}.secondaryTitle`, lang)}</T.H2>
-          </Col>
-        </Row>
-        <Row style={{ flex: 1 }}>
-          <div style={{ width: '100%' }}>
-            {step.externalButtonLink && (
-              <Row inner mb="7">
-                <Col w={[4, 12, 6]}>
-                  <Button
-                    variant="primary"
-                    text={t(`${step.name}.externalButtonTitle`, lang)}
-                    to={n.EXTERNAL[step.externalButtonLink]}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    external
-                  />
-                </Col>
-              </Row>
-            )}
-            <T.P isSmall weight="bold" mb="5">
-              {t('informationYouWillNeed', lang)}
-            </T.P>
-            <Row inner>
-              {step.checkListItems.map((item) => (
-                <Col w={[4, 12, desktopColWidth]}>
-                  <Checkbox
-                    key={item.value}
-                    checked={item.isChecked}
-                    handleChange={() => checkUncheckItem(step.name, item.value)}
-                    label={t(`${step.name}.checkListItems.${item.value}`, lang)}
-                    mb="5"
-                  />
-                </Col>
-              ))}
-            </Row>
-          </div>
-
-          <Row
-            inner
-            style={{
-              width: '100%',
-              minHeight: '58px',
-              alignSelf: 'flex-end',
-            }}
-          >
-            {step.isCompleted ? (
-              <Col w={[4, 12, 6]} mt="6" mb="7">
+    <S.Container>
+      <Row mb="4" mt="2">
+        <Col w={[4, 12, 12]}>
+          <S.PageHead>
+            <S.Link to={GENERAL.HOME}>
+              {isTablet ? <MobileLogo /> : <DesktopLogo />}
+            </S.Link>
+            <S.Link to={GENERAL.HOME}>
+              <Icon icon="close" width={16} height={16} />
+            </S.Link>
+          </S.PageHead>
+        </Col>
+      </Row>
+      <Row mb="5">
+        <Col w={[4, 12, 12]}>
+          <T.H2 weight="bold">{t(`${step.name}.secondaryTitle`, lang)}</T.H2>
+        </Col>
+      </Row>
+      <Row style={{ flex: 1 }}>
+        <div style={{ width: '100%' }}>
+          {step.externalButtonLink && (
+            <Row inner mb="7">
+              <Col w={[4, 12, 6]}>
                 <Button
-                  variant="secondary"
-                  text={t('nextStep', lang)}
-                  to={n.GENERAL.HOME}
-                  handleClick={() => {
-                    setJustCompletedId(step.id);
-                  }}
+                  variant="primary"
+                  text={t(`${step.name}.externalButtonTitle`, lang)}
+                  to={n.EXTERNAL[step.externalButtonLink]}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  external
                 />
               </Col>
-            ) : (
-              step.externalLink && (
-                <Col w={[4, 12, 6]} mt="6" mb="6">
-                  <TextWithIcon
-                    text={t('callUsLinkText', lang)}
-                    to={n.EXTERNAL.CALL_US}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    external
-                    underline
-                  />
-                </Col>
-              )
-            )}
+            </Row>
+          )}
+          <T.P isSmall weight="bold" mb="5">
+            {t('informationYouWillNeed', lang)}
+          </T.P>
+          <Row inner>
+            {step.checkListItems.map((item) => (
+              <Col w={[4, 12, desktopColWidth]}>
+                <Checkbox
+                  key={item.value}
+                  checked={item.isChecked}
+                  handleChange={() => checkUncheckItem(step.name, item.value)}
+                  label={t(`${step.name}.checkListItems.${item.value}`, lang)}
+                  mb="5"
+                />
+              </Col>
+            ))}
           </Row>
+        </div>
+
+        <Row
+          inner
+          style={{
+            width: '100%',
+            minHeight: '58px',
+            alignSelf: 'flex-end',
+          }}
+        >
+          {step.isCompleted ? (
+            <Col w={[4, 12, 6]} mt="6" mb="7">
+              <Button
+                variant="secondary"
+                text={t('nextStep', lang)}
+                to={n.GENERAL.HOME}
+                handleClick={() => {
+                  setJustCompletedId(step.id);
+                }}
+              />
+            </Col>
+          ) : (
+            step.externalLink && (
+              <Col w={[4, 12, 6]} mt="6" mb="6">
+                <TextWithIcon
+                  text={t('callUsLinkText', lang)}
+                  to={n.EXTERNAL.CALL_US}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  external
+                  underline
+                />
+              </Col>
+            )
+          )}
         </Row>
-      </S.Container>
-    </>
+      </Row>
+    </S.Container>
   );
 }
 
