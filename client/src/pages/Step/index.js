@@ -24,7 +24,7 @@ import { GENERAL } from '../../constants/nav-routes';
 
 const { Checkbox } = Inputs;
 const { Row, Col } = Grid;
-const { Tips } = Cards;
+const { Tips, Checklist } = Cards;
 
 const Step = () => {
   const [checklist, setChecklist] = useState({
@@ -122,7 +122,17 @@ const Step = () => {
               <T.H2 color="neutralMain">Things you'll need</T.H2>
             </S.SectionHeader>
             {checklist.thingsYouWillNeed?.length > 0 ? (
-              <Tips tips={step.thingsYouWillNeed} />
+              checklist.thingsYouWillNeed.map((item) => (
+                <Col w={[4, 12, desktopColWidth]}>
+                  <Checkbox
+                    key={item.title}
+                    checked={item.isChecked}
+                    handleChange={() => checkUncheckItem(step.name, item.title)}
+                    label={item.title}
+                    mb="5"
+                  />
+                </Col>
+              ))
             ) : (
               <T.P color="neutralDark">
                 You don't need to provide any physical documents for this step.
@@ -133,10 +143,10 @@ const Step = () => {
 
         {checklist.whatYouWillNeedToKnow?.length > 0 && (
           <Row mb="8">
-            <Col w={[4, 12, 12]}>
+            <Col w={[4, 12, 12]} ai="flex-start">
               <S.SectionHeader mb="2">
                 <Icon
-                  icon="info"
+                  icon="checklist1"
                   width={24}
                   height={24}
                   color="primaryMain"
@@ -144,13 +154,15 @@ const Step = () => {
                 />
                 <T.H2 color="neutralMain">What you'll need to know</T.H2>
               </S.SectionHeader>
-              {checklist.whatYouWillNeedToKnow.map((item) => (
-                <Col w={[4, 12, desktopColWidth]}>
-                  <Checkbox
-                    key={item.title}
-                    checked={item.isChecked}
+              {checklist.whatYouWillNeedToKnow.map((item, index) => (
+                <Col w={[4, 12, 6]} key={index}>
+                  <Checklist
+                    completed={item.isChecked}
                     handleChange={() => checkUncheckItem(step.name, item.title)}
-                    label={item.title}
+                    title={item.title}
+                    description={item.description}
+                    things={item.thisCanInclude}
+                    tips={item.tips}
                     mb="5"
                   />
                 </Col>
