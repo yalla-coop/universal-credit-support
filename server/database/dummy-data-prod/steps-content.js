@@ -68,7 +68,7 @@ const addStepContent = async () => {
     pageTitle: `Should you claim?`,
     pageDescription: `Using the benefit calculator enables you to find out an estimate of how much Universal Credit you may be entitled to.`,
     howLongDoesItTake: { timeRangeText: `15 to 25 minutes` },
-    WhereDoYouNeedToGo: {
+    whereDoYouNeedToGo: {
       link:
         'https://www.entitledto.co.uk/benefits-calculator/Intro/Home?cid=0af743fb-414d-4559-a0c9-b88d26a88671',
       type: T.linkTypes.LINK,

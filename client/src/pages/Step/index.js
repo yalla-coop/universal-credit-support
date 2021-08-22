@@ -14,7 +14,7 @@ import {
 import { useSteps } from '../../context/steps';
 import { useLang } from '../../context/lang';
 import { t } from '../../helpers';
-import { navRoutes as n } from '../../constants';
+import { navRoutes as n, types } from '../../constants';
 import { ReactComponent as MobileLogo } from '../../components/assets/MobileLogo.svg';
 import { ReactComponent as DesktopLogo } from '../../components/assets/DesktopLogo.svg';
 import { breakpoints } from '../../theme';
@@ -42,6 +42,13 @@ const Step = () => {
   const isTablet = useMediaQuery({
     query: `(max-width: ${breakpoints.tablet})`,
   });
+
+  const formatLink = (link, type) => {
+    if (type === types.linkTypes.PHONE) {
+      return `tel:${link}`;
+    }
+    return link;
+  };
 
   useEffect(() => {
     // TO DO - api to get data from server
@@ -111,7 +118,7 @@ const Step = () => {
 
         <Row mb="8">
           <Col w={[4, 12, 12]}>
-            <S.SectionHeader mb="2">
+            <S.SectionHeader mb="5">
               <Icon
                 icon="time"
                 width={24}
@@ -144,9 +151,9 @@ const Step = () => {
         {checklist.whatYouWillNeedToKnow?.length > 0 && (
           <Row mb="8">
             <Col w={[4, 12, 12]} ai="flex-start">
-              <S.SectionHeader mb="2">
+              <S.SectionHeader mb="5">
                 <Icon
-                  icon="checklist1"
+                  icon="checklist2"
                   width={24}
                   height={24}
                   color="primaryMain"
@@ -163,7 +170,7 @@ const Step = () => {
                     description={item.description}
                     things={item.thisCanInclude}
                     tips={item.tips}
-                    mb="5"
+                    mb="4"
                   />
                 </Col>
               ))}
@@ -171,28 +178,45 @@ const Step = () => {
           </Row>
         )}
 
-        <Row style={{ flex: 1 }}>
-          <div style={{ width: '100%' }}>
-            {step.externalButtonLink && (
-              <Row inner mb="7">
-                <Col w={[4, 12, 6]}>
-                  <Button
-                    variant="primary"
-                    text={t(`${step.name}.externalButtonTitle`, lang)}
-                    to={n.EXTERNAL[step.externalButtonLink]}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    external
+        {step.whereDoYouNeedToGo?.link && (
+          <>
+            <Row mb="5">
+              <Col w={[4, 12, 6]} ai="flex-start">
+                <S.SectionHeader mb="5">
+                  <Icon
+                    icon="compass"
+                    width={24}
+                    height={24}
+                    color="primaryMain"
+                    mr="2"
                   />
-                </Col>
-              </Row>
-            )}
-            <T.P isSmall weight="bold" mb="5">
-              {t('informationYouWillNeed', lang)}
-            </T.P>
-            <Row inner></Row>
-          </div>
+                  <T.H2 color="neutralMain">Where do you need to go?</T.H2>
+                </S.SectionHeader>
+                <T.P color="neutralDark">
+                  Remember to come back here once you're done so you can mark
+                  this step as complete and see what to do next
+                </T.P>
+              </Col>
+            </Row>
+            <Row mb="7">
+              <Col w={[4, 12, 6]}>
+                <Button
+                  variant="primary"
+                  text={step.whereDoYouNeedToGo.title}
+                  to={formatLink(
+                    step.whereDoYouNeedToGo.link,
+                    step.whereDoYouNeedToGo.type
+                  )}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  external
+                />
+              </Col>
+            </Row>
+          </>
+        )}
 
+        <Row style={{ flex: 1 }}>
           <Row
             inner
             style={{

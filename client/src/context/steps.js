@@ -65,12 +65,16 @@ const initialSteps = [
       },
     ],
     isCompleted: false,
-    externalLink: true,
-    externalButtonLink: 'ELIGIBILITY_CALCULATOR',
     isOptional: true,
     topTip: `The more accurate the information you give the more accurate the estimate will be.`,
     howLongDoesItTake: {
       timeRangeText: '15 to 25 minutes',
+    },
+    whereDoYouNeedToGo: {
+      link:
+        'https://www.entitledto.co.uk/benefits-calculator/Intro/Home?cid=0af743fb-414d-4559-a0c9-b88d26a88671',
+      type: 'LINK',
+      title: `Our Benefit Calculator`,
     },
   },
   {
