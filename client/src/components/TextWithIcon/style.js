@@ -20,9 +20,6 @@ export const Wrapper = styled.div`
   width: 100%;
   align-items: ${({ ai }) => ai || 'center'};
   justify-content: flex-start;
-  ${({ theme }) => theme.media.mobile} {
-    justify-content: center;
-  }
 `;
 
 export const Text = styled.span`
@@ -45,6 +42,6 @@ export const Button = styled.button`
   align-items: center;
   justify-content: flex-start;
   ${({ theme }) => theme.media.mobile} {
-    justify-content: center;
+    justify-content: ${({ jc }) => jc || 'center'};
   }
 `;
