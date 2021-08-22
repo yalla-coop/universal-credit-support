@@ -30,36 +30,7 @@ function App() {
                   path={navRoutes.GENERAL.HOME}
                   Component={Pages.Home}
                   layout="general"
-                />
-                <Route
-                  exact
-                  path="/test"
-                  Component={() => <p>content comes here!!</p>}
-                  layout="splitScreen"
-                  side="left"
-                  gradient="secondary"
-                  showColorOnMobile
-                />
-                <Route
-                  exact
-                  path="/test1"
-                  Component={() => <p>content comes here!!</p>}
-                  layout="splitScreen"
-                  side="left"
-                  color="#006370"
-                />
-                <Route
-                  exact
-                  path="/test2"
-                  Component={() => <p>content comes here!!</p>}
-                  layout="dashboard"
-                />
-                <Route
-                  exact
-                  path="/test3"
-                  Component={() => <p>content comes here!!</p>}
-                  layout="dashboard"
-                  showMobileMenu
+                  showHelp
                 />
                 <Route
                   exact

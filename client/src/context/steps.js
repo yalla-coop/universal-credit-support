@@ -1,10 +1,13 @@
 import { createContext, useState, useContext } from 'react';
 
+// TO DO -> content to come from server
 const initialSteps = [
-  // keys here should match the translation keys
   {
     id: '1',
+    stage: 'beforeClaiming',
     name: 'checkEligibility',
+    title: 'Wait! Should I apply?',
+    description: `Let's find out with a quick and easy benefit calculator`,
     checkListItems: [
       { value: 'incomeDetails', isChecked: false },
       { value: 'detailsOfAnySavings', isChecked: false },
@@ -12,13 +15,18 @@ const initialSteps = [
       { value: 'childcareCosts', isChecked: false },
       { value: 'incomeOthersDetails', isChecked: false },
     ],
-    isCompleted: false,
+    isCompleted: true,
     externalLink: true,
     externalButtonLink: 'ELIGIBILITY_CALCULATOR',
+    isOptional: true,
   },
   {
     id: '2',
+    stage: 'claiming',
     name: 'createAccount',
+    title: 'Create account',
+    description:
+      'Create an account on the Government website. You’ll want to do this as soon as possible!',
     checkListItems: [
       { value: 'anEmailAddress', isChecked: false },
       { value: 'bankAccountDetails', isChecked: false },
@@ -31,7 +39,10 @@ const initialSteps = [
   },
   {
     id: '3',
+    stage: 'claiming',
     name: 'claim',
+    title: `Make the claim`,
+    description: `Now it's time to complete the main part of the application form. Let's do this!`,
     checkListItems: [
       { value: 'AccountInfo', isChecked: false },
       { value: 'mobileAccess', isChecked: false },
@@ -51,16 +62,23 @@ const initialSteps = [
   },
   {
     id: '4',
+    stage: 'claiming',
     name: 'verifyIdentity',
+    title: 'Verify Idenity',
+    description: `Claim submitted! Now to be considered, you'll need to 'verify' your identity.`,
     checkListItems: [
       { value: 'ID', isChecked: false },
       { value: 'details', isChecked: false },
     ],
     isCompleted: false,
   },
+
   {
     id: '5',
+    stage: 'claiming',
     name: 'attendInterview',
+    title: `Attend Interview`,
+    description: `Nearly there! The final step to accessing your Universal Credit is an interview.`,
     checkListItems: [
       { value: 'nationalNumber', isChecked: false },
       { value: 'needs', isChecked: false },
@@ -71,19 +89,29 @@ const initialSteps = [
   },
   {
     id: '6',
-    name: 'apply',
+    stage: 'afterClaiming',
+    name: 'advance',
+    title: 'Want to apply for an advance?',
+    description: `Don't be scared about applying for this if you definitely do need it!`,
     checkListItems: [
       { value: 'accountInfo', isChecked: false },
       { value: 'phone', isChecked: false },
-      { value: 'details', isChecked: false },
+      { value: 'email', isChecked: false },
+      { value: 'toDoList', isChecked: false },
+      { value: 'claimantCommitment', isChecked: false },
     ],
     isCompleted: false,
     externalLink: true,
-    externalButtonLink: 'ONLINE_APPLICATION_FORM',
+    externalButtonLink: 'GETTING_YOUR_FIRST_PAYMENT',
+    isOptional: true,
   },
   {
     id: '7',
+    stage: 'afterClaiming',
     name: 'payment',
+    title: 'Getting your first payment',
+    description:
+      'First payment is made 1 month and 7 days after you submitted your claim...',
     checkListItems: [
       { value: 'accountInfo', isChecked: false },
       { value: 'phone', isChecked: false },
@@ -101,10 +129,52 @@ const storeStepsIntoStorage = (steps) => {
   localStorage.setItem('steps', JSON.stringify(steps));
 };
 
+// TO DO -> WILL NEED TO CHANGE TO THINGS AND TIPS
+const compareCheckListItems = (checkListItemsFromLocal, checkListItems) => {
+  const updatedCheckListItems = checkListItems.map((checkListItem) => {
+    const existing = checkListItemsFromLocal.find(
+      (checkListItemFromLocal) =>
+        checkListItem.value === checkListItemFromLocal.value
+    );
+    if (existing) {
+      return {
+        ...checkListItem,
+        isChecked: existing.isChecked,
+      };
+    }
+    return checkListItem;
+  });
+  return updatedCheckListItems;
+};
+
+// compare two objects and add or remove properties based on the first object
+const updateStepsInStorage = (stepsFromLocal, newSteps) => {
+  const updatedSteps = newSteps.map((newStep) => {
+    const existing = stepsFromLocal.find((step) => newStep.id === step.id);
+
+    if (existing) {
+      const updatedChecklist = compareCheckListItems(
+        existing.checkListItems,
+        newStep.checkListItems
+      );
+
+      return {
+        ...newStep,
+        checkListItems: updatedChecklist,
+        isCompleted: existing.isCompleted,
+      };
+    }
+    return newStep;
+  });
+  storeStepsIntoStorage(updatedSteps);
+  return updatedSteps;
+};
+
 const getStepsFromStorage = () => {
   const steps = JSON.parse(localStorage.getItem('steps'));
   if (steps && steps.length) {
-    return steps;
+    const updatedSteps = updateStepsInStorage(steps, initialSteps);
+    return updatedSteps;
   } else {
     storeStepsIntoStorage(initialSteps);
     return initialSteps;
@@ -150,6 +220,7 @@ const StepsProvider = ({ children, ...props }) => {
       });
 
       storeStepsIntoStorage(newSteps);
+      console.log('new', newSteps);
       return newSteps;
     });
   };

@@ -1,8 +1,8 @@
 import dotenv from 'dotenv';
 import common from './common';
 import server from './server';
-// import database from './database';
-// import aws from './aws';
+import database from './database';
+import aws from './aws';
 // import emails from './emails';
 // import sqreen from './sqreen';
 
@@ -16,7 +16,7 @@ if (process.env.NODE_ENV !== 'production') {
 try {
   common();
   server();
-  // database();
+  database();
   // aws();
   // sqreen();
 } catch (error) {
@@ -26,8 +26,8 @@ try {
 export default {
   common: common(),
   server: server(),
-  // database: database(),
-  // aws: aws(),
+  database: database(),
+  aws: aws(),
   // emails: emails(),
   // sqreen: sqreen(),
 };

@@ -10,6 +10,20 @@ const constants = {
   // side menu width
   // header height
   // ...
+  layout: {
+    step: {
+      leftPadding: {
+        mobile: '2.56vw',
+        tablet: '9.72vw',
+        desktop: '9.72vw',
+      },
+      rightPadding: {
+        mobile: '2.63vw',
+        tablet: '6.25vw',
+        desktop: '6.25vw',
+      },
+    },
+  },
 };
 
 export const spacings = {
@@ -25,6 +39,7 @@ export const spacings = {
   9: '80px',
   10: '96px',
   11: '120px',
+  12: '144px',
 };
 
 export const screensWidth = {
