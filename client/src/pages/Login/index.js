@@ -135,7 +135,7 @@ const Login = () => {
         style={{ flex: Number(isMobile), alignItems: 'flex-end' }}
       >
         <Col w={[4, 11, 6]} style={{ alignItems: 'flex-end' }}>
-          {!httpError && (
+          {httpError && (
             <T.P mb="2" color="error">
               {httpError}
             </T.P>
