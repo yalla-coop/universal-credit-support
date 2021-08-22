@@ -22,6 +22,7 @@ const initialState = {
   password: '',
   httpError: '',
   validationErrs: {},
+  loading: false,
 };
 
 function reducer(state, newState) {
@@ -32,7 +33,7 @@ const cleanEmail = (email) => email.toLowerCase().trim();
 const Login = () => {
   const submitAttempt = useRef(false);
   const [state, setState] = useReducer(reducer, initialState);
-  const { email, password, validationErrs, httpError } = state;
+  const { email, password, loading, validationErrs, httpError } = state;
   const history = useHistory();
 
   const isMobile = useMediaQuery({
@@ -76,12 +77,14 @@ const Login = () => {
       }
     } else {
       // after that the user should be directed to its dashboard
+      setState({ loading: false });
       history.push(R.ADMIN.HOME);
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setState({ loading: true });
     submitAttempt.current = true;
 
     const isValid = validateForm();
@@ -143,7 +146,7 @@ const Login = () => {
           <Button
             variant="primary"
             disabled={false}
-            loading={false}
+            loading={loading}
             text="Login"
             type="submit"
           />
