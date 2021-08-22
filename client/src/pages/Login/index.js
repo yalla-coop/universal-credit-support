@@ -69,6 +69,7 @@ const Login = () => {
       password,
     });
 
+    setState({ loading: false });
     if (error) {
       if (error.statusCode === 409) {
         setState({ validationErrs: { email: error.message } });
@@ -77,7 +78,6 @@ const Login = () => {
       }
     } else {
       // after that the user should be directed to its dashboard
-      setState({ loading: false });
       history.push(R.ADMIN.HOME);
     }
   };
