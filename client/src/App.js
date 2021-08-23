@@ -46,6 +46,13 @@ function App() {
                   side="left"
                   gradient="secondary"
                 />
+                <Route
+                  exact
+                  path={navRoutes.ADMIN.EDIT_STEP}
+                  Component={Pages.StepForm}
+                  layout="dashboard"
+                  edit
+                />
               </Switch>
             </Router>
           </StepsProvider>
