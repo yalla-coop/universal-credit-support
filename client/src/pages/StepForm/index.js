@@ -1,4 +1,5 @@
 import { useRef, useReducer, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import {
   Grid as G,
   Typography as T,
@@ -52,6 +53,13 @@ const StepForm = ({ edit }) => {
     httpError,
     otherTips,
   } = state;
+
+  const { id: stepId } = useParams();
+
+  useEffect(() => {
+    // get the step data from the back
+  }, [stepId]);
+
   useEffect(() => {
     if (submitAttempt.current) {
       validateForm();
