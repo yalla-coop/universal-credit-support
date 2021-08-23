@@ -16,6 +16,8 @@ const ADMIN = {
   SIGNUP: `${admin}/signup`,
   LOGIN: `${admin}/login`,
   EDIT_STEP: `${admin}/edit-step/:id`,
+  PREVIEW_STEP: `${admin}/preview-step`,
+  DELETE_STEP: `${admin}/delete-step`,
 };
 
 const SUPER_ADMIN = {

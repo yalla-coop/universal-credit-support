@@ -5,7 +5,9 @@ import {
   Typography as T,
   Inputs as I,
   Button,
+  TextWithIcon,
 } from '../../components';
+import { navRoutes as R } from '../../constants';
 import ThingsYouWillNeed from './ThingsYouWillNeed';
 import WhatYouWillNeedToKnow from './WhatYouWillNeedToKnow';
 import GeneralTips from './GeneralTips';
@@ -235,7 +237,24 @@ const StepForm = ({ edit }) => {
           </G.Col>
         )}
         <G.Col w={[4, 6, 4]}>
-          <Button text="Save changes" handleClick={handleSubmit} />
+          <TextWithIcon
+            to={R.ADMIN.PREVIEW_STEP}
+            text="Preview changes"
+            icon="forwardArrow"
+            iconColor="primaryMain"
+          />
+          <Button
+            text="Save changes"
+            handleClick={handleSubmit}
+            mb="4"
+            mt="4"
+          />
+          <TextWithIcon
+            to={R.ADMIN.DELETE_STEP}
+            text="Delete step"
+            icon="close"
+            iconColor="primaryMain"
+          />
         </G.Col>
       </G.Row>
     </>
