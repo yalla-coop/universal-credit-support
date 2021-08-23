@@ -4,7 +4,7 @@ CREATE TABLE "organisations" (
   "id" SERIAL PRIMARY KEY,
   "user_id" INTEGER REFERENCES users(id),
   "organisation_name" VARCHAR(50),
-  "type_of_organisation" organisation_types NOT NULL,
+  "type_of_organisation" TEXT NOT NULL,
   "unique_link" VARCHAR UNIQUE NOT NULL,
   "contact_links" JSON[],
     -- [
