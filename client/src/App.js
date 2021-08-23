@@ -46,6 +46,14 @@ function App() {
                   side="left"
                   gradient="secondary"
                 />
+                <Route
+                  exact
+                  path={navRoutes.ADMIN.SIGNUP}
+                  Component={Pages.Signup}
+                  layout="splitScreen"
+                  side="left"
+                  gradient="secondary"
+                />
               </Switch>
             </Router>
           </StepsProvider>

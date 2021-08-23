@@ -1,5 +1,6 @@
+const primaryMain = '#FC6244';
 export default {
-  primaryMain: '#FC6244',
+  primaryMain,
   primaryMid: '#FDDDD7',
   primaryLight: '#FFF5F3',
   secondaryMain: '#3B557A',
@@ -12,7 +13,8 @@ export default {
   neutralSurface: '#FBF9F5',
   white: '#ffffff',
   modalBackground: '#255599b3',
-  error: '#FC6244',
-  borderPrimary: '#FC6244',
+  error: primaryMain,
+  borderPrimary: primaryMain,
   borderSecondary: '#5A666A',
+  gray9: '#3C404B',
 };

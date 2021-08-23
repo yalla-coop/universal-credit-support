@@ -1,5 +1,5 @@
-// MAKE SURE THIS FILE IS SYNCED WIth ./server/database/init/types.sql && client/src/constants/data-type.js
-// NOTE!!! IF YOU CHANGE ANY TYPES HERE MAKE SURE YOU UPDATE THE SRC CONSTANTS FILE AS WELL
+// MAKE SURE THIS FILE IS SYNCED WIth ./server/database/init/types.sql And constants in backend
+// NOTE!!! IF YOU CHANGE ANY TYPES HERE MAKE SURE YOU UPDATE THE BACKEND as well
 
 export const userRoles = {
   ADMIN: 'ADMIN',

@@ -11,6 +11,7 @@ const ADMIN = {
   CUSTOMISE_LOG_OUT: `${admin}/customise-log-out`,
   SIGNUP: `${admin}/signup`,
   LOGIN: `${admin}/login`,
+  FILL_ORGANISATION_DETAILS: `${admin}/welcome`,
 };
 
 const SUPER_ADMIN = {

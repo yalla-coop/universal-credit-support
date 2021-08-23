@@ -38,9 +38,9 @@ const BasicInput = ({
     <CS.Field w={w} disabled={disabled} {...m}>
       {label && (
         <CS.Label htmlFor={label} mb={helper ? '1' : '2'}>
-          <T.H3 color={color} m="0">
+          <T.P weight="semi" color={color} m="0">
             {label}
-          </T.H3>
+          </T.P>
           {optional && <CS.OptionalTag ml="1">(optional)</CS.OptionalTag>}
           {showPasswordInfo && type === 'password' && (
             <S.InfoWrapper
