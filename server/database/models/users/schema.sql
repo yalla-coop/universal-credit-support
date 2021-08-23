@@ -2,12 +2,13 @@ DROP TABLE IF EXISTS "users" CASCADE;
 
 CREATE TABLE "users" (
   "id" SERIAL PRIMARY KEY,
+  "organisation_id" INTEGER REFERENCES organisations(id),
   "first_name" VARCHAR(20),
   "last_name" VARCHAR(20),
   "email" VARCHAR UNIQUE,
   "backup_email" VARCHAR UNIQUE,
   "password" TEXT,
-  "role" user_roles NOT NULL,
+  "role" user_roles NOT NULL DEFAULT 'ADMIN',
   "status" user_statuses DEFAULT 'ACTIVE',
   
   "reset_password_token" TEXT,

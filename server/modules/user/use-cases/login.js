@@ -2,7 +2,7 @@ import Boom from '@hapi/boom';
 // import axios from 'axios';
 
 import * as User from '../model';
-import * as Organisation from '../../organisation/model';
+
 import { errorMsgs } from '../../../services/error-handler';
 import { verifyPassword } from '../../../helpers';
 // import { userRoles, envTypes } from '../../../constants';
@@ -13,30 +13,23 @@ import { verifyPassword } from '../../../helpers';
 // const { env, recaptchaSecretKey } = config.common;
 // const maxConsecutiveFailsByEmail = 5;
 
-const login = async ({ email, password, reToken }) => {
+const login = async ({ email, password /* reToken */ }) => {
   // try {
-  const userWithSameEmail = await User.findUserByEmail(email);
-  if (!userWithSameEmail) {
+  const user = await User.findUserByEmail(email);
+  if (!user) {
     throw Boom.unauthorized(errorMsgs.INVALID_EMAIL_OR_PASSWORD);
   }
 
-  const isPasswordValid = await verifyPassword(
-    password,
-    userWithSameEmail.password,
-  );
+  const isPasswordValid = await verifyPassword(password, user.password);
 
   if (!isPasswordValid) {
     throw Boom.unauthorized(errorMsgs.INVALID_EMAIL_OR_PASSWORD);
   }
 
-  const hasOrganisation = await Organisation.findOrganisationExistsByUserId(
-    userWithSameEmail.id,
-  );
+  user.hasOrganisation = true; // TODO: check if all required fields in org are filled or not, if not set this to false so redirect them to fill
 
-  userWithSameEmail.hasOrganisation = hasOrganisation;
-
-  userWithSameEmail.password = null;
-  return userWithSameEmail;
+  user.password = null;
+  return user;
   // } catch (error) {
   //   if (env === envTypes.PRODUCTION) {
   //     const score = 1;

@@ -1,38 +1,27 @@
 import { fields, createSchema, validate as _validate } from '..';
 
-import { roles } from './../../constants';
-
-const { CLIENT, THERAPIST } = roles;
-
 const {
   email,
   password,
   firstName,
   lastName,
   agreedOnTerms,
-  agreedAge,
-  inviteToken,
+  requiredText,
 } = fields;
 
-const client = createSchema({
+const adminSignUpSchema = createSchema({
   email,
-  password,
-  agreedOnTerms,
-  agreedAge,
-  inviteToken,
-});
-
-const therapist = createSchema({
-  email,
+  backupEmail: email,
   firstName,
   lastName,
   password,
   agreedOnTerms,
+  organisationName: requiredText,
+  typeOfOrganisation: requiredText,
 });
 
 const validate = (data) => {
-  if (data.role === CLIENT) return _validate(client, data);
-  if (data.role === THERAPIST) return _validate(therapist, data);
+  return _validate(adminSignUpSchema, data);
 };
 
 export default validate;

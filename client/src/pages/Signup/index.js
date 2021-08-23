@@ -12,7 +12,7 @@ import {
   Icon,
 } from '../../components';
 import * as S from './style';
-import validate from '../../validation/schemas/login';
+import validate from '../../validation/schemas/signup';
 import { Users } from '../../api-calls';
 
 import { navRoutes as R, dataTypes } from '../../constants';
@@ -46,7 +46,7 @@ const initialState = {
   backupEmail: '',
   password: '',
   organisationName: '',
-  organisationType: '',
+  typeOfOrganisation: '',
   agreedOnTerms: false,
   httpError: '',
   validationErrs: {},
@@ -69,7 +69,7 @@ const SignUp = () => {
     backupEmail,
     password,
     organisationName,
-    organisationType,
+    typeOfOrganisation,
     agreedOnTerms,
     loading,
     validationErrs,
@@ -86,13 +86,28 @@ const SignUp = () => {
       validateForm();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [email, password]);
+  }, [
+    firstName,
+    lastName,
+    email,
+    backupEmail,
+    password,
+    organisationName,
+    typeOfOrganisation,
+    agreedOnTerms,
+  ]);
 
   const validateForm = () => {
     try {
       validate({
         email: cleanEmail(email),
+        firstName,
+        lastName,
+        backupEmail,
         password,
+        organisationName,
+        typeOfOrganisation,
+        agreedOnTerms,
       });
       setState({ validationErrs: {} });
       return true;
@@ -104,37 +119,40 @@ const SignUp = () => {
     }
   };
 
-  const handleLogin = async () => {
-    const { error, data } = await Users.login({
+  const handleSignup = async () => {
+    setState({ loading: true });
+    const { error, data } = await Users.signup({
       email: cleanEmail(email),
+      firstName,
+      lastName,
+      backupEmail,
       password,
+      organisationName,
+      typeOfOrganisation,
+      agreedOnTerms,
     });
 
     setState({ loading: false });
 
     if (error) {
       if (error.statusCode === 409) {
-        setState({ validationErrs: { email: error.message } });
+        setState({ validationErrs: { [error.data.field]: error.message } });
       } else {
         setState({ httpError: error.message });
       }
     } else {
-      if (data.hasOrganisation) {
-        history.push(R.ADMIN.HOME);
-      } else {
-        history.push(R.ADMIN.FILL_ORGANISATION_DETAILS);
-      }
+      history.push(R.ADMIN.FILL_ORGANISATION_DETAILS);
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setState({ loading: true });
+
     submitAttempt.current = true;
 
     const isValid = validateForm();
     if (isValid) {
-      handleLogin();
+      handleSignup();
     }
   };
 
@@ -232,7 +250,6 @@ const SignUp = () => {
             label="Organisation"
             placeholder="Type your organisation name..."
             margins={{ mt: '2', mb: '1' }}
-            type="email"
             name="organisationName"
             value={organisationName}
             handleChange={(input) => setState({ organisationName: input })}
@@ -246,14 +263,14 @@ const SignUp = () => {
             label="Type of organisation"
             placeholder="Select organisation..."
             margins={{ mt: '2', mb: '1' }}
-            name="organisationType"
-            selected={organisationType}
+            name="typeOfOrganisation"
+            selected={typeOfOrganisation}
             options={Object.values(dataTypes.organisationTypes).map((e) => ({
               label: e,
               value: e,
             }))}
-            handleChange={(input) => setState({ organisationType: input })}
-            error={validationErrs.organisationName}
+            handleChange={(input) => setState({ typeOfOrganisation: input })}
+            error={validationErrs.typeOfOrganisation}
           />
         </Col>
       </Row>
@@ -276,6 +293,7 @@ const SignUp = () => {
                 </T.Link>
               </T.P>
             }
+            error={validationErrs.agreedOnTerms}
           />
         </Col>
       </Row>{' '}

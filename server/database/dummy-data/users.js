@@ -9,6 +9,7 @@ const createUser = async ({
   backupEmail,
   password,
   role,
+  organisationId,
 }) => {
   const sql = `INSERT INTO users (
     first_name,
@@ -16,14 +17,16 @@ const createUser = async ({
     email,
     backup_email,
     password,
-    role
+    role,
+    organisation_id
   ) VALUES (
     $1,
     $2,
     $3,
     $4,
     $5,
-    $6
+    $6,
+    $7
   ) RETURNING *`;
   const res = await query(sql, [
     firstName,
@@ -32,11 +35,12 @@ const createUser = async ({
     backupEmail,
     password,
     role,
+    organisationId,
   ]);
   return res.rows[0];
 };
 
-const createUsers = async () => {
+const createUsers = async ({ organisations }) => {
   const superAdmin = await createUser({
     firstName: dummyData.hydeSuperAdmin.firstName,
     lastName: dummyData.hydeSuperAdmin.lastName,
@@ -44,6 +48,7 @@ const createUsers = async () => {
     backupEmail: dummyData.hydeSuperAdmin.backupEmail,
     password: dummyData.password,
     role: T.userRoles.SUPER_ADMIN,
+    organisationId: organisations.superAdminOrganisation.id,
   });
   const admin1 = await createUser({
     firstName: dummyData.admin1.firstName,
@@ -52,6 +57,7 @@ const createUsers = async () => {
     backupEmail: dummyData.admin1.backupEmail,
     password: dummyData.password,
     role: T.userRoles.ADMIN,
+    organisationId: organisations.admin1Organisation.id,
   });
 
   return {
