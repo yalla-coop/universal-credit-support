@@ -14,6 +14,7 @@ const errors = {
   UNAUTHORISED_EDIT: 'You do not have permission to do that',
   WRONG_DATA: 'something went wrong with matching your data',
   TOO_MANY_REQUESTS: 'too many requests try after {time}',
+  UNIQUE_LINK_IS_ALREADY_TAKEN: 'Unique link is already taken',
 };
 
 export default errors;
