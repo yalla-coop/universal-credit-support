@@ -59,6 +59,14 @@ function App() {
                     success
                     // isPrivate
                   />
+                  <Route
+                    exact
+                    path={navRoutes.ADMIN.LOGIN}
+                    Component={Pages.Login}
+                    layout="splitScreen"
+                    side="left"
+                    gradient="secondary"
+                  />
                 </Switch>
               </Router>
             </AuthProvider>
