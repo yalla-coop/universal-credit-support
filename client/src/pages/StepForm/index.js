@@ -220,9 +220,11 @@ const StepForm = ({ edit }) => {
       />
       <G.Row mt="10">
         {httpError && (
-          <T.P mb="2" color="error">
-            {httpError}
-          </T.P>
+          <G.Col w={[4, 12, 12]}>
+            <T.P mb="2" color="error">
+              {httpError}
+            </T.P>
+          </G.Col>
         )}
         <G.Col w={[4, 6, 4]}>
           <Button text="Save changes" handleClick={handleSubmit} />
