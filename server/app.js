@@ -15,6 +15,7 @@ import {
   csrfProtection,
   createCSRFToken,
 } from './api/middlewares';
+import { configureSentry } from './services/error-handler';
 
 const { PRODUCTION, TEST } = constants.envTypes;
 
@@ -22,6 +23,11 @@ const { PRODUCTION, TEST } = constants.envTypes;
 const debug = Debug('server');
 
 const app = express();
+
+const Sentry = configureSentry(app);
+app.use(Sentry.Handlers.requestHandler());
+// TracingHandler creates a trace for every incoming request
+app.use(Sentry.Handlers.tracingHandler());
 
 app.use(logger('dev'));
 
@@ -50,6 +56,18 @@ if (config.common.env === PRODUCTION) {
     res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'));
   });
 }
+
+app.use(
+  Sentry.Handlers.errorHandler({
+    shouldHandleError(error) {
+      // ignore non server errors
+      if (error.isBoom && error.output.statusCode < 500) {
+        return false;
+      }
+      return true;
+    },
+  }),
+);
 
 // eslint-disable-next-line no-unused-vars
 app.use((err, _, res, next) => {
