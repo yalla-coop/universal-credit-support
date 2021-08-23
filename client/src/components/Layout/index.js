@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import General from './General';
 import SplitScreen from './SplitScreen';
 import Dashboard from './Dashboard';
+import StepLayout from './Step';
 
 const Layout = ({ layout, ...props }) => {
   switch (layout) {
@@ -12,6 +13,7 @@ const Layout = ({ layout, ...props }) => {
     case 'splitScreen':
       return <SplitScreen {...props} />;
     case 'step':
+      return <StepLayout {...props} />;
     case 'general':
     default:
       return <General {...props} />;
