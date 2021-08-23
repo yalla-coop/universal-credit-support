@@ -3,6 +3,7 @@ import * as errMsgs from './err-msgs';
 import './custom-functions';
 
 const URLregex = /^((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#.-]+)*\/?(\?[a-zA-Z0-9-_.-]+=[a-zA-Z0-9-%?&=.-]+&?)?$/;
+const URLSlugRegex = /^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$/;
 
 export const requiredText = string()
   .typeError(errMsgs.DEFAULT_REQUIRED)
@@ -62,6 +63,13 @@ export const optionalText = string()
 
 export const urlRequired = string()
   .matches(URLregex, {
+    message: errMsgs.INVALID_LINK,
+  })
+  .required(errMsgs.DEFAULT_REQUIRED);
+
+export const urlSlug = string()
+  .required(errMsgs.DEFAULT_REQUIRED)
+  .matches(URLSlugRegex, {
     message: errMsgs.INVALID_LINK,
   })
   .required(errMsgs.DEFAULT_REQUIRED);
