@@ -1,4 +1,5 @@
 import signup from './signup';
 import login from './login';
+import StepForm from './StepForm';
 
-export { signup, login };
+export { signup, login, StepForm };

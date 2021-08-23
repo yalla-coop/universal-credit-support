@@ -77,7 +77,9 @@ export const title = string()
   .max(50)
   .required(errMsgs.DEFAULT_REQUIRED);
 
-export const categories = array().of(string().nullable()).nullable();
+export const optionalArrayOfOptionalString = array()
+  .of(string().nullable())
+  .nullable();
 
 export const libraryContent = boolean()
   .oneOf([true, false])
@@ -101,7 +103,7 @@ export const inviteToken = string()
 export const content = array().of(
   object().shape({
     title,
-    categories,
+    categories: optionalArrayOfOptionalString,
     libraryContent,
     instructions,
   })
@@ -176,3 +178,26 @@ export const optionalRate = number().when('noDemos', {
   then: number().nullable(),
   otherwise: numberField,
 });
+
+// step form
+
+export const linkOrPhone = string().when('type', {
+  is: 'phone',
+  then: phoneNumber,
+  otherwise: urlRequired,
+});
+
+export const whereDoYouNeedToGo = object().shape({
+  type: requiredText,
+  link: linkOrPhone,
+  title: requiredText,
+});
+
+export const thingsContent = array().of(
+  object().shape({
+    title: requiredText,
+    description: optionalText,
+    things: array().of(string().nullable()).nullable(),
+    tips: array().of(string().nullable()).nullable(),
+  })
+);
