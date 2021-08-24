@@ -184,3 +184,23 @@ export const optionalRate = number().when('noDemos', {
   then: number().nullable(),
   otherwise: numberField,
 });
+
+export const contactLinks = array()
+  .of(
+    object().shape({
+      type: requiredText,
+      availability: requiredText,
+      description: requiredText,
+      link: string().when('type', {
+        is: (v) => v === 'PHONE',
+        then: string().nullable(),
+        otherwise: urlRequired,
+      }),
+      phoneNumber: string().when('type', {
+        is: (v) => v === 'PHONE',
+        then: phoneNumber,
+        otherwise: string().nullable(),
+      }),
+    })
+  )
+  .required();

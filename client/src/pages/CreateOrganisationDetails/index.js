@@ -11,10 +11,11 @@ import {
   TextWithIcon,
 } from '../../components';
 import * as S from './style';
-import validate from '../../validation/schemas/login';
-import { Users } from '../../api-calls';
+import { createOrganisationDetails as validate } from '../../validation/schemas';
+import { Organisations } from '../../api-calls';
 
 import { navRoutes as R } from '../../constants';
+import { useAuth } from '../../context/auth';
 
 // TODO: use from constants
 const contactLinksTypes = {
@@ -43,7 +44,7 @@ const initialState = {
   benefitCalculatorLink: '',
   benefitCalculatorLabel: '',
   httpError: '',
-  validationErrs: {},
+  validationErrs: { contactLinks: {} },
   loading: false,
 };
 
@@ -55,15 +56,13 @@ function reducer(state, newState) {
 
   return { ...state, ...value };
 }
-const cleanEmail = (email) => email.toLowerCase().trim();
 
 const Login = () => {
+  const { user } = useAuth();
   const submitAttempt = useRef(false);
   const [state, setState] = useReducer(reducer, initialState);
   const {
     contactLinks,
-    email,
-    password,
     benefitCalculatorLink,
     benefitCalculatorLabel,
     loading,
@@ -84,28 +83,34 @@ const Login = () => {
       validateForm();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [email, password]);
+  }, [contactLinks, benefitCalculatorLink, benefitCalculatorLabel]);
 
   const validateForm = () => {
     try {
       validate({
-        email: cleanEmail(email),
-        password,
+        contactLinks,
+        benefitCalculatorLink,
+        benefitCalculatorLabel,
       });
-      setState({ validationErrs: {} });
+      setState({ validationErrs: { contactLinks: {} } });
       return true;
     } catch (error) {
       if (error.name === 'ValidationError') {
-        setState({ validationErrs: error.inner });
+        setState({ validationErrs: { contactLinks: {}, ...error.inner } });
       }
       return false;
     }
   };
 
   const handleLogin = async () => {
-    const { error } = await Users.login({
-      email: cleanEmail(email),
-      password,
+    setState({ loading: true });
+    const { error } = await Organisations.updateOrganisation({
+      id: user.id,
+      body: {
+        contactLinks,
+        benefitCalculatorLink,
+        benefitCalculatorLabel,
+      },
     });
 
     setState({ loading: false });
@@ -123,7 +128,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setState({ loading: true });
+
     submitAttempt.current = true;
 
     const isValid = validateForm();
@@ -137,6 +142,10 @@ const Login = () => {
       const _contactLinks = contactLinks.map((e) => e);
       const itemToUpdate = _contactLinks.find((e) => e.id === id);
       itemToUpdate[key] = value;
+      if (key === 'type') {
+        itemToUpdate.phoneNumber = '';
+        itemToUpdate.link = '';
+      }
 
       return { contactLinks: _contactLinks };
     });
@@ -210,6 +219,7 @@ const Login = () => {
                   })
                 )}
                 allowClear={false}
+                error={validationErrs?.contactLinks[i]?.type}
               />
             </Col>
           </Row>
@@ -226,7 +236,7 @@ const Login = () => {
                       handleChange={(v) =>
                         handleChangeLinkType(v, 'phoneNumber', contactLink.id)
                       }
-                      error={validationErrs.email}
+                      error={validationErrs?.contactLinks[i]?.phoneNumber}
                     />
                   ) : (
                     <I.BasicInput
@@ -236,7 +246,7 @@ const Login = () => {
                       handleChange={(v) =>
                         handleChangeLinkType(v, 'link', contactLink.id)
                       }
-                      error={validationErrs.email}
+                      error={validationErrs?.contactLinks[i]?.link}
                     />
                   )}
                 </Col>
@@ -251,7 +261,7 @@ const Login = () => {
                     handleChange={(v) =>
                       handleChangeLinkType(v, 'availability', contactLink.id)
                     }
-                    error={validationErrs.email}
+                    error={validationErrs?.contactLinks[i]?.availability}
                   />
                 </Col>
               </Row>
@@ -265,7 +275,7 @@ const Login = () => {
                     handleChange={(v) =>
                       handleChangeLinkType(v, 'description', contactLink.id)
                     }
-                    error={validationErrs.email}
+                    error={validationErrs?.contactLinks[i]?.description}
                   />
                 </Col>
               </Row>
