@@ -3,7 +3,6 @@ import { useReducer, useEffect, useRef } from 'react';
 import { Typography as T, Grid, Inputs, Button } from '../../components';
 import { LandingPage } from '../../api-calls';
 
-import { navRoutes as R } from '../../constants';
 import validate from '../../validation/schemas/edit-landing-page';
 import { useMediaQuery } from 'react-responsive';
 import { breakpoints } from '../../theme';
@@ -61,18 +60,15 @@ const EditLandingPage = () => {
   const handleUpdate = async () => {
     setState({ loading: true });
 
-    // const { error } = await LandingPage.login({
-    //   headline,
-    //   subtitle,
-    //   instructions,
-    // });
+    const { error } = await LandingPage.updateLandingPageContent({
+      body: { headline, subtitle, instructions },
+    });
     setState({ loading: false });
-    // if (error) {
-    //   setState({ httpError: error.message });
-    // } else {
-    //   // after that the user should be directed to its dashboard
-    //   // history.push(R.ADMIN.HOME);
-    // }
+    if (error) {
+      setState({ httpError: error.message });
+    } else {
+      //  show modal here
+    }
   };
 
   const handleSubmit = (e) => {
@@ -89,6 +85,27 @@ const EditLandingPage = () => {
     query: `(max-width: ${breakpoints.mobile})`,
   });
 
+  useEffect(() => {
+    const getLandingPageData = async () => {
+      setState({ loading: false });
+
+      const { error, data } = await LandingPage.getLandingPageContent({});
+
+      setState({ loading: false });
+      if (error) {
+        setState({ httpError: error.message });
+      } else {
+        const { headline, subtitle, instructions } = data;
+        setState({
+          headline,
+          subtitle,
+          instructions,
+        });
+      }
+    };
+
+    getLandingPageData();
+  }, []);
   return (
     <>
       <Row jc="space-between" mb={7}>

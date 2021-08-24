@@ -13,4 +13,14 @@ const getLandingPageContent = async ({ options }) => {
   }
 };
 
-export { getLandingPageContent };
+const updateLandingPageContent = async ({ body, options }) => {
+  try {
+    const { data } = await axios.patch(`${LANDING_PAGE_CONTENT_BASE}`, body);
+    return { data };
+  } catch (error) {
+    const err = handleError(error, options);
+    return { error: err };
+  }
+};
+
+export { getLandingPageContent, updateLandingPageContent };
