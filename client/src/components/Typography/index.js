@@ -94,6 +94,4 @@ export const Link = styled(AntdLink)`
 
   text-decoration: ${({ underline }) =>
     underline ? 'underline' : 'none'} !important;
-  border-color: ${({ theme, color }) =>
-    theme.colors[color] || color || theme.colors.black} !important;
 `;
