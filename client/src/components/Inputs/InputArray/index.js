@@ -39,7 +39,7 @@ const InputArray = ({
     ]);
   };
 
-  const Filed = type === 'textarea' ? S.Textarea : S.Input;
+  const Field = type === 'textarea' ? S.Textarea : S.Input;
   const Container = type === 'textarea' ? Col : Fragment;
 
   return (
@@ -54,9 +54,9 @@ const InputArray = ({
       )}
       <Row inner>
         {values.map((value, index) => (
-          <Container w={[4, 12, 6]}>
+          <Container w={[4, 12, 6]} key={index}>
             <S.InputField key={index} mb="4">
-              <Filed
+              <Field
                 type={type}
                 name={name}
                 placeholder={placeholder}

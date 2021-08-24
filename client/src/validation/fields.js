@@ -68,6 +68,11 @@ export const urlRequired = string()
   })
   .required(errMsgs.DEFAULT_REQUIRED);
 
+export const urlOptional = string().matches(URLregex, {
+  message: errMsgs.INVALID_LINK,
+  excludeEmptyString: true,
+});
+
 export const urlSlug = string()
   .required(errMsgs.DEFAULT_REQUIRED)
   .matches(URLSlugRegex, {
@@ -192,19 +197,19 @@ export const optionalRate = number().when('noDemos', {
 
 export const linkOrPhone = string().when('type', {
   is: 'phone',
-  then: phoneNumber,
-  otherwise: urlRequired,
+  then: optionalPhoneNumber,
+  otherwise: urlOptional,
 });
 
 export const whereDoYouNeedToGo = object().shape({
-  type: requiredText,
+  type: optionalText,
   link: linkOrPhone,
-  title: requiredText,
+  title: optionalText,
 });
 
 export const thingsContent = array().of(
   object().shape({
-    title: requiredText,
+    title: optionalText,
     description: optionalText,
     things: array().of(string().nullable()).nullable(),
     tips: array().of(string().nullable()).nullable(),

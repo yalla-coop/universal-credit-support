@@ -12,12 +12,12 @@ const WhatYouWillNeedToKnow = ({ state, setState, errors }) => {
     <>
       <G.Row mt="8">
         <G.Col w={[4, 4, 4]}>
-          <T.H2>Things you’ll need</T.H2>
+          <T.H2>What you’ll need to know</T.H2>
         </G.Col>
       </G.Row>
       <G.Row mt="6">
         {state.map((item, index) => (
-          <G.Col w={[4, 4, 4]}>
+          <G.Col w={[4, 4, 4]} key={index}>
             <I.InputCMS
               formState={item}
               hideRemove={state.length === 1}

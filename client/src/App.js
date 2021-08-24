@@ -62,7 +62,7 @@ function App() {
 
                   <Route
                     exact
-                    path={navRoutes.ADMIN.EDIT_STEP}
+                    path={navRoutes.SUPER_ADMIN.EDIT_STEP}
                     Component={Pages.StepForm}
                     layout="dashboard"
                     edit

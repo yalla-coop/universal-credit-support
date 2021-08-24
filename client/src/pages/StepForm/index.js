@@ -109,7 +109,7 @@ const StepForm = ({ edit }) => {
     <>
       <G.Row>
         <G.Col w={[4, 12, 12]}>
-          <T.H1>{edit ? 'Edit' : 'Create'} Step</T.H1>
+          <T.H1 mb="6">Edit Step</T.H1>
           <I.Checkbox
             label="This step is optional"
             checked={isOptional}
@@ -145,7 +145,7 @@ const StepForm = ({ edit }) => {
 
       <G.Row mt="8" mb="6">
         <G.Col w={[4, 6, 4]}>
-          <T.H2>Where do you need to go?</T.H2>
+          <T.H2 style={{ width: '100%' }}>Where do you need to go?</T.H2>
           <T.P color="neutralDark">(optional)</T.P>
         </G.Col>
       </G.Row>
