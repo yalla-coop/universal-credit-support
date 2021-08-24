@@ -19,6 +19,7 @@ const TextWithIcon = ({
   weight,
   disabled,
   mr,
+  isText,
   ...props
 }) => {
   if (isButton)
@@ -36,6 +37,22 @@ const TextWithIcon = ({
           {text}
         </T.H3>
       </S.Button>
+    );
+
+  if (isText)
+    return (
+      <S.Wrapper {...props}>
+        {icon && <Icon icon={icon} color={iconColor} mr="11.5px" />}
+        <T.H3
+          to={to}
+          color={color}
+          weight={weight}
+          td={underline && 'underline'}
+          {...props}
+        >
+          {text}
+        </T.H3>
+      </S.Wrapper>
     );
 
   return (

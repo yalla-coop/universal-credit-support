@@ -66,6 +66,7 @@ const Checklist = ({
                     color="neutralDark"
                     mb={index < things.length && '2'}
                     ai="flex-start"
+                    isText
                   />
                 ))}
               </>
