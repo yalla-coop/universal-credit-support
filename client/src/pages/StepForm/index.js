@@ -1,4 +1,4 @@
-import { useRef, useReducer, useEffect } from 'react';
+import { useRef, useReducer, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import {
   Grid as G,
@@ -6,6 +6,7 @@ import {
   Inputs as I,
   Button,
   TextWithIcon,
+  Modal,
 } from '../../components';
 import { navRoutes as R } from '../../constants';
 import ThingsYouWillNeed from './ThingsYouWillNeed';
@@ -40,7 +41,9 @@ function reducer(state, newState) {
   return { ...state, ...newState };
 }
 
-const StepForm = ({ edit }) => {
+const StepForm = () => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
   const submitAttempt = useRef(false);
   const [state, setState] = useReducer(reducer, initialState);
   const {
@@ -89,6 +92,7 @@ const StepForm = ({ edit }) => {
     if (error) {
       setState({ httpError: error.message });
     } else {
+      setIsModalVisible(true);
       // after that the user should be directed to its dashboard
       // history.push(R.ADMIN.HOME);
     }
@@ -257,6 +261,15 @@ const StepForm = ({ edit }) => {
           />
         </G.Col>
       </G.Row>
+      <Modal
+        visible={isModalVisible}
+        setIsModalVisible={setIsModalVisible}
+        parentFunc={() => {}}
+        type="updateSuccess"
+        title="Updated"
+        description="Changes successfully updated."
+        btnText="Okay"
+      />
     </>
   );
 };
