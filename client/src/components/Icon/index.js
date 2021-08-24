@@ -22,6 +22,7 @@ import Question from './icons/Question';
 import CircleArrow from './icons/CircleArrow';
 import Bulb from './icons/Bulb';
 import BulletArrow from './icons/BulletArrow';
+import Compass from './icons/Compass';
 
 export const IconMap = {
   goBack: GoBack,
@@ -41,6 +42,7 @@ export const IconMap = {
   circleArrow: CircleArrow,
   bulb: Bulb,
   bulletArrow: BulletArrow,
+  compass: Compass,
 };
 
 const Parent = styled.div`

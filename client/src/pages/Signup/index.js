@@ -15,7 +15,7 @@ import * as S from './style';
 import validate from '../../validation/schemas/signup';
 import { Users } from '../../api-calls';
 
-import { navRoutes as R, dataTypes } from '../../constants';
+import { navRoutes as R, types } from '../../constants';
 
 const { Row, Col } = Grid;
 
@@ -265,7 +265,7 @@ const SignUp = () => {
             margins={{ mt: '2', mb: '1' }}
             name="typeOfOrganisation"
             selected={typeOfOrganisation}
-            options={Object.values(dataTypes.organisationTypes).map((e) => ({
+            options={Object.values(types.organisationTypes).map((e) => ({
               label: e,
               value: e,
             }))}

@@ -38,6 +38,7 @@ CREATE TABLE "steps" (
     -- ]
   "top_tip" TEXT,
   "other_tips" TEXT[],
+  "is_optional" BOOLEAN default false,
 
   "created_by" INTEGER REFERENCES users(id),
   "created_at" TIMESTAMP NOT NULL DEFAULT NOW(),

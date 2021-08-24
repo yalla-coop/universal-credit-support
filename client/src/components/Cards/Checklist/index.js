@@ -30,7 +30,7 @@ const Checklist = ({
             checked={completed}
             m={{ mb: '5' }}
           />
-          {(description || things || tips) && (
+          {(description || things?.length > 0 || tips?.length > 0) && (
             <TextWithIcon
               text={expanded ? 'See less' : 'See more'}
               icon="circleArrow"
@@ -45,14 +45,14 @@ const Checklist = ({
             />
           )}
         </S.TopSection>
-        {expanded && (
+        {expanded && (description || things?.length > 0) && (
           <S.ExtraDetails>
             {description && (
               <T.P color="neutralDark" mb="4">
                 {description}
               </T.P>
             )}
-            {things && (
+            {things?.length > 0 && (
               <>
                 <T.H3 color="neutralDark" mb="3">
                   This can include things like:
@@ -66,6 +66,7 @@ const Checklist = ({
                     color="neutralDark"
                     mb={index < things.length && '2'}
                     ai="flex-start"
+                    isText
                   />
                 ))}
               </>
@@ -73,7 +74,7 @@ const Checklist = ({
           </S.ExtraDetails>
         )}
       </S.Section>
-      {expanded && tips && <Tips tips={tips} mb="3" />}
+      {expanded && tips && <Tips tips={tips} mb="3" inner />}
     </>
   );
 };

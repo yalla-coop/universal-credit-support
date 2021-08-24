@@ -52,6 +52,7 @@ const Head3 = styled(Title)`
   font-size: 16px !important;
   line-height: 24px !important;
   font-weight: ${({ weight }) => (weight ? weights[weight] : '600 !important')};
+  text-decoration: ${({ td }) => td || 'none'};
 `;
 export const H3 = (props) => <Head3 {...props} level={3} />;
 
@@ -78,12 +79,7 @@ export const P = styled(({ isSmall, ...props }) => <Paragraph {...props} />)`
 
 const AntdLink = ({ to, external = false, underline, ...props }) => {
   return external ? (
-    <Typography.Link
-      target="_blank"
-      href={to}
-      style={{ border: '1px solid red' }}
-      {...props}
-    />
+    <Typography.Link target="_blank" href={to} {...props} />
   ) : (
     <RouterLink to={to} {...props}>
       {props.children}
@@ -99,6 +95,4 @@ export const Link = styled(AntdLink)`
 
   text-decoration: ${({ underline }) =>
     underline ? 'underline' : 'none'} !important;
-  border-color: ${({ theme, color }) =>
-    theme.colors[color] || color || theme.colors.black} !important;
 `;

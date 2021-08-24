@@ -61,6 +61,13 @@ function App() {
                   />
                   <Route
                     exact
+                    path={navRoutes.ADMIN.DASHBOARD}
+                    Component={Pages.Dashboard}
+                    layout="dashboard"
+                    showMobileMenu
+                  />
+                  <Route
+                    exact
                     path={navRoutes.ADMIN.LOGIN}
                     Component={Pages.Login}
                     layout="splitScreen"
@@ -71,6 +78,15 @@ function App() {
                     exact
                     path={navRoutes.ADMIN.SIGNUP}
                     Component={Pages.Signup}
+                    layout="splitScreen"
+                    side="left"
+                    gradient="secondary"
+                  />
+
+                  <Route
+                    // Have sub routes
+                    path={navRoutes.ADMIN.WELCOME}
+                    Component={Pages.Welcome}
                     layout="splitScreen"
                     side="left"
                     gradient="secondary"

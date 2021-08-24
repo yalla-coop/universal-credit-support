@@ -7,6 +7,7 @@ import * as Typography from './Typography';
 import * as Inputs from './Inputs';
 import Icon from './Icon';
 import TextWithIcon from './TextWithIcon';
+import HelpButton from './HelpButton';
 import * as Cards from './Cards';
 
 export {
@@ -19,5 +20,6 @@ export {
   Inputs,
   Icon,
   TextWithIcon,
+  HelpButton,
   Cards,
 };
