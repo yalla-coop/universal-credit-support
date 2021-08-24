@@ -18,7 +18,7 @@ const initialState = {
   secondaryColor: '',
   neutralColor: '',
   httpError: '',
-  validationErrs: { contactLinks: {} },
+  validationErrs: {},
   loading: false,
   displayColorPicker: false,
 };
@@ -70,7 +70,7 @@ const SecondStep = () => {
       return true;
     } catch (error) {
       if (error.name === 'ValidationError') {
-        setState({ validationErrs: { contactLinks: {}, ...error.inner } });
+        setState({ validationErrs: { ...error.inner } });
       }
       return false;
     }

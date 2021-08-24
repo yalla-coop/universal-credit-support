@@ -89,7 +89,7 @@ const CreateOrganisationDetails = () => {
   const validateForm = () => {
     try {
       validate({
-        contactLinks,
+        contactLinks: contactLinks.find((e) => !!e.type) ? contactLinks : null,
         benefitCalculatorLink,
         benefitCalculatorLabel,
       });

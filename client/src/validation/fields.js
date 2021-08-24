@@ -204,7 +204,7 @@ export const contactLinks = array()
       }),
     })
   )
-  .required();
+  .nullable();
 
 export const hexColorOptional = string().when((value, schema) => {
   if (value) {
