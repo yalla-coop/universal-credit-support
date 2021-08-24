@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import { useHistory } from 'react-router-dom';
-import { Grid as G, Typography as T, Icon, Button } from '../../components';
+import {
+  Grid as G,
+  Typography as T,
+  Icon,
+  Button,
+  Modal,
+} from '../../components';
 import { buttonStyle } from './style';
 import { navRoutes } from '../../constants';
 
@@ -77,6 +83,8 @@ const onDragEnd = (result, columns, setColumns) => {
 };
 
 function DragDrop({ beforeClaiming, claiming, afterClaiming }) {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
   const [columns, setColumns] = useState(columnsFromBackend);
   const history = useHistory();
 
@@ -191,10 +199,16 @@ function DragDrop({ beforeClaiming, claiming, afterClaiming }) {
           <Button
             variant="primary"
             text="Save changes"
-            onClick={() => reorderSteps(columns)}
+            onClick={() => setIsModalVisible(true)}
           />
         </G.Col>
       </G.Row>
+      <Modal
+        type="updateSuccess"
+        visible={isModalVisible}
+        setIsModalVisible={setIsModalVisible}
+        parentFunc={() => reorderSteps(columns)}
+      />
     </>
   );
 }
