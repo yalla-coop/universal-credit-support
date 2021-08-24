@@ -27,19 +27,24 @@ const { Row, Col } = Grid;
 const { Tips, Checklist } = Cards;
 
 const Step = () => {
-  const [checklist, setChecklist] = useState({
-    thingsYouWillNeed: [],
-    whatYouWillNeedToKnow: [],
-  });
+  // const [checklist, setChecklist] = useState({
+  //   thingsYouWillNeed: [],
+  //   whatYouWillNeedToKnow: [],
+  // });
   const [loaded, setLoaded] = useState(false);
   const [stuck, setStuck] = useState(false);
 
   const params = useParams();
   const { lang } = useLang();
-  const { steps: fullSteps, checkUncheckItem, setJustCompletedId } = useSteps();
+  const {
+    steps: fullSteps,
+    checkUncheckItem,
+    setJustCompletedId,
+    loadingSteps,
+  } = useSteps();
 
-  const step = fullSteps.find((s) => s.id === params.id);
-  const desktopColWidth = step.checkListItems.length > 5 ? 6 : 12;
+  const step = fullSteps.find((s) => s.id === Number(params.id));
+
   const isTablet = useMediaQuery({
     query: `(max-width: ${breakpoints.tablet})`,
   });
@@ -51,22 +56,26 @@ const Step = () => {
     return link;
   };
 
-  useEffect(() => {
-    // TO DO - api to get data from server
-    const stepsObj = step?.checkListItems?.reduce((acc, curr) => {
-      const { stage } = curr;
-      if (!acc[stage]) {
-        acc[stage] = [curr];
-      } else {
-        acc[stage].push(curr);
-      }
-      return acc;
-    }, {});
-    setChecklist(stepsObj);
-    setLoaded(true);
-  }, [fullSteps]);
+  // useEffect(() => {
+  //   // TO DO - api to get data from server
+  //   const stepsObj = step?.checkListItems?.reduce((acc, curr) => {
+  //     const { stage } = curr;
+  //     if (!acc[stage]) {
+  //       acc[stage] = [curr];
+  //     } else {
+  //       acc[stage].push(curr);
+  //     }
+  //     return acc;
+  //   }, {});
+  //   setChecklist(stepsObj);
+  //   setLoaded(true);
+  // }, [fullSteps]);
 
-  if (!loaded) return <>Loading</>;
+  if (loadingSteps) return <>Loading</>;
+
+  console.log('STEP', step, fullSteps, params.id);
+
+  // return 'hey';
 
   return (
     <S.Container>
@@ -134,8 +143,8 @@ const Step = () => {
               <T.H2 color="neutralMain">Things you'll need</T.H2>
             </S.SectionHeader>
             <Row inner>
-              {checklist.thingsYouWillNeed?.length > 0 ? (
-                checklist.thingsYouWillNeed.map((item, index) => (
+              {step.thingsYouWillNeed?.length > 0 ? (
+                step.thingsYouWillNeed.map((item, index) => (
                   <Col w={[4, 12, 6]} key={index} isFirst={index === 0}>
                     <Checklist
                       completed={item.isChecked}
@@ -162,7 +171,7 @@ const Step = () => {
           </Col>
         </Row>
 
-        {checklist.whatYouWillNeedToKnow?.length > 0 && (
+        {step.whatYouWillNeedToKnow?.length > 0 && (
           <Row mt="8" mtM="7">
             <Col w={[4, 12, 12]} ai="flex-start">
               <S.SectionHeader mb="5">
@@ -176,7 +185,7 @@ const Step = () => {
                 <T.H2 color="neutralMain">What you'll need to know</T.H2>
               </S.SectionHeader>
               <Row inner>
-                {checklist.whatYouWillNeedToKnow.map((item, index) => (
+                {step.whatYouWillNeedToKnow.map((item, index) => (
                   <Col w={[4, 12, 6]} key={index}>
                     <Checklist
                       completed={item.isChecked}
