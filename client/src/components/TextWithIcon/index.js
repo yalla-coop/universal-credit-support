@@ -22,7 +22,12 @@ const TextWithIcon = ({
 }) => {
   if (isButton)
     return (
-      <S.Button {...props} onClick={handleClick} disabled={disabled}>
+      <S.Button
+        {...props}
+        onClick={handleClick}
+        disabled={disabled}
+        type="button"
+      >
         {icon && (
           <Icon icon={icon} color={iconColor} mr="2" direction={direction} />
         )}

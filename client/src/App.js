@@ -67,6 +67,14 @@ function App() {
                     side="left"
                     gradient="secondary"
                   />
+                  <Route
+                    exact
+                    path={'/test'}
+                    Component={Pages.CreateOrganisationDetails}
+                    layout="splitScreen"
+                    side="left"
+                    gradient="secondary"
+                  />
                 </Switch>
               </Router>
             </AuthProvider>

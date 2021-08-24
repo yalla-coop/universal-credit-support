@@ -13,10 +13,11 @@ CREATE TABLE "organisations" (
     --     availability: '', //e.g. Monday to Friday (9am to 5pm)
     --     description: '',
     --     link: ''
+    --     phone_number: ''
     --   }
     -- ]
-  "benefit_calc_link" TEXT,
-  "benefit_calc_label" VARCHAR,
+  "benefit_calculator_link" TEXT,
+  "benefit_calculator_label" VARCHAR,
   "logo_id" INTEGER REFERENCES media(id),
   "colors" JSON,
     -- { 
