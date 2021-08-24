@@ -3,6 +3,7 @@ import setMargin from './../../../helpers/set-margin';
 
 export const Section = styled.section`
   ${setMargin};
+  width: 100%;
   border: ${({ theme: { borders } }) => borders.card};
   border-radius: ${({ theme: { borders } }) => borders.radius};
 `;
