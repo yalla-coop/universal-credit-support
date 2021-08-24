@@ -3,6 +3,7 @@ import * as errMsgs from './err-msgs';
 import './custom-functions';
 
 const URLregex = /^((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#.-]+)*\/?(\?[a-zA-Z0-9-_.-]+=[a-zA-Z0-9-%?&=.-]+&?)?$/;
+const hexRegex = /^#(?:[0-9a-fA-F]{3}){1,2}$/;
 const URLSlugRegex = /^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$/;
 
 export const requiredText = string()
@@ -209,3 +210,36 @@ export const thingsContent = array().of(
     tips: array().of(string().nullable()).nullable(),
   })
 );
+export const contactLinks = array()
+  .of(
+    object().shape({
+      type: requiredText,
+      availability: requiredText,
+      description: requiredText,
+      link: string().when('type', {
+        is: (v) => v === 'WEBCHAT_LINK',
+        then: urlRequired,
+        otherwise: string().nullable(),
+      }),
+      phoneNumber: string().when('type', {
+        is: (v) => v === 'PHONE',
+        then: phoneNumber,
+        otherwise: string().nullable(),
+      }),
+      email: string().when('type', {
+        is: (v) => v === 'EMAIL',
+        then: email,
+        otherwise: string().nullable(),
+      }),
+    })
+  )
+  .nullable();
+
+export const hexColorOptional = string().when((value, schema) => {
+  if (value) {
+    return schema.matches(hexRegex, {
+      message: errMsgs.INVALID_COLOR,
+    });
+  }
+  return schema.nullable();
+});

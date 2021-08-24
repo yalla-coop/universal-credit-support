@@ -22,6 +22,8 @@ const ADMIN = {
   WELCOME1: `${admin}/welcome/1`,
   WELCOME2: `${admin}/welcome/2`,
   DASHBOARD: `${admin}/dashboard`,
+  CREATE_ORG_DETAILS_FIRST_STEP: `${admin}/set-organisation/1`,
+  CREATE_ORG_DETAILS_SECOND_STEP: `${admin}/set-organisation/2`,
 };
 
 const SUPER_ADMIN = {
@@ -48,6 +50,7 @@ const EXTERNAL = {
   Call_0800_328_5644: 'tel:0800 328 5644',
   DEMO_VIDEO:
     'https://github.com/yalla-coop/universal-credit-support/issues/76',
+  ACCESSABILITY_GUIDELINES: 'https://webaim.org/resources/contrastchecker/',
 };
 
 const STEPS = {

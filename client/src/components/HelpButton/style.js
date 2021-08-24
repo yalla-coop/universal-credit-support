@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import setMargin from '../../helpers/set-margin';
 
 export const Button = styled.button`
-  width: 75px;
+  width: 90px;
   height: 45px;
   background: ${({ theme }) => theme.colors.secondaryMain};
   color: ${({ theme }) => theme.colors.white};
@@ -15,7 +15,7 @@ export const Button = styled.button`
   bottom: ${({ position }) => position.bottom && position.bottom};
   padding: 0;
   margin: 0;
-  margin-right: ${({ mr }) => mr || '-20px'};
+  margin-right: ${({ mr }) => mr || '-25px'};
   border: 0;
   display: flex;
   justify-content: center;

@@ -13,14 +13,17 @@ const constants = {
   layout: {
     step: {
       leftPadding: {
-        mobile: '2.56vw',
+        mobile: '5vw',
         tablet: '9.72vw',
         desktop: '9.72vw',
       },
       rightPadding: {
-        mobile: '2.63vw',
+        mobile: '5vw',
         tablet: '6.25vw',
         desktop: '6.25vw',
+      },
+      menu: {
+        desktop: '260px',
       },
     },
   },

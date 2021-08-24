@@ -53,7 +53,7 @@ function CreateUniqueLink({ success }) {
       setLoading(true);
       const { error, data } = await Organisations.updateOrganisation({
         id: 1,
-        uniqueSlug,
+        body: { uniqueSlug },
       });
       if (!error) {
         history.push(ADMIN.CREATE_UNIQUE_LINK_SUCCESS);
