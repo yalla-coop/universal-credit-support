@@ -24,7 +24,8 @@
     "build:db": "babel-node ./server/database/build.script.js",
     "build:db:prod": "babel-node ./server/database/dummy-data-prod/build.script.js",
     "init:both": "npm i && cd client && npm i && npm run build",
-    "heroku-postbuild": "npm run init:both && npm run build"
+    "heroku-postbuild": "npm run init:both && npm run build",
+    "storybook": "cd client/ && npm run storybook"
   },
   "dependencies": {
     "@hapi/boom": "^9.1.3",
