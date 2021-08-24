@@ -98,7 +98,7 @@ const SecondStep = () => {
       }
     } else {
       // after that the user should be directed to its dashboard
-      history.push(R.ADMIN.HOME);
+      history.push(R.ADMIN.CREATE_UNIQUE_LINK);
     }
   };
 
