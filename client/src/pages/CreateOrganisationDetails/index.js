@@ -200,8 +200,12 @@ const CreateOrganisationDetails = () => {
 
   return (
     <S.Form onSubmit={handleSubmit}>
-      <T.H1 weight="bold">Welcome!</T.H1>
-      <Row mt="6">
+      <Row>
+        <Col w={[4, 12, 12]}>
+          <T.H1 mb="6" weight="bold">
+            Welcome!
+          </T.H1>
+        </Col>{' '}
         <Col w={[4, 11, 6]}>
           <T.H2>Contact Details</T.H2>
           <T.P isSmall color="neutralDark" mt="4">
@@ -319,23 +323,29 @@ const CreateOrganisationDetails = () => {
         </div>
       ))}
 
-      <TextWithIcon
-        text="Add another example"
-        icon="add"
-        isButton
-        mt="4"
-        color="neutralMain"
-        iconColor="primaryMain"
-        handleClick={handleAddNewContactLink}
-        weight="semi"
-        disabled={isAddButtonDisabled}
-      />
-
-      <T.H2 color="neutralMain" mt="7">
-        Benefit calculator link
-      </T.H2>
-      <Row mt="6">
+      <Row>
         <Col w={[4, 11, 6]}>
+          <TextWithIcon
+            text="Add another contact"
+            icon="add"
+            isButton
+            mt="5"
+            color="neutralMain"
+            iconColor="primaryMain"
+            handleClick={handleAddNewContactLink}
+            weight="semi"
+            disabled={isAddButtonDisabled}
+          />
+        </Col>
+      </Row>
+
+      <Row>
+        <Col w={[4, 12, 12]}>
+          <T.H2 color="neutralMain" mt="7">
+            Benefit calculator link
+          </T.H2>
+        </Col>
+        <Col w={[4, 11, 6]} mt="6">
           <I.BasicInput
             label="Benefit calculator link"
             helper="Enter your preferred benefit calculator here"

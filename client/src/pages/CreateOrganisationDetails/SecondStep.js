@@ -3,13 +3,21 @@ import { useHistory } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import { breakpoints } from '../../theme';
 
-import { Grid, Typography as T, Inputs as I, Button } from '../../components';
+import {
+  Grid,
+  Typography as T,
+  Inputs as I,
+  Button,
+  Cards,
+} from '../../components';
 import * as S from './style';
 import { createOrganisationDetails as validate } from '../../validation/schemas';
 import { Organisations } from '../../api-calls';
 
-import { navRoutes as R } from '../../constants';
+import { navRoutes, navRoutes as R } from '../../constants';
 import { useAuth } from '../../context/auth';
+
+const { Tips } = Cards;
 
 const { Row, Col } = Grid;
 
@@ -115,15 +123,22 @@ const SecondStep = () => {
 
   return (
     <S.Form onSubmit={handleSubmit}>
-      <T.H1 weight="bold">Let’s customise!</T.H1>
-      <T.Link
-        color="neutralPrimaryMVP"
-        underline
-        mt="3"
-        to={R.ADMIN.CREATE_UNIQUE_LINK}
-      >
-        Skip for now
-      </T.Link>
+      <Row>
+        <Col w={[4, 12, 12]}>
+          <T.H1 weight="bold">Let’s customise!</T.H1>
+        </Col>
+        <Col w={[4, 12, 12]}>
+          <T.Link
+            color="neutralPrimaryMVP"
+            underline
+            mt="3"
+            to={R.ADMIN.CREATE_UNIQUE_LINK}
+          >
+            Skip for now
+          </T.Link>
+        </Col>
+      </Row>
+
       <Row mt="6">
         <Col w={[4, 11, 6]}>
           <T.H2>Colours</T.H2>
@@ -158,7 +173,7 @@ const SecondStep = () => {
           />
         </Col>
       </Row>
-      <Row mt="6">
+      <Row mt="6" mb="6">
         <Col w={[4, 11, 6]}>
           <I.ColorPicker
             color={neutralColor}
@@ -169,6 +184,23 @@ const SecondStep = () => {
           />
         </Col>
       </Row>
+
+      <Tips
+        cols={[4, 11, 6]}
+        tips={[
+          <T.H3 color="secondaryMain">
+            Tip! Please be mindful of accessibility and testing your colours
+            work. You can find more information{' '}
+            <T.Link
+              color="secondaryMain"
+              to={navRoutes.EXTERNAL.ACCESSABILITY_GUIDELINES}
+            >
+              here
+            </T.Link>
+          </T.H3>,
+        ]}
+        startingColor={1}
+      />
 
       <Row
         mt="7"
