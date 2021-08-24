@@ -156,7 +156,7 @@ const Login = () => {
       <Row mt="6">
         <Col w={[4, 11, 6]}>
           <TextWithIcon
-            to={R.ADMIN.SIGNUP}
+            to={R.ADMIN.WELCOME1}
             text="Don’t have an account? Sign up"
             icon="forwardArrow"
             iconColor="primaryMain"

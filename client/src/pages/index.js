@@ -6,12 +6,14 @@ import CreateOrganisationDetails, {
   SecondStep as CreateOrganisationDetails2,
 } from './CreateOrganisationDetails';
 import Dashboard from './Dashboard';
+import Welcome from './Welcome';
 
 export {
   Home,
   Step,
   Login,
   CreateUniqueLink,
+  Welcome,
   Dashboard,
   CreateOrganisationDetails,
   CreateOrganisationDetails2,
