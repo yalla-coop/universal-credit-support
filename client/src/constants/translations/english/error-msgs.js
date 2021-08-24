@@ -1,3 +1,3 @@
 export default {
-  general: 'Something went wrong, please try again later',
+  generalError: 'Something went wrong, please try again later',
 };

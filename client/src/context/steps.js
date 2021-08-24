@@ -1,129 +1,9 @@
-import { createContext, useState, useContext } from 'react';
+import { createContext, useState, useContext, useEffect } from 'react';
+import { message } from 'antd';
 
-// TO DO -> content to come from server
-const initialSteps = [
-  {
-    id: '1',
-    stage: 'beforeClaiming',
-    name: 'checkEligibility',
-    title: 'Wait! Should I apply?',
-    description: `Let's find out with a quick and easy benefit calculator`,
-    checkListItems: [
-      { value: 'incomeDetails', isChecked: false },
-      { value: 'detailsOfAnySavings', isChecked: false },
-      { value: 'housingCosts', isChecked: false },
-      { value: 'childcareCosts', isChecked: false },
-      { value: 'incomeOthersDetails', isChecked: false },
-    ],
-    isCompleted: true,
-    externalLink: true,
-    externalButtonLink: 'ELIGIBILITY_CALCULATOR',
-    isOptional: true,
-  },
-  {
-    id: '2',
-    stage: 'claiming',
-    name: 'createAccount',
-    title: 'Create account',
-    description:
-      'Create an account on the Government website. You’ll want to do this as soon as possible!',
-    checkListItems: [
-      { value: 'anEmailAddress', isChecked: false },
-      { value: 'bankAccountDetails', isChecked: false },
-      { value: 'accessPhone', isChecked: false },
-      { value: 'partnerLinkingCode', isChecked: false },
-    ],
-    isCompleted: false,
-    externalLink: true,
-    externalButtonLink: 'CREATE_UNIVERSAL_CREDIT_ACCOUNT',
-  },
-  {
-    id: '3',
-    stage: 'claiming',
-    name: 'claim',
-    title: `Make the claim`,
-    description: `Now it's time to complete the main part of the application form. Let's do this!`,
-    checkListItems: [
-      { value: 'AccountInfo', isChecked: false },
-      { value: 'mobileAccess', isChecked: false },
-      { value: 'bankAccount', isChecked: false },
-      { value: 'homeDetails', isChecked: false },
-      { value: 'housingCosts', isChecked: false },
-      { value: 'childrenBenefit', isChecked: false },
-      { value: 'incomeDetails', isChecked: false },
-      { value: 'capitalDetails', isChecked: false },
-      { value: 'responsibilities', isChecked: false },
-      { value: 'bankAccountDetails', isChecked: false },
-      { value: 'healthDetails', isChecked: false },
-    ],
-    isCompleted: false,
-    externalLink: true,
-    externalButtonLink: 'MAKE_YOUR_CLAIM',
-  },
-  {
-    id: '4',
-    stage: 'claiming',
-    name: 'verifyIdentity',
-    title: 'Verify Idenity',
-    description: `Claim submitted! Now to be considered, you'll need to 'verify' your identity.`,
-    checkListItems: [
-      { value: 'ID', isChecked: false },
-      { value: 'details', isChecked: false },
-    ],
-    isCompleted: false,
-  },
-
-  {
-    id: '5',
-    stage: 'claiming',
-    name: 'attendInterview',
-    title: `Attend Interview`,
-    description: `Nearly there! The final step to accessing your Universal Credit is an interview.`,
-    checkListItems: [
-      { value: 'nationalNumber', isChecked: false },
-      { value: 'needs', isChecked: false },
-      { value: 'limitations', isChecked: false },
-    ],
-    externalButtonLink: 'Call_0800_328_5644',
-    isCompleted: false,
-  },
-  {
-    id: '6',
-    stage: 'afterClaiming',
-    name: 'advance',
-    title: 'Want to apply for an advance?',
-    description: `Don't be scared about applying for this if you definitely do need it!`,
-    checkListItems: [
-      { value: 'accountInfo', isChecked: false },
-      { value: 'phone', isChecked: false },
-      { value: 'email', isChecked: false },
-      { value: 'toDoList', isChecked: false },
-      { value: 'claimantCommitment', isChecked: false },
-    ],
-    isCompleted: false,
-    externalLink: true,
-    externalButtonLink: 'GETTING_YOUR_FIRST_PAYMENT',
-    isOptional: true,
-  },
-  {
-    id: '7',
-    stage: 'afterClaiming',
-    name: 'payment',
-    title: 'Getting your first payment',
-    description:
-      'First payment is made 1 month and 7 days after you submitted your claim...',
-    checkListItems: [
-      { value: 'accountInfo', isChecked: false },
-      { value: 'phone', isChecked: false },
-      { value: 'email', isChecked: false },
-      { value: 'toDoList', isChecked: false },
-      { value: 'claimantCommitment', isChecked: false },
-    ],
-    isCompleted: false,
-    externalLink: true,
-    externalButtonLink: 'GETTING_YOUR_FIRST_PAYMENT',
-  },
-];
+import { Steps } from '../api-calls';
+import { t } from '../helpers';
+import { useLang } from '../context/lang';
 
 const storeStepsIntoStorage = (steps) => {
   localStorage.setItem('steps', JSON.stringify(steps));
@@ -172,23 +52,69 @@ const updateStepsInStorage = (stepsFromLocal, newSteps) => {
 
 const getStepsFromStorage = () => {
   const steps = JSON.parse(localStorage.getItem('steps'));
-  if (steps && steps.length) {
-    const updatedSteps = updateStepsInStorage(steps, initialSteps);
-    return updatedSteps;
-  } else {
-    storeStepsIntoStorage(initialSteps);
-    return initialSteps;
-  }
+  return steps || [];
 };
 
 const StepsContext = createContext({
-  steps: initialSteps,
+  steps: [],
   checkUncheckItem: (stepName, itemKey) => {},
 });
 
+const formateStepsObj = (stepsArr) => {
+  return stepsArr.reduce((acc, curr) => {
+    const { stage } = curr;
+    if (!acc[stage]) {
+      acc[stage] = [];
+    }
+    acc[stage].push(curr);
+    return acc;
+  }, {});
+};
+
 const StepsProvider = ({ children, ...props }) => {
   const [steps, setSteps] = useState(getStepsFromStorage);
+  const [stepsObj, setStepsObj] = useState({
+    beforeClaiming: [],
+    claiming: [],
+    afterClaiming: [],
+  });
   const [justCompletedId, setJustCompletedId] = useState('');
+  const [loadingSteps, setLoadingSteps] = useState(false);
+  const [stepsError, setStepsError] = useState('');
+  const { lang } = useLang();
+
+  useEffect(() => {
+    let mounted = true;
+    async function fetchData() {
+      setLoadingSteps(true);
+      const hideLoading = message.loading('loading...');
+      const { data: newSteps, error } = await Steps.getStepsContent({});
+      if (mounted) {
+        let updatedSteps = [];
+        if (error) {
+          setStepsError(error.message);
+          message.error(t(`generalError`, lang), 2);
+          // To update stepObj state
+          updatedSteps = getStepsFromStorage();
+        } else {
+          const stepsFromLocal = getStepsFromStorage();
+          updatedSteps = updateStepsInStorage(stepsFromLocal, newSteps);
+
+          setSteps(updatedSteps);
+        }
+
+        const _stepsObj = formateStepsObj(updatedSteps);
+        setStepsObj(_stepsObj);
+        setLoadingSteps(false);
+        hideLoading();
+      }
+    }
+
+    fetchData();
+    return () => {
+      mounted = false;
+    };
+  }, []);
 
   const checkUncheckItem = (stepName, itemKey) => {
     setSteps((prevSteps) => {
@@ -227,9 +153,12 @@ const StepsProvider = ({ children, ...props }) => {
 
   const value = {
     steps,
+    stepsObj,
     checkUncheckItem,
     justCompletedId,
     setJustCompletedId,
+    stepsError,
+    loadingSteps,
   };
   return (
     <StepsContext.Provider value={value} {...props}>
