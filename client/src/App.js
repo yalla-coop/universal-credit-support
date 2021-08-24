@@ -68,6 +68,20 @@ function App() {
                   />
                   <Route
                     exact
+                    path={'/test'}
+                    Component={Pages.EditContent}
+                    layout="dashboard"
+                    showMobileMenu
+                  />
+                  <Route
+                    exact
+                    path={navRoutes.ADMIN.EDIT_LANDING_PAGE}
+                    Component={Pages.EditLandingPage}
+                    layout="dashboard"
+                    showMobileMenu
+                  />
+                  <Route
+                    exact
                     path={navRoutes.ADMIN.LOGIN}
                     Component={Pages.Login}
                     layout="splitScreen"

@@ -19,6 +19,9 @@ const ADMIN = {
   WELCOME1: `${admin}/welcome/1`,
   WELCOME2: `${admin}/welcome/2`,
   DASHBOARD: `${admin}/dashboard`,
+  EDIT_CONTENT: `${admin}/edit-content`,
+  MANAGE_STEPS: `${admin}/edit-steps`,
+  EDIT_LANDING_PAGE: `${admin}/edit-landing-page`,
 };
 
 const SUPER_ADMIN = {
