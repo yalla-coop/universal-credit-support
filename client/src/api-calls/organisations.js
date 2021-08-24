@@ -21,5 +21,17 @@ const updateOrganisation = async ({ id, body, options }) => {
     return { error: err };
   }
 };
+const getHelpDetails = async ({ orgLink, options }) => {
+  try {
+    console.log('hey', orgLink);
+    const { data } = await axios.get(`${ORGS_BASE}/help`, {
+      params: { orgLink },
+    });
+    return { data };
+  } catch (error) {
+    const err = handleError(error, options);
+    return { error: err };
+  }
+};
 
-export { updateOrganisation, getOrganisation };
+export { updateOrganisation, getOrganisation, getHelpDetails };

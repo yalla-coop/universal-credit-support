@@ -1,5 +1,6 @@
 const GENERAL = {
   HOME: '/',
+  HOME_ORG: '/:org/home',
   LOGIN: '/login',
   UNAUTHORIZED: '/unauthorized',
   FORGET_PASSWORD: '/forget-password',
@@ -52,6 +53,7 @@ const EXTERNAL = {
 
 const STEPS = {
   STEP: '/steps/:id',
+  STEP_ORG: '/:org/steps/:id',
 };
 
 export { GENERAL, EXTERNAL, STEPS, ADMIN, SUPER_ADMIN };

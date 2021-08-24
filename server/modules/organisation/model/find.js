@@ -16,4 +16,18 @@ const findOrganisation = async (id) => {
   return res.rows[0];
 };
 
-export { findOrganisation };
+const findHelpDetails = async (orgLink) => {
+  const sql = `
+    SELECT
+      id,
+      contact_links
+    FROM organisations
+    WHERE unique_slug = $1
+  `;
+  const values = [orgLink];
+
+  const res = await query(sql, values);
+  return res.rows[0];
+};
+
+export { findOrganisation, findHelpDetails };

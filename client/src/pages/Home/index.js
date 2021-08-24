@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-
+import { useParams } from 'react-router-dom';
 import Step from '../../components/Steps';
 import { Typography as T } from '../../components';
 import { t } from '../../helpers';
@@ -39,6 +39,9 @@ const Home = () => {
 
   const currentStep = steps.find((step) => !step.isCompleted);
   const currentStepRef = useRef();
+  const { org } = useParams();
+
+  console.log('ORG', org);
 
   const completedClaim = currentStep?.stage === 'afterClaiming';
 
@@ -190,7 +193,7 @@ const Home = () => {
             />
           );
         })}
-      <HelpButton />
+      <HelpButton orgLink={org} />
     </>
   );
 };
