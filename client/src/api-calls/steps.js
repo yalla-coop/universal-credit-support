@@ -1,7 +1,7 @@
 import axios from 'axios';
 import handleError from './format-error';
 
-const STEPS_BASE = '/step';
+const STEPS_BASE = '/steps';
 
 const getStepsContent = async ({ options }) => {
   try {
