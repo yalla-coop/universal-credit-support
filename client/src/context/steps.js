@@ -10,7 +10,10 @@ const storeStepsIntoStorage = (steps) => {
 };
 
 // TO DO -> WILL NEED TO CHANGE TO THINGS AND TIPS
-const compareCheckListItems = (checkListItemsFromLocal, checkListItems) => {
+const compareCheckListItems = (
+  checkListItemsFromLocal = [],
+  checkListItems = []
+) => {
   const updatedCheckListItems = checkListItems.map((checkListItem) => {
     const existing = checkListItemsFromLocal.find(
       (checkListItemFromLocal) =>
@@ -114,6 +117,7 @@ const StepsProvider = ({ children, ...props }) => {
     return () => {
       mounted = false;
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const checkUncheckItem = (stepName, itemKey) => {
@@ -146,7 +150,6 @@ const StepsProvider = ({ children, ...props }) => {
       });
 
       storeStepsIntoStorage(newSteps);
-      console.log('new', newSteps);
       return newSteps;
     });
   };

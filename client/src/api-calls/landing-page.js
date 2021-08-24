@@ -1,7 +1,7 @@
 import axios from 'axios';
 import handleError from './format-error';
 
-const LANDING_PAGE_CONTENT_BASE = '/landing-page';
+const LANDING_PAGE_CONTENT_BASE = '/landing-pages';
 
 const getLandingPageContent = async ({ options }) => {
   try {

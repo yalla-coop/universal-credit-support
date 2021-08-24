@@ -15,6 +15,7 @@ const ADMIN = {
   CREATE_UNIQUE_LINK_SUCCESS: `${admin}/create-unique-link/success`,
   SIGNUP: `${admin}/signup`,
   LOGIN: `${admin}/login`,
+  DASHBOARD: `${admin}/dashboard`,
 };
 
 const SUPER_ADMIN = {
