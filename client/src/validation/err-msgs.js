@@ -23,3 +23,4 @@ export const AT_LEAST_ADD_ONE = 'You must add at least one therapy goal';
 export const All_required = 'You must fill all the required fields';
 export const AT_MOST_TWO_LETTERS =
   'Please only enter the first 2 characters of the postcode';
+export const INVALID_COLOR = 'Invalid color';

@@ -75,6 +75,25 @@ function App() {
                     gradient="secondary"
                   />
                   <Route
+                    exact
+                    path={navRoutes.ADMIN.CREATE_ORG_DETAILS_FIRST_STEP}
+                    Component={Pages.CreateOrganisationDetails}
+                    layout="splitScreen"
+                    side="left"
+                    gradient="secondary"
+                  />
+
+                  <Route
+                    exact
+                    path={navRoutes.ADMIN.CREATE_ORG_DETAILS_SECOND_STEP}
+                    Component={Pages.CreateOrganisationDetails2}
+                    layout="splitScreen"
+                    side="left"
+                    gradient="secondary"
+                  />
+
+                  <Route
+                    exact
                     // Have sub routes
                     path={navRoutes.ADMIN.WELCOME}
                     Component={Pages.Welcome}
