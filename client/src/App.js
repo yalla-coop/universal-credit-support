@@ -62,8 +62,7 @@ function App() {
 
                   <Route
                     exact
-                    // path={navRoutes.ADMIN.CREATE_UNIQUE_LINK_SUCCESS}
-                    path="/test"
+                    path={navRoutes.ADMIN.MANAGE_STEPS}
                     Component={Pages.ManageSteps}
                     layout="dashboard"
                     gradient="secondary"
