@@ -1,5 +1,6 @@
 const GENERAL = {
   HOME: '/',
+  FORGET_PASSWORD: '/forget-password',
 };
 
 const admin = '/admin';
@@ -8,6 +9,8 @@ const ADMIN = {
   HOME: `${admin}/home`,
   EDIT_DETAILS: `${admin}/edit-details`,
   CUSTOMISE_LOG_OUT: `${admin}/customise-log-out`,
+  SIGNUP: `${admin}/signup`,
+  LOGIN: `${admin}/login`,
 };
 
 const SUPER_ADMIN = {

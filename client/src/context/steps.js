@@ -1,232 +1,9 @@
-import { createContext, useState, useContext } from 'react';
+import { createContext, useState, useContext, useEffect } from 'react';
+import { message } from 'antd';
 
-// TO DO -> content to come from server
-const initialSteps = [
-  {
-    id: '1',
-    stage: 'beforeClaiming',
-    name: 'checkEligibility',
-    title: 'Wait! Should I apply?',
-    description: `Let's find out with a quick and easy benefit calculator`,
-    pageTitle: `Should you claim?`,
-    pageDescription: `Using the benefit calculator enables you to find out an estimate of how much Universal Credit you may be entitled to.`,
-    thingsYouWillNeed: [],
-    checkListItems: [
-      {
-        title: `Income details`,
-        description: ``,
-        thisCanInclude: [
-          `Salaries from an employer or self-employment`,
-          `Other Benefits you and/or your partner already receive`,
-          `Private pensions`,
-        ],
-        tips: [`Benefit income and salaries can be found on P60s/P45s`],
-        isChecked: false,
-        stage: 'whatYouWillNeedToKnow',
-      },
-      {
-        title: `Details of any capital, savings and investments`,
-        description: ``,
-        thisCanInclude: [],
-        tips: [
-          `This includes ALL money you hold anywhere, including in current bank accounts, ISAs and property you own that you don’t live in`,
-        ],
-        isChecked: false,
-        stage: 'whatYouWillNeedToKnow',
-      },
-      {
-        title: `Housing costs`,
-        description: `You can get this from your landlord or mortgage provider.`,
-        thisCanInclude: [
-          `How much rent you are charged and how often`,
-          `How much service charges you are charged and how often`,
-          `Mortgage payments`,
-          `Ground rent`,
-        ],
-        tips: [],
-        isChecked: false,
-        stage: 'whatYouWillNeedToKnow',
-      },
-      {
-        title: `Childcare costs`,
-        description: ``,
-        thisCanInclude: [],
-        tips: [],
-        isChecked: false,
-        stage: 'whatYouWillNeedToKnow',
-      },
-      {
-        title: `Income details of any other adults living in the property that are not lodgers e.g. grown up children, elderly parents`,
-        description: ``,
-        thisCanInclude: [],
-        tips: [],
-        isChecked: false,
-        stage: 'whatYouWillNeedToKnow',
-      },
-    ],
-    isCompleted: false,
-    isOptional: true,
-    topTip: `The more accurate the information you give the more accurate the estimate will be.`,
-    howLongDoesItTake: {
-      timeRangeText: '15 to 25 minutes',
-    },
-    whereDoYouNeedToGo: {
-      link:
-        'https://www.entitledto.co.uk/benefits-calculator/Intro/Home?cid=0af743fb-414d-4559-a0c9-b88d26a88671',
-      type: 'LINK',
-      title: `Our Benefit Calculator`,
-    },
-    otherTips: [
-      `Keep hold of any documents you dig out to help you work out the bits you need to know for the calculator. These are often needed in the application so having them stored can be helpful to make things quicker!`,
-    ],
-  },
-  {
-    id: '2',
-    stage: 'claiming',
-    name: 'createAccount',
-    title: 'Create account',
-    description:
-      'Create an account on the Government website. You’ll want to do this as soon as possible!',
-    pageTitle: ``,
-    pageDescription: ``,
-    checkListItems: [
-      {
-        title: `Email address`,
-        description: `This should be the bank account that your Universal Credit will be paid into. You can set up a free bank account in most high street banks or an online bank if you don’t already have one.`,
-        thisCanInclude: [],
-        tips: [],
-        stage: 'thingsYouWillNeed',
-        isChecked: false,
-      },
-      {
-        title: `Bank account`,
-        description: ``,
-        thisCanInclude: [],
-        tips: [],
-        stage: 'thingsYouWillNeed',
-        isChecked: false,
-      },
-      {
-        title: `Access to your mobile phone (if you have one)`,
-        description: ``,
-        thisCanInclude: [],
-        tips: [],
-        stage: 'thingsYouWillNeed',
-        isChecked: false,
-      },
-      {
-        title: `Your partner's Universal Credit linking code (if you have a partner and they have one)`,
-        description: ``,
-        thisCanInclude: [],
-        tips: [
-          `If with a partner BOTH will need to do this separately and then the accounts will need to be ‘LINKED’ via a linking code that will be given on the screen during this process.`,
-        ],
-        stage: 'thingsYouWillNeed',
-        isChecked: false,
-      },
-    ],
-    isCompleted: false,
-    howLongDoesItTake: {
-      timeRangeText: '15 to 25 minutes',
-    },
-    whereDoYouNeedToGo: {
-      link:
-        'https://www.entitledto.co.uk/benefits-calculator/Intro/Home?cid=0af743fb-414d-4559-a0c9-b88d26a88671',
-      type: 'LINK',
-      title: `Our Benefit Calculator`,
-    },
-    topTip: '',
-    otherTips: [
-      `You now have 28 days in which to make and submit the claim. The start date will be from the date the claim is submitted.`,
-    ],
-  },
-  {
-    id: '3',
-    stage: 'claiming',
-    name: 'claim',
-    title: `Make the claim`,
-    description: `Now it's time to complete the main part of the application form. Let's do this!`,
-    checkListItems: [
-      { value: 'AccountInfo', isChecked: false },
-      { value: 'mobileAccess', isChecked: false },
-      { value: 'bankAccount', isChecked: false },
-      { value: 'homeDetails', isChecked: false },
-      { value: 'housingCosts', isChecked: false },
-      { value: 'childrenBenefit', isChecked: false },
-      { value: 'incomeDetails', isChecked: false },
-      { value: 'capitalDetails', isChecked: false },
-      { value: 'responsibilities', isChecked: false },
-      { value: 'bankAccountDetails', isChecked: false },
-      { value: 'healthDetails', isChecked: false },
-    ],
-    isCompleted: false,
-    externalLink: true,
-    externalButtonLink: 'MAKE_YOUR_CLAIM',
-  },
-  {
-    id: '4',
-    stage: 'claiming',
-    name: 'verifyIdentity',
-    title: 'Verify Identity',
-    description: `Claim submitted! Now to be considered, you'll need to 'verify' your identity.`,
-    checkListItems: [
-      { value: 'ID', isChecked: false },
-      { value: 'details', isChecked: false },
-    ],
-    isCompleted: false,
-  },
-
-  {
-    id: '5',
-    stage: 'claiming',
-    name: 'attendInterview',
-    title: `Attend Interview`,
-    description: `Nearly there! The final step to accessing your Universal Credit is an interview.`,
-    checkListItems: [
-      { value: 'nationalNumber', isChecked: false },
-      { value: 'needs', isChecked: false },
-      { value: 'limitations', isChecked: false },
-    ],
-    externalButtonLink: 'Call_0800_328_5644',
-    isCompleted: false,
-  },
-  {
-    id: '6',
-    stage: 'afterClaiming',
-    name: 'advance',
-    title: 'Want to apply for an advance?',
-    description: `Don't be scared about applying for this if you definitely do need it!`,
-    checkListItems: [
-      { value: 'accountInfo', isChecked: false },
-      { value: 'phone', isChecked: false },
-      { value: 'email', isChecked: false },
-      { value: 'toDoList', isChecked: false },
-      { value: 'claimantCommitment', isChecked: false },
-    ],
-    isCompleted: false,
-    externalLink: true,
-    externalButtonLink: 'GETTING_YOUR_FIRST_PAYMENT',
-    isOptional: true,
-  },
-  {
-    id: '7',
-    stage: 'afterClaiming',
-    name: 'payment',
-    title: 'Getting your first payment',
-    description:
-      'First payment is made 1 month and 7 days after you submitted your claim...',
-    checkListItems: [
-      { value: 'accountInfo', isChecked: false },
-      { value: 'phone', isChecked: false },
-      { value: 'email', isChecked: false },
-      { value: 'toDoList', isChecked: false },
-      { value: 'claimantCommitment', isChecked: false },
-    ],
-    isCompleted: false,
-    externalLink: true,
-    externalButtonLink: 'GETTING_YOUR_FIRST_PAYMENT',
-  },
-];
+import { Steps } from '../api-calls';
+import { t } from '../helpers';
+import { useLang } from '../context/lang';
 
 const storeStepsIntoStorage = (steps) => {
   localStorage.setItem('steps', JSON.stringify(steps));
@@ -257,13 +34,13 @@ const updateStepsInStorage = (stepsFromLocal, newSteps) => {
 
     if (existing) {
       const updatedChecklist = compareCheckListItems(
-        existing.checkListItems,
-        newStep.checkListItems
+        existing.checklist,
+        newStep.checklist
       );
 
       return {
         ...newStep,
-        checkListItems: updatedChecklist,
+        checklist: updatedChecklist,
         isCompleted: existing.isCompleted,
       };
     }
@@ -275,23 +52,69 @@ const updateStepsInStorage = (stepsFromLocal, newSteps) => {
 
 const getStepsFromStorage = () => {
   const steps = JSON.parse(localStorage.getItem('steps'));
-  if (steps && steps.length) {
-    const updatedSteps = updateStepsInStorage(steps, initialSteps);
-    return updatedSteps;
-  } else {
-    storeStepsIntoStorage(initialSteps);
-    return initialSteps;
-  }
+  return steps || [];
 };
 
 const StepsContext = createContext({
-  steps: initialSteps,
+  steps: [],
   checkUncheckItem: (stepName, itemKey) => {},
 });
 
+const formateStepsObj = (stepsArr) => {
+  return stepsArr.reduce((acc, curr) => {
+    const { stage } = curr;
+    if (!acc[stage]) {
+      acc[stage] = [];
+    }
+    acc[stage].push(curr);
+    return acc;
+  }, {});
+};
+
 const StepsProvider = ({ children, ...props }) => {
   const [steps, setSteps] = useState(getStepsFromStorage);
+  const [stepsObj, setStepsObj] = useState({
+    beforeClaiming: [],
+    claiming: [],
+    afterClaiming: [],
+  });
   const [justCompletedId, setJustCompletedId] = useState('');
+  const [loadingSteps, setLoadingSteps] = useState(false);
+  const [stepsError, setStepsError] = useState('');
+  const { lang } = useLang();
+
+  useEffect(() => {
+    let mounted = true;
+    async function fetchData() {
+      setLoadingSteps(true);
+      const hideLoading = message.loading('loading...');
+      const { data: newSteps, error } = await Steps.getStepsContent({});
+      if (mounted) {
+        let updatedSteps = [];
+        if (error) {
+          setStepsError(error.message);
+          message.error(t(`generalError`, lang), 2);
+          // To update stepObj state
+          updatedSteps = getStepsFromStorage();
+        } else {
+          const stepsFromLocal = getStepsFromStorage();
+          updatedSteps = updateStepsInStorage(stepsFromLocal, newSteps);
+
+          setSteps(updatedSteps);
+        }
+
+        const _stepsObj = formateStepsObj(updatedSteps);
+        setStepsObj(_stepsObj);
+        setLoadingSteps(false);
+        hideLoading();
+      }
+    }
+
+    fetchData();
+    return () => {
+      mounted = false;
+    };
+  }, []);
 
   const checkUncheckItem = (stepName, itemKey) => {
     setSteps((prevSteps) => {
@@ -329,9 +152,12 @@ const StepsProvider = ({ children, ...props }) => {
 
   const value = {
     steps,
+    stepsObj,
     checkUncheckItem,
     justCompletedId,
     setJustCompletedId,
+    stepsError,
+    loadingSteps,
   };
   return (
     <StepsContext.Provider value={value} {...props}>

@@ -1,24 +1,18 @@
 import { useState, useEffect, useRef } from 'react';
 
 import Step from '../../components/Steps';
-import { Typography as T, Inputs as I } from '../../components';
+import { Typography as T } from '../../components';
 import { t } from '../../helpers';
 import { useLang } from '../../context/lang';
 import { useSteps } from '../../context/steps';
 import { navRoutes as n } from '../../constants';
+import LandingContent from './LandingContent';
 
 import Icon from '../../components/Icon';
 import HelpButton from '../../components/HelpButton';
 import TextWithIcon from '../../components/TextWithIcon';
 
 import * as S from './style';
-
-const dataToComeFromServer = {
-  title: `Are you trying to work out how you actually claim for Universal
-  Credit and feeling a bit lost?`,
-  subtitle: `Don’t worry, we’ve got you! Click on each step below to work your way through the process.`,
-  instructions: `Everything will be saved as you go so you can leave this tool and come back anytime. Always remember you can contact us whenever just by clicking that useful ‘Help Me!’ button.`,
-};
 
 const afterClaimContent = {
   title: {
@@ -33,34 +27,20 @@ const afterClaimContent = {
 
 const Home = () => {
   const { lang } = useLang();
-  const { steps: fullSteps, justCompletedId, setJustCompletedId } = useSteps();
-  const [landingContent, setLandingContent] = useState({});
-  const [steps, setSteps] = useState({
-    beforeClaiming: [],
-    claiming: [],
-    afterClaiming: [],
-  });
+  const {
+    steps,
+    justCompletedId,
+    setJustCompletedId,
+    loadingSteps,
+    stepsObj,
+  } = useSteps();
+
   const [showAfterClaim, setShowAfterClaim] = useState(false);
-  const currentStep = fullSteps.find((step) => !step.isCompleted);
+
+  const currentStep = steps.find((step) => !step.isCompleted);
   const currentStepRef = useRef();
 
-  const completedClaim = currentStep.stage === 'afterClaiming';
-
-  const formatText = (text) => {
-    if (!text) return '';
-    const arr = text.split(/\. |\! |\? /gm);
-    const firstSentence = arr[0];
-    if (!arr[1]) return <T.H2 color="primaryMain">{firstSentence}</T.H2>;
-
-    const remainder = arr.slice(1).join(' ');
-    return (
-      <>
-        <T.H2 color="primaryMain" mb="2" mr="2" mt="2">
-          {firstSentence}! <S.Span>{remainder}</S.Span>
-        </T.H2>
-      </>
-    );
-  };
+  const completedClaim = currentStep?.stage === 'afterClaiming';
 
   const getStepStatus = (step, i) => {
     const isCurrentStep = currentStep && step.name === currentStep.name;
@@ -88,36 +68,12 @@ const Home = () => {
     }
   }, [justCompletedId]);
 
-  useEffect(() => {
-    // TO DO - api to get data from server
-    setLandingContent(dataToComeFromServer);
-    const stepsObj = fullSteps.reduce((acc, curr) => {
-      const { stage } = curr;
-      if (!acc[stage]) {
-        acc[stage] = [];
-      }
-      acc[stage].push(curr);
-      return acc;
-    }, {});
-    setSteps(stepsObj);
-  }, []);
-
   return (
     <>
-      <S.PageHead>
-        <S.HeaderText>
-          <T.H2 weight="bold" color="white">
-            {landingContent.title}
-          </T.H2>
-        </S.HeaderText>
-      </S.PageHead>
-      <S.Section>
-        {formatText(landingContent.subtitle)}{' '}
-        <S.StyledText mb="3">{landingContent.instructions}</S.StyledText>
-      </S.Section>
+      <LandingContent />
 
       {/* BEFORE CLAIMING */}
-      {steps.beforeClaiming?.map((step, i) => {
+      {stepsObj.BEFORE_CLAIMING?.map((step, i) => {
         const { variant, currentRef, isJustCompletedOne } = getStepStatus(
           step,
           i
@@ -140,12 +96,13 @@ const Home = () => {
             handleClick={() => {
               setJustCompletedId('');
             }}
+            loadingSteps={loadingSteps}
           />
         );
       })}
 
       {/* CLAIMING */}
-      {steps.claiming?.map((step, i) => {
+      {stepsObj.CLAIMING?.map((step, i) => {
         const { variant, currentRef, isJustCompletedOne } = getStepStatus(
           step,
           i
@@ -168,6 +125,7 @@ const Home = () => {
             handleClick={() => {
               setJustCompletedId('');
             }}
+            loadingSteps={loadingSteps}
           />
         );
       })}
@@ -205,7 +163,7 @@ const Home = () => {
       </S.Section>
 
       {(completedClaim || showAfterClaim) &&
-        steps.afterClaiming?.map((step, i) => {
+        stepsObj.AFTER_CLAIMING?.map((step, i) => {
           const { variant, currentRef, isJustCompletedOne } = getStepStatus(
             step,
             i
@@ -228,6 +186,7 @@ const Home = () => {
               handleClick={() => {
                 setJustCompletedId('');
               }}
+              loadingSteps={loadingSteps}
             />
           );
         })}

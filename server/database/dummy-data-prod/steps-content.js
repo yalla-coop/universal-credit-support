@@ -14,6 +14,7 @@ const createSteps = async ({
   whatYouWillNeedToKnow,
   topTip,
   otherTips,
+  isOptional,
 }) => {
   const sql = `INSERT INTO steps (
    stage, 
@@ -27,7 +28,8 @@ const createSteps = async ({
    things_you_will_need, 
    what_you_will_need_to_know, 
    top_tip, 
-   other_tips
+   other_tips,
+   is_optional
   ) VALUES (
     $1,
     $2,
@@ -40,7 +42,8 @@ const createSteps = async ({
     $9,
     $10,
     $11,
-    $12
+    $12,
+    $13
   ) RETURNING *`;
   const res = await query(sql, [
     stage,
@@ -55,6 +58,7 @@ const createSteps = async ({
     whatYouWillNeedToKnow,
     topTip,
     otherTips,
+    isOptional,
   ]);
   return res.rows[0];
 };
@@ -122,6 +126,7 @@ const addStepContent = async () => {
     otherTips: [
       `Keep hold of any documents you dig out to help you work out the bits you need to know for the calculator. These are often needed in the application so having them stored can be helpful to make things quicker!`,
     ],
+    isOptional: true,
   };
 
   // CLAIMING

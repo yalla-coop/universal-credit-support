@@ -77,16 +77,20 @@ export const P = styled(({ isSmall, ...props }) => <Paragraph {...props} />)`
   }
 `;
 
-const AntdLink = ({ to, external = false, underline, ...props }) =>
-  external ? (
-    <Typography.Link target="_blank" href={to} {...props} />
-  ) : (
-    <RouterLink
-      to={to}
-      component={() => <Typography.Link href={to} {...props} />}
+const AntdLink = ({ to, external = false, underline, ...props }) => {
+  return external ? (
+    <Typography.Link
+      target="_blank"
+      href={to}
+      style={{ border: '1px solid red' }}
+      {...props}
     />
+  ) : (
+    <RouterLink to={to} {...props}>
+      {props.children}
+    </RouterLink>
   );
-
+};
 export const Link = styled(AntdLink)`
   ${setMargin};
   ${commonStyle};
