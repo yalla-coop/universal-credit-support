@@ -68,7 +68,7 @@ function App() {
                   />
                   <Route
                     exact
-                    path={'/test'}
+                    path={navRoutes.ADMIN.EDIT_CONTENT}
                     Component={Pages.EditContent}
                     layout="dashboard"
                     showMobileMenu
