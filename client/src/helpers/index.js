@@ -3,5 +3,6 @@ import setMargin from './set-margin';
 import cleanEmail from './cleanEmail';
 import ScrollToTop from './ScrollToTop';
 import rotator from './rotator';
+import authorization from './authorization';
 
-export { setMargin, cleanEmail, ScrollToTop, t, rotator };
+export { setMargin, cleanEmail, ScrollToTop, t, rotator, authorization };

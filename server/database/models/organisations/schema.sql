@@ -5,7 +5,7 @@ CREATE TABLE "organisations" (
   "user_id" INTEGER REFERENCES users(id),
   "organisation_name" VARCHAR(50),
   "type_of_organisation" organisation_types NOT NULL,
-  "unique_link" VARCHAR UNIQUE NOT NULL,
+  "unique_slug" VARCHAR UNIQUE NOT NULL,
   "contact_links" JSON[],
     -- [
     --   {

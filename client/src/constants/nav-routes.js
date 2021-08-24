@@ -1,5 +1,7 @@
 const GENERAL = {
   HOME: '/',
+  LOGIN: '/login',
+  UNAUTHORIZED: '/unauthorized',
   FORGET_PASSWORD: '/forget-password',
 };
 
@@ -9,8 +11,11 @@ const ADMIN = {
   HOME: `${admin}/home`,
   EDIT_DETAILS: `${admin}/edit-details`,
   CUSTOMISE_LOG_OUT: `${admin}/customise-log-out`,
+  CREATE_UNIQUE_LINK: `${admin}/create-unique-link`,
+  CREATE_UNIQUE_LINK_SUCCESS: `${admin}/create-unique-link/success`,
   SIGNUP: `${admin}/signup`,
   LOGIN: `${admin}/login`,
+  DASHBOARD: `${admin}/dashboard`,
 };
 
 const SUPER_ADMIN = {

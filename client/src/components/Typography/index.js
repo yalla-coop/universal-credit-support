@@ -79,12 +79,7 @@ export const P = styled(({ isSmall, ...props }) => <Paragraph {...props} />)`
 
 const AntdLink = ({ to, external = false, underline, ...props }) => {
   return external ? (
-    <Typography.Link
-      target="_blank"
-      href={to}
-      style={{ border: '1px solid red' }}
-      {...props}
-    />
+    <Typography.Link target="_blank" href={to} {...props} />
   ) : (
     <RouterLink to={to} {...props}>
       {props.children}
@@ -97,9 +92,9 @@ export const Link = styled(AntdLink)`
   font-size: 16px !important;
   line-height: 24px !important;
   font-weight: ${({ weight }) => (weight ? weights[weight] : '400 !important')};
-  border-bottom: ${({ underline }) =>
-    underline ? '1px solid' : 'none'} !important;
-  text-decoration: none;
+
+  text-decoration: ${({ underline }) =>
+    underline ? 'underline' : 'none'} !important;
   border-color: ${({ theme, color }) =>
     theme.colors[color] || color || theme.colors.black} !important;
 `;
