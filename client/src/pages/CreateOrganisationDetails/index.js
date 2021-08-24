@@ -105,7 +105,7 @@ const Login = () => {
   const handleLogin = async () => {
     setState({ loading: true });
     const { error } = await Organisations.updateOrganisation({
-      id: user.id,
+      id: 1,
       body: {
         contactLinks,
         benefitCalculatorLink,
@@ -160,8 +160,8 @@ const Login = () => {
       const _contactLinks = [
         ...contactLinks,
         {
-          type: '', //[PHONE, WEBCHAT_LINK]
-          availability: '', //e.g. Monday to Friday (9am to 5pm)
+          type: '',
+          availability: '',
           description: '',
           link: '',
           phoneNumber: '',

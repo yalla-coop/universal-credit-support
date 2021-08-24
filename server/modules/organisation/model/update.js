@@ -1,13 +1,28 @@
 import { query } from '../../../database';
 
-const updateOrganisation = async ({ id, uniqueSlug }) => {
+const updateOrganisation = async ({
+  id,
+  uniqueSlug,
+  contactLinks,
+  benefitCalculatorLink,
+  benefitCalculatorLabel,
+}) => {
   const sql = `
-    UPDATE organisations
+    UPDATE organisations AS o
       SET
-        unique_slug = $2
+        unique_slug = COALESCE($2, o.unique_slug),
+        contact_links = COALESCE($3, o.contact_links),
+        benefit_calculator_link = COALESCE($4, o.benefit_calculator_link),
+        benefit_calculator_label = COALESCE($5, o.benefit_calculator_label)
     WHERE id = $1
   `;
-  const values = [id, uniqueSlug];
+  const values = [
+    id,
+    uniqueSlug,
+    contactLinks,
+    benefitCalculatorLink,
+    benefitCalculatorLabel,
+  ];
 
   const res = await query(sql, values);
   return res.rows[0];
