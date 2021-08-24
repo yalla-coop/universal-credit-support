@@ -17,7 +17,7 @@ const compareCheckListItems = (
   const updatedCheckListItems = checkListItems.map((checkListItem) => {
     const existing = checkListItemsFromLocal.find(
       (checkListItemFromLocal) =>
-        checkListItem.value === checkListItemFromLocal.value
+        checkListItem.title === checkListItemFromLocal.title
     );
     if (existing) {
       return {
@@ -37,13 +37,13 @@ const updateStepsInStorage = (stepsFromLocal, newSteps) => {
 
     if (existing) {
       const updatedChecklist = compareCheckListItems(
-        existing.checkListItems,
-        newStep.checkListItems
+        existing.checklist,
+        newStep.checklist
       );
 
       return {
         ...newStep,
-        checkListItems: updatedChecklist,
+        checklist: updatedChecklist,
         isCompleted: existing.isCompleted,
       };
     }
@@ -117,20 +117,30 @@ const StepsProvider = ({ children, ...props }) => {
     return () => {
       mounted = false;
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const checkUncheckItem = (stepName, itemKey) => {
+  useEffect(() => {
+    const updatedSteps = steps.map((step) => {
+      if (step.id === justCompletedId) {
+        return { ...step, isCompleted: true };
+      }
+      return step;
+    });
+    const _stepsObj = formateStepsObj(updatedSteps);
+    setStepsObj(_stepsObj);
+  }, [justCompletedId, steps]);
+
+  const checkUncheckItem = (stepId, itemKey) => {
     setSteps((prevSteps) => {
       const newSteps = prevSteps.map((step) => {
-        if (step.name === stepName) {
+        if (step.id === stepId) {
           const newStep = { ...step };
 
-          let uncheckedSteps = step.checkListItems.length;
-          const newCheckListItems = step.checkListItems.map((item) => {
+          let uncheckedSteps = step.checklist.length;
+          const newCheckListItems = step.checklist.map((item) => {
             const newItem = { ...item };
 
-            if (newItem.value === itemKey) {
+            if (newItem.title === itemKey) {
               newItem.isChecked = !item.isChecked;
             }
 
@@ -141,15 +151,34 @@ const StepsProvider = ({ children, ...props }) => {
             return newItem;
           });
 
-          newStep.checkListItems = newCheckListItems;
+          newStep.checklist = newCheckListItems;
           newStep.isCompleted = uncheckedSteps === 0;
-
           return newStep;
         }
         return { ...step };
       });
 
       storeStepsIntoStorage(newSteps);
+      return newSteps;
+    });
+  };
+
+  const markAsComplete = (stepId) => {
+    setSteps((prevSteps) => {
+      const newSteps = prevSteps.map((step) => {
+        if (step.id === stepId) {
+          const newChecklist = step.checklist.map((item) => ({
+            ...item,
+            isChecked: true,
+          }));
+
+          return { ...step, checklist: newChecklist, isCompleted: true };
+        }
+        return { ...step };
+      });
+
+      storeStepsIntoStorage(newSteps);
+      setJustCompletedId(stepId);
       return newSteps;
     });
   };
@@ -162,6 +191,7 @@ const StepsProvider = ({ children, ...props }) => {
     setJustCompletedId,
     stepsError,
     loadingSteps,
+    markAsComplete,
   };
   return (
     <StepsContext.Provider value={value} {...props}>

@@ -30,7 +30,8 @@ export const ContentHalf = styled.div`
       },
     },
   }) =>
-    `${s[9]} ${step.rightPadding.desktop} ${s[11]} ${step.leftPadding.desktop}}`};
+    `${s[9]} ${step.rightPadding.desktop} ${s[11]} ${step.leftPadding.desktop}`};
+
   ${({ theme }) => theme.media.mobile} {
     padding: ${({
       theme: {

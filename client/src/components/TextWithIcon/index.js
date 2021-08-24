@@ -18,6 +18,8 @@ const TextWithIcon = ({
   handleClick,
   weight,
   disabled,
+  mr,
+  isText,
   ...props
 }) => {
   if (isButton)
@@ -29,12 +31,33 @@ const TextWithIcon = ({
         type="button"
       >
         {icon && (
-          <Icon icon={icon} color={iconColor} mr="2" direction={direction} />
+          <Icon
+            icon={icon}
+            color={iconColor}
+            mr={mr || '2'}
+            direction={direction}
+          />
         )}
-        <T.H3 weight={weight} color={color}>
+        <T.H3 weight={weight} color={color} td={underline && 'underline'}>
           {text}
         </T.H3>
       </S.Button>
+    );
+
+  if (isText)
+    return (
+      <S.Wrapper {...props}>
+        {icon && <Icon icon={icon} color={iconColor} mr="11.5px" />}
+        <T.H3
+          to={to}
+          color={color}
+          weight={weight}
+          td={underline && 'underline'}
+          {...props}
+        >
+          {text}
+        </T.H3>
+      </S.Wrapper>
     );
 
   return (
