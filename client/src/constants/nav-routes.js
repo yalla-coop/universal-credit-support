@@ -47,8 +47,7 @@ const EXTERNAL = {
   Call_0800_328_5644: 'tel:0800 328 5644',
   DEMO_VIDEO:
     'https://github.com/yalla-coop/universal-credit-support/issues/76',
-  ACCESSABILITY_GUIDELINES:
-    'https://github.com/yalla-coop/universal-credit-support/issues/76',
+  ACCESSABILITY_GUIDELINES: 'https://webaim.org/resources/contrastchecker/',
 };
 
 const STEPS = {
