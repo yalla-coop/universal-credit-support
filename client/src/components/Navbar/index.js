@@ -60,7 +60,7 @@ export const MobileNav = () => {
           <S.LogoLink to={GENERAL.HOME}>
             <img src={YallaLogo} alt="logo" />
           </S.LogoLink>
-          <NavItems setOpen={setOpen} style={{ border: '1px solid red' }} />
+          <NavItems setOpen={setOpen} />
         </div>
       </S.Drawer>
     </S.MobileContainer>
