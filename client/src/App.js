@@ -67,6 +67,22 @@ function App() {
                     side="left"
                     gradient="secondary"
                   />
+                  <Route
+                    exact
+                    path={navRoutes.GENERAL.FORGET_PASSWORD}
+                    Component={Pages.ForgotPassword}
+                    layout="splitScreen"
+                    side="left"
+                    gradient="secondary"
+                  />
+                  <Route
+                    exact
+                    path={navRoutes.GENERAL.RESET_PASSWORD}
+                    Component={Pages.ResetPassword}
+                    layout="splitScreen"
+                    side="left"
+                    gradient="secondary"
+                  />
                 </Switch>
               </Router>
             </AuthProvider>
