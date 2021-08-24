@@ -2,6 +2,26 @@
  * change error plain object to nested object
  * @param {*} error error object
  */
+
+const objFormat = (obj) => {
+  const keys = Object.keys(obj);
+  let newKeys = {};
+  let regex = /(\[\d+\])/;
+  keys.forEach((key) => {
+    let matchedKey = key.match(regex);
+    if (matchedKey !== null) {
+      if (!key.includes('.')) {
+        let number = matchedKey[0].match(/(\d+)/)[0];
+        let newKey = key.split('[')[0];
+        newKeys[newKey] = { ...newKeys[newKey], [number]: obj[key] };
+      }
+    } else if (!key.includes('.')) {
+      newKeys[key] = obj[key];
+    }
+  });
+  return newKeys;
+};
+
 const handleValidationError = (error) => {
   const newErrors = {};
   if (error.inner)
@@ -21,7 +41,7 @@ const handleValidationError = (error) => {
     });
 
   // eslint-disable-next-line no-param-reassign
-  error.inner = newErrors;
+  error.inner = objFormat(newErrors);
   return error;
 };
 

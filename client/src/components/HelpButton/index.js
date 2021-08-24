@@ -15,15 +15,28 @@ const formatLink = (type, contact) => {
   }
 };
 
-const HelpButton = ({ position = {}, customContacts = [], ...props }) => {
+const HelpButton = ({
+  position = {},
+  customContacts = [],
+  parentState,
+  parentFunc,
+  ...props
+}) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  if (isOpen)
+  const handleClose = () => {
+    setIsOpen(false);
+    if (parentFunc) {
+      parentFunc(false);
+    }
+  };
+
+  if (isOpen || parentState)
     return (
       <S.Modal {...props}>
         <S.Header>
           <T.H3 color="white">Help is here!</T.H3>
-          <S.CloseButton onClick={() => setIsOpen(false)}>
+          <S.CloseButton onClick={handleClose}>
             <Icon icon="close" color="white" />
           </S.CloseButton>
         </S.Header>
@@ -70,7 +83,7 @@ const HelpButton = ({ position = {}, customContacts = [], ...props }) => {
 
   return (
     <S.Button position={position} onClick={() => setIsOpen(true)}>
-      <T.H3 color="white">Help</T.H3>
+      <T.H3 color="white">Help me!</T.H3>
     </S.Button>
   );
 };
