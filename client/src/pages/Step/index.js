@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import {
@@ -6,7 +6,6 @@ import {
   Icon,
   Typography as T,
   Button,
-  Inputs,
   Grid,
   HelpButton,
   Cards,
@@ -22,26 +21,14 @@ import { breakpoints } from '../../theme';
 import * as S from './style';
 import { GENERAL } from '../../constants/nav-routes';
 
-const { Checkbox } = Inputs;
 const { Row, Col } = Grid;
 const { Tips, Checklist } = Cards;
 
 const Step = () => {
-  // const [checklist, setChecklist] = useState({
-  //   thingsYouWillNeed: [],
-  //   whatYouWillNeedToKnow: [],
-  // });
-  const [loaded, setLoaded] = useState(false);
   const [stuck, setStuck] = useState(false);
-
   const params = useParams();
   const { lang } = useLang();
-  const {
-    steps: fullSteps,
-    checkUncheckItem,
-    setJustCompletedId,
-    loadingSteps,
-  } = useSteps();
+  const { steps: fullSteps, checkUncheckItem, markAsComplete } = useSteps();
 
   const step = fullSteps.find((s) => s.id === Number(params.id));
 
@@ -61,30 +48,9 @@ const Step = () => {
     return foundItem?.isChecked;
   };
 
-  // useEffect(() => {
-  //   // TO DO - api to get data from server
-  //   const stepsObj = step?.checkListItems?.reduce((acc, curr) => {
-  //     const { stage } = curr;
-  //     if (!acc[stage]) {
-  //       acc[stage] = [curr];
-  //     } else {
-  //       acc[stage].push(curr);
-  //     }
-  //     return acc;
-  //   }, {});
-  //   setChecklist(stepsObj);
-  //   setLoaded(true);
-  // }, [fullSteps]);
-
-  if (loadingSteps) return <>Loading</>;
-
-  console.log('STEP', step, fullSteps, params.id);
-
-  // return 'hey';
-
   return (
     <S.Container>
-      <Row mb="8" mbM="5">
+      <Row mb="8" mbM="8">
         <Col w={[4, 12, 12]}>
           <S.PageHead>
             <S.Link to={GENERAL.HOME}>
@@ -153,9 +119,7 @@ const Step = () => {
                   <Col w={[4, 12, 6]} key={index} isFirst={index === 0}>
                     <Checklist
                       completed={checkItem(item.title)}
-                      handleChange={() =>
-                        checkUncheckItem(step.name, item.title)
-                      }
+                      handleChange={() => checkUncheckItem(step.id, item.title)}
                       title={item.title}
                       description={item.description}
                       things={item.thisCanInclude}
@@ -194,9 +158,7 @@ const Step = () => {
                   <Col w={[4, 12, 6]} key={index}>
                     <Checklist
                       completed={checkItem(item.title)}
-                      handleChange={() =>
-                        checkUncheckItem(step.name, item.title)
-                      }
+                      handleChange={() => checkUncheckItem(step.id, item.title)}
                       title={item.title}
                       description={item.description}
                       things={item.thisCanInclude}
@@ -276,7 +238,7 @@ const Step = () => {
               text="Mark as complete"
               to={n.GENERAL.HOME}
               handleClick={() => {
-                setJustCompletedId(step.id);
+                markAsComplete(step.id);
               }}
             />
           </Col>

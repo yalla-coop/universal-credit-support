@@ -22,6 +22,9 @@ const constants = {
         tablet: '6.25vw',
         desktop: '6.25vw',
       },
+      menu: {
+        desktop: '260px',
+      },
     },
   },
 };

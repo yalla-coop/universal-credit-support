@@ -3,14 +3,43 @@ import { Link as RLink } from 'react-router-dom';
 import setMargin from '../../helpers/set-margin';
 
 export const Container = styled.div`
-  overflow: hidden;
+  // overflow: hidden;
+  position: relative;
 `;
 
 export const PageHead = styled.div`
-  width: 100%;
+  width: ${({
+    theme: {
+      spacings: s,
+      constants: {
+        layout: { step },
+      },
+    },
+  }) =>
+    `calc(100% - ${step.leftPadding.desktop} - ${step.rightPadding.desktop} - ${step.menu.desktop})`};
   display: flex;
   justify-content: space-between;
-  margin-bottom: ${({ theme }) => theme.spacings[5]};
+  position: fixed;
+  min-height: 50px;
+  background: ${({ theme }) => theme.colors.white};
+  z-index: 2;
+  top: 0;
+  padding-top: ${({ theme }) => theme.spacings[7]};
+  padding-bottom: ${({ theme }) => theme.spacings[6]};
+  align-items: center;
+
+  ${({ theme }) => theme.media.mobile} {
+    width: ${({
+      theme: {
+        spacings: s,
+        constants: {
+          layout: { step },
+        },
+      },
+    }) =>
+      `calc(100% - ${step.leftPadding.mobile} - ${step.rightPadding.mobile})`};
+    padding-top: ${({ theme }) => theme.spacings[5]};
+  }
 `;
 
 export const Link = styled(RLink)`
