@@ -21,9 +21,9 @@ CREATE TABLE "organisations" (
   "logo_id" INTEGER REFERENCES media(id),
   "colors" JSON,
     -- { 
-    --   main: '222',
-    --   secondary: '202020',
-    --   neutral: '2332ff'
+    --   main: '#222',
+    --   secondary: '#202020',
+    --   neutral: '#2332ff'
     -- }
   
   "num_of_claims_process_started" INTEGER DEFAULT 0,

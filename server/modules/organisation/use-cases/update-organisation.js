@@ -8,6 +8,7 @@ const updateOrganisation = async ({
   contactLinks,
   benefitCalculatorLink,
   benefitCalculatorLabel,
+  colors,
   userId,
 }) => {
   try {
@@ -17,6 +18,7 @@ const updateOrganisation = async ({
       contactLinks,
       benefitCalculatorLink,
       benefitCalculatorLabel,
+      colors,
     });
   } catch (error) {
     if (

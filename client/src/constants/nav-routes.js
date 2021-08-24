@@ -16,6 +16,8 @@ const ADMIN = {
   SIGNUP: `${admin}/signup`,
   LOGIN: `${admin}/login`,
   DASHBOARD: `${admin}/dashboard`,
+  CREATE_ORG_DETAILS_FIRST_STEP: `${admin}/set-organisation/1`,
+  CREATE_ORG_DETAILS_SECOND_STEP: `${admin}/set-organisation/2`,
 };
 
 const SUPER_ADMIN = {

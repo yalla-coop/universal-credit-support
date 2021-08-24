@@ -16,6 +16,7 @@ import { Organisations } from '../../api-calls';
 
 import { navRoutes as R } from '../../constants';
 import { useAuth } from '../../context/auth';
+import SecondStep from './SecondStep';
 
 // TODO: use from constants
 const contactLinksTypes = {
@@ -57,7 +58,7 @@ function reducer(state, newState) {
   return { ...state, ...value };
 }
 
-const Login = () => {
+const CreateOrganisationDetails = () => {
   const { user } = useAuth();
   const submitAttempt = useRef(false);
   const [state, setState] = useReducer(reducer, initialState);
@@ -102,7 +103,7 @@ const Login = () => {
     }
   };
 
-  const handleLogin = async () => {
+  const handleUpdate = async () => {
     setState({ loading: true });
     const { error } = await Organisations.updateOrganisation({
       id: 1,
@@ -133,7 +134,7 @@ const Login = () => {
 
     const isValid = validateForm();
     if (isValid) {
-      handleLogin();
+      handleUpdate();
     }
   };
 
@@ -189,6 +190,7 @@ const Login = () => {
       lastContactLink.availability &&
       (lastContactLink.phoneNumber || lastContactLink.link)
     ) || !contactLinks.length;
+
   return (
     <S.Form onSubmit={handleSubmit}>
       <T.H1 weight="bold">Welcome!</T.H1>
@@ -203,8 +205,8 @@ const Login = () => {
         </Col>
       </Row>
       {contactLinks.map((contactLink, i) => (
-        <>
-          <Row mt="7" key={contactLink.id}>
+        <div key={contactLink.id}>
+          <Row mt="7">
             <Col w={[4, 11, 6]}>
               <I.Dropdown
                 label="Type of contact"
@@ -294,7 +296,7 @@ const Login = () => {
               weight="semi"
             />
           )}
-        </>
+        </div>
       ))}
 
       <TextWithIcon
@@ -363,4 +365,5 @@ const Login = () => {
   );
 };
 
-export default Login;
+export { SecondStep };
+export default CreateOrganisationDetails;

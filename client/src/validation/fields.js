@@ -3,6 +3,7 @@ import * as errMsgs from './err-msgs';
 import './custom-functions';
 
 const URLregex = /^((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#.-]+)*\/?(\?[a-zA-Z0-9-_.-]+=[a-zA-Z0-9-%?&=.-]+&?)?$/;
+const hexRegex = /^#(?:[0-9a-fA-F]{3}){1,2}$/;
 const URLSlugRegex = /^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$/;
 
 export const requiredText = string()
@@ -204,3 +205,12 @@ export const contactLinks = array()
     })
   )
   .required();
+
+export const hexColorOptional = string().when((value, schema) => {
+  if (value) {
+    return schema.matches(hexRegex, {
+      message: errMsgs.INVALID_COLOR,
+    });
+  }
+  return schema.nullable();
+});
