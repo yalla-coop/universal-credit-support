@@ -18,6 +18,7 @@ const ADMIN = {
   WELCOME: `${admin}/welcome`, // only to use for the sub router
   WELCOME1: `${admin}/welcome/1`,
   WELCOME2: `${admin}/welcome/2`,
+  DASHBOARD: `${admin}/dashboard`,
 };
 
 const SUPER_ADMIN = {

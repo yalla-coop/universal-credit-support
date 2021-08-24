@@ -48,6 +48,7 @@ const Card = forwardRef(
       isJustCompletedOne,
       to = '/',
       isOptional,
+      loadingSteps,
       ...props
     },
     ref
@@ -60,7 +61,11 @@ const Card = forwardRef(
     if (isOptional)
       return (
         <S.Wrapper onClick={handleClick} mb="8" {...props} ref={ref}>
-          <S.StyledLink to={to} style={{ color: 'transparent', width: '100%' }}>
+          <S.StyledLink
+            to={to}
+            style={{ color: 'transparent', width: '100%' }}
+            disabled={loadingSteps}
+          >
             <S.OptionalContainer>
               <T.H2 color="neutralMain" mb="4">
                 {title}
@@ -82,7 +87,7 @@ const Card = forwardRef(
 
     return (
       <S.Wrapper bgColor={bgColor} onClick={handleClick} {...props} ref={ref}>
-        <Link to={to} style={{ color: 'transparent' }}>
+        <Link to={to} style={{ color: 'transparent' }} disabled={loadingSteps}>
           <S.Container direction={direction}>
             {isCompleted && (
               <T.P
