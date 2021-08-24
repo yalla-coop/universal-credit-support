@@ -193,13 +193,18 @@ export const contactLinks = array()
       availability: requiredText,
       description: requiredText,
       link: string().when('type', {
-        is: (v) => v === 'PHONE',
-        then: string().nullable(),
-        otherwise: urlRequired,
+        is: (v) => v === 'WEBCHAT_LINK',
+        then: urlRequired,
+        otherwise: string().nullable(),
       }),
       phoneNumber: string().when('type', {
         is: (v) => v === 'PHONE',
         then: phoneNumber,
+        otherwise: string().nullable(),
+      }),
+      email: string().when('type', {
+        is: (v) => v === 'EMAIL',
+        then: email,
         otherwise: string().nullable(),
       }),
     })

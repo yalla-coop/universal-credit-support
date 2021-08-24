@@ -9,11 +9,12 @@ CREATE TABLE "organisations" (
   "contact_links" JSON[],
     -- [
     --   {
-    --     type: '', //[PHONE, WEBCHAT_LINK, LINK]
+    --     type: '', //[PHONE, WEBCHAT_LINK, EMAIL]
     --     availability: '', //e.g. Monday to Friday (9am to 5pm)
     --     description: '',
     --     link: ''
     --     phone_number: ''
+    --     email: ''
     --   }
     -- ]
   "benefit_calculator_link" TEXT,

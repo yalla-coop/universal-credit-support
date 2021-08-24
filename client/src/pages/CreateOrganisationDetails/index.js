@@ -22,11 +22,13 @@ import SecondStep from './SecondStep';
 const contactLinksTypes = {
   PHONE: 'PHONE',
   WEBCHAT_LINK: 'WEBCHAT_LINK',
+  EMAIL: 'EMAIL',
 };
 // TODO: use from constants
 const contactLinksLabels = {
   PHONE: 'Phone number',
   WEBCHAT_LINK: 'Webchat link',
+  EMAIL: 'Email',
 };
 
 const { Row, Col } = Grid;
@@ -39,6 +41,7 @@ const initialState = {
       description: '',
       link: '',
       phoneNumber: '',
+      email: '',
       id: 0,
     },
   ],
@@ -146,6 +149,7 @@ const CreateOrganisationDetails = () => {
       if (key === 'type') {
         itemToUpdate.phoneNumber = '';
         itemToUpdate.link = '';
+        itemToUpdate.email = '';
       }
 
       return { contactLinks: _contactLinks };
@@ -166,6 +170,7 @@ const CreateOrganisationDetails = () => {
           description: '',
           link: '',
           phoneNumber: '',
+          email: '',
           id: lastContactLinkId + 1,
         },
       ];
@@ -188,7 +193,9 @@ const CreateOrganisationDetails = () => {
       lastContactLink.type &&
       lastContactLink.description &&
       lastContactLink.availability &&
-      (lastContactLink.phoneNumber || lastContactLink.link)
+      (lastContactLink.phoneNumber ||
+        lastContactLink.link ||
+        lastContactLink.email)
     ) || !contactLinks.length;
 
   return (
@@ -230,7 +237,7 @@ const CreateOrganisationDetails = () => {
               {' '}
               <Row mt="6">
                 <Col w={[4, 11, 6]}>
-                  {contactLink.type === contactLinksTypes.PHONE ? (
+                  {contactLink.type === contactLinksTypes.PHONE && (
                     <I.BasicInput
                       label="Phone Number"
                       placeholder="Type number here..."
@@ -240,7 +247,8 @@ const CreateOrganisationDetails = () => {
                       }
                       error={validationErrs?.contactLinks[i]?.phoneNumber}
                     />
-                  ) : (
+                  )}
+                  {contactLink.type === contactLinksTypes.WEBCHAT_LINK && (
                     <I.BasicInput
                       label="Link"
                       placeholder="Paste/type link here..."
@@ -249,6 +257,18 @@ const CreateOrganisationDetails = () => {
                         handleChangeLinkType(v, 'link', contactLink.id)
                       }
                       error={validationErrs?.contactLinks[i]?.link}
+                    />
+                  )}
+                  {contactLink.type === contactLinksTypes.EMAIL && (
+                    <I.BasicInput
+                      label="Email"
+                      type="email"
+                      placeholder="Type email here..."
+                      value={contactLink.email}
+                      handleChange={(v) =>
+                        handleChangeLinkType(v, 'email', contactLink.id)
+                      }
+                      error={validationErrs?.contactLinks[i]?.email}
                     />
                   )}
                 </Col>
