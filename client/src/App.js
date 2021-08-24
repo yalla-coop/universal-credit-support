@@ -61,6 +61,16 @@ function App() {
                   />
                   <Route
                     exact
+                    // path={navRoutes.ADMIN.CREATE_UNIQUE_LINK_SUCCESS}
+                    path="/test"
+                    Component={Pages.ManageSteps}
+                    layout="dashboard"
+                    gradient="secondary"
+                    success
+                    // isPrivate
+                  />
+                  <Route
+                    exact
                     path={navRoutes.ADMIN.LOGIN}
                     Component={Pages.Login}
                     layout="splitScreen"
