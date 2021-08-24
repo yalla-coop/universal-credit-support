@@ -5,10 +5,14 @@ import {
   Cards as C,
 } from '../../components';
 import * as S from './style';
-import { navRoutes as R } from '../../constants';
+import { navRoutes as R, roles } from '../../constants';
+import { useAuth } from '../../context/auth';
+
 const { Col, Row } = Grid;
 
 const Dashboard = () => {
+  const { user } = useAuth();
+
   return (
     <>
       <Row jc="space-between">
@@ -23,7 +27,7 @@ const Dashboard = () => {
           <S.LinkWrapper>
             <TextWithIcon
               iconColor="primaryMain"
-              to="www.uc-helper.com/yalla-cooperative"
+              to="http://www.uc-helper.com/yalla-cooperative"
               icon="open"
               text="www.uc-helper.com/yalla-cooperative"
               external
@@ -32,28 +36,30 @@ const Dashboard = () => {
           </S.LinkWrapper>
 
           <TextWithIcon
-            to={R.ADMIN.SIGNUP}
+            to={R.ADMIN.EDIT_DETAILS}
             text="Edit my organisation details"
             icon="forwardArrow"
             iconColor="primaryMain"
           />
-          <S.CardWrapper>
-            <C.Tips
-              tips={[
-                <a href="mailto:hydefoundation@hyde-housing.co.uk">
-                  <T.H3 color="secondaryMain">
-                    Want to have access rights to change any of the content on
-                    the tool? Then contact hydefoundation@ hyde-housing.co.uk
-                  </T.H3>
-                </a>,
-              ]}
-              startingColor={1}
-            />
-          </S.CardWrapper>
+          {user.role === roles.ADMIN && (
+            <S.CardWrapper>
+              <C.Tips
+                tips={[
+                  <a href="mailto:hydefoundation@hyde-housing.co.uk">
+                    <T.H3 color="secondaryMain">
+                      Want to have access rights to change any of the content on
+                      the tool? Then contact hydefoundation@hyde-housing.co.uk
+                    </T.H3>
+                  </a>,
+                ]}
+                startingColor={1}
+              />
+            </S.CardWrapper>
+          )}
         </Col>
         <Col w={[4, 12, 4]}>
-          <T.H2 mtT="7">Analytics</T.H2>
-          <S.AnalysisCardsWrapper>
+          {/* <T.H2 mtT="7">Analytics</T.H2> */}
+          {/* <S.AnalysisCardsWrapper>
             <S.AnalysisCard bgColor="neutralLight">
               <T.H1 color="neutralMain">836</T.H1>
               <T.P color="neutralDark">
@@ -71,7 +77,7 @@ const Dashboard = () => {
               <T.H1 color="white">1,254</T.H1>
               <T.P color="white">Visitors to my tool</T.P>
             </S.AnalysisCard>
-          </S.AnalysisCardsWrapper>
+          </S.AnalysisCardsWrapper> */}
           <S.CardWrapper>
             <C.Tips
               tips={[
