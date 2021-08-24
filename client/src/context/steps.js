@@ -122,8 +122,8 @@ const StepsProvider = ({ children, ...props }) => {
         if (step.name === stepName) {
           const newStep = { ...step };
 
-          let uncheckedSteps = step.checkListItems.length;
-          const newCheckListItems = step.checkListItems.map((item) => {
+          let uncheckedSteps = step.checklist.length;
+          const newCheckListItems = step.checklist.map((item) => {
             const newItem = { ...item };
 
             if (newItem.title === itemKey) {
@@ -137,7 +137,7 @@ const StepsProvider = ({ children, ...props }) => {
             return newItem;
           });
 
-          newStep.checkListItems = newCheckListItems;
+          newStep.checklist = newCheckListItems;
           newStep.isCompleted = uncheckedSteps === 0;
 
           return newStep;

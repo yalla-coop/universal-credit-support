@@ -56,6 +56,11 @@ const Step = () => {
     return link;
   };
 
+  const checkItem = (itemTitle) => {
+    const foundItem = step.checklist.find((c) => c.title === itemTitle);
+    return foundItem?.isChecked;
+  };
+
   // useEffect(() => {
   //   // TO DO - api to get data from server
   //   const stepsObj = step?.checkListItems?.reduce((acc, curr) => {
@@ -112,7 +117,7 @@ const Step = () => {
 
         {step.howLongDoesItTake && (
           <Row>
-            <Col w={[4, 6, 6]}>
+            <Col w={[4, 12, 6]}>
               <S.SectionHeader mb="2">
                 <Icon
                   icon="time"
@@ -147,7 +152,7 @@ const Step = () => {
                 step.thingsYouWillNeed.map((item, index) => (
                   <Col w={[4, 12, 6]} key={index} isFirst={index === 0}>
                     <Checklist
-                      completed={item.isChecked}
+                      completed={checkItem(item.title)}
                       handleChange={() =>
                         checkUncheckItem(step.name, item.title)
                       }
@@ -188,7 +193,7 @@ const Step = () => {
                 {step.whatYouWillNeedToKnow.map((item, index) => (
                   <Col w={[4, 12, 6]} key={index}>
                     <Checklist
-                      completed={item.isChecked}
+                      completed={checkItem(item.title)}
                       handleChange={() =>
                         checkUncheckItem(step.name, item.title)
                       }
