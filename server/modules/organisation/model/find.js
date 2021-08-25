@@ -16,7 +16,7 @@ const findOrganisation = async (id) => {
   return res.rows[0];
 };
 
-const findHelpDetails = async (orgLink) => {
+const findHelpDetails = async (uniqueSlug) => {
   const sql = `
     SELECT
       id,
@@ -24,13 +24,13 @@ const findHelpDetails = async (orgLink) => {
     FROM organisations
     WHERE unique_slug = $1
   `;
-  const values = [orgLink];
+  const values = [uniqueSlug];
 
   const res = await query(sql, values);
   return res.rows[0];
 };
 
-const findBenefitCalculator = async (orgLink) => {
+const findBenefitCalculator = async (uniqueSlug) => {
   const sql = `
     SELECT
       id,
@@ -39,7 +39,7 @@ const findBenefitCalculator = async (orgLink) => {
     FROM organisations
     WHERE unique_slug = $1
   `;
-  const values = [orgLink];
+  const values = [uniqueSlug];
 
   const res = await query(sql, values);
   return res.rows[0];

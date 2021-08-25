@@ -23,10 +23,10 @@ const updateOrganisation = async ({ id, body, options }) => {
   }
 };
 
-const getHelpDetails = async ({ orgLink, options }) => {
+const getHelpDetails = async ({ uniqueSlug, options }) => {
   try {
     const { data } = await axios.get(`${ORGS_BASE}/help`, {
-      params: { orgLink },
+      params: { uniqueSlug },
     });
     return { data };
   } catch (error) {
@@ -35,10 +35,10 @@ const getHelpDetails = async ({ orgLink, options }) => {
   }
 };
 
-const getBenefitCalculator = async ({ orgLink, options }) => {
+const getBenefitCalculator = async ({ uniqueSlug, options }) => {
   try {
     const { data } = await axios.get(`${ORGS_BASE}/benefit-calculator`, {
-      params: { orgLink },
+      params: { uniqueSlug },
     });
     return { data };
   } catch (error) {

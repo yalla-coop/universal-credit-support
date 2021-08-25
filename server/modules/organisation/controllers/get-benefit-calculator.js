@@ -2,10 +2,10 @@ import { getBenefitCalculator as getBenefitCalculatorUseCase } from '../use-case
 
 const getBenefitCalculator = async (req, res, next) => {
   // const { id: userId } = req.user;
-  const { orgLink } = req.query;
+  const { uniqueSlug } = req.query;
   try {
     const results = await getBenefitCalculatorUseCase({
-      orgLink,
+      uniqueSlug,
     });
 
     res.json(results);

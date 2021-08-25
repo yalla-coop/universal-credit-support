@@ -204,7 +204,7 @@ const Home = () => {
             />
           );
         })}
-      <HelpButton orgLink={org} />
+      <HelpButton uniqueSlug={org} />
     </>
   );
 };

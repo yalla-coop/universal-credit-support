@@ -59,7 +59,7 @@ const Step = () => {
     // get benefit calculator
     async function fetchData() {
       const { data, error } = await Organisations.getBenefitCalculator({
-        orgLink: params.org,
+        uniqueSlug: params.org,
       });
       if (error) {
         console.error(error);
@@ -305,7 +305,7 @@ const Step = () => {
         </Row>
       </S.InnerContainer>
       <HelpButton
-        orgLink={params.org}
+        uniqueSlug={params.org}
         parentState={stuck}
         parentFunc={() => setStuck(false)}
       />

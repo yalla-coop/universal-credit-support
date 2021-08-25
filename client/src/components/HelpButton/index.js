@@ -4,7 +4,7 @@ import * as S from './style';
 import * as T from '../Typography';
 import Icon from '../Icon';
 
-import { contactLinksTypes as cType } from '../../constants/data-types';
+import { linkTypes as cType } from '../../constants/data-types';
 
 import { Organisations } from '../../api-calls';
 
@@ -26,7 +26,7 @@ const HelpButton = ({
   customContacts = [],
   parentState,
   parentFunc,
-  orgLink,
+  uniqueSlug,
   ...props
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,17 +42,17 @@ const HelpButton = ({
   useEffect(() => {
     async function fetchData() {
       const { data, error } = await Organisations.getHelpDetails({
-        orgLink,
+        uniqueSlug,
       });
       if (error) {
         console.error(error);
       }
       setOrgDetails(data);
     }
-    if (orgLink) {
+    if (uniqueSlug) {
       fetchData();
     }
-  }, [isOpen, orgLink]);
+  }, [isOpen, uniqueSlug]);
 
   if (isOpen || parentState)
     return (

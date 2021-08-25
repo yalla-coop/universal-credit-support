@@ -2,10 +2,11 @@ import { getHelpDetails as getHelpDeailsUseCase } from '../use-cases';
 
 const getHelpDetails = async (req, res, next) => {
   // const { id: userId } = req.user;
-  const { orgLink } = req.query;
+  const { uniqueSlug } = req.query;
+
   try {
     const results = await getHelpDeailsUseCase({
-      orgLink,
+      uniqueSlug,
     });
 
     res.json(results);
