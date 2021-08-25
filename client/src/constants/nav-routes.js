@@ -19,7 +19,6 @@ const ADMIN = {
   WELCOME1: `${admin}/welcome/1`,
   WELCOME2: `${admin}/welcome/2`,
   DASHBOARD: `${admin}/dashboard`,
-  MANAGE_STEPS: `${admin}/manage-steps`,
   CREATE_ORG_DETAILS_FIRST_STEP: `${admin}/set-organisation/1`,
   CREATE_ORG_DETAILS_SECOND_STEP: `${admin}/set-organisation/2`,
 };
@@ -29,6 +28,7 @@ const SUPER_ADMIN = {
   EDIT_CONTENT: `${admin}/edit-content`,
   EDIT_DETAILS: `${admin}/edit-details`,
   ORGANISATIONS: `${admin}/organisations`,
+  MANAGE_STEPS: `${admin}/manage-steps`,
   CUSTOMISE_LOG_OUT: `${admin}/customise-log-out`,
 };
 
