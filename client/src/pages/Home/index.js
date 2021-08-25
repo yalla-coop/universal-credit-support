@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-
+import { useParams, useHistory } from 'react-router-dom';
 import Step from '../../components/Steps';
 import { Typography as T } from '../../components';
 import { t } from '../../helpers';
@@ -39,6 +39,8 @@ const Home = () => {
 
   const currentStep = steps.find((step) => !step.isCompleted);
   const currentStepRef = useRef();
+  const { org } = useParams();
+  const history = useHistory();
 
   const completedClaim = currentStep?.stage === 'afterClaiming';
 
@@ -59,6 +61,11 @@ const Home = () => {
     return { variant, currentRef, isJustCompletedOne, isCurrentStep };
   };
 
+  const decideRoute = (step) =>
+    org
+      ? n.STEPS.STEP_ORG.replace(':id', step.id).replace(':org', org)
+      : n.STEPS.STEP.replace(':id', step.id);
+
   useEffect(() => {
     if (currentStepRef.current && justCompletedId) {
       currentStepRef.current.scrollIntoView({
@@ -67,6 +74,13 @@ const Home = () => {
       });
     }
   }, [justCompletedId]);
+
+  useEffect(() => {
+    if (org) {
+      history.push(n.GENERAL.HOME_ORG.replace(':org', org));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [org]);
 
   return (
     <>
@@ -90,7 +104,7 @@ const Home = () => {
             direction={i % 2 === 0 ? 'left' : 'right'}
             mt="7"
             isJustCompletedOne={isJustCompletedOne}
-            to={n.STEPS.STEP.replace(':id', step.id)}
+            to={decideRoute(step)}
             ref={currentRef}
             isOptional={step.isOptional}
             handleClick={() => {
@@ -119,7 +133,7 @@ const Home = () => {
             direction={i % 2 === 0 ? 'left' : 'right'}
             mt="7"
             isJustCompletedOne={isJustCompletedOne}
-            to={n.STEPS.STEP.replace(':id', step.id)}
+            to={decideRoute(step)}
             ref={currentRef}
             isOptional={step.isOptional}
             handleClick={() => {
@@ -180,7 +194,7 @@ const Home = () => {
               direction={i % 2 === 0 ? 'left' : 'right'}
               mt="7"
               isJustCompletedOne={isJustCompletedOne}
-              to={n.STEPS.STEP.replace(':id', step.id)}
+              to={decideRoute(step)}
               ref={currentRef}
               isOptional={step.isOptional}
               handleClick={() => {
@@ -190,7 +204,7 @@ const Home = () => {
             />
           );
         })}
-      <HelpButton />
+      <HelpButton uniqueSlug={org} />
     </>
   );
 };

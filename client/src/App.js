@@ -32,15 +32,26 @@ function App() {
                     path={navRoutes.GENERAL.HOME}
                     Component={Pages.Home}
                     layout="general"
-                    showHelp
                   />
-
+                  <Route
+                    exact
+                    path={navRoutes.GENERAL.HOME_ORG}
+                    Component={Pages.Home}
+                    layout="general"
+                  />
                   <Route
                     exact
                     path={navRoutes.STEPS.STEP}
                     Component={Pages.Step}
                     layout="step"
                   />
+                  <Route
+                    exact
+                    path={navRoutes.STEPS.STEP_ORG}
+                    Component={Pages.Step}
+                    layout="step"
+                  />
+
                   <Route
                     exact
                     path={navRoutes.ADMIN.CREATE_UNIQUE_LINK}
@@ -86,6 +97,15 @@ function App() {
                   />
                   <Route
                     exact
+                    path={navRoutes.ADMIN.SIGNUP}
+                    Component={Pages.Signup}
+                    layout="splitScreen"
+                    side="left"
+                    gradient="secondary"
+                  />
+
+                  <Route
+                    exact
                     path={navRoutes.ADMIN.CREATE_ORG_DETAILS_FIRST_STEP}
                     Component={Pages.CreateOrganisationDetails}
                     layout="splitScreen"
@@ -101,7 +121,6 @@ function App() {
                     side="left"
                     gradient="secondary"
                   />
-
                   <Route
                     exact
                     // Have sub routes
@@ -110,6 +129,28 @@ function App() {
                     layout="splitScreen"
                     side="left"
                     gradient="secondary"
+                  />
+                  <Route
+                    exact
+                    path={navRoutes.GENERAL.FORGET_PASSWORD}
+                    Component={Pages.ForgotPassword}
+                    layout="splitScreen"
+                    side="left"
+                    gradient="secondary"
+                  />
+                  <Route
+                    exact
+                    path={navRoutes.GENERAL.RESET_PASSWORD}
+                    Component={Pages.ResetPassword}
+                    layout="splitScreen"
+                    side="left"
+                    gradient="secondary"
+                  />
+                  <Route
+                    exact
+                    path={navRoutes.GENERAL.ORG}
+                    Component={Pages.Home}
+                    layout="general"
                   />
                 </Switch>
               </Router>
