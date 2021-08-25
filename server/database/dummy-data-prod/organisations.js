@@ -18,8 +18,8 @@ const createOrganisation = async ({
     type_of_organisation,
     unique_slug,
     contact_links,
-    benefit_calc_link,
-    benefit_calc_label,
+    benefit_calculator_link,
+    benefit_calculator_label,
     logo_id,
     colors
   ) VALUES (

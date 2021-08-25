@@ -64,6 +64,8 @@ const Login = () => {
   };
 
   const handleLogin = async () => {
+    setState({ loading: true });
+
     const { error } = await Users.login({
       email: cleanEmail(email),
       password,
@@ -84,7 +86,6 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setState({ loading: true });
     submitAttempt.current = true;
 
     const isValid = validateForm();

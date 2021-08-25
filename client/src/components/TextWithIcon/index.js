@@ -25,7 +25,13 @@ const TextWithIcon = ({
 }) => {
   if (isButton)
     return (
-      <S.Button {...m} {...props} onClick={handleClick} disabled={disabled}>
+      <S.Button
+        {...m}
+        {...props}
+        onClick={handleClick}
+        disabled={disabled}
+        type="button"
+      >
         {icon && (
           <Icon
             icon={icon}
