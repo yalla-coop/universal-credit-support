@@ -1,9 +1,9 @@
 import { fields, createSchema, validate as _validate } from '..';
 
-const { loginPassword } = fields;
+const { password } = fields;
 
 const volunteer = createSchema({
-  password: loginPassword,
+  password,
 });
 
 const validate = (data) => _validate(volunteer, data);
