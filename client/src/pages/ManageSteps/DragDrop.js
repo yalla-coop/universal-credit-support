@@ -117,12 +117,12 @@ function DragDrop({ beforeClaiming, claiming, afterClaiming }) {
           return (
             <div key={columnId}>
               <G.Row mt="7">
-                <G.Col w={[4, 4, 4]}>
+                <G.Col w={[4, 6, 4]}>
                   <T.H2>{column.name}</T.H2>
                 </G.Col>
               </G.Row>
               <G.Row mt="4">
-                <G.Col w={[4, 4, 4]}>
+                <G.Col w={[4, 6, 4]}>
                   <Droppable droppableId={columnId} key={columnId}>
                     {(provided, snapshot) => {
                       return (
@@ -195,7 +195,7 @@ function DragDrop({ beforeClaiming, claiming, afterClaiming }) {
       </DragDropContext>
 
       <G.Row mt="5">
-        <G.Col w={[4, 4, 4]}>
+        <G.Col w={[4, 6, 4]}>
           <Button
             variant="primary"
             text="Save changes"
@@ -204,10 +204,14 @@ function DragDrop({ beforeClaiming, claiming, afterClaiming }) {
         </G.Col>
       </G.Row>
       <Modal
-        type="updateSuccess"
         visible={isModalVisible}
         setIsModalVisible={setIsModalVisible}
-        parentFunc={() => reorderSteps(columns)}
+        // eslint-disable-next-line no-console
+        parentFunc={() => console.log(reorderSteps(columns))}
+        type="updateSuccess"
+        title="Updated"
+        description="Changes successfully updated."
+        btnText="Okay"
       />
     </>
   );
