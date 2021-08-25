@@ -4,15 +4,17 @@ import * as S from './style';
 import * as T from '../Typography';
 import Icon from '../Icon';
 
+import { contactLinksTypes as cType } from '../../constants/data-types';
+
 import { Organisations } from '../../api-calls';
 
 const formatLink = (type, contact) => {
   switch (type) {
-    case 'EMAIL':
+    case cType.EMAIL:
       return { link: `mailto:${contact.email}`, label: contact.email };
-    case 'PHONE':
+    case cType.PHONE:
       return { link: `tel:${contact.phoneNumber}`, label: contact.phoneNumber };
-    case 'WEBCHAT_LINK':
+    case cType.WEBCHAT_LINK:
       return { link: contact.link, label: contact.link };
     default:
       return { link: '', label: '' };
@@ -28,7 +30,6 @@ const HelpButton = ({
   ...props
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [orgDetails, setOrgDetails] = useState([]);
 
   const handleClose = () => {
@@ -40,16 +41,18 @@ const HelpButton = ({
 
   useEffect(() => {
     async function fetchData() {
-      setLoading(true);
       const { data, error } = await Organisations.getHelpDetails({
         orgLink,
       });
+      if (error) {
+        console.error(error);
+      }
       setOrgDetails(data);
     }
     if (orgLink) {
       fetchData();
     }
-  }, [isOpen]);
+  }, [isOpen, orgLink]);
 
   if (isOpen || parentState)
     return (
