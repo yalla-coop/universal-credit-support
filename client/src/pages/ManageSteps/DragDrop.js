@@ -1,49 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import { useHistory } from 'react-router-dom';
-import {
-  Grid as G,
-  Typography as T,
-  Icon,
-  Button,
-  Modal,
-} from '../../components';
+import { Grid as G, Typography as T, Icon } from '../../components';
 import { buttonStyle } from './style';
 import { navRoutes } from '../../constants';
-
-const columnsFromBackend = {
-  col1: {
-    name: 'Before claiming',
-    stage: 'beforeClaiming',
-    items: [],
-  },
-  col2: {
-    name: 'Claiming',
-    stage: 'claiming',
-    items: [],
-  },
-  col3: {
-    name: 'After claiming',
-    stage: 'afterClaiming',
-    items: [],
-  },
-};
-
-const reorderSteps = (cols) => {
-  let newSteps = [];
-  let cumulativeIndex = 0;
-  Object.keys(cols).forEach((key) => {
-    cols[key].items.forEach((item) => {
-      cumulativeIndex++;
-      newSteps.push({
-        ...item,
-        stage: cols[key].stage,
-        stepOrder: cumulativeIndex,
-      });
-    });
-  });
-  return newSteps;
-};
 
 const onDragEnd = (result, columns, setColumns) => {
   if (!result.destination) return;
@@ -82,31 +42,14 @@ const onDragEnd = (result, columns, setColumns) => {
   }
 };
 
-function DragDrop({ beforeClaiming, claiming, afterClaiming }) {
-  const [isModalVisible, setIsModalVisible] = useState(false);
-
-  const [columns, setColumns] = useState(columnsFromBackend);
+function DragDrop({
+  beforeClaiming,
+  claiming,
+  afterClaiming,
+  columns,
+  setColumns,
+}) {
   const history = useHistory();
-
-  useEffect(() => {
-    setColumns({
-      col1: {
-        name: 'Before claiming',
-        items: beforeClaiming,
-        stage: 'beforeClaiming',
-      },
-      col2: {
-        name: 'Claiming',
-        stage: 'claiming',
-        items: claiming,
-      },
-      col3: {
-        name: 'After claiming',
-        stage: 'afterClaiming',
-        items: afterClaiming,
-      },
-    });
-  }, [beforeClaiming, claiming, afterClaiming]);
 
   return (
     <>
@@ -193,26 +136,6 @@ function DragDrop({ beforeClaiming, claiming, afterClaiming }) {
           );
         })}
       </DragDropContext>
-
-      <G.Row mt="5">
-        <G.Col w={[4, 6, 4]}>
-          <Button
-            variant="primary"
-            text="Save changes"
-            onClick={() => setIsModalVisible(true)}
-          />
-        </G.Col>
-      </G.Row>
-      <Modal
-        visible={isModalVisible}
-        setIsModalVisible={setIsModalVisible}
-        // eslint-disable-next-line no-console
-        parentFunc={() => console.log(reorderSteps(columns))}
-        type="updateSuccess"
-        title="Updated"
-        description="Changes successfully updated."
-        btnText="Okay"
-      />
     </>
   );
 }
