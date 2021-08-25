@@ -5,6 +5,7 @@ const GENERAL = {
   LOGIN: '/login',
   UNAUTHORIZED: '/unauthorized',
   FORGET_PASSWORD: '/forget-password',
+  RESET_PASSWORD: '/reset-password/:token',
 };
 
 const admin = '/admin';
@@ -12,7 +13,8 @@ const admin = '/admin';
 const ADMIN = {
   HOME: `${admin}/home`,
   EDIT_DETAILS: `${admin}/edit-details`,
-  CUSTOMISE_LOG_OUT: `${admin}/customise-log-out`,
+  CUSTOMISE: `${admin}/customise`,
+  LOG_OUT: `${admin}/log-out`,
   CREATE_UNIQUE_LINK: `${admin}/create-unique-link`,
   CREATE_UNIQUE_LINK_SUCCESS: `${admin}/create-unique-link/success`,
   SIGNUP: `${admin}/signup`,
@@ -30,7 +32,8 @@ const SUPER_ADMIN = {
   EDIT_CONTENT: `${admin}/edit-content`,
   EDIT_DETAILS: `${admin}/edit-details`,
   ORGANISATIONS: `${admin}/organisations`,
-  CUSTOMISE_LOG_OUT: `${admin}/customise-log-out`,
+  CUSTOMISE: `${admin}/customise`,
+  LOG_OUT: `${admin}/log-out`,
 };
 
 const EXTERNAL = {

@@ -39,7 +39,6 @@ function App() {
                     Component={Pages.Home}
                     layout="general"
                   />
-
                   <Route
                     exact
                     path={navRoutes.STEPS.STEP}
@@ -88,6 +87,15 @@ function App() {
                   />
                   <Route
                     exact
+                    path={navRoutes.ADMIN.SIGNUP}
+                    Component={Pages.Signup}
+                    layout="splitScreen"
+                    side="left"
+                    gradient="secondary"
+                  />
+
+                  <Route
+                    exact
                     path={navRoutes.ADMIN.CREATE_ORG_DETAILS_FIRST_STEP}
                     Component={Pages.CreateOrganisationDetails}
                     layout="splitScreen"
@@ -103,7 +111,6 @@ function App() {
                     side="left"
                     gradient="secondary"
                   />
-
                   <Route
                     exact
                     // Have sub routes
@@ -113,7 +120,22 @@ function App() {
                     side="left"
                     gradient="secondary"
                   />
-
+                  <Route
+                    exact
+                    path={navRoutes.GENERAL.FORGET_PASSWORD}
+                    Component={Pages.ForgotPassword}
+                    layout="splitScreen"
+                    side="left"
+                    gradient="secondary"
+                  />
+                  <Route
+                    exact
+                    path={navRoutes.GENERAL.RESET_PASSWORD}
+                    Component={Pages.ResetPassword}
+                    layout="splitScreen"
+                    side="left"
+                    gradient="secondary"
+                  />
                   <Route
                     exact
                     path={navRoutes.GENERAL.ORG}

@@ -3,6 +3,7 @@ import hashPassword from './hash-password';
 import createToken from './create-token';
 import verifyPassword from './verify-password';
 import secondsToHms from './seconds-to--ms';
+import createOrgSlug from './create-org-slug';
 
 export {
   createTestToken,
@@ -10,4 +11,5 @@ export {
   createToken,
   verifyPassword,
   secondsToHms,
+  createOrgSlug,
 };
