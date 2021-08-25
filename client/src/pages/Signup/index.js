@@ -121,7 +121,7 @@ const SignUp = () => {
 
   const handleSignup = async () => {
     setState({ loading: true });
-    const { error, data } = await Users.signup({
+    const { error } = await Users.signup({
       email: cleanEmail(email),
       firstName,
       lastName,
@@ -141,7 +141,7 @@ const SignUp = () => {
         setState({ httpError: error.message });
       }
     } else {
-      history.push(R.ADMIN.FILL_ORGANISATION_DETAILS);
+      history.push(R.ADMIN.CREATE_ORG_DETAILS_FIRST_STEP);
     }
   };
 

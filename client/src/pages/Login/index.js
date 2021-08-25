@@ -83,7 +83,7 @@ const Login = () => {
       if (data.hasOrganisation) {
         history.push(R.ADMIN.HOME);
       } else {
-        history.push(R.ADMIN.FILL_ORGANISATION_DETAILS);
+        history.push(R.ADMIN.CREATE_ORG_DETAILS_FIRST_STEP);
       }
     }
   };

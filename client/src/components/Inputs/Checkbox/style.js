@@ -46,7 +46,7 @@ export const Field = styled.div`
   }
 
   .ant-checkbox {
-    font-size: 32px;
+    top: 0;
   }
 
   .ant-checkbox-inner::after {
