@@ -20,7 +20,6 @@ const Template = (args) => {
     /* this is the function where you can then carry out
      whatever action you want on that page based on action type */
 
-    // eslint-disable-next-line no-console
     console.log('Now do something based on this', action);
   };
 
@@ -37,7 +36,10 @@ const Template = (args) => {
   );
 };
 
-export const UpdateSuccess = Template.bind({});
-UpdateSuccess.args = {
+export const ModalExample = Template.bind({});
+ModalExample.args = {
   type: 'updateSuccess',
+  title: 'Are you sure?',
+  description:
+    'This will give the user access to edit any content on the tool and manage the access level of other administrators.',
 };

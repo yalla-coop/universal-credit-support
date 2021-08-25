@@ -5,5 +5,15 @@ import Checkbox from './Checkbox';
 import Rate from './Rate';
 import InputCMS from './InputCMS';
 import InputArray from './InputArray';
+import ColorPicker from './ColorPicker';
 
-export { BasicInput, Textarea, Dropdown, Checkbox, Rate, InputCMS, InputArray };
+export {
+  BasicInput,
+  Textarea,
+  Dropdown,
+  Checkbox,
+  Rate,
+  InputCMS,
+  InputArray,
+  ColorPicker,
+};

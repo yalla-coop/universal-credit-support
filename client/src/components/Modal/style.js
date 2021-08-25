@@ -2,37 +2,40 @@ import styled from '@emotion/styled';
 import { Modal as AntModal } from 'antd';
 import theme from '../../theme';
 
-export const Head = styled.div`
-  width: 100%;
-  background: ${({ theme }) => theme.colors.secondaryMain};
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 62px;
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
-  padding: 24px;
-  color: ${({ theme }) => theme.colors.white};
-  display: flex;
-  justify-content: space-between;
-`;
-
 export const Modal = styled(AntModal)`
-  position: relative;
-  .ant-modal-footer,
-  .ant-modal-header,
-  .ant-modal-close {
+  .ant-modal-footer {
     display: none;
   }
 
-  max-width: 350px;
+  .ant-modal-header {
+    background: ${({ theme }) => theme.colors.secondaryMain};
+    border-radius: 12px 12px 0 0;
+    padding: ${({ theme }) => `${theme.spacings[5]} inherit`};
+    min-height: 62px;
+  }
+
+  .ant-modal-title {
+    color: ${({ theme }) => theme.colors.white};
+    font-family: font-family: 'hero-new-hairline', sans-serif;
+    font-weight: 500;
+    padding-top: 5px;
+  }
+
+  .ant-modal-close {
+    color: ${({ theme }) => theme.colors.white};
+    svg { 
+      margin-top: 22px;
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  max-width: 420px;
 
   .ant-modal-content {
     position: relative;
     border: none;
     border-radius: 10px;
-    padding-top: 62px;
   }
 
   .ant-modal-body {

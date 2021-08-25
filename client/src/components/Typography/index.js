@@ -52,6 +52,7 @@ const Head3 = styled(Title)`
   font-size: 16px !important;
   line-height: 24px !important;
   font-weight: ${({ weight }) => (weight ? weights[weight] : '600 !important')};
+  text-decoration: ${({ td }) => td || 'none'};
 `;
 export const H3 = (props) => <Head3 {...props} level={3} />;
 

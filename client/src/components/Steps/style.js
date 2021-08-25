@@ -30,10 +30,10 @@ export const OptionalContainer = styled.div`
   align-items: flex-start;
   max-width: 580px;
   padding: ${({ theme: { spacings } }) =>
-    `0 ${spacings[7]} ${spacings[4]} ${spacings[7]}`};
+    `0 ${spacings[6]} ${spacings[4]} ${spacings[6]}`};
 
   ${({ theme }) => theme.media.mobile} {
-    padding: ${({ theme: { spacings } }) => `0 ${spacings[6]}`};
+    padding: ${({ theme: { spacings } }) => `0 ${spacings[4]}`};
     border-radius: 0px 8px 8px 0;
     max-width: 90vw;
     margin: 0;
@@ -66,7 +66,7 @@ export const Container = styled.div`
   ${({ theme }) => theme.media.mobile} {
     max-width: auto;
     padding: ${({ direction }) =>
-      direction === 'right' ? '18px 200px 18px 20px' : '18px 20px 18px 200px'};
+      direction === 'right' ? '18px 190px 18px 20px' : '18px 20px 18px 190px'};
   }
 `;
 
@@ -89,6 +89,11 @@ export const Circle = styled.div`
   flex-direction: column;
   animation: ${(props) => props.isJustCompletedOne && bounce(props.circleColor)}
     3s ease;
+
+  ${({ theme }) => theme.media.mobile} {
+    right: ${({ direction }) => (direction === 'right' ? '-20px' : null)};
+    left: ${({ direction }) => (direction === 'left' ? '-20px' : null)};
+  }
 `;
 
 export const Strong = styled.strong`

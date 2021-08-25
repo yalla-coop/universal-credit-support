@@ -15,7 +15,8 @@ const getSteps = async () => {
       s.things_you_will_need,
       s.what_you_will_need_to_know,
       s.top_tip,
-      s.other_tips
+      s.other_tips,
+      s.is_optional
     FROM steps AS s
   `;
 

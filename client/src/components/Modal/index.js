@@ -5,19 +5,18 @@ import Button from '../Button';
 import * as S from './style';
 import * as T from '../Typography';
 
-import Icon from '../Icon';
-
 const maskStyle = { backgroundColor: 'white', opacity: '0.9' };
 
 const Modal = ({
   visible,
   setIsModalVisible,
   children,
-  type,
   parentFunc,
   closeOnOK = true,
-  loading,
-  error,
+  useBlankModal,
+  title = 'Are you sure?',
+  description,
+  btnText = 'Confirm',
 }) => {
   const handleOk = (action) => {
     parentFunc(action);
@@ -28,50 +27,38 @@ const Modal = ({
     setIsModalVisible(false);
   };
 
-  switch (type) {
-    case 'updateSuccess':
-      return (
-        <>
-          <S.Modal
-            visible={visible}
-            onOk={handleOk}
-            onCancel={handleCancel}
-            footer={[]}
-            maskStyle={maskStyle}
-          >
-            <S.Head>
-              <T.P color="white">Updated</T.P>
-              <Icon
-                icon="close"
-                color="white"
-                style={{ cursor: 'pointer' }}
-                onClick={handleCancel}
-              />
-            </S.Head>
+  if (useBlankModal)
+    return (
+      <>
+        <S.Modal
+          visible={visible}
+          onOk={handleOk}
+          onCancel={handleCancel}
+          footer={[]}
+          maskStyle={maskStyle}
+        >
+          {children}
+        </S.Modal>
+      </>
+    );
 
-            <T.P color="neutralDark" mb="5">
-              Changes successfully updated
-            </T.P>
-            <Button handleClick={handleCancel} text="Okay" />
-          </S.Modal>
-        </>
-      );
-
-    default:
-      return (
-        <>
-          <S.Modal
-            visible={visible}
-            onOk={handleOk}
-            onCancel={handleCancel}
-            footer={[]}
-            maskStyle={maskStyle}
-          >
-            {children}
-          </S.Modal>
-        </>
-      );
-  }
+  return (
+    <>
+      <S.Modal
+        visible={visible}
+        onOk={handleOk}
+        onCancel={handleCancel}
+        // footer={[]}
+        maskStyle={maskStyle}
+        title={title}
+      >
+        <T.P color="neutralDark" mb="6">
+          {description}
+        </T.P>
+        <Button handleClick={() => handleOk()} text={btnText} mb="3" />
+      </S.Modal>
+    </>
+  );
 };
 
 export default Modal;
