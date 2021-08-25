@@ -289,14 +289,14 @@ const SignUp = () => {
                   weight="semi"
                   to={R.EXTERNAL.TERMS_OF_USE}
                 >
-                  Sign up
+                 Terms of use
                 </T.Link>
               </T.P>
             }
             error={validationErrs.agreedOnTerms}
           />
         </Col>
-      </Row>{' '}
+      </Row>
       <Row
         mt="7"
         mtT="6"
