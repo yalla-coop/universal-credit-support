@@ -87,7 +87,6 @@ const StepsProvider = ({ children, ...props }) => {
   const { lang } = useLang();
 
   useEffect(() => {
-    console.log('HOOK!');
     let mounted = true;
     async function fetchData() {
       setLoadingSteps(true);

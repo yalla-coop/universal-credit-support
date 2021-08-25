@@ -30,4 +30,19 @@ const findHelpDetails = async (orgLink) => {
   return res.rows[0];
 };
 
-export { findOrganisation, findHelpDetails };
+const findBenefitCalculator = async (orgLink) => {
+  const sql = `
+    SELECT
+      id,
+      benefit_calculator_link,
+      benefit_calculator_label
+    FROM organisations
+    WHERE unique_slug = $1
+  `;
+  const values = [orgLink];
+
+  const res = await query(sql, values);
+  return res.rows[0];
+};
+
+export { findOrganisation, findHelpDetails, findBenefitCalculator };

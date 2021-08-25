@@ -12,6 +12,7 @@ const getOrganisation = async ({ id, options }) => {
     return { error: err };
   }
 };
+
 const updateOrganisation = async ({ id, body, options }) => {
   try {
     const { data } = await axios.patch(`${ORGS_BASE}/${id}`, body);
@@ -21,9 +22,9 @@ const updateOrganisation = async ({ id, body, options }) => {
     return { error: err };
   }
 };
+
 const getHelpDetails = async ({ orgLink, options }) => {
   try {
-    console.log('hey', orgLink);
     const { data } = await axios.get(`${ORGS_BASE}/help`, {
       params: { orgLink },
     });
@@ -34,4 +35,21 @@ const getHelpDetails = async ({ orgLink, options }) => {
   }
 };
 
-export { updateOrganisation, getOrganisation, getHelpDetails };
+const getBenefitCalculator = async ({ orgLink, options }) => {
+  try {
+    const { data } = await axios.get(`${ORGS_BASE}/benefit-calculator`, {
+      params: { orgLink },
+    });
+    return { data };
+  } catch (error) {
+    const err = handleError(error, options);
+    return { error: err };
+  }
+};
+
+export {
+  updateOrganisation,
+  getOrganisation,
+  getHelpDetails,
+  getBenefitCalculator,
+};

@@ -78,7 +78,6 @@ export const P = styled(({ isSmall, ...props }) => <Paragraph {...props} />)`
 `;
 
 const AntdLink = ({ to, external = false, underline, ...props }) => {
-  console.log('ex', external, to);
   return external ? (
     <Typography.Link target="_blank" href={to} {...props} />
   ) : (

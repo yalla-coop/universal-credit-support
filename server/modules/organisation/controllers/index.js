@@ -5,6 +5,7 @@ import createOrganisation from './create-organisation';
 import getOrganisation from './get-organisation';
 import updateOrganisation from './update-organisation';
 import getHelpDetails from './get-help-details';
+import getBenefitCalculator from './get-benefit-calculator';
 
 import {
   authenticate,
@@ -17,6 +18,7 @@ import {
 const router = Router();
 
 router.get('/help', getHelpDetails);
+router.get('/benefit-calculator', getBenefitCalculator);
 router.get(
   '/:id',
   // authenticate(),

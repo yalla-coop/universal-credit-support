@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import {
@@ -20,12 +20,19 @@ import { breakpoints } from '../../theme';
 
 import * as S from './style';
 import { GENERAL } from '../../constants/nav-routes';
+import B from '../../constants/benefit-calculator';
+
+import { Organisations } from '../../api-calls';
 
 const { Row, Col } = Grid;
 const { Tips, Checklist } = Cards;
 
 const Step = () => {
   const [stuck, setStuck] = useState(false);
+  const [benefitCalculator, setBenefitCalculator] = useState({
+    benefitCalculatorLink: B.BENEFIT_CALCULATOR_LINK,
+    benefitCalculatorLabel: B.BENEFIT_CALCULATOR_LABEL,
+  });
   const params = useParams();
   const { lang } = useLang();
   const { steps: fullSteps, checkUncheckItem, markAsComplete } = useSteps();
@@ -48,7 +55,23 @@ const Step = () => {
     return foundItem?.isChecked;
   };
 
-  if (!step) return 'hello';
+  useEffect(() => {
+    // get benefit calculator
+    async function fetchData() {
+      const { data, error } = await Organisations.getBenefitCalculator({
+        orgLink: params.org,
+      });
+      if (error) {
+        console.error(error);
+      } else {
+        setBenefitCalculator(data);
+      }
+    }
+
+    if (params.org && step.id === 1) {
+      fetchData();
+    }
+  }, [params.org, step.id]);
 
   return (
     <S.Container>
@@ -70,7 +93,7 @@ const Step = () => {
             <T.H1 weight="bold" mb="5">
               {step.pageTitle || step.title}
             </T.H1>
-            <T.P color="neutralDark" mbT="5">
+            <T.P color="neutralDark" mb="6" mbT="5">
               {step.pageDescription || step.description}
             </T.P>
           </Col>
@@ -131,7 +154,7 @@ const Step = () => {
                   </Col>
                 ))
               ) : (
-                <Col w={[4, 12, 6]}>
+                <Col w={[4, 12, 8]}>
                   <T.P color="neutralDark">
                     You don't need to provide any physical documents for this
                     step.
@@ -178,6 +201,41 @@ const Step = () => {
           <Row mt="3" mtM="1">
             <Tips tips={step.otherTips} startingColor={1} cols={[4, 6, 6]} />
           </Row>
+        )}
+
+        {step.id === 1 && (
+          <>
+            <Row mb="5" mt="8" mtM="7">
+              <Col w={[4, 12, 6]} ai="flex-start">
+                <S.SectionHeader mb="5">
+                  <Icon
+                    icon="compass"
+                    width={24}
+                    height={24}
+                    color="primaryMain"
+                    mr="2"
+                  />
+                  <T.H2 color="neutralMain">Where do you need to go?</T.H2>
+                </S.SectionHeader>
+                <T.P color="neutralDark">
+                  Remember to come back here once you're done so you can mark
+                  this step as complete and see what to do next
+                </T.P>
+              </Col>
+            </Row>
+            <Row>
+              <Col w={[4, 12, 6]}>
+                <Button
+                  variant="primary"
+                  text={benefitCalculator.benefitCalculatorLabel}
+                  to={benefitCalculator.benefitCalculatorLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  external
+                />
+              </Col>
+            </Row>
+          </>
         )}
 
         {step.whereDoYouNeedToGo?.link && (

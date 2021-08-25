@@ -41,8 +41,6 @@ const Home = () => {
   const currentStepRef = useRef();
   const { org } = useParams();
 
-  console.log('ORG', org);
-
   const completedClaim = currentStep?.stage === 'afterClaiming';
 
   const getStepStatus = (step, i) => {
