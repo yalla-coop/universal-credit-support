@@ -16,6 +16,35 @@ const findOrganisation = async (id) => {
   return res.rows[0];
 };
 
+const findHelpDetails = async (uniqueSlug) => {
+  const sql = `
+    SELECT
+      id,
+      contact_links
+    FROM organisations
+    WHERE unique_slug = $1
+  `;
+  const values = [uniqueSlug];
+
+  const res = await query(sql, values);
+  return res.rows[0];
+};
+
+const findBenefitCalculator = async (uniqueSlug) => {
+  const sql = `
+    SELECT
+      id,
+      benefit_calculator_link,
+      benefit_calculator_label
+    FROM organisations
+    WHERE unique_slug = $1
+  `;
+  const values = [uniqueSlug];
+
+  const res = await query(sql, values);
+  return res.rows[0];
+};
+
 const findOrganisationBySlug = async (slug, client) => {
   const sql = `
       SELECT
@@ -29,4 +58,10 @@ const findOrganisationBySlug = async (slug, client) => {
   const res = await query(sql, values, client);
   return res.rows[0];
 };
-export { findOrganisation, findOrganisationBySlug };
+
+export {
+  findOrganisation,
+  findHelpDetails,
+  findBenefitCalculator,
+  findOrganisationBySlug,
+};

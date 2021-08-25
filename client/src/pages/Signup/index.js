@@ -289,7 +289,7 @@ const SignUp = () => {
                   weight="semi"
                   to={R.EXTERNAL.TERMS_OF_USE}
                 >
-                 Terms of use
+                  Terms of use
                 </T.Link>
               </T.P>
             }

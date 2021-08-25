@@ -1,17 +1,23 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import * as S from './style';
 import * as T from '../Typography';
 import Icon from '../Icon';
 
+import { linkTypes as cType } from '../../constants/data-types';
+
+import { Organisations } from '../../api-calls';
+
 const formatLink = (type, contact) => {
   switch (type) {
-    case 'email':
-      return `mailto:${contact}`;
-    case 'phone':
-      return `tel:${contact}`;
+    case cType.EMAIL:
+      return { link: `mailto:${contact.email}`, label: contact.email };
+    case cType.PHONE:
+      return { link: `tel:${contact.phoneNumber}`, label: contact.phoneNumber };
+    case cType.WEBCHAT_LINK:
+      return { link: contact.link, label: contact.link };
     default:
-      return contact;
+      return { link: '', label: '' };
   }
 };
 
@@ -20,9 +26,11 @@ const HelpButton = ({
   customContacts = [],
   parentState,
   parentFunc,
+  uniqueSlug,
   ...props
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [orgDetails, setOrgDetails] = useState([]);
 
   const handleClose = () => {
     setIsOpen(false);
@@ -30,6 +38,21 @@ const HelpButton = ({
       parentFunc(false);
     }
   };
+
+  useEffect(() => {
+    async function fetchData() {
+      const { data, error } = await Organisations.getHelpDetails({
+        uniqueSlug,
+      });
+      if (error) {
+        console.error(error);
+      }
+      setOrgDetails(data);
+    }
+    if (uniqueSlug) {
+      fetchData();
+    }
+  }, [isOpen, uniqueSlug]);
 
   if (isOpen || parentState)
     return (
@@ -45,20 +68,20 @@ const HelpButton = ({
             We all need to speak to someone sometimes! Use any of the contact
             details below to find a person to chat with.
           </T.P>
-          {customContacts.map(({ title, availability, contact, type }) => (
+          {orgDetails?.map((contact) => (
             <S.ContactItem mb="5">
-              <T.H3 color="neutralMain">{title}</T.H3>
+              <T.H3 color="neutralMain">{contact.description}</T.H3>
               <T.P color="neutralDark" isSmall>
-                {availability}
+                {contact.availability}
               </T.P>
               <T.Link
                 external
                 weight="bold"
                 color="secondaryMain"
                 isSmall
-                to={formatLink(type, contact)}
+                to={formatLink(contact.type, contact).link}
               >
-                {contact}
+                {formatLink(contact.type, contact).label}
               </T.Link>
             </S.ContactItem>
           ))}
@@ -72,7 +95,7 @@ const HelpButton = ({
               weight="bold"
               color="secondaryMain"
               isSmall
-              to={formatLink('phone', '02071231234')}
+              to={formatLink('PHONE', { phone: '02071231234' })}
             >
               020 7123 1234
             </T.Link>
