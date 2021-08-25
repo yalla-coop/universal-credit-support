@@ -8,20 +8,22 @@ CREATE TABLE "organisations" (
   "contact_links" JSON[],
     -- [
     --   {
-    --     type: '', //[PHONE, WEBCHAT_LINK, LINK]
+    --     type: '', //[PHONE, WEBCHAT_LINK, EMAIL]
     --     availability: '', //e.g. Monday to Friday (9am to 5pm)
     --     description: '',
     --     link: ''
+    --     phone_number: ''
+    --     email: ''
     --   }
     -- ]
-  "benefit_calc_link" TEXT,
-  "benefit_calc_label" VARCHAR,
+  "benefit_calculator_link" TEXT,
+  "benefit_calculator_label" VARCHAR,
   "logo_id" INTEGER REFERENCES media(id),
   "colors" JSON,
     -- { 
-    --   main: '222',
-    --   secondary: '202020',
-    --   neutral: '2332ff'
+    --   main: '#222',
+    --   secondary: '#202020',
+    --   neutral: '#2332ff'
     -- }
   
   "num_of_claims_process_started" INTEGER DEFAULT 0,

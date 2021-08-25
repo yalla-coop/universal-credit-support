@@ -1,9 +1,6 @@
-import { useState } from 'react';
 import * as T from '../../Typography';
 import * as CS from '../style';
 import * as S from './style';
-import Icon from '../../Icon';
-import Info from '../../Info';
 
 const BasicInput = ({
   type = 'text',
@@ -23,8 +20,6 @@ const BasicInput = ({
   optional,
   ...props
 }) => {
-  const [passwordInfoOpen, setPasswordInfoOpen] = useState(false);
-
   const decideColor = () => {
     if (error) return 'error';
     return color;
@@ -42,19 +37,6 @@ const BasicInput = ({
             {label}
           </T.P>
           {optional && <CS.OptionalTag ml="1">(optional)</CS.OptionalTag>}
-          {showPasswordInfo && type === 'password' && (
-            <S.InfoWrapper
-              type="button"
-              onClick={(e) => setPasswordInfoOpen((prev) => !prev)}
-            >
-              <Icon
-                icon="question"
-                color="secondaryMain"
-                width="16"
-                height="16"
-              />
-            </S.InfoWrapper>
-          )}
         </CS.Label>
       )}
       {helper && (
@@ -78,31 +60,6 @@ const BasicInput = ({
         <T.P color="error" m="0" mt="1">
           {error}
         </T.P>
-      )}
-      {passwordInfoOpen && (
-        <Info
-          title="Password must contain:"
-          body={
-            <>
-              <T.P isSmall color="neutralMain" m={0}>
-                - a minimum of 8 characters
-              </T.P>
-              <T.P isSmallcolor="neutralMain" m={0}>
-                - one capital letter
-              </T.P>
-              <T.P isSmallcolor="neutralMain" m={0}>
-                - one lowercase letter
-              </T.P>
-              <T.P isSmallcolor="neutralMain" m={0}>
-                - one number
-              </T.P>
-              <T.P isSmall color="neutralMain" m={0}>
-                - one non alphabetical or numeric character
-              </T.P>
-            </>
-          }
-          m={{ mt: 4 }}
-        />
       )}
     </CS.Field>
   );

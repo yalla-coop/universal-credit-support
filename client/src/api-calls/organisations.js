@@ -12,11 +12,9 @@ const getOrganisation = async ({ id, options }) => {
     return { error: err };
   }
 };
-const updateOrganisation = async ({ id, uniqueSlug, options }) => {
+const updateOrganisation = async ({ id, body, options }) => {
   try {
-    const { data } = await axios.patch(`${ORGS_BASE}/${id}`, {
-      uniqueSlug,
-    });
+    const { data } = await axios.patch(`${ORGS_BASE}/${id}`, body);
     return { data };
   } catch (error) {
     const err = handleError(error, options);

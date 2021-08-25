@@ -2,9 +2,24 @@ import Boom from '@hapi/boom';
 import * as Organisation from '../model';
 import { errorMsgs } from '../../../services/error-handler';
 
-const updateOrganisation = async ({ id, uniqueSlug, userId }) => {
+const updateOrganisation = async ({
+  id,
+  uniqueSlug,
+  contactLinks,
+  benefitCalculatorLink,
+  benefitCalculatorLabel,
+  colors,
+  userId,
+}) => {
   try {
-    await Organisation.updateOrganisation({ id, uniqueSlug });
+    await Organisation.updateOrganisation({
+      id,
+      uniqueSlug,
+      contactLinks,
+      benefitCalculatorLink,
+      benefitCalculatorLabel,
+      colors,
+    });
   } catch (error) {
     if (
       Number(error.code) === 23505 &&
