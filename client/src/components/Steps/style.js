@@ -20,6 +20,7 @@ export const Wrapper = styled.div`
   background: ${({ theme, bgColor }) => theme.colors[bgColor]};
   display: flex;
   justify-content: center;
+  max-height: 152px;
 `;
 
 export const OptionalContainer = styled.div`
