@@ -62,7 +62,7 @@ function App() {
 
                   <Route
                     exact
-                    path={navRoutes.ADMIN.MANAGE_STEPS}
+                    path={navRoutes.SUPER_ADMIN.MANAGE_STEPS}
                     Component={Pages.ManageSteps}
                     layout="dashboard"
                     gradient="secondary"
