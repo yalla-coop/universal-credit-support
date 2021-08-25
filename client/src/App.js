@@ -75,12 +75,22 @@ function App() {
                   />
                   <Route
                     exact
+                    path={navRoutes.ADMIN.SIGNUP}
+                    Component={Pages.Signup}
+                    layout="splitScreen"
+                    side="left"
+                    gradient="secondary"
+                  />
+
+                  <Route
+                    exact
                     path={navRoutes.ADMIN.CREATE_ORG_DETAILS_FIRST_STEP}
                     Component={Pages.CreateOrganisationDetails}
                     layout="splitScreen"
                     side="left"
                     gradient="secondary"
                   />
+
                   <Route
                     exact
                     path={navRoutes.ADMIN.CREATE_ORG_DETAILS_SECOND_STEP}
