@@ -296,7 +296,7 @@ const SignUp = () => {
             error={validationErrs.agreedOnTerms}
           />
         </Col>
-      </Row>{' '}
+      </Row>
       <Row
         mt="7"
         mtT="6"
