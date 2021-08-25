@@ -13,6 +13,7 @@ const buildTables = async () => {
   await models.landingPageContent.createTable();
   await models.steps.createTable();
   await models.contentAuditLog.createTable();
+  await models.contentAuditLog.createTriggers();
 };
 
 export default buildTables;
