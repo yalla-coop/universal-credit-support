@@ -19,7 +19,7 @@ const Modal = ({
   btnText = 'Confirm',
 }) => {
   const handleOk = (action) => {
-    parentFunc(action);
+    parentFunc && parentFunc(action);
     closeOnOK && setIsModalVisible(false);
   };
 

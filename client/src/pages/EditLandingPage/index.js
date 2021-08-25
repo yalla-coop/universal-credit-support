@@ -1,6 +1,6 @@
-import { useReducer, useEffect, useRef } from 'react';
+import { useReducer, useEffect, useRef, useState } from 'react';
 
-import { Typography as T, Grid, Inputs, Button } from '../../components';
+import { Typography as T, Grid, Inputs, Button, Modal } from '../../components';
 import { LandingPage } from '../../api-calls';
 
 import validate from '../../validation/schemas/edit-landing-page';
@@ -25,6 +25,8 @@ function reducer(state, newState) {
 const EditLandingPage = () => {
   const submitAttempt = useRef(false);
   const [state, setState] = useReducer(reducer, initialState);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
   const {
     headline,
     subtitle,
@@ -68,6 +70,7 @@ const EditLandingPage = () => {
       setState({ httpError: error.message });
     } else {
       //  show modal here
+      setIsModalVisible(true);
     }
   };
 
@@ -165,6 +168,14 @@ const EditLandingPage = () => {
           </Col>
         </Row>
       </form>
+      <Modal
+        visible={isModalVisible}
+        setIsModalVisible={setIsModalVisible}
+        type={'updateSuccess'}
+        title={'Updated'}
+        description={'Changes successfully updated'}
+        btnText="Okay"
+      />
     </>
   );
 };
