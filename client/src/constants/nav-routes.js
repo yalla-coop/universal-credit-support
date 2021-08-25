@@ -1,6 +1,7 @@
 const GENERAL = {
   HOME: '/',
   HOME_ORG: '/:org/home',
+  ORG: '/:org',
   LOGIN: '/login',
   UNAUTHORIZED: '/unauthorized',
   FORGET_PASSWORD: '/forget-password',

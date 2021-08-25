@@ -113,6 +113,13 @@ function App() {
                     side="left"
                     gradient="secondary"
                   />
+
+                  <Route
+                    exact
+                    path={navRoutes.GENERAL.ORG}
+                    Component={Pages.Home}
+                    layout="general"
+                  />
                 </Switch>
               </Router>
             </AuthProvider>

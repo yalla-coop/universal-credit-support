@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import Step from '../../components/Steps';
 import { Typography as T } from '../../components';
 import { t } from '../../helpers';
@@ -40,6 +40,7 @@ const Home = () => {
   const currentStep = steps.find((step) => !step.isCompleted);
   const currentStepRef = useRef();
   const { org } = useParams();
+  const history = useHistory();
 
   const completedClaim = currentStep?.stage === 'afterClaiming';
 
@@ -73,6 +74,13 @@ const Home = () => {
       });
     }
   }, [justCompletedId]);
+
+  useEffect(() => {
+    if (org) {
+      history.push(n.GENERAL.HOME_ORG.replace(':org', org));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [org]);
 
   return (
     <>
