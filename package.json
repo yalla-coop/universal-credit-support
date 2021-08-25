@@ -10,7 +10,7 @@
     "dev": "concurrently --kill-others-on-fail \"cd client && npm start\" \"cross-env DEBUG=server nodemon --exec babel-node ./server/index.js\"",
     "dev:server": "cross-env DEBUG=server nodemon --exec babel-node ./server/index.js",
     "dev:client": "cd client && npm start",
-    "storybook": "cd client && npm run storybook",
+    "storybook": "cd client/ && npm run storybook",
     "start": "cross-env DEBUG=server node dist/index.js",
     "build:server": "cross-env DEBUG=server babel server --out-dir dist",
     "build": "npm run clean && npm run build:server",
@@ -25,8 +25,7 @@
     "build:db": "babel-node ./server/database/build.script.js",
     "build:db:prod": "babel-node ./server/database/dummy-data-prod/build.script.js",
     "init:both": "npm i && cd client && npm i && npm run build",
-    "heroku-postbuild": "npm run init:both && npm run build",
-    "storybook": "cd client/ && npm run storybook"
+    "heroku-postbuild": "npm run init:both && npm run build"
   },
   "dependencies": {
     "@hapi/boom": "^9.1.3",
