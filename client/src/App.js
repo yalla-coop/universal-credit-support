@@ -32,7 +32,12 @@ function App() {
                     path={navRoutes.GENERAL.HOME}
                     Component={Pages.Home}
                     layout="general"
-                    showHelp
+                  />
+                  <Route
+                    exact
+                    path={navRoutes.GENERAL.HOME_ORG}
+                    Component={Pages.Home}
+                    layout="general"
                   />
 
                   <Route
@@ -41,6 +46,13 @@ function App() {
                     Component={Pages.Step}
                     layout="step"
                   />
+                  <Route
+                    exact
+                    path={navRoutes.STEPS.STEP_ORG}
+                    Component={Pages.Step}
+                    layout="step"
+                  />
+
                   <Route
                     exact
                     path={navRoutes.ADMIN.CREATE_UNIQUE_LINK}
@@ -100,14 +112,6 @@ function App() {
                     layout="splitScreen"
                     side="left"
                     gradient="secondary"
-                  />
-
-                  <Route
-                    exact
-                    path={navRoutes.GENERAL.HOME_ORG}
-                    Component={Pages.Home}
-                    layout="general"
-                    showHelp
                   />
                 </Switch>
               </Router>

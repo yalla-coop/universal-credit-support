@@ -62,6 +62,11 @@ const Home = () => {
     return { variant, currentRef, isJustCompletedOne, isCurrentStep };
   };
 
+  const decideRoute = (step) =>
+    org
+      ? n.STEPS.STEP_ORG.replace(':id', step.id).replace(':org', org)
+      : n.STEPS.STEP.replace(':id', step.id);
+
   useEffect(() => {
     if (currentStepRef.current && justCompletedId) {
       currentStepRef.current.scrollIntoView({
@@ -93,7 +98,7 @@ const Home = () => {
             direction={i % 2 === 0 ? 'left' : 'right'}
             mt="7"
             isJustCompletedOne={isJustCompletedOne}
-            to={n.STEPS.STEP.replace(':id', step.id)}
+            to={decideRoute(step)}
             ref={currentRef}
             isOptional={step.isOptional}
             handleClick={() => {
@@ -122,7 +127,7 @@ const Home = () => {
             direction={i % 2 === 0 ? 'left' : 'right'}
             mt="7"
             isJustCompletedOne={isJustCompletedOne}
-            to={n.STEPS.STEP.replace(':id', step.id)}
+            to={decideRoute(step)}
             ref={currentRef}
             isOptional={step.isOptional}
             handleClick={() => {
@@ -183,7 +188,7 @@ const Home = () => {
               direction={i % 2 === 0 ? 'left' : 'right'}
               mt="7"
               isJustCompletedOne={isJustCompletedOne}
-              to={n.STEPS.STEP.replace(':id', step.id)}
+              to={decideRoute(step)}
               ref={currentRef}
               isOptional={step.isOptional}
               handleClick={() => {

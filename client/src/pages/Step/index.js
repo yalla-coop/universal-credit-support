@@ -48,6 +48,8 @@ const Step = () => {
     return foundItem?.isChecked;
   };
 
+  if (!step) return 'hello';
+
   return (
     <S.Container>
       <Row mb="8" mbM="8">
@@ -244,7 +246,11 @@ const Step = () => {
           </Col>
         </Row>
       </S.InnerContainer>
-      <HelpButton parentState={stuck} parentFunc={() => setStuck(false)} />
+      <HelpButton
+        orgLink={params.org}
+        parentState={stuck}
+        parentFunc={() => setStuck(false)}
+      />
     </S.Container>
   );
 };
