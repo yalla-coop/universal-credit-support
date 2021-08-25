@@ -1,8 +1,11 @@
 const GENERAL = {
   HOME: '/',
+  HOME_ORG: '/:org/home',
+  ORG: '/:org',
   LOGIN: '/login',
   UNAUTHORIZED: '/unauthorized',
   FORGET_PASSWORD: '/forget-password',
+  RESET_PASSWORD: '/reset-password/:token',
 };
 
 const admin = '/admin';
@@ -10,7 +13,8 @@ const admin = '/admin';
 const ADMIN = {
   HOME: `${admin}/home`,
   EDIT_DETAILS: `${admin}/edit-details`,
-  CUSTOMISE_LOG_OUT: `${admin}/customise-log-out`,
+  CUSTOMISE: `${admin}/customise`,
+  LOG_OUT: `${admin}/log-out`,
   CREATE_UNIQUE_LINK: `${admin}/create-unique-link`,
   CREATE_UNIQUE_LINK_SUCCESS: `${admin}/create-unique-link/success`,
   SIGNUP: `${admin}/signup`,
@@ -28,8 +32,9 @@ const SUPER_ADMIN = {
   EDIT_CONTENT: `${admin}/edit-content`,
   EDIT_DETAILS: `${admin}/edit-details`,
   ORGANISATIONS: `${admin}/organisations`,
+  CUSTOMISE: `${admin}/customise`,
+  LOG_OUT: `${admin}/log-out`,
   MANAGE_STEPS: `${admin}/manage-steps`,
-  CUSTOMISE_LOG_OUT: `${admin}/customise-log-out`,
 };
 
 const EXTERNAL = {
@@ -53,6 +58,7 @@ const EXTERNAL = {
 
 const STEPS = {
   STEP: '/steps/:id',
+  STEP_ORG: '/:org/steps/:id',
 };
 
 export { GENERAL, EXTERNAL, STEPS, ADMIN, SUPER_ADMIN };

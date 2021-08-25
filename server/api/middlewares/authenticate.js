@@ -40,10 +40,7 @@ const authenticate = (isPublic) => async (req, res, next) => {
       throw Boom.unauthorized();
     }
 
-    // eslint-disable-next-line prefer-destructuring
-    user.role = user.roles[0];
-
-    req.sqreen.identify(req, user);
+    // req.sqreen.identify(req, user);
 
     // put the user info in the req to be accessed in the next middlewares
     req.user = user;

@@ -1,4 +1,4 @@
-import { string } from 'yup';
+import { string, boolean } from 'yup';
 import * as errMsgs from './err-msgs';
 
 export const requiredText = string().required(errMsgs.DEFAULT_REQUIRED);
@@ -22,4 +22,8 @@ export const password = string()
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/gm,
     errMsgs.SHORT_PASSWORD,
   )
+  .required(errMsgs.DEFAULT_REQUIRED);
+
+export const agreedOnTerms = boolean()
+  .oneOf([true], errMsgs.SHOULD_AGREE_ON_TERMS)
   .required(errMsgs.DEFAULT_REQUIRED);

@@ -45,8 +45,16 @@ export const IconMap = {
   compass: Compass,
 };
 
+const Parent = styled.div`
+  ${setMargin}
+  display: flex;
+  align-items: center;
+  justify-content: ${({ jc }) => jc || 'flex-start'};
+  cursor: ${({ pointer }) => (pointer ? 'pointer' : 'auto')};
+`;
+
 const Icon = (props) => {
-  const { icon, color, text, jc, weight = 'bold' } = props;
+  const { icon, color, text, weight = 'bold' } = props;
 
   if (!IconMap[icon]) {
     // eslint-disable-next-line no-console
@@ -56,15 +64,8 @@ const Icon = (props) => {
 
   const StyledIcon = IconMap[icon];
 
-  const Parent = styled.div`
-    ${setMargin}
-    display: flex;
-    align-items: center;
-    justify-content: ${jc || 'flex-start'};
-  `;
-
   return (
-    <Parent {...props}>
+    <Parent {...props} onClick={undefined} pointer={props.onClick}>
       <StyledIcon
         {...props}
         color={theme.colors[color] || color || 'currentColor'}

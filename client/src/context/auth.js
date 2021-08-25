@@ -7,6 +7,8 @@ const initialUserState = {
   firstName: '',
   lastName: '',
   role: '',
+  backupEmail: '',
+  organisationId: null,
 };
 
 const AuthContext = createContext({
