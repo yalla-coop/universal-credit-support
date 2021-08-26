@@ -9,6 +9,7 @@ import ResetPassword from './ResetPassword';
 import CreateOrganisationDetails, {
   SecondStep as CreateOrganisationDetails2,
 } from './CreateOrganisationDetails';
+import StepForm from './StepForm';
 import Dashboard from './Dashboard';
 import ManageSteps from './ManageSteps';
 
@@ -25,4 +26,5 @@ export {
   ManageSteps,
   ForgotPassword,
   ResetPassword,
+  StepForm,
 };

@@ -83,6 +83,14 @@ function App() {
 
                   <Route
                     exact
+                    path={navRoutes.SUPER_ADMIN.EDIT_STEP}
+                    Component={Pages.StepForm}
+                    layout="dashboard"
+                    edit
+                  />
+
+                  <Route
+                    exact
                     path={navRoutes.ADMIN.DASHBOARD}
                     Component={Pages.Dashboard}
                     layout="dashboard"

@@ -7,6 +7,7 @@ import {
   Checkbox,
   Rate,
   InputCMS,
+  InputArray,
 } from './index';
 
 export default {
@@ -178,7 +179,49 @@ const InputCMSExample = (args) => {
 };
 
 export const inputCMS = InputCMSExample.bind({});
-rate.args = {
+
+// Input Array INPUT
+const InputArrayExample = (args) => {
+  const [formState, setFormState] = useState(['']);
+
+  return (
+    <Row>
+      <Col w={[4, 6, 4]}>
+        <InputArray {...args} values={formState} handleChange={setFormState} />
+      </Col>
+    </Row>
+  );
+};
+
+export const inputArray = InputArrayExample.bind({});
+inputArray.args = {
+  value: 4, // initial value
+  disabled: false,
+  allowClear: false,
+  error: '',
+  optional: false,
+};
+
+// Input Array INPUT
+const TextareaArrayExample = (args) => {
+  const [formState, setFormState] = useState(['']);
+
+  return (
+    <Row>
+      <Col w={[4, 6, 4]}>
+        <InputArray
+          {...args}
+          type="textarea"
+          values={formState}
+          handleChange={setFormState}
+        />
+      </Col>
+    </Row>
+  );
+};
+
+export const textareaArray = TextareaArrayExample.bind({});
+textareaArray.args = {
   value: 4, // initial value
   disabled: false,
   allowClear: false,

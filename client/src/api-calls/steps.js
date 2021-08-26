@@ -13,6 +13,15 @@ const updateSteps = async ({ options, data }) => {
     return { error: err };
   }
 };
+const EditStep = async (form, { options } = {}) => {
+  try {
+    // const { data } = await axios.post(`${STEPS_BASE}/edit`, form);
+    return { data: form };
+  } catch (error) {
+    const err = handleError(error, options);
+    return { error: err };
+  }
+};
 
 const getStepsContent = async ({ options }) => {
   try {
@@ -24,4 +33,4 @@ const getStepsContent = async ({ options }) => {
   }
 };
 
-export { getStepsContent, updateSteps };
+export { getStepsContent, EditStep, updateSteps };
