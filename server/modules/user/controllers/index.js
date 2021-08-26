@@ -9,6 +9,7 @@ import updatePassword from './update-password';
 import getUsers from './get-users';
 import updateUser from './update-user';
 import getCSRFToken from './get-csrf-token';
+import getAdminUsers from './get-admin-users';
 
 import {
   authenticate,
@@ -30,6 +31,7 @@ router.get(
   ]),
   getUsers,
 );
+router.get('/admin-users', getAdminUsers);
 router.patch(
   '/',
   csrfProtection,

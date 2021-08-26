@@ -50,4 +50,28 @@ const findUserById = async (id) => {
   return res.rows[0];
 };
 
-export { findUserByEmail, findUserById };
+const findAdminUsers = async () => {
+  const sql = `
+    SELECT
+      id,
+      first_name,
+      last_name,
+      email,
+      backup_email,
+      password,
+      role,
+      status,
+      reset_password_token,
+      reset_password_expiry,
+      organisation_id,
+      created_at,
+      updated_at
+    FROM users
+    WHERE role IN ('ADMIN', 'SUPER_ADMIN')
+  `;
+
+  const res = await query(sql);
+  return res.rows;
+};
+
+export { findUserByEmail, findUserById, findAdminUsers };
