@@ -17,9 +17,9 @@ if (env !== 'test') {
 const S3 = s3;
 
 const allowedFileTypesAndSizes = {
-  image: {
+  LOGO: {
     types: ['image/png', 'image/jpg', 'image/jpeg'],
-    maxSize: '30',
+    maxSize: '5',
   },
 };
 
