@@ -7,6 +7,7 @@ import {
   Checkbox,
   Rate,
   InputCMS,
+  ImageUpload,
 } from './index';
 
 export default {
@@ -178,6 +179,35 @@ const InputCMSExample = (args) => {
 };
 
 export const inputCMS = InputCMSExample.bind({});
+rate.args = {
+  value: 4, // initial value
+  disabled: false,
+  allowClear: false,
+  error: '',
+  optional: false,
+};
+
+// INPUT CMS INPUT
+const ImageUploadExample = (args) => {
+  const [uploading, setUploading] = useState(false);
+  const [fileInfo, setFileInfo] = useState({});
+
+  return (
+    <Row>
+      <Col w={[4, 6, 4]}>
+        <ImageUpload
+          {...args}
+          uploading={uploading}
+          setUploading={setUploading}
+          fileInfo={fileInfo}
+          setFileInfo={setFileInfo}
+        />
+      </Col>
+    </Row>
+  );
+};
+
+export const imageUpload = ImageUploadExample.bind({});
 rate.args = {
   value: 4, // initial value
   disabled: false,

@@ -19,6 +19,14 @@ const getSignedURL = async ({
   fileSize,
   fileMaxSize,
 }) => {
+  console.log({
+    userId,
+    fileType,
+    fileCategory,
+    fileName,
+    fileSize,
+    fileMaxSize,
+  });
   // store file first in temp folder
   const key = `${temp}${userId}/${fileType}-${uuid()}-${fileName}`;
 
