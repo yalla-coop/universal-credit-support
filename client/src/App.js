@@ -73,6 +73,16 @@ function App() {
 
                   <Route
                     exact
+                    path={navRoutes.SUPER_ADMIN.MANAGE_STEPS}
+                    Component={Pages.ManageSteps}
+                    layout="dashboard"
+                    gradient="secondary"
+                    success
+                    // isPrivate
+                  />
+
+                  <Route
+                    exact
                     path={navRoutes.SUPER_ADMIN.EDIT_STEP}
                     Component={Pages.StepForm}
                     layout="dashboard"

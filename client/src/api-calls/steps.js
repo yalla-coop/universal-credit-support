@@ -32,4 +32,15 @@ const getStepsContent = async ({ options }) => {
   }
 };
 
-export { getStepsContent, editStep, getStepById };
+const updateSteps = async ({ options, data }) => {
+  try {
+    // change this when the back its ready!
+    // const { data } = await axios.get(`${STEPS_BASE}`);
+    return { data };
+  } catch (error) {
+    const err = handleError(error, options);
+    return { error: err };
+  }
+};
+
+export { getStepsContent, editStep, getStepById, updateSteps };
