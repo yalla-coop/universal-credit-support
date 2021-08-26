@@ -1,6 +1,7 @@
 import { string, number, boolean, array, object } from 'yup';
 import * as errMsgs from './err-msgs';
 import './custom-functions';
+import { whereDoYouNeedToGoTypes } from '../constants/data-types';
 
 const URLregex = /^((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#.-]+)*\/?(\?[a-zA-Z0-9-_.-]+=[a-zA-Z0-9-%?&=.-]+&?)?$/;
 const hexRegex = /^#(?:[0-9a-fA-F]{3}){1,2}$/;
@@ -91,9 +92,7 @@ export const title = string()
   .max(50)
   .required(errMsgs.DEFAULT_REQUIRED);
 
-export const optionalArrayOfOptionalString = array()
-  .of(string().nullable())
-  .nullable();
+export const optionalArrayOfOptionalString = array().of(requiredText);
 
 export const libraryContent = boolean()
   .oneOf([true, false])
@@ -196,7 +195,7 @@ export const optionalRate = number().when('noDemos', {
 // step form
 
 export const linkOrPhone = string().when('type', {
-  is: 'phone',
+  is: whereDoYouNeedToGoTypes.PHONE,
   then: optionalPhoneNumber,
   otherwise: urlOptional,
 });
@@ -209,7 +208,7 @@ export const whereDoYouNeedToGo = object().shape({
 
 export const thingsContent = array().of(
   object().shape({
-    title: optionalText,
+    title: requiredText,
     description: optionalText,
     things: array().of(string().nullable()).nullable(),
     tips: array().of(string().nullable()).nullable(),

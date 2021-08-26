@@ -12,7 +12,7 @@ const volunteer = createSchema({
   title: requiredText,
   description: requiredText,
   whereDoYouNeedToGo,
-  timeRange: requiredText,
+  timeRangeText: requiredText,
   thingsYouWillNeed: thingsContent,
   whatYouWillNeedToKnow: thingsContent,
   topTip: optionalText,

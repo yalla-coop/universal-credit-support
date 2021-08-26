@@ -3,10 +3,19 @@ import handleError from './format-error';
 
 const STEPS_BASE = '/steps';
 
-const EditStep = async (form, { options } = {}) => {
+const editStep = async ({ id, form, options } = {}) => {
   try {
-    // const { data } = await axios.post(`${STEPS_BASE}/edit`, form);
-    return { data: form };
+    const { data } = await axios.patch(`${STEPS_BASE}/${id}`, form);
+    return { data };
+  } catch (error) {
+    const err = handleError(error, options);
+    return { error: err };
+  }
+};
+const getStepById = async (id, { options } = {}) => {
+  try {
+    const { data } = await axios.get(`${STEPS_BASE}/${id}`);
+    return { data };
   } catch (error) {
     const err = handleError(error, options);
     return { error: err };
@@ -23,4 +32,4 @@ const getStepsContent = async ({ options }) => {
   }
 };
 
-export { getStepsContent, EditStep };
+export { getStepsContent, editStep, getStepById };

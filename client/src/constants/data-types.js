@@ -29,6 +29,10 @@ export const linkTypes = {
   WEBCHAT_LINK: 'WEBCHAT_LINK',
   EMAIL: 'EMAIL',
 };
+export const whereDoYouNeedToGoTypes = {
+  LINK: 'LINK',
+  PHONE: 'PHONE',
+};
 
 export const organisationTypes = {
   INFORMAL_OR_CONSTITUTED_COMMUNITY_GROUP_LITTLE_OR_NO_ANNUAL_INCOME:

@@ -15,9 +15,9 @@ const WhatYouWillNeedToKnow = ({ state, setState, errors }) => {
           <T.H2>What you’ll need to know</T.H2>
         </G.Col>
       </G.Row>
-      <G.Row mt="6">
+      <G.Row>
         {state.map((item, index) => (
-          <G.Col w={[4, 4, 4]} key={index}>
+          <G.Col w={[4, 4, 4]} key={index} mt="6">
             <I.InputCMS
               formState={item}
               hideRemove={state.length === 1}

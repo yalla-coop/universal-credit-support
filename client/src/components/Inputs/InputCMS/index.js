@@ -61,7 +61,7 @@ const InputCMS = ({
             <InputArray
               label="Tips"
               name="tips"
-              values={tips}
+              values={tips?.length ? tips : ['']}
               handleChange={(val) => updateState(val, 'tips')}
               optional
               mb="4"
