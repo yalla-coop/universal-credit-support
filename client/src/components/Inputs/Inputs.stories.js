@@ -7,7 +7,7 @@ import {
   Checkbox,
   Rate,
   InputCMS,
-  ImageUpload,
+  InputArray,
 } from './index';
 
 export default {
@@ -179,7 +179,22 @@ const InputCMSExample = (args) => {
 };
 
 export const inputCMS = InputCMSExample.bind({});
-rate.args = {
+
+// Input Array INPUT
+const InputArrayExample = (args) => {
+  const [formState, setFormState] = useState(['']);
+
+  return (
+    <Row>
+      <Col w={[4, 6, 4]}>
+        <InputArray {...args} values={formState} handleChange={setFormState} />
+      </Col>
+    </Row>
+  );
+};
+
+export const inputArray = InputArrayExample.bind({});
+inputArray.args = {
   value: 4, // initial value
   disabled: false,
   allowClear: false,
@@ -187,28 +202,26 @@ rate.args = {
   optional: false,
 };
 
-// INPUT CMS INPUT
-const ImageUploadExample = (args) => {
-  const [uploading, setUploading] = useState(false);
-  const [fileInfo, setFileInfo] = useState({});
+// Input Array INPUT
+const TextareaArrayExample = (args) => {
+  const [formState, setFormState] = useState(['']);
 
   return (
     <Row>
       <Col w={[4, 6, 4]}>
-        <ImageUpload
+        <InputArray
           {...args}
-          uploading={uploading}
-          setUploading={setUploading}
-          fileInfo={fileInfo}
-          setFileInfo={setFileInfo}
+          type="textarea"
+          values={formState}
+          handleChange={setFormState}
         />
       </Col>
     </Row>
   );
 };
 
-export const imageUpload = ImageUploadExample.bind({});
-rate.args = {
+export const textareaArray = TextareaArrayExample.bind({});
+textareaArray.args = {
   value: 4, // initial value
   disabled: false,
   allowClear: false,

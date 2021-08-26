@@ -1,5 +1,5 @@
 export default {
-  HOME: 'home',
+  HOME: 'Home',
   EDIT_CONTENT: 'Edit content',
   EDIT_DETAILS: 'Edit Details',
   ORGANISATIONS: 'Organisation',

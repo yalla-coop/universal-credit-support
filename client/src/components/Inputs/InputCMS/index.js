@@ -9,6 +9,7 @@ const InputCMS = ({
   handleChange,
   hideRemove,
   handleRemove,
+  error = {},
 }) => {
   const [expanded, setExpanded] = useState(false);
 
@@ -24,6 +25,7 @@ const InputCMS = ({
           value={title}
           handleChange={(val) => updateState(val, 'title')}
           name="title"
+          error={error?.title}
         />
         <TextWithIcon
           text={expanded ? 'See less' : 'See more'}
@@ -44,6 +46,7 @@ const InputCMS = ({
               handleChange={(val) => updateState(val, 'description')}
               name="description"
               optional
+              error={error?.description}
               mb="5"
             />
             <InputArray
@@ -53,6 +56,7 @@ const InputCMS = ({
               handleChange={(val) => updateState(val, 'things')}
               optional
               mb="5"
+              error={error?.things}
             />
             <InputArray
               label="Tips"
@@ -61,6 +65,7 @@ const InputCMS = ({
               handleChange={(val) => updateState(val, 'tips')}
               optional
               mb="4"
+              error={error?.tips}
             />
           </>
         )}

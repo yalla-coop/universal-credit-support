@@ -94,7 +94,7 @@ const ImageUpload = ({
       correctFileType = false;
 
       // check 2: max size
-    } else if (sizeInMb > 5) {
+    } else if (sizeInMb > 4) {
       setError(`File is too large. Maximum file size is 5MBs`);
       correctFileType = false;
     } else {
