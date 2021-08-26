@@ -32,20 +32,11 @@ router.get(
   getUsers,
 );
 router.get('/admin-users', getAdminUsers);
-router.patch(
-  '/',
-  csrfProtection,
-  authenticate(),
-  authorize([
-    /* super admin */
-  ]),
-  updateUser,
-);
+router.patch('/update-user-role', csrfProtection, authenticate(), updateUser);
 router.post('/signup', csrfProtection, signup);
 router.post('/login', csrfProtection, login);
 router.post('/logout', csrfProtection, logout);
 router.post('/reset-password-link', csrfProtection, resetPasswordLink);
 router.post('/update-password', csrfProtection, updatePassword);
-router.post('/reset-password-link', csrfProtection, resetPasswordLink);
 
 export default router;
