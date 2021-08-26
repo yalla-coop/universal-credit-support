@@ -3,6 +3,16 @@ import handleError from './format-error';
 
 const STEPS_BASE = '/steps';
 
+const updateSteps = async ({ options, data }) => {
+  try {
+    // change this when the back its ready!
+    // const { data } = await axios.get(`${STEPS_BASE}`);
+    return { data };
+  } catch (error) {
+    const err = handleError(error, options);
+    return { error: err };
+  }
+};
 const EditStep = async (form, { options } = {}) => {
   try {
     // const { data } = await axios.post(`${STEPS_BASE}/edit`, form);
@@ -23,4 +33,4 @@ const getStepsContent = async ({ options }) => {
   }
 };
 
-export { getStepsContent, EditStep };
+export { getStepsContent, EditStep, updateSteps };

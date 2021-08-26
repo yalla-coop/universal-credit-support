@@ -37,6 +37,7 @@ const SUPER_ADMIN = {
   ORGANISATIONS: `${admin}/organisations`,
   CUSTOMISE: `${admin}/customise`,
   LOG_OUT: `${admin}/log-out`,
+  MANAGE_STEPS: `${admin}/manage-steps`,
 };
 
 const EXTERNAL = {
