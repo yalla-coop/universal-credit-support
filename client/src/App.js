@@ -70,6 +70,15 @@ function App() {
                     success
                     // isPrivate
                   />
+
+                  <Route
+                    exact
+                    path={navRoutes.SUPER_ADMIN.EDIT_STEP}
+                    Component={Pages.StepForm}
+                    layout="dashboard"
+                    edit
+                  />
+
                   <Route
                     exact
                     path={navRoutes.ADMIN.DASHBOARD}
@@ -77,6 +86,7 @@ function App() {
                     layout="dashboard"
                     showMobileMenu
                   />
+
                   <Route
                     exact
                     path={navRoutes.ADMIN.LOGIN}

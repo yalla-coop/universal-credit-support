@@ -19,6 +19,8 @@ const ADMIN = {
   CREATE_UNIQUE_LINK_SUCCESS: `${admin}/create-unique-link/success`,
   SIGNUP: `${admin}/signup`,
   LOGIN: `${admin}/login`,
+  PREVIEW_STEP: `${admin}/preview-step`,
+  DELETE_STEP: `${admin}/delete-step`,
   WELCOME: `${admin}/welcome`, // only to use for the sub router
   WELCOME1: `${admin}/welcome/1`,
   WELCOME2: `${admin}/welcome/2`,
@@ -28,6 +30,7 @@ const ADMIN = {
 };
 
 const SUPER_ADMIN = {
+  EDIT_STEP: `${admin}/edit-step/:id`,
   HOME: `${admin}/home`,
   EDIT_CONTENT: `${admin}/edit-content`,
   EDIT_DETAILS: `${admin}/edit-details`,
