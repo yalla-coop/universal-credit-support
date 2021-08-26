@@ -14,6 +14,7 @@ export const userStatuses = {
 export const contactLinksTypes = {
   PHONE: 'PHONE',
   WEBCHAT_LINK: 'WEBCHAT_LINK',
+  EMAIL: 'EMAIL',
 };
 
 export const stageTypes = {

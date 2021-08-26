@@ -9,6 +9,7 @@ import Icon from './Icon';
 import TextWithIcon from './TextWithIcon';
 import HelpButton from './HelpButton';
 import * as Cards from './Cards';
+import Modal from './Modal';
 
 export {
   Button,
@@ -22,4 +23,5 @@ export {
   TextWithIcon,
   HelpButton,
   Cards,
+  Modal,
 };

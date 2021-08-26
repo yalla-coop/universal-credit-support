@@ -40,6 +40,13 @@ export const Input = styled.input`
   ${InputCommonStyle};
 `;
 
+export const Textarea = styled.textarea`
+  ${setMargin};
+  ${CS.placeholderStyle};
+  ${CS.commonBorderStyle};
+  ${InputCommonStyle};
+`;
+
 export const Button = styled.button`
   ${setMargin};
   outline: none;
