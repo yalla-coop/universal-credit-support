@@ -13,6 +13,28 @@ const getUserById = async ({ id, options }) => {
   }
 };
 
+const updateUserRole = async (updates, { options } = {}) => {
+  try {
+    const { data } = await axios.patch(
+      `${USERS_BASE}/update-user-role`,
+      updates
+    );
+    return { data };
+  } catch (error) {
+    const err = handleError(error, options);
+    return { error: err };
+  }
+};
+const getAdminUsers = async () => {
+  try {
+    const { data } = await axios.get(`${USERS_BASE}/admin-users`);
+    return { data };
+  } catch (error) {
+    const err = handleError(error);
+    return { error: err };
+  }
+};
+
 const getLoggedInUserInfo = async ({ options } = {}) => {
   try {
     const { data } = await axios.get(`${USERS_BASE}/my-info`);
@@ -92,4 +114,6 @@ export {
   resetPasswordLink,
   updatePassword,
   getCSRFToken,
+  getAdminUsers,
+  updateUserRole,
 };
