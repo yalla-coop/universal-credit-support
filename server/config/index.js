@@ -3,7 +3,7 @@ import common from './common';
 import server from './server';
 import database from './database';
 import aws from './aws';
-// import emails from './emails';
+import emails from './emails';
 // import sqreen from './sqreen';
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
@@ -28,6 +28,6 @@ export default {
   server: server(),
   database: database(),
   aws: aws(),
-  // emails: emails(),
+  emails: emails(),
   // sqreen: sqreen(),
 };
