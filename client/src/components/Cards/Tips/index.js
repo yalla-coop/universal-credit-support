@@ -40,24 +40,26 @@ const getColor = (index, startingColor) => {
 const Tips = ({ tips = [], startingColor = 0, cols, inner, ...props }) => {
   return (
     <Row {...props} inner={inner}>
-      {tips.map((tip, index) => (
-        <Col w={cols || [4, 12, 12]} key={index} inner>
-          <S.Tip key={index} color={getColor(index, startingColor)} mb="3">
-            <Icon
-              icon="bulb"
-              color={getColor(index, startingColor).icon}
-              mr="2"
-            />
-            {typeof tip === 'string' ? (
-              <T.H3 color={getColor(index, startingColor).text}>
-                Tip! {tip}
-              </T.H3>
-            ) : (
-              tip
-            )}
-          </S.Tip>
-        </Col>
-      ))}
+      {tips
+        .filter((t) => !!t)
+        .map((tip, index) => (
+          <Col w={cols || [4, 12, 12]} key={index} inner>
+            <S.Tip key={index} color={getColor(index, startingColor)} mb="3">
+              <Icon
+                icon="bulb"
+                color={getColor(index, startingColor).icon}
+                mr="2"
+              />
+              {typeof tip === 'string' ? (
+                <T.H3 color={getColor(index, startingColor).text}>
+                  Tip! {tip}
+                </T.H3>
+              ) : (
+                tip
+              )}
+            </S.Tip>
+          </Col>
+        ))}
     </Row>
   );
 };
