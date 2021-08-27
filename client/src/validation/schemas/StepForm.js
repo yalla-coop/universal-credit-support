@@ -17,6 +17,8 @@ const volunteer = createSchema({
   whatYouWillNeedToKnow: thingsContent,
   topTip: optionalText,
   otherTips: optionalArrayOfOptionalString,
+  pageTitle: optionalText,
+  pageDescription: optionalText,
 });
 
 const validate = (data) => _validate(volunteer, data);

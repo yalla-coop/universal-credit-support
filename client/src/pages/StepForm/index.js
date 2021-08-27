@@ -5,10 +5,9 @@ import {
   Typography as T,
   Inputs as I,
   Button,
-  // TextWithIcon,
   Modal,
 } from '../../components';
-// import { navRoutes as R } from '../../constants';
+
 import ThingsYouWillNeed from './ThingsYouWillNeed';
 import WhatYouWillNeedToKnow from './WhatYouWillNeedToKnow';
 import GeneralTips from './GeneralTips';
@@ -21,6 +20,8 @@ const initialState = {
   isOptional: false,
   title: '',
   description: '',
+  pageTitle: '',
+  pageDescription: '',
   httpError: '',
   whereDoYouNeedToGo: {
     link: '',
@@ -51,6 +52,8 @@ const StepForm = () => {
     isOptional,
     title,
     description,
+    pageTitle,
+    pageDescription,
     whereDoYouNeedToGo,
     timeRangeText,
     thingsYouWillNeed,
@@ -61,31 +64,6 @@ const StepForm = () => {
     topTip,
   } = state;
 
-  console.log(`state`, state);
-  // id: 1
-  // isOptional: true
-  // otherTips: Array(1)
-  // 0: "Keep hold of any documents you dig out to help you work out the bits you need to know for the calculator. These are often needed in the application so having them stored can be helpful to make things quicker!"
-  // length: 1
-  // [[Prototype]]: Array(0)
-  // pageDescription: "Using the benefit calculator enables you to find out an estimate of how much Universal Credit you may be entitled to."
-  // pageTitle: "Should you claim?"
-  // stage: "BEFORE_CLAIMING"
-  // stepOrder: 1
-  // thingsYouWillNeed: Array(0)
-  // length: 0
-  // [[Prototype]]: Array(0)
-  // title: "Wait! Should I apply?"
-
-  // whatYouWillNeedToKnow: Array(5)
-  // 0: {title: "Income details", description: "", thisCanInclude: Array(3), tips: Array(1)}
-  // 1: {title: "Details of any capital, savings and investments", description: "", thisCanInclude: Array(0), tips: Array(1)}
-  // 2: {title: "Housing costs", description: "You can get this from your landlord or mortgage provider.", thisCanInclude: Array(4), tips: Array(0)}
-  // 3: {title: "Childcare costs", description: "", thisCanInclude: Array(0), tips: Array(0)}
-  // 4: {title: "Income details of any other adults living in the p…t lodgers e.g. grown up children, elderly parents", description: "", thisCanInclude: Array(0), tips: Array(0)}
-  // length: 5
-  // [[Prototype]]: Array(0)
-
   const { id: stepId } = useParams();
 
   useEffect(() => {
@@ -93,7 +71,6 @@ const StepForm = () => {
       setState({ loading: true });
       const { error, data } = await Steps.getStepById(stepId);
 
-      console.log(`data`, data);
       setState({ loading: false });
       if (error) {
         return setState({ httpError: error.message });
@@ -101,9 +78,8 @@ const StepForm = () => {
       setState({
         ...data,
         timeRangeText: data?.howLongDoesItTake?.timeRangeText,
-        // whereDoYouNeedToGo: data?.whereDoYouNeedToGo?.length
-        //   ? data.whereDoYouNeedToGo
-        //   : initialState.whereDoYouNeedToGo,
+        whereDoYouNeedToGo:
+          data?.whereDoYouNeedToGo || initialState.whereDoYouNeedToGo,
 
         thingsYouWillNeed: data?.thingsYouWillNeed?.length
           ? data.thingsYouWillNeed
@@ -125,6 +101,8 @@ const StepForm = () => {
   }, [
     title,
     description,
+    pageTitle,
+    pageDescription,
     whereDoYouNeedToGo.title,
     whereDoYouNeedToGo.link,
     whereDoYouNeedToGo.type,
@@ -149,7 +127,6 @@ const StepForm = () => {
       setState({ validationErrs: {} });
       return true;
     } catch (error) {
-      console.log(error);
       if (error.name === 'ValidationError') {
         setState({ validationErrs: error.inner });
       }
@@ -225,6 +202,29 @@ const StepForm = () => {
             handleChange={(input) => setState({ description: input })}
             rows="4"
             error={validationErrs.description}
+          />
+        </G.Col>
+      </G.Row>
+      <G.Row mt="8">
+        <G.Col w={[4, 6, 4]}>
+          <I.BasicInput
+            name="pageTitle"
+            placeholder="Type page title here..."
+            label="Page title"
+            error={validationErrs.pageTitle}
+            value={pageTitle}
+            handleChange={(input) => setState({ pageTitle: input })}
+          />
+        </G.Col>
+        <G.Col w={[4, 6, 4]}>
+          <I.Textarea
+            name="pageDescription"
+            value={pageDescription}
+            placeholder="Type page description here..."
+            label="pageDescription"
+            handleChange={(input) => setState({ pageDescription: input })}
+            rows="4"
+            error={validationErrs.pageDescription}
           />
         </G.Col>
       </G.Row>

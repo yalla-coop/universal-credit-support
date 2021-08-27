@@ -25,7 +25,7 @@ router.patch(
   '/:id',
   csrfProtection,
   authenticate(),
-  authorize([userRoles.SUPER_ADMIN, userRoles.ADMIN]),
+  authorize([userRoles.SUPER_ADMIN]),
   updateStep,
 );
 

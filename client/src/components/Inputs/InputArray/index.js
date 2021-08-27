@@ -57,25 +57,21 @@ const InputArray = ({
         {values.map((value, index) => (
           <Container w={[4, 12, 6]} key={index}>
             <S.InputField key={index} mb="4">
-              <div>
-                <Field
-                  type={type}
-                  name={name}
-                  placeholder={placeholder}
-                  value={value}
-                  onChange={(newVal) =>
-                    updateValues(newVal.target.value, index)
-                  }
-                  disabled={disabled}
-                  autoComplete={autoComplete || 'on'}
-                  rows="4"
-                />
-                {error && error[index] && (
-                  <T.P color="error" m="0" mt="1">
-                    {error[index]}
-                  </T.P>
-                )}
-              </div>
+              <Field
+                type={type}
+                name={name}
+                placeholder={placeholder}
+                value={value}
+                onChange={(newVal) => updateValues(newVal.target.value, index)}
+                disabled={disabled}
+                autoComplete={autoComplete || 'on'}
+                rows="4"
+              />
+              {error && error[index] && (
+                <T.P color="error" m="0" mt="1">
+                  {error[index]}
+                </T.P>
+              )}
 
               <S.Button
                 disabled={disabled || (values.length === 1 && index === 0)}

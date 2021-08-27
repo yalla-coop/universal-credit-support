@@ -18,6 +18,7 @@ const getSteps = async () => {
       s.other_tips,
       s.is_optional
     FROM steps AS s
+    ORDER BY step_order ASC
   `;
 
   const res = await query(sql);
