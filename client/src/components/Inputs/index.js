@@ -6,6 +6,7 @@ import Rate from './Rate';
 import InputCMS from './InputCMS';
 import InputArray from './InputArray';
 import ColorPicker from './ColorPicker';
+import ImageUpload from './ImageUpload';
 
 export {
   BasicInput,
@@ -16,4 +17,5 @@ export {
   InputCMS,
   InputArray,
   ColorPicker,
+  ImageUpload,
 };

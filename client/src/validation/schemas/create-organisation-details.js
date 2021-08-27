@@ -11,6 +11,7 @@ const secondStep = createSchema({
   mainColor: hexColorOptional,
   secondaryColor: hexColorOptional,
   neutralColor: hexColorOptional,
+  logoFile: requiredText,
 });
 
 const validate = (data) => {

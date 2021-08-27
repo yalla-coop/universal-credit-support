@@ -29,31 +29,6 @@ function App() {
                 <Switch>
                   <Route
                     exact
-                    path={navRoutes.GENERAL.HOME}
-                    Component={Pages.Home}
-                    layout="general"
-                  />
-                  <Route
-                    exact
-                    path={navRoutes.GENERAL.HOME_ORG}
-                    Component={Pages.Home}
-                    layout="general"
-                  />
-                  <Route
-                    exact
-                    path={navRoutes.STEPS.STEP}
-                    Component={Pages.Step}
-                    layout="step"
-                  />
-                  <Route
-                    exact
-                    path={navRoutes.STEPS.STEP_ORG}
-                    Component={Pages.Step}
-                    layout="step"
-                  />
-
-                  <Route
-                    exact
                     path={navRoutes.ADMIN.CREATE_UNIQUE_LINK}
                     Component={Pages.CreateUniqueLink}
                     layout="splitScreen"
@@ -140,6 +115,32 @@ function App() {
                     side="left"
                     gradient="secondary"
                   />
+
+                  <Route
+                    exact
+                    path={navRoutes.GENERAL.HOME}
+                    Component={Pages.Home}
+                    layout="general"
+                  />
+                  <Route
+                    exact
+                    path={navRoutes.GENERAL.HOME_ORG}
+                    Component={Pages.Home}
+                    layout="general"
+                  />
+                  <Route
+                    exact
+                    path={navRoutes.STEPS.STEP}
+                    Component={Pages.Step}
+                    layout="step"
+                  />
+                  <Route
+                    exact
+                    path={navRoutes.STEPS.STEP_ORG}
+                    Component={Pages.Step}
+                    layout="step"
+                  />
+
                   <Route
                     exact
                     path={navRoutes.GENERAL.FORGET_PASSWORD}
