@@ -74,6 +74,20 @@ function App() {
 
                   <Route
                     exact
+                    path={navRoutes.SUPER_ADMIN.EDIT_CONTENT}
+                    Component={Pages.EditContent}
+                    layout="dashboard"
+                    showMobileMenu
+                  />
+                  <Route
+                    exact
+                    path={navRoutes.SUPER_ADMIN.EDIT_LANDING_PAGE}
+                    Component={Pages.EditLandingPage}
+                    layout="dashboard"
+                    showMobileMenu
+                  />
+                  <Route
+                    exact
                     path={navRoutes.ADMIN.LOGIN}
                     Component={Pages.Login}
                     layout="splitScreen"

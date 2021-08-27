@@ -11,6 +11,8 @@ import CreateOrganisationDetails, {
 } from './CreateOrganisationDetails';
 import StepForm from './StepForm';
 import Dashboard from './Dashboard';
+import EditContent from './EditContent';
+import EditLandingPage from './EditLandingPage';
 import ManageSteps from './ManageSteps';
 
 export {
@@ -21,6 +23,8 @@ export {
   CreateUniqueLink,
   Welcome,
   Dashboard,
+  EditContent,
+  EditLandingPage,
   CreateOrganisationDetails,
   CreateOrganisationDetails2,
   ManageSteps,

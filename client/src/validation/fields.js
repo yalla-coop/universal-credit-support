@@ -193,6 +193,11 @@ export const optionalRate = number().when('noDemos', {
   otherwise: numberField,
 });
 
+export const textMax300Required = string()
+  .min(4, errMsgs.TOO_SHORT_MIN_4)
+  .max(300, errMsgs.TOO_LONG_MAX_300)
+  .required(errMsgs.DEFAULT_REQUIRED);
+
 // step form
 
 export const linkOrPhone = string().when('type', {
