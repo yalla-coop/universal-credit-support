@@ -32,7 +32,12 @@ function App() {
                     path={navRoutes.GENERAL.HOME}
                     Component={Pages.Home}
                     layout="general"
-                    showHelp
+                  />
+                  <Route
+                    exact
+                    path={navRoutes.GENERAL.HOME_ORG}
+                    Component={Pages.Home}
+                    layout="general"
                   />
                   <Route
                     exact
@@ -40,6 +45,13 @@ function App() {
                     Component={Pages.Step}
                     layout="step"
                   />
+                  <Route
+                    exact
+                    path={navRoutes.STEPS.STEP_ORG}
+                    Component={Pages.Step}
+                    layout="step"
+                  />
+
                   <Route
                     exact
                     path={navRoutes.ADMIN.CREATE_UNIQUE_LINK}
@@ -58,6 +70,25 @@ function App() {
                     success
                     // isPrivate
                   />
+
+                  <Route
+                    exact
+                    path={navRoutes.SUPER_ADMIN.MANAGE_STEPS}
+                    Component={Pages.ManageSteps}
+                    layout="dashboard"
+                    gradient="secondary"
+                    success
+                    // isPrivate
+                  />
+
+                  <Route
+                    exact
+                    path={navRoutes.SUPER_ADMIN.EDIT_STEP}
+                    Component={Pages.StepForm}
+                    layout="dashboard"
+                    edit
+                  />
+
                   <Route
                     exact
                     path={navRoutes.ADMIN.DASHBOARD}
@@ -65,6 +96,7 @@ function App() {
                     layout="dashboard"
                     showMobileMenu
                   />
+
                   <Route
                     exact
                     path={navRoutes.ADMIN.EDIT_CONTENT}
@@ -89,12 +121,22 @@ function App() {
                   />
                   <Route
                     exact
+                    path={navRoutes.ADMIN.SIGNUP}
+                    Component={Pages.Signup}
+                    layout="splitScreen"
+                    side="left"
+                    gradient="secondary"
+                  />
+
+                  <Route
+                    exact
                     path={navRoutes.ADMIN.CREATE_ORG_DETAILS_FIRST_STEP}
                     Component={Pages.CreateOrganisationDetails}
                     layout="splitScreen"
                     side="left"
                     gradient="secondary"
                   />
+
                   <Route
                     exact
                     path={navRoutes.ADMIN.CREATE_ORG_DETAILS_SECOND_STEP}
@@ -127,6 +169,12 @@ function App() {
                     layout="splitScreen"
                     side="left"
                     gradient="secondary"
+                  />
+                  <Route
+                    exact
+                    path={navRoutes.GENERAL.ORG}
+                    Component={Pages.Home}
+                    layout="general"
                   />
                 </Switch>
               </Router>

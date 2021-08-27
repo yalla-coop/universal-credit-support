@@ -68,6 +68,11 @@ export const urlRequired = string()
   })
   .required(errMsgs.DEFAULT_REQUIRED);
 
+export const urlOptional = string().matches(URLregex, {
+  message: errMsgs.INVALID_LINK,
+  excludeEmptyString: true,
+});
+
 export const urlSlug = string()
   .required(errMsgs.DEFAULT_REQUIRED)
   .matches(URLSlugRegex, {
@@ -86,7 +91,9 @@ export const title = string()
   .max(50)
   .required(errMsgs.DEFAULT_REQUIRED);
 
-export const categories = array().of(string().nullable()).nullable();
+export const optionalArrayOfOptionalString = array()
+  .of(string().nullable())
+  .nullable();
 
 export const libraryContent = boolean()
   .oneOf([true, false])
@@ -110,7 +117,7 @@ export const inviteToken = string()
 export const content = array().of(
   object().shape({
     title,
-    categories,
+    categories: optionalArrayOfOptionalString,
     libraryContent,
     instructions,
   })
@@ -191,6 +198,28 @@ export const textMax300Required = string()
   .max(300, errMsgs.TOO_LONG_MAX_300)
   .required(errMsgs.DEFAULT_REQUIRED);
 
+// step form
+
+export const linkOrPhone = string().when('type', {
+  is: 'phone',
+  then: optionalPhoneNumber,
+  otherwise: urlOptional,
+});
+
+export const whereDoYouNeedToGo = object().shape({
+  type: optionalText,
+  link: linkOrPhone,
+  title: optionalText,
+});
+
+export const thingsContent = array().of(
+  object().shape({
+    title: optionalText,
+    description: optionalText,
+    things: array().of(string().nullable()).nullable(),
+    tips: array().of(string().nullable()).nullable(),
+  })
+);
 export const contactLinks = array()
   .of(
     object().shape({

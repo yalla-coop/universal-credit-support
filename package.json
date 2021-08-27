@@ -10,6 +10,7 @@
     "dev": "concurrently --kill-others-on-fail \"cd client && npm start\" \"cross-env DEBUG=server nodemon --exec babel-node ./server/index.js\"",
     "dev:server": "cross-env DEBUG=server nodemon --exec babel-node ./server/index.js",
     "dev:client": "cd client && npm start",
+    "storybook": "cd client/ && npm run storybook",
     "start": "cross-env DEBUG=server node dist/index.js",
     "build:server": "cross-env DEBUG=server babel server --out-dir dist",
     "build": "npm run clean && npm run build:server",
@@ -28,6 +29,9 @@
   },
   "dependencies": {
     "@hapi/boom": "^9.1.3",
+    "@sendgrid/mail": "^7.4.6",
+    "@sentry/node": "^6.11.0",
+    "@sentry/tracing": "^6.11.0",
     "aws-sdk": "^2.971.0",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.5",
