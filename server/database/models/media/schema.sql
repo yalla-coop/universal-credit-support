@@ -6,6 +6,9 @@ CREATE TABLE "media" (
   "file_name" VARCHAR,
   "bucket" VARCHAR(50) NOT NULL,
   "bucket_region" VARCHAR(15) NOT NULL,
+  "file_type" VARCHAR(100),
+  "size" INTEGER,
+  "file_category" media_file_categories NOT NULL,
 
   "created_by" INTEGER,
   "created_at" TIMESTAMP NOT NULL DEFAULT NOW(),

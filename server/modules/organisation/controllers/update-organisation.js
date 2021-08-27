@@ -9,6 +9,7 @@ const updateOrganisation = async (req, res, next) => {
     benefitCalculatorLink,
     benefitCalculatorLabel,
     colors,
+    logoFile,
   } = req.body;
   try {
     const results = await updateOrganisationUseCase({
@@ -18,6 +19,7 @@ const updateOrganisation = async (req, res, next) => {
       benefitCalculatorLink,
       benefitCalculatorLabel,
       colors,
+      logoFile,
     });
 
     res.json(results);
