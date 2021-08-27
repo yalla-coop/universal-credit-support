@@ -25,9 +25,7 @@ const ADMIN = {
   WELCOME1: `${admin}/welcome/1`,
   WELCOME2: `${admin}/welcome/2`,
   DASHBOARD: `${admin}/dashboard`,
-  EDIT_CONTENT: `${admin}/edit-content`,
   MANAGE_STEPS: `${admin}/edit-steps`,
-  EDIT_LANDING_PAGE: `${admin}/edit-landing-page`,
   CREATE_ORG_DETAILS_FIRST_STEP: `${admin}/set-organisation/1`,
   CREATE_ORG_DETAILS_SECOND_STEP: `${admin}/set-organisation/2`,
 };
@@ -36,6 +34,7 @@ const SUPER_ADMIN = {
   EDIT_STEP: `${admin}/edit-step/:id`,
   HOME: `${admin}/home`,
   EDIT_CONTENT: `${admin}/edit-content`,
+  EDIT_LANDING_PAGE: `${admin}/edit-landing-page`,
   EDIT_DETAILS: `${admin}/edit-details`,
   ORGANISATIONS: `${admin}/organisations`,
   CUSTOMISE: `${admin}/customise`,
