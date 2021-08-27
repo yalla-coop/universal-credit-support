@@ -29,9 +29,11 @@ const initialState = {
     title: '',
   },
   timeRangeText: '',
-  thingsYouWillNeed: [{ title: '', description: '', things: [''], tips: [''] }],
+  thingsYouWillNeed: [
+    { title: '', description: '', thisCanInclude: [''], tips: [''] },
+  ],
   whatYouWillNeedToKnow: [
-    { title: '', description: '', things: [''], tips: [''] },
+    { title: '', description: '', thisCanInclude: [''], tips: [''] },
   ],
   topTip: '',
   otherTips: [''],
@@ -84,6 +86,9 @@ const StepForm = () => {
         thingsYouWillNeed: data?.thingsYouWillNeed?.length
           ? data.thingsYouWillNeed
           : initialState.thingsYouWillNeed,
+        whatYouWillNeedToKnow: data?.whatYouWillNeedToKnow?.length
+          ? data.whatYouWillNeedToKnow
+          : initialState.whatYouWillNeedToKnow,
         otherTips: data?.otherTips?.length
           ? data.otherTips
           : initialState.otherTips,

@@ -13,7 +13,7 @@ const InputCMS = ({
 }) => {
   const [expanded, setExpanded] = useState(false);
 
-  const { title, description, things, tips } = formState;
+  const { title, description, thisCanInclude, tips } = formState;
 
   const updateState = (val, key) => handleChange({ ...formState, [key]: val });
 
@@ -51,12 +51,12 @@ const InputCMS = ({
             />
             <InputArray
               label="This can include things like"
-              name="things"
-              values={things}
-              handleChange={(val) => updateState(val, 'things')}
+              name="thisCanInclude"
+              values={thisCanInclude?.length ? thisCanInclude : ['']}
+              handleChange={(val) => updateState(val, 'thisCanInclude')}
               optional
               mb="5"
-              error={error?.things}
+              error={error?.thisCanInclude}
             />
             <InputArray
               label="Tips"

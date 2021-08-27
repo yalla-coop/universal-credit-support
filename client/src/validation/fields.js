@@ -210,7 +210,7 @@ export const thingsContent = array().of(
   object().shape({
     title: requiredText,
     description: optionalText,
-    things: array().of(string().nullable()).nullable(),
+    thisCanInclude: array().of(string().nullable()).nullable(),
     tips: array().of(string().nullable()).nullable(),
   })
 );

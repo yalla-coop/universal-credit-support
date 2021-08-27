@@ -5,7 +5,12 @@ import {
   TextWithIcon,
 } from '../../components';
 
-const newItem = { title: '', description: '', things: [''], tips: [''] };
+const newItem = {
+  title: '',
+  description: '',
+  thisCanInclude: [''],
+  tips: [''],
+};
 
 const ThingsYouWillNeed = ({ state, setState, errors }) => {
   return (
