@@ -146,12 +146,9 @@ const StepForm = () => {
       id: stepId,
       form: {
         ...state,
-        whatYouWillNeedToKnow: whatYouWillNeedToKnow.filter(
-          (e, i) => !(i === whatYouWillNeedToKnow.length - 1 && !e.title)
-        ),
-        thingsYouWillNeed: thingsYouWillNeed.filter(
-          (e, i) => !(i === thingsYouWillNeed.length - 1 && !e.title)
-        ),
+        whatYouWillNeedToKnow: whatYouWillNeedToKnow.filter((e) => !!e.title),
+        thingsYouWillNeed: thingsYouWillNeed.filter((e) => !!e.title),
+        otherTips: otherTips.filter((e, i) => !!e),
       },
     });
 
@@ -226,7 +223,7 @@ const StepForm = () => {
             name="pageDescription"
             value={pageDescription}
             placeholder="Type page description here..."
-            label="pageDescription"
+            label="Page description"
             handleChange={(input) => setState({ pageDescription: input })}
             rows="4"
             error={validationErrs.pageDescription}
