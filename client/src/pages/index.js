@@ -10,6 +10,7 @@ import CreateOrganisationDetails, {
   SecondStep as CreateOrganisationDetails2,
 } from './CreateOrganisationDetails';
 import Dashboard from './Dashboard';
+import Organisations from './Organisations';
 
 export {
   Home,
@@ -23,4 +24,5 @@ export {
   CreateOrganisationDetails2,
   ForgotPassword,
   ResetPassword,
+  Organisations,
 };
