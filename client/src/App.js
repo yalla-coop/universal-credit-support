@@ -79,6 +79,14 @@ function App() {
                   />
                   <Route
                     exact
+                    // path={navRoutes.ADMIN.DASHBOARD}
+                    path="/test"
+                    Component={Pages.Organisations}
+                    layout="dashboard"
+                    showMobileMenu
+                  />
+                  <Route
+                    exact
                     path={navRoutes.ADMIN.LOGIN}
                     Component={Pages.Login}
                     layout="splitScreen"
