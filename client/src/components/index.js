@@ -7,7 +7,6 @@ import * as Typography from './Typography';
 import * as Inputs from './Inputs';
 import Icon from './Icon';
 import TextWithIcon from './TextWithIcon';
-import Modal from './Modal';
 import HelpButton from './HelpButton';
 import * as Cards from './Cards';
 import Modal from './Modal';
@@ -25,5 +24,4 @@ export {
   Modal,
   HelpButton,
   Cards,
-  Modal,
 };
