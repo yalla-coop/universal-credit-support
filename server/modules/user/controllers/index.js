@@ -10,6 +10,7 @@ import getUsers from './get-users';
 import updateUser from './update-user';
 import getCSRFToken from './get-csrf-token';
 import getAdminUsers from './get-admin-users';
+import deleteUser from './delete-user';
 
 import {
   authenticate,
@@ -38,5 +39,7 @@ router.post('/login', csrfProtection, login);
 router.post('/logout', csrfProtection, logout);
 router.post('/reset-password-link', csrfProtection, resetPasswordLink);
 router.post('/update-password', csrfProtection, updatePassword);
+
+router.delete('/delete-user', deleteUser);
 
 export default router;
