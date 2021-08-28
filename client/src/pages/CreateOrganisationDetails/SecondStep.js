@@ -29,6 +29,8 @@ const initialState = {
   validationErrs: {},
   loading: false,
   displayColorPicker: false,
+  logoFile: {},
+  logoUploading: false,
 };
 
 function reducer(state, newState) {
@@ -43,6 +45,7 @@ function reducer(state, newState) {
 const SecondStep = () => {
   const { user } = useAuth();
   const submitAttempt = useRef(false);
+
   const [state, setState] = useReducer(reducer, initialState);
   const {
     mainColor,
@@ -51,6 +54,8 @@ const SecondStep = () => {
     loading,
     validationErrs,
     httpError,
+    logoFile,
+    logoUploading,
   } = state;
 
   const history = useHistory();
@@ -73,6 +78,7 @@ const SecondStep = () => {
         mainColor,
         secondaryColor,
         neutralColor,
+        logoFile: logoFile.key,
       });
       setState({ validationErrs: {} });
       return true;
@@ -89,6 +95,7 @@ const SecondStep = () => {
     const { error } = await Organisations.updateOrganisation({
       id: 1,
       body: {
+        logoFile,
         colors: {
           main: mainColor,
           secondary: secondaryColor,
@@ -136,6 +143,23 @@ const SecondStep = () => {
           >
             Skip for now
           </T.Link>
+        </Col>
+      </Row>
+
+      <Row>
+        <Col w={[4, 6, 4]} mt={7}>
+          <I.ImageUpload
+            uploading={logoUploading}
+            setUploading={(bool) => setState({ logoUploading: bool })}
+            fileInfo={logoFile}
+            setFileInfo={(e) => setState({ logoFile: e })}
+            error={validationErrs.logoFile}
+            setError={(e) =>
+              setState(({ validationErrs }) => ({
+                validationErrs: { ...validationErrs, logoFile: e },
+              }))
+            }
+          />
         </Col>
       </Row>
 
@@ -218,7 +242,7 @@ const SecondStep = () => {
           <Button
             variant="primary"
             disabled={false}
-            loading={loading}
+            loading={loading || logoUploading}
             text="Next"
             type="submit"
           />

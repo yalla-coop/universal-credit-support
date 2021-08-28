@@ -15,8 +15,8 @@ router.get('/', getLandingPage);
 router.patch(
   '/',
   csrfProtection,
-  authenticate(),
-  authorize(/* list admin + super admin here */),
+  // authenticate(),
+  // authorize(/* list admin + super admin here */),
   updateLandingPage,
 );
 

@@ -19,21 +19,27 @@ const ADMIN = {
   CREATE_UNIQUE_LINK_SUCCESS: `${admin}/create-unique-link/success`,
   SIGNUP: `${admin}/signup`,
   LOGIN: `${admin}/login`,
+  PREVIEW_STEP: `${admin}/preview-step`,
+  DELETE_STEP: `${admin}/delete-step`,
   WELCOME: `${admin}/welcome`, // only to use for the sub router
   WELCOME1: `${admin}/welcome/1`,
   WELCOME2: `${admin}/welcome/2`,
   DASHBOARD: `${admin}/dashboard`,
+  MANAGE_STEPS: `${admin}/edit-steps`,
   CREATE_ORG_DETAILS_FIRST_STEP: `${admin}/set-organisation/1`,
   CREATE_ORG_DETAILS_SECOND_STEP: `${admin}/set-organisation/2`,
 };
 
 const SUPER_ADMIN = {
+  EDIT_STEP: `${admin}/edit-step/:id`,
   HOME: `${admin}/home`,
   EDIT_CONTENT: `${admin}/edit-content`,
+  EDIT_LANDING_PAGE: `${admin}/edit-landing-page`,
   EDIT_DETAILS: `${admin}/edit-details`,
   ORGANISATIONS: `${admin}/organisations`,
   CUSTOMISE: `${admin}/customise`,
   LOG_OUT: `${admin}/log-out`,
+  MANAGE_STEPS: `${admin}/manage-steps`,
 };
 
 const EXTERNAL = {

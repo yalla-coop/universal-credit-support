@@ -29,31 +29,6 @@ function App() {
                 <Switch>
                   <Route
                     exact
-                    path={navRoutes.GENERAL.HOME}
-                    Component={Pages.Home}
-                    layout="general"
-                  />
-                  <Route
-                    exact
-                    path={navRoutes.GENERAL.HOME_ORG}
-                    Component={Pages.Home}
-                    layout="general"
-                  />
-                  <Route
-                    exact
-                    path={navRoutes.STEPS.STEP}
-                    Component={Pages.Step}
-                    layout="step"
-                  />
-                  <Route
-                    exact
-                    path={navRoutes.STEPS.STEP_ORG}
-                    Component={Pages.Step}
-                    layout="step"
-                  />
-
-                  <Route
-                    exact
                     path={navRoutes.ADMIN.CREATE_UNIQUE_LINK}
                     Component={Pages.CreateUniqueLink}
                     layout="splitScreen"
@@ -70,10 +45,44 @@ function App() {
                     success
                     // isPrivate
                   />
+
+                  <Route
+                    exact
+                    path={navRoutes.SUPER_ADMIN.MANAGE_STEPS}
+                    Component={Pages.ManageSteps}
+                    layout="dashboard"
+                    gradient="secondary"
+                    success
+                    // isPrivate
+                  />
+
+                  <Route
+                    exact
+                    path={navRoutes.SUPER_ADMIN.EDIT_STEP}
+                    Component={Pages.StepForm}
+                    layout="dashboard"
+                    edit
+                  />
+
                   <Route
                     exact
                     path={navRoutes.ADMIN.DASHBOARD}
                     Component={Pages.Dashboard}
+                    layout="dashboard"
+                    showMobileMenu
+                  />
+
+                  <Route
+                    exact
+                    path={navRoutes.SUPER_ADMIN.EDIT_CONTENT}
+                    Component={Pages.EditContent}
+                    layout="dashboard"
+                    showMobileMenu
+                  />
+                  <Route
+                    exact
+                    path={navRoutes.SUPER_ADMIN.EDIT_LANDING_PAGE}
+                    Component={Pages.EditLandingPage}
                     layout="dashboard"
                     showMobileMenu
                   />
@@ -128,6 +137,32 @@ function App() {
                     side="left"
                     gradient="secondary"
                   />
+
+                  <Route
+                    exact
+                    path={navRoutes.GENERAL.HOME}
+                    Component={Pages.Home}
+                    layout="general"
+                  />
+                  <Route
+                    exact
+                    path={navRoutes.GENERAL.HOME_ORG}
+                    Component={Pages.Home}
+                    layout="general"
+                  />
+                  <Route
+                    exact
+                    path={navRoutes.STEPS.STEP}
+                    Component={Pages.Step}
+                    layout="step"
+                  />
+                  <Route
+                    exact
+                    path={navRoutes.STEPS.STEP_ORG}
+                    Component={Pages.Step}
+                    layout="step"
+                  />
+
                   <Route
                     exact
                     path={navRoutes.GENERAL.FORGET_PASSWORD}

@@ -19,7 +19,6 @@ function CreateUniqueLink({ success }) {
   const submitAttempt = useRef(false);
   const [errors, setErrors] = useState({});
   const history = useHistory();
-
   const validate = (value = uniqueSlug) => {
     try {
       if (submitAttempt.current) {

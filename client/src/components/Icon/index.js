@@ -23,6 +23,7 @@ import CircleArrow from './icons/CircleArrow';
 import Bulb from './icons/Bulb';
 import BulletArrow from './icons/BulletArrow';
 import Compass from './icons/Compass';
+import Upload from './icons/Upload';
 
 export const IconMap = {
   goBack: GoBack,
@@ -43,6 +44,7 @@ export const IconMap = {
   bulb: Bulb,
   bulletArrow: BulletArrow,
   compass: Compass,
+  upload: Upload,
 };
 
 const Parent = styled.div`

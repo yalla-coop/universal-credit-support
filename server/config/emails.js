@@ -1,34 +1,26 @@
 import * as yup from 'yup';
 
 const envVarsSchema = yup
-  .object({
-    SENDER_EMAIL: yup.string().when('NODE_ENV', {
-      is: 'test',
-      then: yup.string(),
-      otherwise: yup.string().required(),
-    }),
-    SENDER_PASSWORD: yup.string().when('NODE_ENV', {
-      is: 'test',
-      then: yup.string(),
-      otherwise: yup.string().required(),
-    }),
+  .object()
+  .shape({
+    SENDGRID_API_KEY: yup.string().required(),
+    SENDER_EMAIL: yup.string().required(),
+    APP_URL: yup.string().required(),
   })
   .required();
 
 const config = () => {
   let envVars;
   try {
-    envVars = envVarsSchema.validateSync(process.env, { stripUnknown: false });
+    envVars = envVarsSchema.validateSync(process.env, { stripUnknown: true });
   } catch (error) {
-    if (error) {
-      throw new Error(`Config validation error: ${error.message}`);
-    }
+    throw new Error(`Config validation error: ${error.message}`);
   }
 
   return {
-    appUrl: envVars.APP_URL,
+    sendGridApiKey: envVars.SENDGRID_API_KEY,
     senderEmail: envVars.SENDER_EMAIL,
-    senderPassword: envVars.SENDER_PASSWORD,
+    appUrl: envVars.APP_URL,
   };
 };
 

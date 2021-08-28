@@ -51,3 +51,9 @@ export const organisationTypes = {
   SCHOOL: 'School',
   FAITH_ORGANISATION: 'Faith Organisation',
 };
+
+export const stages = {
+  beforeClaiming: 'BEFORE_CLAIMING',
+  claiming: 'CLAIMING',
+  afterClaiming: 'AFTER_CLAIMING',
+};

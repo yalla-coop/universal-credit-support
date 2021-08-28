@@ -1,25 +1,33 @@
-// import * as User from '../model';
-// import events from '../../../services/events';
+import * as User from '../model';
 
-// const crypto = require('crypto');
+import sendEmail from '../../../services/mailing';
+import * as templatesId from '../../../services/mailing/templates/templates-constants';
+import { appLinks } from '../../../constants';
 
-// const resetPasswordLink = async ({ email }) => {
-//   const user = await User.findUserByEmail(email);
-//   if (!user) return;
+const crypto = require('crypto');
 
-//   const buffer = crypto.randomBytes(32);
-//   const token = buffer.toString('hex');
+const { SET_PASSWORD } = appLinks;
 
-//   const { resetPasswordToken } = await User.updateResetPasswordToken({
-//     token,
-//     userId: user.id,
-//   });
+const resetPasswordLink = async ({ email }) => {
+  const user = await User.findUserByEmail(email);
+  if (!user) return;
 
-//   events.emit(events.types.USER.RESET_PASSWORD, {
-//     resetToken: resetPasswordToken,
-//     firstInitial: user.firstName,
-//     email,
-//   });
-// };
+  const buffer = crypto.randomBytes(32);
+  const token = buffer.toString('hex');
 
-// export default resetPasswordLink;
+  await User.updateUserNewResetPasswordToken({
+    userId: user.id,
+    resetPasswordToken: token,
+  });
+
+  sendEmail(
+    templatesId.RESET_PASSWORD,
+    { to: user.email },
+    {
+      name: user.firstName,
+      link: SET_PASSWORD.replace(':token', token),
+    },
+  );
+};
+
+export default resetPasswordLink;
