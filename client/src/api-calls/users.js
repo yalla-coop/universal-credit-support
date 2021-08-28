@@ -13,6 +13,18 @@ const getUserById = async ({ id, options }) => {
   }
 };
 
+const deleteUser = async ({ id }, { options } = {}) => {
+  try {
+    const data = await axios.delete(`${USERS_BASE}/delete-user`, {
+      data: { id },
+    });
+    return data;
+  } catch (error) {
+    const err = handleError(error, options);
+    return { error: err };
+  }
+};
+
 const updateUserRole = async (updates, { options } = {}) => {
   try {
     const { data } = await axios.patch(
@@ -116,4 +128,5 @@ export {
   getCSRFToken,
   getAdminUsers,
   updateUserRole,
+  deleteUser,
 };
