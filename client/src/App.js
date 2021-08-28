@@ -120,6 +120,16 @@ function App() {
                     side="left"
                     gradient="secondary"
                   />
+
+                  <Route
+                    exact
+                    path={navRoutes.ADMIN.EDIT_DETAILS}
+                    Component={Pages.EditDetails}
+                    layout="dashboard"
+                    showMobileMenu
+                    // isPrivate
+                  />
+
                   <Route
                     exact
                     // Have sub routes
