@@ -13,6 +13,7 @@ import { AuthProvider } from './context/auth';
 // import CookieBot from 'react-cookiebot';
 
 import 'antd/dist/antd.css';
+import userRoles from './constants/roles';
 
 // const domainGroupId = process.env.REACT_APP_COOKIEBOT_DOMAIN_ID;
 
@@ -33,8 +34,8 @@ function App() {
                     Component={Pages.CreateUniqueLink}
                     layout="splitScreen"
                     gradient="secondary"
-                    // isPrivate
-                    // allowedRoles={[ADMIN]}
+                    isPrivate
+                    allowedRoles={[userRoles.ADMIN, userRoles.SUPER_ADMIN]}
                   />
                   <Route
                     exact
@@ -43,7 +44,8 @@ function App() {
                     layout="splitScreen"
                     gradient="secondary"
                     success
-                    // isPrivate
+                    isPrivate
+                    allowedRoles={[userRoles.ADMIN, userRoles.SUPER_ADMIN]}
                   />
 
                   <Route
@@ -53,7 +55,8 @@ function App() {
                     layout="dashboard"
                     gradient="secondary"
                     success
-                    // isPrivate
+                    isPrivate
+                    allowedRoles={[userRoles.SUPER_ADMIN]}
                   />
 
                   <Route
@@ -62,6 +65,8 @@ function App() {
                     Component={Pages.StepForm}
                     layout="dashboard"
                     edit
+                    isPrivate
+                    allowedRoles={[userRoles.SUPER_ADMIN]}
                   />
 
                   <Route
@@ -70,6 +75,8 @@ function App() {
                     Component={Pages.Dashboard}
                     layout="dashboard"
                     showMobileMenu
+                    isPrivate
+                    allowedRoles={[userRoles.SUPER_ADMIN, userRoles.ADMIN]}
                   />
 
                   <Route
@@ -78,6 +85,8 @@ function App() {
                     Component={Pages.EditContent}
                     layout="dashboard"
                     showMobileMenu
+                    isPrivate
+                    allowedRoles={[userRoles.SUPER_ADMIN]}
                   />
                   <Route
                     exact
@@ -85,6 +94,8 @@ function App() {
                     Component={Pages.EditLandingPage}
                     layout="dashboard"
                     showMobileMenu
+                    isPrivate
+                    allowedRoles={[userRoles.SUPER_ADMIN]}
                   />
                   <Route
                     exact
@@ -101,6 +112,7 @@ function App() {
                     layout="splitScreen"
                     side="left"
                     gradient="secondary"
+                    publicOnly
                   />
                   <Route
                     exact
@@ -109,6 +121,7 @@ function App() {
                     layout="splitScreen"
                     side="left"
                     gradient="secondary"
+                    publicOnly
                   />
 
                   <Route
@@ -118,6 +131,8 @@ function App() {
                     layout="splitScreen"
                     side="left"
                     gradient="secondary"
+                    isPrivate
+                    allowedRoles={[userRoles.ADMIN, userRoles.SUPER_ADMIN]}
                   />
 
                   <Route
@@ -127,6 +142,8 @@ function App() {
                     layout="splitScreen"
                     side="left"
                     gradient="secondary"
+                    isPrivate
+                    allowedRoles={[userRoles.ADMIN, userRoles.SUPER_ADMIN]}
                   />
 
                   <Route
@@ -135,7 +152,8 @@ function App() {
                     Component={Pages.EditDetails}
                     layout="dashboard"
                     showMobileMenu
-                    // isPrivate
+                    isPrivate
+                    allowedRoles={[userRoles.ADMIN, userRoles.SUPER_ADMIN]}
                   />
 
                   <Route

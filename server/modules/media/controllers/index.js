@@ -8,11 +8,7 @@ import { authenticate } from '../../../api/middlewares';
 
 const router = Router();
 
-router.get(
-  '/',
-  //  authenticate(),
-  getSignedURL,
-);
+router.get('/', authenticate(), getSignedURL);
 router.get('/url', authenticate(), getMediaUrl);
 router.get('/:id', authenticate(), getMediaById);
 
