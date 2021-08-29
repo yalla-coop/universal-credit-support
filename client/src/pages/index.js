@@ -15,6 +15,7 @@ import Organisations from './Organisations';
 import EditContent from './EditContent';
 import EditLandingPage from './EditLandingPage';
 import ManageSteps from './ManageSteps';
+import EditDetails from './EditDetails';
 
 export {
   Home,
@@ -33,4 +34,5 @@ export {
   ResetPassword,
   Organisations,
   StepForm,
+  EditDetails,
 };

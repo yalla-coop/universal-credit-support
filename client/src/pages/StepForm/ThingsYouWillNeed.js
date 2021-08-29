@@ -5,7 +5,12 @@ import {
   TextWithIcon,
 } from '../../components';
 
-const newItem = { title: '', description: '', things: [''], tips: [''] };
+const newItem = {
+  title: '',
+  description: '',
+  thisCanInclude: [],
+  tips: [],
+};
 
 const ThingsYouWillNeed = ({ state, setState, errors }) => {
   return (
@@ -15,9 +20,9 @@ const ThingsYouWillNeed = ({ state, setState, errors }) => {
           <T.H2>Things you’ll need</T.H2>
         </G.Col>
       </G.Row>
-      <G.Row mt="6">
+      <G.Row>
         {state.map((item, index) => (
-          <G.Col w={[4, 4, 4]} key={index}>
+          <G.Col w={[4, 4, 4]} key={index} mt="6">
             <I.InputCMS
               formState={item}
               hideRemove={state.length === 1}

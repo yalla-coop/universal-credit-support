@@ -30,7 +30,7 @@ const Checkbox = ({
         defaultChecked={defaultChecked}
       >
         {typeof label === 'string' ? (
-          <T.P color={color} m="0" mt="2" ml="1">
+          <T.P color={color} m="0" ml="1">
             {label}
           </T.P>
         ) : (

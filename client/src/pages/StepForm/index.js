@@ -5,31 +5,35 @@ import {
   Typography as T,
   Inputs as I,
   Button,
-  // TextWithIcon,
   Modal,
 } from '../../components';
-// import { navRoutes as R } from '../../constants';
+
 import ThingsYouWillNeed from './ThingsYouWillNeed';
 import WhatYouWillNeedToKnow from './WhatYouWillNeedToKnow';
 import GeneralTips from './GeneralTips';
 
 import { StepForm as validate } from '../../validation/schemas';
 import { Steps } from '../../api-calls';
+import { whereDoYouNeedToGoTypes } from '../../constants/data-types';
 
 const initialState = {
   isOptional: false,
   title: '',
   description: '',
+  pageTitle: '',
+  pageDescription: '',
   httpError: '',
   whereDoYouNeedToGo: {
     link: '',
     type: '',
     title: '',
   },
-  timeRange: '',
-  thingsYouWillNeed: [{ title: '', description: '', things: [''], tips: [''] }],
+  timeRangeText: '',
+  thingsYouWillNeed: [
+    { title: '', description: '', thisCanInclude: [], tips: [] },
+  ],
   whatYouWillNeedToKnow: [
-    { title: '', description: '', things: [''], tips: [''] },
+    { title: '', description: '', thisCanInclude: [], tips: [] },
   ],
   topTip: '',
   otherTips: [''],
@@ -50,19 +54,48 @@ const StepForm = () => {
     isOptional,
     title,
     description,
+    pageTitle,
+    pageDescription,
     whereDoYouNeedToGo,
-    timeRange,
+    timeRangeText,
     thingsYouWillNeed,
     whatYouWillNeedToKnow,
     validationErrs,
     httpError,
     otherTips,
+    topTip,
   } = state;
 
   const { id: stepId } = useParams();
 
   useEffect(() => {
-    // get the step data from the back
+    const getStepData = async () => {
+      setState({ loading: true });
+      const { error, data } = await Steps.getStepById(stepId);
+
+      setState({ loading: false });
+      if (error) {
+        return setState({ httpError: error.message });
+      }
+      setState({
+        ...data,
+        timeRangeText: data?.howLongDoesItTake?.timeRangeText,
+        whereDoYouNeedToGo:
+          data?.whereDoYouNeedToGo || initialState.whereDoYouNeedToGo,
+
+        thingsYouWillNeed: data?.thingsYouWillNeed?.length
+          ? data.thingsYouWillNeed
+          : initialState.thingsYouWillNeed,
+        whatYouWillNeedToKnow: data?.whatYouWillNeedToKnow?.length
+          ? data.whatYouWillNeedToKnow
+          : initialState.whatYouWillNeedToKnow,
+        otherTips: data?.otherTips?.length
+          ? data.otherTips
+          : initialState.otherTips,
+      });
+    };
+
+    getStepData();
   }, [stepId]);
 
   useEffect(() => {
@@ -70,11 +103,32 @@ const StepForm = () => {
       validateForm();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [title]);
+  }, [
+    title,
+    description,
+    pageTitle,
+    pageDescription,
+    whereDoYouNeedToGo.title,
+    whereDoYouNeedToGo.link,
+    whereDoYouNeedToGo.type,
+    topTip,
+    timeRangeText,
+  ]);
 
   const validateForm = () => {
     try {
-      validate(state);
+      validate({
+        ...state,
+        whatYouWillNeedToKnow: whatYouWillNeedToKnow.filter(
+          (e, i) => !(i === whatYouWillNeedToKnow.length - 1 && !e.title)
+        ),
+        thingsYouWillNeed: thingsYouWillNeed.filter(
+          (e, i) => !(i === thingsYouWillNeed.length - 1 && !e.title)
+        ),
+        otherTips: otherTips.filter(
+          (e, i) => !(i === otherTips.length - 1 && !e)
+        ),
+      });
       setState({ validationErrs: {} });
       return true;
     } catch (error) {
@@ -86,7 +140,17 @@ const StepForm = () => {
   };
 
   const handleEditStep = async () => {
-    const { error } = await Steps.EditStep(state);
+    setState({ loading: true });
+
+    const { error } = await Steps.editStep({
+      id: stepId,
+      form: {
+        ...state,
+        whatYouWillNeedToKnow: whatYouWillNeedToKnow.filter((e) => !!e.title),
+        thingsYouWillNeed: thingsYouWillNeed.filter((e) => !!e.title),
+        otherTips: otherTips.filter((e, i) => !!e),
+      },
+    });
 
     setState({ loading: false });
     if (error) {
@@ -100,7 +164,6 @@ const StepForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setState({ loading: true });
     submitAttempt.current = true;
 
     const isValid = validateForm();
@@ -144,6 +207,29 @@ const StepForm = () => {
           />
         </G.Col>
       </G.Row>
+      <G.Row mt="8">
+        <G.Col w={[4, 6, 4]}>
+          <I.BasicInput
+            name="pageTitle"
+            placeholder="Type page title here..."
+            label="Page title"
+            error={validationErrs.pageTitle}
+            value={pageTitle}
+            handleChange={(input) => setState({ pageTitle: input })}
+          />
+        </G.Col>
+        <G.Col w={[4, 6, 4]}>
+          <I.Textarea
+            name="pageDescription"
+            value={pageDescription}
+            placeholder="Type page description here..."
+            label="Page description"
+            handleChange={(input) => setState({ pageDescription: input })}
+            rows="4"
+            error={validationErrs.pageDescription}
+          />
+        </G.Col>
+      </G.Row>
 
       {/* Where do you need to go Section*/}
 
@@ -165,6 +251,7 @@ const StepForm = () => {
                 whereDoYouNeedToGo: { ...whereDoYouNeedToGo, link: input },
               })
             }
+            value={whereDoYouNeedToGo?.link}
           />
         </G.Col>
         <G.Col w={[4, 6, 4]}>
@@ -172,7 +259,7 @@ const StepForm = () => {
             name="title"
             placeholder="Type title here..."
             label="Title"
-            value={whereDoYouNeedToGo.title}
+            value={whereDoYouNeedToGo?.title}
             error={validationErrs?.whereDoYouNeedToGo?.title}
             handleChange={(input) =>
               setState({
@@ -187,8 +274,8 @@ const StepForm = () => {
           <I.Dropdown
             label="Link or phone number?"
             options={[
-              { label: ' external link', value: 'link' },
-              { label: 'phone number', value: 'phone' },
+              { label: ' external link', value: whereDoYouNeedToGoTypes.LINK },
+              { label: 'phone number', value: whereDoYouNeedToGoTypes.PHONE },
             ]}
             selected={whereDoYouNeedToGo.type}
             handleChange={(selectValue) =>
@@ -208,12 +295,12 @@ const StepForm = () => {
         <G.Col w={[4, 6, 4]}>
           <T.H2 mb="6">How long does it take?</T.H2>
           <I.BasicInput
-            name="timeRange"
+            name="timeRangeText"
             placeholder="Type time range here..."
             label="Time range"
-            error={validationErrs.timeRange}
-            handleChange={(input) => setState({ timeRange: input })}
-            value={timeRange}
+            error={validationErrs.timeRangeText}
+            handleChange={(input) => setState({ timeRangeText: input })}
+            value={timeRangeText}
           />
         </G.Col>
       </G.Row>
@@ -228,7 +315,8 @@ const StepForm = () => {
         errors={validationErrs.whatYouWillNeedToKnow}
       />
       <GeneralTips
-        state={otherTips}
+        otherTips={otherTips}
+        topTip={topTip}
         setState={setState}
         errors={validationErrs}
       />
@@ -240,6 +328,13 @@ const StepForm = () => {
             </T.P>
           </G.Col>
         )}
+        {Object.values(validationErrs)?.length ? (
+          <G.Col w={[4, 12, 12]}>
+            <T.P mb="2" color="error">
+              {httpError}
+            </T.P>
+          </G.Col>
+        ) : null}
         <G.Col w={[4, 6, 4]}>
           {/* <TextWithIcon
             to={R.ADMIN.PREVIEW_STEP}

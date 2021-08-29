@@ -15,6 +15,9 @@ export default {
   completed: 'Completed!',
   nextStep: 'Next step',
   callUsLinkText: 'Stuck? Call us for advice',
+  accountDelete: ' If you’d like to delete this account, please contact',
+  hydeHousing: 'Hyde Housing',
+  yourUniqueLink: 'Your unique link',
 
   // STEPS
   // In subtitle field you can wrap any part of the text with
@@ -49,6 +52,17 @@ export default {
         "Your partner's Universal Credit linking code (if you have a partner and they have one)",
     },
   },
+
+  editDetails: {
+    title: 'Edit Details',
+    subtitle:
+      'Below you can edit details for your customers such as your adviser contact line',
+  },
+
+  contact: {
+    title: 'Contact Details',
+  },
+
   claim: {
     title: 'Make your claim',
     secondaryTitle: 'Make your claim',
