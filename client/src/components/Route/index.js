@@ -39,7 +39,7 @@ const Route = (props) => {
       );
     }
 
-    return <Redirect to={navRoutes.GENERAL.LOGIN} />;
+    return <Redirect to={navRoutes.ADMIN.LOGIN} />;
   }
 
   return (

@@ -156,8 +156,6 @@ function App() {
                     layout="splitScreen"
                     side="left"
                     gradient="secondary"
-                    isPrivate
-                    allowedRoles={[userRoles.ADMIN, userRoles.SUPER_ADMIN]}
                   />
 
                   <Route
