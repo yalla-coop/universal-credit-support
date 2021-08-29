@@ -15,6 +15,7 @@ import EditContent from './EditContent';
 import EditLandingPage from './EditLandingPage';
 import ManageSteps from './ManageSteps';
 import EditDetails from './EditDetails';
+import Changes from './Changes';
 
 export {
   Home,
@@ -33,4 +34,5 @@ export {
   ResetPassword,
   StepForm,
   EditDetails,
+  Changes,
 };
