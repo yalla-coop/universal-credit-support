@@ -161,6 +161,16 @@ function App() {
 
                   <Route
                     exact
+                    path={navRoutes.ADMIN.CUSTOMISE}
+                    Component={Pages.Customise}
+                    layout="dashboard"
+                    showMobileMenu
+                    isPrivate
+                    allowedRoles={[userRoles.ADMIN, userRoles.SUPER_ADMIN]}
+                  />
+
+                  <Route
+                    exact
                     // Have sub routes
                     path={navRoutes.ADMIN.WELCOME}
                     Component={Pages.Welcome}
