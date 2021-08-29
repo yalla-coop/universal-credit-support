@@ -50,4 +50,27 @@ const updatePassword = async ({ password, userId }, client) => {
   return res.rows[0];
 };
 
-export { updateUserNewResetPasswordToken, updatePassword, updateUserRole };
+const updateUser = async ({ id, firstName, lastName, email }, client) => {
+  const values = [id, firstName, lastName, email];
+
+  const sql = `
+    UPDATE users
+    SET
+      first_name = $2,
+      last_name = $3,
+      email = $4
+    WHERE
+      id = $1
+    RETURNING *
+  `;
+
+  const res = await query(sql, values, client);
+  return res.rows[0];
+};
+
+export {
+  updateUserNewResetPasswordToken,
+  updatePassword,
+  updateUser,
+  updateUserRole,
+};

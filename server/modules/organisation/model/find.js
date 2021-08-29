@@ -5,9 +5,32 @@ const findOrganisation = async (id) => {
     SELECT
     id,
     organisation_name,
-    unique_slug
+    unique_slug,
+    colors
     FROM organisations
     WHERE id = $1
+    `;
+  const values = [id];
+
+  const res = await query(sql, values);
+  return res.rows[0];
+};
+
+const findOrganisationWithUser = async (id) => {
+  const sql = `
+    SELECT
+    o.id,
+    o.organisation_name,
+    o.unique_slug,
+    o.contact_links,
+    o.benefit_calculator_link,
+    o.benefit_calculator_label,
+    u.first_name,
+    u.last_name,
+    u.email
+    FROM organisations AS o
+    INNER JOIN users AS u ON(u.organisation_id = o.id)
+    WHERE o.id = $1
     `;
   const values = [id];
 
@@ -63,4 +86,5 @@ export {
   findHelpDetails,
   findBenefitCalculator,
   findOrganisationBySlug,
+  findOrganisationWithUser,
 };

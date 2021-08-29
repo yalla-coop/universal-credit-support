@@ -87,7 +87,7 @@ function CreateUniqueLink({ success }) {
     };
 
     getOrgInfo();
-  }, []);
+  }, [user.organisationId]);
 
   if (success) return <Success uniqueSlug={uniqueSlug} />;
   return (

@@ -331,7 +331,8 @@ const StepForm = () => {
         {Object.values(validationErrs)?.length ? (
           <G.Col w={[4, 12, 12]}>
             <T.P mb="2" color="error">
-              {httpError}
+              At least one of the input fields has not been filled in or details
+              entered incorrectly. Please check the form above for more details.
             </T.P>
           </G.Col>
         ) : null}
