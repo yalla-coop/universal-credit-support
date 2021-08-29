@@ -147,7 +147,7 @@ const Step = () => {
                       handleChange={() => checkUncheckItem(step.id, item.title)}
                       title={item.title}
                       description={item.description}
-                      things={item.thisCanInclude}
+                      thisCanInclude={item.thisCanInclude}
                       tips={item.tips}
                       mb="4"
                     />
@@ -186,7 +186,7 @@ const Step = () => {
                       handleChange={() => checkUncheckItem(step.id, item.title)}
                       title={item.title}
                       description={item.description}
-                      things={item.thisCanInclude}
+                      thisCanInclude={item.thisCanInclude}
                       tips={item.tips}
                       mb="4"
                     />

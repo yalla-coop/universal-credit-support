@@ -8,7 +8,7 @@ export const Row = styled.div`
   margin-left: -${({ inner, theme }) => (inner ? theme.constants.gridGutter.desktop / 2 : 0)}px !important;
   margin-right: -${({ inner, theme }) => (inner ? theme.constants.gridGutter.desktop / 2 : 0)}px !important;
   width: ${({ inner, theme }) =>
-    inner ? `calc(100% + ${theme.constants.gridGutter}px)` : '100%'};
+    inner ? `calc(100% + ${theme.constants.gridGutter.desktop}px)` : '100%'};
   justify-content: ${({ jc }) => jc || 'flex-start'};
   align-items: ${({ ai }) => ai || 'flex-start'};
 
