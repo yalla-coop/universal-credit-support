@@ -15,38 +15,41 @@ const updateOrganisation = async ({
   logoFile,
   userId,
 }) => {
+  let createdMedia;
   const client = await getClient();
 
   try {
     await client.query('BEGIN');
-    const {
-      name,
-      key,
-      bucket,
-      bucketRegion,
-      size,
-      fileType,
-      fileCategory,
-    } = logoFile;
-
-    const { newKey } = await moveFile({
-      bucket,
-      key,
-    });
-
-    const media = await Media.createMedia(
-      {
-        fileName: name,
-        fileType,
-        size,
-        key: newKey,
+    if (logoFile && logoFile.key) {
+      const {
+        name,
+        key,
         bucket,
         bucketRegion,
-        createdBy: userId,
+        size,
+        fileType,
         fileCategory,
-      },
-      client,
-    );
+      } = logoFile;
+
+      const { newKey } = await moveFile({
+        bucket,
+        key,
+      });
+
+      createdMedia = await Media.createMedia(
+        {
+          fileName: name,
+          fileType,
+          size,
+          key: newKey,
+          bucket,
+          bucketRegion,
+          createdBy: userId,
+          fileCategory,
+        },
+        client,
+      );
+    }
 
     const orgBeforeUpdate = await Organisation.updateOrganisation(
       {
@@ -56,12 +59,16 @@ const updateOrganisation = async ({
         benefitCalculatorLink,
         benefitCalculatorLabel,
         colors,
-        logoId: media.id,
+        logoId: createdMedia && createdMedia.id,
       },
       client,
     );
 
-    await Media.deleteMediaById(orgBeforeUpdate.logoId, client);
+    if (createdMedia && createdMedia.id) {
+      // delete the old logo if user have uploaded new one
+      await Media.deleteMediaById(orgBeforeUpdate.logoId, client);
+    }
+
     await client.query('COMMIT');
   } catch (error) {
     await client.query('ROLLBACK');
