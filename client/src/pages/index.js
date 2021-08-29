@@ -11,6 +11,7 @@ import CreateOrganisationDetails, {
 } from './CreateOrganisationDetails';
 import StepForm from './StepForm';
 import Dashboard from './Dashboard';
+import Organisations from './Organisations';
 import EditContent from './EditContent';
 import EditLandingPage from './EditLandingPage';
 import ManageSteps from './ManageSteps';
@@ -33,6 +34,7 @@ export {
   ManageSteps,
   ForgotPassword,
   ResetPassword,
+  Organisations,
   StepForm,
   EditDetails,
   Customise,

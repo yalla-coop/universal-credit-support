@@ -109,6 +109,13 @@ function App() {
                   />
                   <Route
                     exact
+                    path={navRoutes.SUPER_ADMIN.ORGANISATIONS}
+                    Component={Pages.Organisations}
+                    layout="dashboard"
+                    showMobileMenu
+                  />
+                  <Route
+                    exact
                     path={navRoutes.ADMIN.LOGIN}
                     Component={Pages.Login}
                     layout="splitScreen"
