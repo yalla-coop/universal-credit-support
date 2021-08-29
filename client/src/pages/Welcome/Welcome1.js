@@ -1,9 +1,11 @@
-import { navRoutes as n } from '../../constants';
+import { useRouteMatch } from 'react-router-dom';
 import { Grid, Typography as T, Button } from '../../components';
 
 const { Row, Col } = Grid;
 
 const Welcome1 = () => {
+  let { url } = useRouteMatch();
+
   return (
     <div>
       <Row mt="8">
@@ -22,11 +24,7 @@ const Welcome1 = () => {
       </Row>
       <Row mt="8">
         <Col w={[4, 11, 6]}>
-          <Button
-            text="I’m interested"
-            variant="primary"
-            to={n.ADMIN.WELCOME2}
-          />
+          <Button text="I’m interested" variant="primary" to={`${url}/2`} />
         </Col>
       </Row>
     </div>
