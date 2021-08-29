@@ -109,7 +109,7 @@ const CreateOrganisationDetails = () => {
   const handleUpdate = async () => {
     setState({ loading: true });
     const { error } = await Organisations.updateOrganisation({
-      id: 1,
+      id: user.organisationId,
       body: {
         contactLinks,
         benefitCalculatorLink,

@@ -2,7 +2,6 @@ const GENERAL = {
   HOME: '/',
   HOME_ORG: '/:org/home',
   ORG: '/:org',
-  LOGIN: '/login',
   UNAUTHORIZED: '/unauthorized',
   FORGET_PASSWORD: '/forget-password',
   RESET_PASSWORD: '/reset-password/:token',
@@ -11,7 +10,6 @@ const GENERAL = {
 const admin = '/admin';
 
 const ADMIN = {
-  HOME: `${admin}/home`,
   EDIT_DETAILS: `${admin}/edit-details`,
   CUSTOMISE: `${admin}/customise`,
   CREATE_UNIQUE_LINK: `${admin}/create-unique-link`,

@@ -13,6 +13,7 @@ import * as S from './style';
 import { editDetails as validate } from '../../validation/schemas';
 import { Organisations } from '../../api-calls';
 import { useLang } from '../../context/lang';
+import { useAuth } from '../../context/auth';
 import { t } from '../../helpers';
 
 // TODO: use from constants
@@ -67,6 +68,7 @@ function reducer(state, newState) {
 const EditDetails = () => {
   const { lang } = useLang();
   const submitAttempt = useRef(false);
+  const { user } = useAuth();
   const [state, setState] = useReducer(reducer, initialState);
   const {
     formData: {
@@ -117,7 +119,7 @@ const EditDetails = () => {
   const handleUpdate = async () => {
     setState({ loading: true });
     const { error } = await Organisations.updateOrganisation({
-      id: 1,
+      id: user.organisationId,
       body: {
         ...state.formData,
       },
