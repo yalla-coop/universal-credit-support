@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import moment from 'moment';
 import { Typography as T, Grid, TextWithIcon } from '../../components';
 import * as S from './style';
+import { navRoutes as R } from '../../constants';
 
 const { Col, Row } = Grid;
 
@@ -66,6 +67,7 @@ const Changes = () => {
                   text="Landing page edited"
                   iconColor="primaryMain"
                   icon="forwardArrow"
+                  to={R.GENERAL.HOME}
                 />
               ) : (
                 <>
@@ -77,6 +79,7 @@ const Changes = () => {
                     text={change.title}
                     iconColor="primaryMain"
                     icon="forwardArrow"
+                    to={R.SUPER_ADMIN.EDIT_STEP.replace(':id', change.stepId)}
                   />
                 </>
               )}
