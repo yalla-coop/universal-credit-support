@@ -28,6 +28,10 @@ export const LogoLink = styled(RouterLink)`
   margin-bottom: 45px;
 `;
 
+export const LogoImg = styled.img`
+  max-width: 185px;
+`;
+
 export const Drawer = styled(AntDrawer)`
   .ant-drawer-body {
     position: relative;

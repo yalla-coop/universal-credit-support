@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import NavRoutes from './NavRoutes';
 
 import * as S from './style';
 import Icon from '../Icon';
-import { GENERAL } from '../../constants/nav-routes';
+import { ADMIN, GENERAL } from '../../constants/nav-routes';
+import { Organisations } from '../../api-calls';
+import { useAuth } from '../../context/auth';
 
 // import { ReactComponent as MobileLogo } from '../assets/MobileLogo.svg';
 // import { ReactComponent as DesktopLogo } from '../assets/DesktopLogo.svg';
@@ -18,15 +20,30 @@ const NavItems = ({ setOpen, ...props }) => {
   );
 };
 
-export const DesktopNav = () => (
-  <S.DesktopContainer>
-    <S.LogoLink to={GENERAL.HOME}>
-      {/* <DesktopLogo /> */}
-      <img src={YallaLogo} alt="logo" />
-    </S.LogoLink>
-    <NavItems />
-  </S.DesktopContainer>
-);
+export const DesktopNav = () => {
+  const { user } = useAuth();
+  const [orgDetails, setOrgDetails] = useState({ logUrl: '' });
+
+  useEffect(() => {
+    const getData = async () => {
+      const { error, data } = await Organisations.getOrganisation({
+        id: user.organisationId,
+      });
+      setOrgDetails(data);
+    };
+
+    getData();
+  }, [user.organisationId]);
+
+  return (
+    <S.DesktopContainer>
+      <S.LogoLink to={ADMIN.DASHBOARD}>
+        <S.LogoImg src={orgDetails.logUrl} alt="logo" />
+      </S.LogoLink>
+      <NavItems />
+    </S.DesktopContainer>
+  );
+};
 
 export const MobileNav = () => {
   const [open, setOpen] = useState(false);

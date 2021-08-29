@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import {
   Typography as T,
   Grid,
@@ -7,12 +8,25 @@ import {
 import * as S from './style';
 import { navRoutes as R, roles } from '../../constants';
 import { useAuth } from '../../context/auth';
+import { Organisations } from '../../api-calls';
 
 const { Col, Row } = Grid;
 
 const Dashboard = () => {
+  const [uniqueSlug, setUniqueSlug] = useState('');
+
   const { user } = useAuth();
 
+  useEffect(() => {
+    const getData = async () => {
+      const { error, data } = await Organisations.getOrganisation({
+        id: user.organisationId,
+      });
+      setUniqueSlug(data.uniqueSlug);
+    };
+
+    getData();
+  }, [user.organisationId]);
   return (
     <>
       <Row jc="space-between">
@@ -27,9 +41,9 @@ const Dashboard = () => {
           <S.LinkWrapper>
             <TextWithIcon
               iconColor="primaryMain"
-              to="http://www.uc-helper.com/yalla-cooperative"
+              to={`${window.location.host}/${uniqueSlug}`}
               icon="open"
-              text="www.uc-helper.com/yalla-cooperative"
+              text={`${window.location.host}/${uniqueSlug}`}
               external
               underline
             />
