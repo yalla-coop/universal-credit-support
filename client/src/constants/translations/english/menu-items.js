@@ -4,5 +4,7 @@ export default {
   EDIT_DETAILS: 'Edit Details',
   ORGANISATIONS: 'Organisation',
   CUSTOMISE: 'Customise',
+  CHANGES: 'Changes',
   LOG_OUT: 'log out',
+  LOG_IN: 'log in',
 };
