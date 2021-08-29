@@ -16,156 +16,155 @@ import EditContent from './EditContent';
 import { Switch } from 'react-router-dom';
 import { Route } from './../../components';
 import { navRoutes } from './../../constants';
-
-// import CookieBot from 'react-cookiebot';
+import { AdminOrgProvider } from './../../context/admin-org';
 
 import 'antd/dist/antd.css';
 import userRoles from './../../constants/roles';
 
-// const domainGroupId = process.env.REACT_APP_COOKIEBOT_DOMAIN_ID;
-
 function AdminRouter() {
   return (
-    <Switch>
-      <Route
-        exact
-        path={navRoutes.ADMIN.CREATE_UNIQUE_LINK}
-        Component={CreateUniqueLink}
-        layout="splitScreen"
-        gradient="secondary"
-        isPrivate
-        allowedRoles={[userRoles.ADMIN, userRoles.SUPER_ADMIN]}
-      />
-      <Route
-        exact
-        path={navRoutes.ADMIN.CREATE_UNIQUE_LINK_SUCCESS}
-        Component={CreateUniqueLink}
-        layout="splitScreen"
-        gradient="secondary"
-        success
-        isPrivate
-        allowedRoles={[userRoles.ADMIN, userRoles.SUPER_ADMIN]}
-      />
+    <AdminOrgProvider>
+      <Switch>
+        <Route
+          // Have sub routes
+          path={navRoutes.ADMIN.WELCOME}
+          Component={Welcome}
+          layout="splitScreen"
+          side="left"
+          gradient="secondary"
+          publicOnly
+        />
 
-      <Route
-        exact
-        path={navRoutes.SUPER_ADMIN.MANAGE_STEPS}
-        Component={ManageSteps}
-        layout="dashboard"
-        gradient="secondary"
-        success
-        isPrivate
-        allowedRoles={[userRoles.SUPER_ADMIN]}
-      />
+        <Route
+          exact
+          path={navRoutes.ADMIN.CREATE_UNIQUE_LINK}
+          Component={CreateUniqueLink}
+          layout="splitScreen"
+          gradient="secondary"
+          isPrivate
+          allowedRoles={[userRoles.ADMIN, userRoles.SUPER_ADMIN]}
+        />
+        <Route
+          exact
+          path={navRoutes.ADMIN.CREATE_UNIQUE_LINK_SUCCESS}
+          Component={CreateUniqueLink}
+          layout="splitScreen"
+          gradient="secondary"
+          success
+          isPrivate
+          allowedRoles={[userRoles.ADMIN, userRoles.SUPER_ADMIN]}
+        />
 
-      <Route
-        exact
-        path={navRoutes.SUPER_ADMIN.EDIT_STEP}
-        Component={StepForm}
-        layout="dashboard"
-        edit
-        isPrivate
-        allowedRoles={[userRoles.SUPER_ADMIN]}
-      />
+        <Route
+          exact
+          path={navRoutes.SUPER_ADMIN.MANAGE_STEPS}
+          Component={ManageSteps}
+          layout="dashboard"
+          gradient="secondary"
+          success
+          isPrivate
+          allowedRoles={[userRoles.SUPER_ADMIN]}
+        />
 
-      <Route
-        exact
-        path={navRoutes.SUPER_ADMIN.CHANGES}
-        Component={Changes}
-        layout="dashboard"
-        edit
-        isPrivate
-        allowedRoles={[userRoles.SUPER_ADMIN]}
-      />
+        <Route
+          exact
+          path={navRoutes.SUPER_ADMIN.EDIT_STEP}
+          Component={StepForm}
+          layout="dashboard"
+          edit
+          isPrivate
+          allowedRoles={[userRoles.SUPER_ADMIN]}
+        />
 
-      <Route
-        exact
-        path={navRoutes.ADMIN.DASHBOARD}
-        Component={Dashboard}
-        layout="dashboard"
-        showMobileMenu
-        isPrivate
-        allowedRoles={[userRoles.SUPER_ADMIN, userRoles.ADMIN]}
-      />
+        <Route
+          exact
+          path={navRoutes.SUPER_ADMIN.CHANGES}
+          Component={Changes}
+          layout="dashboard"
+          edit
+          isPrivate
+          allowedRoles={[userRoles.SUPER_ADMIN]}
+        />
 
-      <Route
-        exact
-        path={navRoutes.SUPER_ADMIN.EDIT_CONTENT}
-        Component={EditContent}
-        layout="dashboard"
-        showMobileMenu
-        isPrivate
-        allowedRoles={[userRoles.SUPER_ADMIN]}
-      />
-      <Route
-        exact
-        path={navRoutes.SUPER_ADMIN.EDIT_LANDING_PAGE}
-        Component={EditLandingPage}
-        layout="dashboard"
-        showMobileMenu
-        isPrivate
-        allowedRoles={[userRoles.SUPER_ADMIN]}
-      />
-      <Route
-        exact
-        path={navRoutes.SUPER_ADMIN.ORGANISATIONS}
-        Component={Organisations}
-        layout="dashboard"
-        showMobileMenu
-      />
+        <Route
+          exact
+          path={navRoutes.ADMIN.DASHBOARD}
+          Component={Dashboard}
+          layout="dashboard"
+          showMobileMenu
+          isPrivate
+          allowedRoles={[userRoles.SUPER_ADMIN, userRoles.ADMIN]}
+        />
 
-      <Route
-        exact
-        path={navRoutes.ADMIN.CREATE_ORG_DETAILS_FIRST_STEP}
-        Component={CreateOrganisationDetails}
-        layout="splitScreen"
-        side="left"
-        gradient="secondary"
-        isPrivate
-        allowedRoles={[userRoles.ADMIN, userRoles.SUPER_ADMIN]}
-      />
+        <Route
+          exact
+          path={navRoutes.SUPER_ADMIN.EDIT_CONTENT}
+          Component={EditContent}
+          layout="dashboard"
+          showMobileMenu
+          isPrivate
+          allowedRoles={[userRoles.SUPER_ADMIN]}
+        />
+        <Route
+          exact
+          path={navRoutes.SUPER_ADMIN.EDIT_LANDING_PAGE}
+          Component={EditLandingPage}
+          layout="dashboard"
+          showMobileMenu
+          isPrivate
+          allowedRoles={[userRoles.SUPER_ADMIN]}
+        />
+        <Route
+          exact
+          path={navRoutes.SUPER_ADMIN.ORGANISATIONS}
+          Component={Organisations}
+          layout="dashboard"
+          showMobileMenu
+        />
 
-      <Route
-        exact
-        path={navRoutes.ADMIN.CREATE_ORG_DETAILS_SECOND_STEP}
-        Component={CreateOrganisationDetails2}
-        layout="splitScreen"
-        side="left"
-        gradient="secondary"
-        isPrivate
-        allowedRoles={[userRoles.ADMIN, userRoles.SUPER_ADMIN]}
-      />
+        <Route
+          exact
+          path={navRoutes.ADMIN.CREATE_ORG_DETAILS_FIRST_STEP}
+          Component={CreateOrganisationDetails}
+          layout="splitScreen"
+          side="left"
+          gradient="secondary"
+          isPrivate
+          allowedRoles={[userRoles.ADMIN, userRoles.SUPER_ADMIN]}
+        />
 
-      <Route
-        exact
-        path={navRoutes.ADMIN.EDIT_DETAILS}
-        Component={EditDetails}
-        layout="dashboard"
-        showMobileMenu
-        isPrivate
-        allowedRoles={[userRoles.ADMIN, userRoles.SUPER_ADMIN]}
-      />
+        <Route
+          exact
+          path={navRoutes.ADMIN.CREATE_ORG_DETAILS_SECOND_STEP}
+          Component={CreateOrganisationDetails2}
+          layout="splitScreen"
+          side="left"
+          gradient="secondary"
+          isPrivate
+          allowedRoles={[userRoles.ADMIN, userRoles.SUPER_ADMIN]}
+        />
 
-      <Route
-        exact
-        path={navRoutes.ADMIN.CUSTOMISE}
-        Component={Customise}
-        layout="dashboard"
-        showMobileMenu
-        isPrivate
-        allowedRoles={[userRoles.ADMIN, userRoles.SUPER_ADMIN]}
-      />
+        <Route
+          exact
+          path={navRoutes.ADMIN.EDIT_DETAILS}
+          Component={EditDetails}
+          layout="dashboard"
+          showMobileMenu
+          isPrivate
+          allowedRoles={[userRoles.ADMIN, userRoles.SUPER_ADMIN]}
+        />
 
-      <Route
-        exact
-        // Have sub routes
-        path={navRoutes.ADMIN.WELCOME}
-        Component={Welcome}
-        layout="splitScreen"
-        side="left"
-        gradient="secondary"
-      />
-    </Switch>
+        <Route
+          exact
+          path={navRoutes.ADMIN.CUSTOMISE}
+          Component={Customise}
+          layout="dashboard"
+          showMobileMenu
+          isPrivate
+          allowedRoles={[userRoles.ADMIN, userRoles.SUPER_ADMIN]}
+        />
+      </Switch>
+    </AdminOrgProvider>
   );
 }
 

@@ -1,16 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import NavRoutes from './NavRoutes';
 
 import * as S from './style';
 import Icon from '../Icon';
 import { ADMIN, GENERAL } from '../../constants/nav-routes';
-import { Organisations } from '../../api-calls';
-import { useAuth } from '../../context/auth';
 
-// import { ReactComponent as MobileLogo } from '../assets/MobileLogo.svg';
-// import { ReactComponent as DesktopLogo } from '../assets/DesktopLogo.svg';
-import YallaLogo from '../assets/YallaLogo.png';
+import { useAdminOrg } from '../../context/admin-org';
 
 const NavItems = ({ setOpen, ...props }) => {
   return (
@@ -21,24 +17,12 @@ const NavItems = ({ setOpen, ...props }) => {
 };
 
 export const DesktopNav = () => {
-  const { user } = useAuth();
-  const [orgDetails, setOrgDetails] = useState({ logUrl: '' });
-
-  useEffect(() => {
-    const getData = async () => {
-      const { error, data } = await Organisations.getOrganisation({
-        id: user.organisationId,
-      });
-      setOrgDetails(data);
-    };
-
-    getData();
-  }, [user.organisationId]);
+  const { org } = useAdminOrg();
 
   return (
     <S.DesktopContainer>
       <S.LogoLink to={ADMIN.DASHBOARD}>
-        <S.LogoImg src={orgDetails.logUrl} alt="logo" />
+        <S.LogoImg src={org.logUrl} alt="logo" />
       </S.LogoLink>
       <NavItems />
     </S.DesktopContainer>
@@ -47,6 +31,8 @@ export const DesktopNav = () => {
 
 export const MobileNav = () => {
   const [open, setOpen] = useState(false);
+  const { org } = useAdminOrg();
+
   return (
     <S.MobileContainer>
       <Icon icon="menu" width={33} height={33} onClick={() => setOpen(true)} />
@@ -75,7 +61,7 @@ export const MobileNav = () => {
         />
         <div style={{ marginTop: -24 }}>
           <S.LogoLink to={GENERAL.HOME}>
-            <img src={YallaLogo} alt="logo" />
+            <S.LogoImg src={org.logUrl} alt="logo" />
           </S.LogoLink>
           <NavItems setOpen={setOpen} />
         </div>

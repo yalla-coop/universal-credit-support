@@ -1,6 +1,10 @@
 import { ThemeProvider } from '@emotion/react';
 import { Global } from '@emotion/react';
-import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route as RouterRoute,
+} from 'react-router-dom';
 import theme, { globalStyle } from './theme';
 import { Route } from './components';
 import * as Pages from './pages';
@@ -27,9 +31,6 @@ function App() {
               <Router basename={process.env.PUBLIC_URL}>
                 <ScrollToTop />
                 <Switch>
-                  {/* ALL ADMIN PAGES */}
-                  <Pages.Admin />
-
                   <Route
                     exact
                     path={navRoutes.ADMIN.LOGIN}
@@ -48,6 +49,11 @@ function App() {
                     gradient="secondary"
                     publicOnly
                   />
+
+                  {/* ALL ADMIN PAGES */}
+                  <RouterRoute path={navRoutes.ADMIN.BASE}>
+                    <Pages.Admin />
+                  </RouterRoute>
 
                   <Route
                     exact
