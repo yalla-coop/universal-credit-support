@@ -14,9 +14,14 @@ const updateOrganisation = async ({
   colors,
   logoFile,
   userId,
+  userOrganisationId,
 }) => {
   let createdMedia;
   const client = await getClient();
+
+  if (Number(userOrganisationId) !== Number(id)) {
+    throw Boom.forbidden();
+  }
 
   try {
     await client.query('BEGIN');

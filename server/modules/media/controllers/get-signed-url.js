@@ -10,11 +10,11 @@ const getSignedURL = async (req, res, next) => {
       fileMaxSize,
     } = req.query;
 
-    // const { id } = req.user;
+    const { id } = req.user;
 
     const fileInfo = await getSignedURLUseCase({
       fileType,
-      userId: 1,
+      userId: id,
       fileName,
       fileSize,
       fileCategory,

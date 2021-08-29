@@ -1,17 +1,17 @@
 import { updateOrganisation as updateOrganisationUseCase } from '../use-cases';
 
 const updateOrganisation = async (req, res, next) => {
-  // const { id: userId } = req.user;
-  const { id } = req.params;
-  const {
-    uniqueSlug,
-    contactLinks,
-    benefitCalculatorLink,
-    benefitCalculatorLabel,
-    colors,
-    logoFile,
-  } = req.body;
   try {
+    const { organisationId: userOrganisationId } = req.user;
+    const { id } = req.params;
+    const {
+      uniqueSlug,
+      contactLinks,
+      benefitCalculatorLink,
+      benefitCalculatorLabel,
+      colors,
+      logoFile,
+    } = req.body;
     const results = await updateOrganisationUseCase({
       id,
       uniqueSlug,
@@ -20,6 +20,7 @@ const updateOrganisation = async (req, res, next) => {
       benefitCalculatorLabel,
       colors,
       logoFile,
+      userOrganisationId,
     });
 
     res.json(results);

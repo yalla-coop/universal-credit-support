@@ -11,7 +11,6 @@ const GENERAL = {
 const admin = '/admin';
 
 const ADMIN = {
-  HOME: `${admin}/home`,
   EDIT_DETAILS: `${admin}/edit-details`,
   CUSTOMISE: `${admin}/customise`,
   LOG_OUT: `${admin}/log-out`,
