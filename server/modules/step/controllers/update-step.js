@@ -19,6 +19,8 @@ const updateStep = async (req, res, next) => {
       isOptional,
     } = req.body;
 
+    const { id: userId } = req.user;
+
     const step = await steps.updateStep({
       id,
       stage,
@@ -34,6 +36,7 @@ const updateStep = async (req, res, next) => {
       topTip,
       otherTips,
       isOptional,
+      userId,
     });
 
     res.json(step);
