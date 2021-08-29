@@ -45,7 +45,7 @@ const Home = () => {
   const completedClaim = currentStep?.stage === 'afterClaiming';
 
   const getStepStatus = (step, i) => {
-    const isCurrentStep = currentStep && step.name === currentStep.name;
+    const isCurrentStep = currentStep && step.id === currentStep.id;
     const variant = step.isCompleted
       ? 'neutral'
       : isCurrentStep
