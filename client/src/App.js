@@ -149,7 +149,6 @@ function App() {
                   />
 
                   <Route
-                    exact
                     // Have sub routes
                     path={navRoutes.ADMIN.WELCOME}
                     Component={Pages.Welcome}
