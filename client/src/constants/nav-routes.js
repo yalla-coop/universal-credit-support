@@ -14,7 +14,6 @@ const ADMIN = {
   HOME: `${admin}/home`,
   EDIT_DETAILS: `${admin}/edit-details`,
   CUSTOMISE: `${admin}/customise`,
-  LOG_OUT: `${admin}/log-out`,
   CREATE_UNIQUE_LINK: `${admin}/create-unique-link`,
   CREATE_UNIQUE_LINK_SUCCESS: `${admin}/create-unique-link/success`,
   SIGNUP: `${admin}/signup`,
@@ -38,8 +37,8 @@ const SUPER_ADMIN = {
   EDIT_DETAILS: `${admin}/edit-details`,
   ORGANISATIONS: `${admin}/organisations`,
   CUSTOMISE: `${admin}/customise`,
-  LOG_OUT: `${admin}/log-out`,
   MANAGE_STEPS: `${admin}/manage-steps`,
+  CHANGES: `${admin}/Changes`,
 };
 
 const EXTERNAL = {
