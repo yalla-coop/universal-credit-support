@@ -25,6 +25,7 @@ const ADMIN = {
   MANAGE_STEPS: `${admin}/edit-steps`,
   CREATE_ORG_DETAILS_FIRST_STEP: `${admin}/set-organisation/1`,
   CREATE_ORG_DETAILS_SECOND_STEP: `${admin}/set-organisation/2`,
+  LOG_OUT: '/log-out',
 };
 
 const SUPER_ADMIN = {
