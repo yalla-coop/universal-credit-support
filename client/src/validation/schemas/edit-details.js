@@ -1,7 +1,8 @@
 import { fields, createSchema, validate as _validate } from '..';
 
 const {
-  name,
+  firstName,
+  lastName,
   organisationName,
   email,
   urlSlug,
@@ -11,7 +12,8 @@ const {
 } = fields;
 
 const schema = createSchema({
-  name,
+  firstName,
+  lastName,
   organisationName,
   email,
   uniqueSlug: urlSlug,

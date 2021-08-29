@@ -1,5 +1,6 @@
 import Boom from '@hapi/boom';
 import * as Organisation from '../model';
+import * as User from '../../user/model';
 import * as Media from '../../media/model';
 import { errorMsgs } from '../../../services/error-handler';
 import { moveFile } from '../../../services/files-storage';
@@ -7,6 +8,7 @@ import { getClient } from '../../../database/connect';
 
 const updateOrganisation = async ({
   id,
+  organisationName,
   uniqueSlug,
   contactLinks,
   benefitCalculatorLink,
@@ -15,6 +17,10 @@ const updateOrganisation = async ({
   logoFile,
   userId,
   userOrganisationId,
+  firstName,
+  lastName,
+  email,
+  withUserDetails,
 }) => {
   let createdMedia;
   const client = await getClient();
@@ -59,6 +65,7 @@ const updateOrganisation = async ({
     const orgBeforeUpdate = await Organisation.updateOrganisation(
       {
         id,
+        organisationName,
         uniqueSlug,
         contactLinks,
         benefitCalculatorLink,
@@ -74,6 +81,9 @@ const updateOrganisation = async ({
       await Media.deleteMediaById(orgBeforeUpdate.logoId, client);
     }
 
+    if (withUserDetails) {
+      await User.updateUser({ id: userId, firstName, lastName, email }, client);
+    }
     await client.query('COMMIT');
   } catch (error) {
     await client.query('ROLLBACK');

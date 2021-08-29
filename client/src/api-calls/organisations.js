@@ -3,9 +3,11 @@ import handleError from './format-error';
 
 const ORGS_BASE = '/organisations';
 
-const getOrganisation = async ({ id, options }) => {
+const getOrganisation = async ({ id, withUserDetails, options }) => {
   try {
-    const { data } = await axios.get(`${ORGS_BASE}/${id}`);
+    const { data } = await axios.get(`${ORGS_BASE}/${id}`, {
+      params: { withUserDetails },
+    });
     return { data };
   } catch (error) {
     const err = handleError(error, options);
@@ -13,9 +15,11 @@ const getOrganisation = async ({ id, options }) => {
   }
 };
 
-const updateOrganisation = async ({ id, body, options }) => {
+const updateOrganisation = async ({ id, body, withUserDetails, options }) => {
   try {
-    const { data } = await axios.patch(`${ORGS_BASE}/${id}`, body);
+    const { data } = await axios.patch(`${ORGS_BASE}/${id}`, body, {
+      params: { withUserDetails },
+    });
     return { data };
   } catch (error) {
     const err = handleError(error, options);

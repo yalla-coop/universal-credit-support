@@ -8,6 +8,7 @@ import {
   Inputs as I,
   Button,
   TextWithIcon,
+  Modal,
 } from '../../components';
 import * as S from './style';
 import { editDetails as validate } from '../../validation/schemas';
@@ -33,7 +34,8 @@ const { Row, Col } = Grid;
 
 const initialState = {
   formData: {
-    name: '',
+    firstName: '',
+    lastName: '',
     email: '',
     organisationName: '',
     uniqueSlug: '',
@@ -54,6 +56,7 @@ const initialState = {
   httpError: '',
   validationErrs: { contactLinks: {} },
   loading: false,
+  isModalVisible: false,
 };
 
 function reducer(state, newState) {
@@ -68,11 +71,12 @@ function reducer(state, newState) {
 const EditDetails = () => {
   const { lang } = useLang();
   const submitAttempt = useRef(false);
-  const { user } = useAuth();
+  const { user, setUser } = useAuth();
   const [state, setState] = useReducer(reducer, initialState);
   const {
     formData: {
-      name,
+      firstName,
+      lastName,
       email,
       organisationName,
       uniqueSlug,
@@ -83,6 +87,7 @@ const EditDetails = () => {
     loading,
     validationErrs,
     httpError,
+    isModalVisible,
   } = state;
 
   const lastContactLink = contactLinks[contactLinks.length - 1];
@@ -94,32 +99,62 @@ const EditDetails = () => {
   const setFormData = (data) =>
     setState((prevState) => ({ formData: { ...prevState.formData, ...data } }));
 
-  const validateForm = useCallback(() => {
+  const validateForm = () => {
     try {
       validate({
         ...state.formData,
         contactLinks: contactLinks.find((e) => !!e.type) ? contactLinks : null,
       });
-      setState({ validationErrs: { contactLinks: {} } });
+      setState({ validationErrs: { contactLinks: {}, hasError: false } });
       return true;
     } catch (error) {
       if (error.name === 'ValidationError') {
-        setState({ validationErrs: { contactLinks: {}, ...error.inner } });
+        setState({
+          validationErrs: { contactLinks: {}, ...error.inner, hasError: true },
+        });
       }
       return false;
     }
-  }, [contactLinks, state.formData]);
+  };
+
+  useEffect(() => {
+    const getOrgInfo = async () => {
+      const { error, data } = await Organisations.getOrganisation({
+        id: user.organisationId,
+        withUserDetails: true,
+      });
+
+      if (!error) {
+        setFormData(data);
+      } else {
+        setState(error.message);
+      }
+    };
+
+    getOrgInfo();
+  }, [user.organisationId]);
 
   useEffect(() => {
     if (submitAttempt.current) {
       validateForm();
     }
-  }, [validateForm]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    firstName,
+    lastName,
+    email,
+    organisationName,
+    uniqueSlug,
+    contactLinks,
+    benefitCalculatorLink,
+    benefitCalculatorLabel,
+  ]);
 
   const handleUpdate = async () => {
     setState({ loading: true });
     const { error } = await Organisations.updateOrganisation({
       id: user.organisationId,
+      withUserDetails: true,
       body: {
         ...state.formData,
       },
@@ -128,12 +163,22 @@ const EditDetails = () => {
     setState({ loading: false });
     if (error) {
       if (error.statusCode === 409) {
-        setState({ validationErrs: { email: error.message } });
+        setState({
+          validationErrs: {
+            contactLinks: {},
+            [error.data.field]: error.message,
+            hasError: true,
+          },
+        });
       } else {
-        setState({ httpError: error.message });
+        setState({
+          httpError: error.message,
+          validationErrs: { contactLinks: {}, hasError: false },
+        });
       }
     } else {
-      // TODO: show a success message once finished
+      setUser({ ...user, firstName, lastName, email });
+      setState({ isModalVisible: true });
     }
   };
 
@@ -149,8 +194,8 @@ const EditDetails = () => {
   };
 
   const handleChangeLinkType = (value, key, id) => {
-    setState(({ formData: { contactLinks } }) => {
-      const _contactLinks = contactLinks.map((e) => e);
+    setState(({ formData }) => {
+      const _contactLinks = formData.contactLinks.map((e) => e);
       const itemToUpdate = _contactLinks.find((e) => e.id === id);
       itemToUpdate[key] = value;
       if (key === 'type') {
@@ -159,18 +204,18 @@ const EditDetails = () => {
         itemToUpdate.email = '';
       }
 
-      return { contactLinks: _contactLinks };
+      return { formData: { ...formData, contactLinks: _contactLinks } };
     });
   };
 
   const handleAddNewContactLink = (e) => {
     e.preventDefault();
-    setState(({ formData: { contactLinks } }) => {
-      const sortedLinks = contactLinks.sort((a, b) => a.id - b.id);
+    setState(({ formData }) => {
+      const sortedLinks = formData.contactLinks.sort((a, b) => a.id - b.id);
       const lastContactLinkId = sortedLinks[sortedLinks.length - 1]?.id || 0;
 
       const _contactLinks = [
-        ...contactLinks,
+        ...formData.contactLinks,
         {
           type: '',
           availability: '',
@@ -182,7 +227,7 @@ const EditDetails = () => {
         },
       ];
 
-      return { formData: { contactLinks: _contactLinks } };
+      return { formData: { ...formData, contactLinks: _contactLinks } };
     });
   };
 
@@ -192,11 +237,11 @@ const EditDetails = () => {
   };
 
   const handleRemoveContactLink = (id) => {
-    setState(({ formData: { contactLinks } }) => {
-      const _contactLinks = contactLinks.map((e) => e);
+    setState(({ formData }) => {
+      const _contactLinks = formData.contactLinks.map((e) => e);
       const itemsToUpdate = _contactLinks.filter((e) => e.id !== id);
 
-      return { formData: { contactLinks: itemsToUpdate } };
+      return { formData: { ...formData, contactLinks: itemsToUpdate } };
     });
   };
 
@@ -219,24 +264,36 @@ const EditDetails = () => {
             {t('editDetails.title', lang)}
           </T.H1>
         </Col>{' '}
-        <Col w={[4, 6, 6]}>
+        <Col w={[4, 12, 6]}>
           <T.P isSmall color="neutralDark" mt={4}>
             {t('editDetails.subtitle', lang)}
           </T.P>
         </Col>
       </Row>
       <Row mt={6}>
-        <Col w={[4, 4, 4]}>
+        <Col w={[4, 6, 4]}>
           <I.BasicInput
-            label="Name"
+            label="First name"
             type="text"
-            placeholder="Type name here..."
-            value={name}
-            handleChange={(name) => setFormData({ name })}
-            error={validationErrs?.name}
+            placeholder="Type first name here..."
+            value={firstName}
+            handleChange={(firstName) => setFormData({ firstName })}
+            error={validationErrs?.firstName}
           />
         </Col>
-        <Col w={[4, 4, 4]} mt={isMobile ? 6 : 0}>
+        <Col w={[4, 6, 4]}>
+          <I.BasicInput
+            label="Last name"
+            type="text"
+            placeholder="Type last name here..."
+            value={lastName}
+            handleChange={(lastName) => setFormData({ lastName })}
+            error={validationErrs?.lastName}
+          />
+        </Col>
+      </Row>
+      <Row mt={6}>
+        <Col w={[4, 6, 4]} mt={isMobile ? 6 : 0}>
           <I.BasicInput
             label="Email"
             type="email"
@@ -248,7 +305,7 @@ const EditDetails = () => {
         </Col>
       </Row>
       <Row mt={6}>
-        <Col w={[4, 4, 4]}>
+        <Col w={[4, 6, 4]}>
           <I.BasicInput
             label="Organisation"
             type="text"
@@ -263,21 +320,21 @@ const EditDetails = () => {
       </Row>
 
       <Row mt={7}>
-        <Col w={[4, 4, 4]}>
+        <Col w={[4, 12, 4]}>
           <T.H2 mb={5} weight="bold">
             {t('yourUniqueLink', lang)}
           </T.H2>
         </Col>
       </Row>
       <Row mb={2}>
-        <Col w={[4, 4, 4]}>
+        <Col w={[4, 6, 4]}>
           <T.H3>
             {window.location.host}/{uniqueSlug}
           </T.H3>
         </Col>
       </Row>
       <Row mb={6}>
-        <Col w={[4, 4, 4]}>
+        <Col w={[4, 6, 4]}>
           <I.BasicInput
             value={uniqueSlug}
             handleChange={handleUniqueLink}
@@ -287,7 +344,7 @@ const EditDetails = () => {
       </Row>
 
       <Row mt={6}>
-        <Col w={[4, 4, 4]}>
+        <Col w={[4, 6, 4]}>
           <T.H2 mb={5} weight="bold">
             {t('contact.title', lang)}
           </T.H2>
@@ -296,7 +353,7 @@ const EditDetails = () => {
       {contactLinks.map((contactLink, i) => (
         <div key={contactLink.id}>
           <Row>
-            <Col w={[4, 4, 4]}>
+            <Col w={[4, 6, 4]}>
               <I.Dropdown
                 label="Type of contact"
                 selected={contactLink.type}
@@ -314,7 +371,7 @@ const EditDetails = () => {
               />
             </Col>
             {contactLink.type && (
-              <Col w={[4, 4, 4]} mt={isMobile ? 6 : 0}>
+              <Col w={[4, 6, 4]} mt={isMobile ? 6 : 0}>
                 {contactLink.type === contactLinksTypes.PHONE && (
                   <I.BasicInput
                     label="Phone Number"
@@ -355,7 +412,7 @@ const EditDetails = () => {
 
           {contactLink.type && (
             <Row mt={5}>
-              <Col w={[4, 4, 4]}>
+              <Col w={[4, 6, 4]}>
                 <I.BasicInput
                   label="Availability"
                   helper="e.g. Monday to Friday (9am to 5pm)"
@@ -368,7 +425,7 @@ const EditDetails = () => {
                 />
               </Col>
 
-              <Col w={[4, 4, 4]} mt={isMobile ? 6 : 0}>
+              <Col w={[4, 6, 4]} mt={isMobile ? 6 : 0}>
                 <I.BasicInput
                   label="Description"
                   helper="Include a short label for what this webchat is for e.g. Customer Support"
@@ -389,6 +446,7 @@ const EditDetails = () => {
               icon="close"
               isButton
               mt={4}
+              mb={6}
               color="neutralMain"
               iconColor="primaryMain"
               handleClick={() => handleRemoveContactLink(contactLink.id)}
@@ -399,7 +457,7 @@ const EditDetails = () => {
       ))}
 
       <Row>
-        <Col w={[4, 4, 4]}>
+        <Col w={[4, 6, 4]}>
           <TextWithIcon
             text="Add another contact"
             icon="add"
@@ -415,7 +473,7 @@ const EditDetails = () => {
       </Row>
 
       <Row mt={7}>
-        <Col w={[4, 4, 4]}>
+        <Col w={[4, 6, 4]}>
           <I.BasicInput
             label="Benefit calculator link"
             helper="Enter your preferred benefit calculator here"
@@ -427,7 +485,7 @@ const EditDetails = () => {
             error={validationErrs.benefitCalculatorLink}
           />
         </Col>
-        <Col w={[4, 4, 4]} mt={isMobile ? 6 : 0}>
+        <Col w={[4, 6, 4]} mt={isMobile ? 6 : 0}>
           <I.BasicInput
             label="Benefit calculator button label"
             helper="Enter your preferred button label here"
@@ -442,12 +500,22 @@ const EditDetails = () => {
       </Row>
 
       <Row mt={7} style={{ flex: Number(isMobile), alignItems: 'flex-end' }}>
-        <Col w={[4, 4, 4]} style={{ alignItems: 'flex-end' }}>
+        <Col w={[4, 6, 4]} style={{ alignItems: 'flex-end' }}>
           {httpError && (
             <T.P mb={2} color="error">
               {httpError}
             </T.P>
           )}
+          {validationErrs?.hasError?.length ? (
+            <Col w={[4, 12, 12]}>
+              <T.P mb="2" color="error">
+                At least one of the input fields has not been filled in or
+                details entered incorrectly. Please check the form above for
+                more details.
+              </T.P>
+            </Col>
+          ) : null}
+
           <Button
             variant="primary"
             disabled={false}
@@ -462,12 +530,26 @@ const EditDetails = () => {
         <Col w={[4, 6, 6]}>
           <T.P isSmall color="neutralDark">
             {t('accountDelete', lang)}{' '}
-            <T.Link to="#" color="neutralDark" weight="bold" underline>
+            <T.Link
+              to="mailto:hydefoundation@hyde-housing.co.uk"
+              color="neutralDark"
+              weight="bold"
+              underline
+              external
+            >
               {t('hydeHousing', lang)}
             </T.Link>
           </T.P>
         </Col>
       </Row>
+      <Modal
+        visible={isModalVisible}
+        setIsModalVisible={(e) => setState({ isModalVisible: e })}
+        type={'updateSuccess'}
+        title={'Updated'}
+        description={'Changes successfully updated'}
+        btnText="Okay"
+      />
     </S.Form>
   );
 };

@@ -11,11 +11,6 @@ export const requiredText = string()
   .typeError(errMsgs.DEFAULT_REQUIRED)
   .required(errMsgs.DEFAULT_REQUIRED);
 
-export const name = string()
-  .min(3, errMsgs.DEFAULT_REQUIRED)
-  .max(40)
-  .required(errMsgs.DEFAULT_REQUIRED);
-
 export const organisationName = string()
   .min(3, errMsgs.DEFAULT_REQUIRED)
   .max(40)
