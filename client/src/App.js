@@ -71,13 +71,12 @@ function App() {
 
                   <Route
                     exact
-                    // path={navRoutes.SUPER_ADMIN.EDIT_STEP}
-                    path="/test"
+                    path={navRoutes.SUPER_ADMIN.CHANGES}
                     Component={Pages.Changes}
                     layout="dashboard"
                     edit
                     isPrivate
-                    allowedRoles={[userRoles.SUPER_ADMIN, userRoles.ADMIN]}
+                    allowedRoles={[userRoles.SUPER_ADMIN]}
                   />
 
                   <Route
