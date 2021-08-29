@@ -26,7 +26,7 @@ const signup = async (req, res, next) => {
     const { token, tokenName, options } = createToken({ id: user.id });
     res.cookie(tokenName, token, options);
 
-    res.json({ user });
+    res.json(user);
   } catch (error) {
     next(error);
   }

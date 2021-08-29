@@ -69,7 +69,7 @@ const createOrganisations = async () => {
     ...superAdminOrganisationData,
     organisationName: 'org1',
     typeOfOrganisation: 'A',
-    uniqueSlug: '/orr1-link',
+    uniqueSlug: 'orr1-link',
     colors: {
       main: '#FC6244',
       secondary: '#3B557A',

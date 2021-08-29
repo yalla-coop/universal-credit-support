@@ -12,6 +12,7 @@ import {
   Icon,
 } from '../../components';
 import * as S from './style';
+import { useAuth } from './../../context/auth';
 import validate from '../../validation/schemas/signup';
 import { Users } from '../../api-calls';
 
@@ -76,7 +77,7 @@ const SignUp = () => {
     httpError,
   } = state;
   const history = useHistory();
-
+  const { setUser, user } = useAuth();
   const isMobile = useMediaQuery({
     query: `(max-width: ${breakpoints.mobile})`,
   });
@@ -121,7 +122,7 @@ const SignUp = () => {
 
   const handleSignup = async () => {
     setState({ loading: true });
-    const { error } = await Users.signup({
+    const { error, data } = await Users.signup({
       email: cleanEmail(email),
       firstName,
       lastName,
@@ -141,6 +142,7 @@ const SignUp = () => {
         setState({ httpError: error.message });
       }
     } else {
+      setUser(data);
       history.push(R.ADMIN.CREATE_ORG_DETAILS_FIRST_STEP);
     }
   };

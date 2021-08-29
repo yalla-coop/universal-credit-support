@@ -8,6 +8,7 @@ import {
   authorize,
   csrfProtection,
 } from '../../../api/middlewares';
+import { userRoles } from '../../../constants';
 
 const router = Router();
 
@@ -15,8 +16,8 @@ router.get('/', getLandingPage);
 router.patch(
   '/',
   csrfProtection,
-  // authenticate(),
-  // authorize(/* list admin + super admin here */),
+  authenticate(),
+  authorize([userRoles.SUPER_ADMIN]),
   updateLandingPage,
 );
 
