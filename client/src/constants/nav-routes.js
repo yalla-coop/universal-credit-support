@@ -38,7 +38,7 @@ const SUPER_ADMIN = {
   ORGANISATIONS: `${admin}/organisations`,
   CUSTOMISE: `${admin}/customise`,
   MANAGE_STEPS: `${admin}/manage-steps`,
-  CHANGES: `${admin}/Changes`,
+  CHANGES: `${admin}/changes`,
 };
 
 const EXTERNAL = {
