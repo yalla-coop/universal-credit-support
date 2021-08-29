@@ -12,11 +12,13 @@ const volunteer = createSchema({
   title: requiredText,
   description: requiredText,
   whereDoYouNeedToGo,
-  timeRange: requiredText,
+  timeRangeText: requiredText,
   thingsYouWillNeed: thingsContent,
   whatYouWillNeedToKnow: thingsContent,
   topTip: optionalText,
   otherTips: optionalArrayOfOptionalString,
+  pageTitle: optionalText,
+  pageDescription: optionalText,
 });
 
 const validate = (data) => _validate(volunteer, data);

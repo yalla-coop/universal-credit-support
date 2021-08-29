@@ -19,6 +19,7 @@ const InputArray = ({
   color = 'neutralMain',
   autoComplete,
   placeholder,
+  error,
   ...props
 }) => {
   const updateValues = (value, index) => {
@@ -66,6 +67,12 @@ const InputArray = ({
                 autoComplete={autoComplete || 'on'}
                 rows="4"
               />
+              {error && error[index] && (
+                <T.P color="error" m="0" mt="1">
+                  {error[index]}
+                </T.P>
+              )}
+
               <S.Button
                 disabled={disabled || (values.length === 1 && index === 0)}
                 onClick={() => removeValue(index)}

@@ -1,7 +1,7 @@
 import { Grid as G, Typography as T, Inputs as I } from '../../components';
 
 // InputArray
-const GeneralTips = ({ state, setState, errors = {} }) => {
+const GeneralTips = ({ topTip, otherTips, setState, errors = {} }) => {
   return (
     <>
       <G.Row mt="8">
@@ -16,7 +16,7 @@ const GeneralTips = ({ state, setState, errors = {} }) => {
             optional
             placeholder="type tip here..."
             helper="This is the most important tip, which you want to show at the top of the page"
-            value={state.topTip}
+            value={topTip}
             error={errors.topTip}
             rows="4"
             handleChange={(input) => setState({ topTip: input })}
@@ -25,7 +25,7 @@ const GeneralTips = ({ state, setState, errors = {} }) => {
         <I.InputArray
           type="textarea"
           placeholder="type tip here..."
-          values={state}
+          values={otherTips}
           handleChange={(updateValues) => setState({ otherTips: updateValues })}
           label="Other Tips"
           optional
