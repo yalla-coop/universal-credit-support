@@ -50,7 +50,7 @@ const findUserById = async (id) => {
   return res.rows[0];
 };
 
-const findAdminUsers = async () => {
+const getUsers = async () => {
   const sql = `
     SELECT
       id,
@@ -88,4 +88,4 @@ const findUserByResetToken = async (token, client) => {
   return res.rows[0];
 };
 
-export { findUserByEmail, findUserById, findUserByResetToken, findAdminUsers };
+export { findUserByEmail, findUserById, findUserByResetToken, getUsers };

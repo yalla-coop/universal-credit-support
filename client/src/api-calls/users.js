@@ -15,7 +15,7 @@ const getUserById = async ({ id, options }) => {
 
 const deleteUser = async ({ id }, { options } = {}) => {
   try {
-    const data = await axios.delete(`${USERS_BASE}/delete-user`, {
+    const data = await axios.delete(`${USERS_BASE}`, {
       data: { id },
     });
     return data;
@@ -27,10 +27,7 @@ const deleteUser = async ({ id }, { options } = {}) => {
 
 const updateUserRole = async (updates, { options } = {}) => {
   try {
-    const { data } = await axios.patch(
-      `${USERS_BASE}/update-user-role`,
-      updates
-    );
+    const { data } = await axios.patch(`${USERS_BASE}`, updates);
     return { data };
   } catch (error) {
     const err = handleError(error, options);
@@ -39,7 +36,7 @@ const updateUserRole = async (updates, { options } = {}) => {
 };
 const getAdminUsers = async () => {
   try {
-    const { data } = await axios.get(`${USERS_BASE}/admin-users`);
+    const { data } = await axios.get(`${USERS_BASE}/`);
     return { data };
   } catch (error) {
     const err = handleError(error);

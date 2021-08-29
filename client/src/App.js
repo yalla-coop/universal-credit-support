@@ -99,8 +99,7 @@ function App() {
                   />
                   <Route
                     exact
-                    // path={navRoutes.ADMIN.DASHBOARD}
-                    path="/test"
+                    path={navRoutes.SUPER_ADMIN.ORGANISATIONS}
                     Component={Pages.Organisations}
                     layout="dashboard"
                     showMobileMenu

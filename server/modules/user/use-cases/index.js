@@ -3,7 +3,7 @@ import login from './login';
 import resetPasswordLink from './reset-password-link';
 import updatePassword from './update-password';
 import getAccountInfo from './get-account-info';
-import getAdminUsers from './get-admin-users';
+import getUsers from './get-users';
 import updateUserRole from './update-user-role';
 import deleteUser from './delete-user';
 
@@ -13,7 +13,7 @@ export {
   resetPasswordLink,
   updatePassword,
   getAccountInfo,
-  getAdminUsers,
   updateUserRole,
   deleteUser,
+  getUsers,
 };

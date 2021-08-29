@@ -13,7 +13,8 @@ const options = [
 ];
 
 const UserRow = ({ name, email, role, setUsers, setError, id }) => {
-  const [selected, setSelected] = useState(role);
+  const originalRole = role;
+  const [selected, setSelected] = useState(originalRole);
   const [submitRole, setSubmitRole] = useState(null);
   const [confirmUpdateRole, setConfirmUpdateRole] = useState(false);
   const [confirmDeleteUser, setConfirmDeleteUser] = useState(null);
@@ -35,6 +36,7 @@ const UserRow = ({ name, email, role, setUsers, setError, id }) => {
     if (confirmDelete) {
       setConfirmDelete(false);
     }
+    setSelected(originalRole);
   };
 
   const handleSubmit = async () => {
@@ -74,6 +76,7 @@ const UserRow = ({ name, email, role, setUsers, setError, id }) => {
       <Col w={[4, 12, 4]} mb="4">
         <Dropdown
           options={options}
+          allowClear="false"
           selected={selected}
           handleChange={(value) => {
             setSelected(value);
@@ -102,7 +105,7 @@ const UserRow = ({ name, email, role, setUsers, setError, id }) => {
         description="delete user"
         visible={confirmDelete}
         setIsModalVisible={setConfirmDelete}
-        // onCancel={onCancel}
+        onCancel={onCancel}
         parentFunc={handleDelete}
       />
     </>
@@ -154,7 +157,7 @@ const Organisations = () => {
       </Row>
       {users &&
         users.map((user) => (
-          <Row>
+          <Row key={user.id}>
             <UserRow
               name={user.firstName}
               email={user.email}
