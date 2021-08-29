@@ -5,7 +5,8 @@ const findOrganisation = async (id) => {
     SELECT
     id,
     organisation_name,
-    unique_slug
+    unique_slug,
+    colors
     FROM organisations
     WHERE id = $1
     `;

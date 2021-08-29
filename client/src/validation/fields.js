@@ -257,3 +257,7 @@ export const hexColorOptional = string().when((value, schema) => {
   }
   return schema.nullable();
 });
+
+export const hexColor = string()
+  .matches(hexRegex, { message: errMsgs.INVALID_COLOR })
+  .required(errMsgs.DEFAULT_REQUIRED);
