@@ -28,6 +28,7 @@ const ADMIN = {
 };
 
 const SUPER_ADMIN = {
+  DASHBOARD: `${admin}/dashboard`,
   EDIT_STEP: `${admin}/edit-step/:id`,
   HOME: `${admin}/home`,
   EDIT_CONTENT: `${admin}/edit-content`,
