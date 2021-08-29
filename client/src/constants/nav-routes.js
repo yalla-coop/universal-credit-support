@@ -12,7 +12,6 @@ const admin = '/admin';
 const ADMIN = {
   EDIT_DETAILS: `${admin}/edit-details`,
   CUSTOMISE: `${admin}/customise`,
-  LOG_OUT: `${admin}/log-out`,
   CREATE_UNIQUE_LINK: `${admin}/create-unique-link`,
   CREATE_UNIQUE_LINK_SUCCESS: `${admin}/create-unique-link/success`,
   SIGNUP: `${admin}/signup`,
@@ -26,9 +25,11 @@ const ADMIN = {
   MANAGE_STEPS: `${admin}/edit-steps`,
   CREATE_ORG_DETAILS_FIRST_STEP: `${admin}/set-organisation/1`,
   CREATE_ORG_DETAILS_SECOND_STEP: `${admin}/set-organisation/2`,
+  LOG_OUT: '/log-out',
 };
 
 const SUPER_ADMIN = {
+  DASHBOARD: `${admin}/dashboard`,
   EDIT_STEP: `${admin}/edit-step/:id`,
   HOME: `${admin}/home`,
   EDIT_CONTENT: `${admin}/edit-content`,
@@ -36,8 +37,8 @@ const SUPER_ADMIN = {
   EDIT_DETAILS: `${admin}/edit-details`,
   ORGANISATIONS: `${admin}/organisations`,
   CUSTOMISE: `${admin}/customise`,
-  LOG_OUT: `${admin}/log-out`,
   MANAGE_STEPS: `${admin}/manage-steps`,
+  CHANGES: `${admin}/Changes`,
 };
 
 const EXTERNAL = {

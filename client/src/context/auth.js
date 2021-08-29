@@ -68,6 +68,7 @@ const AuthProvider = (props) => {
     const { error } = await Users.logout();
     if (!error) {
       _setUser({});
+      clearUserInfoIntoStorage();
     }
   };
 
