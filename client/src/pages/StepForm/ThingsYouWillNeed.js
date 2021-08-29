@@ -8,8 +8,8 @@ import {
 const newItem = {
   title: '',
   description: '',
-  thisCanInclude: [''],
-  tips: [''],
+  thisCanInclude: [],
+  tips: [],
 };
 
 const ThingsYouWillNeed = ({ state, setState, errors }) => {

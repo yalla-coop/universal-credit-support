@@ -30,10 +30,10 @@ const initialState = {
   },
   timeRangeText: '',
   thingsYouWillNeed: [
-    { title: '', description: '', thisCanInclude: [''], tips: [''] },
+    { title: '', description: '', thisCanInclude: [], tips: [] },
   ],
   whatYouWillNeedToKnow: [
-    { title: '', description: '', thisCanInclude: [''], tips: [''] },
+    { title: '', description: '', thisCanInclude: [], tips: [] },
   ],
   topTip: '',
   otherTips: [''],
@@ -138,6 +138,12 @@ const StepForm = () => {
       return false;
     }
   };
+
+  console.log({
+    whatYouWillNeedToKnow,
+    thingsYouWillNeed,
+    otherTips,
+  });
 
   const handleEditStep = async () => {
     setState({ loading: true });
