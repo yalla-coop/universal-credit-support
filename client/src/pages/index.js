@@ -11,10 +11,13 @@ import CreateOrganisationDetails, {
 } from './CreateOrganisationDetails';
 import StepForm from './StepForm';
 import Dashboard from './Dashboard';
+import Organisations from './Organisations';
 import EditContent from './EditContent';
 import EditLandingPage from './EditLandingPage';
 import ManageSteps from './ManageSteps';
 import EditDetails from './EditDetails';
+import Customise from './Customise';
+import Changes from './Changes';
 
 export {
   Home,
@@ -31,6 +34,9 @@ export {
   ManageSteps,
   ForgotPassword,
   ResetPassword,
+  Organisations,
   StepForm,
   EditDetails,
+  Customise,
+  Changes,
 };

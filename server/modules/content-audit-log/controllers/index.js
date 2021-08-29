@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import getAuditLog from './get-audit-log';
+import getAuditLogs from './get-audit-logs';
 
 import {
   authenticate,
@@ -9,13 +9,14 @@ import {
 } from '../../../api/middlewares';
 
 const router = Router();
+router.get('/', csrfProtection, authenticate(), getAuditLogs);
 
 router.patch(
   '/',
   csrfProtection,
   authenticate(),
   authorize(/* list admin + super admin here */),
-  getAuditLog,
+  getAuditLogs,
 );
 
 export default router;

@@ -71,6 +71,16 @@ function App() {
 
                   <Route
                     exact
+                    path={navRoutes.SUPER_ADMIN.CHANGES}
+                    Component={Pages.Changes}
+                    layout="dashboard"
+                    edit
+                    isPrivate
+                    allowedRoles={[userRoles.SUPER_ADMIN]}
+                  />
+
+                  <Route
+                    exact
                     path={navRoutes.ADMIN.DASHBOARD}
                     Component={Pages.Dashboard}
                     layout="dashboard"
@@ -96,6 +106,13 @@ function App() {
                     showMobileMenu
                     isPrivate
                     allowedRoles={[userRoles.SUPER_ADMIN]}
+                  />
+                  <Route
+                    exact
+                    path={navRoutes.SUPER_ADMIN.ORGANISATIONS}
+                    Component={Pages.Organisations}
+                    layout="dashboard"
+                    showMobileMenu
                   />
                   <Route
                     exact
@@ -142,6 +159,16 @@ function App() {
                     exact
                     path={navRoutes.ADMIN.EDIT_DETAILS}
                     Component={Pages.EditDetails}
+                    layout="dashboard"
+                    showMobileMenu
+                    isPrivate
+                    allowedRoles={[userRoles.ADMIN, userRoles.SUPER_ADMIN]}
+                  />
+
+                  <Route
+                    exact
+                    path={navRoutes.ADMIN.CUSTOMISE}
+                    Component={Pages.Customise}
                     layout="dashboard"
                     showMobileMenu
                     isPrivate

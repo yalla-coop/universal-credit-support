@@ -86,7 +86,7 @@ const Dashboard = () => {
     hyde-housing.co.uk"
                 >
                   <T.H3 color="neutralMain">
-                    Interested in more specific statistics? Get in touch with
+                    Interested in more specific statistics? Get in touch with{' '}
                     <span style={{ lineBreak: 'anywhere' }}>
                       hydefoundation@hyde-housing.co.uk
                     </span>

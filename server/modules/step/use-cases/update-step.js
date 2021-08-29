@@ -15,6 +15,7 @@ const updateStep = async ({
   topTip,
   otherTips,
   isOptional,
+  userId,
 }) => {
   const step = await Steps.updateStep({
     id,
@@ -31,6 +32,7 @@ const updateStep = async ({
     topTip,
     otherTips,
     isOptional,
+    userId,
   });
 
   return step;

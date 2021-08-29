@@ -5,11 +5,9 @@ export const Wrapper = styled.div`
   ${setMargin};
   width: ${({ w }) => w || '100%'};
 
-  background: ${({ theme }) => theme.colors.neutralSurface};
-
   .ant-upload.ant-upload-drag {
     opacity: ${({ disabled }) => (disabled ? '0.6' : '1')};
-    background: none;
+    background: ${({ theme }) => theme.colors.neutralSurface};
 
     border: 4px solid
       ${({ error, theme }) =>
