@@ -6,9 +6,21 @@ import { useAuth } from '../../context/auth';
 import { navRoutes } from '../../constants';
 
 const Route = (props) => {
-  const { isPrivate, layout, path, Component, exact, allowedRoles } = props;
+  const {
+    isPrivate,
+    layout,
+    path,
+    Component,
+    exact,
+    allowedRoles,
+    publicOnly,
+  } = props;
 
   const { user } = useAuth();
+
+  if (publicOnly && user.id) {
+    return <Redirect to={navRoutes.ADMIN.DASHBOARD} />;
+  }
 
   if (isPrivate) {
     const authorized = authorization(user.role, allowedRoles);
@@ -26,6 +38,7 @@ const Route = (props) => {
         </Layout>
       );
     }
+
     return <Redirect to={navRoutes.GENERAL.LOGIN} />;
   }
 
