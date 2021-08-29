@@ -16,7 +16,6 @@ const DecideRoutes = ({ setOpen }) => {
     user: { role },
     logout,
   } = useAuth();
-  console.log({ role });
   const history = useHistory();
 
   const handleLogout = async () => {
