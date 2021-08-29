@@ -93,7 +93,7 @@ const Changes = () => {
           ))
         ) : (
           <Row mt="5">
-            <Col w={(4, 12, 12)}>
+            <Col w={[4, 12, 12]}>
               <T.P weight="semi">There is no changes to show </T.P>
             </Col>
           </Row>
