@@ -16,6 +16,7 @@ import EditLandingPage from './EditLandingPage';
 import ManageSteps from './ManageSteps';
 import EditDetails from './EditDetails';
 import Customise from './Customise';
+import Changes from './Changes';
 
 export {
   Home,
@@ -35,4 +36,5 @@ export {
   StepForm,
   EditDetails,
   Customise,
+  Changes,
 };
