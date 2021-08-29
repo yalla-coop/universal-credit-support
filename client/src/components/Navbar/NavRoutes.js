@@ -44,11 +44,6 @@ const DecideRoutes = ({ setOpen }) => {
               {t.english['CUSTOMISE']}
             </S.Head3>
           </S.Link>
-          <S.Link to={ADMIN.EDIT_DETAILS} onClick={() => handleClick(setOpen)}>
-            <S.Head3 weight="bold" color="neutralMain">
-              {t.english['EDIT_DETAILS']}
-            </S.Head3>
-          </S.Link>
           <S.Link onClick={handleLogout}>
             <S.Head3 weight="bold" color="neutralMain">
               {t.english['LOG_OUT']}
