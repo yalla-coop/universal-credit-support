@@ -29,7 +29,7 @@ const DecideRoutes = ({ setOpen }) => {
     case R.ADMIN:
       return (
         <>
-          <S.Link to={ADMIN.HOME} onClick={() => handleClick(setOpen)}>
+          <S.Link to={ADMIN.DASHBOARD} onClick={() => handleClick(setOpen)}>
             <S.Head3 weight="bold" color="neutralMain">
               {t.english['HOME']}
             </S.Head3>
@@ -59,7 +59,10 @@ const DecideRoutes = ({ setOpen }) => {
     case R.SUPER_ADMIN:
       return (
         <>
-          <S.Link to={SUPER_ADMIN.HOME} onClick={() => handleClick(setOpen)}>
+          <S.Link
+            to={SUPER_ADMIN.DASHBOARD}
+            onClick={() => handleClick(setOpen)}
+          >
             <S.Head3 weight="bold" color="neutralMain">
               {t.english['HOME']}
             </S.Head3>

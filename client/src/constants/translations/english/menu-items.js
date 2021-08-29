@@ -5,6 +5,6 @@ export default {
   ORGANISATIONS: 'Organisations',
   CUSTOMISE: 'Customise',
   CHANGES: 'Changes',
-  LOG_OUT: 'log out',
-  LOG_IN: 'log in',
+  LOG_OUT: 'Log out',
+  LOG_IN: 'Log in',
 };
