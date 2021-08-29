@@ -14,6 +14,7 @@ import Dashboard from './Dashboard';
 import EditContent from './EditContent';
 import EditLandingPage from './EditLandingPage';
 import ManageSteps from './ManageSteps';
+import EditDetails from './EditDetails';
 
 export {
   Home,
@@ -31,4 +32,5 @@ export {
   ForgotPassword,
   ResetPassword,
   StepForm,
+  EditDetails,
 };
