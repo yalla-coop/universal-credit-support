@@ -71,6 +71,17 @@ function App() {
 
                   <Route
                     exact
+                    // path={navRoutes.SUPER_ADMIN.EDIT_STEP}
+                    path="/test"
+                    Component={Pages.Changes}
+                    layout="dashboard"
+                    edit
+                    isPrivate
+                    allowedRoles={[userRoles.SUPER_ADMIN, userRoles.ADMIN]}
+                  />
+
+                  <Route
+                    exact
                     path={navRoutes.ADMIN.DASHBOARD}
                     Component={Pages.Dashboard}
                     layout="dashboard"

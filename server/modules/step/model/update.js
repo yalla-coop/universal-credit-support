@@ -15,6 +15,7 @@ const updateStep = async ({
   topTip,
   otherTips,
   isOptional,
+  userId,
 }) => {
   const sql = `
     UPDATE steps
@@ -31,7 +32,8 @@ const updateStep = async ({
       what_you_will_need_to_know = $11,
       top_tip = $12,
       other_tips = $13,
-      is_optional = $14
+      is_optional = $14,
+      updated_by = $15
     WHERE id = $1
   `;
 
@@ -50,6 +52,7 @@ const updateStep = async ({
     topTip,
     otherTips,
     isOptional,
+    userId,
   ]);
   return res.rows[0];
 };
