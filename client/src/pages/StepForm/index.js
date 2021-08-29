@@ -139,12 +139,6 @@ const StepForm = () => {
     }
   };
 
-  console.log({
-    whatYouWillNeedToKnow,
-    thingsYouWillNeed,
-    otherTips,
-  });
-
   const handleEditStep = async () => {
     setState({ loading: true });
 

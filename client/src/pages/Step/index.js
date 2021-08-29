@@ -142,7 +142,6 @@ const Step = () => {
               {step.thingsYouWillNeed?.length > 0 ? (
                 step.thingsYouWillNeed.map((item, index) => (
                   <Col w={[4, 12, 6]} key={index} isFirst={index === 0}>
-                    {console.log(`item`, item)}
                     <Checklist
                       completed={checkItem(item.title)}
                       handleChange={() => checkUncheckItem(step.id, item.title)}
