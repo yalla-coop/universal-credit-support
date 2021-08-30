@@ -1,4 +1,5 @@
 import { query } from '../../../database';
+import { userStatuses } from '../../../constants';
 
 const updateUserRole = async ({ role, id }) => {
   const sql = `
@@ -68,9 +69,31 @@ const updateUser = async ({ id, firstName, lastName, email }, client) => {
   return res.rows[0];
 };
 
+const updateUserToDeleted = async (id, client) => {
+  const values = [id, userStatuses.DELETED];
+
+  const sql = `
+    UPDATE users
+    SET
+      first_name = NULL,
+      last_name = NULL,
+      email = NULL,
+      backup_email = NULL,
+      password = NULL,
+      reset_password_token = NULL,
+      status = $2
+    WHERE
+      id = $1;
+  `;
+
+  const res = await query(sql, values, client);
+  return res.rows[0];
+};
+
 export {
   updateUserNewResetPasswordToken,
   updatePassword,
   updateUser,
   updateUserRole,
+  updateUserToDeleted,
 };

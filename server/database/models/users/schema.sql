@@ -23,7 +23,8 @@ CREATE TABLE "users" (
           first_name IS NOT NULL AND
           last_name IS NOT NULL AND
           email IS NOT NULL AND
-          backup_email IS NOT NULL
+          backup_email IS NOT NULL AND
+          "password" IS NOT NULL
         )
       ELSE true
     END
