@@ -7,6 +7,7 @@ import { useLang } from '../../context/lang';
 import { useSteps } from '../../context/steps';
 import { navRoutes as n } from '../../constants';
 import LandingContent from './LandingContent';
+import { stageTypes } from './../../constants/data-types';
 
 import Icon from '../../components/Icon';
 import HelpButton from '../../components/HelpButton';
@@ -37,12 +38,14 @@ const Home = () => {
 
   const [showAfterClaim, setShowAfterClaim] = useState(false);
 
-  const currentStep = steps.find((step) => !step.isCompleted);
+  const currentStep = steps.find(
+    (step) => !step.isCompleted && step.stage !== stageTypes.BEFORE_CLAIMING
+  );
   const currentStepRef = useRef();
   const { org } = useParams();
   const history = useHistory();
 
-  const completedClaim = currentStep?.stage === 'afterClaiming';
+  const completedClaim = currentStep?.stage === stageTypes.AFTER_CLAIMING;
 
   const getStepStatus = (step, i) => {
     const isCurrentStep = currentStep && step.id === currentStep.id;
