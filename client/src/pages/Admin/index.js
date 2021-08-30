@@ -120,6 +120,8 @@ function AdminRouter() {
           Component={Organisations}
           layout="dashboard"
           showMobileMenu
+          isPrivate
+          allowedRoles={[userRoles.SUPER_ADMIN]}
         />
 
         <Route

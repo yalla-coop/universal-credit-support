@@ -26,7 +26,6 @@ export const PageHead = styled.header`
 
 export const HeaderText = styled.div`
   background: ${({ theme: { colors } }) => `${colors.neutralMain}CC`};
-  background-opacity: 0.8;
   border-radius: 8px;
   max-width: 580px;
   padding: ${({ theme: { spacings } }) => `${spacings[8]} ${spacings[7]}`};
