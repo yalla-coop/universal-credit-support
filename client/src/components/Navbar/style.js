@@ -30,6 +30,7 @@ export const LogoLink = styled(RouterLink)`
 
 export const LogoImg = styled.img`
   max-width: 185px;
+  max-height: 100px;
 `;
 
 export const Drawer = styled(AntDrawer)`
