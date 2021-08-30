@@ -95,7 +95,6 @@ const Customise = () => {
     getOrgInfo();
   }, [user.organisationId]);
 
-  console.log(`state`, state);
   useEffect(() => {
     if (submitAttempt.current) {
       validateForm();
