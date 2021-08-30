@@ -54,7 +54,8 @@ const Card = forwardRef(
     ref
   ) => {
     const bgColor = `${variant}Light`;
-    const borderColor = `${variant}Mid`;
+    const borderColor =
+      variant === 'neutral' ? `${variant}Light` : `${variant}Mid`;
     const circleColor =
       variant === 'neutral' ? `${variant}Mid` : `${variant}Main`;
 

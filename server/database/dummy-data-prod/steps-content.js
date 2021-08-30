@@ -134,7 +134,7 @@ const addStepContent = async () => {
     stage: T.stageTypes.CLAIMING,
     stepOrder: 2,
     title: `Create account`,
-    description: `Create an account on the Government website if you haven’t already. You’ll want to do this as soon as possible!`,
+    description: `Create an account on the Government website. You’ll want to do this as soon as possible!`,
     pageTitle: ``,
     pageDescription: ``,
     howLongDoesItTake: { timeRangeText: `5 to 10 minutes` },
