@@ -1,4 +1,5 @@
 import { query } from '../../../database';
+import { userStatuses } from '../../../constants';
 
 const findUserByEmail = async (email) => {
   const sql = `
@@ -17,9 +18,9 @@ const findUserByEmail = async (email) => {
       created_at,
       updated_at
     FROM users
-    WHERE email = $1
+    WHERE email = $1 AND status = $2
   `;
-  const values = [email];
+  const values = [email, userStatuses.ACTIVE];
 
   const res = await query(sql, values);
   return res.rows[0];
@@ -42,9 +43,9 @@ const findUserById = async (id) => {
       created_at,
       updated_at
     FROM users
-    WHERE id = $1
+    WHERE id = $1 AND status = $2
   `;
-  const values = [id];
+  const values = [id, userStatuses.ACTIVE];
 
   const res = await query(sql, values);
   return res.rows[0];
@@ -67,21 +68,21 @@ const getUsers = async () => {
       created_at,
       updated_at
     FROM users
-    WHERE role IN ('ADMIN', 'SUPER_ADMIN')
+    WHERE role IN ('ADMIN', 'SUPER_ADMIN') AND status = $1
   `;
 
-  const res = await query(sql);
+  const res = await query(sql, [userStatuses.ACTIVE]);
   return res.rows;
 };
 
 const findUserByResetToken = async (token, client) => {
-  const values = [token];
+  const values = [token, userStatuses.ACTIVE];
   const sql = `
   SELECT
     id,
     reset_password_expiry
   FROM users
-    WHERE reset_password_token = $1
+    WHERE reset_password_token = $1 AND status = $2
   `;
 
   const res = await query(sql, values, client);
