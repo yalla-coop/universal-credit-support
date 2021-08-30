@@ -18,7 +18,7 @@ const initState = {
     fileType: '',
     fileCategory: '',
     size: 0,
-    new: false,
+    isNew: false,
     uploadedToS3: false,
   },
 };
@@ -53,7 +53,7 @@ const ImageUpload = ({
       setError(_error.message);
       return false;
     } else {
-      updatedFile = { ...data, new: true };
+      updatedFile = { ...data, isNew: true };
       setFileInfo(updatedFile);
       setError(null);
       return data.url;
@@ -110,7 +110,7 @@ const ImageUpload = ({
   const uploadFile = async (options) => {
     const { onSuccess, onError, file, onProgress } = options;
     // check if signed URL is present
-    if (fileInfo.url && fileInfo.new) {
+    if (fileInfo.url && fileInfo.isNew) {
       //  add custom progress to axios
       const config = {
         onUploadProgress: (event) => {
@@ -164,7 +164,21 @@ const ImageUpload = ({
 
   return (
     <S.Wrapper error={error}>
-      <Dragger {...props}>
+      <Dragger
+        {...props}
+        defaultFileList={[
+          {
+            id: fileInfo.fileName,
+            name: fileInfo?.fileName,
+            status: 'done',
+            url: fileInfo.url,
+          },
+        ]}
+        showUploadList={{
+          showRemoveIcon: false,
+          showDownloadIcon: false,
+        }}
+      >
         <S.UploadDetails>
           <Icon icon="upload" />
           <T.P mt="2" ta="center" color="neutralMain" weight="bold">

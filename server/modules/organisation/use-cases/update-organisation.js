@@ -40,28 +40,31 @@ const updateOrganisation = async ({
         size,
         fileType,
         fileCategory,
+        uploadedToS3,
+        isNew,
       } = logoFile;
 
-      const { newKey } = await moveFile({
-        bucket,
-        key,
-      });
-
-      createdMedia = await Media.createMedia(
-        {
-          fileName: name,
-          fileType,
-          size,
-          key: newKey,
+      if (uploadedToS3 && isNew) {
+        const { newKey } = await moveFile({
           bucket,
-          bucketRegion,
-          createdBy: userId,
-          fileCategory,
-        },
-        client,
-      );
-    }
+          key,
+        });
 
+        createdMedia = await Media.createMedia(
+          {
+            fileName: name,
+            fileType,
+            size,
+            key: newKey,
+            bucket,
+            bucketRegion,
+            createdBy: userId,
+            fileCategory,
+          },
+          client,
+        );
+      }
+    }
     const orgBeforeUpdate = await Organisation.updateOrganisation(
       {
         id,

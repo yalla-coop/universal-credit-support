@@ -8,7 +8,8 @@ const findOrganisation = async (id) => {
     o.unique_slug,
     o.colors,
     m.bucket,
-    m.key
+    m.key,
+    m.file_name
     FROM organisations AS o
     LEFT JOIN media AS m ON (m.id = o.logo_id)
     WHERE o.id = $1

@@ -13,7 +13,7 @@ const getOrganisation = async ({ id, userOrganisationId, withUserDetails }) => {
   const organisation = await Organisation.findOrganisation(id);
 
   if (organisation && organisation.key && organisation.bucket) {
-    organisation.logUrl = await getMediaUrlService({
+    organisation.logoUrl = await getMediaUrlService({
       key: organisation.key,
       bucket: organisation.bucket,
     });

@@ -4,7 +4,7 @@ import { useAuth } from './auth';
 
 const initialUserState = {
   id: null,
-  logUrl: '',
+  logoUrl: '',
   uniqueSlug: '',
 };
 

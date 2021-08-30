@@ -33,6 +33,7 @@ const initialState = {
   logoFile: {},
   logoUploading: false,
   isModalVisible: false,
+  loaded: false,
 };
 
 function reducer(state, newState) {
@@ -60,6 +61,7 @@ const Customise = () => {
     logoFile,
     logoUploading,
     isModalVisible,
+    loaded,
   } = state;
 
   const isMobile = useMediaQuery({
@@ -73,12 +75,17 @@ const Customise = () => {
       });
 
       if (!error) {
-        // TODO: update file name too
         const { colors } = data;
         setState({
+          logoFile: {
+            key: data.key,
+            fileName: data.fileName,
+            url: data.logoUrl,
+          },
           mainColor: colors.main,
           secondaryColor: colors.secondary,
           neutralColor: colors.neutral,
+          loaded: true,
         });
       } else {
         setState(error.message);
@@ -88,6 +95,7 @@ const Customise = () => {
     getOrgInfo();
   }, [user.organisationId]);
 
+  console.log(`state`, state);
   useEffect(() => {
     if (submitAttempt.current) {
       validateForm();
@@ -167,18 +175,20 @@ const Customise = () => {
 
       <Row>
         <Col w={[4, 6, 4]} mt={7}>
-          <I.ImageUpload
-            uploading={logoUploading}
-            setUploading={(bool) => setState({ logoUploading: bool })}
-            fileInfo={logoFile}
-            setFileInfo={(e) => setState({ logoFile: e })}
-            error={validationErrs.logoFile}
-            setError={(e) =>
-              setState(({ validationErrs }) => ({
-                validationErrs: { ...validationErrs, logoFile: e },
-              }))
-            }
-          />
+          {loaded && (
+            <I.ImageUpload
+              uploading={logoUploading}
+              setUploading={(bool) => setState({ logoUploading: bool })}
+              fileInfo={logoFile}
+              setFileInfo={(e) => setState({ logoFile: e })}
+              error={validationErrs.logoFile}
+              setError={(e) =>
+                setState(({ validationErrs }) => ({
+                  validationErrs: { ...validationErrs, logoFile: e },
+                }))
+              }
+            />
+          )}
         </Col>
       </Row>
 

@@ -22,7 +22,7 @@ export const DesktopNav = () => {
   return (
     <S.DesktopContainer>
       <S.LogoLink to={ADMIN.DASHBOARD}>
-        {org?.logUrl && <S.LogoImg src={org.logUrl} alt="logo" />}
+        {org?.logoUrl && <S.LogoImg src={org.logoUrl} alt="logo" />}
       </S.LogoLink>
       <NavItems />
     </S.DesktopContainer>
@@ -61,7 +61,7 @@ export const MobileNav = () => {
         />
         <div style={{ marginTop: -24 }}>
           <S.LogoLink to={GENERAL.HOME}>
-            {org?.logUrl && <S.LogoImg src={org.logUrl} alt="logo" />}
+            {org?.logoUrl && <S.LogoImg src={org.logoUrl} alt="logo" />}
           </S.LogoLink>
           <NavItems setOpen={setOpen} />
         </div>
