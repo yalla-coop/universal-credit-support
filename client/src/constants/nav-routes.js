@@ -10,6 +10,7 @@ const GENERAL = {
 const admin = '/admin';
 
 const ADMIN = {
+  BASE: `${admin}`,
   EDIT_DETAILS: `${admin}/edit-details`,
   CUSTOMISE: `${admin}/customise`,
   CREATE_UNIQUE_LINK: `${admin}/create-unique-link`,

@@ -3,12 +3,16 @@ import { query } from '../../../database';
 const findOrganisation = async (id) => {
   const sql = `
     SELECT
-    id,
-    organisation_name,
-    unique_slug,
-    colors
-    FROM organisations
-    WHERE id = $1
+    o.id,
+    o.organisation_name,
+    o.unique_slug,
+    o.colors,
+    m.bucket,
+    m.key,
+    m.file_name
+    FROM organisations AS o
+    LEFT JOIN media AS m ON (m.id = o.logo_id)
+    WHERE o.id = $1
     `;
   const values = [id];
 

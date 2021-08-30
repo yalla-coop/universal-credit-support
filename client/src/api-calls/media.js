@@ -32,7 +32,7 @@ const uploadToS3 = async ({ signedURL, file, options } = {}) => {
       },
     } = await axios.put(signedURL, file, options);
 
-    return { data: { size, name, fileType: type, new: true } };
+    return { data: { size, name, fileType: type, isNew: true } };
   } catch (error) {
     handleError(error, options);
     return {

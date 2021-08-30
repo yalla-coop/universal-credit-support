@@ -4,11 +4,9 @@ import NavRoutes from './NavRoutes';
 
 import * as S from './style';
 import Icon from '../Icon';
-import { GENERAL } from '../../constants/nav-routes';
+import { ADMIN, GENERAL } from '../../constants/nav-routes';
 
-// import { ReactComponent as MobileLogo } from '../assets/MobileLogo.svg';
-// import { ReactComponent as DesktopLogo } from '../assets/DesktopLogo.svg';
-import YallaLogo from '../assets/YallaLogo.png';
+import { useAdminOrg } from '../../context/admin-org';
 
 const NavItems = ({ setOpen, ...props }) => {
   return (
@@ -18,18 +16,23 @@ const NavItems = ({ setOpen, ...props }) => {
   );
 };
 
-export const DesktopNav = () => (
-  <S.DesktopContainer>
-    <S.LogoLink to={GENERAL.HOME}>
-      {/* <DesktopLogo /> */}
-      <img src={YallaLogo} alt="logo" />
-    </S.LogoLink>
-    <NavItems />
-  </S.DesktopContainer>
-);
+export const DesktopNav = () => {
+  const { org } = useAdminOrg();
+
+  return (
+    <S.DesktopContainer>
+      <S.LogoLink to={ADMIN.DASHBOARD}>
+        {org?.logoUrl && <S.LogoImg src={org.logoUrl} alt="logo" />}
+      </S.LogoLink>
+      <NavItems />
+    </S.DesktopContainer>
+  );
+};
 
 export const MobileNav = () => {
   const [open, setOpen] = useState(false);
+  const { org } = useAdminOrg();
+
   return (
     <S.MobileContainer>
       <Icon icon="menu" width={33} height={33} onClick={() => setOpen(true)} />
@@ -58,7 +61,7 @@ export const MobileNav = () => {
         />
         <div style={{ marginTop: -24 }}>
           <S.LogoLink to={GENERAL.HOME}>
-            <img src={YallaLogo} alt="logo" />
+            {org?.logoUrl && <S.LogoImg src={org.logoUrl} alt="logo" />}
           </S.LogoLink>
           <NavItems setOpen={setOpen} />
         </div>

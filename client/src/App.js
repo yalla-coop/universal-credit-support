@@ -1,6 +1,10 @@
 import { ThemeProvider } from '@emotion/react';
 import { Global } from '@emotion/react';
-import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route as RouterRoute,
+} from 'react-router-dom';
 import theme, { globalStyle } from './theme';
 import { Route } from './components';
 import * as Pages from './pages';
@@ -13,7 +17,6 @@ import { AuthProvider } from './context/auth';
 // import CookieBot from 'react-cookiebot';
 
 import 'antd/dist/antd.css';
-import userRoles from './constants/roles';
 
 // const domainGroupId = process.env.REACT_APP_COOKIEBOT_DOMAIN_ID;
 
@@ -28,92 +31,6 @@ function App() {
               <Router basename={process.env.PUBLIC_URL}>
                 <ScrollToTop />
                 <Switch>
-                  <Route
-                    exact
-                    path={navRoutes.ADMIN.CREATE_UNIQUE_LINK}
-                    Component={Pages.CreateUniqueLink}
-                    layout="splitScreen"
-                    gradient="secondary"
-                    isPrivate
-                    allowedRoles={[userRoles.ADMIN, userRoles.SUPER_ADMIN]}
-                  />
-                  <Route
-                    exact
-                    path={navRoutes.ADMIN.CREATE_UNIQUE_LINK_SUCCESS}
-                    Component={Pages.CreateUniqueLink}
-                    layout="splitScreen"
-                    gradient="secondary"
-                    success
-                    isPrivate
-                    allowedRoles={[userRoles.ADMIN, userRoles.SUPER_ADMIN]}
-                  />
-
-                  <Route
-                    exact
-                    path={navRoutes.SUPER_ADMIN.MANAGE_STEPS}
-                    Component={Pages.ManageSteps}
-                    layout="dashboard"
-                    gradient="secondary"
-                    success
-                    isPrivate
-                    allowedRoles={[userRoles.SUPER_ADMIN]}
-                  />
-
-                  <Route
-                    exact
-                    path={navRoutes.SUPER_ADMIN.EDIT_STEP}
-                    Component={Pages.StepForm}
-                    layout="dashboard"
-                    edit
-                    isPrivate
-                    allowedRoles={[userRoles.SUPER_ADMIN]}
-                  />
-
-                  <Route
-                    exact
-                    path={navRoutes.SUPER_ADMIN.CHANGES}
-                    Component={Pages.Changes}
-                    layout="dashboard"
-                    edit
-                    isPrivate
-                    allowedRoles={[userRoles.SUPER_ADMIN]}
-                  />
-
-                  <Route
-                    exact
-                    path={navRoutes.ADMIN.DASHBOARD}
-                    Component={Pages.Dashboard}
-                    layout="dashboard"
-                    showMobileMenu
-                    isPrivate
-                    allowedRoles={[userRoles.SUPER_ADMIN, userRoles.ADMIN]}
-                  />
-
-                  <Route
-                    exact
-                    path={navRoutes.SUPER_ADMIN.EDIT_CONTENT}
-                    Component={Pages.EditContent}
-                    layout="dashboard"
-                    showMobileMenu
-                    isPrivate
-                    allowedRoles={[userRoles.SUPER_ADMIN]}
-                  />
-                  <Route
-                    exact
-                    path={navRoutes.SUPER_ADMIN.EDIT_LANDING_PAGE}
-                    Component={Pages.EditLandingPage}
-                    layout="dashboard"
-                    showMobileMenu
-                    isPrivate
-                    allowedRoles={[userRoles.SUPER_ADMIN]}
-                  />
-                  <Route
-                    exact
-                    path={navRoutes.SUPER_ADMIN.ORGANISATIONS}
-                    Component={Pages.Organisations}
-                    layout="dashboard"
-                    showMobileMenu
-                  />
                   <Route
                     exact
                     path={navRoutes.ADMIN.LOGIN}
@@ -133,57 +50,10 @@ function App() {
                     publicOnly
                   />
 
-                  <Route
-                    exact
-                    path={navRoutes.ADMIN.CREATE_ORG_DETAILS_FIRST_STEP}
-                    Component={Pages.CreateOrganisationDetails}
-                    layout="splitScreen"
-                    side="left"
-                    gradient="secondary"
-                    isPrivate
-                    allowedRoles={[userRoles.ADMIN, userRoles.SUPER_ADMIN]}
-                  />
-
-                  <Route
-                    exact
-                    path={navRoutes.ADMIN.CREATE_ORG_DETAILS_SECOND_STEP}
-                    Component={Pages.CreateOrganisationDetails2}
-                    layout="splitScreen"
-                    side="left"
-                    gradient="secondary"
-                    isPrivate
-                    allowedRoles={[userRoles.ADMIN, userRoles.SUPER_ADMIN]}
-                  />
-
-                  <Route
-                    exact
-                    path={navRoutes.ADMIN.EDIT_DETAILS}
-                    Component={Pages.EditDetails}
-                    layout="dashboard"
-                    showMobileMenu
-                    isPrivate
-                    allowedRoles={[userRoles.ADMIN, userRoles.SUPER_ADMIN]}
-                  />
-
-                  <Route
-                    exact
-                    path={navRoutes.ADMIN.CUSTOMISE}
-                    Component={Pages.Customise}
-                    layout="dashboard"
-                    showMobileMenu
-                    isPrivate
-                    allowedRoles={[userRoles.ADMIN, userRoles.SUPER_ADMIN]}
-                  />
-
-                  <Route
-                    exact
-                    // Have sub routes
-                    path={navRoutes.ADMIN.WELCOME}
-                    Component={Pages.Welcome}
-                    layout="splitScreen"
-                    side="left"
-                    gradient="secondary"
-                  />
+                  {/* ALL ADMIN PAGES */}
+                  <RouterRoute path={navRoutes.ADMIN.BASE}>
+                    <Pages.Admin />
+                  </RouterRoute>
 
                   <Route
                     exact
