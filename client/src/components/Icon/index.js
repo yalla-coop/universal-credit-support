@@ -23,6 +23,7 @@ import CircleArrow from './icons/CircleArrow';
 import Bulb from './icons/Bulb';
 import BulletArrow from './icons/BulletArrow';
 import Compass from './icons/Compass';
+import Upload from './icons/Upload';
 
 export const IconMap = {
   goBack: GoBack,
@@ -43,10 +44,19 @@ export const IconMap = {
   bulb: Bulb,
   bulletArrow: BulletArrow,
   compass: Compass,
+  upload: Upload,
 };
 
+const Parent = styled.div`
+  ${setMargin}
+  display: flex;
+  align-items: center;
+  justify-content: ${({ jc }) => jc || 'flex-start'};
+  cursor: ${({ pointer }) => (pointer ? 'pointer' : 'auto')};
+`;
+
 const Icon = (props) => {
-  const { icon, color, text, jc, weight = 'bold' } = props;
+  const { icon, color, text, weight = 'bold' } = props;
 
   if (!IconMap[icon]) {
     // eslint-disable-next-line no-console
@@ -56,15 +66,8 @@ const Icon = (props) => {
 
   const StyledIcon = IconMap[icon];
 
-  const Parent = styled.div`
-    ${setMargin}
-    display: flex;
-    align-items: center;
-    justify-content: ${jc || 'flex-start'};
-  `;
-
   return (
-    <Parent {...props}>
+    <Parent {...props} onClick={undefined} pointer={props.onClick}>
       <StyledIcon
         {...props}
         color={theme.colors[color] || color || 'currentColor'}

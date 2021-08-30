@@ -1,6 +1,7 @@
 import { string, number, boolean, array, object } from 'yup';
 import * as errMsgs from './err-msgs';
 import './custom-functions';
+import { whereDoYouNeedToGoTypes } from '../constants/data-types';
 
 const URLregex = /^((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#.-]+)*\/?(\?[a-zA-Z0-9-_.-]+=[a-zA-Z0-9-%?&=.-]+&?)?$/;
 const hexRegex = /^#(?:[0-9a-fA-F]{3}){1,2}$/;
@@ -8,6 +9,11 @@ const URLSlugRegex = /^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$/;
 
 export const requiredText = string()
   .typeError(errMsgs.DEFAULT_REQUIRED)
+  .required(errMsgs.DEFAULT_REQUIRED);
+
+export const organisationName = string()
+  .min(3, errMsgs.DEFAULT_REQUIRED)
+  .max(40)
   .required(errMsgs.DEFAULT_REQUIRED);
 
 export const firstName = string()
@@ -68,6 +74,11 @@ export const urlRequired = string()
   })
   .required(errMsgs.DEFAULT_REQUIRED);
 
+export const urlOptional = string().matches(URLregex, {
+  message: errMsgs.INVALID_LINK,
+  excludeEmptyString: true,
+});
+
 export const urlSlug = string()
   .required(errMsgs.DEFAULT_REQUIRED)
   .matches(URLSlugRegex, {
@@ -86,7 +97,7 @@ export const title = string()
   .max(50)
   .required(errMsgs.DEFAULT_REQUIRED);
 
-export const categories = array().of(string().nullable()).nullable();
+export const optionalArrayOfOptionalString = array().of(requiredText);
 
 export const libraryContent = boolean()
   .oneOf([true, false])
@@ -110,7 +121,7 @@ export const inviteToken = string()
 export const content = array().of(
   object().shape({
     title,
-    categories,
+    categories: optionalArrayOfOptionalString,
     libraryContent,
     instructions,
   })
@@ -186,6 +197,33 @@ export const optionalRate = number().when('noDemos', {
   otherwise: numberField,
 });
 
+export const textMax300Required = string()
+  .min(4, errMsgs.TOO_SHORT_MIN_4)
+  .max(300, errMsgs.TOO_LONG_MAX_300)
+  .required(errMsgs.DEFAULT_REQUIRED);
+
+// step form
+
+export const linkOrPhone = string().when('type', {
+  is: whereDoYouNeedToGoTypes.PHONE,
+  then: optionalPhoneNumber,
+  otherwise: urlOptional,
+});
+
+export const whereDoYouNeedToGo = object().shape({
+  type: optionalText,
+  link: linkOrPhone,
+  title: optionalText,
+});
+
+export const thingsContent = array().of(
+  object().shape({
+    title: requiredText,
+    description: optionalText,
+    thisCanInclude: array().of(string().nullable()).nullable(),
+    tips: array().of(string().nullable()).nullable(),
+  })
+);
 export const contactLinks = array()
   .of(
     object().shape({
@@ -219,3 +257,7 @@ export const hexColorOptional = string().when((value, schema) => {
   }
   return schema.nullable();
 });
+
+export const hexColor = string()
+  .matches(hexRegex, { message: errMsgs.INVALID_COLOR })
+  .required(errMsgs.DEFAULT_REQUIRED);

@@ -1,4 +1,5 @@
 import Boom from '@hapi/boom';
+
 import { v4 as uuid } from 'uuid';
 
 import {
@@ -20,7 +21,7 @@ const getSignedURL = async ({
   fileMaxSize,
 }) => {
   // store file first in temp folder
-  const key = `${temp}${userId}/${fileType}-${uuid()}-${fileName}`;
+  const key = `${temp}${userId}/${fileCategory}/${uuid()}${fileName}`;
 
   const sizeInMb = fileSize > 0 && fileSize / 1024 / 1024;
 

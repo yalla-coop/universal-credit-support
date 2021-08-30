@@ -1,23 +1,38 @@
 import { updateOrganisation as updateOrganisationUseCase } from '../use-cases';
 
 const updateOrganisation = async (req, res, next) => {
-  // const { id: userId } = req.user;
-  const { id } = req.params;
-  const {
-    uniqueSlug,
-    contactLinks,
-    benefitCalculatorLink,
-    benefitCalculatorLabel,
-    colors,
-  } = req.body;
   try {
-    const results = await updateOrganisationUseCase({
-      id,
+    const { id: userId, organisationId: userOrganisationId } = req.user;
+    const { id } = req.params;
+    const { withUserDetails } = req.query;
+    const {
+      organisationName,
       uniqueSlug,
       contactLinks,
       benefitCalculatorLink,
       benefitCalculatorLabel,
       colors,
+      logoFile,
+      firstName,
+      lastName,
+      email,
+    } = req.body;
+
+    const results = await updateOrganisationUseCase({
+      id,
+      userId,
+      organisationName,
+      uniqueSlug,
+      contactLinks,
+      benefitCalculatorLink,
+      benefitCalculatorLabel,
+      colors,
+      logoFile,
+      userOrganisationId,
+      firstName,
+      lastName,
+      email,
+      withUserDetails: JSON.parse(withUserDetails || null),
     });
 
     res.json(results);

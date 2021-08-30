@@ -13,6 +13,7 @@ import {
 import * as S from './style';
 import validate from '../../validation/schemas/login';
 import { Users } from '../../api-calls';
+import { useAuth } from '../../context/auth';
 
 import { navRoutes as R } from '../../constants';
 const { Row, Col } = Grid;
@@ -35,6 +36,7 @@ const Login = () => {
   const [state, setState] = useReducer(reducer, initialState);
   const { email, password, loading, validationErrs, httpError } = state;
   const history = useHistory();
+  const { setUser } = useAuth();
 
   const isMobile = useMediaQuery({
     query: `(max-width: ${breakpoints.mobile})`,
@@ -66,12 +68,13 @@ const Login = () => {
   const handleLogin = async () => {
     setState({ loading: true });
 
-    const { error } = await Users.login({
+    const { error, data } = await Users.login({
       email: cleanEmail(email),
       password,
     });
 
     setState({ loading: false });
+
     if (error) {
       if (error.statusCode === 409) {
         setState({ validationErrs: { email: error.message } });
@@ -79,8 +82,12 @@ const Login = () => {
         setState({ httpError: error.message });
       }
     } else {
-      // after that the user should be directed to its dashboard
-      history.push(R.ADMIN.HOME);
+      setUser(data);
+      if (data.hasOrganisation) {
+        history.push(R.ADMIN.DASHBOARD);
+      } else {
+        history.push(R.ADMIN.CREATE_ORG_DETAILS_FIRST_STEP);
+      }
     }
   };
 

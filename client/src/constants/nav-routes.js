@@ -1,6 +1,7 @@
 const GENERAL = {
   HOME: '/',
-  LOGIN: '/login',
+  HOME_ORG: '/:org/home',
+  ORG: '/:org',
   UNAUTHORIZED: '/unauthorized',
   FORGET_PASSWORD: '/forget-password',
   RESET_PASSWORD: '/reset-password/:token',
@@ -9,27 +10,35 @@ const GENERAL = {
 const admin = '/admin';
 
 const ADMIN = {
-  HOME: `${admin}/home`,
   EDIT_DETAILS: `${admin}/edit-details`,
-  CUSTOMISE_LOG_OUT: `${admin}/customise-log-out`,
+  CUSTOMISE: `${admin}/customise`,
   CREATE_UNIQUE_LINK: `${admin}/create-unique-link`,
   CREATE_UNIQUE_LINK_SUCCESS: `${admin}/create-unique-link/success`,
   SIGNUP: `${admin}/signup`,
   LOGIN: `${admin}/login`,
+  PREVIEW_STEP: `${admin}/preview-step`,
+  DELETE_STEP: `${admin}/delete-step`,
   WELCOME: `${admin}/welcome`, // only to use for the sub router
   WELCOME1: `${admin}/welcome/1`,
   WELCOME2: `${admin}/welcome/2`,
   DASHBOARD: `${admin}/dashboard`,
+  MANAGE_STEPS: `${admin}/edit-steps`,
   CREATE_ORG_DETAILS_FIRST_STEP: `${admin}/set-organisation/1`,
   CREATE_ORG_DETAILS_SECOND_STEP: `${admin}/set-organisation/2`,
+  LOG_OUT: '/log-out',
 };
 
 const SUPER_ADMIN = {
+  DASHBOARD: `${admin}/dashboard`,
+  EDIT_STEP: `${admin}/edit-step/:id`,
   HOME: `${admin}/home`,
   EDIT_CONTENT: `${admin}/edit-content`,
+  EDIT_LANDING_PAGE: `${admin}/edit-landing-page`,
   EDIT_DETAILS: `${admin}/edit-details`,
   ORGANISATIONS: `${admin}/organisations`,
-  CUSTOMISE_LOG_OUT: `${admin}/customise-log-out`,
+  CUSTOMISE: `${admin}/customise`,
+  MANAGE_STEPS: `${admin}/manage-steps`,
+  CHANGES: `${admin}/changes`,
 };
 
 const EXTERNAL = {
@@ -53,6 +62,7 @@ const EXTERNAL = {
 
 const STEPS = {
   STEP: '/steps/:id',
+  STEP_ORG: '/:org/steps/:id',
 };
 
 export { GENERAL, EXTERNAL, STEPS, ADMIN, SUPER_ADMIN };

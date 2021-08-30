@@ -18,6 +18,7 @@ const TextWithIcon = ({
   handleClick,
   weight,
   disabled,
+  m,
   mr,
   isText,
   ...props
@@ -25,6 +26,7 @@ const TextWithIcon = ({
   if (isButton)
     return (
       <S.Button
+        {...m}
         {...props}
         onClick={handleClick}
         disabled={disabled}
@@ -61,7 +63,7 @@ const TextWithIcon = ({
     );
 
   return (
-    <S.Wrapper {...props}>
+    <S.Wrapper {...props} {...m}>
       {icon && <Icon icon={icon} color={iconColor} mr="11.5px" />}
       <T.Link
         to={to}

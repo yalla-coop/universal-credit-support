@@ -1,3 +1,3 @@
-import getAuditLog from './get-audit-log';
+import getAuditLogs from './get-audit-logs';
 
-export { getAuditLog };
+export { getAuditLogs };

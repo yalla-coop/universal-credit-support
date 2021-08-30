@@ -1,41 +1,54 @@
-// import { query } from '../../../database';
+import { query } from '../../../database';
 
-// const createMedia = async (
-//   { fileName, fileType, size, key, bucket, bucketRegion, createdBy },
-//   client,
-// ) => {
-//   const values = [
-//     fileName,
-//     fileType,
-//     size,
-//     key,
-//     bucket,
-//     bucketRegion,
-//     createdBy,
-//   ];
-//   const sql = `
-//     INSERT INTO media(
-//       file_name,
-//       file_type,
-//       size,
-//       key,
-//       bucket,
-//       bucket_region,
-//       created_by
-//     )
-//       VALUES (
-//         $1,
-//         $2,
-//         $3,
-//         $4,
-//         $5,
-//         $6,
-//         $7
-//       ) RETURNING id
-//   `;
-//   const res = await query(sql, values, client);
+const createMedia = async (
+  {
+    fileName,
+    fileType,
+    size,
+    key,
+    bucket,
+    bucketRegion,
+    fileCategory,
+    createdBy,
+  },
+  client,
+) => {
+  const values = [
+    fileName,
+    fileType,
+    size,
+    key,
+    bucket,
+    bucketRegion,
+    fileCategory,
+    createdBy,
+  ];
 
-//   return res.rows[0];
-// };
+  const sql = `
+    INSERT INTO media(
+      file_name,
+      file_type,
+      size,
+      key,
+      bucket,
+      bucket_region,
+      file_category,
+      created_by
+    )
+      VALUES (
+        $1,
+        $2,
+        $3,
+        $4,
+        $5,
+        $6,
+        $7,
+        $8
+      ) RETURNING id
+  `;
+  const res = await query(sql, values, client);
 
-// export { createMedia };
+  return res.rows[0];
+};
+
+export { createMedia };

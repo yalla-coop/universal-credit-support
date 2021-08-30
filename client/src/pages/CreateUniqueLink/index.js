@@ -7,6 +7,7 @@ import { Typography as T, Button, Inputs, Grid } from '../../components';
 import { createUniqueLink as validateCreateUniqueLink } from '../../validation/schemas';
 import { Organisations } from '../../api-calls';
 import Success from './Success';
+import { useAuth } from './../../context/auth';
 
 import * as S from './style';
 
@@ -19,7 +20,7 @@ function CreateUniqueLink({ success }) {
   const submitAttempt = useRef(false);
   const [errors, setErrors] = useState({});
   const history = useHistory();
-
+  const { user } = useAuth();
   const validate = (value = uniqueSlug) => {
     try {
       if (submitAttempt.current) {
@@ -52,7 +53,7 @@ function CreateUniqueLink({ success }) {
       });
       setLoading(true);
       const { error, data } = await Organisations.updateOrganisation({
-        id: 1,
+        id: user.organisationId,
         body: { uniqueSlug },
       });
       if (!error) {
@@ -75,7 +76,7 @@ function CreateUniqueLink({ success }) {
   useEffect(() => {
     const getOrgInfo = async () => {
       const { error, data } = await Organisations.getOrganisation({
-        id: 1,
+        id: user.organisationId,
       });
 
       if (!error) {
@@ -86,7 +87,7 @@ function CreateUniqueLink({ success }) {
     };
 
     getOrgInfo();
-  }, []);
+  }, [user.organisationId]);
 
   if (success) return <Success uniqueSlug={uniqueSlug} />;
   return (

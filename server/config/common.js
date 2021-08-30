@@ -11,11 +11,11 @@ const envVarsSchema = yup
       then: yup.string(),
       otherwise: yup.string().required(),
     }),
-    // SENTRY_DNS: yup.string().when('NODE_ENV', {
-    //   is: 'production',
-    //   then: yup.string().required(),
-    //   otherwise: yup.string(),
-    // }),
+    SENTRY_DNS: yup.string().when('NODE_ENV', {
+      is: 'production',
+      then: yup.string().required(),
+      otherwise: yup.string(),
+    }),
   })
   .required();
 
@@ -31,7 +31,7 @@ const config = () => {
   return {
     env: envVars.NODE_ENV,
     appUrl: envVars.APP_URL,
-    // sentryDNS: envVars.SENTRY_DNS,
+    sentryDNS: envVars.SENTRY_DNS,
   };
 };
 

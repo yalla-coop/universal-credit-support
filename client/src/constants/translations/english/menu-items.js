@@ -1,7 +1,10 @@
 export default {
-  HOME: 'home',
+  HOME: 'Home',
   EDIT_CONTENT: 'Edit content',
   EDIT_DETAILS: 'Edit Details',
-  ORGANISATIONS: 'Organisation',
-  CUSTOMISE_LOG_OUT: 'Customise log out',
+  ORGANISATIONS: 'Organisations',
+  CUSTOMISE: 'Customise',
+  CHANGES: 'Changes',
+  LOG_OUT: 'Log out',
+  LOG_IN: 'Log in',
 };

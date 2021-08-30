@@ -2,7 +2,7 @@ import * as User from '../use-cases';
 import { createToken } from '../../../helpers';
 
 const login = async (req, res, next) => {
-  const { sqreen } = req;
+  // const { sqreen } = req;
   const { email, password, reToken } = req.body;
 
   try {
@@ -15,10 +15,10 @@ const login = async (req, res, next) => {
     const { token, tokenName, options } = createToken({ id: user.id });
     res.cookie(tokenName, token, options);
 
-    sqreen.auth_track(true, user);
+    // sqreen.auth_track(true, user);
     res.json(user);
   } catch (error) {
-    sqreen.auth_track(false, { email });
+    // sqreen.auth_track(false, { email });
     next(error);
   }
 };

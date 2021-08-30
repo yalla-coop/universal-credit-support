@@ -29,7 +29,7 @@ function CreateUniqueLinkSuccess({ uniqueSlug }) {
             />
           </S.LinkWrapper>
           <Button
-            to={ADMIN.HOME}
+            to={ADMIN.DASHBOARD}
             label="Button"
             text="Return home"
             variant="primary"

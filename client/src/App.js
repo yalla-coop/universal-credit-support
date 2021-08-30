@@ -13,6 +13,7 @@ import { AuthProvider } from './context/auth';
 // import CookieBot from 'react-cookiebot';
 
 import 'antd/dist/antd.css';
+import userRoles from './constants/roles';
 
 // const domainGroupId = process.env.REACT_APP_COOKIEBOT_DOMAIN_ID;
 
@@ -29,25 +30,12 @@ function App() {
                 <Switch>
                   <Route
                     exact
-                    path={navRoutes.GENERAL.HOME}
-                    Component={Pages.Home}
-                    layout="general"
-                    showHelp
-                  />
-                  <Route
-                    exact
-                    path={navRoutes.STEPS.STEP}
-                    Component={Pages.Step}
-                    layout="step"
-                  />
-                  <Route
-                    exact
                     path={navRoutes.ADMIN.CREATE_UNIQUE_LINK}
                     Component={Pages.CreateUniqueLink}
                     layout="splitScreen"
                     gradient="secondary"
-                    // isPrivate
-                    // allowedRoles={[ADMIN]}
+                    isPrivate
+                    allowedRoles={[userRoles.ADMIN, userRoles.SUPER_ADMIN]}
                   />
                   <Route
                     exact
@@ -56,12 +44,73 @@ function App() {
                     layout="splitScreen"
                     gradient="secondary"
                     success
-                    // isPrivate
+                    isPrivate
+                    allowedRoles={[userRoles.ADMIN, userRoles.SUPER_ADMIN]}
                   />
+
+                  <Route
+                    exact
+                    path={navRoutes.SUPER_ADMIN.MANAGE_STEPS}
+                    Component={Pages.ManageSteps}
+                    layout="dashboard"
+                    gradient="secondary"
+                    success
+                    isPrivate
+                    allowedRoles={[userRoles.SUPER_ADMIN]}
+                  />
+
+                  <Route
+                    exact
+                    path={navRoutes.SUPER_ADMIN.EDIT_STEP}
+                    Component={Pages.StepForm}
+                    layout="dashboard"
+                    edit
+                    isPrivate
+                    allowedRoles={[userRoles.SUPER_ADMIN]}
+                  />
+
+                  <Route
+                    exact
+                    path={navRoutes.SUPER_ADMIN.CHANGES}
+                    Component={Pages.Changes}
+                    layout="dashboard"
+                    edit
+                    isPrivate
+                    allowedRoles={[userRoles.SUPER_ADMIN]}
+                  />
+
                   <Route
                     exact
                     path={navRoutes.ADMIN.DASHBOARD}
                     Component={Pages.Dashboard}
+                    layout="dashboard"
+                    showMobileMenu
+                    isPrivate
+                    allowedRoles={[userRoles.SUPER_ADMIN, userRoles.ADMIN]}
+                  />
+
+                  <Route
+                    exact
+                    path={navRoutes.SUPER_ADMIN.EDIT_CONTENT}
+                    Component={Pages.EditContent}
+                    layout="dashboard"
+                    showMobileMenu
+                    isPrivate
+                    allowedRoles={[userRoles.SUPER_ADMIN]}
+                  />
+                  <Route
+                    exact
+                    path={navRoutes.SUPER_ADMIN.EDIT_LANDING_PAGE}
+                    Component={Pages.EditLandingPage}
+                    layout="dashboard"
+                    showMobileMenu
+                    isPrivate
+                    allowedRoles={[userRoles.SUPER_ADMIN]}
+                  />
+                  <Route
+                    exact
+                    path={navRoutes.SUPER_ADMIN.ORGANISATIONS}
+                    Component={Pages.Organisations}
                     layout="dashboard"
                     showMobileMenu
                   />
@@ -72,7 +121,18 @@ function App() {
                     layout="splitScreen"
                     side="left"
                     gradient="secondary"
+                    publicOnly
                   />
+                  <Route
+                    exact
+                    path={navRoutes.ADMIN.SIGNUP}
+                    Component={Pages.Signup}
+                    layout="splitScreen"
+                    side="left"
+                    gradient="secondary"
+                    publicOnly
+                  />
+
                   <Route
                     exact
                     path={navRoutes.ADMIN.CREATE_ORG_DETAILS_FIRST_STEP}
@@ -80,7 +140,10 @@ function App() {
                     layout="splitScreen"
                     side="left"
                     gradient="secondary"
+                    isPrivate
+                    allowedRoles={[userRoles.ADMIN, userRoles.SUPER_ADMIN]}
                   />
+
                   <Route
                     exact
                     path={navRoutes.ADMIN.CREATE_ORG_DETAILS_SECOND_STEP}
@@ -88,7 +151,30 @@ function App() {
                     layout="splitScreen"
                     side="left"
                     gradient="secondary"
+                    isPrivate
+                    allowedRoles={[userRoles.ADMIN, userRoles.SUPER_ADMIN]}
                   />
+
+                  <Route
+                    exact
+                    path={navRoutes.ADMIN.EDIT_DETAILS}
+                    Component={Pages.EditDetails}
+                    layout="dashboard"
+                    showMobileMenu
+                    isPrivate
+                    allowedRoles={[userRoles.ADMIN, userRoles.SUPER_ADMIN]}
+                  />
+
+                  <Route
+                    exact
+                    path={navRoutes.ADMIN.CUSTOMISE}
+                    Component={Pages.Customise}
+                    layout="dashboard"
+                    showMobileMenu
+                    isPrivate
+                    allowedRoles={[userRoles.ADMIN, userRoles.SUPER_ADMIN]}
+                  />
+
                   <Route
                     exact
                     // Have sub routes
@@ -98,6 +184,32 @@ function App() {
                     side="left"
                     gradient="secondary"
                   />
+
+                  <Route
+                    exact
+                    path={navRoutes.GENERAL.HOME}
+                    Component={Pages.Home}
+                    layout="general"
+                  />
+                  <Route
+                    exact
+                    path={navRoutes.GENERAL.HOME_ORG}
+                    Component={Pages.Home}
+                    layout="general"
+                  />
+                  <Route
+                    exact
+                    path={navRoutes.STEPS.STEP}
+                    Component={Pages.Step}
+                    layout="step"
+                  />
+                  <Route
+                    exact
+                    path={navRoutes.STEPS.STEP_ORG}
+                    Component={Pages.Step}
+                    layout="step"
+                  />
+
                   <Route
                     exact
                     path={navRoutes.GENERAL.FORGET_PASSWORD}
@@ -113,6 +225,12 @@ function App() {
                     layout="splitScreen"
                     side="left"
                     gradient="secondary"
+                  />
+                  <Route
+                    exact
+                    path={navRoutes.GENERAL.ORG}
+                    Component={Pages.Home}
+                    layout="general"
                   />
                 </Switch>
               </Router>

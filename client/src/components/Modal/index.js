@@ -17,13 +17,17 @@ const Modal = ({
   title = 'Are you sure?',
   description,
   btnText = 'Confirm',
+  onCancel,
 }) => {
   const handleOk = (action) => {
-    parentFunc(action);
+    parentFunc && parentFunc(action);
     closeOnOK && setIsModalVisible(false);
   };
 
   const handleCancel = () => {
+    if (typeof onCancel === 'function') {
+      onCancel();
+    }
     setIsModalVisible(false);
   };
 

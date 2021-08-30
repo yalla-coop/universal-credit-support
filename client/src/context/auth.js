@@ -7,6 +7,8 @@ const initialUserState = {
   firstName: '',
   lastName: '',
   role: '',
+  backupEmail: '',
+  organisationId: null,
 };
 
 const AuthContext = createContext({
@@ -66,6 +68,7 @@ const AuthProvider = (props) => {
     const { error } = await Users.logout();
     if (!error) {
       _setUser({});
+      clearUserInfoIntoStorage();
     }
   };
 
