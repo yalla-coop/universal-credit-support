@@ -16,6 +16,7 @@ import { Organisations } from '../../../api-calls';
 
 import { navRoutes } from '../../../constants';
 import { useAuth } from '../../../context/auth';
+import { useAdminOrg } from '../../../context/admin-org';
 
 const { Tips } = Cards;
 
@@ -45,6 +46,7 @@ function reducer(state, newState) {
 
 const Customise = () => {
   const { user } = useAuth();
+  const { getAdminOrgInfo } = useAdminOrg();
   const submitAttempt = useRef(false);
 
   const [state, setState] = useReducer(reducer, initialState);
@@ -117,7 +119,7 @@ const Customise = () => {
     const { error } = await Organisations.updateOrganisation({
       id: user.organisationId,
       body: {
-        // logoFile,
+        logoFile,
         colors: {
           main: mainColor,
           secondary: secondaryColor,
@@ -140,6 +142,7 @@ const Customise = () => {
       }
     } else {
       setState({ isModalVisible: true });
+      getAdminOrgInfo();
     }
   };
 
