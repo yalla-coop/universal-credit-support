@@ -100,7 +100,14 @@ const Card = forwardRef(
                 Completed!
               </T.P>
             )}
-            <T.P isSmall color="neutralMain">
+            <T.P
+              isSmall
+              color="neutralMain"
+              style={{
+                width: '100%',
+              }}
+              ellipsis={{ rows: 3, expandable: true, symbol: ' ' }}
+            >
               {description}
             </T.P>
             <S.Circle
