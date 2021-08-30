@@ -78,7 +78,7 @@ export const Circle = styled.div`
   position: absolute;
   border-radius: 50%;
   border: ${({ theme, borderColor }) =>
-    `5px solid ${theme.colors[borderColor]}`};
+    `7px solid ${theme.colors[borderColor]}`};
   right: ${({ direction }) => (direction === 'right' ? '0' : null)};
   left: ${({ direction }) => (direction === 'left' ? '0' : null)};
   top: -18px;
