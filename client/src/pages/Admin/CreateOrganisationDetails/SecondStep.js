@@ -2,6 +2,7 @@ import { useReducer, useEffect, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import { breakpoints } from '../../../theme';
+import { useAdminOrg } from '../../../context/admin-org';
 
 import {
   Grid,
@@ -44,6 +45,8 @@ function reducer(state, newState) {
 
 const SecondStep = () => {
   const { user } = useAuth();
+  const { getAdminOrgInfo } = useAdminOrg();
+
   const submitAttempt = useRef(false);
 
   const [state, setState] = useReducer(reducer, initialState);
@@ -114,6 +117,7 @@ const SecondStep = () => {
     } else {
       // after that the user should be directed to its dashboard
       history.push(R.ADMIN.CREATE_UNIQUE_LINK);
+      getAdminOrgInfo();
     }
   };
 

@@ -49,6 +49,7 @@ export const Link = styled(RLink)`
 
 export const InnerContainer = styled.div`
   max-width: 700px;
+  padding-top: ${({ theme }) => theme.spacings[5]};
 `;
 
 export const SectionHeader = styled.div`

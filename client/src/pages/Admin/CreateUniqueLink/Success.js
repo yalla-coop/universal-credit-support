@@ -26,9 +26,9 @@ function CreateUniqueLinkSuccess({ uniqueSlug }) {
           <S.LinkWrapper>
             <TextWithIcon
               iconColor="primaryMain"
-              to={`${window.location.host}/${uniqueSlug}`}
+              to={`${window.location.origin}/${uniqueSlug}`}
               icon="open"
-              text={`${window.location.host}/${uniqueSlug}`}
+              text={`${window.location.origin}/${uniqueSlug}`}
               external
               underline
             />

@@ -29,9 +29,9 @@ const Dashboard = () => {
           <S.LinkWrapper>
             <TextWithIcon
               iconColor="primaryMain"
-              to={`${window.location.host}/${adminOrg.uniqueSlug}`}
+              to={`${window.location.origin}/${adminOrg.uniqueSlug}`}
               icon="open"
-              text={`${window.location.host}/${adminOrg.uniqueSlug}`}
+              text={`${window.location.origin}/${adminOrg.uniqueSlug}`}
               external
               underline
             />
