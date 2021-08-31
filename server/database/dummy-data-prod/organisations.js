@@ -2,7 +2,6 @@ import { query } from '../connect';
 import * as T from '../../constants';
 
 const createOrganisation = async ({
-  userId,
   organisationName,
   typeOfOrganisation,
   uniqueSlug,
@@ -13,7 +12,6 @@ const createOrganisation = async ({
   colors,
 }) => {
   const sql = `INSERT INTO organisations (
-    user_id,
     organisation_name,
     type_of_organisation,
     unique_slug,
@@ -30,11 +28,9 @@ const createOrganisation = async ({
     $5,
     $6,
     $7,
-    $8,
-    $9
+    $8
   ) RETURNING *`;
   const res = await query(sql, [
-    userId,
     organisationName,
     typeOfOrganisation,
     uniqueSlug,
@@ -47,12 +43,11 @@ const createOrganisation = async ({
   return res.rows[0];
 };
 
-const createOrganisations = async (data) => {
+const createOrganisations = async () => {
   const superAdminOrganisationData = {
-    userId: data.users.superAdmin.id,
     organisationName: 'Hyde',
     typeOfOrganisation: 'A',
-    uniqueSlug: '',
+    uniqueSlug: 'hyde',
     contactLinks: [
       {
         type: T.contactLinksTypes.PHONE,

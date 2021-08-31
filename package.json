@@ -48,7 +48,8 @@
     "serve-favicon": "^2.5.0",
     "uniqid": "^5.3.0",
     "uuid": "^8.3.2",
-    "yup": "^0.28.5"
+    "yup": "^0.28.5",
+    "cross-env": "^7.0.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
@@ -59,7 +60,6 @@
     "babel-loader": "8.1.0",
     "chai": "^4.3.4",
     "concurrently": "^6.2.1",
-    "cross-env": "^7.0.3",
     "dotenv": "^8.6.0",
     "eslint": "^7.11.0",
     "eslint-config-airbnb": "^18.1.0",
