@@ -207,7 +207,7 @@ const Home = () => {
             />
           );
         })}
-      <HelpButton uniqueSlug={org} />
+      <HelpButton />
     </>
   );
 };

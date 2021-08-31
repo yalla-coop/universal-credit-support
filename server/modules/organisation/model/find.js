@@ -42,28 +42,22 @@ const findOrganisationWithUser = async (id) => {
   return res.rows[0];
 };
 
-const findHelpDetails = async (uniqueSlug) => {
+const findOrganisationForPublicBySlug = async (uniqueSlug) => {
   const sql = `
     SELECT
-      id,
-      contact_links
-    FROM organisations
-    WHERE unique_slug = $1
-  `;
-  const values = [uniqueSlug];
-
-  const res = await query(sql, values);
-  return res.rows[0];
-};
-
-const findBenefitCalculator = async (uniqueSlug) => {
-  const sql = `
-    SELECT
-      id,
-      benefit_calculator_link,
-      benefit_calculator_label
-    FROM organisations
-    WHERE unique_slug = $1
+      o.id,
+      o.contact_links,
+      o.benefit_calculator_link,
+      o.benefit_calculator_label,
+      o.organisation_name,
+      o.unique_slug,
+      o.colors,
+      m.bucket,
+      m.key,
+      m.file_name
+    FROM organisations AS o
+    LEFT JOIN media AS m ON (m.id = o.logo_id)
+    WHERE o.unique_slug = $1
   `;
   const values = [uniqueSlug];
 
@@ -87,8 +81,7 @@ const findOrganisationBySlug = async (slug, client) => {
 
 export {
   findOrganisation,
-  findHelpDetails,
-  findBenefitCalculator,
   findOrganisationBySlug,
   findOrganisationWithUser,
+  findOrganisationForPublicBySlug,
 };

@@ -329,7 +329,7 @@ const EditDetails = () => {
       <Row mb={2}>
         <Col w={[4, 6, 4]}>
           <T.H3>
-            {window.location.host}/{uniqueSlug}
+            {window.location.origin}/{uniqueSlug}
           </T.H3>
         </Col>
       </Row>

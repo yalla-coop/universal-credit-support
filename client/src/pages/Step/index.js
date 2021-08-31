@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { useMediaQuery } from 'react-responsive';
+import { useState } from 'react';
+import { useParams, useHistory } from 'react-router-dom';
+
 import {
   TextWithIcon,
   Icon,
@@ -9,39 +9,29 @@ import {
   Grid,
   HelpButton,
   Cards,
+  OrganisationLogo,
 } from '../../components';
 import { useSteps } from '../../context/steps';
 import { useLang } from '../../context/lang';
 import { t } from '../../helpers';
 import { navRoutes as n, types } from '../../constants';
-import { ReactComponent as MobileLogo } from '../../components/assets/MobileLogo.svg';
-import { ReactComponent as DesktopLogo } from '../../components/assets/DesktopLogo.svg';
-import { breakpoints } from '../../theme';
 
 import * as S from './style';
-import { GENERAL } from '../../constants/nav-routes';
-import B from '../../constants/benefit-calculator';
 
-import { Organisations } from '../../api-calls';
+import { usePublicOrg } from '../../context/public-org';
 
 const { Row, Col } = Grid;
 const { Tips, Checklist } = Cards;
 
 const Step = () => {
   const [stuck, setStuck] = useState(false);
-  const [benefitCalculator, setBenefitCalculator] = useState({
-    benefitCalculatorLink: B.BENEFIT_CALCULATOR_LINK,
-    benefitCalculatorLabel: B.BENEFIT_CALCULATOR_LABEL,
-  });
+  const { publicOrg } = usePublicOrg();
   const params = useParams();
   const { lang } = useLang();
+  const history = useHistory();
   const { steps: fullSteps, checkUncheckItem, markAsComplete } = useSteps();
 
   const step = fullSteps.find((s) => s.id === Number(params.id));
-
-  const isTablet = useMediaQuery({
-    query: `(max-width: ${breakpoints.tablet})`,
-  });
 
   const formatLink = (link, type) => {
     if (type === types.linkTypes.PHONE) {
@@ -55,33 +45,16 @@ const Step = () => {
     return foundItem?.isChecked;
   };
 
-  useEffect(() => {
-    // get benefit calculator
-    async function fetchData() {
-      const { data, error } = await Organisations.getBenefitCalculator({
-        uniqueSlug: params.org,
-      });
-      if (error) {
-        console.error(error);
-      } else {
-        setBenefitCalculator(data);
-      }
-    }
-
-    if (params.org && step.id === 1) {
-      fetchData();
-    }
-  }, [params.org, step.id]);
-
   return (
     <S.Container>
       <Row mb="8" mbM="8">
         <Col w={[4, 12, 12]}>
           <S.PageHead>
-            <S.Link to={GENERAL.HOME}>
-              {isTablet ? <MobileLogo /> : <DesktopLogo />}
+            <S.Link onClick={() => history.goBack()}>
+              <OrganisationLogo logoUrl={publicOrg.logoUrl} />
             </S.Link>
-            <S.Link to={GENERAL.HOME}>
+
+            <S.Link onClick={() => history.goBack()}>
               <Icon icon="close" width={16} height={16} />
             </S.Link>
           </S.PageHead>
@@ -227,8 +200,8 @@ const Step = () => {
               <Col w={[4, 12, 6]}>
                 <Button
                   variant="primary"
-                  text={benefitCalculator.benefitCalculatorLabel}
-                  to={benefitCalculator.benefitCalculatorLink}
+                  text={publicOrg?.benefitCalculatorLabel}
+                  to={publicOrg?.benefitCalculatorLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   external
@@ -237,7 +210,6 @@ const Step = () => {
             </Row>
           </>
         )}
-
         {step.whereDoYouNeedToGo?.link && (
           <>
             <Row mb="5" mt="8" mtM="7">
@@ -304,11 +276,7 @@ const Step = () => {
           </Col>
         </Row>
       </S.InnerContainer>
-      <HelpButton
-        uniqueSlug={params.org}
-        parentState={stuck}
-        parentFunc={() => setStuck(false)}
-      />
+      <HelpButton parentState={stuck} parentFunc={() => setStuck(false)} />
     </S.Container>
   );
 };

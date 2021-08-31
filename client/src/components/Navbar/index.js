@@ -17,12 +17,12 @@ const NavItems = ({ setOpen, ...props }) => {
 };
 
 export const DesktopNav = () => {
-  const { org } = useAdminOrg();
+  const { adminOrg } = useAdminOrg();
 
   return (
     <S.DesktopContainer>
       <S.LogoLink to={ADMIN.DASHBOARD}>
-        {org?.logoUrl && <S.LogoImg src={org.logoUrl} alt="logo" />}
+        {adminOrg?.logoUrl && <S.LogoImg src={adminOrg.logoUrl} alt="logo" />}
       </S.LogoLink>
       <NavItems />
     </S.DesktopContainer>
@@ -31,7 +31,7 @@ export const DesktopNav = () => {
 
 export const MobileNav = () => {
   const [open, setOpen] = useState(false);
-  const { org } = useAdminOrg();
+  const { adminOrg } = useAdminOrg();
 
   return (
     <S.MobileContainer>
@@ -61,7 +61,9 @@ export const MobileNav = () => {
         />
         <div style={{ marginTop: -24 }}>
           <S.LogoLink to={GENERAL.HOME}>
-            {org?.logoUrl && <S.LogoImg src={org.logoUrl} alt="logo" />}
+            {adminOrg?.logoUrl && (
+              <S.LogoImg src={adminOrg.logoUrl} alt="logo" />
+            )}
           </S.LogoLink>
           <NavItems setOpen={setOpen} />
         </div>

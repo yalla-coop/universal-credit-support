@@ -1,13 +1,11 @@
 import createOrganisation from './create-organisation';
 import getOrganisation from './get-organisation';
 import updateOrganisation from './update-organisation';
-import getHelpDetails from './get-help-details';
-import getBenefitCalculator from './get-benefit-calculator';
+import getOrganisationByUniqueSlug from './get-organisation-by-unique-slug';
 
 export {
   createOrganisation,
   getOrganisation,
   updateOrganisation,
-  getHelpDetails,
-  getBenefitCalculator,
+  getOrganisationByUniqueSlug,
 };

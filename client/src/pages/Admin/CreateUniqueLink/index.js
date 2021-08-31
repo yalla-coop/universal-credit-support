@@ -104,13 +104,13 @@ function CreateUniqueLink({ success }) {
           </T.P>
           <T.P color="neutralDark" mb={6}>
             To change your unique link edit the text in the input field below.
-            Your link will then be {window.location.host}/[insert-your-
+            Your link will then be {window.location.origin}/[insert-your-
             organisation-name here]).
           </T.P>
           <div>
             <T.H2 mb={5}>Your unique link</T.H2>
             <T.H3 mb={3}>
-              {window.location.host}/{uniqueSlug}
+              {window.location.origin}/{uniqueSlug}
             </T.H3>
           </div>
           <BasicInput

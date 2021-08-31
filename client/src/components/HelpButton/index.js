@@ -1,12 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import * as S from './style';
 import * as T from '../Typography';
 import Icon from '../Icon';
 
 import { linkTypes as cType } from '../../constants/data-types';
-
-import { Organisations } from '../../api-calls';
+import { usePublicOrg } from '../../context/public-org';
 
 const formatLink = (type, contact) => {
   switch (type) {
@@ -30,29 +29,13 @@ const HelpButton = ({
   ...props
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [orgDetails, setOrgDetails] = useState([]);
-
+  const { publicOrg } = usePublicOrg();
   const handleClose = () => {
     setIsOpen(false);
     if (parentFunc) {
       parentFunc(false);
     }
   };
-
-  useEffect(() => {
-    async function fetchData() {
-      const { data, error } = await Organisations.getHelpDetails({
-        uniqueSlug,
-      });
-      if (error) {
-        console.error(error);
-      }
-      setOrgDetails(data);
-    }
-    if (uniqueSlug) {
-      fetchData();
-    }
-  }, [isOpen, uniqueSlug]);
 
   if (isOpen || parentState)
     return (
@@ -68,7 +51,7 @@ const HelpButton = ({
             We all need to speak to someone sometimes! Use any of the contact
             details below to find a person to chat with.
           </T.P>
-          {orgDetails?.map((contact) => (
+          {publicOrg?.contactLinks?.map((contact) => (
             <S.ContactItem mb="5">
               <T.H3 color="neutralMain">{contact.description}</T.H3>
               <T.P color="neutralDark" isSmall>
@@ -95,7 +78,7 @@ const HelpButton = ({
               weight="bold"
               color="secondaryMain"
               isSmall
-              to={formatLink('PHONE', { phone: '02071231234' })}
+              to={formatLink('PHONE', { phoneNumber: '02071231234' }).link}
             >
               020 7123 1234
             </T.Link>

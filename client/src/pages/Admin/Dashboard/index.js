@@ -12,7 +12,7 @@ import { useAdminOrg } from '../../../context/admin-org';
 const { Col, Row } = Grid;
 
 const Dashboard = () => {
-  const { org } = useAdminOrg();
+  const { adminOrg } = useAdminOrg();
   const { user } = useAuth();
 
   return (
@@ -29,9 +29,9 @@ const Dashboard = () => {
           <S.LinkWrapper>
             <TextWithIcon
               iconColor="primaryMain"
-              to={`${window.location.host}/${org.uniqueSlug}`}
+              to={`${window.location.origin}/${adminOrg.uniqueSlug}`}
               icon="open"
-              text={`${window.location.host}/${org.uniqueSlug}`}
+              text={`${window.location.origin}/${adminOrg.uniqueSlug}`}
               external
               underline
             />
