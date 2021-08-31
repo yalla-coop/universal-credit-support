@@ -4,7 +4,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 const envVarsSchema = yup
   .object()
   .shape({
-    PORT: isProduction ? yup.number() : yup.number().required(),
+    PORT: isProduction ? yup.number().nullable() : yup.number().required(),
     // DOMAIN: yup.string().required(), // not required for now
     SECRET: yup.string().required(),
   })

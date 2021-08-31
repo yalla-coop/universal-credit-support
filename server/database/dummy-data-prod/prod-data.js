@@ -6,7 +6,7 @@ export default {
   hydeSuperAdmin: {
     firstName: 'Joe',
     lastName: 'Friel',
-    email: 'joseph.s.friel@gmail.com',
+    email: 'admin@hyde.com',
     backupEmail: 'joe@yallacooperative.com',
   },
 };
