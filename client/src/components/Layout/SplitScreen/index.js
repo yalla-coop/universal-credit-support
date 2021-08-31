@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as S from './style';
-import { ReactComponent as MobileLogo } from '../../assets/MobileLogo.svg';
-import { ReactComponent as DesktopLogo } from '../../assets/DesktopLogo.svg';
-import { useMediaQuery } from 'react-responsive';
 
-import theme from '../../../theme';
+import { usePublicOrg } from '../../../context/public-org';
+import { useAdminOrg } from '../../../context/admin-org';
+import { OrganisationLogo } from '../../../components';
+
 import { GENERAL } from '../../../constants/nav-routes';
 
 const SplitScreen = ({
@@ -18,9 +18,9 @@ const SplitScreen = ({
   showColorOnMobile,
   ...props
 }) => {
-  const isTablet = useMediaQuery({
-    query: `(max-width: ${theme.breakpoints.tablet})`,
-  });
+  const { publicOrg } = usePublicOrg();
+  const { adminOrg } = useAdminOrg();
+
   return (
     <S.Main side={side} {...props}>
       <S.ColoredHalf
@@ -30,7 +30,7 @@ const SplitScreen = ({
       />
       <S.ContentHalf>
         <S.Link to={GENERAL.HOME} showColorOnMobile={showColorOnMobile}>
-          {isTablet ? <MobileLogo /> : <DesktopLogo />}
+          <OrganisationLogo logoUrl={adminOrg?.logoUrl || publicOrg?.logoUrl} />
         </S.Link>
         {children}
       </S.ContentHalf>

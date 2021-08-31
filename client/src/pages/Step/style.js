@@ -25,7 +25,7 @@ export const PageHead = styled.div`
   z-index: 2;
   top: 0;
   padding-top: ${({ theme }) => theme.spacings[7]};
-  padding-bottom: ${({ theme }) => theme.spacings[6]};
+  padding-bottom: ${({ theme }) => theme.spacings[3]};
   align-items: center;
 
   ${({ theme }) => theme.media.mobile} {

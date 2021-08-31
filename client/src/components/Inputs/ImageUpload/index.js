@@ -166,14 +166,18 @@ const ImageUpload = ({
     <S.Wrapper error={error}>
       <Dragger
         {...props}
-        defaultFileList={[
-          {
-            id: fileInfo.fileName,
-            name: fileInfo?.fileName,
-            status: 'done',
-            url: fileInfo.url,
-          },
-        ]}
+        defaultFileList={
+          fileInfo?.key
+            ? [
+                {
+                  id: fileInfo.fileName,
+                  name: fileInfo?.fileName,
+                  status: 'done',
+                  url: fileInfo.url,
+                },
+              ]
+            : undefined
+        }
         showUploadList={{
           showRemoveIcon: false,
           showDownloadIcon: false,

@@ -13,6 +13,7 @@ import { ScrollToTop } from './helpers';
 import LangProvider from './context/lang';
 import StepsProvider from './context/steps';
 import { AuthProvider } from './context/auth';
+import { PublicOrgProvider } from './context/public-org';
 
 // import CookieBot from 'react-cookiebot';
 
@@ -63,22 +64,31 @@ function App() {
                   />
                   <Route
                     exact
-                    path={navRoutes.GENERAL.HOME_ORG}
-                    Component={Pages.Home}
-                    layout="general"
-                  />
-                  <Route
-                    exact
                     path={navRoutes.STEPS.STEP}
                     Component={Pages.Step}
                     layout="step"
                   />
-                  <Route
-                    exact
-                    path={navRoutes.STEPS.STEP_ORG}
-                    Component={Pages.Step}
-                    layout="step"
-                  />
+
+                  <RouterRoute path={navRoutes.GENERAL.HOME_ORG}>
+                    <PublicOrgProvider>
+                      <Route
+                        exact
+                        path={navRoutes.GENERAL.HOME_ORG}
+                        Component={Pages.Home}
+                        layout="general"
+                      />
+                    </PublicOrgProvider>
+                  </RouterRoute>
+                  <RouterRoute path={navRoutes.STEPS.STEP_ORG}>
+                    <PublicOrgProvider>
+                      <Route
+                        exact
+                        path={navRoutes.STEPS.STEP_ORG}
+                        Component={Pages.Step}
+                        layout="step"
+                      />
+                    </PublicOrgProvider>
+                  </RouterRoute>
 
                   <Route
                     exact

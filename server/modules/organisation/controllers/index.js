@@ -4,8 +4,7 @@ import createOrganisation from './create-organisation';
 
 import getOrganisation from './get-organisation';
 import updateOrganisation from './update-organisation';
-import getHelpDetails from './get-help-details';
-import getBenefitCalculator from './get-benefit-calculator';
+import getOrganisationByUniqueSlug from './get-organisation-by-unique-slug';
 
 import {
   authenticate,
@@ -18,8 +17,8 @@ import { userRoles } from '../../../constants';
 
 const router = Router();
 
-router.get('/help', getHelpDetails);
-router.get('/benefit-calculator', getBenefitCalculator);
+router.get('/unique-slug/:uniqueSlug', getOrganisationByUniqueSlug);
+
 router.get(
   '/:id',
   authenticate(),

@@ -9,17 +9,17 @@ const initialUserState = {
 };
 
 const AdminContext = createContext({
-  org: initialUserState,
+  adminOrg: initialUserState,
   setAdminOrg: () => {},
   logout: () => {},
 });
 
 const AdminOrgProvider = (props) => {
-  const [org, setAdminOrg] = useState(initialUserState);
+  const [adminOrg, setAdminOrg] = useState(initialUserState);
   const { user } = useAuth();
 
   const _setAdminOrg = (data) => {
-    // set org in state
+    // set adminOrg in state
     setAdminOrg(data);
   };
 
@@ -30,18 +30,18 @@ const AdminOrgProvider = (props) => {
     if (data) {
       _setAdminOrg(data);
     } else {
-      setAdminOrg(initialUserState);
+      _setAdminOrg(initialUserState);
     }
   };
 
   useEffect(() => {
     getAdminOrgInfo();
-
+    return () => _setAdminOrg(initialUserState);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const value = {
-    org,
+    adminOrg,
     getAdminOrgInfo,
     setAdminOrg: _setAdminOrg,
   };
