@@ -1,12 +1,12 @@
-// 123456 password
-const password = '$2y$12$H2JL7UD1HCgOvd.aY33GUuNvwAQFPxx4ipqk5ZQwsx8bIbgzLKq/2';
+// 123456Aa password
+const password = '$2a$08$23ik.euo.8EM.tqkX/43ke539bnaWX/2vK8nsbrdlYl0UhGMwCR92';
 
 export default {
   password,
   hydeSuperAdmin: {
     firstName: 'Joe',
     lastName: 'Friel',
-    email: 'admin@hyde.com',
+    email: 'superadmin@hyde.co.uk',
     backupEmail: 'joe@yallacooperative.com',
   },
 };
