@@ -18,7 +18,7 @@ const S3 = s3;
 
 const allowedFileTypesAndSizes = {
   LOGO: {
-    types: ['image/png', 'image/jpg', 'image/jpeg'],
+    types: ['image/png', 'image/jpg', 'image/jpeg', 'image/png'],
     maxSize: '4',
   },
 };
