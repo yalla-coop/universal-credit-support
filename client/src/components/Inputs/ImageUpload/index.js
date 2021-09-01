@@ -84,11 +84,12 @@ const ImageUpload = ({
     const sizeInMb = size > 0 && size / 1024 / 1024;
 
     //  check 1: correct file type
-    if (['.jpg', '.jpeg'].includes(type)) {
+    if (['.jpg', '.jpeg', '.png'].includes(type)) {
       setError(
         `${name} must be one of the following file types: ${[
           '.jpg',
           '.jpeg',
+          '.png',
         ].join('/')}`
       );
       correctFileType = false;
@@ -148,7 +149,7 @@ const ImageUpload = ({
     multiple: true,
     maxCount: 1,
 
-    accept: '.jpg, .jpeg',
+    accept: '.jpg, .jpeg, .png',
     progress: {
       strokeColor: {
         '0%': '#108ee9',
@@ -188,7 +189,7 @@ const ImageUpload = ({
           <T.P mt="2" ta="center" color="neutralMain" weight="bold">
             Click or drag and drop to upload
           </T.P>
-          <T.P color="neutralMain">(jpeg or jpg)</T.P>
+          <T.P color="neutralMain">(jpeg/jpg or png)</T.P>
         </S.UploadDetails>
       </Dragger>
       {error && (
