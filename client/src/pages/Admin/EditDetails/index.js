@@ -90,7 +90,8 @@ const EditDetails = () => {
     isModalVisible,
   } = state;
 
-  const lastContactLink = contactLinks[contactLinks.length - 1];
+  const lastContactLink =
+    contactLinks?.length && contactLinks[contactLinks.length - 1];
 
   const isMobile = useMediaQuery({
     query: `(max-width: ${breakpoints.mobile})`,
@@ -125,7 +126,12 @@ const EditDetails = () => {
       });
 
       if (!error) {
-        setFormData(data);
+        setFormData({
+          ...data,
+          contactLinks: data.contactLinks?.length
+            ? data.contactLinks
+            : initialState.formData.contactLinks,
+        });
       } else {
         setState(error.message);
       }
@@ -248,13 +254,13 @@ const EditDetails = () => {
   const isAddButtonDisabled =
     !(
       lastContactLink &&
-      lastContactLink.type &&
-      lastContactLink.description &&
-      lastContactLink.availability &&
-      (lastContactLink.phoneNumber ||
-        lastContactLink.link ||
-        lastContactLink.email)
-    ) || !contactLinks.length;
+      lastContactLink?.type &&
+      lastContactLink?.description &&
+      lastContactLink?.availability &&
+      (lastContactLink?.phoneNumber ||
+        lastContactLink?.link ||
+        lastContactLink?.email)
+    ) || !contactLinks?.length;
 
   return (
     <S.Form onSubmit={handleSubmit}>

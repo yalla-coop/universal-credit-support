@@ -82,9 +82,9 @@ const Customise = () => {
             fileName: data.fileName,
             url: data.logoUrl,
           },
-          mainColor: colors.main,
-          secondaryColor: colors.secondary,
-          neutralColor: colors.neutral,
+          mainColor: colors?.main,
+          secondaryColor: colors?.secondary,
+          neutralColor: colors?.neutral,
           loaded: true,
         });
       } else {

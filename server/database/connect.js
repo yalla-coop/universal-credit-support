@@ -17,7 +17,8 @@ let __pool;
 if (env === 'production') {
   __pool = new Pool({ connectionString, ssl: { rejectUnauthorized: false } });
 } else {
-  __pool = new Pool({ connectionString });
+  __pool = new Pool({ connectionString, ssl: { rejectUnauthorized: false } });
+  // __pool = new Pool({ connectionString });
 }
 
 const pool = __pool;

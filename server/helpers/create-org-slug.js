@@ -1,5 +1,5 @@
 const createOrgSlug = (orgName) => {
-  const slug = orgName.trim().toLowerCase().replace(' ', '-');
+  const slug = orgName.trim().toLowerCase().replaceAll(' ', '-');
   return slug;
 };
 
