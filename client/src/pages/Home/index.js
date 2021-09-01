@@ -87,7 +87,7 @@ const Home = () => {
 
   return (
     <>
-      <LandingContent />
+      <LandingContent uniqueSlug={org} />
 
       {/* BEFORE CLAIMING */}
       {stepsObj.BEFORE_CLAIMING?.map((step, i) => {

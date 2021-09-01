@@ -56,12 +56,17 @@ function App() {
                     <Pages.Admin />
                   </RouterRoute>
 
-                  <Route
-                    exact
-                    path={navRoutes.GENERAL.HOME}
-                    Component={Pages.Home}
-                    layout="general"
-                  />
+                  <RouterRoute path={navRoutes.GENERAL.HOME} exact>
+                    <PublicOrgProvider>
+                      <Route
+                        exact
+                        path={navRoutes.GENERAL.HOME}
+                        Component={Pages.Home}
+                        layout="general"
+                      />
+                    </PublicOrgProvider>
+                  </RouterRoute>
+
                   <Route
                     exact
                     path={navRoutes.STEPS.STEP}
