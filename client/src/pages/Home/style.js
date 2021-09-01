@@ -1,14 +1,16 @@
 import styled from '@emotion/styled';
 import setMargin from '../../helpers/set-margin';
 import * as T from '../../components/Typography';
+import backgroundLogo from '../../components/assets/BackgroundHydeLogo.svg';
 
 export const PageHead = styled.header`
   width: 100%;
   display: flex;
   justify-content: center;
   background: ${({ theme }) => theme.gradients.primary};
-
   background-color: ${({ theme }) => theme.gradients.primaryMain};
+  background-image:${({ showBGImage }) =>
+    showBGImage && `url(${backgroundLogo})`};
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
