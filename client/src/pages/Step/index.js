@@ -32,6 +32,9 @@ const Step = () => {
   const { steps: fullSteps, checkUncheckItem, markAsComplete } = useSteps();
 
   const step = fullSteps.find((s) => s.id === Number(params.id));
+  if (!step) {
+    history.push(n.GENERAL.NOT_FOUND);
+  }
 
   const formatLink = (link, type) => {
     if (type === types.linkTypes.PHONE) {
