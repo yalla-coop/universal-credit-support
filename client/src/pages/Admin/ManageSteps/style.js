@@ -13,4 +13,5 @@ export const buttonStyle = {
   fontSize: '1rem',
   fontWeight: 'bold',
   padding: `0 ${theme.spacings[3]}`,
+  cursor: 'pointer',
 };

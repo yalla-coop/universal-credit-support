@@ -60,12 +60,12 @@ function DragDrop({
           return (
             <div key={columnId}>
               <G.Row mt="7">
-                <G.Col w={[4, 6, 4]}>
+                <G.Col w={[4, 10, 8]}>
                   <T.H2>{column.name}</T.H2>
                 </G.Col>
               </G.Row>
               <G.Row mt="4">
-                <G.Col w={[4, 6, 4]}>
+                <G.Col w={[4, 10, 8]}>
                   <Droppable droppableId={columnId} key={columnId}>
                     {(provided, snapshot) => {
                       return (
@@ -95,7 +95,7 @@ function DragDrop({
                                       {...provided.dragHandleProps}
                                       onClick={() =>
                                         history.push(
-                                          navRoutes.ADMIN.EDIT_STEP.replace(
+                                          navRoutes.SUPER_ADMIN.EDIT_STEP.replace(
                                             ':id',
                                             item.id
                                           )
