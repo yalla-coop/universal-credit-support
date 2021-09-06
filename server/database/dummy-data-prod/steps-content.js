@@ -92,11 +92,9 @@ const addStepContent = async () => {
       },
       {
         title: `Details of any capital, savings and investments`,
-        description: ``,
+        description: `This includes ALL money you hold anywhere, including in current bank accounts, ISAs and property you own that you don’t live in`,
         thisCanInclude: [],
-        tips: [
-          `This includes ALL money you hold anywhere, including in current bank accounts, ISAs and property you own that you don’t live in`,
-        ],
+        tips: [],
       },
       {
         title: `Housing costs`,

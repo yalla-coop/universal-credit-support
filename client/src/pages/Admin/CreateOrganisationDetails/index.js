@@ -209,9 +209,9 @@ const CreateOrganisationDetails = () => {
         <Col w={[4, 11, 6]}>
           <T.H2>Contact Details</T.H2>
           <T.P isSmall color="neutralDark" mt="4">
-            The following contact details will direct customers who need
-            assistance. If you want customers to be able to contact you please
-            add your phone number or webchat link.
+            If you want customers to be able to contact you if they need further
+            help when using the UC helper please add the relevant phone number,
+            email address or webchat link below.
           </T.P>
         </Col>
       </Row>
@@ -295,7 +295,7 @@ const CreateOrganisationDetails = () => {
                 <Col w={[4, 11, 6]}>
                   <I.BasicInput
                     label="Description"
-                    helper="Include a short label for what this contact channel is for e.g. Customer Support"
+                    helper="Include a short description for what this contact channel is for e.g. 'Customer Support Centre' or 'Benefit Advice Webchat'"
                     placeholder="Type description here..."
                     value={contactLink.description}
                     handleChange={(v) =>
@@ -348,7 +348,7 @@ const CreateOrganisationDetails = () => {
         <Col w={[4, 11, 6]} mt="6">
           <I.BasicInput
             label="Benefit calculator link"
-            helper="Enter your preferred benefit calculator here"
+            helper="Enter the full web link (including https://) of your organisation's preferred benefit calculator here"
             placeholder="Type/paste link here..."
             value={benefitCalculatorLink}
             handleChange={(input) => setState({ benefitCalculatorLink: input })}
