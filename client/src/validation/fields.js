@@ -250,14 +250,16 @@ export const contactLinks = array()
   .nullable();
 
 export const hexColorOptional = string().when((value, schema) => {
-  if (value) {
-    return schema.matches(hexRegex, {
-      message: errMsgs.INVALID_COLOR,
-    });
-  }
+  // if (value) {
+  //   return schema.matches(hexRegex, {
+  //     message: errMsgs.INVALID_COLOR,
+  //   });
+  // }
   return schema.nullable();
 });
 
-export const hexColor = string()
-  .matches(hexRegex, { message: errMsgs.INVALID_COLOR })
-  .required(errMsgs.DEFAULT_REQUIRED);
+// export const hexColor = string()
+//   .matches(hexRegex, { message: errMsgs.INVALID_COLOR })
+//   .required(errMsgs.DEFAULT_REQUIRED);
+
+export const hexColor = string().required(errMsgs.DEFAULT_REQUIRED);

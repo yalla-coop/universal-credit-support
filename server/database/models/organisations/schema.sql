@@ -25,6 +25,17 @@ CREATE TABLE "organisations" (
     --   secondary: '#202020',
     --   neutral: '#2332ff'
     -- }
+
+    -- { 
+    --   main: {
+    --     h: 0,
+    --     s: 0,
+    --     l: .20,
+    --     a: 1,
+    --   },
+    --   secondary: '#202020',
+    --   neutral: '#2332ff'
+    -- }
   
   "num_of_claims_process_started" INTEGER DEFAULT 0,
   "num_of_claims_process_completed" INTEGER DEFAULT 0,

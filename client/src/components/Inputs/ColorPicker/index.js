@@ -6,6 +6,8 @@ import theme from './../../../theme';
 
 import { SketchPicker } from 'react-color';
 
+import { formatColor } from '../../../helpers';
+
 const ColorPicker = ({
   label,
   error,
@@ -29,7 +31,9 @@ const ColorPicker = ({
   };
 
   const handleChange = (color) => {
-    onChange(color.hex);
+    const { h, s, l } = color.hsl;
+    const updatedCol = { h: h.toFixed(2), s: s.toFixed(2), l: l.toFixed(2) };
+    onChange(updatedCol);
   };
 
   const handleClose = () => {
@@ -51,6 +55,7 @@ const ColorPicker = ({
           {helper}
         </T.P>
       )}
+      {console.log('COLOR REN', color)}
 
       <div style={{ width: '100%', position: 'relative' }}>
         {!color && (
@@ -69,13 +74,13 @@ const ColorPicker = ({
           </T.P>
         )}
         <S.SwatchDiv onClick={handleClick}>
-          <S.ColorDiv color={color} />
+          <S.ColorDiv color={formatColor(color)} />
         </S.SwatchDiv>
         {displayColorPicker ? (
           <S.PopoverDiv>
             <S.CoverDiv onClick={handleClose} />
             <SketchPicker
-              color={color}
+              color={formatColor(color)}
               onChange={handleChange}
               presetColors={[...new Set(Object.values(theme.colors))]}
             />
