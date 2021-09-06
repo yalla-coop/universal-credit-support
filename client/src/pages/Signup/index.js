@@ -213,7 +213,7 @@ const SignUp = () => {
             value={backupEmail}
             handleChange={(input) => setState({ backupEmail: input })}
             error={validationErrs.backupEmail}
-            helper="Enter your prefer back up email address in the event you leave the organisation"
+            helper="Enter a back up email address that can be used to recover your organisation's information"
           />
         </Col>
       </Row>

@@ -12,7 +12,15 @@ const options = [
   { label: 'Remove account', value: 'REMOVE_ACCOUNT' },
 ];
 
-const UserRow = ({ name, email, role, setUsers, setError, id }) => {
+const UserRow = ({
+  name,
+  email,
+  role,
+  setUsers,
+  setError,
+  id,
+  organisation,
+}) => {
   const originalRole = role;
   const [selected, setSelected] = useState(originalRole);
   const [submitRole, setSubmitRole] = useState(null);
@@ -63,13 +71,14 @@ const UserRow = ({ name, email, role, setUsers, setError, id }) => {
 
   return (
     <>
-      <Col w={[4, 12, 4]}>
-        <T.P color="neutralMain" mb="6" mbT="2" weight="bold">
-          {name}
+      <Col w={[4, 12, 4]} mb="6" mbT="2">
+        <T.P color="neutralMain" weight="bold" style={{ width: '100%' }}>
+          {organisation}
         </T.P>
+        <T.P color="neutralDark">{name}</T.P>
       </Col>
-      <Col w={[4, 12, 4]}>
-        <T.P color="neutralMain" mb="6" mbT="2" weight="bold">
+      <Col w={[4, 12, 4]} mb="6" mbT="2">
+        <T.P color="neutralMain" weight="bold">
           {email}
         </T.P>
       </Col>
@@ -157,14 +166,15 @@ const Organisations = () => {
       </Row>
       {users &&
         users.map((user) => (
-          <Row key={user.id}>
+          <Row key={user.id} ai="center">
             <UserRow
-              name={user.firstName}
+              name={`${user.firstName} ${user.lastName}`}
               email={user.email}
               role={user.role}
               setUsers={setUsers}
               setError={setError}
               id={user.id}
+              organisation={user.organisationName}
             />
           </Row>
         ))}

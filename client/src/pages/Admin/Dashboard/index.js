@@ -47,10 +47,10 @@ const Dashboard = () => {
             <S.CardWrapper>
               <C.Tips
                 tips={[
-                  <a href="mailto:hydefoundation@hyde-housing.co.uk">
+                  <a href="mailto:ucdigital@hyde-housing.co.uk">
                     <T.H3 color="secondaryMain">
                       Want to have access rights to change any of the content on
-                      the tool? Then contact hydefoundation@hyde-housing.co.uk
+                      the tool? Then contact ucdigital@hyde-housing.co.uk
                     </T.H3>
                   </a>,
                 ]}
@@ -83,14 +83,11 @@ const Dashboard = () => {
           <S.CardWrapper>
             <C.Tips
               tips={[
-                <a
-                  href="mailto:hydefoundation@
-    hyde-housing.co.uk"
-                >
+                <a href="mailto:ucdigital@hyde-housing.co.uk">
                   <T.H3 color="neutralMain">
                     Interested in more specific statistics? Get in touch with{' '}
                     <span style={{ lineBreak: 'anywhere' }}>
-                      hydefoundation@hyde-housing.co.uk
+                      ucdigital@hyde-housing.co.uk
                     </span>
                   </T.H3>
                 </a>,

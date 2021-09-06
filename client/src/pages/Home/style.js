@@ -14,11 +14,11 @@ export const PageHead = styled.header`
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  padding-top: ${({ theme: { spacings } }) => spacings[12]};
+  padding-top: ${({ theme: { spacings } }) => spacings[13]};
   padding-bottom: ${({ theme: { spacings } }) => spacings[8]};
 
   ${({ theme }) => theme.media.mobile} {
-    padding-top: ${({ theme: { spacings } }) => spacings[10]};
+    padding-top: ${({ theme: { spacings } }) => spacings[11]};
     padding-bottom: ${({ theme: { spacings } }) => spacings[7]}};
     display: flex;
     justify-content: flex-start;

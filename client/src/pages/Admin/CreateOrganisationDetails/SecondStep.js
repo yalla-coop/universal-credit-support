@@ -140,7 +140,7 @@ const SecondStep = () => {
         </Col>
         <Col w={[4, 12, 12]}>
           <T.Link
-            color="neutralPrimaryMVP"
+            color="neutralDark"
             underline
             mt="3"
             to={R.ADMIN.CREATE_UNIQUE_LINK}
@@ -150,8 +150,13 @@ const SecondStep = () => {
         </Col>
       </Row>
 
-      <Row>
-        <Col w={[4, 6, 4]} mt={7}>
+      <Row mb="4">
+        <Col w={[4, 11, 6]} mt={7}>
+          <T.H2>Logo</T.H2>
+          <T.P isSmall color="neutralDark" mt="4" mb="5">
+            You can add your organisation's logo. Ideally the logo should be at
+            least 100px wide and should not be any larger than 2mb.
+          </T.P>
           <I.ImageUpload
             uploading={logoUploading}
             setUploading={(bool) => setState({ logoUploading: bool })}
@@ -225,6 +230,7 @@ const SecondStep = () => {
               to={navRoutes.EXTERNAL.ACCESSABILITY_GUIDELINES}
               weight={500}
               underline
+              external
             >
               here
             </T.Link>

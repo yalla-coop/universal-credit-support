@@ -537,7 +537,7 @@ const EditDetails = () => {
           <T.P isSmall color="neutralDark">
             {t('accountDelete', lang)}{' '}
             <T.Link
-              to="mailto:hydefoundation@hyde-housing.co.uk"
+              to="mailto:ucdigital@hyde-housing.co.uk"
               color="neutralDark"
               weight="bold"
               underline

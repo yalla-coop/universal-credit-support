@@ -28,13 +28,10 @@ const TipsExample2 = (args) => (
 export const tips2 = TipsExample2.bind({});
 tips2.args = {
   tips: [
-    <a
-      href="mailto:hydefoundation@
-    hyde-housing.co.uk"
-    >
+    <a href="mailto:ucdigital@hyde-housing.co.uk">
       <T.H3 color="neutralMain">
-        Interested in more specific statistics? Get in touch with
-        hydefoundation@hyde-housing.co.uk
+        Interested in specific statistics? Get in touch with
+        ucdigital@hyde-housing.co.uk
       </T.H3>
     </a>,
   ],
