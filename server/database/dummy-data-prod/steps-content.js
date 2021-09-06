@@ -308,7 +308,12 @@ const addStepContent = async () => {
       title: `Gov UK Verify`,
     },
     thingsYouWillNeed: [
-      { title: `Passport`, description: ``, thisCanInclude: [], tips: [] },
+      {
+        title: `Valid Passport`,
+        description: ``,
+        thisCanInclude: [],
+        tips: [],
+      },
       {
         title: `Driving Licence`,
         description: ``,

@@ -79,7 +79,7 @@ const Step = () => {
           )}
         </Row>
 
-        {step.howLongDoesItTake && (
+        {step.howLongDoesItTake?.timeRangeText && (
           <Row>
             <Col w={[4, 12, 6]}>
               <S.SectionHeader mb="2">
