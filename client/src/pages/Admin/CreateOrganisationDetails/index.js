@@ -295,7 +295,7 @@ const CreateOrganisationDetails = () => {
                 <Col w={[4, 11, 6]}>
                   <I.BasicInput
                     label="Description"
-                    helper="Include a short label for what this webchat is for e.g. Customer Support"
+                    helper="Include a short label for what this contact channel is for e.g. Customer Support"
                     placeholder="Type description here..."
                     value={contactLink.description}
                     handleChange={(v) =>
