@@ -102,7 +102,7 @@ const ManageSteps = () => {
   };
 
   return (
-    <>
+    <div style={{ maxWidth: '900px' }}>
       <G.Row>
         <G.Col w={[4, 6, 6]}>
           <T.H1 style={{ width: '100%' }} mb="5">
@@ -141,7 +141,7 @@ const ManageSteps = () => {
         description="Changes successfully updated."
         btnText="Okay"
       />
-    </>
+    </div>
   );
 };
 
