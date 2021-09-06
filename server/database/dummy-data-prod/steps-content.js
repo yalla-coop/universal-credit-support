@@ -146,14 +146,14 @@ const addStepContent = async () => {
     thingsYouWillNeed: [
       {
         title: `Email address`,
-        description: `This should be the bank account that your Universal Credit will be paid into. You can set up a free bank account in most high street banks or an online bank if you don’t already have one.`,
+        description: ``,
         thisCanInclude: [],
         tips: [],
       },
       { title: `Bank account`, description: ``, thisCanInclude: [], tips: [] },
       {
         title: `Access to your mobile phone (if you have one)`,
-        description: ``,
+        description: `This should be the bank account that your Universal Credit will be paid into. You can set up a free bank account in most high street banks or an online bank if you don’t already have one.`,
         thisCanInclude: [],
         tips: [],
       },
@@ -270,12 +270,6 @@ const addStepContent = async () => {
       {
         title: `Details of any health issues that affect your ability to work`,
         description: ``,
-        thisCanInclude: [],
-        tips: [],
-      },
-      {
-        title: ``,
-        description: ``,
         thisCanInclude: [
           `Dates of sickness`,
           `Medical issues`,
@@ -386,12 +380,6 @@ const addStepContent = async () => {
       },
       {
         title: `Make sure you're ready to tell them about any limitations you have on getting work`,
-        description: ``,
-        thisCanInclude: [],
-        tips: [],
-      },
-      {
-        title: ``,
         description: ``,
         thisCanInclude: [
           `Fit notes from your GP`,
