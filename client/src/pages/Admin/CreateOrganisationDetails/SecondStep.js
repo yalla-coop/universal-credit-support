@@ -229,6 +229,7 @@ const SecondStep = () => {
               to={navRoutes.EXTERNAL.ACCESSABILITY_GUIDELINES}
               weight={500}
               underline
+              external
             >
               here
             </T.Link>
