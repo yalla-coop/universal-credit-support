@@ -33,6 +33,11 @@ const Step = () => {
 
   const step = fullSteps.find((s) => s.id === Number(params.id));
 
+  if (!step) {
+    history.push(n.GENERAL.NOT_FOUND);
+    return null;
+  }
+
   const formatLink = (link, type) => {
     if (type === types.linkTypes.PHONE) {
       return `tel:${link}`;

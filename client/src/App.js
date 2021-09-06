@@ -33,6 +33,12 @@ function App() {
                 <ScrollToTop />
                 <Switch>
                   <Route
+                    path={navRoutes.GENERAL.NOT_FOUND}
+                    Component={() => 'Page Not Found'}
+                    layout="general"
+                  />
+
+                  <Route
                     exact
                     path={navRoutes.ADMIN.LOGIN}
                     Component={Pages.Login}

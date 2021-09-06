@@ -5,6 +5,7 @@ const GENERAL = {
   UNAUTHORIZED: '/unauthorized',
   FORGET_PASSWORD: '/forget-password',
   RESET_PASSWORD: '/reset-password/:token',
+  NOT_FOUND: '/not-found',
 };
 
 const admin = '/admin';
