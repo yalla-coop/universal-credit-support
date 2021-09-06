@@ -128,7 +128,6 @@ const Organisations = () => {
   useEffect(() => {
     const getUsers = async () => {
       const { data, error } = await Users.getAdminUsers();
-      console.log('da', data);
       if (error) {
         setError(error.message);
       } else {
