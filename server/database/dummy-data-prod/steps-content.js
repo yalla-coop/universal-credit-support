@@ -148,10 +148,15 @@ const addStepContent = async () => {
         thisCanInclude: [],
         tips: [],
       },
-      { title: `Bank account`, description: ``, thisCanInclude: [], tips: [] },
+      {
+        title: `Bank account`,
+        description: `This should be the bank account that your Universal Credit will be paid into. You can set up a free bank account in most high street banks or an online bank if you don’t already have one.`,
+        thisCanInclude: [],
+        tips: [],
+      },
       {
         title: `Access to your mobile phone (if you have one)`,
-        description: `This should be the bank account that your Universal Credit will be paid into. You can set up a free bank account in most high street banks or an online bank if you don’t already have one.`,
+        description: ``,
         thisCanInclude: [],
         tips: [],
       },
