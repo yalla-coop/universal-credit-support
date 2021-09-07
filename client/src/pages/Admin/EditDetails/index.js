@@ -14,6 +14,7 @@ import * as S from './style';
 import { editDetails as validate } from '../../../validation/schemas';
 import { Organisations } from '../../../api-calls';
 import { useLang } from '../../../context/lang';
+import { useAdminOrg } from '../../../context/admin-org';
 import { useAuth } from '../../../context/auth';
 import { t } from '../../../helpers';
 
@@ -70,6 +71,7 @@ function reducer(state, newState) {
 
 const EditDetails = () => {
   const { lang } = useLang();
+  const { getAdminOrgInfo } = useAdminOrg();
   const submitAttempt = useRef(false);
   const { user, setUser } = useAuth();
   const [state, setState] = useReducer(reducer, initialState);
@@ -183,6 +185,7 @@ const EditDetails = () => {
         });
       }
     } else {
+      getAdminOrgInfo();
       setUser({ ...user, firstName, lastName, email });
       setState({ isModalVisible: true });
     }

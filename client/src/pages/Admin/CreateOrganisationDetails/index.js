@@ -2,6 +2,7 @@ import { useReducer, useEffect, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import { breakpoints } from '../../../theme';
+import { useAdminOrg } from '../../../context/admin-org';
 
 import {
   Grid,
@@ -73,6 +74,7 @@ const CreateOrganisationDetails = () => {
     validationErrs,
     httpError,
   } = state;
+  const { getAdminOrgInfo } = useAdminOrg();
 
   const lastContactLink = contactLinks[contactLinks.length - 1];
 
@@ -125,7 +127,7 @@ const CreateOrganisationDetails = () => {
         setState({ httpError: error.message });
       }
     } else {
-      // after that the user should be directed to its dashboard
+      getAdminOrgInfo();
       history.push(R.ADMIN.CREATE_ORG_DETAILS_SECOND_STEP);
     }
   };
