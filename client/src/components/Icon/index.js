@@ -56,7 +56,7 @@ const Parent = styled.div`
 `;
 
 const Icon = (props) => {
-  const { icon, color, text, weight = 'bold' } = props;
+  const { icon, color, text, weight = 'bold', pointer } = props;
 
   if (!IconMap[icon]) {
     // eslint-disable-next-line no-console
@@ -67,7 +67,7 @@ const Icon = (props) => {
   const StyledIcon = IconMap[icon];
 
   return (
-    <Parent {...props} onClick={undefined} pointer={props.onClick}>
+    <Parent {...props} onClick={undefined} pointer={pointer || props.onClick}>
       <StyledIcon
         {...props}
         color={theme.colors[color] || color || 'currentColor'}

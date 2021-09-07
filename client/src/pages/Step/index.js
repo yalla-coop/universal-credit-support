@@ -55,13 +55,13 @@ const Step = () => {
       <Row mb="8" mbM="8">
         <Col w={[4, 12, 12]}>
           <S.PageHead>
-            <S.Link onClick={() => history.goBack()}>
+            <S.CloseWrapper onClick={() => history.goBack()}>
               <OrganisationLogo logoUrl={publicOrg.logoUrl} />
-            </S.Link>
+            </S.CloseWrapper>
 
-            <S.Link onClick={() => history.goBack()}>
-              <Icon icon="close" width={16} height={16} />
-            </S.Link>
+            <S.CloseWrapper onClick={() => history.goBack()} padding="10px">
+              <Icon icon="close" width={16} height={16} pointer />
+            </S.CloseWrapper>
           </S.PageHead>
         </Col>
       </Row>
