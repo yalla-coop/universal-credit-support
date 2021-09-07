@@ -49,7 +49,7 @@ const EXTERNAL = {
 
   CALL_US: '//www.google.com/',
   ELIGIBILITY_CALCULATOR:
-    'https://www.entitledto.co.uk/benefits-calculator/Intro/Home?cid=0af743fb-414d-4559-a0c9-b88d26a88671',
+    'https://www.entitledto.co.uk/benefits-calculator/Intro/Home?cid=82edbe66-6101-4093-8ae6-434240a4531e',
   CREATE_UNIVERSAL_CREDIT_ACCOUNT:
     'https://www.universal-credit.service.gov.uk',
   // GOV_UK_VERIFY: '//www.google.com/GOV_UK_VERIFY',

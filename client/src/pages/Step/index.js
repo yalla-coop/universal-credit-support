@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
+import B from '../../constants/benefit-calculator';
 
 import {
   TextWithIcon,
@@ -205,8 +206,14 @@ const Step = () => {
               <Col w={[4, 12, 6]}>
                 <Button
                   variant="primary"
-                  text={publicOrg?.benefitCalculatorLabel}
-                  to={publicOrg?.benefitCalculatorLink}
+                  text={
+                    publicOrg?.benefitCalculatorLabel ||
+                    B.BENEFIT_CALCULATOR_LABEL
+                  }
+                  to={
+                    publicOrg?.benefitCalculatorLink ||
+                    B.BENEFIT_CALCULATOR_LINK
+                  }
                   target="_blank"
                   rel="noopener noreferrer"
                   external

@@ -1,4 +1,4 @@
-import { useReducer, useEffect, useRef, useCallback } from 'react';
+import { useReducer, useEffect, useRef } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { breakpoints } from '../../../theme';
 
@@ -485,7 +485,14 @@ const EditDetails = () => {
         <Col w={[4, 6, 4]}>
           <I.BasicInput
             label="Benefit calculator link"
-            helper="Enter your preferred benefit calculator here"
+            helper={
+              <>
+                Enter your preferred benefit calculator here.
+                <br />
+                If you leave this blank your customers will be directed to
+                EntitledTo.
+              </>
+            }
             placeholder="Type/paste link here..."
             value={benefitCalculatorLink}
             handleChange={(input) =>
@@ -494,7 +501,7 @@ const EditDetails = () => {
             error={validationErrs.benefitCalculatorLink}
           />
         </Col>
-        <Col w={[4, 6, 4]} mt={isMobile ? 6 : 0}>
+        {/* <Col w={[4, 6, 4]} mt={isMobile ? 6 : 0}>
           <I.BasicInput
             label="Benefit calculator button label"
             helper="Enter your preferred button label here"
@@ -505,7 +512,7 @@ const EditDetails = () => {
             }
             error={validationErrs.benefitCalculatorLabel}
           />
-        </Col>
+        </Col> */}
       </Row>
 
       <Row mt={7} style={{ flex: Number(isMobile), alignItems: 'flex-end' }}>

@@ -7,8 +7,8 @@ const {
   email,
   urlSlug,
   contactLinks,
-  requiredText,
-  urlRequired,
+  optionalText,
+  urlOptional,
 } = fields;
 
 const schema = createSchema({
@@ -17,8 +17,8 @@ const schema = createSchema({
   organisationName,
   email,
   uniqueSlug: urlSlug,
-  benefitCalculatorLink: urlRequired,
-  benefitCalculatorLabel: requiredText,
+  benefitCalculatorLink: urlOptional,
+  benefitCalculatorLabel: optionalText,
   contactLinks,
 });
 

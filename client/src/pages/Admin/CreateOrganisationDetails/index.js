@@ -203,10 +203,15 @@ const CreateOrganisationDetails = () => {
   return (
     <S.Form onSubmit={handleSubmit}>
       <Row>
-        <Col w={[4, 12, 12]}>
-          <T.H1 mb="6" weight="bold">
-            Welcome!
-          </T.H1>
+        <Col w={[4, 12, 8]}>
+          <T.H1 weight="bold">Welcome!</T.H1>
+          <T.P color="neutralDark" mt="4" mb="6">
+            We will now take you through a few simple steps to customise the UC
+            Helper. You will be able to add your organsation's logo, contact
+            details, and your preferred benefit checker. It is fine to skip any
+            step if you prefer not to add your own information. You can change
+            any of the information you add at any point in time.
+          </T.P>
         </Col>{' '}
         <Col w={[4, 11, 6]}>
           <T.H2>Contact Details</T.H2>
@@ -214,6 +219,10 @@ const CreateOrganisationDetails = () => {
             If you want customers to be able to contact you if they need further
             help when using the UC helper please add the relevant phone number,
             email address or webchat link below.
+          </T.P>
+          <T.P isSmall color="neutralDark" mt="4">
+            If you leave this blank your customers will be directed to the
+            government UC helpline if they need help with their claim.
           </T.P>
         </Col>
       </Row>
@@ -350,7 +359,15 @@ const CreateOrganisationDetails = () => {
         <Col w={[4, 11, 6]} mt="6">
           <I.BasicInput
             label="Benefit calculator link"
-            helper="Enter the full web link (including https://) of your organisation's preferred benefit calculator here"
+            helper={
+              <>
+                Enter the full web link (including https://) of your
+                organisation's preferred benefit calculator here
+                <br />
+                If you leave this blank your customers will be directed to
+                EntitledTo.
+              </>
+            }
             placeholder="Type/paste link here..."
             value={benefitCalculatorLink}
             handleChange={(input) => setState({ benefitCalculatorLink: input })}
@@ -358,7 +375,7 @@ const CreateOrganisationDetails = () => {
           />
         </Col>
       </Row>
-      <Row mt="6">
+      {/* <Row mt="6">
         <Col w={[4, 11, 6]}>
           <I.BasicInput
             label="Benefit calculator button label"
@@ -371,7 +388,7 @@ const CreateOrganisationDetails = () => {
             error={validationErrs.benefitCalculatorLabel}
           />
         </Col>
-      </Row>
+      </Row> */}
 
       <Row
         mt="7"
