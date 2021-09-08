@@ -105,3 +105,5 @@ dist
 
 # production data file
 prod-data.js
+server/database/dummy-data-prod/prod-data-local.js
+server/database/dummy-data-prod/users-local.js
