@@ -279,8 +279,8 @@ const EditDetails = () => {
           </T.P>
         </Col>
       </Row>
-      <Row mt={6}>
-        <Col w={[4, 6, 4]}>
+      <Row>
+        <Col w={[4, 6, 4]} mt={6}>
           <I.BasicInput
             label="First name"
             type="text"
@@ -290,7 +290,7 @@ const EditDetails = () => {
             error={validationErrs?.firstName}
           />
         </Col>
-        <Col w={[4, 6, 4]}>
+        <Col w={[4, 6, 4]} mt={6}>
           <I.BasicInput
             label="Last name"
             type="text"

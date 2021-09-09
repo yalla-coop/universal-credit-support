@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import * as S from './style';
 
-import { DesktopNav } from '../../Navbar';
+import { DesktopNav, MobileNav } from '../../Navbar';
 import { OrganisationLogo } from '../../../components';
 
 import { usePublicOrg } from '../../../context/public-org';
@@ -28,6 +28,8 @@ const SplitScreen = ({
       >
         <DesktopNav />
       </S.MenuWrapper>
+
+      <MobileNav />
       <S.ContentHalf>
         <OrganisationLogo logoUrl={publicOrg?.logoUrl} />
         {children}

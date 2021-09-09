@@ -7,6 +7,8 @@ import Icon from '../Icon';
 import { ADMIN, GENERAL } from '../../constants/nav-routes';
 
 import { useAdminOrg } from '../../context/admin-org';
+import { usePublicOrg } from '../../context/public-org';
+import { useAuth } from '../../context/auth';
 
 const NavItems = ({ setOpen, ...props }) => {
   return (
@@ -32,9 +34,17 @@ export const DesktopNav = () => {
 export const MobileNav = () => {
   const [open, setOpen] = useState(false);
   const { adminOrg } = useAdminOrg();
+  const { user } = useAuth();
+  const { publicOrg } = usePublicOrg();
+
+  const logoUrl = adminOrg?.logoUrl || publicOrg?.logoUrl;
+  const logoLink = user.id ? ADMIN.DASHBOARD : GENERAL.HOME;
 
   return (
     <S.MobileContainer>
+      <S.LogoLink to={logoLink} onClick={() => setOpen(false)}>
+        {logoUrl && <S.LogoImg src={logoUrl} alt="logo" />}
+      </S.LogoLink>
       <Icon icon="menu" width={33} height={33} onClick={() => setOpen(true)} />
       <S.Drawer
         title="Basic Drawer"
@@ -47,26 +57,31 @@ export const MobileNav = () => {
         width="100%"
         drawerStyle={{ background: 'white', display: 'flex' }}
       >
-        <Icon
-          icon="close"
-          width={18}
-          height={18}
-          onClick={() => setOpen(false)}
+        <div
           style={{
             display: 'flex',
-            justifyContent: 'flex-end',
-            position: 'relative',
-            zIndex: 2,
+            justifyContent: 'space-between',
           }}
-        />
-        <div style={{ marginTop: -24 }}>
-          <S.LogoLink to={GENERAL.HOME}>
-            {adminOrg?.logoUrl && (
-              <S.LogoImg src={adminOrg.logoUrl} alt="logo" />
-            )}
-          </S.LogoLink>
-          <NavItems setOpen={setOpen} />
+        >
+          <div>
+            <S.LogoLink to={logoLink}>
+              {logoUrl && (
+                <S.LogoImg
+                  src={logoUrl}
+                  alt="logo"
+                  onClick={() => setOpen(false)}
+                />
+              )}
+            </S.LogoLink>
+          </div>
+          <Icon
+            icon="close"
+            width={18}
+            height={18}
+            onClick={() => setOpen(false)}
+          />
         </div>
+        <NavItems setOpen={setOpen} />
       </S.Drawer>
     </S.MobileContainer>
   );
