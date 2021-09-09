@@ -18,6 +18,20 @@ const Welcome1 = () => {
             Credit, including a step by step list, things they need and things
             they’ll need to know
           </T.P>
+
+          <T.P mt="4">
+            We have created this tool to help anyone who are applying for
+            Universal Credit.
+          </T.P>
+          <T.P mt="4">
+            It provides an easy to use step-by-step guide to the process, with
+            check lists and helpful tips along the way.
+          </T.P>
+          <T.P mt="4">
+            If you would like to promote it to your customers or clients, you
+            can can customise it with your organsation's logo and colours- it is
+            complete free and takes 5-10 minutes to set up.
+          </T.P>
         </Col>
       </Row>
       <Row mt="8">
