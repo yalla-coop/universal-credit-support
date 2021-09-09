@@ -29,8 +29,8 @@ const Welcome2 = () => {
           </T.P>
 
           <T.P mt="4">
-            Click on the link below to start the registration process- you are a
-            few minutes away from having your very own branded UC application
+            Click on the link below to start the registration process - you are
+            a few minutes away from having your very own branded UC application
             tool to share with your customers or clients.
           </T.P>
           <T.P mt="4">
