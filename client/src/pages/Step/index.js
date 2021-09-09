@@ -280,7 +280,11 @@ const Step = () => {
             <Button
               variant="secondary"
               text="Mark as complete"
-              to={n.GENERAL.HOME}
+              to={
+                publicOrg?.uniqueSlug
+                  ? n.GENERAL.HOME_ORG.replace(':org', publicOrg.uniqueSlug)
+                  : n.GENERAL.HOME
+              }
               handleClick={() => {
                 markAsComplete(step.id);
               }}
