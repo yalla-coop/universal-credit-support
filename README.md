@@ -11,6 +11,8 @@ There is currently a MVP version live here: https://universal-credit-claim.netli
 
 ## Tech stack
 
+For the full tech stack approach please refer to https://www.notion.so/Tech-Stack-External-Services-Deployment-Recommendation-8169f65c04664f75839f678143559cd1
+
 As a summary:
 
 
@@ -24,7 +26,21 @@ As a summary:
 | Emotion     | <img width="55" src="https://emotion.sh/static/a76dfa0d18a0536af9e917cdb8f873b9/629d2/emotion.webp"/>        |  Style system using ES6 and CSS |
 | Antd    | <img width="55" src="https://user-images.githubusercontent.com/19708921/116078113-23bba900-a68e-11eb-840f-ed30945441f7.png"/>        |  Adaptable system of components and tools that support the best practices of user interface design and enable faster development |
 | Yup     | <img width="55" src="https://theaplus.org/wp-content/uploads/2018/01/Yup-Logo.png"/>       | JavaScript schema builder for value parsing and validation |
-| 
+
+
+### Back End Technologies:
+
+
+| Package  | Logo  | Description |
+| :------------ |:---------------:| :-----:|
+| NodeJS      | <img width="55" src="https://nodejs.org/static/images/logo.svg"/>        |  JavaScript runtime environment used to build our server |
+| ExpressJS      | <img width="65" src="https://www.resourcifi.com/wp-content/themes/resourcifi-child/img/express-min.png"/>        | back end web application framework for Node.js to build our API |
+| pg      | <img width="55" src="https://dyltqmyl993wv.cloudfront.net/assets/stacks/postgresql/img/postgresql-stack-220x234.png"/>       |  Non-blocking PostgreSQL client for Node.js to contact to our Database |
+| AWS      | <img width="55" src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/aws-s3.svg"/>       | to store and retrieve images data |
+| Sendgrid      | <img width="55" src="https://sendgrid.com/wp-content/themes/sgdotcom/pages/resource/brand/2016/SendGrid-Logomark.png"/>       |   cloud-based SMTP provider, email service |
+| Sentry      | <img width="55" src="https://cdn.icon-icons.com/icons2/2622/PNG/512/brand_sentry_icon_157807.png"/>       |  Sentry's SDKs enable automatic reporting of errors and exceptions. |
+| Yup     | <img width="55" src="https://theaplus.org/wp-content/uploads/2018/01/Yup-Logo.png"/>       | JavaScript schema builder for value parsing and validation |
+| Momentjs      | <img width="55" src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/momentjs.svg"/>       |  avaScript library which helps is parsing, validating, manipulating and displaying date/time in JavaScript |
 
 
 ### Getting Started
