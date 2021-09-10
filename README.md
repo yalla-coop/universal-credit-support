@@ -12,7 +12,6 @@ There is currently a MVP version live here: https://universal-credit-claim.netli
 ## Tech stack
 
 As a summary:
-- Front end >> ReactJS
 
 
 ### Front end technologies
