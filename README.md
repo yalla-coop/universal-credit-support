@@ -6,7 +6,8 @@
 In this repo you can find links to all documentation required. For those working on the project who need real log ins and production env vars, please refer to the Admin issue #1 and reach out to ucdigital@hyde-housing.co.uk for access.
 
 ## Link to app
-There is currently a MVP version live here: https://universal-credit-claim.netlify.app
+Production version: https://uc-digital-prod.herokuapp.com
+Staging version: https://hyde-dev.herokuapp.com
 
 
 ## Tech stack
