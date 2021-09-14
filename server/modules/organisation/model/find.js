@@ -7,33 +7,17 @@ const findOrganisation = async (id) => {
     o.organisation_name,
     o.unique_slug,
     o.colors,
+    o.type_of_organisation,
+    o.contact_links,
+    o.benefit_calculator_link,
+    o.benefit_calculator_label,
+    o.logo_id,
+    o.colors,
     m.bucket,
     m.key,
     m.file_name
     FROM organisations AS o
     LEFT JOIN media AS m ON (m.id = o.logo_id)
-    WHERE o.id = $1
-    `;
-  const values = [id];
-
-  const res = await query(sql, values);
-  return res.rows[0];
-};
-
-const findOrganisationWithUser = async (id) => {
-  const sql = `
-    SELECT
-    o.id,
-    o.organisation_name,
-    o.unique_slug,
-    o.contact_links,
-    o.benefit_calculator_link,
-    o.benefit_calculator_label,
-    u.first_name,
-    u.last_name,
-    u.email
-    FROM organisations AS o
-    INNER JOIN users AS u ON(u.organisation_id = o.id)
     WHERE o.id = $1
     `;
   const values = [id];
@@ -82,6 +66,5 @@ const findOrganisationBySlug = async (slug, client) => {
 export {
   findOrganisation,
   findOrganisationBySlug,
-  findOrganisationWithUser,
   findOrganisationForPublicBySlug,
 };
