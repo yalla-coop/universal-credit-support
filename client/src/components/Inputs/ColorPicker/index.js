@@ -55,7 +55,6 @@ const ColorPicker = ({
           {helper}
         </T.P>
       )}
-      {console.log('COLOR REN', color)}
 
       <div style={{ width: '100%', position: 'relative' }}>
         {!color && (

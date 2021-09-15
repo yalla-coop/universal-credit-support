@@ -67,10 +67,7 @@ const PublicOrgProvider = (props) => {
       uniqueSlug,
     });
 
-    console.log('DATA', data);
-
     if (data) {
-      console.log('TEST', { ...data, colors: updatedColors(data.colors) });
       _setPublicOrg({ ...data, colors: updatedColors(data.colors) });
     } else {
       _setPublicOrg(initialPublicOrgState);

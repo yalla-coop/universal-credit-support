@@ -190,7 +190,7 @@ const SecondStep = () => {
         </Col>
       </Row>
 
-      <Row mt="6">
+      <Row mt="6" mb="6">
         <Col w={[4, 11, 6]}>
           <I.ColorPicker
             color={secondaryColor}
@@ -198,17 +198,6 @@ const SecondStep = () => {
             label="Secondary colour"
             optional
             error={validationErrs.secondaryColor}
-          />
-        </Col>
-      </Row>
-      <Row mt="6" mb="6">
-        <Col w={[4, 11, 6]}>
-          <I.ColorPicker
-            color={neutralColor}
-            onChange={(v) => setState({ neutralColor: v })}
-            label="Neutral colour"
-            optional
-            error={validationErrs.neutralColor}
           />
         </Col>
       </Row>

@@ -216,17 +216,6 @@ const Customise = () => {
         </Col>
       </Row>
 
-      <Row mt="6" mb="6">
-        <Col w={[4, 6, 4]}>
-          <I.ColorPicker
-            color={neutralColor}
-            onChange={(v) => setState({ neutralColor: v })}
-            label="Neutral colour"
-            error={validationErrs.neutralColor}
-          />
-        </Col>
-      </Row>
-
       <Tips
         cols={[4, 6, 4]}
         tips={[

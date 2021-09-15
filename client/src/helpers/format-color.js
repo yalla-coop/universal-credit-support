@@ -9,7 +9,6 @@ const formatColor = (hslObj) => {
     s * 100
   )}%, ${Math.round(l * 100)}%)`;
 
-  console.log('HSL', hslString);
   return hslString;
 };
 
