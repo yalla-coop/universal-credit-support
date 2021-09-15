@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
+import ReactGA from 'react-ga';
 import Step from '../../components/Steps';
 import { Typography as T } from '../../components';
 import { t } from '../../helpers';
@@ -75,6 +76,20 @@ const Home = () => {
         behavior: 'smooth',
         block: 'center',
       });
+    }
+
+    if (process.env.NODE_ENV === 'production') {
+      ReactGA.event({
+        category: 'Completed step',
+        action: currentStep?.title,
+      });
+
+      if (completedClaim) {
+        ReactGA.event({
+          category: 'Completed claim',
+          action: 'Completed claim',
+        });
+      }
     }
   }, [justCompletedId]);
 

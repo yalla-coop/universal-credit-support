@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
+import ReactGA from 'react-ga';
 
 import {
   TextWithIcon,
@@ -44,6 +45,16 @@ const Step = () => {
     const foundItem = step.checklist.find((c) => c.title === itemTitle);
     return foundItem?.isChecked;
   };
+
+  useEffect(() => {
+    if (stuck && process.env.NODE_ENV === 'production') {
+      ReactGA.event({
+        category: 'Stuck on a step',
+        action: step?.pageTitle || step?.title,
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [stuck]);
 
   return (
     <S.Container>
