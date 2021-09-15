@@ -1,4 +1,4 @@
-import { useReducer, useEffect, useRef, useCallback } from 'react';
+import { useReducer, useEffect, useRef } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { breakpoints } from '../../../theme';
 
@@ -14,6 +14,7 @@ import * as S from './style';
 import { editDetails as validate } from '../../../validation/schemas';
 import { Organisations } from '../../../api-calls';
 import { useLang } from '../../../context/lang';
+import { useAdminOrg } from '../../../context/admin-org';
 import { useAuth } from '../../../context/auth';
 import { t } from '../../../helpers';
 
@@ -70,6 +71,7 @@ function reducer(state, newState) {
 
 const EditDetails = () => {
   const { lang } = useLang();
+  const { getAdminOrgInfo } = useAdminOrg();
   const submitAttempt = useRef(false);
   const { user, setUser } = useAuth();
   const [state, setState] = useReducer(reducer, initialState);
@@ -183,6 +185,7 @@ const EditDetails = () => {
         });
       }
     } else {
+      getAdminOrgInfo();
       setUser({ ...user, firstName, lastName, email });
       setState({ isModalVisible: true });
     }
@@ -276,8 +279,8 @@ const EditDetails = () => {
           </T.P>
         </Col>
       </Row>
-      <Row mt={6}>
-        <Col w={[4, 6, 4]}>
+      <Row>
+        <Col w={[4, 6, 4]} mt={6}>
           <I.BasicInput
             label="First name"
             type="text"
@@ -287,7 +290,7 @@ const EditDetails = () => {
             error={validationErrs?.firstName}
           />
         </Col>
-        <Col w={[4, 6, 4]}>
+        <Col w={[4, 6, 4]} mt={6}>
           <I.BasicInput
             label="Last name"
             type="text"
@@ -482,7 +485,14 @@ const EditDetails = () => {
         <Col w={[4, 6, 4]}>
           <I.BasicInput
             label="Benefit calculator link"
-            helper="Enter your preferred benefit calculator here"
+            helper={
+              <>
+                Enter your preferred benefit calculator here.
+                <br />
+                If you leave this blank your customers will be directed to
+                EntitledTo.
+              </>
+            }
             placeholder="Type/paste link here..."
             value={benefitCalculatorLink}
             handleChange={(input) =>
@@ -491,7 +501,7 @@ const EditDetails = () => {
             error={validationErrs.benefitCalculatorLink}
           />
         </Col>
-        <Col w={[4, 6, 4]} mt={isMobile ? 6 : 0}>
+        {/* <Col w={[4, 6, 4]} mt={isMobile ? 6 : 0}>
           <I.BasicInput
             label="Benefit calculator button label"
             helper="Enter your preferred button label here"
@@ -502,7 +512,7 @@ const EditDetails = () => {
             }
             error={validationErrs.benefitCalculatorLabel}
           />
-        </Col>
+        </Col> */}
       </Row>
 
       <Row mt={7} style={{ flex: Number(isMobile), alignItems: 'flex-end' }}>
@@ -537,7 +547,7 @@ const EditDetails = () => {
           <T.P isSmall color="neutralDark">
             {t('accountDelete', lang)}{' '}
             <T.Link
-              to="mailto:hydefoundation@hyde-housing.co.uk"
+              to="mailto:ucdigital@hyde-housing.co.uk"
               color="neutralDark"
               weight="bold"
               underline

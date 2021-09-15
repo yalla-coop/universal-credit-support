@@ -41,7 +41,7 @@ const EditContent = () => {
             m={{ mtT: 7 }}
           />
           <TextWithIcon
-            to={R.ADMIN.MANAGE_STEPS}
+            to={R.SUPER_ADMIN.MANAGE_STEPS}
             text="Manage steps "
             icon="forwardArrow"
             iconColor="primaryMain"

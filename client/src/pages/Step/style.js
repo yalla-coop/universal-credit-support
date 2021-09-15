@@ -58,3 +58,11 @@ export const SectionHeader = styled.div`
   align-items: center;
   width: 100%;
 `;
+
+export const CloseWrapper = styled.button`
+  background: none;
+  cursor: pointer;
+  border: none;
+  z-index: 1000;
+  padding: ${({ padding }) => padding};
+`;

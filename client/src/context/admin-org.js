@@ -11,6 +11,7 @@ const initialUserState = {
 const AdminContext = createContext({
   adminOrg: initialUserState,
   setAdminOrg: () => {},
+  getAdminOrgInfo: () => {},
   logout: () => {},
 });
 

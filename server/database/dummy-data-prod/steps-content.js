@@ -92,11 +92,9 @@ const addStepContent = async () => {
       },
       {
         title: `Details of any capital, savings and investments`,
-        description: ``,
+        description: `This includes ALL money you hold anywhere, including in current bank accounts, ISAs and property you own that you don’t live in`,
         thisCanInclude: [],
-        tips: [
-          `This includes ALL money you hold anywhere, including in current bank accounts, ISAs and property you own that you don’t live in`,
-        ],
+        tips: [],
       },
       {
         title: `Housing costs`,
@@ -146,11 +144,16 @@ const addStepContent = async () => {
     thingsYouWillNeed: [
       {
         title: `Email address`,
+        description: ``,
+        thisCanInclude: [],
+        tips: [],
+      },
+      {
+        title: `Bank account`,
         description: `This should be the bank account that your Universal Credit will be paid into. You can set up a free bank account in most high street banks or an online bank if you don’t already have one.`,
         thisCanInclude: [],
         tips: [],
       },
-      { title: `Bank account`, description: ``, thisCanInclude: [], tips: [] },
       {
         title: `Access to your mobile phone (if you have one)`,
         description: ``,
@@ -203,7 +206,7 @@ const addStepContent = async () => {
       },
       {
         title: `A bank account`,
-        description: ``,
+        description: `This should be the bank account that your Universal Credit will be paid into. You can set up a free bank account in most high street banks or an online bank if you don’t already have one.`,
         thisCanInclude: [],
         tips: [],
       },
@@ -270,12 +273,6 @@ const addStepContent = async () => {
       {
         title: `Details of any health issues that affect your ability to work`,
         description: ``,
-        thisCanInclude: [],
-        tips: [],
-      },
-      {
-        title: ``,
-        description: ``,
         thisCanInclude: [
           `Dates of sickness`,
           `Medical issues`,
@@ -314,7 +311,12 @@ const addStepContent = async () => {
       title: `Gov UK Verify`,
     },
     thingsYouWillNeed: [
-      { title: `Passport`, description: ``, thisCanInclude: [], tips: [] },
+      {
+        title: `Valid Passport`,
+        description: ``,
+        thisCanInclude: [],
+        tips: [],
+      },
       {
         title: `Driving Licence`,
         description: ``,
@@ -386,12 +388,6 @@ const addStepContent = async () => {
       },
       {
         title: `Make sure you're ready to tell them about any limitations you have on getting work`,
-        description: ``,
-        thisCanInclude: [],
-        tips: [],
-      },
-      {
-        title: ``,
         description: ``,
         thisCanInclude: [
           `Fit notes from your GP`,

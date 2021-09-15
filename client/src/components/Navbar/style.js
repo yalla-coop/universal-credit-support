@@ -12,6 +12,7 @@ export const Div = styled.div`
   margin-top: 0;
   position: relative;
   z-index: 2;
+  padding-top: 45px;
 `;
 
 export const Head3 = styled(H3)`
@@ -25,12 +26,11 @@ export const Link = styled(RouterLink)`
 
 export const LogoLink = styled(RouterLink)`
   display: block;
-  margin-bottom: 45px;
 `;
 
 export const LogoImg = styled.img`
-  max-width: 185px;
-  max-height: 100px;
+  max-width: 110px;
+  max-height: 90px;
 `;
 
 export const Drawer = styled(AntDrawer)`
@@ -52,7 +52,10 @@ export const DesktopContainer = styled.div`
 
 export const MobileContainer = styled.div`
   display: none;
+
   ${({ theme }) => theme.media.mobile} {
     display: flex;
   }
+  justify-content: space-between;
+  padding: 40px 40px 0;
 `;

@@ -191,12 +191,13 @@ const Customise = () => {
         </Col>
       </Row>
 
-      <Row mt="6">
+      {/* PUT BACK IN WHEN FEATURE TO SHOW CUSTOMISED COLOURS IS COMPLETED */}
+      {/* <Row mt="6">
         <Col w={[4, 12, 6]}>
           <T.H2>Colours</T.H2>
         </Col>
-      </Row>
-
+      </Row> */}
+      {/* 
       <Row w mt="6">
         <Col w={[4, 6, 4]}>
           <I.ColorPicker
@@ -233,7 +234,7 @@ const Customise = () => {
           </T.H3>,
         ]}
         startingColor={1}
-      />
+      /> */}
 
       <Row
         mt="7"

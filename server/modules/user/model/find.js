@@ -54,20 +54,22 @@ const findUserById = async (id) => {
 const getUsers = async () => {
   const sql = `
     SELECT
-      id,
-      first_name,
-      last_name,
-      email,
-      backup_email,
-      password,
-      role,
-      status,
-      reset_password_token,
-      reset_password_expiry,
-      organisation_id,
-      created_at,
-      updated_at
-    FROM users
+      u.id,
+      u.first_name,
+      u.last_name,
+      u.email,
+      u.backup_email,
+      u.password,
+      u.role,
+      u.status,
+      u.reset_password_token,
+      u.reset_password_expiry,
+      u.organisation_id,
+      u.created_at,
+      u.updated_at,
+      o.organisation_name
+    FROM users u
+    LEFT JOIN organisations o ON u.organisation_id = o.id
     WHERE role IN ('ADMIN', 'SUPER_ADMIN') AND status = $1
   `;
 

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import ReactGA from 'react-ga';
+import B from '../../constants/benefit-calculator';
 
 import {
   TextWithIcon,
@@ -34,6 +35,11 @@ const Step = () => {
 
   const step = fullSteps.find((s) => s.id === Number(params.id));
 
+  if (!step) {
+    history.push(n.GENERAL.NOT_FOUND);
+    return null;
+  }
+
   const formatLink = (link, type) => {
     if (type === types.linkTypes.PHONE) {
       return `tel:${link}`;
@@ -46,28 +52,25 @@ const Step = () => {
     return foundItem?.isChecked;
   };
 
-  useEffect(() => {
-    if (stuck && process.env.NODE_ENV === 'production') {
-      ReactGA.event({
-        category: 'Stuck on a step',
-        action: step?.pageTitle || step?.title,
-      });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [stuck]);
+  if (stuck && process.env.NODE_ENV === 'production') {
+    ReactGA.event({
+      category: 'Stuck on a step',
+      action: step?.pageTitle || step?.title,
+    });
+  }
 
   return (
     <S.Container>
       <Row mb="8" mbM="8">
         <Col w={[4, 12, 12]}>
           <S.PageHead>
-            <S.Link onClick={() => history.goBack()}>
+            <S.CloseWrapper onClick={() => history.goBack()}>
               <OrganisationLogo logoUrl={publicOrg.logoUrl} />
-            </S.Link>
+            </S.CloseWrapper>
 
-            <S.Link onClick={() => history.goBack()}>
-              <Icon icon="close" width={16} height={16} />
-            </S.Link>
+            <S.CloseWrapper onClick={() => history.goBack()} padding="10px">
+              <Icon icon="close" width={16} height={16} pointer />
+            </S.CloseWrapper>
           </S.PageHead>
         </Col>
       </Row>
@@ -90,7 +93,7 @@ const Step = () => {
           )}
         </Row>
 
-        {step.howLongDoesItTake && (
+        {step.howLongDoesItTake?.timeRangeText && (
           <Row>
             <Col w={[4, 12, 6]}>
               <S.SectionHeader mb="2">
@@ -211,8 +214,14 @@ const Step = () => {
               <Col w={[4, 12, 6]}>
                 <Button
                   variant="primary"
-                  text={publicOrg?.benefitCalculatorLabel}
-                  to={publicOrg?.benefitCalculatorLink}
+                  text={
+                    publicOrg?.benefitCalculatorLabel ||
+                    B.BENEFIT_CALCULATOR_LABEL
+                  }
+                  to={
+                    publicOrg?.benefitCalculatorLink ||
+                    B.BENEFIT_CALCULATOR_LINK
+                  }
                   target="_blank"
                   rel="noopener noreferrer"
                   external
@@ -279,7 +288,11 @@ const Step = () => {
             <Button
               variant="secondary"
               text="Mark as complete"
-              to={n.GENERAL.HOME}
+              to={
+                publicOrg?.uniqueSlug
+                  ? n.GENERAL.HOME_ORG.replace(':org', publicOrg.uniqueSlug)
+                  : n.GENERAL.HOME
+              }
               handleClick={() => {
                 markAsComplete(step.id);
               }}

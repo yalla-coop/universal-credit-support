@@ -71,7 +71,7 @@ const HelpButton = ({
           <S.ContactItem mb="4">
             <T.H3 color="neutralMain">Government Helpline</T.H3>
             <T.P color="neutralDark" isSmall>
-              Available 24/7
+              Monday to Friday, 8am to 6pm
             </T.P>
             <T.Link
               external
@@ -80,7 +80,7 @@ const HelpButton = ({
               isSmall
               to={formatLink('PHONE', { phoneNumber: '02071231234' }).link}
             >
-              020 7123 1234
+              0800 328 5644 (choose Option 3)
             </T.Link>
           </S.ContactItem>
         </S.Content>

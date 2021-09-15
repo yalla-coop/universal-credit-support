@@ -102,15 +102,16 @@ const ManageSteps = () => {
   };
 
   return (
-    <>
+    <div style={{ maxWidth: '900px' }}>
       <G.Row>
         <G.Col w={[4, 6, 6]}>
           <T.H1 style={{ width: '100%' }} mb="5">
             Manage Steps
           </T.H1>
-          <T.P color="neutralDark">
+          {/* SHOW WHEN THIS FEATURE IS PUT IN */}
+          {/* <T.P color="neutralDark">
             Drag and drop the steps below to change the order
-          </T.P>
+          </T.P> */}
         </G.Col>
       </G.Row>
       <DragDrop
@@ -121,7 +122,8 @@ const ManageSteps = () => {
         setColumns={setColumns}
       />
 
-      <G.Row mt="5">
+      {/* SHOW WHEN THIS FEATURE IS PUT IN */}
+      {/* <G.Row mt="5">
         <G.Col w={[4, 6, 4]}>
           {error && <T.P color="error">{error}</T.P>}
           <Button
@@ -130,7 +132,7 @@ const ManageSteps = () => {
             onClick={handleSubmit}
           />
         </G.Col>
-      </G.Row>
+      </G.Row> */}
       <Modal
         visible={isModalVisible}
         setIsModalVisible={setIsModalVisible}
@@ -141,7 +143,7 @@ const ManageSteps = () => {
         description="Changes successfully updated."
         btnText="Okay"
       />
-    </>
+    </div>
   );
 };
 
