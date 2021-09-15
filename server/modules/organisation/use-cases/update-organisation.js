@@ -99,6 +99,14 @@ const updateOrganisation = async ({
         field: 'uniqueSlug',
       });
     }
+    if (
+      Number(error.code) === 23505 &&
+      error.constraint === 'users_email_key'
+    ) {
+      throw Boom.conflict(errorMsgs.EMAIL_ALREADY_EXISTS, {
+        field: 'email',
+      });
+    }
     throw error;
   } finally {
     client.release();

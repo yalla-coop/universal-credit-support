@@ -71,7 +71,7 @@ function reducer(state, newState) {
 
 const EditDetails = () => {
   const { lang } = useLang();
-  const { getAdminOrgInfo } = useAdminOrg();
+  const { adminOrg, getAdminOrgInfo } = useAdminOrg();
   const submitAttempt = useRef(false);
   const { user, setUser } = useAuth();
   const [state, setState] = useReducer(reducer, initialState);
@@ -121,26 +121,30 @@ const EditDetails = () => {
   };
 
   useEffect(() => {
-    const getOrgInfo = async () => {
-      const { error, data } = await Organisations.getOrganisation({
-        id: user.organisationId,
-        withUserDetails: true,
+    if (adminOrg.id) {
+      setFormData({
+        organisationName: adminOrg.organisationName,
+        uniqueSlug: adminOrg.uniqueSlug,
+        contactLinks: adminOrg.contactLinks?.length
+          ? adminOrg.contactLinks
+          : initialState.formData.contactLinks,
+        benefitCalculatorLink: adminOrg.benefitCalculatorLink,
+        benefitCalculatorLabel: adminOrg.benefitCalculatorLabel,
       });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [adminOrg.id]);
 
-      if (!error) {
-        setFormData({
-          ...data,
-          contactLinks: data.contactLinks?.length
-            ? data.contactLinks
-            : initialState.formData.contactLinks,
-        });
-      } else {
-        setState(error.message);
-      }
-    };
-
-    getOrgInfo();
-  }, [user.organisationId]);
+  useEffect(() => {
+    if (user.id) {
+      setFormData({
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user.id]);
 
   useEffect(() => {
     if (submitAttempt.current) {
@@ -177,6 +181,7 @@ const EditDetails = () => {
             [error.data.field]: error.message,
             hasError: true,
           },
+          httpError: error.message,
         });
       } else {
         setState({
