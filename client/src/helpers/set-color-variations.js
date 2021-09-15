@@ -9,7 +9,6 @@ const updateHue = (original, multiplier) => {
 };
 
 const setColor = (type, color) => {
-  console.log('AN', type, color);
   const { h, s, l } = color;
   if (type === 'primary') {
     return {

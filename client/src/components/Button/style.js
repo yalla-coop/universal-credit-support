@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
 import { Spin } from 'antd';
-import theme from '../../theme';
+// import theme from '../../theme';
 import * as T from '../Typography';
 import setMargin from './../../helpers/set-margin';
 
-export const decideBackground = (variant) => {
+export const decideBackground = (variant, theme) => {
   switch (variant) {
     case 'primary':
       return theme.gradients.secondary;
@@ -35,12 +35,12 @@ export const Button = styled.button`
       return '58px';
     }
   }};
-  color: ${({ variant }) =>
+  color: ${({ variant, theme }) =>
     variant === 'primary' ? theme.colors.white : theme.colors.neutralMain};
   position: relative;
-  background: ${({ variant }) => decideBackground(variant)};
+  background: ${({ variant, theme }) => decideBackground(variant, theme)};
   border: 2px solid;
-  border-color: ${({ variant }) =>
+  border-color: ${({ variant, theme }) =>
     variant === 'secondary'
       ? theme.colors.neutralDark
       : theme.colors.primaryMain};
@@ -65,7 +65,7 @@ export const Loading = styled(Spin)`
   span {
     line-height: 24px;
     margin-left: 10px;
-    color: ${theme.colors.white};
+    color: ${({ theme }) => theme.colors.white};
   }
 `;
 

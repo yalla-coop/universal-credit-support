@@ -5,9 +5,12 @@ const formatColor = (hslObj) => {
     return hslObj;
   }
 
-  return `hsl(${Math.round(h)}, ${Math.round(s * 100)}%, ${Math.round(
-    l * 100
-  )}%)`;
+  const hslString = `hsl(${Math.round(h)}, ${Math.round(
+    s * 100
+  )}%, ${Math.round(l * 100)}%)`;
+
+  console.log('HSL', hslString);
+  return hslString;
 };
 
 export default formatColor;

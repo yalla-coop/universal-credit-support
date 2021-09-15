@@ -13,6 +13,8 @@ import Icon from '../../components/Icon';
 import HelpButton from '../../components/HelpButton';
 import TextWithIcon from '../../components/TextWithIcon';
 
+import { useTheme } from '@emotion/react';
+
 import * as S from './style';
 
 const afterClaimContent = {
@@ -35,6 +37,8 @@ const Home = () => {
     loadingSteps,
     stepsObj,
   } = useSteps();
+
+  const theme = useTheme();
 
   const [showAfterClaim, setShowAfterClaim] = useState(false);
 

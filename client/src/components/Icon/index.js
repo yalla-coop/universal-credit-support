@@ -1,7 +1,9 @@
 import styled from '@emotion/styled';
-import theme from './../../theme';
+// import theme from './../../theme';
 import setMargin from '../../helpers/set-margin';
 import * as T from '../Typography';
+
+import { useTheme } from '@emotion/react';
 
 // ICONS
 
@@ -57,6 +59,7 @@ const Parent = styled.div`
 
 const Icon = (props) => {
   const { icon, color, text, weight = 'bold' } = props;
+  const theme = useTheme();
 
   if (!IconMap[icon]) {
     // eslint-disable-next-line no-console

@@ -23,6 +23,7 @@ const TextWithIcon = ({
   isText,
   ...props
 }) => {
+  console.log('icon', iconColor, text);
   if (isButton)
     return (
       <S.Button
