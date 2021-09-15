@@ -13,7 +13,7 @@ const initialPublicOrgState = {
   id: null,
   logoUrl: '',
   uniqueSlug: '',
-  colors: {}, // to be used later
+  colors: colors, // to be used later
   contactLinks: [],
   benefitCalculatorLink: B.BENEFIT_CALCULATOR_LINK,
   benefitCalculatorLabel: B.BENEFIT_CALCULATOR_LABEL,
