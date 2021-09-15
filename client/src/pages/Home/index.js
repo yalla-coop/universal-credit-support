@@ -149,7 +149,7 @@ const Home = () => {
 
       {/* AFTER CLAIMING */}
       <S.Section mt="7">
-        <Icon icon="flag" mt="6" mb="5" mbM="0" mtM="5" />
+        <Icon icon="flag" color="primaryMain" mt="6" mb="5" mbM="0" mtM="5" />
         <T.H2 color="neutralMain" mb="1">
           {
             afterClaimContent.title[
