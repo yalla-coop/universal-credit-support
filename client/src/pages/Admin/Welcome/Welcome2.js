@@ -18,16 +18,6 @@ const Welcome2 = () => {
       </Row>
       <Row mt="6">
         <Col w={[4, 11, 7]}>
-          <T.P>
-            We have made this tool completely free to use. All you need to do is
-            create an account.
-          </T.P>
-
-          <T.P mt="4">
-            You will be able to customise the colours in the tool, add your logo
-            and add any specific contact details for your customers
-          </T.P>
-
           <T.P mt="4">
             Click on the link below to start the registration process - you are
             a few minutes away from having your very own branded UC application
