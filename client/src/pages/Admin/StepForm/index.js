@@ -37,7 +37,7 @@ const initialState = {
   ],
   topTip: '',
   otherTips: [''],
-  validationErrs: { whereDoYouNeedToGo: {}, ThingsYouWillNeed: {} },
+  validationErrs: {},
   loading: false,
 };
 
