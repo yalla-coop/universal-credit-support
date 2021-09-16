@@ -54,7 +54,6 @@ const Customise = () => {
   const {
     mainColor,
     secondaryColor,
-    neutralColor,
     loading,
     validationErrs,
     httpError,
@@ -84,7 +83,6 @@ const Customise = () => {
           },
           mainColor: colors?.main,
           secondaryColor: colors?.secondary,
-          neutralColor: colors?.neutral,
           loaded: true,
         });
       } else {
@@ -100,7 +98,7 @@ const Customise = () => {
       validateForm();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mainColor, secondaryColor, neutralColor]);
+  }, [mainColor, secondaryColor]);
 
   const validateForm = () => {
     try {
@@ -108,7 +106,6 @@ const Customise = () => {
         secondStep: true,
         mainColor,
         secondaryColor,
-        neutralColor,
         logoFile: logoFile.key,
       });
       setState({ validationErrs: { hasError: false } });
@@ -130,7 +127,6 @@ const Customise = () => {
         colors: {
           main: mainColor,
           secondary: secondaryColor,
-          neutral: neutralColor,
         },
       },
     });
@@ -192,13 +188,13 @@ const Customise = () => {
       </Row>
 
       {/* PUT BACK IN WHEN FEATURE TO SHOW CUSTOMISED COLOURS IS COMPLETED */}
-      {/* <Row mt="6">
+      <Row mt="6">
         <Col w={[4, 12, 6]}>
           <T.H2>Colours</T.H2>
         </Col>
-      </Row> */}
-      {/* 
-      <Row w mt="6">
+      </Row>
+
+      <Row w mt="6" mb="6">
         <Col w={[4, 6, 4]}>
           <I.ColorPicker
             color={mainColor}
@@ -234,7 +230,7 @@ const Customise = () => {
           </T.H3>,
         ]}
         startingColor={1}
-      /> */}
+      />
 
       <Row
         mt="7"

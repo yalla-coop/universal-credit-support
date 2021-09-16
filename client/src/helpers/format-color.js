@@ -1,6 +1,6 @@
 const formatColor = (hslObj) => {
   const { h, s, l } = hslObj;
-  if (!h || !s || !l) {
+  if ((!h && h !== 0) || (!s && s !== 0) || (!l && l !== 0)) {
     console.error('No HSL obj provided');
     return hslObj;
   }

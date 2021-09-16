@@ -173,7 +173,7 @@ const SecondStep = () => {
       </Row>
 
       {/* PUT BACK IN ONCE FEATURE TO SHOW COLOURS IS DONE */}
-      {/* <Row mt="6">
+      <Row mt="6">
         <Col w={[4, 11, 6]}>
           <T.H2>Colours</T.H2>
           <T.P isSmall color="neutralDark" mt="4">
@@ -226,7 +226,7 @@ const SecondStep = () => {
           </T.H3>,
         ]}
         startingColor={1}
-      /> */}
+      />
 
       <Row
         mt="7"
