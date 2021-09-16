@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
+import ReactGA from 'react-ga';
 import Step from '../../components/Steps';
 import { Typography as T } from '../../components';
 import { t } from '../../helpers';
@@ -76,6 +77,20 @@ const Home = () => {
         block: 'center',
       });
     }
+
+    if (process.env.NODE_ENV === 'production') {
+      ReactGA.event({
+        category: 'Completed step',
+        action: currentStep?.title,
+      });
+
+      if (completedClaim) {
+        ReactGA.event({
+          category: 'Completed claim',
+          action: 'Completed claim',
+        });
+      }
+    }
   }, [justCompletedId]);
 
   useEffect(() => {
@@ -149,7 +164,7 @@ const Home = () => {
 
       {/* AFTER CLAIMING */}
       <S.Section mt="7">
-        <Icon icon="flag" mt="6" mb="5" mbM="0" mtM="5" />
+        <Icon icon="flag" color="primaryMain" mt="6" mb="5" mbM="0" mtM="5" />
         <T.H2 color="neutralMain" mb="1">
           {
             afterClaimContent.title[

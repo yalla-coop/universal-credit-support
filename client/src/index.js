@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import * as Sentry from '@sentry/react';
+import ReactGA from 'react-ga';
 import { Integrations } from '@sentry/tracing';
 
 // import ReactGA from 'react-ga';
@@ -18,8 +19,8 @@ if (process.env.NODE_ENV === 'production') {
   });
 
   // GOOGLE ANALYTICS
-  // ReactGA.initialize(process.env.REACT_APP_ANALYTICS_ID);
-  // ReactGA.pageview(window.location.pathname + window.location.search);
+  ReactGA.initialize(process.env.REACT_APP_ANALYTICS_ID);
+  ReactGA.pageview(window.location.pathname + window.location.search);
 }
 
 ReactDOM.render(

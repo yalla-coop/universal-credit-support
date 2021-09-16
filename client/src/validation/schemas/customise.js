@@ -5,7 +5,6 @@ const { requiredText, hexColor } = fields;
 const schema = createSchema({
   mainColor: hexColor,
   secondaryColor: hexColor,
-  neutralColor: hexColor,
   logoFile: requiredText,
 });
 
