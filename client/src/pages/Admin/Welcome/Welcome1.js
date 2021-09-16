@@ -13,12 +13,6 @@ const Welcome1 = () => {
       </Row>
       <Row mt="6">
         <Col w={[4, 11, 7]}>
-          <T.P>
-            This app was made to support people whilst applying for Universal
-            Credit, including a step by step list, things they need and things
-            they’ll need to know
-          </T.P>
-
           <T.P mt="4">
             We have created this tool to help anyone who are applying for
             Universal Credit.
