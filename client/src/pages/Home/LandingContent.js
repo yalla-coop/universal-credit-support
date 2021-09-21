@@ -68,11 +68,6 @@ const LandingContent = ({ uniqueSlug }) => {
         </S.HeaderText>
       </S.PageHead>
       <S.Section>
-        <a
-          href={`mailto:joe@test.com?subject=Looking%20forward%20to%20seeing%20you&body=Test%20herehttps%3A%2F%2Fwww.test.com`}
-        >
-          Test link
-        </a>
         {formatText(landingContent.subtitle)}{' '}
         <S.StyledText mb="3">{landingContent.instructions}</S.StyledText>
       </S.Section>
