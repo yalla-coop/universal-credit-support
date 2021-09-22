@@ -48,8 +48,7 @@ const EXTERNAL = {
   PRIVACY_POLICY: '//www.google.com/',
 
   CALL_US: '//www.google.com/',
-  ELIGIBILITY_CALCULATOR:
-    'https://www.entitledto.co.uk/benefits-calculator/Intro/Home?cid=82edbe66-6101-4093-8ae6-434240a4531e',
+  ELIGIBILITY_CALCULATOR: 'https://www.entitledto.co.uk/benefits-calculator/',
   CREATE_UNIVERSAL_CREDIT_ACCOUNT:
     'https://www.universal-credit.service.gov.uk',
   // GOV_UK_VERIFY: '//www.google.com/GOV_UK_VERIFY',
