@@ -23,7 +23,7 @@ const afterClaimContent = {
   },
   text: {
     completed: `Got your Universal Credit? Great news! Check out these steps on what to do next:`,
-    notCompleted: `Once you’ve completed your claim there are few additional steps you can take. Open this when you’re completed the above steps`,
+    notCompleted: `Once you’ve completed your claim there are few additional steps you can take. Open this when you’ve completed the above steps`,
   },
 };
 
