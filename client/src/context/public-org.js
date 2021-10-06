@@ -13,7 +13,7 @@ const initialPublicOrgState = {
   id: null,
   logoUrl: '',
   uniqueSlug: '',
-  colors: colors, // to be used later
+  colors: colors,
   contactLinks: [],
   benefitCalculatorLink: B.BENEFIT_CALCULATOR_LINK,
   benefitCalculatorLabel: B.BENEFIT_CALCULATOR_LABEL,
@@ -67,8 +67,16 @@ const PublicOrgProvider = (props) => {
       uniqueSlug,
     });
 
+    const defaultColors = {
+      main: colors.primaryMainObj,
+      secondary: colors.secondaryMainObj,
+    };
+
     if (data) {
-      _setPublicOrg({ ...data, colors: updatedColors(data.colors) });
+      _setPublicOrg({
+        ...data,
+        colors: updatedColors(data.colors || defaultColors),
+      });
     } else {
       _setPublicOrg(initialPublicOrgState);
     }
