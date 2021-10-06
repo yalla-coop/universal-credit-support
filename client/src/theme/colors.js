@@ -23,6 +23,8 @@ export default {
   borderPrimary: formatColor(primaryMain),
   borderSecondary: 'hsl(195, 8%, 38%)',
   gray9: 'hsl(224, 11%, 26%)',
+  primaryMainObj: primaryMain,
+  secondaryMainObj: secondaryMain,
 };
 
 // HERE FOR REFERENCE ONLY

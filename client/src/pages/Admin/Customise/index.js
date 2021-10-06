@@ -1,6 +1,7 @@
 import { useReducer, useEffect, useRef } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { breakpoints } from '../../../theme';
+import defaultColors from '../../../theme/colors';
 
 import {
   Grid,
@@ -81,8 +82,8 @@ const Customise = () => {
             fileName: data.fileName,
             url: data.logoUrl,
           },
-          mainColor: colors?.main,
-          secondaryColor: colors?.secondary,
+          mainColor: colors?.main || defaultColors.primaryMainObj,
+          secondaryColor: colors?.secondary || defaultColors.secondaryMainObj,
           loaded: true,
         });
       } else {
@@ -187,7 +188,6 @@ const Customise = () => {
         </Col>
       </Row>
 
-      {/* PUT BACK IN WHEN FEATURE TO SHOW CUSTOMISED COLOURS IS COMPLETED */}
       <Row mt="6">
         <Col w={[4, 12, 6]}>
           <T.H2>Colours</T.H2>
