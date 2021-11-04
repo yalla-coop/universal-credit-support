@@ -44,11 +44,11 @@ const SUPER_ADMIN = {
 };
 
 const EXTERNAL = {
-  TERMS_OF_USE: '//www.google.com/',
-  PRIVACY_POLICY: '//www.google.com/',
+  TERMS_OF_USE: 'https://www.hyde-housing.co.uk/privacy/disclaimer/',
+  PRIVACY_POLICY: 'https://www.hyde-housing.co.uk/privacy/disclaimer/',
 
   CALL_US: '//www.google.com/',
-  ELIGIBILITY_CALCULATOR: 'https://www.entitledto.co.uk/benefits-calculator/',
+  ELIGIBILITY_CALCULATOR: 'https://benefits-calculator.turn2us.org.uk/',
   CREATE_UNIVERSAL_CREDIT_ACCOUNT:
     'https://www.universal-credit.service.gov.uk',
   // GOV_UK_VERIFY: '//www.google.com/GOV_UK_VERIFY',

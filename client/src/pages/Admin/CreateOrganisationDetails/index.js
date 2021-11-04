@@ -365,7 +365,7 @@ const CreateOrganisationDetails = () => {
                 organisation's preferred benefit calculator here
                 <br />
                 If you leave this blank your customers will be directed to
-                EntitledTo.
+                Turn2Us.
               </>
             }
             placeholder="Type/paste link here..."
