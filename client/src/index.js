@@ -14,8 +14,7 @@ if (process.env.NODE_ENV === 'production') {
   Sentry.init({
     dsn: process.env.REACT_APP_SENTRY_DSN,
     integrations: [new Integrations.BrowserTracing()],
-
-    tracesSampleRate: 0.5,
+    tracesSampleRate: 0.1,
   });
 
   // GOOGLE ANALYTICS
