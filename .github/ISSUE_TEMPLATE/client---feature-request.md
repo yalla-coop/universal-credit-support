@@ -1,0 +1,25 @@
+---
+name: Client / Feature request
+about: Suggest an idea for this project
+title: ''
+labels: sla
+assignees: 'cyberteenie, yalla-coop-sla'
+
+---
+
+**Is your feature / client request related to a problem? Please describe.**
+A clear and concise description of what the problem is. 
+Ex. I'm always frustrated when [...]
+Ex. We need to delete a user [...]
+
+**Describe the solution you'd like**
+A clear and concise description of what you want to happen.
+
+**Describe alternatives you've considered**
+A clear and concise description of any alternative solutions or features you've considered.
+
+**Additional context**
+Add any other context or screenshots about the feature request here.
+
+**Team - do not edit**
+@thejoefriel
