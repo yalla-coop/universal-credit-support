@@ -1,5 +1,5 @@
 import { useReducer, useEffect, useRef } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import { breakpoints } from '../../../theme';
 import { useAdminOrg } from '../../../context/admin-org';
@@ -78,7 +78,7 @@ const CreateOrganisationDetails = () => {
 
   const lastContactLink = contactLinks[contactLinks.length - 1];
 
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const isMobile = useMediaQuery({
     query: `(max-width: ${breakpoints.mobile})`,
@@ -128,7 +128,7 @@ const CreateOrganisationDetails = () => {
       }
     } else {
       getAdminOrgInfo();
-      history.push(R.ADMIN.CREATE_ORG_DETAILS_SECOND_STEP);
+      navigate(R.ADMIN.CREATE_ORG_DETAILS_SECOND_STEP);
     }
   };
 
