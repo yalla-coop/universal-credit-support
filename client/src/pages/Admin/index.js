@@ -26,11 +26,22 @@ function AdminRouter() {
     <AdminOrgProvider>
       <Routes>
         <Route
-          // Have sub routes
-          path={navRoutes.ADMIN.WELCOME}
+          path={navRoutes.ADMIN.WELCOME1}
           element={
             <CustomRoute
-              Component={Welcome}
+              Component={Welcome.Welcome1}
+              layout="splitScreen"
+              side="left"
+              gradient="secondary"
+              publicOnly
+            />
+          }
+        />
+        <Route
+          path={navRoutes.ADMIN.WELCOME2}
+          element={
+            <CustomRoute
+              Component={Welcome.Welcome2}
               layout="splitScreen"
               side="left"
               gradient="secondary"
