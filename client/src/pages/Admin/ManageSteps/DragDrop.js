@@ -1,6 +1,6 @@
 import React from 'react';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Grid as G, Typography as T, Icon } from '../../../components';
 import { buttonStyle } from './style';
 import { navRoutes } from '../../../constants';
@@ -49,7 +49,7 @@ function DragDrop({
   columns,
   setColumns,
 }) {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   return (
     <>
@@ -94,7 +94,7 @@ function DragDrop({
                                       {...provided.draggableProps}
                                       {...provided.dragHandleProps}
                                       onClick={() =>
-                                        history.push(
+                                        navigate(
                                           navRoutes.SUPER_ADMIN.EDIT_STEP.replace(
                                             ':id',
                                             item.id

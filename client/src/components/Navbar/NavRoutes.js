@@ -3,7 +3,7 @@ import t from '../../constants/translations';
 import R from '../../constants/roles';
 import * as S from './style';
 import { useAuth } from '../../context/auth';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 const handleClick = (cb) => {
   if (typeof cb === 'function') {
     return cb(false);
@@ -16,13 +16,13 @@ const DecideRoutes = ({ setOpen }) => {
     user: { role },
     logout,
   } = useAuth();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleLogout = async () => {
     handleClick(setOpen);
     await logout();
 
-    history.push(ADMIN.LOGIN);
+    navigate(ADMIN.LOGIN);
   };
 
   switch (role) {

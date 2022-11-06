@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import ReactGA from 'react-ga';
 import Step from '../../components/Steps';
 import { Typography as T } from '../../components';
@@ -29,13 +29,8 @@ const afterClaimContent = {
 
 const Home = () => {
   const { lang } = useLang();
-  const {
-    steps,
-    justCompletedId,
-    setJustCompletedId,
-    loadingSteps,
-    stepsObj,
-  } = useSteps();
+  const { steps, justCompletedId, setJustCompletedId, loadingSteps, stepsObj } =
+    useSteps();
 
   const [showAfterClaim, setShowAfterClaim] = useState(false);
 
@@ -44,7 +39,7 @@ const Home = () => {
   );
   const currentStepRef = useRef();
   const { org } = useParams();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const completedClaim = currentStep?.stage === stageTypes.AFTER_CLAIMING;
 
@@ -91,11 +86,12 @@ const Home = () => {
         });
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [justCompletedId]);
 
   useEffect(() => {
     if (org) {
-      history.push(n.GENERAL.HOME_ORG.replace(':org', org));
+      navigate(n.GENERAL.HOME_ORG.replace(':org', org));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [org]);
