@@ -9,7 +9,7 @@ const GENERAL = {
 };
 
 const admin = '/admin';
-
+// update packages
 const ADMIN = {
   BASE: `${admin}`,
   EDIT_DETAILS: `${admin}/edit-details`,
