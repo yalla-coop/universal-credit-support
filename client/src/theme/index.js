@@ -27,6 +27,16 @@ const constants = {
       },
     },
   },
+  translationBar: {
+    desktop: {
+      height: '52px',
+      padding: '0 164px',
+    },
+    mobile: {
+      height: '42px',
+      padding: '0 20px',
+    },
+  },
 };
 
 export const spacings = {
