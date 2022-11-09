@@ -10,7 +10,7 @@ const TextWithIcon = ({
   iconColor = 'secondaryMain',
   to,
   icon = 'phone',
-  text = 'Stuck? Call us for advice',
+  text,
   external,
   underline,
   isButton,
@@ -36,13 +36,16 @@ const TextWithIcon = ({
           <Icon
             icon={icon}
             color={iconColor}
-            mr={mr || '2'}
+            mr={text ? mr || '2' : '0'}
             direction={direction}
+            pointer={isButton}
           />
         )}
-        <T.H3 weight={weight} color={color} td={underline && 'underline'}>
-          {text}
-        </T.H3>
+        {text && (
+          <T.H3 weight={weight} color={color} td={underline && 'underline'}>
+            {text}
+          </T.H3>
+        )}
       </S.Button>
     );
 
