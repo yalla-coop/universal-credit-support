@@ -28,10 +28,17 @@ import Compass from './icons/Compass';
 import Upload from './icons/Upload';
 import TextSize from './icons/TextSize';
 import Accessibility from './icons/Accessibility';
-import FlagEN from './icons/FlagEN';
 import BackArrow from './icons/BackArrow';
 import BackArrowRTL from './icons/BackArrowRTL';
-import FlagAR from './icons/FlagAR';
+import Search from './icons/Search';
+
+import EN from './icons/EN';
+import AR from './icons/AR';
+
+export const FlagMap = {
+  en: EN,
+  ar: AR,
+};
 
 export const IconMap = {
   goBack: GoBack,
@@ -57,8 +64,8 @@ export const IconMap = {
   accessibility: Accessibility,
   backArrow: BackArrow,
   backArrowRTL: BackArrowRTL,
-  flagEN: FlagEN,
-  flagAR: FlagAR,
+  search: Search,
+  ...FlagMap,
 };
 
 const Parent = styled.div`
