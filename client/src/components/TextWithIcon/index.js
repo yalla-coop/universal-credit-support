@@ -42,7 +42,12 @@ const TextWithIcon = ({
           />
         )}
         {text && (
-          <T.H3 weight={weight} color={color} td={underline && 'underline'}>
+          <T.H3
+            weight={weight}
+            color={color}
+            ml={icon === null && 6}
+            td={underline && 'underline'}
+          >
             {text}
           </T.H3>
         )}
