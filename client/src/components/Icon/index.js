@@ -26,6 +26,12 @@ import Bulb from './icons/Bulb';
 import BulletArrow from './icons/BulletArrow';
 import Compass from './icons/Compass';
 import Upload from './icons/Upload';
+import TextSize from './icons/TextSize';
+import Accessibility from './icons/Accessibility';
+import FlagEN from './icons/FlagEN';
+import BackArrow from './icons/BackArrow';
+import BackArrowRTL from './icons/BackArrowRTL';
+import FlagAR from './icons/FlagAR';
 
 export const IconMap = {
   goBack: GoBack,
@@ -47,6 +53,12 @@ export const IconMap = {
   bulletArrow: BulletArrow,
   compass: Compass,
   upload: Upload,
+  textSize: TextSize,
+  accessibility: Accessibility,
+  backArrow: BackArrow,
+  backArrowRTL: BackArrowRTL,
+  flagEN: FlagEN,
+  flagAR: FlagAR,
 };
 
 const Parent = styled.div`
