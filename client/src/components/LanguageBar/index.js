@@ -35,7 +35,7 @@ const Desktop = ({ dir, showBack, largeText }) => {
         <TextWithIcon
           handleClick={() => null}
           text="English"
-          icon="flagEN"
+          icon="en"
           {...props}
         />
       </S.ButtonWrapper>
@@ -48,7 +48,7 @@ const Desktop = ({ dir, showBack, largeText }) => {
         <TextWithIcon
           handleClick={() => null}
           text="Arabic"
-          icon="flagAR"
+          icon="ar"
           {...props}
         />
       </S.ButtonWrapper>
@@ -89,12 +89,7 @@ const Mobile = ({ dir, showBack }) => {
           {...props}
         />
         <TextWithIcon handleClick={() => null} icon="textSize" {...props} />
-        <TextWithIcon
-          handleClick={() => null}
-          text="EN"
-          icon="flagEN"
-          {...props}
-        />
+        <TextWithIcon handleClick={() => null} text="EN" icon="en" {...props} />
       </S.ButtonWrapper>
     </S.MobileWrapperLTR>
   );
@@ -102,12 +97,7 @@ const Mobile = ({ dir, showBack }) => {
   const RTL = (
     <S.MobileWrapperRTL showBack={showBack}>
       <S.ButtonWrapper>
-        <TextWithIcon
-          handleClick={() => null}
-          text="AR"
-          icon="flagAR"
-          {...props}
-        />
+        <TextWithIcon handleClick={() => null} text="AR" icon="ar" {...props} />
         <TextWithIcon handleClick={() => null} icon="textSize" {...props} />
         <TextWithIcon
           text="نموذج"
@@ -125,7 +115,7 @@ const Mobile = ({ dir, showBack }) => {
   return dir === 'ltr' ? LTR : RTL;
 };
 
-export const TranslationBar = ({ dir, largeText, showBack }) => {
+export const LanguageBar = ({ dir, largeText, showBack }) => {
   const props = { dir, largeText, showBack };
   const screens = useBreakpoint();
   const medium = Object.entries(screens)

@@ -1,14 +1,14 @@
-import { TranslationBar } from '.';
+import { LanguageBar } from '.';
 
 export default {
-  title: 'Common Components/Translation Bar',
-  component: TranslationBar,
+  title: 'Common Components/Language Bar',
+  component: LanguageBar,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
 };
 
-const StandardTemplate = (args) => <TranslationBar {...args} />;
+const StandardTemplate = (args) => <LanguageBar {...args} />;
 
 export const LTR = StandardTemplate.bind({});
 LTR.args = { dir: 'ltr', largeText: false, showBack: false };
