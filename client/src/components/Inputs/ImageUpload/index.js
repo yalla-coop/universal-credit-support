@@ -120,14 +120,12 @@ const ImageUpload = ({
       };
 
       // upload file
-      const {
-        data: newUploadedFileInfo,
-        error: _error,
-      } = await Media.uploadToS3({
-        signedURL: fileInfo.url,
-        file,
-        options: config,
-      });
+      const { data: newUploadedFileInfo, error: _error } =
+        await Media.uploadToS3({
+          signedURL: fileInfo.url,
+          file,
+          options: config,
+        });
 
       if (_error) {
         onError(setError(_error.message));

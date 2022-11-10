@@ -9,7 +9,6 @@ const GENERAL = {
 };
 
 const admin = '/admin';
-
 const ADMIN = {
   BASE: `${admin}`,
   EDIT_DETAILS: `${admin}/edit-details`,
@@ -20,7 +19,6 @@ const ADMIN = {
   LOGIN: `${admin}/login`,
   PREVIEW_STEP: `${admin}/preview-step`,
   DELETE_STEP: `${admin}/delete-step`,
-  WELCOME: `${admin}/welcome`, // only to use for the sub router
   WELCOME1: `${admin}/welcome/1`,
   WELCOME2: `${admin}/welcome/2`,
   DASHBOARD: `${admin}/dashboard`,

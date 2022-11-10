@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { LoadingOutlined } from '@ant-design/icons';
 import Icon from '../Icon';
 import * as S from './style';
@@ -22,11 +22,11 @@ const Button = ({
   iconProps,
   ...props
 }) => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const onClick = (e) => {
     if (external) return;
-    if (to) history.push(to);
+    if (to) navigate(to);
     if (handleClick instanceof Function) handleClick(e);
   };
 
