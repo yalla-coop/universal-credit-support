@@ -33,13 +33,8 @@ const ResetPassword = () => {
   const submitAttempt = useRef(false);
   const { token } = useParams();
   const [state, setState] = useReducer(reducer, initialState);
-  const {
-    password,
-    loading,
-    validationErrs,
-    httpError,
-    showPasswordInput,
-  } = state;
+  const { password, loading, validationErrs, httpError, showPasswordInput } =
+    state;
 
   const isMobile = useMediaQuery({
     query: `(max-width: ${breakpoints.mobile})`,

@@ -1,4 +1,4 @@
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import * as T from '../Typography';
@@ -7,14 +7,14 @@ import Icon from '../Icon';
 import * as S from './style';
 
 const GoBack = ({ color = 'gray8', customFn, customLink, text, ...props }) => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const goBack = () => {
     if (customLink) {
-      history.push(customLink);
+      navigate(customLink);
     } else if (customFn && typeof customFn === 'function') {
       customFn();
     } else {
-      history.goBack();
+      navigate(-1);
     }
   };
 

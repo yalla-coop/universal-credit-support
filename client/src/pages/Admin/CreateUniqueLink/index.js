@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ADMIN } from '../../../constants/nav-routes';
 
 import { Typography as T, Button, Inputs, Grid } from '../../../components';
@@ -19,7 +19,7 @@ function CreateUniqueLink({ success }) {
   const [loading, setLoading] = useState(false);
   const submitAttempt = useRef(false);
   const [errors, setErrors] = useState({});
-  const history = useHistory();
+  const navigate = useNavigate();
   const { user } = useAuth();
   const validate = (value = uniqueSlug) => {
     try {
@@ -52,12 +52,12 @@ function CreateUniqueLink({ success }) {
         uniqueSlug,
       });
       setLoading(true);
-      const { error, data } = await Organisations.updateOrganisation({
+      const { error } = await Organisations.updateOrganisation({
         id: user.organisationId,
         body: { uniqueSlug },
       });
       if (!error) {
-        history.push(ADMIN.CREATE_UNIQUE_LINK_SUCCESS);
+        navigate(ADMIN.CREATE_UNIQUE_LINK_SUCCESS);
       } else {
         if (error.statusCode === 409) {
           setErrors({ uniqueSlug: error.message });
