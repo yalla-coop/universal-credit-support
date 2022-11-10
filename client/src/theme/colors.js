@@ -11,6 +11,7 @@ export default {
   secondaryMain: formatColor(secondaryMain),
   secondaryMid: formatColor(setColor('secondary', secondaryMain).mid),
   secondaryLight: formatColor(setColor('secondary', secondaryMain).light),
+  tertiaryMain: 'hsl(22, 97%, 66%)',
   neutralMain: 'hsl(219, 25%, 14%)',
   neutralPrimaryMVP: 'hsl(220, 26%, 14%)',
   neutralDark: 'hsl(195, 8%, 38%)',
@@ -24,9 +25,14 @@ export default {
   error: formatColor(primaryMain),
   borderPrimary: formatColor(primaryMain),
   borderSecondary: 'hsl(195, 8%, 38%)',
-  gray9: 'hsl(224, 11%, 26%)',
   primaryMainObj: primaryMain,
   secondaryMainObj: secondaryMain,
+  facebookBlue: 'hsla(214, 89%, 52%, 1)',
+  whatsappGreen: 'hsla(142, 70%, 49%, 1)',
+  irlenBlue: '#96ADFC',
+  irlenGreen: '#A8F29A',
+  irlenYellow: '#EDDD6E',
+  irlenRed: '#E0A6AA',
 };
 
 // HERE FOR REFERENCE ONLY

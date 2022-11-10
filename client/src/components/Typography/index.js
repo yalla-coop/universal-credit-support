@@ -12,11 +12,19 @@ const weights = {
   light: '300 !important',
 };
 
-const commonStyle = ({ theme, color, caps, ta, taT, taM, ...props }) => {
-  return `
-  font-style: normal !important;
+const commonStyle = ({
+  theme,
+  color,
+  caps,
+  ta,
+  taT,
+  taM,
+  italic,
+  ...props
+}) => `
+  font-style:${italic ? 'italic' : 'normal'}  !important;
   letter-spacing: 0.2px !important;
-  color: ${theme.colors[color] || color || theme.colors.black} !important;
+  color: ${theme.colors[color] || color || theme.colors.neutralMain} !important;
   text-transform: ${caps ? 'uppercase' : 'initial'} !important;
   text-align: ${ta || 'left'} !important;
 
@@ -27,7 +35,21 @@ const commonStyle = ({ theme, color, caps, ta, taT, taM, ...props }) => {
     text-align: ${taM || taT || ta || 'left'} !important;
   };
 `;
-};
+
+const Head0 = styled(Title)`
+  ${setMargin};
+  ${commonStyle};
+  font-family: hero-new-hairline, sans-serif;
+  font-size: 40px !important;
+  line-height: auto !important;
+  font-weight: ${({ weight }) => (weight ? weights[weight] : '700 !important')};
+
+  ${({ theme }) => theme.media.mobile} {
+    font-size: 24px !important;
+    line-height: auto !important;
+  }
+`;
+export const H0 = (props) => <Head0 {...props} level={1} />;
 
 const Head1 = styled(Title)`
   ${setMargin};

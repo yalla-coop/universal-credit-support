@@ -16,7 +16,7 @@ export const TextArea = styled(AntdTextArea)`
   width: 100%;
   padding: ${({ theme }) => theme.spacings[3]};
   line-height: 24px;
-  color: ${({ theme }) => theme.colors.gray9};
+  color: ${({ theme }) => theme.colors.neutralMain};
   font-size: 16px;
   cursor: ${({ disabled }) => disabled && 'not-allowed'};
   background: ${({ theme }) => theme.colors.gray2};
