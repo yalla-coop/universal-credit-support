@@ -17,12 +17,6 @@ export const contactLinksTypes = {
   EMAIL: 'EMAIL',
 };
 
-export const stageTypes = {
-  BEFORE_CLAIMING: 'BEFORE_CLAIMING',
-  CLAIMING: 'CLAIMING',
-  AFTER_CLAIMING: 'AFTER_CLAIMING',
-};
-
 export const linkTypes = {
   LINK: 'LINK',
   PHONE: 'PHONE',

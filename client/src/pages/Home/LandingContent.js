@@ -1,5 +1,6 @@
 import { navRoutes } from '../../constants';
 import { Typography as T } from '../../components';
+
 import Logo from '../../components/assets/Logo.png';
 
 import * as S from './style';

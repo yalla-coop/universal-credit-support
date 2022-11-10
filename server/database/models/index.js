@@ -1,15 +1,8 @@
 import users from './users';
 import media from './media';
 import organisations from './organisations';
-import landingPageContent from './landing-page-content';
-import steps from './steps';
+import sections from './sections';
 import contentAuditLog from './content-audit-log';
+import topics from './topics';
 
-export {
-  users,
-  media,
-  organisations,
-  landingPageContent,
-  steps,
-  contentAuditLog,
-};
+export { users, media, organisations, sections, contentAuditLog, topics };
