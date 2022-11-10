@@ -15,7 +15,7 @@ const weights = {
 const commonStyle = ({ theme, color, caps, ta, italic, ...props }) => `
   font-style:${italic ? 'italic' : 'normal'}  !important;
   letter-spacing: 0.2px !important;
-  color: ${theme.colors[color] || color || theme.colors.black} !important;
+  color: ${theme.colors[color] || color || theme.colors.neutralMain} !important;
   text-transform: ${caps ? 'uppercase' : 'initial'} !important;
   text-align: ${ta || 'left'} !important;
 `;
