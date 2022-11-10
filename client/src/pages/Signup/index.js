@@ -23,19 +23,19 @@ const { Row, Col } = Grid;
 const PasswordTipsContent = (
   <div>
     <T.H3 color="neutralMain">A password must contain:</T.H3>
-    <T.H3 weight="400" color="gray9">
+    <T.H3 weight="400" color="neutralMain">
       - a minimum of 8 characters
     </T.H3>
-    <T.H3 weight="400" color="gray9">
+    <T.H3 weight="400" color="neutralMain">
       - one capital letter
     </T.H3>
-    <T.H3 weight="400" color="gray9">
+    <T.H3 weight="400" color="neutralMain">
       - one lowercase letter
     </T.H3>
-    <T.H3 weight="400" color="gray9">
+    <T.H3 weight="400" color="neutralMain">
       - one number
     </T.H3>
-    <T.H3 weight="400" color="gray9">
+    <T.H3 weight="400" color="neutralMain">
       - one non alphabetical or numeric character
     </T.H3>
   </div>
