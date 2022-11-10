@@ -12,13 +12,22 @@ const weights = {
   light: '300 !important',
 };
 
-const commonStyle = ({ theme, color, caps, ta, ...props }) => `
+const commonStyle = ({ theme, color, caps, ta, taT, taM, ...props }) => {
+  return `
   font-style: normal !important;
   letter-spacing: 0.2px !important;
   color: ${theme.colors[color] || color || theme.colors.black} !important;
   text-transform: ${caps ? 'uppercase' : 'initial'} !important;
   text-align: ${ta || 'left'} !important;
+
+  ${theme.media.tablet} {
+    text-align: ${taT || ta || 'left'} !important;
+  };
+  ${theme.media.mobile} {
+    text-align: ${taM || taT || ta || 'left'} !important;
+  };
 `;
+};
 
 const Head1 = styled(Title)`
   ${setMargin};
@@ -40,7 +49,7 @@ const Head2 = styled(Title)`
   ${commonStyle};
   font-family: hero-new-hairline, sans-serif;
   font-size: 20px !important;
-  line-height: 24px !important;
+  line-height: 28px !important;
   font-weight: ${({ weight }) => (weight ? weights[weight] : '600 !important')};
 `;
 export const H2 = (props) => <Head2 {...props} level={2} />;

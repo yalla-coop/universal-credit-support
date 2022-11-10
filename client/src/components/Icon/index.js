@@ -26,6 +26,11 @@ import Bulb from './icons/Bulb';
 import BulletArrow from './icons/BulletArrow';
 import Compass from './icons/Compass';
 import Upload from './icons/Upload';
+import House from './icons/House';
+import Bill from './icons/Bill';
+import Basket from './icons/Basket';
+import Calculator from './icons/Calculator';
+import MoneyBag from './icons/MoneyBag';
 
 export const IconMap = {
   goBack: GoBack,
@@ -47,6 +52,11 @@ export const IconMap = {
   bulletArrow: BulletArrow,
   compass: Compass,
   upload: Upload,
+  house: House,
+  bill: Bill,
+  basket: Basket,
+  calculator: Calculator,
+  moneyBag: MoneyBag,
 };
 
 const Parent = styled.div`

@@ -1,225 +1,125 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
+import { message } from 'antd';
 import { useParams, useNavigate } from 'react-router-dom';
-import ReactGA from 'react-ga';
-import Step from '../../components/Steps';
-import { Typography as T } from '../../components';
-import { t } from '../../helpers';
-import { useLang } from '../../context/lang';
-import { useSteps } from '../../context/steps';
+import { Sections } from '../../api-calls';
+import {
+  Cards,
+  Typography as T,
+  TextWithIcon,
+  Grid,
+  Button,
+} from '../../components';
 import { navRoutes as n } from '../../constants';
 import LandingContent from './LandingContent';
-import { stageTypes } from './../../constants/data-types';
 
-import Icon from '../../components/Icon';
 import HelpButton from '../../components/HelpButton';
-import TextWithIcon from '../../components/TextWithIcon';
 
 import * as S from './style';
-
-const afterClaimContent = {
-  title: {
-    completed: 'You’re all done!',
-    notCompleted: `What should I do once I am granted Universal Credit?`,
-  },
-  text: {
-    completed: `Got your Universal Credit? Great news! Check out these steps on what to do next:`,
-    notCompleted: `Once you’ve completed your claim there are few additional steps you can take. Open this when you’ve completed the above steps`,
-  },
-};
+const { Col, Row } = Grid;
 
 const Home = () => {
-  const { lang } = useLang();
-  const { steps, justCompletedId, setJustCompletedId, loadingSteps, stepsObj } =
-    useSteps();
+  const [stuck, setStuck] = useState(false);
+  const [cardsData, setCardsData] = useState([]);
 
-  const [showAfterClaim, setShowAfterClaim] = useState(false);
-
-  const currentStep = steps.find(
-    (step) => !step.isCompleted && step.stage !== stageTypes.BEFORE_CLAIMING
-  );
-  const currentStepRef = useRef();
   const { org } = useParams();
   const navigate = useNavigate();
-
-  const completedClaim = currentStep?.stage === stageTypes.AFTER_CLAIMING;
-
-  const getStepStatus = (step, i) => {
-    const isCurrentStep = currentStep && step.id === currentStep.id;
-    const variant = step.isCompleted
-      ? 'neutral'
-      : isCurrentStep
-      ? 'primary'
-      : 'secondary';
-    const isJustCompletedOne = step.id === justCompletedId;
-    // To only add ref to the currentStep
-    let currentRef = isCurrentStep ? currentStepRef : null;
-    if (i === steps.length - 1 && step.isCompleted) {
-      currentRef = currentStepRef;
-    }
-
-    return { variant, currentRef, isJustCompletedOne, isCurrentStep };
-  };
-
-  const decideRoute = (step) =>
-    org
-      ? n.STEPS.STEP_ORG.replace(':id', step.id).replace(':org', org)
-      : n.STEPS.STEP.replace(':id', step.id);
-
-  useEffect(() => {
-    if (currentStepRef.current && justCompletedId) {
-      currentStepRef.current.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center',
-      });
-    }
-
-    if (process.env.NODE_ENV === 'production') {
-      ReactGA.event({
-        category: 'Completed step',
-        action: currentStep?.title,
-      });
-
-      if (completedClaim) {
-        ReactGA.event({
-          category: 'Completed claim',
-          action: 'Completed claim',
-        });
-      }
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [justCompletedId]);
 
   useEffect(() => {
     if (org) {
       navigate(n.GENERAL.HOME_ORG.replace(':org', org));
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [org]);
+  }, [org, navigate]);
+  useEffect(() => {
+    let mounted = true;
+    async function fetchData() {
+      const hideMessage = message.loading('Loading...');
+      const { data, error } = await Sections.getSections({});
+      if (mounted) {
+        if (error) {
+          message.error('Something went wrong, please try again later');
+        } else {
+          setCardsData(data);
+        }
+        hideMessage();
+      }
+    }
+
+    fetchData();
+    return () => {
+      mounted = false;
+    };
+  }, []);
 
   return (
-    <>
-      <LandingContent uniqueSlug={org} />
-
-      {/* BEFORE CLAIMING */}
-      {stepsObj.BEFORE_CLAIMING?.map((step, i) => {
-        const { variant, currentRef, isJustCompletedOne } = getStepStatus(
-          step,
-          i
-        );
-
-        return (
-          <Step
-            key={step.id}
-            title={step.title}
-            description={step.description}
-            content={t(`${step.name}.subtitle`, lang)}
-            isCompleted={step.isCompleted}
-            variant={variant}
-            direction={i % 2 === 0 ? 'left' : 'right'}
-            mt="7"
-            isJustCompletedOne={isJustCompletedOne}
-            to={decideRoute(step)}
-            ref={currentRef}
-            isOptional={step.isOptional}
-            handleClick={() => {
-              setJustCompletedId('');
-            }}
-            loadingSteps={loadingSteps}
-          />
-        );
-      })}
-
-      {/* CLAIMING */}
-      {stepsObj.CLAIMING?.map((step, i) => {
-        const { variant, currentRef, isJustCompletedOne } = getStepStatus(
-          step,
-          i
-        );
-
-        return (
-          <Step
-            key={step.id}
-            title={step.title}
-            description={step.description}
-            content={t(`${step.name}.subtitle`, lang)}
-            isCompleted={step.isCompleted}
-            variant={variant}
-            direction={i % 2 === 0 ? 'left' : 'right'}
-            mt="7"
-            isJustCompletedOne={isJustCompletedOne}
-            to={decideRoute(step)}
-            ref={currentRef}
-            isOptional={step.isOptional}
-            handleClick={() => {
-              setJustCompletedId('');
-            }}
-            loadingSteps={loadingSteps}
-          />
-        );
-      })}
-
-      {/* AFTER CLAIMING */}
-      <S.Section mt="7">
-        <Icon icon="flag" color="primaryMain" mt="6" mb="5" mbM="0" mtM="5" />
-        <T.H2 color="neutralMain" mb="1">
-          {
-            afterClaimContent.title[
-              completedClaim ? 'completed' : 'notCompleted'
-            ]
-          }
-        </T.H2>
-        <S.StyledText>
-          {
-            afterClaimContent.text[
-              completedClaim ? 'completed' : 'notCompleted'
-            ]
-          }
-        </S.StyledText>
-        {!completedClaim && !showAfterClaim && (
-          <S.Container mt="4">
-            <TextWithIcon
-              icon="bulletArrow"
-              iconColor="primaryMain"
-              isButton
-              handleClick={() => setShowAfterClaim(true)}
-              text="View steps"
-              jc="flex-start"
-              weight="500"
-            />
-          </S.Container>
-        )}
+    <S.Container>
+      <LandingContent />
+      <S.Section>
+        <S.CardsWrapper>
+          {cardsData.map((item) => {
+            return (
+              <Cards.SectionCard
+                key={item.cardId}
+                cardId={item.cardId}
+                text={item.text}
+                to={item.to} // still to do decide if its route or sub-route
+                mb={2}
+                mbM={'0'}
+              />
+            );
+          })}
+        </S.CardsWrapper>
       </S.Section>
-
-      {(completedClaim || showAfterClaim) &&
-        stepsObj.AFTER_CLAIMING?.map((step, i) => {
-          const { variant, currentRef, isJustCompletedOne } = getStepStatus(
-            step,
-            i
-          );
-
-          return (
-            <Step
-              key={step.id}
-              title={step.title}
-              description={step.description}
-              content={t(`${step.name}.subtitle`, lang)}
-              isCompleted={step.isCompleted}
-              variant={variant}
-              direction={i % 2 === 0 ? 'left' : 'right'}
-              mt="7"
-              isJustCompletedOne={isJustCompletedOne}
-              to={decideRoute(step)}
-              ref={currentRef}
-              isOptional={step.isOptional}
-              handleClick={() => {
-                setJustCompletedId('');
-              }}
-              loadingSteps={loadingSteps}
+      <S.FullSection>
+        <S.NeedHelpWrapper>
+          <T.H2 color="neutralMain" ta="center" taM="left">
+            Need help with budgeting?
+          </T.H2>
+          <T.P ta="center" mt="4" mb="3" taM="left" color="neutralDark">
+            You know how much is going in and out but if you need a hand, we can
+            help you work it out.
+          </T.P>
+          <TextWithIcon
+            size="large"
+            bgColor="neutralLight"
+            to="/"
+            text="Read more"
+            icon="forwardArrow"
+            iconColor="tertiaryDark"
+            jc="center"
+            jcT="flex-start"
+            mr="6px"
+          />
+        </S.NeedHelpWrapper>
+      </S.FullSection>
+      <Row jc="center" jcM="flex-start">
+        <Col w={[4, 6, 4]} jc="center" jcM="flex-start" mt="8" mtM="6" mb="0">
+          <S.ButtonsContainer>
+            <T.H2
+              id="buttons_text"
+              ta="center"
+              taM="left"
+              color="neutralMain"
+              mb="4"
+            >
+              Feeling stressed or overwhelmed
+            </T.H2>
+            <Button variant="primary" text="See advice" mb="6" />
+            <TextWithIcon
+              text="Stuck? Talk to someone"
+              isButton
+              handleClick={() => setStuck(true)}
+              underline
+              iconColor="primaryMain"
+              weight="medium"
+              mr="3"
+              jc="center"
             />
-          );
-        })}
-      <HelpButton />
-    </>
+          </S.ButtonsContainer>
+        </Col>
+      </Row>
+
+      <HelpButton parentState={stuck} parentFunc={() => setStuck(false)} />
+    </S.Container>
   );
 };
 

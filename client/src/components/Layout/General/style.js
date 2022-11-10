@@ -38,12 +38,10 @@ export const Wrapper = styled.div`
 export const Content = styled.main`
   width: 100%;
   overflow: hidden;
-  padding-bottom: ${({ theme: { spacings } }) => spacings[8]};
-  ${({ theme }) => theme.media.tablet} {
-    padding-bottom: ${({ theme: { spacings } }) => spacings[7]};
-  }
+  padding-bottom: ${({ theme: { spacings } }) => spacings[11]};
+
   ${({ theme }) => theme.media.mobile} {
-    padding-bottom: ${({ theme: { spacings } }) => spacings[8]};
+    padding-bottom: ${({ theme: { spacings } }) => spacings[7]};
   }
 `;
 

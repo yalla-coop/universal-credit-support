@@ -1,25 +1,23 @@
 import styled from '@emotion/styled';
 import setMargin from '../../helpers/set-margin';
 
-// export const Wrapper = styled.a`
-//   ${setMargin};
-//   color: ${({ color, theme }) => theme.colors[color] || color || '#1A202C'};
-//   text-decoration: underline;
-//   display: flex;
-//   width: 100%;
-//   align-items: center;
-//   justify-content: flex-start;
-//   ${({ theme }) => theme.media.mobile} {
-//     justify-content: center;
-//   }
-// `;
-
 export const Wrapper = styled.div`
   ${setMargin};
   display: flex;
   width: 100%;
   align-items: ${({ ai }) => ai || 'center'};
-  justify-content: flex-start;
+  justify-content: ${({ jc }) => jc || 'flex-start'};
+  padding: ${({ theme, size }) => (size === 'large' ? theme.spacings[4] : 0)};
+  border-radius: ${({ size }) => size === 'large' && '8px'};
+  background: ${({ theme, bgColor }) => {
+    return bgColor && (theme.colors[bgColor] || bgColor);
+  }};
+  ${({ theme }) => theme.media.Tablet} {
+    justify-content: ${({ jc, jcT }) => jcT || jc || 'flex-start'};
+  }
+  ${({ theme }) => theme.media.mobile} {
+    justify-content: ${({ js, jsT, jsM }) => jsM || jsT || js || 'flex-start'};
+  }
 `;
 
 export const Text = styled.span`
