@@ -1,5 +1,5 @@
 import { useReducer, useEffect, useRef, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import { breakpoints } from '../../theme';
 
@@ -23,19 +23,19 @@ const { Row, Col } = Grid;
 const PasswordTipsContent = (
   <div>
     <T.H3 color="neutralMain">A password must contain:</T.H3>
-    <T.H3 weight="400" color="gray9">
+    <T.H3 weight="400" color="neutralMain">
       - a minimum of 8 characters
     </T.H3>
-    <T.H3 weight="400" color="gray9">
+    <T.H3 weight="400" color="neutralMain">
       - one capital letter
     </T.H3>
-    <T.H3 weight="400" color="gray9">
+    <T.H3 weight="400" color="neutralMain">
       - one lowercase letter
     </T.H3>
-    <T.H3 weight="400" color="gray9">
+    <T.H3 weight="400" color="neutralMain">
       - one number
     </T.H3>
-    <T.H3 weight="400" color="gray9">
+    <T.H3 weight="400" color="neutralMain">
       - one non alphabetical or numeric character
     </T.H3>
   </div>
@@ -76,8 +76,8 @@ const SignUp = () => {
     validationErrs,
     httpError,
   } = state;
-  const history = useHistory();
-  const { setUser, user } = useAuth();
+  const navigate = useNavigate();
+  const { setUser } = useAuth();
   const isMobile = useMediaQuery({
     query: `(max-width: ${breakpoints.mobile})`,
   });
@@ -143,7 +143,7 @@ const SignUp = () => {
       }
     } else {
       setUser(data);
-      history.push(R.ADMIN.CREATE_ORG_DETAILS_FIRST_STEP);
+      navigate(R.ADMIN.CREATE_ORG_DETAILS_FIRST_STEP);
     }
   };
 

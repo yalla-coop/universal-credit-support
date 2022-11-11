@@ -18,6 +18,16 @@ CREATE TABLE "organisations" (
     -- ]
   "benefit_calculator_link" TEXT,
   "benefit_calculator_label" VARCHAR,
+  "online_budgeting_tool_link" TEXT,
+  "online_budgeting_tool_label" VARCHAR,
+  "debt_advice_link" TEXT,
+  "debt_advice_label" VARCHAR,
+  "debt_advice_email" TEXT,
+  "debt_advice_email_label" VARCHAR,
+  "employment_services_link" TEXT,
+  "employment_services_label" VARCHAR,
+  "employment_services_email" TEXT,
+  "employment_services_email_label" VARCHAR,
   "logo_id" INTEGER REFERENCES media(id),
   "colors" JSON,
     -- { 

@@ -67,28 +67,17 @@ const Changes = () => {
                   </T.P>
                 </a>
               </S.ContentWrapper>
-              {change.landingPageContentId ? (
-                <TextWithIcon
-                  m={{ mt: 3 }}
-                  text="Landing page edited"
-                  iconColor="primaryMain"
-                  icon="forwardArrow"
-                  to={R.GENERAL.HOME}
-                />
-              ) : (
-                <>
-                  <T.P weight="bold" style={{ width: '100%' }}>
-                    Step edited:
-                  </T.P>
-                  <TextWithIcon
-                    m={{ mt: 3 }}
-                    text={change.title}
-                    iconColor="primaryMain"
-                    icon="forwardArrow"
-                    to={R.SUPER_ADMIN.EDIT_STEP.replace(':id', change.stepId)}
-                  />
-                </>
-              )}
+
+              <T.P weight="bold" style={{ width: '100%' }}>
+                Step edited:
+              </T.P>
+              <TextWithIcon
+                m={{ mt: 3 }}
+                text={change.title}
+                iconColor="primaryMain"
+                icon="forwardArrow"
+                to={R.SUPER_ADMIN.EDIT_STEP.replace(':id', change.stepId)}
+              />
             </Col>
           ))
         ) : (

@@ -1,5 +1,5 @@
 import { useReducer, useEffect, useRef } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import { breakpoints } from '../../theme';
 
@@ -35,7 +35,7 @@ const Login = () => {
   const submitAttempt = useRef(false);
   const [state, setState] = useReducer(reducer, initialState);
   const { email, password, loading, validationErrs, httpError } = state;
-  const history = useHistory();
+  const navigate = useNavigate();
   const { setUser } = useAuth();
 
   const isMobile = useMediaQuery({
@@ -84,9 +84,9 @@ const Login = () => {
     } else {
       setUser(data);
       if (data.hasOrganisation) {
-        history.push(R.ADMIN.DASHBOARD);
+        navigate(R.ADMIN.DASHBOARD);
       } else {
-        history.push(R.ADMIN.CREATE_ORG_DETAILS_FIRST_STEP);
+        navigate(R.ADMIN.CREATE_ORG_DETAILS_FIRST_STEP);
       }
     }
   };

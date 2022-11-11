@@ -1,13 +1,7 @@
 import { fields, createSchema, validate as _validate } from '..';
 
-const {
-  email,
-  password,
-  firstName,
-  lastName,
-  agreedOnTerms,
-  requiredText,
-} = fields;
+const { email, password, firstName, lastName, agreedOnTerms, requiredText } =
+  fields;
 
 const adminSignUpSchema = createSchema({
   email,
