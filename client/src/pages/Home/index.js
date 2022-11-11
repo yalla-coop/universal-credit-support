@@ -11,11 +11,16 @@ import {
 } from '../../components';
 import { navRoutes as n } from '../../constants';
 import LandingContent from './LandingContent';
-
+import { useTranslation, Trans } from 'react-i18next';
 import HelpButton from '../../components/HelpButton';
 
 import * as S from './style';
 const { Col, Row } = Grid;
+
+const lngs = {
+  en: { nativeName: 'English' },
+  ar: { nativeName: 'Arabic' },
+};
 
 const Home = () => {
   const [stuck, setStuck] = useState(false);
@@ -45,11 +50,13 @@ const Home = () => {
     }
 
     fetchData();
+    i18n.changeLanguage('en');
     return () => {
       mounted = false;
     };
   }, []);
 
+  const { i18n } = useTranslation();
   return (
     <S.Container>
       <LandingContent />
@@ -72,11 +79,15 @@ const Home = () => {
       <S.FullSection>
         <S.NeedHelpWrapper>
           <T.H2 color="neutralMain" ta="center" taM="left">
-            Need help with budgeting?
+            <Trans i18nKey="section.helpBudget.title">
+              Need help with budgeting?
+            </Trans>
           </T.H2>
           <T.P ta="center" mt="4" mb="3" taM="left" color="neutralDark">
-            You know how much is going in and out but if you need a hand, we can
-            help you work it out.
+            <Trans i18nKey="section.helpBudget.description">
+              You know how much is going in and out but if you need a hand, we
+              can help you work it out.
+            </Trans>
           </T.P>
           <TextWithIcon
             size="large"
@@ -101,7 +112,9 @@ const Home = () => {
               color="neutralMain"
               mb="4"
             >
-              Feeling stressed or overwhelmed
+              <Trans i18nKey="section.stressedOrOverwhelmed.title">
+                Feeling stressed or overwhelmed
+              </Trans>
             </T.H2>
             <Button variant="primary" text="See advice" mb="6" />
             <TextWithIcon
