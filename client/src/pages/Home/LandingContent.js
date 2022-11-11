@@ -1,75 +1,35 @@
-import { useState, useEffect } from 'react';
-import { message } from 'antd';
-
+import { navRoutes } from '../../constants';
 import { Typography as T } from '../../components';
-import { LandingPage } from '../../api-calls';
-import { t } from '../../helpers';
-import { useLang } from '../../context/lang';
-import { usePublicOrg } from '../../context/public-org';
+
+import Logo from '../../components/assets/Logo.png';
 
 import * as S from './style';
 
-const formatText = (text) => {
-  if (!text) return '';
-  const arr = text.split(/\. |! |\? /gm);
-  const firstSentence = arr[0];
-  if (!arr[1]) return <T.H2 color="primaryMain">{firstSentence}</T.H2>;
-
-  const remainder = arr.slice(1).join(' ');
+const LandingContent = () => {
   return (
     <>
-      <T.H2 color="primaryMain" mb="2" mr="2" mt="2">
-        {firstSentence}! <S.Span>{remainder}</S.Span>
-      </T.H2>
-    </>
-  );
-};
-
-const LandingContent = ({ uniqueSlug }) => {
-  const { lang } = useLang();
-  const { publicOrg } = usePublicOrg();
-  const [landingContent, setLandingContent] = useState({});
-  const [fetchError, setFetchError] = useState('');
-
-  useEffect(() => {
-    let mounted = true;
-    async function fetchData() {
-      const hideMessage = message.loading('Loading...');
-      const { data, error } = await LandingPage.getLandingPageContent({});
-      if (mounted) {
-        if (error) {
-          setFetchError(t(`generalError`, lang));
-        } else {
-          setLandingContent(data);
-        }
-        hideMessage();
-      }
-    }
-
-    fetchData();
-    return () => {
-      mounted = false;
-    };
-  }, [lang]);
-
-  return (
-    <>
-      <S.PageHead
-        showBGImage={!uniqueSlug || (publicOrg && Number(publicOrg?.id) === 1)}
-      >
-        <S.HeaderText>
-          {fetchError ? (
-            <T.P color="error">{fetchError}</T.P>
-          ) : (
-            <T.H2 weight="bold" color="white">
-              {landingContent.headline}
-            </T.H2>
-          )}
-        </S.HeaderText>
+      <S.PageHead showBGImage>
+        <S.HeaderContent>
+          <S.LogoContainer to={navRoutes.GENERAL.HOME}>
+            <img src={Logo} alt="logo" />
+          </S.LogoContainer>
+          <S.HeaderText>
+            <S.pageTitle ta="center" weight="bold" color="white">
+              Cost of Living Helper
+            </S.pageTitle>
+          </S.HeaderText>
+        </S.HeaderContent>
       </S.PageHead>
-      <S.Section>
-        {formatText(landingContent.subtitle)}{' '}
-        <S.StyledText mb="3">{landingContent.instructions}</S.StyledText>
+      <S.Section mt="8" mtM="5">
+        <S.StyledText mb="8" mbM="6">
+          If you are worried about money there is a lot of help out there.
+          Knowing where to start can be tricky, but in this tool you will find
+          advice and handy tips about what you can do. You can also bookmark
+          actions as you look through.
+        </S.StyledText>
+        <T.H2 color="black" mb="4">
+          I’m worried about...
+        </T.H2>
       </S.Section>
     </>
   );

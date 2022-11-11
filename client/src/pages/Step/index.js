@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import B from '../../constants/benefit-calculator';
 
 import {
@@ -29,13 +29,13 @@ const Step = () => {
   const { publicOrg } = usePublicOrg();
   const params = useParams();
   const { lang } = useLang();
-  const history = useHistory();
+  const navigate = useNavigate();
   const { steps: fullSteps, checkUncheckItem, markAsComplete } = useSteps();
 
   const step = fullSteps.find((s) => s.id === Number(params.id));
 
   if (!step) {
-    history.push(n.GENERAL.NOT_FOUND);
+    navigate(n.GENERAL.NOT_FOUND);
     return null;
   }
 
@@ -56,11 +56,11 @@ const Step = () => {
       <Row mb="8" mbM="8">
         <Col w={[4, 12, 12]}>
           <S.PageHead>
-            <S.CloseWrapper onClick={() => history.goBack()}>
+            <S.CloseWrapper onClick={() => navigate(-1)}>
               <OrganisationLogo logoUrl={publicOrg.logoUrl} />
             </S.CloseWrapper>
 
-            <S.CloseWrapper onClick={() => history.goBack()} padding="10px">
+            <S.CloseWrapper onClick={() => navigate(-1)} padding="10px">
               <Icon icon="close" width={16} height={16} pointer />
             </S.CloseWrapper>
           </S.PageHead>

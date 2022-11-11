@@ -1,8 +1,9 @@
 import dotenv from 'dotenv';
 import createUsers from './users';
 import createOrganisations from './organisations';
-import createLandingPage from '../dummy-data-prod/landing-page-content';
-import createSteps from '../dummy-data-prod/steps-content';
+import createSections from '../dummy-data-prod/sections';
+import createTopics from '../dummy-data-prod/topics';
+import updateTheDefaultSectionsLogs from '../dummy-data-prod/update-the-default-sections-logs';
 
 if (process.env.NODE_ENV !== 'production') {
   dotenv.config();
@@ -12,8 +13,9 @@ const buildData = async () => {
   const createdData = {};
   createdData.organisations = await createOrganisations(createdData);
   createdData.users = await createUsers(createdData);
-  createdData.landingPage = await createLandingPage();
-  createdData.steps = await createSteps();
+  createdData.sections = await createSections();
+  createdData.topics = await createTopics(createdData);
+  await updateTheDefaultSectionsLogs();
 
   return createdData;
 };

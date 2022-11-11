@@ -1,12 +1,8 @@
 import { ThemeProvider } from '@emotion/react';
 import { Global } from '@emotion/react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route as RouterRoute,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import theme, { globalStyle } from './theme';
-import { Route } from './components';
+import { Route as CustomRoute } from './components';
 import * as Pages from './pages';
 import { navRoutes } from './constants';
 import { ScrollToTop } from './helpers';
@@ -14,12 +10,13 @@ import LangProvider from './context/lang';
 import StepsProvider from './context/steps';
 import { AuthProvider } from './context/auth';
 import { PublicOrgProvider } from './context/public-org';
+import { createBrowserHistory } from 'history';
 
 // import CookieBot from 'react-cookiebot';
 
 import 'antd/dist/antd.css';
 
-// const domainGroupId = process.env.REACT_APP_COOKIEBOT_DOMAIN_ID;
+export const history = createBrowserHistory({ basename: window.BASE_URL });
 
 function App() {
   return (
@@ -31,99 +28,117 @@ function App() {
             <AuthProvider>
               <Router basename={process.env.PUBLIC_URL}>
                 <ScrollToTop />
-                <Switch>
+                <Routes>
                   <Route
                     path={navRoutes.GENERAL.NOT_FOUND}
-                    Component={() => 'Page Not Found'}
-                    layout="general"
+                    element={
+                      <CustomRoute
+                        Component={<p>Page Not Found</p>}
+                        layout="general"
+                      />
+                    }
                   />
-
                   <Route
                     exact
                     path={navRoutes.ADMIN.LOGIN}
-                    Component={Pages.Login}
-                    layout="splitScreen"
-                    side="left"
-                    gradient="secondary"
-                    publicOnly
+                    element={
+                      <CustomRoute
+                        Component={Pages.Login}
+                        layout="splitScreen"
+                        side="left"
+                        gradient="secondary"
+                        publicOnly
+                      />
+                    }
                   />
                   <Route
                     exact
                     path={navRoutes.ADMIN.SIGNUP}
-                    Component={Pages.Signup}
-                    layout="splitScreen"
-                    side="left"
-                    gradient="secondary"
-                    publicOnly
-                  />
-
-                  {/* ALL ADMIN PAGES */}
-                  <RouterRoute path={navRoutes.ADMIN.BASE}>
-                    <Pages.Admin />
-                  </RouterRoute>
-
-                  <RouterRoute path={navRoutes.GENERAL.HOME} exact>
-                    <PublicOrgProvider>
-                      <Route
-                        exact
-                        path={navRoutes.GENERAL.HOME}
-                        Component={Pages.Home}
-                        layout="general"
+                    element={
+                      <CustomRoute
+                        Component={Pages.Signup}
+                        layout="splitScreen"
+                        side="left"
+                        gradient="secondary"
+                        publicOnly
                       />
-                    </PublicOrgProvider>
-                  </RouterRoute>
+                    }
+                  />
+                </Routes>
+
+                {/* ALL ADMIN PAGES */}
+                <Pages.Admin />
+                <Routes>
+                  <Route
+                    path={navRoutes.GENERAL.HOME}
+                    exact
+                    element={
+                      <PublicOrgProvider>
+                        <CustomRoute Component={Pages.Home} layout="general" />
+                      </PublicOrgProvider>
+                    }
+                  />
 
                   <Route
                     exact
                     path={navRoutes.STEPS.STEP}
-                    Component={Pages.Step}
-                    layout="step"
+                    element={
+                      <CustomRoute Component={Pages.Step} layout="step" />
+                    }
                   />
 
-                  <RouterRoute path={navRoutes.GENERAL.HOME_ORG}>
-                    <PublicOrgProvider>
-                      <Route
-                        exact
-                        path={navRoutes.GENERAL.HOME_ORG}
-                        Component={Pages.Home}
-                        layout="general"
-                      />
-                    </PublicOrgProvider>
-                  </RouterRoute>
-                  <RouterRoute path={navRoutes.STEPS.STEP_ORG}>
-                    <PublicOrgProvider>
-                      <Route
-                        exact
-                        path={navRoutes.STEPS.STEP_ORG}
-                        Component={Pages.Step}
-                        layout="step"
-                      />
-                    </PublicOrgProvider>
-                  </RouterRoute>
+                  <Route
+                    path={navRoutes.GENERAL.HOME_ORG}
+                    exact
+                    element={
+                      <PublicOrgProvider>
+                        <CustomRoute Component={Pages.Home} layout="general" />
+                      </PublicOrgProvider>
+                    }
+                  />
+
+                  <Route
+                    path={navRoutes.GENERAL.STEP_ORG}
+                    exact
+                    element={
+                      <PublicOrgProvider>
+                        <CustomRoute Component={Pages.Step} layout="step" />
+                      </PublicOrgProvider>
+                    }
+                  />
 
                   <Route
                     exact
                     path={navRoutes.GENERAL.FORGET_PASSWORD}
-                    Component={Pages.ForgotPassword}
-                    layout="splitScreen"
-                    side="left"
-                    gradient="secondary"
+                    element={
+                      <CustomRoute
+                        Component={Pages.ForgotPassword}
+                        layout="splitScreen"
+                        side="left"
+                        gradient="secondary"
+                      />
+                    }
                   />
                   <Route
                     exact
                     path={navRoutes.GENERAL.RESET_PASSWORD}
-                    Component={Pages.ResetPassword}
-                    layout="splitScreen"
-                    side="left"
-                    gradient="secondary"
+                    element={
+                      <CustomRoute
+                        Component={Pages.ResetPassword}
+                        layout="splitScreen"
+                        side="left"
+                        gradient="secondary"
+                      />
+                    }
                   />
                   <Route
                     exact
                     path={navRoutes.GENERAL.ORG}
-                    Component={Pages.Home}
-                    layout="general"
+                    element={
+                      <CustomRoute Component={Pages.Home} layout="general" />
+                    }
                   />
-                </Switch>
+                </Routes>
               </Router>
             </AuthProvider>
           </StepsProvider>

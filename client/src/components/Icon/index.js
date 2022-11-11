@@ -31,6 +31,11 @@ import Accessibility from './icons/Accessibility';
 import BackArrow from './icons/BackArrow';
 import BackArrowRTL from './icons/BackArrowRTL';
 import Search from './icons/Search';
+import House from './icons/House';
+import Bill from './icons/Bill';
+import Basket from './icons/Basket';
+import Calculator from './icons/Calculator';
+import MoneyBag from './icons/MoneyBag';
 
 import EN from './icons/EN';
 import AR from './icons/AR';
@@ -65,6 +70,11 @@ export const IconMap = {
   backArrow: BackArrow,
   backArrowRTL: BackArrowRTL,
   search: Search,
+  house: House,
+  bill: Bill,
+  basket: Basket,
+  calculator: Calculator,
+  moneyBag: MoneyBag,
   ...FlagMap,
 };
 

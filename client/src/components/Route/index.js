@@ -1,20 +1,12 @@
 import React from 'react';
-import { Route as RouterRoute, Redirect } from 'react-router-dom';
 import Layout from './../../components/Layout';
 import { authorization } from '../../helpers';
 import { useAuth } from '../../context/auth';
 import { navRoutes } from '../../constants';
+import Redirect from './Redirect';
 
 const Route = (props) => {
-  const {
-    isPrivate,
-    layout,
-    path,
-    Component,
-    exact,
-    allowedRoles,
-    publicOnly,
-  } = props;
+  const { isPrivate, layout, Component, allowedRoles, publicOnly } = props;
 
   const { user } = useAuth();
 
@@ -28,13 +20,11 @@ const Route = (props) => {
     if (user.id) {
       return (
         <Layout layout={layout} {...props}>
-          <RouterRoute path={path} props exact={exact}>
-            {authorized ? (
-              <Component {...props} />
-            ) : (
-              <Redirect to={navRoutes.GENERAL.UNAUTHORIZED} {...props} />
-            )}
-          </RouterRoute>
+          {authorized ? (
+            <Component {...props} />
+          ) : (
+            <Redirect to={navRoutes.GENERAL.UNAUTHORIZED} {...props} />
+          )}
         </Layout>
       );
     }
@@ -43,11 +33,9 @@ const Route = (props) => {
   }
 
   return (
-    <RouterRoute path={path} props exact={exact}>
-      <Layout layout={layout} {...props}>
-        <Component layout={layout} {...props} />
-      </Layout>
-    </RouterRoute>
+    <Layout layout={layout} {...props}>
+      <Component layout={layout} {...props} />
+    </Layout>
   );
 };
 

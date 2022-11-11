@@ -7,7 +7,6 @@ import {
   Button,
   Modal,
 } from '../../../components';
-import { LandingPage } from '../../../api-calls';
 
 import validate from '../../../validation/schemas/edit-landing-page';
 import { useMediaQuery } from 'react-responsive';
@@ -68,9 +67,10 @@ const EditLandingPage = () => {
   const handleUpdate = async () => {
     setState({ loading: true });
 
-    const { error } = await LandingPage.updateLandingPageContent({
-      body: { headline, subtitle, instructions },
-    });
+    const { error } = {};
+    // const { error } = await LandingPage.updateLandingPageContent({
+    //   body: { headline, subtitle, instructions },
+    // });
     setState({ loading: false });
     if (error) {
       setState({ httpError: error.message });
@@ -98,7 +98,8 @@ const EditLandingPage = () => {
     const getLandingPageData = async () => {
       setState({ loading: false });
 
-      const { error, data } = await LandingPage.getLandingPageContent({});
+      const { error, data } = {};
+      // const { error, data } = await LandingPage.getLandingPageContent({});
 
       setState({ loading: false });
       if (error) {
