@@ -7,8 +7,8 @@
     "npm": "6.x"
   },
   "scripts": {
-    "dev": "concurrently --kill-others-on-fail \"cd client && npm start\" \"cross-env DEBUG=server nodemon --exec babel-node ./server/index.js\"",
-    "dev:server": "cross-env DEBUG=server nodemon --exec babel-node ./server/index.js",
+    "dev": "concurrently --kill-others-on-fail \"cd client && npm start\" \"cd server && npm run dev\"",
+    "dev:server": "cd server && npm run start",
     "dev:client": "cd client && npm start",
     "storybook": "cd client/ && npm run storybook",
     "start": "cross-env DEBUG=server node dist/index.js",
@@ -19,63 +19,17 @@
     "migrate:create": "func() { db-migrate -m server/database/migrations create \"$1\" --sql-file; }; func",
     "clean": "rm -rf dist && mkdir dist",
     "lint:server": "eslint server",
-    "test": "cross-env NODE_ENV=test mocha \"server/**/*.spec.js\" --exclude \"server/services/dataTestingRunner/*.spec.js\"",
+    "test:client": "cd client && npm run test",
+    "test:server": "cd server && npm run test",
     "cover": "nyc npm t",
     "report-coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
-    "build:db": "babel-node ./server/database/build.script.js",
-    "build:db:prod": "babel-node ./server/database/dummy-data-prod/build.script.js",
-    "init:both": "npm i && cd client && npm i && npm run build",
+    "build:db": "cd server && npm run build:db",
+    "build:db:prod": "cd server && babel-node ./database/dummy-data-prod/build.script.js",
+    "init:both": "npm i && cd server && npm i && cd ../client && npm i && npm run build",
     "heroku-postbuild": "npm run init:both && npm run build"
   },
-  "dependencies": {
-    "@hapi/boom": "^10.0.0",
-    "@sendgrid/mail": "^7.7.0",
-    "@sentry/node": "^7.17.4",
-    "@sentry/tracing": "^7.17.4",
-    "aws-sdk": "^2.971.0",
-    "bcryptjs": "^2.4.3",
-    "cookie-parser": "^1.4.6",
-    "cross-env": "^7.0.3",
-    "csurf": "^1.11.0",
-    "db-migrate": "^0.11.13",
-    "db-migrate-pg": "^1.2.2",
-    "debug": "^4.3.4",
-    "dotenv": "^16.0.3",
-    "express": "^4.18.2",
-    "helmet": "^6.0.0",
-    "jsonwebtoken": "^8.5.1",
-    "moment": "^2.29.4",
-    "morgan": "^1.10.0",
-    "pg": "^8.8.0",
-    "serve-favicon": "^2.5.0",
-    "uniqid": "^5.4.0",
-    "uuid": "^9.0.0",
-    "yup": "^0.32.11"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "@babel/cli": "^7.19.3",
-    "@babel/core": "^7.20.2",
-    "@babel/node": "^7.20.2",
-    "@babel/plugin-transform-runtime": "^7.19.6",
-    "@babel/preset-env": "^7.20.2",
-    "babel-loader": "^9.1.0",
-    "chai": "^4.3.6",
-    "concurrently": "^7.5.0",
-    "eslint": "^8.27.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jsx-a11y": "^6.6.1",
-    "eslint-plugin-prettier": "^4.2.1",
-    "mocha": "^10.1.0",
-    "nodemon": "^2.0.20",
-    "prettier": "^2.7.1"
-  },
-  "nodemonConfig": {
-    "watch": [
-      "./server",
-      "./package.json",
-      "./client/src/constants"
-    ]
+    "concurrently": "^6.5.1"
   }
 }
