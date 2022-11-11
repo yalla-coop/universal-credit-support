@@ -70,20 +70,12 @@ export const IconMap = {
   backArrow: BackArrow,
   backArrowRTL: BackArrowRTL,
   search: Search,
-<<<<<<< HEAD
   house: House,
-=======
-   house: House,
->>>>>>> 9d2203970bec088b9cb9f1d8aabfc4bd065ac7f2
   bill: Bill,
   basket: Basket,
   calculator: Calculator,
   moneyBag: MoneyBag,
   ...FlagMap,
-<<<<<<< HEAD
-=======
-
->>>>>>> 9d2203970bec088b9cb9f1d8aabfc4bd065ac7f2
 };
 
 const Parent = styled.div`
