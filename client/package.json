@@ -115,11 +115,5 @@
     "webpack": "^5.74.0",
     "yup": "^0.32.11"
   },
-  "options": {
-    "allowedHosts": [
-      "localhost",
-      ".localhost"
-    ],
-    "proxy": "https://localhost:8080/"
-  }
+  "proxy": "http://localhost:8080/"
 }
