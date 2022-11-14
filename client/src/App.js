@@ -19,7 +19,7 @@ export const history = createBrowserHistory({ basename: window.BASE_URL });
 
 function App() {
   return (
-    <div className="app">
+    <div className="app" style={{ minHeight: '100vh', display: 'flex' }}>
       <Global styles={globalStyle} />
       <ThemeProvider theme={theme}>
         <LangProvider>
@@ -79,8 +79,10 @@ function App() {
 
                 <Route
                   exact
-                  path={navRoutes.STEPS.STEP}
-                  element={<CustomRoute Component={Pages.Step} layout="step" />}
+                  path={navRoutes.GENERAL.SECTION}
+                  element={
+                    <CustomRoute Component={Pages.Section} layout="general" />
+                  }
                 />
 
                 <Route
@@ -93,7 +95,7 @@ function App() {
                   }
                 />
 
-                <Route
+                {/* <Route
                   path={navRoutes.GENERAL.STEP_ORG}
                   exact
                   element={
@@ -101,7 +103,7 @@ function App() {
                       <CustomRoute Component={Pages.Step} layout="step" />
                     </PublicOrgProvider>
                   }
-                />
+                /> */}
 
                 <Route
                   exact

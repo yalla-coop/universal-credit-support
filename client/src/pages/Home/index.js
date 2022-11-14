@@ -61,7 +61,7 @@ const Home = () => {
                 to={
                   item.hasSubSections
                     ? navRoutes.GENERAL.SUBSECTIONS.replace(':id', item.id)
-                    : navRoutes.GENERAL.SECTIONS.replace(':id', item.id)
+                    : navRoutes.GENERAL.SECTION.replace(':id', item.id)
                 }
                 mb={2}
                 mbM={'0'}

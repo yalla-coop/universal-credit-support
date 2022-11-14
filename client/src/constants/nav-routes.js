@@ -3,7 +3,7 @@ const GENERAL = {
   HOME_ORG: '/:uniqueSlug/home',
   ORG: '/:uniqueSlug',
   SUBSECTIONS: '/sections/:id/sub-sections',
-  SECTIONS: '/sections/:id',
+  SECTION: '/sections/:id',
   UNAUTHORIZED: '/unauthorized',
   FORGET_PASSWORD: '/forget-password',
   RESET_PASSWORD: '/reset-password/:token',
