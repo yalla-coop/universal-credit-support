@@ -31,10 +31,12 @@ const constants = {
     desktop: {
       height: '52px',
       padding: '0 164px',
+      paddingTop: '26px 0',
     },
-    mobile: {
+    tablet: {
       height: '42px',
-      padding: '0 20px',
+      padding: '0 38px',
+      paddingTop: '20px 0',
     },
   },
 };

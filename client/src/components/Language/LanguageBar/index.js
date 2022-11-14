@@ -1,7 +1,7 @@
 import * as S from './style';
 import { Grid } from 'antd';
-import { Row } from '../Grid';
-import { TextWithIcon } from '../../components';
+import { Row } from '../../Grid';
+import { TextWithIcon } from '../../../components';
 const { useBreakpoint } = Grid;
 
 const props = {
@@ -11,7 +11,7 @@ const props = {
   iconColor: 'neutralMain',
 };
 
-const Desktop = ({ dir, showBack, largeText }) => {
+const Desktop = ({ dir, showBack, largeText, handleHide }) => {
   const LTR = (
     <Row>
       <S.DesktopWrapper>
@@ -34,7 +34,7 @@ const Desktop = ({ dir, showBack, largeText }) => {
         </S.ButtonWrapper>
         <S.ButtonWrapper>
           <TextWithIcon
-            handleClick={() => null}
+            handleClick={handleHide}
             text="English"
             icon="en"
             {...props}
@@ -48,7 +48,7 @@ const Desktop = ({ dir, showBack, largeText }) => {
     <S.DesktopWrapper>
       <S.ButtonWrapper>
         <TextWithIcon
-          handleClick={() => null}
+          handleClick={handleHide}
           text="Arabic"
           icon="ar"
           {...props}
@@ -77,9 +77,9 @@ const Desktop = ({ dir, showBack, largeText }) => {
   return dir === 'rtl' ? RTL : LTR;
 };
 
-const Mobile = ({ dir, showBack }) => {
+const Tablet = ({ dir, showBack, handleHide }) => {
   const LTR = (
-    <S.MobileWrapperLTR showBack={showBack}>
+    <S.TabletWrapperLTR showBack={showBack}>
       {showBack && (
         <TextWithIcon icon="backArrow" iconColor="neutralMain" isButton />
       )}
@@ -91,15 +91,15 @@ const Mobile = ({ dir, showBack }) => {
           {...props}
         />
         <TextWithIcon handleClick={() => null} icon="textSize" {...props} />
-        <TextWithIcon handleClick={() => null} text="EN" icon="en" {...props} />
+        <TextWithIcon handleClick={handleHide} text="EN" icon="en" {...props} />
       </S.ButtonWrapper>
-    </S.MobileWrapperLTR>
+    </S.TabletWrapperLTR>
   );
 
   const RTL = (
-    <S.MobileWrapperRTL showBack={showBack}>
+    <S.TabletWrapperRTL showBack={showBack}>
       <S.ButtonWrapper>
-        <TextWithIcon handleClick={() => null} text="AR" icon="ar" {...props} />
+        <TextWithIcon handleClick={handleHide} text="AR" icon="ar" {...props} />
         <TextWithIcon handleClick={() => null} icon="textSize" {...props} />
         <TextWithIcon
           text="نموذج"
@@ -111,19 +111,19 @@ const Mobile = ({ dir, showBack }) => {
       {showBack && (
         <TextWithIcon icon="backArrowRTL" iconColor="neutralMain" isButton />
       )}
-    </S.MobileWrapperRTL>
+    </S.TabletWrapperRTL>
   );
 
   return dir === 'rtl' ? RTL : LTR;
 };
 
-export const LanguageBar = ({ dir, largeText, showBack }) => {
-  const props = { dir, largeText, showBack };
+export const LanguageBar = ({ dir, largeText, showBack, handleHide }) => {
+  const props = { dir, largeText, showBack, handleHide };
   const screens = useBreakpoint();
-  const medium = Object.entries(screens)
+  const tablet = Object.entries(screens)
     .filter((screen) => !!screen[1])
     .map((screen) => screen[0])
-    .includes('md');
+    .includes('lg');
 
-  return medium ? <Desktop {...props} /> : <Mobile {...props} />;
+  return tablet ? <Desktop {...props} /> : <Tablet {...props} />;
 };

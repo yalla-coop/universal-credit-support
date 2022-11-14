@@ -1,10 +1,11 @@
 import styled from '@emotion/styled';
-import theme from '../../theme';
+import theme from '../../../theme';
 
 const commonStyle = `
   display: flex;
   width: 100%;
   align-items: center;
+  z-index: 2;
   background-color: ${theme.colors.neutralSurface};
 `;
 
@@ -14,9 +15,9 @@ const desktop = `
   justify-content: space-between;
 `;
 
-const mobile = `
-  height: ${theme.constants.translationBar.mobile.height};
-  padding: ${theme.constants.translationBar.mobile.padding};
+const tablet = `
+  height: ${theme.constants.translationBar.tablet.height};
+  padding: ${theme.constants.translationBar.tablet.padding};
 `;
 
 export const DesktopWrapper = styled('div')`
@@ -24,15 +25,15 @@ export const DesktopWrapper = styled('div')`
   ${desktop};
 `;
 
-export const MobileWrapperLTR = styled('div')`
+export const TabletWrapperLTR = styled('div')`
   ${commonStyle};
-  ${mobile};
+  ${tablet};
   justify-content: ${({ showBack }) => (showBack ? 'space-between' : 'end')};
 `;
 
-export const MobileWrapperRTL = styled('div')`
+export const TabletWrapperRTL = styled('div')`
   ${commonStyle};
-  ${mobile};
+  ${tablet};
   justify-content: ${({ showBack }) => (showBack ? 'space-between' : 'start')};
 `;
 
