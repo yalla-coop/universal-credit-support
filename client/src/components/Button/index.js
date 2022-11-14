@@ -1,5 +1,4 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import { LoadingOutlined } from '@ant-design/icons';
 import Icon from '../Icon';
 import * as S from './style';
@@ -11,7 +10,7 @@ const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
  */
 const Button = ({
   variant = 'primary',
-  text = 'Click',
+  text,
   icon,
   loading,
   handleClick,
@@ -20,19 +19,23 @@ const Button = ({
   customColor,
   external,
   iconProps,
+  children,
+  linkState = {},
   ...props
 }) => {
-  const navigate = useNavigate();
-
   const onClick = (e) => {
     if (external) return;
-    if (to) navigate(to);
     if (handleClick instanceof Function) handleClick(e);
   };
-
-  if (external) {
-    props.href = to;
+  if (to) {
+    if (external) {
+      props.href = to;
+      props.target = '_blank';
+    } else {
+      props.href = to;
+    }
   }
+
   return (
     <S.Button
       type="button"
@@ -40,12 +43,12 @@ const Button = ({
       disabled={disabled}
       isLoading={loading}
       onClick={onClick}
-      as={external ? 'a' : 'button'}
+      as={to ? 'a' : 'button'}
       icon={icon}
       {...props}
     >
       {icon && <Icon icon={icon} mr="9.5px" {...iconProps} />}
-      {text}
+      {text || children}
       {loading && <S.Loading variant={variant} indicator={antIcon} />}
     </S.Button>
   );

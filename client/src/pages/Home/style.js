@@ -149,3 +149,10 @@ export const pageTitle = styled(T.H1)`
     line-height: 32px !important;
   }
 `;
+export const ReadMoreLink = styled(T.Link)`
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+  width: 100%;
+`;

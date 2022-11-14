@@ -1,23 +1,10 @@
 import * as Sections from '../model';
 
-const getSections = async () => {
-  const sections = await Sections.getSections();
-  const sectionsWithChecklist = sections.map((section, index) => ({
-    ...section,
-    id: index + 1,
-    checklist: [
-      section.thingsYouWillNeed.map((item) => ({
-        ...item,
-        stage: 'thingsYouWillNeed',
-      })),
-      section.whatYouWillNeedToKnow.map((item) => ({
-        ...item,
-        stage: 'whatYouWillNeedToKnow',
-      })),
-    ].flat(),
-  }));
-
-  return sectionsWithChecklist;
+const getSections = async ({ uniqueSlug='hyde', forPublic }) => {
+  if (forPublic) {
+    const sections = await Sections.getSectionsByOrgSlugForPublic(uniqueSlug);
+    return sections;
+  }
 };
 
 export default getSections;

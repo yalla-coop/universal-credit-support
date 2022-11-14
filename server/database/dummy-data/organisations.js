@@ -47,7 +47,7 @@ const createOrganisations = async () => {
   const superAdminOrganisationData = {
     organisationName: 'Hyde',
     typeOfOrganisation: 'A',
-    uniqueSlug: '',
+    uniqueSlug: 'hyde',
     contactLinks: [
       {
         type: T.contactLinksTypes.PHONE,
@@ -76,14 +76,12 @@ const createOrganisations = async () => {
       neutral: '#1A202B',
     },
   };
-  const superAdminOrganisation = await createOrganisation(
-    superAdminOrganisationData,
-  );
-  const admin1Organisation = await createOrganisation(admin1OrganisationData);
+  const HydeOrganisation = await createOrganisation(superAdminOrganisationData);
+  const organisation1 = await createOrganisation(admin1OrganisationData);
 
   return {
-    superAdminOrganisation,
-    admin1Organisation,
+    HydeOrganisation,
+    organisation1,
   };
 };
 

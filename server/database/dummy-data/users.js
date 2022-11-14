@@ -48,7 +48,7 @@ const createUsers = async ({ organisations }) => {
     backupEmail: dummyData.hydeSuperAdmin.backupEmail,
     password: dummyData.password,
     role: T.userRoles.SUPER_ADMIN,
-    organisationId: organisations.superAdminOrganisation.id,
+    organisationId: organisations.HydeOrganisation.id,
   });
   const admin1 = await createUser({
     firstName: dummyData.admin1.firstName,
@@ -57,7 +57,7 @@ const createUsers = async ({ organisations }) => {
     backupEmail: dummyData.admin1.backupEmail,
     password: dummyData.password,
     role: T.userRoles.ADMIN,
-    organisationId: organisations.admin1Organisation.id,
+    organisationId: organisations.organisation1.id,
   });
 
   return {

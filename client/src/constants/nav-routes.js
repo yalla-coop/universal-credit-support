@@ -1,11 +1,15 @@
 const GENERAL = {
   HOME: '/',
-  HOME_ORG: '/:org/home',
-  ORG: '/:org',
+  HOME_ORG: '/:uniqueSlug/home',
+  ORG: '/:uniqueSlug',
+  SUBSECTIONS: '/sections/:id/sub-sections',
+  SECTIONS: '/sections/:id',
   UNAUTHORIZED: '/unauthorized',
   FORGET_PASSWORD: '/forget-password',
   RESET_PASSWORD: '/reset-password/:token',
   NOT_FOUND: '/not-found',
+  BUDGETING: '/budgeting',
+  MENTAL_HEALTH: '/mental-health',
 };
 
 const admin = '/admin';
@@ -61,7 +65,7 @@ const EXTERNAL = {
 
 const STEPS = {
   STEP: '/steps/:id',
-  STEP_ORG: '/:org/steps/:id',
+  STEP_ORG: '/:uniqueSlug/steps/:id',
 };
 
 export { GENERAL, EXTERNAL, STEPS, ADMIN, SUPER_ADMIN };

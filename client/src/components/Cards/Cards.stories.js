@@ -84,29 +84,29 @@ export const sectionCard4 = SectionCardExample.bind({});
 export const sectionCard5 = SectionCardExample.bind({});
 
 sectionCard.args = {
-  cardId: 1,
+  id: 1,
   to: '/',
   text: 'Paying for housing',
 };
 sectionCard2.args = {
-  cardId: 2,
+  id: 2,
   to: '/',
   text: 'Paying for my bills',
 };
 sectionCard3.args = {
-  cardId: 3,
+  id: 3,
   to: '/',
   text: 'Paying for essentials (Food, transport, medication)',
 };
 
 sectionCard4.args = {
-  cardId: 4,
+  id: 4,
   to: '/',
   text: 'Dealing with debts',
 };
 
 sectionCard5.args = {
-  cardId: 5,
+  id: 5,
   to: '/',
   text: 'How to maximise my income',
 };
