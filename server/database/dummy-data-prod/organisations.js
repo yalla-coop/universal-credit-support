@@ -65,12 +65,10 @@ const createOrganisations = async () => {
       neutral: '#1A202B',
     },
   };
-  const superAdminOrganisation = await createOrganisation(
-    superAdminOrganisationData,
-  );
+  const HydeOrganisation = await createOrganisation(superAdminOrganisationData);
 
   return {
-    superAdminOrganisation,
+    HydeOrganisation,
   };
 };
 

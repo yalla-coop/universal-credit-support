@@ -59,6 +59,11 @@ export const Button = styled.button`
   opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
   cursor: ${({ disabled, isLoading }) =>
     disabled || isLoading ? 'not-allowed' : 'pointer'};
+
+  :hover {
+    color: ${({ variant, theme }) =>
+      variant === 'primary' ? theme.colors.white : theme.colors.neutralMain};
+  }
 `;
 
 export const Loading = styled(Spin)`

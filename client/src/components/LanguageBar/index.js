@@ -1,5 +1,6 @@
 import * as S from './style';
 import { Grid } from 'antd';
+import { Row } from '../Grid';
 import { TextWithIcon } from '../../components';
 const { useBreakpoint } = Grid;
 
@@ -12,34 +13,35 @@ const props = {
 
 const Desktop = ({ dir, showBack, largeText }) => {
   const LTR = (
-    <S.DesktopWrapper>
-      <S.ButtonWrapper>
-        {showBack && (
-          <TextWithIcon icon="backArrow" iconColor="neutralMain" isButton />
-        )}
-        <TextWithIcon
-          // text={t('callUsLinkText', lang)}
-          // handleClick={() => setStuck(true)}
-          text="Accessibility"
-          icon="accessibility"
-          {...props}
-        />
-        <TextWithIcon
-          handleClick={() => null}
-          text={largeText ? '- Decrease text size' : '+ Increase text size'}
-          icon="textSize"
-          {...props}
-        />
-      </S.ButtonWrapper>
-      <S.ButtonWrapper>
-        <TextWithIcon
-          handleClick={() => null}
-          text="English"
-          icon="en"
-          {...props}
-        />
-      </S.ButtonWrapper>
-    </S.DesktopWrapper>
+    <Row>
+      <S.DesktopWrapper>
+        <S.ButtonWrapper>
+          {showBack && (
+            <TextWithIcon icon="backArrow" iconColor="neutralMain" isButton />
+          )}
+          <TextWithIcon
+            handleClick={() => null}
+            text="Accessibility"
+            icon="accessibility"
+            {...props}
+          />
+          <TextWithIcon
+            handleClick={() => null}
+            text={largeText ? '- Decrease text size' : '+ Increase text size'}
+            icon="textSize"
+            {...props}
+          />
+        </S.ButtonWrapper>
+        <S.ButtonWrapper>
+          <TextWithIcon
+            handleClick={() => null}
+            text="English"
+            icon="en"
+            {...props}
+          />
+        </S.ButtonWrapper>
+      </S.DesktopWrapper>
+    </Row>
   );
 
   const RTL = (
@@ -72,7 +74,7 @@ const Desktop = ({ dir, showBack, largeText }) => {
     </S.DesktopWrapper>
   );
 
-  return dir === 'ltr' ? LTR : RTL;
+  return dir === 'rtl' ? RTL : LTR;
 };
 
 const Mobile = ({ dir, showBack }) => {
@@ -112,7 +114,7 @@ const Mobile = ({ dir, showBack }) => {
     </S.MobileWrapperRTL>
   );
 
-  return dir === 'ltr' ? LTR : RTL;
+  return dir === 'rtl' ? RTL : LTR;
 };
 
 export const LanguageBar = ({ dir, largeText, showBack }) => {

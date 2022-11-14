@@ -50,32 +50,34 @@ export const LanguageSelector = () => {
 
   return (
     <Row>
-      <S.ButtonWrapper>
-        <BasicInput
-          handleChange={(val) => setSearch(val)}
-          label="Search Language"
-          value={search}
-          name="search-language"
-          placeholder="Search"
-          suffix={<Icon icon="search" color="neutralMain" />}
-        />
-      </S.ButtonWrapper>
-      <S.ButtonWrapper>
-        {languages
-          .map(([code, language]) => {
-            return (
-              <S.Button>
-                <TextWithIcon
-                  handleClick={() => null}
-                  text={language}
-                  icon={FlagMap[code] !== undefined ? code : null}
-                  {...props}
-                />
-              </S.Button>
-            );
-          })
-          .slice(0, sliceTo)}
-      </S.ButtonWrapper>
+      <S.Wrapper>
+        <S.ButtonWrapper>
+          <BasicInput
+            handleChange={(val) => setSearch(val)}
+            label="Search Language"
+            value={search}
+            name="search-language"
+            placeholder="Search"
+            suffix={<Icon icon="search" color="neutralMain" />}
+          />
+        </S.ButtonWrapper>
+        <S.ButtonWrapper>
+          {languages
+            .map(([code, language]) => {
+              return (
+                <S.Button>
+                  <TextWithIcon
+                    handleClick={() => null}
+                    text={language}
+                    icon={FlagMap[code] !== undefined ? code : null}
+                    {...props}
+                  />
+                </S.Button>
+              );
+            })
+            .slice(0, sliceTo)}
+        </S.ButtonWrapper>
+      </S.Wrapper>
     </Row>
   );
 };

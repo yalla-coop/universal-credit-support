@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Tips, Checklist, SectionCard } from '.';
+import { Tips, Checklist, SectionCard, TopicCard } from '.';
 import * as T from '../Typography';
 
 export default {
@@ -84,29 +84,59 @@ export const sectionCard4 = SectionCardExample.bind({});
 export const sectionCard5 = SectionCardExample.bind({});
 
 sectionCard.args = {
-  cardId: 1,
+  id: 1,
   to: '/',
   text: 'Paying for housing',
 };
 sectionCard2.args = {
-  cardId: 2,
+  id: 2,
   to: '/',
   text: 'Paying for my bills',
 };
 sectionCard3.args = {
-  cardId: 3,
+  id: 3,
   to: '/',
   text: 'Paying for essentials (Food, transport, medication)',
 };
 
 sectionCard4.args = {
-  cardId: 4,
+  id: 4,
   to: '/',
   text: 'Dealing with debts',
 };
 
 sectionCard5.args = {
-  cardId: 5,
+  id: 5,
   to: '/',
   text: 'How to maximise my income',
+};
+
+const TopicCardExamples = (args) => {
+  const [marked, setMarked] = useState(false);
+
+  return (
+    <div style={{ width: '300px', margin: '20px' }}>
+      <TopicCard {...args} m="2" handleChange={setMarked} marked={marked} />
+    </div>
+  );
+};
+
+export const topicCard = TopicCardExamples.bind({});
+topicCard.args = {
+  title: 'Income details',
+  startingColor: 5,
+  description: 'Some extra description can go here from CMS',
+  things: [
+    'Salaries from an employer or self-employment',
+    'Other Benefits you and/or your partner already receive',
+    'Private pensions',
+  ],
+  tips: [
+    'Please be mindful of accessibility and testing your colours work. You can find more information here',
+    'Please be mindful of accessibility and testing your colours work. You can find more information here',
+  ],
+  resources: [
+    { label: 'Money Helper Budget Planner', link: 'https://www.figma.com/' },
+    { label: 'Money Helper Budget Planner2', link: 'https://www.figma.com/' },
+  ],
 };

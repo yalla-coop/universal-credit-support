@@ -2,7 +2,8 @@ import * as Sections from '../use-cases';
 
 const getSections = async (req, res, next) => {
   try {
-    const sections = await Sections.getSections({});
+    const { uniqueSlug, forPublic } = req.query;
+    const sections = await Sections.getSections({ uniqueSlug, forPublic });
 
     res.json(sections);
   } catch (error) {

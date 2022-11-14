@@ -36,6 +36,8 @@ import Bill from './icons/Bill';
 import Basket from './icons/Basket';
 import Calculator from './icons/Calculator';
 import MoneyBag from './icons/MoneyBag';
+import BookMark from './icons/BookMark';
+import Discover from './icons/Discover';
 
 import EN from './icons/EN';
 import AR from './icons/AR';
@@ -75,6 +77,8 @@ export const IconMap = {
   basket: Basket,
   calculator: Calculator,
   moneyBag: MoneyBag,
+  bookMark: BookMark,
+  discover: Discover,
   ...FlagMap,
 };
 

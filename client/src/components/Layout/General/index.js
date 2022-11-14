@@ -21,19 +21,16 @@ const General = ({ children, goBack, maxWidth, showHelp, ...props }) => {
     query: `(max-width: ${theme.breakpoints.tablet})`,
   });
   return (
-    <>
-      <S.Wrapper>
-        <S.Header isTablet={isTablet}>
-          <OrganisationLogo logoUrl={adminOrg?.logoUrl || publicOrg?.logoUrl} />
-          {/* <S.LangButton>
+    <S.Container>
+      accessability header goes here
+      <OrganisationLogo logoUrl={adminOrg?.logoUrl || publicOrg?.logoUrl} />
+      {/* <S.LangButton>
             <T.P isSmall weight="bold" mr="4px">
               EN
             </T.P>
             <img src={EnglishLang} alt="language" />
           </S.LangButton> */}
-          {/* <Navbar /> */}
-        </S.Header>
-      </S.Wrapper>
+      {/* <Navbar /> */}
       <S.Content maxWidth={maxWidth}>
         {goBack && (
           <GoBack
@@ -46,7 +43,8 @@ const General = ({ children, goBack, maxWidth, showHelp, ...props }) => {
         )}
         {children}
       </S.Content>
-    </>
+      footer goes here
+    </S.Container>
   );
 };
 
