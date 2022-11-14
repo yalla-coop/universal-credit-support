@@ -79,6 +79,7 @@ export const IconMap = {
   moneyBag: MoneyBag,
   bookMark: BookMark,
   discover: Discover,
+
   ...FlagMap,
 };
 
