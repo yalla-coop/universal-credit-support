@@ -33,6 +33,7 @@ import Calculator from './icons/Calculator';
 import MoneyBag from './icons/MoneyBag';
 import BookMark from './icons/BookMark';
 import Discover from './icons/Discover';
+import BackwardArrow from './icons/BackwardArrow';
 
 export const IconMap = {
   goBack: GoBack,
@@ -61,6 +62,7 @@ export const IconMap = {
   moneyBag: MoneyBag,
   bookMark: BookMark,
   discover: Discover,
+  backwardArrow: BackwardArrow,
 };
 
 const Parent = styled.div`

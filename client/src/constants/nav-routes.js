@@ -10,6 +10,7 @@ const GENERAL = {
   NOT_FOUND: '/not-found',
   BUDGETING: '/budgeting',
   MENTAL_HEALTH: '/mental-health',
+  MENTAL_HEALTH_ORG: '/:uniqueSlug/mental-health',
 };
 
 const admin = '/admin';
