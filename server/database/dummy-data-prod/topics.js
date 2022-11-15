@@ -56,9 +56,8 @@ const addTopics = async ({ sections }) => {
       tip2: "If you're claiming Universal Credit or housing benefit but you're not receiving enough to cover your housing costs, you may be able to claim 'Discretionary Housing Payments' from your local council.",
       resources: [
         {
-          type: 'external',
-          label: 'Benefits Calculator',
-          url: 'https://benefits-calculator.turn2us.org.uk/',
+          type: 'CUSTOM',
+          key: 'BENEFIT_CALCULATOR',
         },
       ],
     },
@@ -74,9 +73,8 @@ const addTopics = async ({ sections }) => {
       tip2: "If you're working with a debt advisor, you may be able to access 'Breathing Space' which pauses debt collection and evictions for up to 60 days to give you time to find the right solution.",
       resources: [
         {
-          type: 'external',
-          label: 'Debt Advice Locator',
-          url: 'https://www.moneyhelper.org.uk/en/money-troubles/dealing-with-debt/debt-advice-locator',
+          type: 'CUSTOM',
+          key: 'GRANT_ADVICE',
         },
       ],
     },
@@ -132,9 +130,8 @@ const addTopics = async ({ sections }) => {
       tip2: 'In order to help, a landlord will often want to know how much money you have available to spend each month. A budget tool can help you work this out. ',
       resources: [
         {
-          type: 'external',
-          label: 'TODO: get this',
-          url: 'https://www.moneyhelper.org.uk/en/everyday-money/budgeting/use-our-budget-planner.html',
+          type: 'CUSTOM',
+          key: 'BUDGET_PLANNER',
         },
       ],
     },
@@ -151,9 +148,8 @@ const addTopics = async ({ sections }) => {
       You'll need to input basic information about your income and living situation.`,
       resources: [
         {
-          type: 'external',
-          label: 'Benefits Calculator',
-          url: 'https://benefits-calculator.turn2us.org.uk/',
+          type: 'CUSTOM',
+          key: 'BENEFIT_CALCULATOR',
         },
       ],
     },
@@ -169,9 +165,8 @@ const addTopics = async ({ sections }) => {
       tip2: "If you're working with a debt advisor, you may be able to access 'Breathing Space' which pauses debt collection and evictions for up to 60 days to give you time to find the right solution.",
       resources: [
         {
-          type: 'external',
-          label: 'TODO: get this',
-          url: 'https://www.moneyhelper.org.uk/en/money-troubles/dealing-with-debt/debt-advice-locator',
+          type: 'CUSTOM',
+          key: 'GRANT_ADVICE',
         },
       ],
     },
@@ -227,9 +222,8 @@ const addTopics = async ({ sections }) => {
       tip2: 'In order to help, your mortgage provider will often want to know how much money you have available to spend each month. A budget tool can help you work this out.',
       resources: [
         {
-          type: 'external',
-          label: 'TODO: get this',
-          url: 'https://www.moneyhelper.org.uk/en/everyday-money/budgeting/use-our-budget-planner.html',
+          type: 'CUSTOM',
+          key: 'BUDGET_PLANNER',
         },
       ],
     },
@@ -246,9 +240,8 @@ const addTopics = async ({ sections }) => {
       You will need to input basic information about your income and living situation.`,
       resources: [
         {
-          type: 'external',
-          label: 'Benefits Calculator',
-          url: 'https://benefits-calculator.turn2us.org.uk/',
+          type: 'CUSTOM',
+          key: 'BENEFIT_CALCULATOR',
         },
       ],
     },
@@ -264,9 +257,8 @@ const addTopics = async ({ sections }) => {
       tip2: "If you're working with a debt advisor, you may be able to access 'Breathing Space' which pauses debt collection and evictions for up to 60 days to give you time to find the right solution.",
       resources: [
         {
-          type: 'external',
-          label: 'TODO: get this',
-          url: 'https://www.moneyhelper.org.uk/en/money-troubles/dealing-with-debt/debt-advice-locator',
+          type: 'CUSTOM',
+          key: 'GRANT_ADVICE',
         },
       ],
     },
@@ -306,9 +298,8 @@ const addTopics = async ({ sections }) => {
       tip2: 'In order to help, your landlord and mortgage provider will often want to know how much money you have available to spend each month. A budget tool can help you work this out. ',
       resources: [
         {
-          type: 'external',
-          label: 'TODO: get this',
-          url: 'https://www.moneyhelper.org.uk/en/everyday-money/budgeting/use-our-budget-planner.html',
+          type: 'CUSTOM',
+          key: 'BUDGET_PLANNER',
         },
       ],
     },
@@ -326,9 +317,8 @@ const addTopics = async ({ sections }) => {
       tip2: "If you're claiming  Universal Credit (UC), housing costs make an entry in your UC journal using the heading ‘payments’. Include any mortgage, rent and service charge amounts you pay separately, and advise if these are charged monthly or weekly. The UC claim form does not ask for this information and housing cost won't be paid unless you provide it.",
       resources: [
         {
-          type: 'external',
-          label: 'Benefits Calculator',
-          url: 'https://benefits-calculator.turn2us.org.uk/',
+          type: 'CUSTOM',
+          key: 'BENEFIT_CALCULATOR',
         },
       ],
     },
@@ -344,9 +334,8 @@ const addTopics = async ({ sections }) => {
       tip2: "If you're working with a debt advisor, you may be able to access 'Breathing Space' which pauses debt collection and evictions for up to 60 days to give you time to find the right solution.",
       resources: [
         {
-          type: 'external',
-          label: 'TODO: get this',
-          url: 'https://www.moneyhelper.org.uk/en/money-troubles/dealing-with-debt/debt-advice-locator',
+          type: 'CUSTOM',
+          key: 'GRANT_ADVICE',
         },
       ],
     },
@@ -386,9 +375,8 @@ const addTopics = async ({ sections }) => {
       tip2: 'It is important to stay warm; turning your heating off can be bad for your health, and and cause problems such as mould in your home. Talk to your energy provider about ways to minimise use, whilst keeping the heating on when needed.',
       resources: [
         {
-          type: 'external',
-          label: 'Budget Planner',
-          url: 'https://www.moneyhelper.org.uk/en/everyday-money/budgeting/use-our-budget-planner.html',
+          type: 'CUSTOM',
+          key: 'BUDGET_PLANNER',
         },
       ],
     },
@@ -404,9 +392,8 @@ const addTopics = async ({ sections }) => {
       tip2: "Receiving a charitable grant will in most cases not affect your benefit entitlement. If you're offered a grant you should seek advice about your situation.",
       resources: [
         {
-          type: 'external',
-          label: 'Grant Search',
-          url: 'https://grants-search.turn2us.org.uk/',
+          type: 'CUSTOM',
+          key: 'GRANT_SEARCH',
         },
       ],
     },
@@ -425,9 +412,8 @@ const addTopics = async ({ sections }) => {
       Contact your local Council to ask about Household Support Fund or local welfare assistance.`,
       resources: [
         {
-          type: 'external',
-          label: 'Benefits Calculator',
-          url: 'https://benefits-calculator.turn2us.org.uk/',
+          type: 'CUSTOM',
+          key: 'BENEFIT_CALCULATOR',
         },
       ],
     },
@@ -524,9 +510,8 @@ const addTopics = async ({ sections }) => {
       tip2: `Receiving a charitable grant will in most cases not affect your benefit entitlement. If you're offered a grant, you should seek advice about your situation.`,
       resources: [
         {
-          type: 'external',
-          label: 'TODO: get this',
-          url: 'https://grants-search.turn2us.org.uk/',
+          type: 'CUSTOM',
+          key: 'GRANT_SEARCH',
         },
       ],
     },
@@ -600,9 +585,8 @@ const addTopics = async ({ sections }) => {
       tip2: `Most budgets are done for a calendar month; keep this in mind when adding your income and outgoings. For example, to work out the monthly sum for something you pay weekly you will need to multiply the sum by 52 (weeks), then divide by 12 (months).  A budget tool will do this for you automatically.`,
       resources: [
         {
-          type: 'external',
-          label: 'TODO: get this',
-          url: 'https://www.moneyhelper.org.uk/en/everyday-money/budgeting/use-our-budget-planner.html',
+          type: 'CUSTOM',
+          key: 'BUDGET_PLANNER',
         },
       ],
     },
@@ -695,9 +679,8 @@ const addTopics = async ({ sections }) => {
       tip1: `Most working households are entitled to support with childcare costs. A quick way to find out what support you are entitled to is the use the HMRC Childcare Calculator `,
       resources: [
         {
-          type: 'external',
-          label: 'TODO: get this',
-          url: 'https://jobhelp.campaign.gov.uk/',
+          type: 'CUSTOM',
+          key: 'EMPLOYMENT_SERVICES',
         },
       ],
     },
@@ -756,9 +739,8 @@ const addTopics = async ({ sections }) => {
       tip2: `Receiving a charitable grant will in most cases not affect your benefit entitlement. If you're offered a grant, you should seek advice about your situation.`,
       resources: [
         {
-          type: 'external',
-          label: 'TODO: get this',
-          url: 'https://grants-search.turn2us.org.uk/',
+          type: 'CUSTOM',
+          key: 'GRANT_SEARCH',
         },
       ],
     },

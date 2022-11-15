@@ -21,6 +21,7 @@ import { Sections } from './../../api-calls';
 import { usePublicOrg } from '../../context/public-org';
 import { TopicCard } from './../../components/Cards';
 import useTopics from './useTopics';
+import StillNeedHelp from './../../components/StillNeedHelp';
 
 const Section = () => {
   const [stuck, setStuck] = useState(false);
@@ -77,7 +78,9 @@ const Section = () => {
               />
             ))}
           </S.Topics>
-          <S.HelpSection>TTTTT</S.HelpSection>
+          <S.HelpSection>
+            <StillNeedHelp />
+          </S.HelpSection>
         </S.Content>
       </GeneralPaddingSection>
     </S.Container>

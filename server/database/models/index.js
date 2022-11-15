@@ -5,6 +5,7 @@ import sections from './sections';
 import contentAuditLog from './content-audit-log';
 import topics from './topics';
 import organisationsSectionsOrders from './organisations-sections-orders';
+import organisationsResources from './organisations-resources';
 
 export {
   users,
@@ -14,4 +15,5 @@ export {
   contentAuditLog,
   topics,
   organisationsSectionsOrders,
+  organisationsResources,
 };
