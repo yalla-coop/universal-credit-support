@@ -57,7 +57,7 @@ const Home = () => {
               <Cards.SectionCard
                 key={item.id}
                 id={item.id}
-                text={item.title}
+                text={item.title.replaceAll('*', '')}
                 to={
                   item.hasSubSections
                     ? navRoutes.GENERAL.SUBSECTIONS.replace(':id', item.id)

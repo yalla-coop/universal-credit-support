@@ -1,6 +1,7 @@
 import { Router } from 'express';
 
 import getSections from './get-sections';
+import getSubSections from './get-sub-sections';
 import getSection from './get-section';
 import updateSection from './update-section';
 import getTopicsBySectionId from './get-topics-by-section-id';
@@ -15,6 +16,8 @@ import { userRoles } from '../../../constants';
 const router = Router();
 
 router.get('/', getSections);
+
+router.get('/sub-sections', getSubSections);
 
 router.get('/:id', getSection);
 router.get('/:id/topics', getTopicsBySectionId);
