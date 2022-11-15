@@ -16,4 +16,16 @@ const getSections = async ({ options, uniqueSlug, forPublic }) => {
   }
 };
 
-export { getSections };
+const getSubSections = async ({ options, id, forPublic }) => {
+  try {
+    const { data } = await axios.get(`${SECTIONS_BASE}/sub-sections`, {
+      params: { id, forPublic },
+    });
+    return { data };
+  } catch (error) {
+    const err = handleError(error, options);
+    return { error: err };
+  }
+};
+
+export { getSections, getSubSections };

@@ -16,23 +16,23 @@ const createSections = async ({ parentSectionId, title, defaultPosition }) => {
 
 const addSections = async () => {
   const payingForHousing = await createSections({
-    title: 'Paying for housing',
+    title: 'Paying for **housing**',
     defaultPosition: 1,
   });
   const payingMyBills = await createSections({
-    title: 'Paying my bills',
+    title: 'Paying my **bills**',
     defaultPosition: 2,
   });
   const payingForEssentials = await createSections({
-    title: 'Paying for essentials (Food, medication, transport)',
+    title: 'Paying for **essentials** (Food, medication, transport)',
     defaultPosition: 3,
   });
   const dealingWithDebts = await createSections({
-    title: 'Dealing with debts',
+    title: 'Dealing with **debts**',
     defaultPosition: 4,
   });
   const maximisingYourIncome = await createSections({
-    title: 'Maximising your income',
+    title: 'Maximising your **income**',
     defaultPosition: 5,
   });
   const payingForHousingPrivateTenant = await createSections({
@@ -46,12 +46,12 @@ const addSections = async () => {
     defaultPosition: 2,
   });
   const payingForHousingHomeowner = await createSections({
-    title: 'Homeowner',
+    title: 'Home owner',
     parentSectionId: payingForHousing.id,
     defaultPosition: 3,
   });
   const payingForHousingSharedOwner = await createSections({
-    title: 'Shared Owner',
+    title: 'Shared owner',
     parentSectionId: payingForHousing.id,
     defaultPosition: 4,
   });

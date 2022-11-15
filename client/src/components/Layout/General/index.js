@@ -1,8 +1,5 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import * as S from './style';
-
-import { useMediaQuery } from 'react-responsive';
 
 import { usePublicOrg } from '../../../context/public-org';
 import { useAdminOrg } from '../../../context/admin-org';
@@ -17,9 +14,6 @@ const General = ({ children, goBack, maxWidth, showHelp, ...props }) => {
   const { publicOrg } = usePublicOrg();
   const { adminOrg } = useAdminOrg();
 
-  const isTablet = useMediaQuery({
-    query: `(max-width: ${theme.breakpoints.tablet})`,
-  });
   return (
     <S.Container>
       accessability header goes here

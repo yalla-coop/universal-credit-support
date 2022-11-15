@@ -25,6 +25,30 @@ const getSectionsByOrgSlugForPublic = async (uniqueSlug) => {
   return res.rows;
 };
 
+const getSubSectionsBySectionIdForPublic = async (id) => {
+  const sql = `
+    SELECT 
+      *,
+      (
+        SELECT
+            ARRAY_AGG (
+            jsonb_build_object(
+              'id',  s.id,
+            'title', s.title,
+            'position', s.default_position
+            )
+          ORDER BY s.default_position
+          ) AS children_sections
+      
+          FROM sections AS s
+          WHERE parent_section_id = $1
+      ) FROM sections where id = $1
+  `;
+
+  const res = await query(sql, [id]);
+  return res.rows[0];
+};
+
 const getSectionById = async (id) => {
   const sql = `
     SELECT
@@ -37,4 +61,8 @@ const getSectionById = async (id) => {
   return res.rows[0];
 };
 
-export { getSectionsByOrgSlugForPublic, getSectionById };
+export {
+  getSectionsByOrgSlugForPublic,
+  getSectionById,
+  getSubSectionsBySectionIdForPublic,
+};
