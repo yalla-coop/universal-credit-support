@@ -1,0 +1,49 @@
+diff a/client/src/components/Icon/index.js b/client/src/components/Icon/index.js	(rejected hunks)
+@@ -26,6 +26,11 @@ import Bulb from './icons/Bulb';
+ import BulletArrow from './icons/BulletArrow';
+ import Compass from './icons/Compass';
+ import Upload from './icons/Upload';
++import TextSize from './icons/TextSize';
++import Accessibility from './icons/Accessibility';
++import BackArrow from './icons/BackArrow';
++import BackArrowRTL from './icons/BackArrowRTL';
++import Search from './icons/Search';
+ import House from './icons/House';
+ import Bill from './icons/Bill';
+ import Basket from './icons/Basket';
+@@ -34,6 +39,14 @@ import MoneyBag from './icons/MoneyBag';
+ import BookMark from './icons/BookMark';
+ import Discover from './icons/Discover';
+ 
++import EN from './icons/EN';
++import AR from './icons/AR';
++
++export const FlagMap = {
++  en: EN,
++  ar: AR,
++};
++
+ export const IconMap = {
+   goBack: GoBack,
+   arrowDown: ArrowDown,
+@@ -54,6 +67,11 @@ export const IconMap = {
+   bulletArrow: BulletArrow,
+   compass: Compass,
+   upload: Upload,
++  textSize: TextSize,
++  accessibility: Accessibility,
++  backArrow: BackArrow,
++  backArrowRTL: BackArrowRTL,
++  search: Search,
+   house: House,
+   bill: Bill,
+   basket: Basket,
+@@ -61,6 +79,8 @@ export const IconMap = {
+   moneyBag: MoneyBag,
+   bookMark: BookMark,
+   discover: Discover,
++
++  ...FlagMap,
+ };
+ 
+ const Parent = styled.div`

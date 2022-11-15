@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import setMargin from '../../../helpers/set-margin';
 import * as CS from '../style';
 import { Input as AntdInput } from 'antd';
+import theme from '../../../theme';
 
 const InputCommonStyle = ({ theme, error, disabled }) => `
 width: 100%;
@@ -23,11 +24,23 @@ transition: all 0.3s ease;
 }
 `;
 
-export const Input = styled.input`
+export const Input = styled(AntdInput)`
   ${setMargin};
   ${CS.placeholderStyle};
   ${CS.commonBorderStyle};
   ${InputCommonStyle};
+
+  .ant-input::placeholder {
+    color: ${theme.colors.neutralDark};
+    font-size: 16px !important;
+    line-height: 24px !important;
+  }
+
+  .ant-input {
+    color: ${theme.colors.neutralDark};
+    font-size: 16px !important;
+    line-height: 24px !important;
+  }
 `;
 
 export const PasswordInput = styled(AntdInput.Password)`

@@ -1,0 +1,940 @@
+diff --git a/client/src/components/Icon/icons/AR.js b/client/src/components/Icon/icons/AR.js
+new file mode 100644
+index 0000000..616f040
+--- /dev/null
++++ b/client/src/components/Icon/icons/AR.js
+@@ -0,0 +1,51 @@
++const FlagAR = ({ width, height, color, ...props }) => (
++  <svg
++    width={width || '24'}
++    height={height || '18'}
++    viewBox="0 0 24 18"
++    fill="none"
++    xmlns="http://www.w3.org/2000/svg"
++    {...props}
++  >
++    <rect y="0.429993" width="24" height="17.1429" rx="2" fill="white" />
++    <mask
++      id="mask0_4870_6973"
++      maskUnits="userSpaceOnUse"
++      x="0"
++      y="0"
++      width="24"
++      height="18"
++    >
++      <rect y="0.429993" width="24" height="17.1429" rx="2" fill="white" />
++    </mask>
++    <g mask="url(#mask0_4870_6973)">
++      <rect y="0.429993" width="24" height="17.1429" fill="#128C4B" />
++      <path
++        fillRule="evenodd"
++        clipRule="evenodd"
++        d="M5.71424 10.7157H14.8571V10.0801C14.8571 9.5845 15.3786 9.26217 15.8219 9.4838L16 9.57282V10.7157H17.619C17.9872 10.7157 18.2857 11.0142 18.2857 11.3823V11.6681C18.2857 12.4044 17.6887 13.0014 16.9523 13.0014H15.5238C15.1556 13.0014 14.8571 12.7029 14.8571 12.3347V11.8585H7.13324C6.95643 11.8585 6.78686 11.7883 6.66184 11.6633L5.71424 10.7157Z"
++        fill="white"
++      />
++      <path
++        fillRule="evenodd"
++        clipRule="evenodd"
++        d="M5.71424 7.42519C5.71424 7.33678 5.74936 7.252 5.81187 7.18949L6.04997 6.95139C6.18014 6.82122 6.18014 6.61016 6.04997 6.47999L5.81187 6.24189C5.74936 6.17938 5.71424 6.0946 5.71424 6.00619V5.33474C5.71424 5.15064 5.86348 5.0014 6.04757 5.0014H6.63883C6.75938 5.0014 6.8571 5.09912 6.8571 5.21967C6.8571 5.44999 7.16759 5.52329 7.27059 5.31728L7.35577 5.14691C7.40036 5.05774 7.49151 5.0014 7.59121 5.0014H8.8571C9.01489 5.0014 9.14281 5.12932 9.14281 5.28712C9.14281 5.44491 9.01489 5.57283 8.8571 5.57283H8.28567C8.12787 5.57283 7.99996 5.70075 7.99996 5.85855C7.99996 6.01634 8.12787 6.14426 8.28567 6.14426H8.80948C8.99357 6.14426 9.14281 6.2935 9.14281 6.47759V8.09664C9.14281 8.28074 8.99357 8.42998 8.80948 8.42998H8.33329C8.14919 8.42998 7.99996 8.28074 7.99996 8.09664V7.57283C7.99996 7.41504 8.12787 7.28712 8.28567 7.28712C8.44347 7.28712 8.57138 7.1592 8.57138 7.0014C8.57138 6.84361 8.44347 6.71569 8.28567 6.71569H7.76186C7.57777 6.71569 7.42853 6.86493 7.42853 7.04902V8.14426C7.42853 8.30206 7.30061 8.42998 7.14281 8.42998C6.98502 8.42998 6.8571 8.30206 6.8571 8.14426V7.57283C6.8571 7.41504 6.72918 7.28712 6.57138 7.28712C6.41359 7.28712 6.28567 7.41504 6.28567 7.57283V8.14426C6.28567 8.30206 6.15775 8.42998 5.99996 8.42998C5.84216 8.42998 5.71424 8.30206 5.71424 8.14426V7.42519Z"
++        fill="white"
++      />
++      <path
++        fillRule="evenodd"
++        clipRule="evenodd"
++        d="M14.8572 7.42519C14.8572 7.33678 14.8923 7.252 14.9548 7.18949L15.1929 6.95139C15.3231 6.82122 15.3231 6.61016 15.1929 6.47999L14.9548 6.24189C14.8923 6.17938 14.8572 6.0946 14.8572 6.00619V5.33474C14.8572 5.15064 15.0064 5.0014 15.1905 5.0014H15.7818C15.9023 5.0014 16 5.09912 16 5.21967C16 5.44999 16.3105 5.52329 16.4135 5.31728L16.4987 5.14691C16.5433 5.05774 16.6345 5.0014 16.7342 5.0014H18C18.1578 5.0014 18.2858 5.12932 18.2858 5.28712C18.2858 5.44491 18.1578 5.57283 18 5.57283H17.4286C17.2708 5.57283 17.1429 5.70075 17.1429 5.85855C17.1429 6.01634 17.2708 6.14426 17.4286 6.14426H17.9524C18.1365 6.14426 18.2858 6.2935 18.2858 6.47759V8.09664C18.2858 8.28074 18.1365 8.42998 17.9524 8.42998H17.4762C17.2921 8.42998 17.1429 8.28074 17.1429 8.09664V7.57283C17.1429 7.41504 17.2708 7.28712 17.4286 7.28712C17.5864 7.28712 17.7143 7.1592 17.7143 7.0014C17.7143 6.84361 17.5864 6.71569 17.4286 6.71569H16.9048C16.7207 6.71569 16.5715 6.86493 16.5715 7.04902V8.14426C16.5715 8.30206 16.4436 8.42998 16.2858 8.42998C16.128 8.42998 16 8.30206 16 8.14426V7.57283C16 7.41504 15.8721 7.28712 15.7143 7.28712C15.5565 7.28712 15.4286 7.41504 15.4286 7.57283V8.14426C15.4286 8.30206 15.3007 8.42998 15.1429 8.42998C14.9851 8.42998 14.8572 8.30206 14.8572 8.14426V7.42519Z"
++        fill="white"
++      />
++      <path
++        fillRule="evenodd"
++        clipRule="evenodd"
++        d="M13.7143 5.85587C13.7143 6.01514 13.625 6.23355 13.508 6.35056L13.3492 6.50939C13.2352 6.62333 13.2321 6.80498 13.3492 6.92199L13.508 7.08082C13.6219 7.19475 13.7143 7.40942 13.7143 7.57551V8.14158C13.7143 8.30086 13.592 8.42998 13.4259 8.42998H12.8598C12.7005 8.42998 12.5714 8.30767 12.5714 8.14158V7.57551C12.5714 7.41624 12.5187 7.39259 12.4389 7.55218L12.1325 8.16491C12.0593 8.3113 11.8655 8.42998 11.7169 8.42998H10.5688C10.4125 8.42998 10.2857 8.29744 10.2857 8.14426C10.2857 7.98647 10.408 7.85855 10.5741 7.85855H11.1402C11.2995 7.85855 11.4286 7.72601 11.4286 7.57283C11.4286 7.41504 11.3063 7.28712 11.1402 7.28712H10.5741C10.4148 7.28712 10.2857 7.16423 10.2857 7.00684V5.28168C10.2857 5.12689 10.408 5.0014 10.5741 5.0014H11.1402C11.2995 5.0014 11.4286 5.12371 11.4286 5.28979V5.85587C11.4286 6.01514 11.296 6.14426 11.1429 6.14426C10.9851 6.14426 10.8571 6.27679 10.8571 6.42998C10.8571 6.58777 10.9794 6.71569 11.1455 6.71569H11.7116C11.8709 6.71569 12 6.58117 12 6.43261V5.28448C12 5.12814 12.1325 5.0014 12.2857 5.0014C12.4435 5.0014 12.5714 5.12371 12.5714 5.28979V5.85587C12.5714 6.01514 12.704 6.14426 12.8571 6.14426C13.0149 6.14426 13.1429 6.02196 13.1429 5.85587V5.28979C13.1429 5.13052 13.2754 5.0014 13.4286 5.0014C13.5864 5.0014 13.7143 5.12371 13.7143 5.28979V5.85587Z"
++        fill="white"
++      />
++    </g>
++  </svg>
++);
++
++export default FlagAR;
+diff --git a/client/src/components/Icon/icons/Accessibility.js b/client/src/components/Icon/icons/Accessibility.js
+new file mode 100644
+index 0000000..560b830
+--- /dev/null
++++ b/client/src/components/Icon/icons/Accessibility.js
+@@ -0,0 +1,25 @@
++const Accessibility = ({ width, height, color, ...props }) => (
++  <svg
++    width={width || '24'}
++    height={width || '24'}
++    viewBox="0 0 24 24"
++    fill={color}
++    xmlns="http://www.w3.org/2000/svg"
++    {...props}
++  >
++    <path
++      d="M9.76332 5.93333C9.24414 5.93333 8.73662 5.77938 8.30494 5.49094C7.87327 5.2025 7.53681 4.79253 7.33813 4.31288C7.13945 3.83322 7.08747 3.30542 7.18875 2.79622C7.29004 2.28702 7.54005 1.81929 7.90716 1.45218C8.27427 1.08507 8.742 0.835058 9.2512 0.733772C9.7604 0.632486 10.2882 0.68447 10.7679 0.88315C11.2475 1.08183 11.6575 1.41828 11.9459 1.84996C12.2344 2.28164 12.3883 2.78916 12.3883 3.30833C12.3876 4.0043 12.1108 4.67154 11.6186 5.16367C11.1265 5.65579 10.4593 5.93259 9.76332 5.93333Z"
++      fill={color || '#1A202B'}
++    />
++    <path
++      d="M18.0133 5.97083L17.9922 5.97646L17.9725 5.98255C17.9256 5.99568 17.8787 6.00974 17.8319 6.02427C16.9595 6.28021 12.7258 7.47364 9.74311 7.47364C6.97139 7.47364 3.12061 6.44239 1.88873 6.09224C1.76613 6.04483 1.64093 6.00445 1.51373 5.9713C0.623108 5.73693 0.0137329 6.64161 0.0137329 7.46849C0.0137329 8.28739 0.74967 8.67739 1.49264 8.95724V8.97036L5.95608 10.3644C6.41217 10.5393 6.53405 10.7179 6.59358 10.8726C6.78717 11.369 6.63248 12.3519 6.57764 12.695L6.30576 14.8044L4.79686 23.0633C4.79217 23.0858 4.78795 23.1088 4.7842 23.1322L4.77342 23.1918C4.66467 23.9488 5.22061 24.6833 6.27342 24.6833C7.19217 24.6833 7.59764 24.0491 7.77342 23.1861C7.9492 22.3232 9.08592 15.8 9.74217 15.8C10.3984 15.8 11.7503 23.1861 11.7503 23.1861C11.9261 24.0491 12.3315 24.6833 13.2503 24.6833C14.3059 24.6833 14.8619 23.9455 14.7503 23.1861C14.7407 23.1223 14.7288 23.0588 14.7147 22.9958L13.1851 14.8054L12.9137 12.696C12.7173 11.4674 12.8753 11.0615 12.9287 10.9663C12.9302 10.9641 12.9314 10.9617 12.9325 10.9593C12.9831 10.8655 13.2137 10.6555 13.7519 10.4535L17.9369 8.99052C17.9626 8.98367 17.9879 8.97554 18.0128 8.96614C18.7628 8.68489 19.5128 8.29583 19.5128 7.46943C19.5128 6.64302 18.9039 5.73693 18.0133 5.97083Z"
++      fill={color || '#1A202B'}
++    />
++    <path
++      d="M11.8023 3.27206C11.8023 4.41092 10.8885 5.33414 9.76129 5.33414C8.63406 5.33414 7.72025 4.41092 7.72025 3.27206C7.72025 2.1332 8.63406 1.20998 9.76129 1.20998C10.8885 1.20998 11.8023 2.1332 11.8023 3.27206Z"
++      fill={color || '#1A202B'}
++    />
++  </svg>
++);
++
++export default Accessibility;
+diff --git a/client/src/components/Icon/icons/BackArrow.js b/client/src/components/Icon/icons/BackArrow.js
+new file mode 100644
+index 0000000..986ce7c
+--- /dev/null
++++ b/client/src/components/Icon/icons/BackArrow.js
+@@ -0,0 +1,17 @@
++const BackArrow = ({ width, height, color, ...props }) => (
++  <svg
++    width={width || '24'}
++    height={height || '24'}
++    viewBox="0 0 24 24"
++    fill="none"
++    xmlns="http://www.w3.org/2000/svg"
++    {...props}
++  >
++    <path
++      d="M5.10992 10.9531L18.5981 10.9531C19.3724 10.9531 20 11.5926 20 12.3815C20 13.1704 19.3724 13.8099 18.5981 13.8099L4.43527 13.8099L6.13805 15.5683C6.68185 16.1298 6.67593 17.0342 6.12483 17.5883C5.57372 18.1424 4.68613 18.1364 4.14233 17.5749L0.40401 13.7146C-0.137228 13.1557 -0.134285 12.2564 0.410598 11.7012L4.14892 7.89206C4.69638 7.33422 5.58399 7.33422 6.13146 7.89206C6.67892 8.4499 6.67892 9.35433 6.13146 9.91217L5.10992 10.9531Z"
++      fill={color || '#1A202B'}
++    />
++  </svg>
++);
++
++export default BackArrow;
+diff --git a/client/src/components/Icon/icons/BackArrowRTL.js b/client/src/components/Icon/icons/BackArrowRTL.js
+new file mode 100644
+index 0000000..93ed183
+--- /dev/null
++++ b/client/src/components/Icon/icons/BackArrowRTL.js
+@@ -0,0 +1,17 @@
++const BackArrowRTL = ({ width, height, color, ...props }) => (
++  <svg
++    width={width || '24'}
++    height={height || '24'}
++    viewBox="0 0 24 24"
++    fill="none"
++    xmlns="http://www.w3.org/2000/svg"
++    {...props}
++  >
++    <path
++      d="M18.8901 10.9531L5.40187 10.9531C4.62764 10.9531 4 11.5926 4 12.3815C4 13.1704 4.62764 13.8099 5.40187 13.8099L19.5647 13.8099L17.862 15.5683C17.3182 16.1298 17.3241 17.0342 17.8752 17.5883C18.4263 18.1424 19.3139 18.1364 19.8577 17.5749L23.596 13.7146C24.1372 13.1557 24.1343 12.2564 23.5894 11.7012L19.8511 7.89206C19.3036 7.33422 18.416 7.33422 17.8685 7.89206C17.3211 8.4499 17.3211 9.35433 17.8685 9.91217L18.8901 10.9531Z"
++      fill="#1A202B"
++    />
++  </svg>
++);
++
++export default BackArrowRTL;
+diff --git a/client/src/components/Icon/icons/EN.js b/client/src/components/Icon/icons/EN.js
+new file mode 100644
+index 0000000..2cbc1fb
+--- /dev/null
++++ b/client/src/components/Icon/icons/EN.js
+@@ -0,0 +1,63 @@
++const FlagEN = ({ width, height, color, ...props }) => (
++  <svg
++    width={width || '24'}
++    height={height || '18'}
++    viewBox="0 0 24 18"
++    fill="none"
++    xmlns="http://www.w3.org/2000/svg"
++    {...props}
++  >
++    <rect y="0.429993" width="24" height="17.1429" rx="2" fill="white" />
++    <mask
++      id="mask0_5842_21618"
++      maskUnits="userSpaceOnUse"
++      x="0"
++      y="0"
++      width="24"
++      height="18"
++    >
++      <rect y="0.429993" width="24" height="17.1429" rx="2" fill="white" />
++    </mask>
++    <g mask="url(#mask0_5842_21618)">
++      <rect y="0.429993" width="24" height="17.1429" fill="#0A17A7" />
++      <path
++        fillRule="evenodd"
++        clipRule="evenodd"
++        d="M-1.09929 -1.21265L9.14287 5.69577V-0.712821H14.8572V5.69573L25.0992 -1.21264L26.3774 0.682303L18.2796 6.14432H24V11.8586H18.2796L26.3774 17.3206L25.0992 19.2155L14.8572 12.3072V18.7157H9.14287V12.3071L-1.09928 19.2156L-2.37744 17.3206L5.72032 11.8586H7.62939e-06V6.14432H5.72034L-2.37744 0.682297L-1.09929 -1.21265Z"
++        fill="white"
++      />
++      <path
++        fillRule="evenodd"
++        clipRule="evenodd"
++        d="M27.1356 -1.46751C27.2368 -1.31371 27.1941 -1.10701 27.0403 -1.00583L16.1843 6.13605C16.0305 6.23723 15.8238 6.19457 15.7226 6.04078C15.6214 5.88698 15.6641 5.68028 15.8179 5.5791L26.6739 -1.56278C26.8277 -1.66396 27.0344 -1.6213 27.1356 -1.46751Z"
++        fill="#DB1F35"
++      />
++      <path
++        fillRule="evenodd"
++        clipRule="evenodd"
++        d="M27.1622 18.9165C27.2651 18.7639 27.2247 18.5567 27.0721 18.4538L17.3402 11.8943C17.1876 11.7914 16.9804 11.8317 16.8775 11.9844C16.7746 12.137 16.815 12.3442 16.9676 12.4471L26.6995 19.0066C26.8521 19.1095 27.0593 19.0692 27.1622 18.9165Z"
++        fill="#DB1F35"
++      />
++      <path
++        fillRule="evenodd"
++        clipRule="evenodd"
++        d="M-3.56561 -1.18855C-3.46273 -1.34122 -3.25556 -1.38157 -3.1029 -1.27868L7.04826 5.56255C7.20092 5.66544 7.24127 5.8726 7.13839 6.02526C7.0355 6.17792 6.82834 6.21828 6.67568 6.11539L-3.47548 -0.725846C-3.62814 -0.828731 -3.6685 -1.03589 -3.56561 -1.18855Z"
++        fill="#DB1F35"
++      />
++      <path
++        fillRule="evenodd"
++        clipRule="evenodd"
++        d="M-3.56699 19.7375C-3.46524 19.8909 -3.25839 19.9328 -3.10497 19.831L8.1472 12.3691C8.30062 12.2674 8.34252 12.0605 8.24077 11.9071C8.13903 11.7537 7.93217 11.7118 7.77875 11.8135L-3.47341 19.2754C-3.62684 19.3772 -3.66873 19.584 -3.56699 19.7375Z"
++        fill="#DB1F35"
++      />
++      <path
++        fillRule="evenodd"
++        clipRule="evenodd"
++        d="M0 10.7157H10.2857V17.5728H13.7143V10.7157H24V7.28714H13.7143V0.429993H10.2857V7.28714H0V10.7157Z"
++        fill="#E6273E"
++      />
++    </g>
++  </svg>
++);
++
++export default FlagEN;
+diff --git a/client/src/components/Icon/icons/Search.js b/client/src/components/Icon/icons/Search.js
+new file mode 100644
+index 0000000..c9f2ba9
+--- /dev/null
++++ b/client/src/components/Icon/icons/Search.js
+@@ -0,0 +1,17 @@
++const Search = ({ width, height, color, ...props }) => (
++  <svg
++    width={width || '25'}
++    height={width || '24'}
++    viewBox="0 0 25 24"
++    fill={color}
++    xmlns="http://www.w3.org/2000/svg"
++    {...props}
++  >
++    <path
++      d="M19.4 20.3L13.8 14.7C13.3 15.1 12.725 15.4167 12.075 15.65C11.425 15.8833 10.7333 16 10 16C8.18333 16 6.646 15.371 5.388 14.113C4.12933 12.8543 3.5 11.3167 3.5 9.5C3.5 7.68333 4.12933 6.14567 5.388 4.887C6.646 3.629 8.18333 3 10 3C11.8167 3 13.3543 3.629 14.613 4.887C15.871 6.14567 16.5 7.68333 16.5 9.5C16.5 10.2333 16.3833 10.925 16.15 11.575C15.9167 12.225 15.6 12.8 15.2 13.3L20.825 18.925C21.0083 19.1083 21.1 19.3333 21.1 19.6C21.1 19.8667 21 20.1 20.8 20.3C20.6167 20.4833 20.3833 20.575 20.1 20.575C19.8167 20.575 19.5833 20.4833 19.4 20.3ZM10 14C11.25 14 12.3127 13.5627 13.188 12.688C14.0627 11.8127 14.5 10.75 14.5 9.5C14.5 8.25 14.0627 7.18733 13.188 6.312C12.3127 5.43733 11.25 5 10 5C8.75 5 7.68733 5.43733 6.812 6.312C5.93733 7.18733 5.5 8.25 5.5 9.5C5.5 10.75 5.93733 11.8127 6.812 12.688C7.68733 13.5627 8.75 14 10 14Z"
++      fill="#1A202B"
++    />
++  </svg>
++);
++
++export default Search;
+diff --git a/client/src/components/Icon/icons/TextSize.js b/client/src/components/Icon/icons/TextSize.js
+new file mode 100644
+index 0000000..8ea6edd
+--- /dev/null
++++ b/client/src/components/Icon/icons/TextSize.js
+@@ -0,0 +1,23 @@
++const TextSize = ({ width, height, color, ...props }) => (
++  <svg
++    width={width || '24'}
++    height={width || '24'}
++    viewBox="0 0 24 24"
++    fill={color}
++    xmlns="http://www.w3.org/2000/svg"
++    {...props}
++  >
++    <path
++      d="M18.2 17.1371L22.959 21.9069L22.9591 21.907M18.2 17.1371L21.9776 22.8883C22.0984 23.0091 22.2622 23.077 22.433 23.077C22.6038 23.077 22.7676 23.0091 22.8883 22.8883C23.0091 22.7676 23.077 22.6038 23.077 22.433C23.077 22.2622 23.0091 22.0984 22.8883 21.9776L22.9591 21.907M18.2 17.1371C19.8475 15.2175 20.6968 12.7378 20.5702 10.2089C20.442 7.64888 19.324 5.23886 17.4521 3.48781C15.5802 1.73676 13.101 0.781756 10.5381 0.824485C7.97524 0.867215 5.52929 1.90433 3.71681 3.71681C1.90433 5.52929 0.867215 7.97524 0.824485 10.5381C0.781756 13.101 1.73676 15.5802 3.48781 17.4521C5.23886 19.324 7.64888 20.442 10.2089 20.5702C12.7378 20.6968 15.2175 19.8475 17.1371 18.2L21.9069 22.959L21.907 22.9591M18.2 17.1371L21.907 22.9591M22.9591 21.907C23.0986 22.0465 23.177 22.2357 23.177 22.433C23.177 22.6303 23.0986 22.8195 22.959 22.959C22.8195 23.0986 22.6303 23.177 22.433 23.177C22.2357 23.177 22.0465 23.0986 21.907 22.9591M22.9591 21.907L21.907 22.9591M2.36639 10.7233C2.3664 9.07047 2.85652 7.45475 3.77479 6.08047C4.69306 4.70617 5.99824 3.63504 7.52527 3.00252C9.05231 2.37001 10.7326 2.20451 12.3537 2.52696C13.9748 2.84942 15.4639 3.64534 16.6326 4.81408C17.8013 5.98282 18.5973 7.47189 18.9197 9.09298C19.2422 10.7141 19.0767 12.3944 18.4442 13.9214C17.8116 15.4484 16.7405 16.7536 15.3662 17.6719C13.992 18.5901 12.3763 19.0803 10.7235 19.0803C8.5079 19.0775 6.38389 18.1961 4.81725 16.6294C3.25063 15.0628 2.36925 12.9388 2.36639 10.7233Z"
++      fill="#1A202B"
++      stroke="#332C44"
++      strokeWidth="0.2"
++    />
++    <path
++      d="M15.7022 15.0435L12.1586 5.70224H9.80451L6.31094 15.0435H8.43964L9.24103 12.7645H12.7346L13.561 15.0435H15.7022ZM9.80451 11.0866L10.9816 7.83094L12.1586 11.0866H9.80451Z"
++      fill="#1A202B"
++    />
++  </svg>
++);
++
++export default TextSize;
+diff --git a/client/src/components/Icon/index.js b/client/src/components/Icon/index.js
+index 9617031..dc1f790 100644
+--- a/client/src/components/Icon/index.js
++++ b/client/src/components/Icon/index.js
+@@ -26,6 +26,11 @@ import Bulb from './icons/Bulb';
+ import BulletArrow from './icons/BulletArrow';
+ import Compass from './icons/Compass';
+ import Upload from './icons/Upload';
++import TextSize from './icons/TextSize';
++import Accessibility from './icons/Accessibility';
++import BackArrow from './icons/BackArrow';
++import BackArrowRTL from './icons/BackArrowRTL';
++import Search from './icons/Search';
+ import House from './icons/House';
+ import Bill from './icons/Bill';
+ import Basket from './icons/Basket';
+@@ -34,6 +39,14 @@ import MoneyBag from './icons/MoneyBag';
+ import BookMark from './icons/BookMark';
+ import Discover from './icons/Discover';
+ 
++import EN from './icons/EN';
++import AR from './icons/AR';
++
++export const FlagMap = {
++  en: EN,
++  ar: AR,
++};
++
+ export const IconMap = {
+   goBack: GoBack,
+   arrowDown: ArrowDown,
+@@ -54,6 +67,11 @@ export const IconMap = {
+   bulletArrow: BulletArrow,
+   compass: Compass,
+   upload: Upload,
++  textSize: TextSize,
++  accessibility: Accessibility,
++  backArrow: BackArrow,
++  backArrowRTL: BackArrowRTL,
++  search: Search,
+   house: House,
+   bill: Bill,
+   basket: Basket,
+@@ -61,6 +79,8 @@ export const IconMap = {
+   moneyBag: MoneyBag,
+   bookMark: BookMark,
+   discover: Discover,
++
++  ...FlagMap,
+ };
+ 
+ const Parent = styled.div`
+diff --git a/client/src/components/Inputs/BasicInput/index.js b/client/src/components/Inputs/BasicInput/index.js
+index c9957f4..6451aaa 100644
+--- a/client/src/components/Inputs/BasicInput/index.js
++++ b/client/src/components/Inputs/BasicInput/index.js
+@@ -18,6 +18,7 @@ const BasicInput = ({
+   m, // margins
+   showPasswordInfo,
+   optional,
++  suffix,
+   ...props
+ }) => {
+   const decideColor = () => {
+@@ -54,6 +55,7 @@ const BasicInput = ({
+         disabled={disabled}
+         autoComplete={autoComplete || 'on'}
+         error={error}
++        suffix={suffix}
+         {...props}
+       />
+       {error && (
+diff --git a/client/src/components/Inputs/BasicInput/style.js b/client/src/components/Inputs/BasicInput/style.js
+index c0e98fb..750bdb9 100644
+--- a/client/src/components/Inputs/BasicInput/style.js
++++ b/client/src/components/Inputs/BasicInput/style.js
+@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
+ import setMargin from '../../../helpers/set-margin';
+ import * as CS from '../style';
+ import { Input as AntdInput } from 'antd';
++import theme from '../../../theme';
+ 
+ const InputCommonStyle = ({ theme, error, disabled }) => `
+ width: 100%;
+@@ -23,11 +24,23 @@ transition: all 0.3s ease;
+ }
+ `;
+ 
+-export const Input = styled.input`
++export const Input = styled(AntdInput)`
+   ${setMargin};
+   ${CS.placeholderStyle};
+   ${CS.commonBorderStyle};
+   ${InputCommonStyle};
++
++  .ant-input::placeholder {
++    color: ${theme.colors.neutralDark};
++    font-size: 16px !important;
++    line-height: 24px !important;
++  }
++
++  .ant-input {
++    color: ${theme.colors.neutralDark};
++    font-size: 16px !important;
++    line-height: 24px !important;
++  }
+ `;
+ 
+ export const PasswordInput = styled(AntdInput.Password)`
+diff --git a/client/src/components/Language/Language.stories.js b/client/src/components/Language/Language.stories.js
+new file mode 100644
+index 0000000..b3cd331
+--- /dev/null
++++ b/client/src/components/Language/Language.stories.js
+@@ -0,0 +1,14 @@
++import LanguageBar from '.';
++
++export default {
++  title: 'Common Components/Language Bar Main',
++  component: LanguageBar,
++  argTypes: {
++    backgroundColor: { control: 'color' },
++  },
++};
++
++const StandardTemplate = (args) => <LanguageBar {...args} />;
++
++export const LTR = StandardTemplate.bind({});
++LTR.args = { dir: 'ltr', largeText: false, showBack: false };
+diff --git a/client/src/components/Language/LanguageBar/LanguageBar.stories.js b/client/src/components/Language/LanguageBar/LanguageBar.stories.js
+new file mode 100644
+index 0000000..000d26a
+--- /dev/null
++++ b/client/src/components/Language/LanguageBar/LanguageBar.stories.js
+@@ -0,0 +1,37 @@
++import { LanguageBar } from '.';
++
++export default {
++  title: 'Common Components/Language Bar',
++  component: LanguageBar,
++  argTypes: {
++    backgroundColor: { control: 'color' },
++  },
++};
++
++const StandardTemplate = (args) => <LanguageBar {...args} />;
++
++export const LTR = StandardTemplate.bind({});
++LTR.args = { dir: 'ltr', largeText: false, showBack: false };
++
++export const LTR_BackButton = StandardTemplate.bind({});
++LTR_BackButton.args = { dir: 'ltr', largeText: false, showBack: true };
++
++export const LTR_BackButtonWithLargeText = StandardTemplate.bind({});
++LTR_BackButtonWithLargeText.args = {
++  dir: 'ltr',
++  largeText: true,
++  showBack: true,
++};
++
++export const RTL = StandardTemplate.bind({});
++RTL.args = { dir: 'rtl', largeText: false, showBack: false };
++
++export const RTL_BackButton = StandardTemplate.bind({});
++RTL_BackButton.args = { dir: 'rtl', largeText: false, showBack: true };
++
++export const RTL_BackButtonWithLargeText = StandardTemplate.bind({});
++RTL_BackButtonWithLargeText.args = {
++  dir: 'rtl',
++  largeText: true,
++  showBack: true,
++};
+diff --git a/client/src/components/Language/LanguageBar/index.js b/client/src/components/Language/LanguageBar/index.js
+new file mode 100644
+index 0000000..115ac6d
+--- /dev/null
++++ b/client/src/components/Language/LanguageBar/index.js
+@@ -0,0 +1,126 @@
++import * as S from './style';
++import { Row } from '../../Grid';
++import { TextWithIcon } from '../../../components';
++import { useMediaQuery } from 'react-responsive';
++import theme from '../../../theme';
++
++const props = {
++  weight: 'medium',
++  mr: 2,
++  isButton: true,
++  iconColor: 'neutralMain',
++};
++
++const Desktop = ({ dir, showBack, largeText, handleHide }) => {
++  const LTR = (
++    <Row>
++      <S.DesktopWrapper>
++        <S.ButtonWrapper>
++          {showBack && (
++            <TextWithIcon icon="backArrow" iconColor="neutralMain" isButton />
++          )}
++          <TextWithIcon
++            handleClick={() => null}
++            text="Accessibility"
++            icon="accessibility"
++            {...props}
++          />
++          <TextWithIcon
++            handleClick={() => null}
++            text={largeText ? '- Decrease text size' : '+ Increase text size'}
++            icon="textSize"
++            {...props}
++          />
++        </S.ButtonWrapper>
++        <S.ButtonWrapper>
++          <TextWithIcon
++            handleClick={handleHide}
++            text="English"
++            icon="en"
++            {...props}
++          />
++        </S.ButtonWrapper>
++      </S.DesktopWrapper>
++    </Row>
++  );
++
++  const RTL = (
++    <S.DesktopWrapper>
++      <S.ButtonWrapper>
++        <TextWithIcon
++          handleClick={handleHide}
++          text="Arabic"
++          icon="ar"
++          {...props}
++        />
++      </S.ButtonWrapper>
++      <S.ButtonWrapper>
++        <TextWithIcon
++          handleClick={() => null}
++          text={largeText ? '- Decrease text size' : '+ Increase text size'}
++          icon="textSize"
++          {...props}
++        />
++        <TextWithIcon
++          handleClick={() => null}
++          text="نموذج"
++          icon="accessibility"
++          {...props}
++        />
++        {showBack && (
++          <TextWithIcon icon="backArrowRTL" iconColor="neutralMain" isButton />
++        )}
++      </S.ButtonWrapper>
++    </S.DesktopWrapper>
++  );
++
++  return dir === 'rtl' ? RTL : LTR;
++};
++
++const Tablet = ({ dir, showBack, handleHide }) => {
++  const LTR = (
++    <S.TabletWrapperLTR showBack={showBack}>
++      {showBack && (
++        <TextWithIcon icon="backArrow" iconColor="neutralMain" isButton />
++      )}
++      <S.ButtonWrapper>
++        <TextWithIcon
++          handleClick={() => null}
++          text="Accessibility"
++          icon="accessibility"
++          {...props}
++        />
++        <TextWithIcon handleClick={() => null} icon="textSize" {...props} />
++        <TextWithIcon handleClick={handleHide} text="EN" icon="en" {...props} />
++      </S.ButtonWrapper>
++    </S.TabletWrapperLTR>
++  );
++
++  const RTL = (
++    <S.TabletWrapperRTL showBack={showBack}>
++      <S.ButtonWrapper>
++        <TextWithIcon handleClick={handleHide} text="AR" icon="ar" {...props} />
++        <TextWithIcon handleClick={() => null} icon="textSize" {...props} />
++        <TextWithIcon
++          text="نموذج"
++          handleClick={() => null}
++          icon="accessibility"
++          {...props}
++        />
++      </S.ButtonWrapper>
++      {showBack && (
++        <TextWithIcon icon="backArrowRTL" iconColor="neutralMain" isButton />
++      )}
++    </S.TabletWrapperRTL>
++  );
++
++  return dir === 'rtl' ? RTL : LTR;
++};
++
++export const LanguageBar = ({ dir, largeText, showBack, handleHide }) => {
++  const props = { dir, largeText, showBack, handleHide };
++  const isTablet = useMediaQuery({
++    query: `(max-width: ${theme.breakpoints.tablet})`,
++  });
++  return isTablet ? <Tablet {...props} /> : <Desktop {...props} />;
++};
+diff --git a/client/src/components/Language/LanguageBar/style.js b/client/src/components/Language/LanguageBar/style.js
+new file mode 100644
+index 0000000..7355308
+--- /dev/null
++++ b/client/src/components/Language/LanguageBar/style.js
+@@ -0,0 +1,43 @@
++import styled from '@emotion/styled';
++import theme from '../../../theme';
++
++const commonStyle = `
++  display: flex;
++  width: 100%;
++  align-items: center;
++  z-index: 2;
++  background-color: ${theme.colors.neutralSurface};
++`;
++
++const desktop = `
++  height: ${theme.constants.translationBar.desktop.height};
++  padding: ${theme.constants.translationBar.desktop.padding};
++  justify-content: space-between;
++`;
++
++const tablet = `
++  height: ${theme.constants.translationBar.tablet.height};
++  padding: ${theme.constants.translationBar.tablet.padding};
++`;
++
++export const DesktopWrapper = styled('div')`
++  ${commonStyle};
++  ${desktop};
++`;
++
++export const TabletWrapperLTR = styled('div')`
++  ${commonStyle};
++  ${tablet};
++  justify-content: ${({ showBack }) => (showBack ? 'space-between' : 'end')};
++`;
++
++export const TabletWrapperRTL = styled('div')`
++  ${commonStyle};
++  ${tablet};
++  justify-content: ${({ showBack }) => (showBack ? 'space-between' : 'start')};
++`;
++
++export const ButtonWrapper = styled('div')`
++  display: flex;
++  gap: 15px;
++`;
+diff --git a/client/src/components/Language/LanguageSelector/LanguageSelector.stories.js b/client/src/components/Language/LanguageSelector/LanguageSelector.stories.js
+new file mode 100644
+index 0000000..02fbbb4
+--- /dev/null
++++ b/client/src/components/Language/LanguageSelector/LanguageSelector.stories.js
+@@ -0,0 +1,11 @@
++import { LanguageSelector } from '.';
++
++export default {
++  title: 'Common Components/Language Selector',
++  component: LanguageSelector,
++};
++
++const StandardTemplate = (args) => <LanguageSelector {...args} />;
++
++export const Standard = StandardTemplate.bind({});
++Standard.args = {};
+diff --git a/client/src/components/Language/LanguageSelector/index.js b/client/src/components/Language/LanguageSelector/index.js
+new file mode 100644
+index 0000000..80816fa
+--- /dev/null
++++ b/client/src/components/Language/LanguageSelector/index.js
+@@ -0,0 +1,80 @@
++import { useState } from 'react';
++import { TextWithIcon, Icon } from '../../../components';
++import { FlagMap } from '../../../components/Icon';
++import { BasicInput } from '../../Inputs/index';
++import * as S from './style';
++import { useMediaQuery } from 'react-responsive';
++import theme from '../../../theme';
++
++const props = {
++  weight: 'medium',
++  mr: 2,
++  isButton: true,
++};
++
++const languageCodes = {
++  ar: 'Arabic',
++  en: 'English',
++  es: 'Spanish',
++  bm: 'Bambara',
++  as: 'French',
++  gs: 'Swedish',
++  vs: 'Japanese',
++  am: 'Bambara',
++  qm: 'German',
++  am: 'Russian',
++  lm: 'Italian',
++  ii: 'Dutch',
++  zz: 'Portugese',
++  nj: 'Hide on mobile',
++};
++
++export const LanguageSelector = ({ hide }) => {
++  const [search, setSearch] = useState('');
++
++  const sliceTo =
++    useMediaQuery({
++      query: `(max-width: ${theme.breakpoints.tablet})`,
++    }) === true
++      ? 12
++      : languageCodes.length;
++
++  const languages = Object.entries(languageCodes).filter(([code, language]) => {
++    return (
++      code.toLowerCase().includes(search.toLowerCase()) ||
++      language.toLowerCase().includes(search.toLowerCase())
++    );
++  });
++
++  const Selector = (
++    <S.Wrapper>
++      <S.ButtonWrapper>
++        <BasicInput
++          handleChange={(val) => setSearch(val)}
++          label="Search Language"
++          value={search}
++          name="search-language"
++          placeholder="Search"
++          suffix={<Icon icon="search" color="neutralMain" />}
++        />
++      </S.ButtonWrapper>
++      <S.ButtonWrapper>
++        {languages
++          .map(([code, language]) => {
++            return (
++              <S.Button>
++                <TextWithIcon
++                  handleClick={() => null}
++                  text={language}
++                  icon={FlagMap[code] !== undefined ? code : null}
++                  {...props}
++                />
++              </S.Button>
++            );
++          })
++          .slice(0, sliceTo)}
++      </S.ButtonWrapper>
++    </S.Wrapper>
++  );
++  return hide === true ? null : Selector;
++};
+diff --git a/client/src/components/Language/LanguageSelector/style.js b/client/src/components/Language/LanguageSelector/style.js
+new file mode 100644
+index 0000000..a26283c
+--- /dev/null
++++ b/client/src/components/Language/LanguageSelector/style.js
+@@ -0,0 +1,46 @@
++import styled from '@emotion/styled';
++import theme from '../../../theme';
++
++export const Wrapper = styled('div')`
++  flex: 1;
++  width: 100%;
++  height: 100%;
++  padding: ${theme.constants.translationBar.desktop.paddingTop};
++
++  ${({ theme }) => theme.media.tablet} {
++    padding: ${theme.constants.translationBar.tablet.paddingTop};
++  }
++`;
++
++export const ButtonWrapper = styled('div')`
++  display: grid;
++  width: 100%;
++  margin-top: 8px;
++  grid-gap: 4px;
++  grid-template-columns: repeat(auto-fill, 300px);
++  padding: ${theme.constants.translationBar.desktop.padding};
++
++  ${({ theme }) => theme.media.tablet} {
++    grid-template-columns: 1fr;
++    padding: ${theme.constants.translationBar.tablet.padding};
++  }
++`;
++
++export const Button = styled('button')`
++  display: flex;
++  flex-wrap: wrap;
++  outline: none;
++  min-width: 100%;
++  border: none;
++  border-radius: 8px;
++  padding: 16px 24px;
++  align-items: center;
++  background-color: ${theme.colors.neutralSurface};
++  justify-content: ${({ jc }) => jc || 'flex-start'};
++  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
++  opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
++
++  &:hover {
++    background-color: ${theme.colors.neutralLight};
++  }
++`;
+diff --git a/client/src/components/Language/index.js b/client/src/components/Language/index.js
+new file mode 100644
+index 0000000..fe77345
+--- /dev/null
++++ b/client/src/components/Language/index.js
+@@ -0,0 +1,23 @@
++import { useState } from 'react';
++import { LanguageBar } from './LanguageBar';
++import { LanguageSelector } from './LanguageSelector';
++import * as S from './style';
++
++const Language = () => {
++  const [hide, setHide] = useState(true);
++
++  const handleHide = () => {
++    setHide(!hide);
++  };
++
++  return (
++    <>
++      <S.Wrapper hide={hide}>
++        <LanguageBar handleHide={handleHide} />
++        <LanguageSelector hide={hide} />
++      </S.Wrapper>
++    </>
++  );
++};
++
++export default Language;
+diff --git a/client/src/components/Language/style.js b/client/src/components/Language/style.js
+new file mode 100644
+index 0000000..906b299
+--- /dev/null
++++ b/client/src/components/Language/style.js
+@@ -0,0 +1,18 @@
++import styled from '@emotion/styled';
++import theme from '../../theme';
++
++export const Wrapper = styled('div')`
++  display: flex;
++  flex-direction: column;
++  width: 100%;
++  z-index: 1;
++  background-color: ${theme.colors.white};
++  position: ${({ hide }) => (hide ? 'relative' : 'absolute')};
++  min-height: ${({ hide }) =>
++    hide ? `${theme.constants.translationBar.desktop.height}` : '100%'};
++
++  ${({ theme }) => theme.media.tablet} {
++    min-height: ${({ hide }) =>
++      hide ? `${theme.constants.translationBar.tablet.height}` : '100%'};
++  }
++`;
+diff --git a/client/src/components/Layout/General/index.js b/client/src/components/Layout/General/index.js
+index 9a216cf..d1357c0 100644
+--- a/client/src/components/Layout/General/index.js
++++ b/client/src/components/Layout/General/index.js
+@@ -1,13 +1,11 @@
+ import React from 'react';
+ import PropTypes from 'prop-types';
+ import * as S from './style';
+-
+ import { useMediaQuery } from 'react-responsive';
+-
+ import { usePublicOrg } from '../../../context/public-org';
+ import { useAdminOrg } from '../../../context/admin-org';
+-
+ import { OrganisationLogo } from '../../../components';
++import Language from '../../Language';
+ 
+ // import Navbar from '../../Navbar';
+ import GoBack from '../../GoBack';
+@@ -22,7 +20,7 @@ const General = ({ children, goBack, maxWidth, showHelp, ...props }) => {
+   });
+   return (
+     <S.Container>
+-      accessability header goes here
++      <Language />
+       <OrganisationLogo logoUrl={adminOrg?.logoUrl || publicOrg?.logoUrl} />
+       {/* <S.LangButton>
+             <T.P isSmall weight="bold" mr="4px">
+diff --git a/client/src/components/TextWithIcon/index.js b/client/src/components/TextWithIcon/index.js
+index eb9357a..9245443 100644
+--- a/client/src/components/TextWithIcon/index.js
++++ b/client/src/components/TextWithIcon/index.js
+@@ -12,7 +12,7 @@ const TextWithIcon = ({
+   size,
+   to,
+   icon = 'phone',
+-  text = 'Stuck? Call us for advice',
++  text,
+   external,
+   underline,
+   isButton,
+@@ -38,13 +38,21 @@ const TextWithIcon = ({
+           <Icon
+             icon={icon}
+             color={iconColor}
+-            mr={mr || '2'}
++            mr={text ? mr || '2' : '0'}
+             direction={direction}
++            pointer={isButton}
+           />
+         )}
+-        <T.H3 weight={weight} color={color} td={underline && 'underline'}>
+-          {text}
+-        </T.H3>
++        {text && (
++          <T.H3
++            weight={weight}
++            color={color}
++            ml={icon === null && 6}
++            td={underline && 'underline'}
++          >
++            {text}
++          </T.H3>
++        )}
+       </S.Button>
+     );
+ 
+diff --git a/client/src/components/TextWithIcon/style.js b/client/src/components/TextWithIcon/style.js
+index 0133bc1..6a74a9b 100644
+--- a/client/src/components/TextWithIcon/style.js
++++ b/client/src/components/TextWithIcon/style.js
+@@ -36,7 +36,7 @@ export const Button = styled.button`
+   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
+   opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
+   display: flex;
+-  width: 100%;
++  max-width: 100%;
+   align-items: center;
+   justify-content: ${({ jc }) => jc || 'flex-start'};
+ `;
+diff --git a/client/src/theme/borders.js b/client/src/theme/borders.js
+index b808765..be4a512 100644
+--- a/client/src/theme/borders.js
++++ b/client/src/theme/borders.js
+@@ -1,6 +1,6 @@
+ import colors from './colors';
+ const borders = {
+-  inputs: `1px solid ${colors.neutralMid};`,
++  inputs: `1px solid ${colors.neutralLight};`,
+   error: `1px solid ${colors.error};`,
+   section: `2px solid ${colors.primaryMain}`,
+   dashed: `1.5px dashed ${colors.neutralMid};`,
+diff --git a/client/src/theme/index.js b/client/src/theme/index.js
+index 2d367a9..d03636c 100644
+--- a/client/src/theme/index.js
++++ b/client/src/theme/index.js
+@@ -27,6 +27,18 @@ const constants = {
+       },
+     },
+   },
++  translationBar: {
++    desktop: {
++      height: '52px',
++      padding: '0 164px',
++      paddingTop: '26px 0',
++    },
++    tablet: {
++      height: '42px',
++      padding: '0 38px',
++      paddingTop: '20px 0',
++    },
++  },
+ };
+ 
+ export const spacings = {
+@@ -48,7 +60,7 @@ export const spacings = {
+ 
+ export const screensWidth = {
+   mobileXS: 374,
+-  mobile: 580,
++  mobile: 576,
+   tablet: 949,
+   desktop: 1442,
+ };

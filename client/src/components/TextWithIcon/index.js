@@ -36,13 +36,21 @@ const TextWithIcon = ({
           <Icon
             icon={icon}
             color={iconColor}
-            mr={mr || '2'}
+            mr={text ? mr || '2' : '0'}
             direction={direction}
+            pointer={isButton}
           />
         )}
-        <T.H3 weight={weight} color={color} td={underline && 'underline'}>
-          {text}
-        </T.H3>
+        {text && (
+          <T.H3
+            weight={weight}
+            color={color}
+            ml={icon === null && 6}
+            td={underline && 'underline'}
+          >
+            {text}
+          </T.H3>
+        )}
       </S.Button>
     );
 
