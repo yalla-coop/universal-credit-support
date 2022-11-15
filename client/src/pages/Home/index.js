@@ -110,7 +110,14 @@ const Home = () => {
               variant="primary"
               text="See advice"
               mb="6"
-              to={navRoutes.GENERAL.MENTAL_HEALTH}
+              to={
+                uniqueSlug
+                  ? navRoutes.GENERAL.MENTAL_HEALTH_ORG.replace(
+                      ':uniqueSlug',
+                      uniqueSlug
+                    )
+                  : navRoutes.GENERAL.MENTAL_HEALTH
+              }
             />
             <TextWithIcon
               text="Stuck? Talk to someone"

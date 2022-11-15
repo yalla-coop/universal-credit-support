@@ -120,7 +120,7 @@ const AntdLink = ({ to, external = false, underline, ...props }) => {
 export const Link = styled(AntdLink)`
   ${setMargin};
   ${commonStyle};
-  font-size: 16px !important;
+  font-size: ${({ fontSize }) => fontSize || '16px'} !important;
   line-height: 24px !important;
   font-weight: ${({ weight }) => (weight ? weights[weight] : '400 !important')};
 

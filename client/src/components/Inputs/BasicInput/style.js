@@ -38,6 +38,16 @@ export const PasswordInput = styled(AntdInput.Password)`
   input {
     background-color: inherit;
   }
+  .ant-input::placeholder {
+    color: ${({ theme }) => theme.colors.neutralDark};
+    font-size: 16px !important;
+    line-height: 24px !important;
+  }
+  .ant-input {
+    color: ${({ theme }) => theme.colors.neutralDark};
+    font-size: 16px !important;
+    line-height: 24px !important;
+  }
 `;
 
 export const InfoWrapper = styled.button`

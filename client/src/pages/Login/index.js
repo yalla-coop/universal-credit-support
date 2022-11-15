@@ -133,8 +133,9 @@ const Login = () => {
             to={R.GENERAL.FORGET_PASSWORD}
             color="neutralDark"
             style={{ display: 'block' }}
-            mt="3"
-            ml="2"
+            mt="10px"
+            ml="13px"
+            fontSize="14px"
           >
             Forget password?
           </T.Link>
@@ -155,18 +156,19 @@ const Login = () => {
             variant="primary"
             disabled={false}
             loading={loading}
-            text="Login"
+            text="Log in"
             type="submit"
           />
         </Col>
       </Row>
-      <Row mt="6">
+      <Row mt="5">
         <Col w={[4, 11, 6]}>
           <TextWithIcon
             to={R.ADMIN.WELCOME1}
             text="Don’t have an account? Sign up"
             icon="forwardArrow"
             iconColor="primaryMain"
+            mr="4px"
           />
         </Col>
       </Row>

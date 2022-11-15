@@ -31,8 +31,12 @@ import Bill from './icons/Bill';
 import Basket from './icons/Basket';
 import Calculator from './icons/Calculator';
 import MoneyBag from './icons/MoneyBag';
+import Hide from './icons/Hide';
+import Menu2 from './icons/Menu2';
+import Edit from './icons/Edit';
 import BookMark from './icons/BookMark';
 import Discover from './icons/Discover';
+import BackwardArrow from './icons/BackwardArrow';
 
 export const IconMap = {
   goBack: GoBack,
@@ -59,8 +63,12 @@ export const IconMap = {
   basket: Basket,
   calculator: Calculator,
   moneyBag: MoneyBag,
+  hide: Hide,
+  menu2: Menu2,
+  edit: Edit,
   bookMark: BookMark,
   discover: Discover,
+  backwardArrow: BackwardArrow,
 };
 
 const Parent = styled.div`
