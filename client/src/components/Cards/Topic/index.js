@@ -11,26 +11,17 @@ const TopicCard = ({
   description,
   tips,
   resources,
-  startingColor,
   marked,
-  handleChange,
+  toggleMark,
+  topicIndex,
 }) => {
   const [expanded, setExpanded] = useState(false);
-  const handleClick = () => {
-    if (marked) {
-      return handleChange(false);
-    } else {
-      handleChange(true);
-      if (expanded) {
-        setExpanded(false);
-      }
-    }
-  };
+
   return (
     <>
       <S.Section mb="3">
         <S.TopSection>
-          <S.MarkButton onClick={handleClick}>
+          <S.MarkButton onClick={toggleMark}>
             <S.IconWrapper>
               <Icon
                 color={marked ? 'secondaryMain' : 'secondaryLight'}
@@ -64,10 +55,10 @@ const TopicCard = ({
         )}
       </S.Section>
       {expanded && tips?.length > 0 && (
-        <Tips tips={tips} mb="5" inner startingColor={startingColor} />
+        <Tips tips={tips} mb="5" inner startingColor={topicIndex} />
       )}
       {expanded && resources?.length > 0 && (
-        <HelpfulResources resources={resources} mb="5" />
+        <HelpfulResources resources={resources} mb="5" mt="6" />
       )}
     </>
   );

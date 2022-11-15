@@ -7,6 +7,7 @@ export const Main = styled.main`
   ${({ theme }) => theme.media.mobile} {
     padding: 24px 10vw;
   }
+  flex-direction: column;
 
   padding: 48px 11.3vw 80px;
 `;

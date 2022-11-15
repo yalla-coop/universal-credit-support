@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import B from '../../constants/benefit-calculator';
 import GeneralPaddingSection from '../../components/Layout/GeneralPaddingSection';
@@ -12,32 +12,39 @@ import {
   Cards,
   OrganisationLogo,
 } from '../../components';
-import { useSteps } from '../../context/steps';
 import { useLang } from '../../context/lang';
 import { t } from '../../helpers';
 import { navRoutes as n, types } from '../../constants';
-
+import PageHeader from '../../components/PageHeader';
 import * as S from './style';
-
+import { Sections } from './../../api-calls';
 import { usePublicOrg } from '../../context/public-org';
-
-const { Row, Col } = Grid;
-const { Tips, Checklist } = Cards;
+import { TopicCard } from './../../components/Cards';
+import useTopics from './useTopics';
 
 const Section = () => {
   const [stuck, setStuck] = useState(false);
   const { publicOrg } = usePublicOrg();
-  const params = useParams();
+  const { id } = useParams();
   const { lang } = useLang();
   const navigate = useNavigate();
-  const { steps: fullSteps, checkUncheckItem, markAsComplete } = useSteps();
+  const [sectionData, setSectionData] = useState({});
+  const { topics, toggleMark } = useTopics(id);
 
-  const step = fullSteps.find((s) => s.id === Number(params.id));
+  useEffect(() => {
+    const fetchSectionData = async () => {
+      const { data, error } = await Sections.getSectionById({
+        id,
+      });
+      if (error) {
+        // message.error('Something went wrong, please try again later');
+      } else {
+        setSectionData(data);
+      }
+    };
 
-  // if (!step) {
-  //   navigate(n.GENERAL.NOT_FOUND);
-  //   return null;
-  // }
+    fetchSectionData();
+  }, [id]);
 
   const formatLink = (link, type) => {
     if (type === types.linkTypes.PHONE) {
@@ -46,15 +53,33 @@ const Section = () => {
     return link;
   };
 
-  const checkItem = (itemTitle) => {
-    const foundItem = step.checklist.find((c) => c.title === itemTitle);
-    return foundItem?.isChecked;
-  };
+  const { title, parentSectionTitle } = sectionData;
+  const pageTitle = parentSectionTitle
+    ? `${parentSectionTitle.replace(/\*\*/g, '')} **${title}**`
+    : title;
 
   return (
     <S.Container>
-      page header goes here
-      <GeneralPaddingSection>page content</GeneralPaddingSection>
+      <PageHeader title={pageTitle} />
+      <GeneralPaddingSection>
+        <S.Content>
+          <S.Topics>
+            {topics.map(({ id, marked, content }, i) => (
+              <TopicCard
+                topicIndex={i}
+                key={id}
+                title={content.title}
+                description={content.content}
+                tips={[content.tip1, content.tip2]}
+                toggleMark={() => toggleMark(id)}
+                marked={marked}
+                resources={content.resources}
+              />
+            ))}
+          </S.Topics>
+          <S.HelpSection>TTTTT</S.HelpSection>
+        </S.Content>
+      </GeneralPaddingSection>
     </S.Container>
   );
 };
