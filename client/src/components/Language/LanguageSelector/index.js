@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import { TextWithIcon, Icon } from '../../../components';
-import { Row } from '../../Grid';
-import { Grid } from 'antd';
 import { FlagMap } from '../../../components/Icon';
 import { BasicInput } from '../../Inputs/index';
 import * as S from './style';
-const { useBreakpoint } = Grid;
+import { useMediaQuery } from 'react-responsive';
+import theme from '../../../theme';
 
 const props = {
   weight: 'medium',
@@ -25,19 +24,20 @@ const languageCodes = {
   qm: 'German',
   am: 'Russian',
   lm: 'Italian',
-  ii: 'Hide on mobile',
+  ii: 'Dutch',
+  zz: 'Portugese',
+  nj: 'Hide on mobile',
 };
 
 export const LanguageSelector = ({ hide }) => {
   const [search, setSearch] = useState('');
 
-  const screens = useBreakpoint();
-  const sliceTo = Object.entries(screens)
-    .filter((screen) => !!screen[1])
-    .map((screen) => screen[0])
-    .includes('sm')
-    ? languageCodes.length
-    : 12;
+  const sliceTo =
+    useMediaQuery({
+      query: `(max-width: ${theme.breakpoints.tablet})`,
+    }) === true
+      ? 12
+      : languageCodes.length;
 
   const languages = Object.entries(languageCodes).filter(([code, language]) => {
     return (

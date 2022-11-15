@@ -1,8 +1,8 @@
 import * as S from './style';
-import { Grid } from 'antd';
 import { Row } from '../../Grid';
 import { TextWithIcon } from '../../../components';
-const { useBreakpoint } = Grid;
+import { useMediaQuery } from 'react-responsive';
+import theme from '../../../theme';
 
 const props = {
   weight: 'medium',
@@ -119,11 +119,8 @@ const Tablet = ({ dir, showBack, handleHide }) => {
 
 export const LanguageBar = ({ dir, largeText, showBack, handleHide }) => {
   const props = { dir, largeText, showBack, handleHide };
-  const screens = useBreakpoint();
-  const tablet = Object.entries(screens)
-    .filter((screen) => !!screen[1])
-    .map((screen) => screen[0])
-    .includes('lg');
-
-  return tablet ? <Desktop {...props} /> : <Tablet {...props} />;
+  const isTablet = useMediaQuery({
+    query: `(max-width: ${theme.breakpoints.tablet})`,
+  });
+  return isTablet ? <Tablet {...props} /> : <Desktop {...props} />;
 };
