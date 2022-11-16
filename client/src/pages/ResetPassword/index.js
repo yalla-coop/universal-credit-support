@@ -3,13 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import { breakpoints } from '../../theme';
 
-import {
-  Grid,
-  Typography as T,
-  Inputs as I,
-  Button,
-  Typography,
-} from '../../components';
+import { Grid, Typography as T, Inputs as I, Button } from '../../components';
 import * as S from './style';
 import validate from '../../validation/schemas/reset-password';
 import { Users } from '../../api-calls';
@@ -94,15 +88,15 @@ const ResetPassword = () => {
 
   return (
     <S.Form onSubmit={handleSubmit}>
-      <T.H1 weight="bold">Reset Password</T.H1>
       {showPasswordInput ? (
         <>
-          <Row mt="6">
+          <T.H1>Reset Password</T.H1>
+          <Row mt="6" inner>
             <Col w={[4, 11, 6]}>
-              <Typography.P>Please enter a new password</Typography.P>
+              <T.P color="neutralDark">Please enter a new password</T.P>
             </Col>
           </Row>
-          <Row mt="7">
+          <Row mt="6" inner>
             <Col w={[4, 11, 6]}>
               <I.BasicInput
                 label="Password"
@@ -116,44 +110,45 @@ const ResetPassword = () => {
             </Col>
           </Row>
           <Row
-            mt="7"
-            mtT="6"
-            style={{ flex: Number(isMobile), alignItems: 'flex-end' }}
+            inner
+            mt="6"
+            style={{ flex: isMobile ? 1 : 0, alignItems: 'flex-end' }}
           >
             <Col w={[4, 11, 6]} style={{ alignItems: 'flex-end' }}>
-              {httpError && (
-                <T.P mb="2" color="error">
-                  {httpError}
-                </T.P>
-              )}
-              <Button
-                variant="primary"
-                disabled={false}
-                loading={loading}
-                text="Submit"
-                type="submit"
-              />
+              <div style={{ width: '100%' }}>
+                <Button
+                  variant="primary"
+                  disabled={false}
+                  loading={loading}
+                  text="Submit"
+                  type="submit"
+                />
+                {httpError && (
+                  <T.P mt="4" ml="2" color="error">
+                    {httpError}
+                  </T.P>
+                )}
+              </div>
             </Col>
           </Row>
         </>
       ) : (
         <>
-          <Row mt="6">
-            <Col w={[4, 11, 6]}>
-              <Typography.P>Great, you’ve set up a new password!</Typography.P>
+          <T.H1>Password reset</T.H1>
+
+          <Row mt="5" inner>
+            <Col w={[4, 12, 12]}>
+              <T.P color="neutralDark">
+                Great, you’ve set up a new password!
+              </T.P>
             </Col>
           </Row>
           <Row
-            mt="7"
-            mtT="6"
-            style={{ flex: Number(isMobile), alignItems: 'flex-end' }}
+            inner
+            mt="22px"
+            style={{ flex: isMobile ? 1 : 0, alignItems: 'flex-end' }}
           >
             <Col w={[4, 11, 6]} style={{ alignItems: 'flex-end' }}>
-              {httpError && (
-                <T.P mb="2" color="error">
-                  {httpError}
-                </T.P>
-              )}
               <Button
                 variant="primary"
                 disabled={false}
