@@ -9,7 +9,6 @@ const Route = (props) => {
   const { isPrivate, layout, Component, allowedRoles, publicOnly } = props;
 
   const { user } = useAuth();
-
   if (publicOnly && user.id) {
     return <Redirect to={navRoutes.ADMIN.DASHBOARD} />;
   }
@@ -28,10 +27,8 @@ const Route = (props) => {
         </Layout>
       );
     }
-
     return <Redirect to={navRoutes.ADMIN.LOGIN} />;
   }
-
   return (
     <Layout layout={layout} {...props}>
       <Component layout={layout} {...props} />

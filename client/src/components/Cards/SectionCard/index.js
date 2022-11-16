@@ -39,12 +39,12 @@ const staticData = {
     arrowColor: 'neutralMain',
   },
 };
-const SectionCard = ({ cardId = 1, to = '/', text, ...props }) => {
-  const item = staticData[cardId] || staticData[1];
+const SectionCard = ({ id = 1, to = '/', text, ...props }) => {
+  const item = staticData[id] || staticData[1];
   return (
     <S.Wrapper to={to} {...props}>
       <S.CardHead bg={item.bg}>
-        <Icon icon={item.icon} color={item.iconColor} />
+        <Icon icon={item.icon} color={item.iconColor} pointer />
       </S.CardHead>
       <S.CardFooter bg={item.footerColor}>
         <Icon icon="forwardArrow" color={item.arrowColor} mr="2" />

@@ -36,6 +36,7 @@ const findOrganisationForPublicBySlug = async (uniqueSlug) => {
       o.organisation_name,
       o.unique_slug,
       o.colors,
+      o.mental_health_support_resources,
       m.bucket,
       m.key,
       m.file_name

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { message } from 'antd';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Sections } from '../../api-calls';
 import {
   Cards,
@@ -9,7 +9,7 @@ import {
   Grid,
   Button,
 } from '../../components';
-import { navRoutes as n } from '../../constants';
+import { navRoutes } from '../../constants';
 import LandingContent from './LandingContent';
 import { useTranslation, Trans } from 'react-i18next';
 import HelpButton from '../../components/HelpButton';
@@ -26,19 +26,16 @@ const Home = () => {
   const [stuck, setStuck] = useState(false);
   const [cardsData, setCardsData] = useState([]);
 
-  const { org } = useParams();
-  const navigate = useNavigate();
+  const { uniqueSlug } = useParams();
 
-  useEffect(() => {
-    if (org) {
-      navigate(n.GENERAL.HOME_ORG.replace(':org', org));
-    }
-  }, [org, navigate]);
   useEffect(() => {
     let mounted = true;
     async function fetchData() {
       const hideMessage = message.loading('Loading...');
-      const { data, error } = await Sections.getSections({});
+      const { data, error } = await Sections.getSections({
+        uniqueSlug,
+        forPublic: true,
+      });
       if (mounted) {
         if (error) {
           message.error('Something went wrong, please try again later');
@@ -54,7 +51,7 @@ const Home = () => {
     return () => {
       mounted = false;
     };
-  }, []);
+  }, [uniqueSlug]);
 
   const { i18n } = useTranslation();
   return (
@@ -65,10 +62,14 @@ const Home = () => {
           {cardsData.map((item) => {
             return (
               <Cards.SectionCard
-                key={item.cardId}
-                cardId={item.cardId}
-                text={item.text}
-                to={item.to} // still to do decide if its route or sub-route
+                key={item.id}
+                id={item.id}
+                text={item.title.replaceAll('*', '')}
+                to={
+                  item.hasSubSections
+                    ? navRoutes.GENERAL.SUBSECTIONS.replace(':id', item.id)
+                    : navRoutes.GENERAL.SECTION.replace(':id', item.id)
+                }
                 mb={2}
                 mbM={'0'}
               />
@@ -89,17 +90,19 @@ const Home = () => {
               can help you work it out.
             </Trans>
           </T.P>
-          <TextWithIcon
-            size="large"
-            bgColor="neutralLight"
-            to="/"
-            text="Read more"
-            icon="forwardArrow"
-            iconColor="tertiaryDark"
-            jc="center"
-            jcT="flex-start"
-            mr="6px"
-          />
+          <S.ReadMoreLink to={navRoutes.GENERAL.BUDGETING}>
+            <TextWithIcon
+              size="large"
+              bgColor="neutralLight"
+              text="Read more"
+              icon="forwardArrow"
+              iconColor="tertiaryDark"
+              jc="center"
+              jcT="flex-start"
+              mr="6px"
+              isText
+            />
+          </S.ReadMoreLink>
         </S.NeedHelpWrapper>
       </S.FullSection>
       <Row jc="center" jcM="flex-start">
@@ -116,7 +119,19 @@ const Home = () => {
                 Feeling stressed or overwhelmed
               </Trans>
             </T.H2>
-            <Button variant="primary" text="See advice" mb="6" />
+            <Button
+              variant="primary"
+              text="See advice"
+              mb="6"
+              to={
+                uniqueSlug
+                  ? navRoutes.GENERAL.MENTAL_HEALTH_ORG.replace(
+                      ':uniqueSlug',
+                      uniqueSlug
+                    )
+                  : navRoutes.GENERAL.MENTAL_HEALTH
+              }
+            />
             <TextWithIcon
               text="Stuck? Talk to someone"
               isButton

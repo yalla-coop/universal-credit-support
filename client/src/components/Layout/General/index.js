@@ -1,8 +1,5 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import * as S from './style';
-
-import { useMediaQuery } from 'react-responsive';
 
 import { usePublicOrg } from '../../../context/public-org';
 import { useAdminOrg } from '../../../context/admin-org';
@@ -17,23 +14,17 @@ const General = ({ children, goBack, maxWidth, showHelp, ...props }) => {
   const { publicOrg } = usePublicOrg();
   const { adminOrg } = useAdminOrg();
 
-  const isTablet = useMediaQuery({
-    query: `(max-width: ${theme.breakpoints.tablet})`,
-  });
   return (
-    <>
-      <S.Wrapper>
-        <S.Header isTablet={isTablet}>
-          <OrganisationLogo logoUrl={adminOrg?.logoUrl || publicOrg?.logoUrl} />
-          {/* <S.LangButton>
+    <S.Container>
+      accessability header goes here
+      <OrganisationLogo logoUrl={adminOrg?.logoUrl || publicOrg?.logoUrl} />
+      {/* <S.LangButton>
             <T.P isSmall weight="bold" mr="4px">
               EN
             </T.P>
             <img src={EnglishLang} alt="language" />
           </S.LangButton> */}
-          {/* <Navbar /> */}
-        </S.Header>
-      </S.Wrapper>
+      {/* <Navbar /> */}
       <S.Content maxWidth={maxWidth}>
         {goBack && (
           <GoBack
@@ -46,7 +37,8 @@ const General = ({ children, goBack, maxWidth, showHelp, ...props }) => {
         )}
         {children}
       </S.Content>
-    </>
+      footer goes here
+    </S.Container>
   );
 };
 

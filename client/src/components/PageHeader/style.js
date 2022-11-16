@@ -16,6 +16,8 @@ export const Border = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  padding-top: 44px;
+  padding-bottom: 44px;
   ${({ theme }) => theme.media.tablet} {
     justify-content: center;
   }

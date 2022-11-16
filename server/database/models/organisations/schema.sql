@@ -5,7 +5,8 @@ CREATE TABLE "organisations" (
   "organisation_name" VARCHAR(50),
   "type_of_organisation" TEXT NOT NULL,
   "unique_slug" VARCHAR UNIQUE NOT NULL,
-  "contact_links" JSON[],
+  "contact_links" JSONB[],
+  "mental_health_support_resources" JSONB[],
     -- [
     --   {
     --     type: '', //[PHONE, WEBCHAT_LINK, EMAIL]

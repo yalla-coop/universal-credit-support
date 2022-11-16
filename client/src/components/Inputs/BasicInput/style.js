@@ -7,7 +7,7 @@ const InputCommonStyle = ({ theme, error, disabled }) => `
 width: 100%;
 padding: ${theme.spacings[3]};
 line-height: 24px;
-
+height: 40px;
 cursor: ${disabled && 'not-allowed'};
 
 transition: all 0.3s ease;
@@ -37,6 +37,16 @@ export const PasswordInput = styled(AntdInput.Password)`
   ${InputCommonStyle};
   input {
     background-color: inherit;
+  }
+  .ant-input::placeholder {
+    color: ${({ theme }) => theme.colors.neutralDark};
+    font-size: 16px !important;
+    line-height: 24px !important;
+  }
+  .ant-input {
+    color: ${({ theme }) => theme.colors.neutralDark};
+    font-size: 16px !important;
+    line-height: 24px !important;
   }
 `;
 

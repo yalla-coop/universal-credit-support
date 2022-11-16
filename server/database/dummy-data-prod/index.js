@@ -4,6 +4,7 @@ import createOrganisations from './organisations';
 import createSections from './sections';
 import createTopics from './topics';
 import updateTheDefaultSectionsLogs from './update-the-default-sections-logs';
+import organisationsSectionsOrders from './organisations-sections-orders';
 
 if (process.env.NODE_ENV !== 'production') {
   dotenv.config();
@@ -15,6 +16,10 @@ const buildData = async () => {
   createdData.users = await createUsers(createdData);
   createdData.sections = await createSections();
   createdData.topics = await createTopics(createdData);
+  createdData.organisationsSectionsOrders = await organisationsSectionsOrders(
+    createdData,
+  );
+
   await updateTheDefaultSectionsLogs();
 
   return createdData;

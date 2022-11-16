@@ -6,6 +6,7 @@ const createOrganisation = async ({
   typeOfOrganisation,
   uniqueSlug,
   contactLinks,
+  mentalHealthSupportResources,
   benefitCalcLink,
   benefitCalcLabel,
   logoId,
@@ -19,7 +20,8 @@ const createOrganisation = async ({
     benefit_calculator_link,
     benefit_calculator_label,
     logo_id,
-    colors
+    colors,
+    mental_health_support_resources
   ) VALUES (
     $1,
     $2,
@@ -28,7 +30,8 @@ const createOrganisation = async ({
     $5,
     $6,
     $7,
-    $8
+    $8,
+    $9
   ) RETURNING *`;
   const res = await query(sql, [
     organisationName,
@@ -39,6 +42,7 @@ const createOrganisation = async ({
     benefitCalcLabel,
     logoId,
     colors,
+    mentalHealthSupportResources,
   ]);
   return res.rows[0];
 };
@@ -47,7 +51,7 @@ const createOrganisations = async () => {
   const superAdminOrganisationData = {
     organisationName: 'Hyde',
     typeOfOrganisation: 'A',
-    uniqueSlug: '',
+    uniqueSlug: 'hyde',
     contactLinks: [
       {
         type: T.contactLinksTypes.PHONE,
@@ -56,6 +60,7 @@ const createOrganisations = async () => {
         link: '',
       },
     ],
+    mentalHealthSupportResources: T.mentalHealthLinks,
     benefitCalcLink: '',
     benefitCalcLabel: '',
     logoId: null,
@@ -70,20 +75,19 @@ const createOrganisations = async () => {
     organisationName: 'org1',
     typeOfOrganisation: 'A',
     uniqueSlug: 'orr1-link',
+    mentalHealthSupportResources: T.mentalHealthLinks,
     colors: {
       main: '#FC6244',
       secondary: '#3B557A',
       neutral: '#1A202B',
     },
   };
-  const superAdminOrganisation = await createOrganisation(
-    superAdminOrganisationData,
-  );
-  const admin1Organisation = await createOrganisation(admin1OrganisationData);
+  const HydeOrganisation = await createOrganisation(superAdminOrganisationData);
+  const organisation1 = await createOrganisation(admin1OrganisationData);
 
   return {
-    superAdminOrganisation,
-    admin1Organisation,
+    HydeOrganisation,
+    organisation1,
   };
 };
 

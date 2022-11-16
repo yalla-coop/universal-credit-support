@@ -18,6 +18,7 @@ const initialPublicOrgState = {
   benefitCalculatorLink: B.BENEFIT_CALCULATOR_LINK,
   benefitCalculatorLabel: B.BENEFIT_CALCULATOR_LABEL,
   organisationName: '',
+  mentalHealthSupportResources: [],
 };
 
 const PublicOrgContext = createContext({
@@ -83,7 +84,7 @@ const PublicOrgProvider = (props) => {
   };
 
   useEffect(() => {
-    getPublicOrgInfo(uniqueSlug);
+    getPublicOrgInfo(uniqueSlug || 'hyde');
     return () => _setPublicOrg(initialPublicOrgState);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [uniqueSlug]);

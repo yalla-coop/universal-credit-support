@@ -48,7 +48,7 @@ const createUsers = async ({ organisations }) => {
     backupEmail: prodData.hydeSuperAdmin.backupEmail,
     password: prodData.password,
     role: T.userRoles.SUPER_ADMIN,
-    organisationId: organisations.superAdminOrganisation.id,
+    organisationId: organisations.HydeOrganisation.id,
   });
 
   return {
