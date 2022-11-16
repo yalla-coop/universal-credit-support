@@ -17,7 +17,6 @@ import 'antd/dist/antd.css';
 
 export const history = createBrowserHistory({ basename: window.BASE_URL });
 
-
 function App() {
   return (
     <div className="app" style={{ minHeight: '100vh', display: 'flex' }}>
