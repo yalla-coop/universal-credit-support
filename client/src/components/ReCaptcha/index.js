@@ -4,7 +4,7 @@ import * as T from '../Typography';
 
 const ReCaptcha = () => {
   return (
-    <T.P color="gray9" mt={6}>
+    <T.P color="neutralMain" mt={6}>
       This site is protected by reCAPTCHA and the Google{' '}
       <T.Link color="blue" to="https://policies.google.com/privacy" external>
         Privacy Policy
