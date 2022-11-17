@@ -69,68 +69,6 @@ function App() {
 
               <Routes>
                 <Route
-                  path={navRoutes.GENERAL.HOME}
-                  exact
-                  element={
-                    <PublicOrgProvider>
-                      <CustomRoute Component={Pages.Home} layout="general" />
-                    </PublicOrgProvider>
-                  }
-                />
-
-                <Route
-                  exact
-                  path={navRoutes.GENERAL.SECTION}
-                  element={
-                    <CustomRoute Component={Pages.Section} layout="general" />
-                  }
-                />
-
-                <Route
-                  path={navRoutes.GENERAL.HOME_ORG}
-                  exact
-                  element={
-                    <PublicOrgProvider>
-                      <CustomRoute Component={Pages.Home} layout="general" />
-                    </PublicOrgProvider>
-                  }
-                />
-                <Route
-                  exact
-                  path={navRoutes.GENERAL.MENTAL_HEALTH}
-                  element={
-                    <PublicOrgProvider>
-                      <CustomRoute
-                        Component={Pages.MentalHeath}
-                        layout="general"
-                      />
-                    </PublicOrgProvider>
-                  }
-                />
-                <Route
-                  exact
-                  path={navRoutes.GENERAL.MENTAL_HEALTH_ORG}
-                  element={
-                    <PublicOrgProvider>
-                      <CustomRoute
-                        Component={Pages.MentalHeath}
-                        layout="general"
-                      />
-                    </PublicOrgProvider>
-                  }
-                />
-
-                {/* <Route
-                  path={navRoutes.GENERAL.STEP_ORG}
-                  exact
-                  element={
-                    <PublicOrgProvider>
-                      <CustomRoute Component={Pages.Step} layout="step" />
-                    </PublicOrgProvider>
-                  }
-                /> */}
-
-                <Route
                   exact
                   path={navRoutes.GENERAL.FORGET_PASSWORD}
                   element={
@@ -154,23 +92,53 @@ function App() {
                     />
                   }
                 />
-                <Route
-                  exact
-                  path={navRoutes.GENERAL.ORG}
-                  element={
-                    <CustomRoute Component={Pages.Home} layout="general" />
-                  }
-                />
-                <Route
-                  exact
-                  path={navRoutes.GENERAL.SUBSECTIONS}
-                  element={
-                    <CustomRoute
-                      Component={Pages.SubSections}
-                      layout="general"
-                    />
-                  }
-                />
+
+                {/* ORGS PUBLIC PAGES */}
+                <Route element={<PublicOrgProvider />}>
+                  <Route
+                    exact
+                    path={navRoutes.PUBLIC_ORG.SECTION}
+                    element={
+                      <CustomRoute Component={Pages.Section} layout="general" />
+                    }
+                  />
+
+                  <Route
+                    exact
+                    path={navRoutes.PUBLIC_ORG.SUBSECTIONS}
+                    element={
+                      <CustomRoute
+                        Component={Pages.SubSections}
+                        layout="general"
+                      />
+                    }
+                  />
+
+                  <Route
+                    exact
+                    path={navRoutes.PUBLIC_ORG.MENTAL_HEALTH}
+                    element={
+                      <CustomRoute
+                        Component={Pages.MentalHeath}
+                        layout="general"
+                      />
+                    }
+                  />
+                  <Route
+                    path={navRoutes.PUBLIC_ORG.HOME}
+                    exact
+                    element={
+                      <CustomRoute Component={Pages.Home} layout="general" />
+                    }
+                  />
+                  <Route
+                    path={navRoutes.PUBLIC_ORG.HOME_ORG}
+                    exact
+                    element={
+                      <CustomRoute Component={Pages.Home} layout="general" />
+                    }
+                  />
+                </Route>
               </Routes>
             </Router>
           </AuthProvider>

@@ -1,18 +1,8 @@
 import { fields, createSchema, validate as _validate } from '..';
 
-const {
-  contactLinks,
-  requiredText,
-  urlOptional,
-  hexColorOptional,
-  optionalText,
-} = fields;
+const { requiredText, hexColorOptional } = fields;
 
-const schema = createSchema({
-  benefitCalculatorLink: urlOptional,
-  benefitCalculatorLabel: optionalText,
-  contactLinks,
-});
+const schema = createSchema({});
 const secondStep = createSchema({
   mainColor: hexColorOptional,
   secondaryColor: hexColorOptional,

@@ -4,7 +4,7 @@ import * as S from './style';
 
 import { OrganisationLogo } from '../../../components';
 
-import { GENERAL } from '../../../constants/nav-routes';
+import { PUBLIC_ORG } from '../../../constants/nav-routes';
 import Logo from '../../../components/assets/Logo.png';
 
 const SplitScreen = ({
@@ -25,7 +25,7 @@ const SplitScreen = ({
         showColorOnMobile={showColorOnMobile}
       />
       <S.ContentHalf>
-        <S.Link to={GENERAL.HOME} showColorOnMobile={showColorOnMobile}>
+        <S.Link to={PUBLIC_ORG.HOME} showColorOnMobile={showColorOnMobile}>
           <OrganisationLogo logoUrl={Logo} />
         </S.Link>
         {children}

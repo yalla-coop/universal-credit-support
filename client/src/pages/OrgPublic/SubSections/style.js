@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import * as T from '../../components/Typography';
+import * as T from '../../../components/Typography';
 
 export const Container = styled.div`
   width: 100%;

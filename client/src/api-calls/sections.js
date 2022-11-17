@@ -16,6 +16,17 @@ const getSections = async ({ options, uniqueSlug, forPublic }) => {
   }
 };
 
+const getSectionById = async ({ options, id }) => {
+  try {
+    const { data } = await axios.get(`${SECTIONS_BASE}/${id}`);
+
+    return { data };
+  } catch (error) {
+    const err = handleError(error, options);
+    return { error: err };
+  }
+};
+
 const getSubSections = async ({ options, id, forPublic }) => {
   try {
     const { data } = await axios.get(`${SECTIONS_BASE}/sub-sections`, {
@@ -28,4 +39,15 @@ const getSubSections = async ({ options, id, forPublic }) => {
   }
 };
 
-export { getSections, getSubSections };
+const getTopics = async ({ options, sectionId }) => {
+  try {
+    const { data } = await axios.get(`${SECTIONS_BASE}/${sectionId}/topics`);
+
+    return { data };
+  } catch (error) {
+    const err = handleError(error, options);
+    return { error: err };
+  }
+};
+
+export { getSections, getSectionById, getTopics, getSubSections };

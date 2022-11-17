@@ -8,9 +8,6 @@ const findOrganisation = async (id) => {
     o.unique_slug,
     o.colors,
     o.type_of_organisation,
-    o.contact_links,
-    o.benefit_calculator_link,
-    o.benefit_calculator_label,
     o.logo_id,
     o.colors,
     m.bucket,
@@ -30,16 +27,25 @@ const findOrganisationForPublicBySlug = async (uniqueSlug) => {
   const sql = `
     SELECT
       o.id,
-      o.contact_links,
-      o.benefit_calculator_link,
-      o.benefit_calculator_label,
       o.organisation_name,
       o.unique_slug,
       o.colors,
-      o.mental_health_support_resources,
       m.bucket,
       m.key,
-      m.file_name
+      m.file_name,
+      (
+        SELECT
+        ARRAY_AGG(
+          json_build_object(
+            'id', orr.id,
+            'key', orr.key,
+            'category', orr.category,
+            'label', orr.label,
+            'value', orr.value
+      ) ORDER BY orr.id ASC)
+        FROM organisations_resources AS orr
+        WHERE orr.organisation_id = o.id
+      ) AS resources
     FROM organisations AS o
     LEFT JOIN media AS m ON (m.id = o.logo_id)
     WHERE o.unique_slug = $1

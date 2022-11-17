@@ -1,17 +1,19 @@
 import { useState, useEffect } from 'react';
 import { message } from 'antd';
-import { useParams } from 'react-router-dom';
-import { Sections } from '../../api-calls';
-import { Typography as T, TextWithIcon, Grid } from '../../components';
-import PageHeader from '../../components/PageHeader';
-import GeneralPaddingSection from '../../components/Layout/GeneralPaddingSection';
-import { navRoutes } from '../../constants';
+import { useParams, generatePath } from 'react-router-dom';
+import { Sections } from '../../../api-calls';
+import { Typography as T, TextWithIcon, Grid } from '../../../components';
+import PageHeader from '../../../components/PageHeader';
+import GeneralPaddingSection from '../../../components/Layout/GeneralPaddingSection';
+import { navRoutes } from '../../../constants';
+import { usePublicOrg } from '../../../context/public-org';
 
 import * as S from './style';
 const { Col, Row } = Grid;
 
 const SubSections = () => {
   const [data, setData] = useState({});
+  const { publicOrg } = usePublicOrg();
 
   const { id } = useParams();
 
@@ -60,7 +62,10 @@ const SubSections = () => {
           <Row jc="center" mb="2">
             <Col w={[4, 8, 6]}>
               <S.ButtonWrapper
-                to={navRoutes.GENERAL.SECTION.replace(':id', item.id)}
+                to={generatePath(navRoutes.PUBLIC_ORG.SECTION, {
+                  id: item.id,
+                  uniqueSlug: publicOrg?.uniqueSlug,
+                })}
               >
                 <TextWithIcon
                   size="large"

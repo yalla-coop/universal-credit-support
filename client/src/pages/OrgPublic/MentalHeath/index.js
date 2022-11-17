@@ -1,11 +1,10 @@
-import GeneralPaddingSection from '../../components/Layout/GeneralPaddingSection';
-import { Typography as T, Grid, GoBack } from '../../components';
-import PageHeader from '../../components/PageHeader';
-import HelpfulResources from '../../components/HelpfulResources';
-import { usePublicOrg } from '../../context/public-org';
+import GeneralPaddingSection from '../../../components/Layout/GeneralPaddingSection';
+import { Typography as T, Grid, GoBack } from '../../../components';
+import PageHeader from '../../../components/PageHeader';
+import HelpfulResources from '../../../components/HelpfulResources';
+import { usePublicOrg } from '../../../context/public-org';
 
 import * as S from './style';
-import { resources } from '../../constants';
 
 const { Row, Col } = Grid;
 
@@ -34,10 +33,9 @@ const MentalHeath = () => {
         <Row mt="6" mb="5">
           <Col w={[4, 8, 6]}>
             <HelpfulResources
-              resources={
-                publicOrg.mentalHealthSupportResources ||
-                resources.defaultMentalHealthResources
-              }
+              resources={publicOrg?.resources?.filter(
+                (r) => r.category === 'MENTAL_HEALTH'
+              )}
             />
           </Col>
         </Row>

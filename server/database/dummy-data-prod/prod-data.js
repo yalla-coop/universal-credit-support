@@ -1,3 +1,5 @@
+import crypto from 'crypto';
+
 const generateRandomPassword = () => {
   const buffer = crypto.randomBytes(32);
   const password = buffer.toString('hex');

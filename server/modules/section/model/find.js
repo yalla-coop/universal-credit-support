@@ -49,20 +49,41 @@ const getSubSectionsBySectionIdForPublic = async (id) => {
   return res.rows[0];
 };
 
-const getSectionById = async (id) => {
+const findSectionById = async (id) => {
   const sql = `
     SELECT
-      s.id
+      s.id,
+      s.title,
+      (
+        SELECT
+        s2.title
+        FROM sections AS s2
+        WHERE s2.id = s.parent_section_id
+      ) AS parent_section_title
     FROM sections AS s
-    WHERE id = $1
+    WHERE s.id = $1
   `;
 
   const res = await query(sql, [id]);
   return res.rows[0];
 };
+const findTopicsBySectionId = async (id) => {
+  const sql = `
+    SELECT
+      id,
+      content
+    FROM topics
+    WHERE section_id = $1
+    ORDER BY position ASC
+  `;
+
+  const res = await query(sql, [id]);
+  return res.rows;
+};
 
 export {
   getSectionsByOrgSlugForPublic,
-  getSectionById,
+  findSectionById,
+  findTopicsBySectionId,
   getSubSectionsBySectionIdForPublic,
 };

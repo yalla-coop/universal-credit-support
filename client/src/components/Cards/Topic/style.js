@@ -20,16 +20,16 @@ export const ExtraDetails = styled.div`
   padding-bottom: ${({ theme: { spacings } }) => spacings[4]};
 `;
 
-export const MarkButton = styled.button`
+export const MarkButton = styled.div`
   display: flex;
-  background: none;
-  border: none;
-  cursor: pointer;
   align-items: center;
 `;
 
-export const IconWrapper = styled.div`
+export const IconWrapper = styled.button`
   align-self: stretch;
   display: flex;
   align-items: flex-start;
+  background: none;
+  border: none;
+  cursor: pointer;
 `;

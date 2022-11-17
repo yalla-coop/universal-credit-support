@@ -1,16 +1,19 @@
+const ORG = '/:uniqueSlug';
+
 const GENERAL = {
-  HOME: '/',
-  HOME_ORG: '/:uniqueSlug/home',
-  ORG: '/:uniqueSlug',
-  SUBSECTIONS: '/sections/:id/sub-sections',
-  SECTION: '/sections/:id',
-  UNAUTHORIZED: '/unauthorized',
-  FORGET_PASSWORD: '/forget-password',
-  RESET_PASSWORD: '/reset-password/:token',
-  NOT_FOUND: '/not-found',
-  BUDGETING: '/budgeting',
-  MENTAL_HEALTH: '/mental-health',
-  MENTAL_HEALTH_ORG: '/:uniqueSlug/mental-health',
+  UNAUTHORIZED: `/unauthorized`,
+  FORGET_PASSWORD: `/forget-password`,
+  RESET_PASSWORD: `/reset-password/:token`,
+  NOT_FOUND: `/not-found`,
+};
+
+const PUBLIC_ORG = {
+  HOME: `/`,
+  HOME_ORG: `${ORG}`,
+  SECTION: `${ORG}/sections/:id`,
+  SUBSECTIONS: `${ORG}/sections/:id/sub-sections`,
+  BUDGETING: `${ORG}/budgeting`,
+  MENTAL_HEALTH: `${ORG}/mental-health`,
 };
 
 const admin = '/admin';
@@ -51,7 +54,6 @@ const EXTERNAL = {
   PRIVACY_POLICY: 'https://www.hyde-housing.co.uk/privacy/disclaimer/',
 
   CALL_US: '//www.google.com/',
-  ELIGIBILITY_CALCULATOR: 'https://benefits-calculator.turn2us.org.uk/',
   CREATE_UNIVERSAL_CREDIT_ACCOUNT:
     'https://www.universal-credit.service.gov.uk',
   // GOV_UK_VERIFY: '//www.google.com/GOV_UK_VERIFY',
@@ -64,9 +66,4 @@ const EXTERNAL = {
   ACCESSABILITY_GUIDELINES: 'https://webaim.org/resources/contrastchecker/',
 };
 
-const STEPS = {
-  STEP: '/steps/:id',
-  STEP_ORG: '/:uniqueSlug/steps/:id',
-};
-
-export { GENERAL, EXTERNAL, STEPS, ADMIN, SUPER_ADMIN };
+export { GENERAL, PUBLIC_ORG, EXTERNAL, ADMIN, SUPER_ADMIN };
