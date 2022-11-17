@@ -29,6 +29,8 @@ export const ColoredHalf = styled.div`
 
 export const ContentHalf = styled.div`
   flex: 1;
+  display: flex;
+  flex-direction: column;
   background: ${({ theme }) => theme.colors.white};
   padding: ${({ theme: { spacings: s } }) =>
     `${s[9]} ${s[0]} ${s[11]} ${s[11]}`};
