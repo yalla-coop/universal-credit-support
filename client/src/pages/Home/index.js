@@ -11,14 +11,13 @@ import {
 } from '../../components';
 import { navRoutes } from '../../constants';
 import LandingContent from './LandingContent';
-import { useTranslation, Trans } from 'react-i18next';
+import { Trans } from 'react-i18next';
 import HelpButton from '../../components/HelpButton';
 
 import * as S from './style';
 const { Col, Row } = Grid;
 
 const Home = () => {
-  const { i18n } = useTranslation();
   const [stuck, setStuck] = useState(false);
   const [cardsData, setCardsData] = useState([]);
 

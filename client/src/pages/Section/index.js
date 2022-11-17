@@ -48,15 +48,15 @@ const Section = () => {
           <S.Topics>
             {i18n
               .t('topicNS:topics', { returnObjects: true })
-              .map(({ id, contentI18n }, i) => (
+              .map(({ id, content }, i) => (
                 <TopicCard
                   topicIndex={i}
                   key={id}
-                  title={contentI18n.title}
-                  description={contentI18n.content}
-                  tips={[contentI18n.tip1, contentI18n.tip2]}
+                  title={content.title}
+                  description={content.content}
+                  tips={[content.tip1, content.tip2]}
                   toggleMark={() => toggleMark(id)}
-                  resources={contentI18n.resources}
+                  resources={content.resources}
                 />
               ))}
           </S.Topics>

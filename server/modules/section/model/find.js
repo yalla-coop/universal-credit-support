@@ -69,25 +69,17 @@ const findSectionById = async (id) => {
 };
 
 const findTopicsBySectionId = async (id, lang) => {
-  // const sql = `
-  //   SELECT
-  //     id,
-  //     content
-  //   FROM topics
-  //   WHERE section_id = $1
-  //   ORDER BY position ASC
-  // topics.content,
-  // `;
   const sql = `
   SELECT
     topics.id,
-    topics_i18n.content_i18n
+    COALESCE (topics_i18n.content_i18n, topics.content) content,
+    topics_i18n.language_code
   FROM topics
-  LEFT JOIN topics_i18n
-  ON topics.id = topics_i18n.topic_id
-  WHERE section_id = $1 AND topics_i18n.language_code = $2
-  ORDER BY position ASC
-`;
+  LEFT OUTER JOIN topics_i18n
+    ON topics.id = topics_i18n.topic_id 
+   AND topics_i18n.language_code = $2
+  WHERE topics.section_id = $1
+  ORDER BY position ASC`;
 
   const res = await query(sql, [id, lang]);
   return res.rows;

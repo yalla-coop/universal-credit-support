@@ -23,6 +23,10 @@ CREATE TABLE "topics_i18n" (
   "updated_at" TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
+CREATE UNIQUE INDEX
+  topic_id_language_code ON topics_i18n
+  (topic_id, language_code);
+
 CREATE TRIGGER set_timestamp
 BEFORE UPDATE ON "topics_i18n"
 FOR EACH ROW
