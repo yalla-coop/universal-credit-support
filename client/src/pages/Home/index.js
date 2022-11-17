@@ -47,7 +47,7 @@ const Home = () => {
     }
 
     fetchData();
-    i18n.changeLanguage('en');
+    i18n.changeLanguage('ar');
     return () => {
       mounted = false;
     };
@@ -80,7 +80,7 @@ const Home = () => {
       <S.FullSection>
         <S.NeedHelpWrapper>
           <T.H2 color="neutralMain" ta="center" taM="left">
-            <Trans i18nKey="section.helpBudget.title">
+            <Trans i18nKey="section.helpBudget.title" ns="test">
               Need help with budgeting?
             </Trans>
           </T.H2>

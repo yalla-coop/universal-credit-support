@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Sections } from './../../api-calls';
 
-const useTopics = (id) => {
+const useTopics = (id, lang) => {
   const [topics, setTopics] = useState([]);
   const [markedTopics, setMarkedTopics] = useState([]);
 
@@ -9,7 +9,9 @@ const useTopics = (id) => {
     const fetchTopics = async () => {
       const { data, error } = await Sections.getTopics({
         sectionId: id,
+        lang,
       });
+      console.log(data);
       if (error) {
         // message.error('Something went wrong, please try again later');
       } else {

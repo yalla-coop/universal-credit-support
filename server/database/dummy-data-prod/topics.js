@@ -25,6 +25,7 @@ const addTopics = async ({ sections }) => {
     payingForHousingHomeowner,
     payingForHousingSharedOwner,
   } = sections;
+
   const payingForHousingPrivateTenantTopic1 = await createTopics({
     sectionId: payingForHousingPrivateTenant.id,
     position: 1,
