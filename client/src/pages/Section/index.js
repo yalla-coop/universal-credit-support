@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import GeneralPaddingSection from '../../components/Layout/GeneralPaddingSection';
@@ -7,14 +8,13 @@ import { Sections } from './../../api-calls';
 import { TopicCard } from './../../components/Cards';
 import useTopics from './useTopics';
 import StillNeedHelp from './../../components/StillNeedHelp';
-import { useTranslation, Trans } from 'react-i18next';
 
 const Section = () => {
-  const { id } = useParams();
   const { i18n } = useTranslation();
-  const lang = i18n.language;
+  const { language: lng } = i18n;
+  const { id } = useParams();
   const [sectionData, setSectionData] = useState({});
-  const { topics, toggleMark } = useTopics(id, lang);
+  const { topics, toggleMark } = useTopics(id, lng);
 
   useEffect(() => {
     const fetchSectionData = async () => {
@@ -36,23 +36,29 @@ const Section = () => {
     ? `${parentSectionTitle.replace(/\*\*/g, '')} **${title}**`
     : title;
 
+  i18n.addResourceBundle(lng, 'topicNS', {
+    topics,
+  });
+
   return (
     <S.Container>
       <PageHeader title={pageTitle} />
       <GeneralPaddingSection>
         <S.Content>
           <S.Topics>
-            {topics.map(({ id, contentI18n }, i) => (
-              <TopicCard
-                topicIndex={i}
-                key={id}
-                title={contentI18n.title}
-                description={contentI18n.content}
-                tips={[contentI18n.tip1, contentI18n.tip2]}
-                toggleMark={() => toggleMark(id)}
-                resources={contentI18n.resources}
-              />
-            ))}
+            {i18n
+              .t('topicNS:topics', { returnObjects: true })
+              .map(({ id, contentI18n }, i) => (
+                <TopicCard
+                  topicIndex={i}
+                  key={id}
+                  title={contentI18n.title}
+                  description={contentI18n.content}
+                  tips={[contentI18n.tip1, contentI18n.tip2]}
+                  toggleMark={() => toggleMark(id)}
+                  resources={contentI18n.resources}
+                />
+              ))}
           </S.Topics>
           <S.HelpSection>
             <StillNeedHelp />

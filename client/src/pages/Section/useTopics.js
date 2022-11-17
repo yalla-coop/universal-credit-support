@@ -11,7 +11,7 @@ const useTopics = (id, lang) => {
         sectionId: id,
         lang,
       });
-      console.log(data);
+      console.log(data, 'TOPIC data');
       if (error) {
         // message.error('Something went wrong, please try again later');
       } else {
@@ -20,7 +20,7 @@ const useTopics = (id, lang) => {
     };
 
     fetchTopics();
-  }, [id]);
+  }, [id, lang]);
 
   useEffect(() => {
     const markedTopicsFromStorage =

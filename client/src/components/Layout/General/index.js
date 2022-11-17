@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import * as S from './style';
 
+import Button from '../../../components/Button';
 import { usePublicOrg } from '../../../context/public-org';
 import { useAdminOrg } from '../../../context/admin-org';
 
@@ -11,12 +13,15 @@ import GoBack from '../../GoBack';
 import theme from '../../../theme';
 
 const General = ({ children, goBack, maxWidth, showHelp, ...props }) => {
+  const { i18n } = useTranslation();
   const { publicOrg } = usePublicOrg();
   const { adminOrg } = useAdminOrg();
 
   return (
     <S.Container>
       accessability header goes here
+      <Button handleClick={() => i18n.changeLanguage('en')} text="English" />
+      <Button handleClick={() => i18n.changeLanguage('ar')} text="Arabic" />
       <OrganisationLogo logoUrl={adminOrg?.logoUrl || publicOrg?.logoUrl} />
       {/* <S.LangButton>
             <T.P isSmall weight="bold" mr="4px">
