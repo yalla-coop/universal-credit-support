@@ -1,4 +1,4 @@
-const FlagAR = ({ width, height, color, ...props }) => (
+const Arabic = ({ width, height, color, ...props }) => (
   <svg
     width={width || '24'}
     height={height || '18'}
@@ -48,4 +48,4 @@ const FlagAR = ({ width, height, color, ...props }) => (
   </svg>
 );
 
-export default FlagAR;
+export default Arabic;

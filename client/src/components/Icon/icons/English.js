@@ -1,4 +1,4 @@
-const FlagEN = ({ width, height, color, ...props }) => (
+const English = ({ width, height, color, ...props }) => (
   <svg
     width={width || '24'}
     height={height || '18'}
@@ -60,4 +60,4 @@ const FlagEN = ({ width, height, color, ...props }) => (
   </svg>
 );
 
-export default FlagEN;
+export default English;
