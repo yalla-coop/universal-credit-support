@@ -14,7 +14,7 @@ const Language = () => {
     <>
       <S.Wrapper hide={hide}>
         <LanguageBar handleHide={handleHide} />
-        <LanguageSelector hide={hide} />
+        <LanguageSelector hide={hide} handleHide={handleHide} />
       </S.Wrapper>
     </>
   );

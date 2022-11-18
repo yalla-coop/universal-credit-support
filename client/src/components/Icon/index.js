@@ -39,12 +39,30 @@ import MoneyBag from './icons/MoneyBag';
 import BookMark from './icons/BookMark';
 import Discover from './icons/Discover';
 
-import EN from './icons/EN';
-import AR from './icons/AR';
+import English from './icons/English';
+import Arabic from './icons/Arabic';
+import French from './icons/French';
+import Italian from './icons/Italian';
+import German from './icons/German';
+import Urdu from './icons/Urdu';
+import Polish from './icons/Polish';
+import Russian from './icons/Russian';
+import Portuguese from './icons/Portuguese';
+import Spanish from './icons/Spanish';
+import Hindi from './icons/Hindi';
 
 export const FlagMap = {
-  en: EN,
-  ar: AR,
+  english: English,
+  arabic: Arabic,
+  french: French,
+  italian: Italian,
+  german: German,
+  urdu: Urdu,
+  polish: Polish,
+  russian: Russian,
+  portuguese: Portuguese,
+  spanish: Spanish,
+  hindi: Hindi,
 };
 
 export const IconMap = {
