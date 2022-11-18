@@ -1,46 +1,10 @@
 import * as S from './style';
 import Icon from '../../Icon';
 import * as T from '../../Typography';
+import { contentColors } from '../../../constants';
 
-const staticData = {
-  1: {
-    bg: 'secondaryMain',
-    icon: 'house',
-    iconColor: 'white',
-    footerColor: 'neutralSurface',
-    arrowColor: 'secondaryMain',
-  },
-  2: {
-    bg: 'tertiaryMain',
-    icon: 'bill',
-    iconColor: 'neutralMain',
-    footerColor: 'neutralSurface',
-    arrowColor: 'tertiaryMain',
-  },
-  3: {
-    bg: 'neutralMid',
-    icon: 'basket',
-    iconColor: 'neutralMain',
-    footerColor: 'neutralSurface',
-    arrowColor: 'neutralDark',
-  },
-  4: {
-    bg: 'neutralLight',
-    icon: 'calculator',
-    iconColor: 'neutralMain',
-    footerColor: 'white',
-    arrowColor: 'secondaryMain',
-  },
-  5: {
-    bg: 'neutralMain',
-    icon: 'moneyBag',
-    iconColor: 'white',
-    footerColor: 'neutralSurface',
-    arrowColor: 'neutralMain',
-  },
-};
 const SectionCard = ({ id = 1, to = '/', text, ...props }) => {
-  const item = staticData[id] || staticData[1];
+  const item = contentColors[id] || contentColors[1];
   return (
     <S.Wrapper to={to} {...props}>
       <S.CardHead bg={item.bg}>

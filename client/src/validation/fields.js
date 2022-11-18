@@ -225,30 +225,6 @@ export const thingsContent = array().of(
     tips: array().of(string().nullable()).nullable(),
   })
 );
-export const contactLinks = array()
-  .of(
-    object().shape({
-      type: requiredText,
-      availability: requiredText,
-      description: requiredText,
-      link: string().when('type', {
-        is: (v) => v === 'WEBCHAT_LINK',
-        then: urlRequired,
-        otherwise: string().nullable(),
-      }),
-      phoneNumber: string().when('type', {
-        is: (v) => v === 'PHONE',
-        then: phoneNumber,
-        otherwise: string().nullable(),
-      }),
-      email: string().when('type', {
-        is: (v) => v === 'EMAIL',
-        then: email,
-        otherwise: string().nullable(),
-      }),
-    })
-  )
-  .nullable();
 
 export const hexColorOptional = string().when((value, schema) => {
   return schema.nullable();

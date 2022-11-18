@@ -9,7 +9,6 @@ import {
   Typography as T,
   Inputs as I,
   Button,
-  TextWithIcon,
 } from '../../../components';
 import * as S from './style';
 import { createOrganisationDetails as validate } from '../../../validation/schemas';
@@ -19,37 +18,11 @@ import { navRoutes as R } from '../../../constants';
 import { useAuth } from '../../../context/auth';
 import SecondStep from './SecondStep';
 
-// TODO: use from constants
-const contactLinksTypes = {
-  PHONE: 'PHONE',
-  WEBCHAT_LINK: 'WEBCHAT_LINK',
-  EMAIL: 'EMAIL',
-};
-// TODO: use from constants
-const contactLinksLabels = {
-  PHONE: 'Phone number',
-  WEBCHAT_LINK: 'Webchat link',
-  EMAIL: 'Email',
-};
-
 const { Row, Col } = Grid;
 
 const initialState = {
-  contactLinks: [
-    {
-      type: '', //[PHONE, WEBCHAT_LINK]
-      availability: '', //e.g. Monday to Friday (9am to 5pm)
-      description: '',
-      link: '',
-      phoneNumber: '',
-      email: '',
-      id: 0,
-    },
-  ],
-  benefitCalculatorLink: '',
-  benefitCalculatorLabel: '',
   httpError: '',
-  validationErrs: { contactLinks: {} },
+  validationErrs: {},
   loading: false,
 };
 
@@ -66,17 +39,8 @@ const CreateOrganisationDetails = () => {
   const { user } = useAuth();
   const submitAttempt = useRef(false);
   const [state, setState] = useReducer(reducer, initialState);
-  const {
-    contactLinks,
-    benefitCalculatorLink,
-    benefitCalculatorLabel,
-    loading,
-    validationErrs,
-    httpError,
-  } = state;
+  const { loading, validationErrs, httpError } = state;
   const { getAdminOrgInfo } = useAdminOrg();
-
-  const lastContactLink = contactLinks[contactLinks.length - 1];
 
   const navigate = useNavigate();
 
@@ -89,20 +53,16 @@ const CreateOrganisationDetails = () => {
       validateForm();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [contactLinks, benefitCalculatorLink, benefitCalculatorLabel]);
+  }, []);
 
   const validateForm = () => {
     try {
-      validate({
-        contactLinks: contactLinks.find((e) => !!e.type) ? contactLinks : null,
-        benefitCalculatorLink,
-        benefitCalculatorLabel,
-      });
-      setState({ validationErrs: { contactLinks: {} } });
+      validate({});
+      setState({ validationErrs: {} });
       return true;
     } catch (error) {
       if (error.name === 'ValidationError') {
-        setState({ validationErrs: { contactLinks: {}, ...error.inner } });
+        setState({ validationErrs: { ...error.inner } });
       }
       return false;
     }
@@ -112,11 +72,7 @@ const CreateOrganisationDetails = () => {
     setState({ loading: true });
     const { error } = await Organisations.updateOrganisation({
       id: user.organisationId,
-      body: {
-        contactLinks,
-        benefitCalculatorLink,
-        benefitCalculatorLabel,
-      },
+      body: {},
     });
 
     setState({ loading: false });
@@ -142,63 +98,6 @@ const CreateOrganisationDetails = () => {
       handleUpdate();
     }
   };
-
-  const handleChangeLinkType = (value, key, id) => {
-    setState(({ contactLinks }) => {
-      const _contactLinks = contactLinks.map((e) => e);
-      const itemToUpdate = _contactLinks.find((e) => e.id === id);
-      itemToUpdate[key] = value;
-      if (key === 'type') {
-        itemToUpdate.phoneNumber = '';
-        itemToUpdate.link = '';
-        itemToUpdate.email = '';
-      }
-
-      return { contactLinks: _contactLinks };
-    });
-  };
-
-  const handleAddNewContactLink = (e) => {
-    e.preventDefault();
-    setState(({ contactLinks }) => {
-      const sortedLinks = contactLinks.sort((a, b) => a.id - b.id);
-      const lastContactLinkId = sortedLinks[sortedLinks.length - 1]?.id || 0;
-
-      const _contactLinks = [
-        ...contactLinks,
-        {
-          type: '',
-          availability: '',
-          description: '',
-          link: '',
-          phoneNumber: '',
-          email: '',
-          id: lastContactLinkId + 1,
-        },
-      ];
-
-      return { contactLinks: _contactLinks };
-    });
-  };
-  const handleRemoveContactLink = (id) => {
-    setState(({ contactLinks }) => {
-      const _contactLinks = contactLinks.map((e) => e);
-      const itemsToUpdate = _contactLinks.filter((e) => e.id !== id);
-
-      return { contactLinks: itemsToUpdate };
-    });
-  };
-
-  const isAddButtonDisabled =
-    !(
-      lastContactLink &&
-      lastContactLink.type &&
-      lastContactLink.description &&
-      lastContactLink.availability &&
-      (lastContactLink.phoneNumber ||
-        lastContactLink.link ||
-        lastContactLink.email)
-    ) || !contactLinks.length;
 
   return (
     <S.Form onSubmit={handleSubmit}>
@@ -226,169 +125,6 @@ const CreateOrganisationDetails = () => {
           </T.P>
         </Col>
       </Row>
-      {contactLinks.map((contactLink, i) => (
-        <div key={contactLink.id}>
-          <Row mt="7">
-            <Col w={[4, 11, 6]}>
-              <I.Dropdown
-                label="Type of contact"
-                selected={contactLink.type}
-                handleChange={(v) =>
-                  handleChangeLinkType(v, 'type', contactLink.id)
-                }
-                options={Object.entries(contactLinksLabels).map(
-                  ([key, value]) => ({
-                    label: value,
-                    value: key,
-                  })
-                )}
-                allowClear={false}
-                error={validationErrs?.contactLinks[i]?.type}
-              />
-            </Col>
-          </Row>
-          {contactLink.type && (
-            <>
-              {' '}
-              <Row mt="6">
-                <Col w={[4, 11, 6]}>
-                  {contactLink.type === contactLinksTypes.PHONE && (
-                    <I.BasicInput
-                      label="Phone Number"
-                      placeholder="Type number here..."
-                      value={contactLink.phoneNumber}
-                      handleChange={(v) =>
-                        handleChangeLinkType(v, 'phoneNumber', contactLink.id)
-                      }
-                      error={validationErrs?.contactLinks[i]?.phoneNumber}
-                    />
-                  )}
-                  {contactLink.type === contactLinksTypes.WEBCHAT_LINK && (
-                    <I.BasicInput
-                      label="Link"
-                      placeholder="Paste/type link here..."
-                      value={contactLink.link}
-                      handleChange={(v) =>
-                        handleChangeLinkType(v, 'link', contactLink.id)
-                      }
-                      error={validationErrs?.contactLinks[i]?.link}
-                    />
-                  )}
-                  {contactLink.type === contactLinksTypes.EMAIL && (
-                    <I.BasicInput
-                      label="Email"
-                      type="email"
-                      placeholder="Type email here..."
-                      value={contactLink.email}
-                      handleChange={(v) =>
-                        handleChangeLinkType(v, 'email', contactLink.id)
-                      }
-                      error={validationErrs?.contactLinks[i]?.email}
-                    />
-                  )}
-                </Col>
-              </Row>
-              <Row mt="6">
-                <Col w={[4, 11, 6]}>
-                  <I.BasicInput
-                    label="Availability"
-                    helper="e.g. Monday to Friday (9am to 5pm)"
-                    placeholder="Type availability here..."
-                    value={contactLink.availability}
-                    handleChange={(v) =>
-                      handleChangeLinkType(v, 'availability', contactLink.id)
-                    }
-                    error={validationErrs?.contactLinks[i]?.availability}
-                  />
-                </Col>
-              </Row>
-              <Row mt="6">
-                <Col w={[4, 11, 6]}>
-                  <I.BasicInput
-                    label="Description"
-                    helper="Include a short description for what this contact channel is for e.g. 'Customer Support Centre' or 'Benefit Advice Webchat'"
-                    placeholder="Type description here..."
-                    value={contactLink.description}
-                    handleChange={(v) =>
-                      handleChangeLinkType(v, 'description', contactLink.id)
-                    }
-                    error={validationErrs?.contactLinks[i]?.description}
-                  />
-                </Col>
-              </Row>
-            </>
-          )}
-
-          {(i !== 0 || contactLinks.length > 1) && (
-            <TextWithIcon
-              text="Remove"
-              icon="close"
-              isButton
-              mt="4"
-              color="neutralMain"
-              iconColor="primaryMain"
-              handleClick={() => handleRemoveContactLink(contactLink.id)}
-              weight="semi"
-            />
-          )}
-        </div>
-      ))}
-
-      <Row>
-        <Col w={[4, 11, 6]}>
-          <TextWithIcon
-            text="Add another contact"
-            icon="add"
-            isButton
-            mt="5"
-            color="neutralMain"
-            iconColor="primaryMain"
-            handleClick={handleAddNewContactLink}
-            weight="semi"
-            disabled={isAddButtonDisabled}
-          />
-        </Col>
-      </Row>
-
-      <Row>
-        <Col w={[4, 12, 12]}>
-          <T.H2 color="neutralMain" mt="7">
-            Benefit calculator link
-          </T.H2>
-        </Col>
-        <Col w={[4, 11, 6]} mt="6">
-          <I.BasicInput
-            label="Benefit calculator link"
-            helper={
-              <>
-                Enter the full web link (including https://) of your
-                organisation's preferred benefit calculator here
-                <br />
-                If you leave this blank your customers will be directed to
-                Turn2Us.
-              </>
-            }
-            placeholder="Type/paste link here..."
-            value={benefitCalculatorLink}
-            handleChange={(input) => setState({ benefitCalculatorLink: input })}
-            error={validationErrs.benefitCalculatorLink}
-          />
-        </Col>
-      </Row>
-      {/* <Row mt="6">
-        <Col w={[4, 11, 6]}>
-          <I.BasicInput
-            label="Benefit calculator button label"
-            helper="Enter your preferred button label here"
-            placeholder="e.g. Our benefit calculator"
-            value={benefitCalculatorLabel}
-            handleChange={(input) =>
-              setState({ benefitCalculatorLabel: input })
-            }
-            error={validationErrs.benefitCalculatorLabel}
-          />
-        </Col>
-      </Row> */}
 
       <Row
         mt="7"

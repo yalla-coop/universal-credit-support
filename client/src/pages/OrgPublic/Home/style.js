@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
-import setMargin from '../../helpers/set-margin';
-import * as T from '../../components/Typography';
-import backgroundLogo from '../../components/assets/BackgroundHydeLogo.svg';
+import setMargin from '../../../helpers/set-margin';
+import * as T from '../../../components/Typography';
+import backgroundLogo from '../../../components/assets/BackgroundHydeLogo.svg';
 import { Link } from 'react-router-dom';
 
 export const Container = styled.div`

@@ -126,11 +126,6 @@ topicCard.args = {
   title: 'Income details',
   startingColor: 5,
   description: 'Some extra description can go here from CMS',
-  things: [
-    'Salaries from an employer or self-employment',
-    'Other Benefits you and/or your partner already receive',
-    'Private pensions',
-  ],
   tips: [
     'Please be mindful of accessibility and testing your colours work. You can find more information here',
     'Please be mindful of accessibility and testing your colours work. You can find more information here',

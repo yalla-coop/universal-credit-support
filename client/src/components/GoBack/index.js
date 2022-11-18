@@ -6,7 +6,14 @@ import Icon from '../Icon';
 
 import * as S from './style';
 
-const GoBack = ({ color = 'gray8', customFn, customLink, text, ...props }) => {
+const GoBack = ({
+  color,
+  iconColor = 'primaryMain',
+  customFn,
+  customLink,
+  text = 'Go back',
+  ...props
+}) => {
   const navigate = useNavigate();
   const goBack = () => {
     if (customLink) {
@@ -20,9 +27,9 @@ const GoBack = ({ color = 'gray8', customFn, customLink, text, ...props }) => {
 
   return (
     <S.Wrapper onClick={goBack} color={color} {...props}>
-      <Icon icon="goBack" width={35} height={11} color={color} />
+      <Icon icon="backwardArrow" color={iconColor || color} />
       {text && (
-        <T.P bold ml="1" as="span" color={color}>
+        <T.P bold ml="3" as="span" color={color}>
           {text}
         </T.P>
       )}

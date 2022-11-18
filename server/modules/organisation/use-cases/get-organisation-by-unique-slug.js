@@ -2,7 +2,7 @@ import Boom from '@hapi/boom';
 import * as Organisation from '../model';
 import { getFilePreSignedUrl as getMediaUrlService } from '../../../services/files-storage';
 
-const getOrganisationByUniqueSlug = async ({ uniqueSlug }) => {
+const getOrganisationByUniqueSlug = async ({ uniqueSlug = 'hyde' }) => {
   const organisation = await Organisation.findOrganisationForPublicBySlug(
     uniqueSlug,
   );

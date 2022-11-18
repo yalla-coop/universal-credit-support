@@ -18,4 +18,8 @@ export const LinkWrapper = styled.a`
   padding: 12px 24px;
   width: 100%;
   display: flex;
+  & .ant-typography {
+    display: flex;
+    align-items: center;
+  }
 `;

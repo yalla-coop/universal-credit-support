@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import * as S from './style';
 import { useMediaQuery } from 'react-responsive';
@@ -15,9 +14,6 @@ const General = ({ children, goBack, maxWidth, showHelp, ...props }) => {
   const { publicOrg } = usePublicOrg();
   const { adminOrg } = useAdminOrg();
 
-  const isTablet = useMediaQuery({
-    query: `(max-width: ${theme.breakpoints.tablet})`,
-  });
   return (
     <S.Container>
       <Language />

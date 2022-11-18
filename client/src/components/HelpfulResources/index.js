@@ -14,7 +14,11 @@ const HelpfulResources = ({ resources = [], ...props }) => {
       </S.Title>
 
       {resources.map((r, index) => (
-        <S.LinkWrapper href={r.link} target="_blank" key={r.label + index}>
+        <S.LinkWrapper
+          href={r.value || r.url}
+          target="_blank"
+          key={r.label + index}
+        >
           <Icon icon="open" pointer color="primaryMain" />
           <T.P weight="medium" ml="2" underline>
             {r.label}

@@ -1,7 +1,7 @@
-import { navRoutes } from '../../constants';
-import { Typography as T } from '../../components';
+import { navRoutes } from '../../../constants';
+import { Typography as T } from '../../../components';
 
-import Logo from '../../components/assets/Logo.png';
+import Logo from '../../../components/assets/Logo.png';
 
 import * as S from './style';
 
@@ -10,7 +10,7 @@ const LandingContent = () => {
     <>
       <S.PageHead showBGImage>
         <S.HeaderContent>
-          <S.LogoContainer to={navRoutes.GENERAL.HOME}>
+          <S.LogoContainer to={navRoutes.PUBLIC_ORG.HOME}>
             <img src={Logo} alt="logo" />
           </S.LogoContainer>
           <S.HeaderText>

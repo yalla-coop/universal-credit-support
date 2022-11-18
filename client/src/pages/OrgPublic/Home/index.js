@@ -1,18 +1,19 @@
 import { useState, useEffect } from 'react';
 import { message } from 'antd';
-import { useParams } from 'react-router-dom';
-import { Sections } from '../../api-calls';
+import { generatePath } from 'react-router-dom';
+import { Sections } from '../../../api-calls';
+import { usePublicOrg } from '../../../context/public-org';
 import {
   Cards,
   Typography as T,
   TextWithIcon,
   Grid,
   Button,
-} from '../../components';
-import { navRoutes } from '../../constants';
+} from '../../../components';
+import { navRoutes } from '../../../constants';
 import LandingContent from './LandingContent';
 
-import HelpButton from '../../components/HelpButton';
+import HelpButton from '../../../components/HelpButton';
 
 import * as S from './style';
 const { Col, Row } = Grid;
@@ -20,8 +21,8 @@ const { Col, Row } = Grid;
 const Home = () => {
   const [stuck, setStuck] = useState(false);
   const [cardsData, setCardsData] = useState([]);
-
-  const { uniqueSlug } = useParams();
+  const { publicOrg } = usePublicOrg();
+  const uniqueSlug = publicOrg?.uniqueSlug;
 
   useEffect(() => {
     let mounted = true;
@@ -57,11 +58,17 @@ const Home = () => {
               <Cards.SectionCard
                 key={item.id}
                 id={item.id}
-                text={item.title}
+                text={item.title.replaceAll('*', '')}
                 to={
                   item.hasSubSections
-                    ? navRoutes.GENERAL.SUBSECTIONS.replace(':id', item.id)
-                    : navRoutes.GENERAL.SECTION.replace(':id', item.id)
+                    ? generatePath(navRoutes.PUBLIC_ORG.SUBSECTIONS, {
+                        uniqueSlug,
+                        id: item.id,
+                      })
+                    : generatePath(navRoutes.PUBLIC_ORG.SECTION, {
+                        uniqueSlug,
+                        id: item.id,
+                      })
                 }
                 mb={2}
                 mbM={'0'}
@@ -79,7 +86,11 @@ const Home = () => {
             You know how much is going in and out but if you need a hand, we can
             help you work it out.
           </T.P>
-          <S.ReadMoreLink to={navRoutes.GENERAL.BUDGETING}>
+          <S.ReadMoreLink
+            to={generatePath(navRoutes.PUBLIC_ORG.BUDGETING, {
+              uniqueSlug,
+            })}
+          >
             <TextWithIcon
               size="large"
               bgColor="neutralLight"
@@ -110,7 +121,9 @@ const Home = () => {
               variant="primary"
               text="See advice"
               mb="6"
-              to={navRoutes.GENERAL.MENTAL_HEALTH}
+              to={generatePath(navRoutes.PUBLIC_ORG.MENTAL_HEALTH, {
+                uniqueSlug,
+              })}
             />
             <TextWithIcon
               text="Stuck? Talk to someone"

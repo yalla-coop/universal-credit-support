@@ -25,16 +25,65 @@ const getSectionsByOrgSlugForPublic = async (uniqueSlug) => {
   return res.rows;
 };
 
-const getSectionById = async (id) => {
+const getSubSectionsBySectionIdForPublic = async (id) => {
   const sql = `
-    SELECT
-      s.id
-    FROM sections AS s
-    WHERE id = $1
+    SELECT 
+      *,
+      (
+        SELECT
+            ARRAY_AGG (
+            jsonb_build_object(
+              'id',  s.id,
+            'title', s.title,
+            'position', s.default_position
+            )
+          ORDER BY s.default_position
+          ) AS children_sections
+      
+          FROM sections AS s
+          WHERE parent_section_id = $1
+      ) FROM sections where id = $1
   `;
 
   const res = await query(sql, [id]);
   return res.rows[0];
 };
 
-export { getSectionsByOrgSlugForPublic, getSectionById };
+const findSectionById = async (id) => {
+  const sql = `
+    SELECT
+      s.id,
+      s.title,
+      (
+        SELECT
+        s2.title
+        FROM sections AS s2
+        WHERE s2.id = s.parent_section_id
+      ) AS parent_section_title
+    FROM sections AS s
+    WHERE s.id = $1
+  `;
+
+  const res = await query(sql, [id]);
+  return res.rows[0];
+};
+const findTopicsBySectionId = async (id) => {
+  const sql = `
+    SELECT
+      id,
+      content
+    FROM topics
+    WHERE section_id = $1
+    ORDER BY position ASC
+  `;
+
+  const res = await query(sql, [id]);
+  return res.rows;
+};
+
+export {
+  getSectionsByOrgSlugForPublic,
+  findSectionById,
+  findTopicsBySectionId,
+  getSubSectionsBySectionIdForPublic,
+};

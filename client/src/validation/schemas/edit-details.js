@@ -1,15 +1,6 @@
 import { fields, createSchema, validate as _validate } from '..';
 
-const {
-  firstName,
-  lastName,
-  organisationName,
-  email,
-  urlSlug,
-  contactLinks,
-  optionalText,
-  urlOptional,
-} = fields;
+const { firstName, lastName, organisationName, email, urlSlug } = fields;
 
 const schema = createSchema({
   firstName,
@@ -17,9 +8,6 @@ const schema = createSchema({
   organisationName,
   email,
   uniqueSlug: urlSlug,
-  benefitCalculatorLink: urlOptional,
-  benefitCalculatorLabel: optionalText,
-  contactLinks,
 });
 
 const validate = (data) => _validate(schema, data);

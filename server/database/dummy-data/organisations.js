@@ -1,13 +1,9 @@
 import { query } from '../connect';
-import * as T from '../../constants';
 
 const createOrganisation = async ({
   organisationName,
   typeOfOrganisation,
   uniqueSlug,
-  contactLinks,
-  benefitCalcLink,
-  benefitCalcLabel,
   logoId,
   colors,
 }) => {
@@ -15,9 +11,6 @@ const createOrganisation = async ({
     organisation_name,
     type_of_organisation,
     unique_slug,
-    contact_links,
-    benefit_calculator_link,
-    benefit_calculator_label,
     logo_id,
     colors
   ) VALUES (
@@ -25,18 +18,12 @@ const createOrganisation = async ({
     $2,
     $3,
     $4,
-    $5,
-    $6,
-    $7,
-    $8
+    $5
   ) RETURNING *`;
   const res = await query(sql, [
     organisationName,
     typeOfOrganisation,
     uniqueSlug,
-    contactLinks,
-    benefitCalcLink,
-    benefitCalcLabel,
     logoId,
     colors,
   ]);
@@ -48,16 +35,6 @@ const createOrganisations = async () => {
     organisationName: 'Hyde',
     typeOfOrganisation: 'A',
     uniqueSlug: 'hyde',
-    contactLinks: [
-      {
-        type: T.contactLinksTypes.PHONE,
-        availability: 'Monday to Friday (9am to 5pm)',
-        description: '',
-        link: '',
-      },
-    ],
-    benefitCalcLink: '',
-    benefitCalcLabel: '',
     logoId: null,
     colors: {
       main: '#FC6244',
