@@ -1,4 +1,5 @@
 import { query } from '../connect';
+import * as T from '../../constants';
 
 const createTopicsI18n = async ({ topicId, languageCode, contentI18n }) => {
   const sql = `INSERT INTO topics_i18n (
@@ -17,7 +18,7 @@ const createTopicsI18n = async ({ topicId, languageCode, contentI18n }) => {
 const addTopicsI18n = async () => {
   const payingForHousingPrivateTenantTopic1AR = await createTopicsI18n({
     topicId: 1,
-    languageCode: 'ar',
+    languageCode: T.languageCodes.ARABIC,
     contentI18n: {
       tip1: 'اقرأ الرسائل من المالك وتحدث معهم عبر الهاتف إذا اتصلوا بك. أخبر مالك العقار أنك تحصل على المشورة ، وأنك ستدفع بالكامل عندما يمكنك ذلك. يمكن أن يساعدك مستشار الديون في التفاوض مع المالك.',
       tip2: 'من أجل المساعدة ، غالبًا ما يرغب المالك في معرفة مقدار المال المتاح لديك لإنفاقه كل شهر. يمكن أن تساعدك أداة الميزانية في حل هذا الأمر.',
@@ -34,15 +35,15 @@ const addTopicsI18n = async () => {
     },
   });
 
-  const payingForHousingPrivateTenantTopic1EN = await createTopicsI18n({
+  const payingForHousingPrivateTenantTopic1FR = await createTopicsI18n({
     topicId: 1,
-    languageCode: 'en',
+    languageCode: T.languageCodes.FRENCH,
     contentI18n: {
-      title: 'Talk to your landlord',
+      title: 'Parlez à votre propriétaire',
       content:
-        "If you're struggling to pay your rent speak to your landlord as soon as possible, even if you haven't missed a payment yet. There are often many things they can do to help you.",
-      tip1: "Read letters from your landlord and speak to them on the phone if they call you. Let your landlord know that you're getting advice, and that you'll pay in full when you can. A debt advisor can help you negotiate with your landlord.",
-      tip2: 'In order to help, a landlord will often want to know how much money you have available to spend each month. A budget tool can help you work this out.',
+        "Si vous avez du mal à payer votre loyer, parlez-en à votre propriétaire dès que possible, même si vous n'avez pas encore manqué un paiement. Il y a souvent beaucoup de choses qu'ils peuvent faire pour vous aider.",
+      tip1: "Lisez les lettres de votre propriétaire et parlez-lui au téléphone s'il vous appelle. Faites savoir à votre propriétaire que vous obtenez des conseils et que vous paierez en totalité lorsque vous le pourrez. Un conseiller en dettes peut vous aider à négocier avec votre propriétaire.",
+      tip2: "Pour vous aider, un propriétaire voudra souvent savoir combien d'argent vous pouvez dépenser chaque mois. Un outil budgétaire peut vous aider à résoudre ce problème.",
       resources: [
         {
           type: 'internal',
@@ -52,9 +53,10 @@ const addTopicsI18n = async () => {
       ],
     },
   });
+
   return {
     payingForHousingPrivateTenantTopic1AR,
-    payingForHousingPrivateTenantTopic1EN,
+    payingForHousingPrivateTenantTopic1FR,
   };
 };
 

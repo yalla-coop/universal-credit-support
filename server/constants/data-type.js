@@ -43,3 +43,18 @@ export const organisationTypes = {
   SCHOOL: 'School',
   FAITH_ORGANISATION: 'Faith Organisation',
 };
+
+export const languageCodes = {
+  ENGLISH: 'EN',
+  FRENCH: 'FR',
+  GERMAN: 'DE',
+  SPANISH: 'ES',
+  URDU: 'UR',
+  ITALIAN: 'IT',
+  POLISH: 'PL',
+  HINDI: 'HI',
+  RUSSIAN: 'RU',
+  ARABIC: 'AR',
+  PORTUGUESE: 'PT',
+  WELSH: 'CY',
+};
