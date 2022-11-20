@@ -13,6 +13,7 @@ const ADMIN = {
   BASE: `${admin}`,
   EDIT_DETAILS: `${admin}/edit-details`,
   CUSTOMISE: `${admin}/customise`,
+  CUSTOMISE_RESOURCES: `${admin}/customise-resources`,
   CREATE_UNIQUE_LINK: `${admin}/create-unique-link`,
   CREATE_UNIQUE_LINK_SUCCESS: `${admin}/create-unique-link/success`,
   SIGNUP: `${admin}/signup`,

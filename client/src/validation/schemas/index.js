@@ -6,6 +6,7 @@ import editLandingPage from './edit-landing-page';
 import createOrganisationDetails from './create-organisation-details';
 import editDetails from './edit-details';
 import customise from './customise';
+import customiseResources from './customise-resources';
 
 export {
   signup,
@@ -16,4 +17,5 @@ export {
   editLandingPage,
   editDetails,
   customise,
+  customiseResources,
 };

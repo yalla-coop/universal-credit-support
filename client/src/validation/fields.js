@@ -130,19 +130,13 @@ export const content = array().of(
 
 export const optionalPhoneNumber = string().when((value, schema) => {
   if (value) {
-    return schema
-      .phone()
-      .min(9, errMsgs.INVALID_PHONE)
-      .max(12, errMsgs.INVALID_PHONE)
-      .typeError(errMsgs.INVALID_PHONE);
+    return schema.phone();
   }
   return schema.nullable();
 });
 
 export const phoneNumber = string()
   .required(errMsgs.DEFAULT_REQUIRED)
-  .min(9, errMsgs.INVALID_PHONE)
-  .max(12, errMsgs.INVALID_PHONE)
   .when((value, schema) => {
     return schema.phone().typeError(errMsgs.INVALID_PHONE);
   });

@@ -1,11 +1,14 @@
 import { useEffect, createContext, useState, useContext } from 'react';
 import { Organisations } from '../api-calls';
 import { useAuth } from './auth';
+import { benefitCalculator } from '../constants';
 
 const initialUserState = {
   id: null,
   logoUrl: '',
   uniqueSlug: '',
+  benefitCalculatorLink: benefitCalculator.BENEFIT_CALCULATOR_LINK,
+  benefitCalculatorLabel: benefitCalculator.BENEFIT_CALCULATOR_LABEL,
 };
 
 const AdminContext = createContext({
@@ -29,7 +32,15 @@ const AdminOrgProvider = (props) => {
       id: user.organisationId,
     });
     if (data) {
-      _setAdminOrg(data);
+      _setAdminOrg({
+        ...data,
+        benefitCalculatorLink:
+          data.benefitCalculatorLink ||
+          benefitCalculator.BENEFIT_CALCULATOR_LINK,
+        benefitCalculatorLabel:
+          data.benefitCalculatorLabel ||
+          benefitCalculator.BENEFIT_CALCULATOR_LABEL,
+      });
     } else {
       _setAdminOrg(initialUserState);
     }
@@ -39,7 +50,7 @@ const AdminOrgProvider = (props) => {
     getAdminOrgInfo();
     return () => _setAdminOrg(initialUserState);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [user.id]);
 
   const value = {
     adminOrg,
