@@ -26,6 +26,11 @@ import Bulb from './icons/Bulb';
 import BulletArrow from './icons/BulletArrow';
 import Compass from './icons/Compass';
 import Upload from './icons/Upload';
+import TextSize from './icons/TextSize';
+import Accessibility from './icons/Accessibility';
+import BackArrow from './icons/BackArrow';
+import BackArrowRTL from './icons/BackArrowRTL';
+import Search from './icons/Search';
 import House from './icons/House';
 import Bill from './icons/Bill';
 import Basket from './icons/Basket';
@@ -37,6 +42,32 @@ import Edit from './icons/Edit';
 import BookMark from './icons/BookMark';
 import Discover from './icons/Discover';
 import BackwardArrow from './icons/BackwardArrow';
+
+import English from './icons/English';
+import Arabic from './icons/Arabic';
+import French from './icons/French';
+import Italian from './icons/Italian';
+import German from './icons/German';
+import Urdu from './icons/Urdu';
+import Polish from './icons/Polish';
+import Russian from './icons/Russian';
+import Portuguese from './icons/Portuguese';
+import Spanish from './icons/Spanish';
+import Hindi from './icons/Hindi';
+
+export const FlagMap = {
+  english: English,
+  arabic: Arabic,
+  french: French,
+  italian: Italian,
+  german: German,
+  urdu: Urdu,
+  polish: Polish,
+  russian: Russian,
+  portuguese: Portuguese,
+  spanish: Spanish,
+  hindi: Hindi,
+};
 
 export const IconMap = {
   goBack: GoBack,
@@ -58,6 +89,11 @@ export const IconMap = {
   bulletArrow: BulletArrow,
   compass: Compass,
   upload: Upload,
+  textSize: TextSize,
+  accessibility: Accessibility,
+  backArrow: BackArrow,
+  backArrowRTL: BackArrowRTL,
+  search: Search,
   house: House,
   bill: Bill,
   basket: Basket,
@@ -69,6 +105,8 @@ export const IconMap = {
   bookMark: BookMark,
   discover: Discover,
   backwardArrow: BackwardArrow,
+
+  ...FlagMap,
 };
 
 const Parent = styled.div`
