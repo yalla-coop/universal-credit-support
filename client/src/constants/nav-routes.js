@@ -1,7 +1,7 @@
 const GENERAL = {
   HOME: '/',
-  HOME_ORG: '/:org/home',
-  ORG: '/:org',
+  HOME_ORG: '/:uniqueSlug',
+  STEP_ORG: '/:uniqueSlug/steps/:id',
   UNAUTHORIZED: '/unauthorized',
   FORGET_PASSWORD: '/forget-password',
   RESET_PASSWORD: '/reset-password/:token',
@@ -60,9 +60,4 @@ const EXTERNAL = {
   ACCESSABILITY_GUIDELINES: 'https://webaim.org/resources/contrastchecker/',
 };
 
-const STEPS = {
-  STEP: '/steps/:id',
-  STEP_ORG: '/:org/steps/:id',
-};
-
-export { GENERAL, EXTERNAL, STEPS, ADMIN, SUPER_ADMIN };
+export { GENERAL, EXTERNAL, ADMIN, SUPER_ADMIN };
