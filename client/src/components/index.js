@@ -11,6 +11,9 @@ import HelpButton from './HelpButton';
 import * as Cards from './Cards';
 import Modal from './Modal';
 import OrganisationLogo from './OrganisationLogo';
+import PageHeader from './PageHeader';
+import HelpfulResources from './HelpfulResources';
+import StillNeedHelp from './StillNeedHelp';
 
 export {
   Button,
@@ -26,4 +29,7 @@ export {
   HelpButton,
   Cards,
   OrganisationLogo,
+  PageHeader,
+  HelpfulResources,
+  StillNeedHelp,
 };

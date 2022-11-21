@@ -18,7 +18,6 @@ export default {
   neutralMid: 'hsl(46, 15%, 83%)',
   neutralLight: 'hsl(48, 41%, 93%)',
   neutralSurface: 'hsl(40, 43%, 97%)',
-  tertiaryMain: '#FC9256',
   tertiaryDark: '#FC6244',
   white: 'hsl(0, 0%, 100%)',
   modalBackground: 'hsl(215, 61%, 37%)',

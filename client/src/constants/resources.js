@@ -7,6 +7,13 @@ export const defaultResources = [
       'https://www.moneyhelper.org.uk/en/everyday-money/budgeting/use-our-budget-planner.html',
   },
   {
+    key: 'BUDGET_PRINTABLE_PDF',
+    category: 'BUDGET',
+    label: 'Budget Printable PDF',
+    value:
+      'https://www.moneyhelper.org.uk/en/everyday-money/budgeting/use-our-budget-planner.html',
+  },
+  {
     key: 'BENEFIT_CALCULATOR',
     category: 'BENEFIT_CALCULATOR',
     label: 'Benefit Calculator',

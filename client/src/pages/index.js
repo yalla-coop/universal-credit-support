@@ -6,6 +6,7 @@ import ForgotPassword from './ForgotPassword';
 import ResetPassword from './ResetPassword';
 import Admin from './Admin';
 import MentalHeath from './OrgPublic/MentalHeath';
+import Budgeting from './OrgPublic/Budgeting';
 import SubSections from './OrgPublic/SubSections';
 
 export {
@@ -18,4 +19,5 @@ export {
   ResetPassword,
   MentalHeath,
   SubSections,
+  Budgeting,
 };

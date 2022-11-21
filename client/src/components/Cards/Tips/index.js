@@ -1,13 +1,11 @@
-import * as S from './style';
-import * as T from '../../Typography';
-import Icon from '../../Icon';
+import SingleTip from './SingleTip';
 
 const colorArray = [
   {
-    bg: 'neutralSurface',
-    border: 'neutralMid',
-    text: 'neutralMain',
-    icon: 'neutralDark',
+    bg: 'secondaryMain',
+    border: 'white',
+    text: 'white',
+    icon: 'white',
   },
   {
     bg: 'secondaryLight',
@@ -16,16 +14,16 @@ const colorArray = [
     icon: 'secondaryMain',
   },
   {
-    bg: 'secondaryMain',
-    border: 'white',
-    text: 'white',
-    icon: 'white',
-  },
-  {
     bg: 'primaryLight',
     border: 'primaryMain',
     text: 'neutralMain',
     icon: 'primaryMain',
+  },
+  {
+    bg: 'neutralSurface',
+    border: 'neutralMid',
+    text: 'neutralMain',
+    icon: 'neutralDark',
   },
 ];
 
@@ -39,20 +37,19 @@ const Tips = ({ tips = [], startingColor = 0, cols, inner, ...props }) => {
   return tips
     .filter((t) => !!t)
     .map((tip, index) => (
-      <S.Tip
+      <SingleTip
         key={index}
-        color={getColor(index, startingColor)}
+        bgColor={getColor(index, startingColor).bg}
+        borderColor={getColor(index, startingColor).border}
+        icon={'bulb'}
+        iconColor={getColor(index, startingColor).icon}
+        tip={tip}
+        textColor={getColor(index, startingColor).text}
         mb="3"
-        {...props}
-      >
-        <Icon icon="bulb" color={getColor(index, startingColor).icon} mr="2" />
-        {typeof tip === 'string' ? (
-          <T.H3 color={getColor(index, startingColor).text}>Tip! {tip}</T.H3>
-        ) : (
-          tip
-        )}
-      </S.Tip>
+      />
     ));
 };
+
+export { SingleTip };
 
 export default Tips;

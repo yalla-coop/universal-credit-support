@@ -113,7 +113,16 @@ function App() {
                       />
                     }
                   />
-
+                  <Route
+                    exact
+                    path={navRoutes.PUBLIC_ORG.BUDGETING}
+                    element={
+                      <CustomRoute
+                        Component={Pages.Budgeting}
+                        layout="general"
+                      />
+                    }
+                  />
                   <Route
                     exact
                     path={navRoutes.PUBLIC_ORG.MENTAL_HEALTH}
