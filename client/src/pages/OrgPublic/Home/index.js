@@ -138,7 +138,6 @@ const Home = () => {
           </S.ButtonsContainer>
         </Col>
       </Row>
-
       <HelpButton parentState={stuck} parentFunc={() => setStuck(false)} />
     </S.Container>
   );

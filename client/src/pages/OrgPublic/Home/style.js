@@ -9,6 +9,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
+  padding-bottom: ${({ theme }) => theme.spacings[7]};
 `;
 
 export const PageHead = styled.header`
