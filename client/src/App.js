@@ -10,12 +10,13 @@ import LangProvider from './context/lang';
 import StepsProvider from './context/steps';
 import { AuthProvider } from './context/auth';
 import { PublicOrgProvider } from './context/public-org';
+import { createBrowserHistory } from 'history';
 
 // import CookieBot from 'react-cookiebot';
 
 import 'antd/dist/antd.css';
 
-// const domainGroupId = process.env.REACT_APP_COOKIEBOT_DOMAIN_ID;
+export const history = createBrowserHistory({ basename: window.BASE_URL });
 
 function App() {
   return (
@@ -37,7 +38,6 @@ function App() {
                       />
                     }
                   />
-
                   <Route
                     exact
                     path={navRoutes.ADMIN.LOGIN}
