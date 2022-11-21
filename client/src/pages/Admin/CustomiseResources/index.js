@@ -234,7 +234,7 @@ const CustomiseResources = () => {
 
         {contactLinks.map((contactLink, i) => (
           <Fragment key={contactLink.id} style={{ width: '100%' }}>
-            <Col w={[4, 6, 6]}>
+            <Col w={[4, 12, 6]}>
               <I.Dropdown
                 label="Type of contact"
                 selected={contactLink.type}
@@ -252,7 +252,7 @@ const CustomiseResources = () => {
               />
             </Col>
             {contactLink.type && (
-              <Col w={[4, 6, 6]}>
+              <Col w={[4, 12, 6]} mtT={6}>
                 {contactLink.type === contactLinksTypes.PHONE && (
                   <I.BasicInput
                     label="Phone Number"
@@ -292,7 +292,7 @@ const CustomiseResources = () => {
 
             {contactLink.type && (
               <>
-                <Col w={[4, 6, 6]} mt={6}>
+                <Col w={[4, 12, 6]} mt={6}>
                   <I.BasicInput
                     label="Availability"
                     helper="e.g. Monday to Friday (9am to 5pm)"
@@ -305,7 +305,7 @@ const CustomiseResources = () => {
                   />
                 </Col>
 
-                <Col w={[4, 6, 6]} mt={6}>
+                <Col w={[4, 12, 6]} mt={6}>
                   <I.BasicInput
                     label="Description"
                     helper="Include a short label for what this webchat is for e.g. Customer Support"
@@ -336,7 +336,7 @@ const CustomiseResources = () => {
           </Fragment>
         ))}
 
-        <Col w={[4, 6, 12]} mt={6}>
+        <Col w={[4, 12, 12]} mt={6}>
           <TextWithIcon
             text="Add another contact"
             icon="add"
@@ -355,7 +355,7 @@ const CustomiseResources = () => {
           <S.SectionTitle weight="semi">Contact details</S.SectionTitle>
         </Col>
 
-        <Col w={[4, 6, 6]}>
+        <Col w={[4, 12, 6]}>
           <I.BasicInput
             label="Benefit calculator link"
             helper={'Enter your preferred benefit calculator here'}
@@ -368,7 +368,7 @@ const CustomiseResources = () => {
             error={validationErrs.benefitCalculatorLink}
           />
         </Col>
-        <Col w={[4, 6, 6]} mt={isMobile ? 6 : 0}>
+        <Col w={[4, 12, 6]} mtT={5}>
           <I.BasicInput
             label="Benefit calculator button label"
             helper="Enter your preferred benefit calculator here"
