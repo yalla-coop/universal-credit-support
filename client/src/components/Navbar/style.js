@@ -20,7 +20,6 @@ export const Head3 = styled(H3)`
 `;
 
 export const Link = styled(RouterLink)`
-  white-space: nowrap;
   margin-bottom: 32px;
 `;
 
@@ -44,7 +43,8 @@ export const Drawer = styled(AntDrawer)`
 export const DesktopContainer = styled.div`
   display: flex;
   flex-direction: column;
-  padding: ${({ theme }) => `${theme.spacings[8]} ${theme.spacings[7]}`};
+  padding: ${({ theme }) =>
+    `${theme.spacings[8]} ${theme.spacings[5]} ${theme.spacings[8]} ${theme.spacings[7]}`};
   ${({ theme }) => theme.media.mobile} {
     display: none;
   }

@@ -1,6 +1,7 @@
 import * as T from '../../Typography';
 import * as CS from '../style';
 import * as S from './style';
+import Icon from '../../Icon';
 
 const BasicInput = ({
   type = 'text',
@@ -18,6 +19,7 @@ const BasicInput = ({
   m, // margins
   showPasswordInfo,
   optional,
+  resetValue,
   suffix,
   ...props
 }) => {
@@ -45,19 +47,27 @@ const BasicInput = ({
           {helper}
         </T.P>
       )}
-      <Component
-        type={type}
-        name={name}
-        value={value}
-        placeholder={placeholder}
-        onChange={onChange}
-        color={decideColor()}
-        disabled={disabled}
-        autoComplete={autoComplete || 'on'}
-        error={error}
-        suffix={suffix}
-        {...props}
-      />
+      <S.Flex>
+        <Component
+          type={type}
+          name={name}
+          value={value}
+          placeholder={placeholder}
+          onChange={onChange}
+          color={decideColor()}
+          disabled={disabled}
+          autoComplete={autoComplete || 'on'}
+          error={error}
+          suffix={suffix}
+          {...props}
+        />
+        {resetValue && (
+          <S.IconButton type="button" onClick={() => handleChange(resetValue)}>
+            <Icon icon="refresh" pointer />
+          </S.IconButton>
+        )}
+      </S.Flex>
+
       {error && (
         <T.P color="error" m="0" mt="1">
           {error}

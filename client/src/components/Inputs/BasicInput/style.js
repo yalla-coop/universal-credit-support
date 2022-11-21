@@ -71,3 +71,15 @@ export const InfoWrapper = styled.button`
   border: none;
   cursor: pointer;
 `;
+
+export const Flex = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const IconButton = styled.button`
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px 0 10px ${({ theme }) => theme.spacings[2]};
+`;

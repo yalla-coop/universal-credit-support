@@ -42,6 +42,7 @@ import Edit from './icons/Edit';
 import BookMark from './icons/BookMark';
 import Discover from './icons/Discover';
 import BackwardArrow from './icons/BackwardArrow';
+import Refresh from './icons/Refresh';
 
 import English from './icons/English';
 import Arabic from './icons/Arabic';
@@ -105,6 +106,7 @@ export const IconMap = {
   bookMark: BookMark,
   discover: Discover,
   backwardArrow: BackwardArrow,
+  refresh: Refresh,
 
   ...FlagMap,
 };

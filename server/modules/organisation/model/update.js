@@ -21,4 +21,26 @@ const updateOrganisation = async (
   return res.rows[0];
 };
 
-export { updateOrganisation };
+const updateOrganisationResources = async ({ organisationId, resources }) => {
+  const sql = `
+    INSERT INTO organisations_resources (organisation_id, key, category, label, value)
+    SELECT * FROM UNNEST($1::INTEGER[], $2::VARCHAR[], $3::VARCHAR[], $4::VARCHAR[], $5::VARCHAR[])
+    ON CONFLICT (organisation_id, key) DO UPDATE SET
+      category = EXCLUDED.category,
+      label = EXCLUDED.label,
+      value = EXCLUDED.value
+    RETURNING *
+    ;
+  `;
+  const values = [
+    resources.map(() => organisationId),
+    resources.map((r) => r.key),
+    resources.map((r) => r.category),
+    resources.map((r) => r.label),
+    resources.map((r) => r.value),
+  ];
+  const res = await query(sql, values);
+  return res.rows;
+};
+
+export { updateOrganisation, updateOrganisationResources };
