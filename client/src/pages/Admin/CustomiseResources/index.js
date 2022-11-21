@@ -219,7 +219,7 @@ const CustomiseResources = () => {
           </T.H1>
         </Col>{' '}
         <Col w={[4, 12, 10]}>
-          <T.P isSmall color="neutralDark" mt={4} mb={6}>
+          <T.P isSmall color="neutralDark" mb={6}>
             Below are the default resource links used in the app. You can type
             in your own ones below and click the reset icon to restore to
             default.{' '}
@@ -382,23 +382,24 @@ const CustomiseResources = () => {
           />
         </Col>
       </S.Section>
+
       <Row mt={7} style={{ flex: Number(isMobile), alignItems: 'flex-end' }}>
-        <Col w={[4, 6, 6]} style={{ alignItems: 'flex-end' }}>
-          {httpError && (
+        {httpError && (
+          <Col w={[4, 12, 12]}>
             <T.P mb={2} color="error">
               {httpError}
             </T.P>
-          )}
-          {validationErrs?.hasError?.length ? (
-            <Col w={[4, 12, 12]}>
-              <T.P mb="2" color="error">
-                At least one of the input fields has not been filled in or
-                details entered incorrectly. Please check the form above for
-                more details.
-              </T.P>
-            </Col>
-          ) : null}
-
+          </Col>
+        )}
+        {validationErrs?.hasError ? (
+          <Col w={[4, 12, 12]}>
+            <T.P mb="2" color="error">
+              At least one of the input fields has not been filled in or details
+              entered incorrectly. Please check the form above for more details.
+            </T.P>
+          </Col>
+        ) : null}
+        <Col w={[4, 12, 6]}>
           <Button
             variant="primary"
             disabled={false}
