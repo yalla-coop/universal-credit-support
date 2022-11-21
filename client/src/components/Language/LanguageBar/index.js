@@ -36,7 +36,7 @@ const Desktop = ({ dir, showBack, largeText, handleHide }) => {
           <TextWithIcon
             handleClick={handleHide}
             text="English"
-            icon="en"
+            icon="english"
             {...props}
           />
         </S.ButtonWrapper>
@@ -50,7 +50,7 @@ const Desktop = ({ dir, showBack, largeText, handleHide }) => {
         <TextWithIcon
           handleClick={handleHide}
           text="Arabic"
-          icon="ar"
+          icon="arabic"
           {...props}
         />
       </S.ButtonWrapper>
@@ -91,7 +91,12 @@ const Tablet = ({ dir, showBack, handleHide }) => {
           {...props}
         />
         <TextWithIcon handleClick={() => null} icon="textSize" {...props} />
-        <TextWithIcon handleClick={handleHide} text="EN" icon="en" {...props} />
+        <TextWithIcon
+          handleClick={handleHide}
+          text="EN"
+          icon="english"
+          {...props}
+        />
       </S.ButtonWrapper>
     </S.TabletWrapperLTR>
   );
@@ -99,7 +104,12 @@ const Tablet = ({ dir, showBack, handleHide }) => {
   const RTL = (
     <S.TabletWrapperRTL showBack={showBack}>
       <S.ButtonWrapper>
-        <TextWithIcon handleClick={handleHide} text="AR" icon="ar" {...props} />
+        <TextWithIcon
+          handleClick={handleHide}
+          text="AR"
+          icon="arabic"
+          {...props}
+        />
         <TextWithIcon handleClick={() => null} icon="textSize" {...props} />
         <TextWithIcon
           text="نموذج"

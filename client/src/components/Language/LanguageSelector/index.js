@@ -5,6 +5,7 @@ import { BasicInput } from '../../Inputs/index';
 import * as S from './style';
 import { useMediaQuery } from 'react-responsive';
 import theme from '../../../theme';
+import { types } from '../../../constants/';
 
 const props = {
   weight: 'medium',
@@ -12,24 +13,7 @@ const props = {
   isButton: true,
 };
 
-const languageCodes = {
-  ar: 'Arabic',
-  en: 'English',
-  es: 'Spanish',
-  bm: 'Bambara',
-  as: 'French',
-  gs: 'Swedish',
-  vs: 'Japanese',
-  am: 'Bambara',
-  qm: 'German',
-  am: 'Russian',
-  lm: 'Italian',
-  ii: 'Dutch',
-  zz: 'Portugese',
-  nj: 'Hide on mobile',
-};
-
-export const LanguageSelector = ({ hide }) => {
+export const LanguageSelector = ({ hide, handleHide }) => {
   const [search, setSearch] = useState('');
 
   const sliceTo =
@@ -37,14 +21,22 @@ export const LanguageSelector = ({ hide }) => {
       query: `(max-width: ${theme.breakpoints.tablet})`,
     }) === true
       ? 12
-      : languageCodes.length;
+      : types.languageCodes.length;
 
-  const languages = Object.entries(languageCodes).filter(([code, language]) => {
-    return (
-      code.toLowerCase().includes(search.toLowerCase()) ||
-      language.toLowerCase().includes(search.toLowerCase())
-    );
-  });
+  const languages = Object.entries(types.languageCodes).filter(
+    ([lang, code]) => {
+      return (
+        code.toLowerCase().includes(search.toLowerCase()) ||
+        lang.toLowerCase().includes(search.toLowerCase())
+      );
+    }
+  );
+
+  const changeLanguage = ({ code, lang }) => {
+    // i18n language changer
+    console.log('Language changed to: ' + lang);
+    handleHide();
+  };
 
   const Selector = (
     <S.Wrapper>
@@ -60,13 +52,14 @@ export const LanguageSelector = ({ hide }) => {
       </S.ButtonWrapper>
       <S.ButtonWrapper>
         {languages
-          .map(([code, language]) => {
+          .map(([lang, code]) => {
+            const lng = lang.toLowerCase();
             return (
               <S.Button>
                 <TextWithIcon
-                  handleClick={() => null}
-                  text={language}
-                  icon={FlagMap[code] !== undefined ? code : null}
+                  handleClick={() => changeLanguage({ lang })}
+                  text={lang}
+                  icon={FlagMap[lng] !== undefined ? lng : null}
                   {...props}
                 />
               </S.Button>

@@ -22,7 +22,7 @@ transition: all 0.3s ease;
   outline: none;
   border-color: ${theme.colors.secondaryMain};
 }
-`;
+ `;
 
 export const Input = styled(AntdInput)`
   ${setMargin};
