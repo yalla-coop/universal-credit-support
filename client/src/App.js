@@ -19,7 +19,6 @@ import { PublicOrgProvider } from './context/public-org';
 
 import 'antd/dist/antd.css';
 
-// const domainGroupId = process.env.REACT_APP_COOKIEBOT_DOMAIN_ID;
 
 function App() {
   return (
