@@ -1,7 +1,5 @@
 import { useReducer, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useMediaQuery } from 'react-responsive';
-import { breakpoints } from '../../theme';
 
 import {
   Grid,
@@ -23,21 +21,21 @@ const { Row, Col } = Grid;
 const PasswordTipsContent = (
   <div>
     <T.H3 color="neutralMain">A password must contain:</T.H3>
-    <T.H3 weight="400" color="neutralMain">
+    <T.P weight="400" color="neutralMain">
       - a minimum of 8 characters
-    </T.H3>
-    <T.H3 weight="400" color="neutralMain">
+    </T.P>
+    <T.P weight="400" color="neutralMain">
       - one capital letter
-    </T.H3>
-    <T.H3 weight="400" color="neutralMain">
+    </T.P>
+    <T.P weight="400" color="neutralMain">
       - one lowercase letter
-    </T.H3>
-    <T.H3 weight="400" color="neutralMain">
+    </T.P>
+    <T.P weight="400" color="neutralMain">
       - one number
-    </T.H3>
-    <T.H3 weight="400" color="neutralMain">
+    </T.P>
+    <T.P weight="400" color="neutralMain">
       - one non alphabetical or numeric character
-    </T.H3>
+    </T.P>
   </div>
 );
 const initialState = {
@@ -78,9 +76,6 @@ const SignUp = () => {
   } = state;
   const navigate = useNavigate();
   const { setUser } = useAuth();
-  const isMobile = useMediaQuery({
-    query: `(max-width: ${breakpoints.mobile})`,
-  });
 
   useEffect(() => {
     if (submitAttempt.current) {
@@ -143,7 +138,7 @@ const SignUp = () => {
       }
     } else {
       setUser(data);
-      navigate(R.ADMIN.CREATE_ORG_DETAILS_FIRST_STEP);
+      navigate(R.ADMIN.SUCCESS_SIGNUP);
     }
   };
 
@@ -161,7 +156,7 @@ const SignUp = () => {
   return (
     <S.Form onSubmit={handleSubmit}>
       <T.H1 weight="bold">Sign up</T.H1>
-      <Row mt="7">
+      <Row mt="50px">
         <Col w={[4, 11, 6]}>
           <I.BasicInput
             label="First name"
@@ -175,7 +170,7 @@ const SignUp = () => {
           />
         </Col>
       </Row>
-      <Row mt="7">
+      <Row mt="6">
         <Col w={[4, 11, 6]}>
           <I.BasicInput
             label="Last name"
@@ -188,7 +183,7 @@ const SignUp = () => {
           />
         </Col>
       </Row>
-      <Row mt="7">
+      <Row mt="6">
         <Col w={[4, 11, 6]}>
           <I.BasicInput
             label="Email address"
@@ -202,7 +197,7 @@ const SignUp = () => {
           />
         </Col>
       </Row>
-      <Row mt="7">
+      <Row mt="6">
         <Col w={[4, 11, 6]}>
           <I.BasicInput
             label="Back up email address"
@@ -213,18 +208,19 @@ const SignUp = () => {
             value={backupEmail}
             handleChange={(input) => setState({ backupEmail: input })}
             error={validationErrs.backupEmail}
-            helper="Enter a back up email address that can be used to recover your organisation's information"
+            helper="Enter your prefer back up email address in the event you leave the organisation"
           />
         </Col>
       </Row>
-      <Row mt="7" mtT="6">
+      <Row mt="6">
         <Col w={[4, 11, 6]}>
           <I.BasicInput
+            mb="4"
             label={
               <div style={{ display: 'flex' }}>
                 Password{' '}
                 <Icon
-                  ml="3"
+                  ml="1"
                   width="16"
                   height="16"
                   color="secondaryMain"
@@ -233,7 +229,7 @@ const SignUp = () => {
                 />
               </div>
             }
-            placeholder="Type your password..."
+            placeholder="Create a password..."
             margins={{ mt: '2', mb: '1' }}
             type="password"
             value={password}
@@ -242,11 +238,11 @@ const SignUp = () => {
           />
 
           {passwordTipVisible && (
-            <Cards.Tips mt={4} tips={[PasswordTipsContent]} />
+            <Cards.Tips startingColor="3" tips={[PasswordTipsContent]} />
           )}
         </Col>
       </Row>
-      <Row mt="7">
+      <Row mt="4">
         <Col w={[4, 11, 6]}>
           <I.BasicInput
             label="Organisation"
@@ -266,6 +262,7 @@ const SignUp = () => {
             placeholder="Select organisation..."
             margins={{ mt: '2', mb: '1' }}
             name="typeOfOrganisation"
+            allowClear={false}
             selected={typeOfOrganisation}
             options={Object.values(types.organisationTypes).map((e) => ({
               label: e,
@@ -276,13 +273,14 @@ const SignUp = () => {
           />
         </Col>
       </Row>
-      <Row mt="7">
+      <Row mt="44px">
         <Col w={[4, 11, 6]}>
           <I.Checkbox
             checked={agreedOnTerms}
             handleChange={(v) => setState({ agreedOnTerms: v })}
+            ai="flex-start"
             label={
-              <T.P weight={'semi'}>
+              <T.P>
                 I agree to the{' '}
                 <T.Link
                   external
@@ -293,18 +291,25 @@ const SignUp = () => {
                 >
                   Terms of use
                 </T.Link>
+                . By clicking submit I acknowledge the Privacy{' '}
+                <T.Link
+                  external
+                  underline
+                  color="neutralMain"
+                  weight="semi"
+                  to={R.EXTERNAL.PRIVACY_POLICY}
+                >
+                  Privacy Policy
+                </T.Link>
+                .
               </T.P>
             }
             error={validationErrs.agreedOnTerms}
           />
         </Col>
       </Row>
-      <Row
-        mt="7"
-        mtT="6"
-        style={{ flex: Number(isMobile), alignItems: 'flex-end' }}
-      >
-        <Col w={[4, 11, 6]} style={{ alignItems: 'flex-end' }}>
+      <Row mt="28px">
+        <Col w={[4, 11, 6]}>
           {httpError && (
             <T.P mb="2" color="error">
               {httpError}

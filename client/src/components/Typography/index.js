@@ -90,7 +90,6 @@ export const H3 = (props) => <Head3 {...props} level={3} />;
 export const P = styled(({ isSmall, ...props }) => <Paragraph {...props} />)`
   ${setMargin};
   ${commonStyle};
-  font-size: 16px !important;
   line-height: 24px !important;
   font-weight: ${({ weight }) => (weight ? weights[weight] : '400 !important')};
   pre {
@@ -100,12 +99,10 @@ export const P = styled(({ isSmall, ...props }) => <Paragraph {...props} />)`
     margin: 0;
   }
 
-  ${({ theme }) => theme.media.mobile} {
-    font-size: ${({ isSmall }) =>
-      isSmall ? '14px !important' : '16px !important'};
-    line-height: ${({ isSmall }) =>
-      isSmall ? '20px !important' : '24px !important'};
-  }
+  font-size: ${({ isSmall }) =>
+    isSmall ? '14px !important' : '16px !important'};
+  line-height: ${({ isSmall }) =>
+    isSmall ? '20px !important' : '24px !important'};
 `;
 
 const AntdLink = ({ to, external = false, underline, ...props }) => {
