@@ -46,7 +46,7 @@ export const Button = styled.button`
       : theme.colors.primaryMain};
   border-radius: 12px;
   font-size: 1rem;
-  font-weight: bold;
+  font-weight: 600;
   padding: 0 14px;
 
   /* clicking style */
