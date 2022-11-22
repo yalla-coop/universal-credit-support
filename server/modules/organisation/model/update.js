@@ -18,7 +18,7 @@ const updateOrganisation = async (
     UPDATE organisations AS o
       SET
         organisation_name = COALESCE($2, o.organisation_name),
-        type_of_organisation = COALESCE($6, o.type_of_organisation),
+        type_of_organisation = COALESCE($9, o.type_of_organisation),
         unique_slug = COALESCE($3, o.unique_slug),
         contact_links = COALESCE($4, o.contact_links),
         benefit_calculator_link = COALESCE($5, o.benefit_calculator_link),
