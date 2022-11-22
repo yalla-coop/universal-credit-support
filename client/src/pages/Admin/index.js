@@ -13,6 +13,7 @@ import Customise from './Customise';
 import Changes from './Changes';
 import EditContent from './EditContent';
 import SuccessSignup from './SuccessSignup';
+import CustomiseResources from './CustomiseResources';
 
 import { Routes, Route } from 'react-router-dom';
 import { Route as CustomRoute } from './../../components';
@@ -214,6 +215,20 @@ function AdminRouter() {
           element={
             <CustomRoute
               Component={EditDetails}
+              layout="dashboard"
+              showMobileMenu
+              isPrivate
+              allowedRoles={[userRoles.ADMIN, userRoles.SUPER_ADMIN]}
+            />
+          }
+        />
+
+        <Route
+          exact
+          path={navRoutes.ADMIN.CUSTOMISE_RESOURCES}
+          element={
+            <CustomRoute
+              Component={CustomiseResources}
               layout="dashboard"
               showMobileMenu
               isPrivate

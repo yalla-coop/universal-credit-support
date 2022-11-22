@@ -39,7 +39,7 @@ const Flag = ({ width, height, color, ...props }) => (
         y2="24.7123"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#1A202B" />
+        <stop stopColor="#1A202B" />
         <stop offset="1" stopColor="#3B557A" />
       </linearGradient>
       <linearGradient
@@ -50,7 +50,7 @@ const Flag = ({ width, height, color, ...props }) => (
         y2="24.7123"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#1A202B" />
+        <stop stopColor="#1A202B" />
         <stop offset="1" stopColor="#3B557A" />
       </linearGradient>
     </defs>
