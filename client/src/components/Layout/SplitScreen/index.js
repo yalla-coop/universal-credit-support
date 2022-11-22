@@ -7,6 +7,7 @@ import { useAdminOrg } from '../../../context/admin-org';
 import { OrganisationLogo } from '../../../components';
 
 import { GENERAL } from '../../../constants/nav-routes';
+import Logo from '../../../components/assets/Logo.png';
 
 const SplitScreen = ({
   children,
@@ -30,7 +31,9 @@ const SplitScreen = ({
       />
       <S.ContentHalf>
         <S.Link to={GENERAL.HOME} showColorOnMobile={showColorOnMobile}>
-          <OrganisationLogo logoUrl={adminOrg?.logoUrl || publicOrg?.logoUrl} />
+          <OrganisationLogo
+            logoUrl={adminOrg?.logoUrl || publicOrg?.logoUrl || Logo}
+          />
         </S.Link>
         {children}
       </S.ContentHalf>
