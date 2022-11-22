@@ -69,56 +69,44 @@ function App() {
                 {/* ALL ADMIN PAGES */}
                 <Pages.Admin />
                 <Routes>
-                  <Route
-                    path={navRoutes.GENERAL.HOME}
-                    exact
-                    element={
-                      <PublicOrgProvider>
+                  <Route element={<PublicOrgProvider />}>
+                    <Route
+                      path={navRoutes.GENERAL.HOME}
+                      exact
+                      element={
                         <CustomRoute Component={Pages.Home} layout="general" />
-                      </PublicOrgProvider>
-                    }
-                  />
+                      }
+                    />
 
-                  <Route
-                    exact
-                    path={navRoutes.STEPS.STEP}
-                    element={
-                      <CustomRoute Component={Pages.Step} layout="step" />
-                    }
-                  />
-
-                  <Route
-                    path={navRoutes.GENERAL.HOME_ORG}
-                    exact
-                    element={
-                      <PublicOrgProvider>
+                    <Route
+                      path={navRoutes.GENERAL.HOME_ORG}
+                      exact
+                      element={
                         <CustomRoute Component={Pages.Home} layout="general" />
-                      </PublicOrgProvider>
-                    }
-                  />
+                      }
+                    />
 
-                  <Route
-                    path={navRoutes.GENERAL.STEP_ORG}
-                    exact
-                    element={
-                      <PublicOrgProvider>
+                    <Route
+                      path={navRoutes.GENERAL.STEP_ORG}
+                      exact
+                      element={
                         <CustomRoute Component={Pages.Step} layout="step" />
-                      </PublicOrgProvider>
-                    }
-                  />
+                      }
+                    />
 
-                  <Route
-                    exact
-                    path={navRoutes.GENERAL.FORGET_PASSWORD}
-                    element={
-                      <CustomRoute
-                        Component={Pages.ForgotPassword}
-                        layout="splitScreen"
-                        side="left"
-                        gradient="secondary"
-                      />
-                    }
-                  />
+                    <Route
+                      exact
+                      path={navRoutes.GENERAL.FORGET_PASSWORD}
+                      element={
+                        <CustomRoute
+                          Component={Pages.ForgotPassword}
+                          layout="splitScreen"
+                          side="left"
+                          gradient="secondary"
+                        />
+                      }
+                    />
+                  </Route>
                   <Route
                     exact
                     path={navRoutes.GENERAL.RESET_PASSWORD}
@@ -129,13 +117,6 @@ function App() {
                         side="left"
                         gradient="secondary"
                       />
-                    }
-                  />
-                  <Route
-                    exact
-                    path={navRoutes.GENERAL.ORG}
-                    element={
-                      <CustomRoute Component={Pages.Home} layout="general" />
                     }
                   />
                 </Routes>

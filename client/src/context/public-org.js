@@ -1,8 +1,9 @@
 import { useEffect, createContext, useState, useContext } from 'react';
 import { ThemeProvider } from '@emotion/react';
 import { Organisations } from '../api-calls';
-import { useParams } from 'react-router-dom';
+import { Outlet, matchPath, useLocation } from 'react-router-dom';
 import B from '../constants/benefit-calculator';
+import { GENERAL } from './../constants/nav-routes';
 
 import setColor from '../helpers/set-color-variations';
 import formatColor from '../helpers/format-color';
@@ -33,9 +34,16 @@ const adjustedTheme = (ancestorTheme, updatedColors) => ({
 });
 
 // get help details/logo/colors
-const PublicOrgProvider = (props) => {
-  const { org: uniqueSlug } = useParams();
+const PublicOrg = (props) => {
   const [publicOrg, setPublicOrg] = useState(initialPublicOrgState);
+  const location = useLocation();
+
+  const match = matchPath(
+    { path: `${GENERAL.HOME_ORG}/*`, exact: false, strict: false },
+    location.pathname
+  );
+  let { uniqueSlug } = match?.params || {};
+  uniqueSlug = uniqueSlug || 'hyde';
 
   const _setPublicOrg = (data) => {
     // set org in state
@@ -104,6 +112,14 @@ const PublicOrgProvider = (props) => {
 const usePublicOrg = () => {
   const value = useContext(PublicOrgContext);
   return value;
+};
+
+const PublicOrgProvider = () => {
+  return (
+    <PublicOrg>
+      <Outlet />
+    </PublicOrg>
+  );
 };
 
 export { PublicOrgProvider, usePublicOrg };

@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { generatePath } from 'react-router-dom';
 import ReactGA from 'react-ga';
 import Step from '../../components/Steps';
 import { Typography as T } from '../../components';
@@ -13,7 +13,7 @@ import { stageTypes } from './../../constants/data-types';
 import Icon from '../../components/Icon';
 import HelpButton from '../../components/HelpButton';
 import TextWithIcon from '../../components/TextWithIcon';
-
+import { usePublicOrg } from './../../context/public-org';
 import * as S from './style';
 
 const afterClaimContent = {
@@ -29,6 +29,9 @@ const afterClaimContent = {
 
 const Home = () => {
   const { lang } = useLang();
+  const { publicOrg } = usePublicOrg();
+  const { uniqueSlug } = publicOrg;
+
   const { steps, justCompletedId, setJustCompletedId, loadingSteps, stepsObj } =
     useSteps();
 
@@ -38,8 +41,6 @@ const Home = () => {
     (step) => !step.isCompleted && step.stage !== stageTypes.BEFORE_CLAIMING
   );
   const currentStepRef = useRef();
-  const { org } = useParams();
-  const navigate = useNavigate();
 
   const completedClaim = currentStep?.stage === stageTypes.AFTER_CLAIMING;
 
@@ -61,9 +62,10 @@ const Home = () => {
   };
 
   const decideRoute = (step) =>
-    org
-      ? n.STEPS.STEP_ORG.replace(':id', step.id).replace(':org', org)
-      : n.STEPS.STEP.replace(':id', step.id);
+    generatePath(n.GENERAL.STEP_ORG, {
+      uniqueSlug: publicOrg?.uniqueSlug,
+      id: step.id,
+    });
 
   useEffect(() => {
     if (currentStepRef.current && justCompletedId) {
@@ -89,16 +91,9 @@ const Home = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [justCompletedId]);
 
-  useEffect(() => {
-    if (org) {
-      navigate(n.GENERAL.HOME_ORG.replace(':org', org));
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [org]);
-
   return (
     <>
-      <LandingContent uniqueSlug={org} />
+      <LandingContent uniqueSlug={uniqueSlug} />
 
       {/* BEFORE CLAIMING */}
       {stepsObj.BEFORE_CLAIMING?.map((step, i) => {

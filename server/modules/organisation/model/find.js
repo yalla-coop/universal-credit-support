@@ -41,7 +41,7 @@ const findOrganisationForPublicBySlug = async (uniqueSlug) => {
       m.file_name
     FROM organisations AS o
     LEFT JOIN media AS m ON (m.id = o.logo_id)
-    WHERE o.unique_slug = $1
+    WHERE LOWER(o.unique_slug) = $1
   `;
   const values = [uniqueSlug];
 
