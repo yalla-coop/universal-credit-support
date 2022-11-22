@@ -228,3 +228,25 @@ textareaArray.args = {
   error: '',
   optional: false,
 };
+
+// RESET VALUE INPUT
+const ResetValueExample = (args) => {
+  const [value, setValue] = useState('');
+
+  return <BasicExample {...args} value={value} handleChange={setValue} />;
+};
+
+export const resetValue = ResetValueExample.bind({});
+resetValue.args = {
+  color: '',
+  label: 'Name',
+  w: '100%',
+  disabled: false,
+  error: '',
+  helper: 'Helper text',
+  placeholder: 'Type your name...',
+  type: 'text',
+  optional: false,
+  resetValue: 'This is the default value',
+  m: { mt: '0' }, // mt, mtT, mtM, mb, mbT, ....
+};
