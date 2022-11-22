@@ -15,6 +15,12 @@ export const Section = styled(Row)`
   padding: ${({ theme }) =>
     `${theme.spacings[4]} ${theme.spacings[3]} ${theme.spacings[5]}`};
   margin-bottom: ${({ theme }) => theme.spacings[5]} !important;
+  ${({ theme }) => theme.media.tablet} {
+    margin-bottom: ${({ theme }) => theme.spacings[5]} !important;
+  }
+  ${({ theme }) => theme.media.mobile} {
+    margin-bottom: ${({ theme }) => theme.spacings[5]} !important;
+  }
 `;
 
 export const SectionTitle = styled(T.H2)`

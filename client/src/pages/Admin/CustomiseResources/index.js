@@ -350,9 +350,9 @@ const CustomiseResources = () => {
         </Col>
       </S.Section>
 
-      <S.Section bg="neutralSurface">
+      <S.Section bg="secondaryLight">
         <Col w={[4, 12, 12]} mb={4}>
-          <S.SectionTitle weight="semi">Contact details</S.SectionTitle>
+          <S.SectionTitle weight="semi">Benefit Calculator</S.SectionTitle>
         </Col>
 
         <Col w={[4, 12, 6]}>

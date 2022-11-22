@@ -233,7 +233,7 @@ export const contactLinks = array()
       phoneNumber: string().when('type', {
         is: (v) => v === 'PHONE',
         then: string().phone().required(errMsgs.DEFAULT_REQUIRED),
-        otherwise: string().phone().nullable(),
+        otherwise: string().optionalPhone(),
       }),
       email: string().when('type', {
         is: (v) => v === 'EMAIL',
