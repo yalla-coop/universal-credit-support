@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import * as S from './style';
 
 import { DesktopNav, MobileNav } from '../../Navbar';
@@ -7,7 +6,7 @@ import { OrganisationLogo } from '../../../components';
 
 import { usePublicOrg } from '../../../context/public-org';
 
-const SplitScreen = ({
+const Dashboard = ({
   children,
   goBack,
   maxWidth,
@@ -31,15 +30,13 @@ const SplitScreen = ({
 
       <MobileNav />
       <S.ContentHalf>
-        <OrganisationLogo logoUrl={publicOrg?.logoUrl} />
-        {children}
+        <S.MaxWidth>
+          <OrganisationLogo logoUrl={publicOrg?.logoUrl} />
+          {children}
+        </S.MaxWidth>
       </S.ContentHalf>
     </S.Main>
   );
 };
 
-SplitScreen.propTypes = {
-  children: PropTypes.node.isRequired,
-};
-
-export default SplitScreen;
+export default Dashboard;

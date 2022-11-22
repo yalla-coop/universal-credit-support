@@ -37,6 +37,6 @@ export const Button = styled.button`
   opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
   display: flex;
   max-width: 100%;
-  align-items: center;
+  align-items: ${({ ai }) => ai || 'center'};
   justify-content: ${({ jc }) => jc || 'flex-start'};
 `;

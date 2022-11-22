@@ -10,6 +10,7 @@ const findOrganisation = async (id) => {
     o.type_of_organisation,
     o.logo_id,
     o.colors,
+    o.status,
     m.bucket,
     m.key,
     m.file_name,
@@ -42,6 +43,7 @@ const findOrganisationForPublicBySlug = async (uniqueSlug) => {
       o.organisation_name,
       o.unique_slug,
       o.colors,
+      o.status,
       m.bucket,
       m.key,
       m.file_name,
@@ -81,8 +83,33 @@ const findOrganisationBySlug = async (slug, client) => {
   return res.rows[0];
 };
 
+const findOrganisationsByStatus = async (status, client) => {
+  const sql = `
+      SELECT
+      id,
+      organisation_name,
+      type_of_organisation,
+      unique_slug,
+      still_need_help_phone_number,
+      still_need_help_label,
+      logo_id,
+      colors,
+      status,
+      num_of_claims_process_started,
+      num_of_claims_process_completed,
+      num_of_visitors
+      FROM organisations
+      WHERE status = $1
+    `;
+  const values = [status];
+
+  const res = await query(sql, values, client);
+  return res.rows;
+};
+
 export {
   findOrganisation,
   findOrganisationBySlug,
   findOrganisationForPublicBySlug,
+  findOrganisationsByStatus,
 };

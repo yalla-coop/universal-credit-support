@@ -1,24 +1,20 @@
 import styled from '@emotion/styled';
+import { Typography as T } from '../../../components';
 
 export const LinkWrapper = styled.div`
-  background-color: ${({ theme }) => theme.colors.neutralSurface};
+  background-color: ${({ theme }) => theme.colors.neutralLight};
   display: flex;
   border-radius: 12px;
-  padding: ${({ theme }) => theme.spacings[3]};
-  margin-top: ${({ theme }) => theme.spacings[7]};
-  margin-bottom: ${({ theme }) => theme.spacings[7]};
+  padding: 20px;
+  margin-bottom: ${({ theme, mb }) => theme.spacings[mb] || mb};
   padding-left: ${({ theme }) => theme.spacings[5]};
   width: 100%;
-
-  ${({ theme }) => theme.media.mobile} {
-    margin-top: ${({ theme }) => theme.spacings[5]};
-    margin-bottom: ${({ theme }) => theme.spacings[5]};
-  }
 `;
 
 export const CardWrapper = styled.div`
+  margin-top: 21px;
+  width: 100%;
   max-width: 300px;
-  margin-top: ${({ theme }) => theme.spacings[7]};
 `;
 
 export const AnalysisCardsWrapper = styled.div`
@@ -33,3 +29,21 @@ export const AnalysisCard = styled.div`
   background: ${({ theme, bgColor }) => theme.colors[bgColor]};
   min-height: 176px;
 `;
+
+export const ButtonsContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: ${({ theme }) => theme.spacings[6]};
+  gap: 8px;
+`;
+
+export const ButtonWrapper = styled(T.Link)`
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+  width: 100%;
+`;
+
+export const TipsList = styled.div``;

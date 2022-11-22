@@ -19,7 +19,7 @@ const PUBLIC_ORG = {
 const admin = '/admin';
 const ADMIN = {
   BASE: `${admin}`,
-  EDIT_DETAILS: `${admin}/edit-details`,
+  EDIT_ACCOUNT_DETAILS: `${admin}/edit-details`,
   CUSTOMISE: `${admin}/customise`,
   CUSTOMISE_RESOURCES: `${admin}/customise-resources`,
   CREATE_UNIQUE_LINK: `${admin}/create-unique-link`,
@@ -33,6 +33,7 @@ const ADMIN = {
   MANAGE_STEPS: `${admin}/edit-steps`,
   CREATE_ORG_DETAILS_FIRST_STEP: `${admin}/set-organisation/1`,
   CREATE_ORG_DETAILS_SECOND_STEP: `${admin}/set-organisation/2`,
+  ADD_UPDATE_CONTENT: `${admin}/content`,
   SUCCESS_SIGNUP: `${admin}/success-signup`,
   LOG_OUT: '/log-out',
 };
@@ -41,22 +42,24 @@ const SUPER_ADMIN = {
   DASHBOARD: `${admin}/dashboard`,
   EDIT_STEP: `${admin}/edit-step/:id`,
   HOME: `${admin}/home`,
-  EDIT_CONTENT: `${admin}/edit-content`,
+  ADD_UPDATE_CONTENT: `${admin}/content`,
   EDIT_LANDING_PAGE: `${admin}/edit-landing-page`,
-  EDIT_DETAILS: `${admin}/edit-details`,
+  EDIT_ACCOUNT_DETAILS: `${admin}/edit-details`,
   ORGANISATIONS: `${admin}/organisations`,
   CUSTOMISE: `${admin}/customise`,
   MANAGE_STEPS: `${admin}/manage-steps`,
   CHANGES: `${admin}/changes`,
+  // CONTENT_REQUESTS: `${admin}/content-requests`,
+  CONTENT_REVIEW: `${admin}/content-review`,
 };
 
 const EXTERNAL = {
   TERMS_OF_USE: 'https://www.hyde-housing.co.uk/privacy/disclaimer/',
   PRIVACY_POLICY: 'https://www.hyde-housing.co.uk/privacy/disclaimer/',
-
-  CALL_US: '//www.google.com/',
+  PRODUCT_SUPPORT: 'https://www.universal-credit.service.gov.uk',
   CREATE_UNIVERSAL_CREDIT_ACCOUNT:
     'https://www.universal-credit.service.gov.uk',
+  CALL_US: '//www.google.com/',
   // GOV_UK_VERIFY: '//www.google.com/GOV_UK_VERIFY',
   ONLINE_APPLICATION_FORM: 'https://www.universal-credit.service.gov.uk',
   MAKE_YOUR_CLAIM: 'https://www.universal-credit.service.gov.uk/sign-in',
@@ -65,6 +68,7 @@ const EXTERNAL = {
   DEMO_VIDEO:
     'https://github.com/yalla-coop/universal-credit-support/issues/76',
   ACCESSABILITY_GUIDELINES: 'https://webaim.org/resources/contrastchecker/',
+  HYDE_EMAIL: 'hydefoundation@hyde-housing.co.uk',
 };
 
 export { GENERAL, PUBLIC_ORG, EXTERNAL, ADMIN, SUPER_ADMIN };

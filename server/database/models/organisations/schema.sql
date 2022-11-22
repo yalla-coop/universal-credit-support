@@ -25,7 +25,7 @@ CREATE TABLE "organisations" (
     --   secondary: '#202020',
     --   neutral: '#2332ff'
     -- }
-  
+  "status" organisation_statuses DEFAULT 'AWAITING_APPROVAL',
   "num_of_claims_process_started" INTEGER DEFAULT 0,
   "num_of_claims_process_completed" INTEGER DEFAULT 0,
   "num_of_visitors" INTEGER DEFAULT 0,

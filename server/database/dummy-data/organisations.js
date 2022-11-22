@@ -6,19 +6,22 @@ const createOrganisation = async ({
   uniqueSlug,
   logoId,
   colors,
+  status,
 }) => {
   const sql = `INSERT INTO organisations (
     organisation_name,
     type_of_organisation,
     unique_slug,
     logo_id,
-    colors
+    colors,
+    status
   ) VALUES (
     $1,
     $2,
     $3,
     $4,
-    $5
+    $5,
+    $6
   ) RETURNING *`;
   const res = await query(sql, [
     organisationName,
@@ -26,6 +29,7 @@ const createOrganisation = async ({
     uniqueSlug,
     logoId,
     colors,
+    status,
   ]);
   return res.rows[0];
 };
@@ -41,6 +45,7 @@ const createOrganisations = async () => {
       secondary: { h: '215', s: '0.35', l: '0.35' },
       neutral: { h: '219', s: '0.25', l: '0.14' },
     },
+    status: 'APPROVED',
   };
   const admin1OrganisationData = {
     ...superAdminOrganisationData,
@@ -52,6 +57,7 @@ const createOrganisations = async () => {
       secondary: { h: '215', s: '0.35', l: '0.35' },
       neutral: { h: '219', s: '0.25', l: '0.14' },
     },
+    status: 'APPROVED',
   };
   const HydeOrganisation = await createOrganisation(superAdminOrganisationData);
   const organisation1 = await createOrganisation(admin1OrganisationData);

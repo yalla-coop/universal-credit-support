@@ -47,9 +47,22 @@ const updateOrganisationResources = async ({ id, resources, options }) => {
   }
 };
 
+const getAwaitingApprovalOrganisations = async ({ options } = {}) => {
+  try {
+    const { data } = await axios.get(`${ORGS_BASE}`, {
+      params: { status: 'AWAITING_APPROVAL' },
+    });
+    return { data };
+  } catch (error) {
+    const err = handleError(error, options);
+    return { error: err };
+  }
+};
+
 export {
   updateOrganisation,
   getOrganisation,
   getOrganisationByUniqueSlug,
   updateOrganisationResources,
+  getAwaitingApprovalOrganisations,
 };

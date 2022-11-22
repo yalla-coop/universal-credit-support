@@ -16,9 +16,11 @@ const SingleTip = ({
     <S.Tip bgColor={bgColor} borderColor={_borderColor} {...props}>
       {icon && <Icon icon="bulb" color={iconColor} mr="2" />}
       {typeof tip === 'string' ? (
-        <T.H3 color={textColor}>Tip! {tip}</T.H3>
+        <T.H3 color={textColor} mb="7px">
+          Tip! {tip}
+        </T.H3>
       ) : (
-        tip
+        <S.TipContent>{tip}</S.TipContent>
       )}
     </S.Tip>
   );

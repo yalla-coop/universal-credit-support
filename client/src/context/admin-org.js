@@ -8,6 +8,7 @@ const initialUserState = {
   logoUrl: '',
   uniqueSlug: '',
   resources: [],
+  status: null,
 };
 
 const AdminContext = createContext({
