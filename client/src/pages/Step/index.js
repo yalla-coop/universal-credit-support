@@ -178,7 +178,7 @@ const Step = () => {
 
         {step.otherTips?.length > 0 && (
           <Row mt="3" mtM="1">
-            <Tips tips={step.otherTips} startingColor={1} cols={[4, 6, 6]} />
+            <Tips tips={step.otherTips} startingColor={1} cols={[4, 12, 6]} />
           </Row>
         )}
 
@@ -282,7 +282,10 @@ const Step = () => {
               text="Mark as complete"
               to={
                 publicOrg?.uniqueSlug
-                  ? n.GENERAL.HOME_ORG.replace(':org', publicOrg.uniqueSlug)
+                  ? n.GENERAL.HOME_ORG.replace(
+                      ':uniqueSlug',
+                      publicOrg.uniqueSlug
+                    )
                   : n.GENERAL.HOME
               }
               handleClick={() => {

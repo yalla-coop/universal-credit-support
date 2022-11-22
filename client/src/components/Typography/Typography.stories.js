@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { H1, H2, P, Link } from '.';
+import { H0, H1, H2, H3, P, Link } from '.';
 
 export default {
   title: 'Common Components/Typography',
@@ -80,11 +80,31 @@ export default {
   },
 };
 
+const Heading0 = (args) => <H0 {...args}>Heading 0</H0>;
+
+export const h0 = Heading0.bind({});
+h0.args = {
+  color: 'black',
+};
+export const h0Italic = Heading0.bind({});
+h0Italic.args = {
+  color: 'black',
+  weight: 'regular',
+  italic: true,
+};
+
 const Heading1 = (args) => <H1 {...args}>Heading 1</H1>;
 
 export const h1 = Heading1.bind({});
 h1.args = {
   color: 'black',
+};
+
+export const h1Italic = Heading1.bind({});
+h1Italic.args = {
+  color: 'black',
+  weight: 'regular',
+  italic: true,
 };
 
 const Heading2 = (args) => <H2 {...args}>Heading 2</H2>;
@@ -94,11 +114,43 @@ h2.args = {
   color: 'black',
 };
 
-const bodyLargeTemplate = (args) => <P {...args}>Display/body large</P>;
+export const h2Italic = Heading2.bind({});
+h2Italic.args = {
+  color: 'black',
+  weight: 'regular',
+  italic: true,
+};
 
-export const BodyText = bodyLargeTemplate.bind({});
+const Heading3 = (args) => <H3 {...args}>Heading 3</H3>;
+
+export const h3 = Heading3.bind({});
+h3.args = {
+  color: 'black',
+};
+export const h3Italic = Heading3.bind({});
+h3Italic.args = {
+  color: 'black',
+  weight: 'regular',
+  italic: true,
+};
+
+const bodyTemplate = (args) => <P {...args}>Display/body large</P>;
+
+export const BodyText = bodyTemplate.bind({});
 BodyText.args = {
   color: 'black',
+};
+
+export const BodyTextBold = bodyTemplate.bind({});
+BodyTextBold.args = {
+  color: 'black',
+  weight: 'bold',
+};
+
+export const BodyTextSmall = bodyTemplate.bind({});
+BodyTextSmall.args = {
+  color: 'black',
+  isSmall: true,
 };
 
 const LinkTemplate = (args) => <Link {...args}>Display/regular</Link>;

@@ -1,19 +1,14 @@
 import { useReducer, useEffect, useRef } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import { breakpoints } from '../../theme';
 
-import {
-  Grid,
-  Typography as T,
-  Inputs as I,
-  Button,
-  Typography,
-} from '../../components';
-import * as S from './style';
+import { Grid, Typography as T, Inputs as I, Button } from '../../components';
 import validate from '../../validation/schemas/forgot-password';
 import { Users } from '../../api-calls';
 
 import { navRoutes as R } from '../../constants';
+import { breakpoints } from '../../theme';
+import * as S from './style';
+
 const { Row, Col } = Grid;
 
 const initialState = {
@@ -91,19 +86,19 @@ const ForgotPassword = () => {
 
   return (
     <S.Form onSubmit={handleSubmit}>
-      <T.H1 weight="bold">Reset Password</T.H1>
+      <T.H1>Reset Password</T.H1>
       {showEmailInput ? (
         <>
-          <Row mt="6">
+          <Row mt="6" inner>
             <Col w={[4, 11, 6]}>
-              <Typography.P>
+              <T.P color="neutralDark">
                 Enter the email address associated with your account and we will
                 send you a link to reset your password. Please remember to check
                 your email junk folder.
-              </Typography.P>
+              </T.P>
             </Col>
           </Row>
-          <Row mt="7">
+          <Row mt="29px" inner>
             <Col w={[4, 11, 6]}>
               <I.BasicInput
                 label="Email address"
@@ -118,50 +113,46 @@ const ForgotPassword = () => {
             </Col>
           </Row>
           <Row
-            mt="7"
-            mtT="6"
-            style={{ flex: Number(isMobile), alignItems: 'flex-end' }}
+            mt="6"
+            inner
+            style={{ flex: isMobile ? 1 : 0, alignItems: 'flex-end' }}
           >
             <Col w={[4, 11, 6]} style={{ alignItems: 'flex-end' }}>
-              {httpError && (
-                <T.P mb="2" color="error">
-                  {httpError}
-                </T.P>
-              )}
-              <Button
-                variant="primary"
-                disabled={false}
-                loading={loading}
-                text="Submit"
-                type="submit"
-              />
+              <div style={{ width: '100%' }}>
+                <Button
+                  variant="primary"
+                  disabled={false}
+                  loading={loading}
+                  text="Submit"
+                  type="submit"
+                />
+                {httpError && (
+                  <T.P mt="4" ml="2" color="error">
+                    {httpError}
+                  </T.P>
+                )}
+              </div>
             </Col>
           </Row>
         </>
       ) : (
         <>
-          <Row mt="6">
+          <Row mt="6" inner>
             <Col w={[4, 11, 6]}>
-              <Typography.P>
+              <T.P color="neutralDark">
                 A password reset link with instructions has been emailed to you.
                 Please make sure you check your ‘junk’ folder.
-              </Typography.P>
+              </T.P>
             </Col>
           </Row>
           <Row
-            mt="7"
-            mtT="6"
-            style={{ flex: Number(isMobile), alignItems: 'flex-end' }}
+            mt="6"
+            inner
+            style={{ flex: isMobile ? 1 : 0, alignItems: 'flex-end' }}
           >
             <Col w={[4, 11, 6]} style={{ alignItems: 'flex-end' }}>
-              {httpError && (
-                <T.P mb="2" color="error">
-                  {httpError}
-                </T.P>
-              )}
               <Button
                 variant="primary"
-                disabled={false}
                 to={R.ADMIN.LOGIN}
                 text="Return to log in"
                 type="button"

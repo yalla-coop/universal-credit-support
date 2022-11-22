@@ -17,6 +17,7 @@ import {
 } from './api/middlewares';
 import { configureSentry } from './services/error-handler';
 
+
 const { PRODUCTION, TEST } = constants.envTypes;
 
 // eslint-disable-next-line no-unused-vars

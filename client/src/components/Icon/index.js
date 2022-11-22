@@ -31,6 +31,7 @@ import Accessibility from './icons/Accessibility';
 import BackArrow from './icons/BackArrow';
 import BackArrowRTL from './icons/BackArrowRTL';
 import Search from './icons/Search';
+import Refresh from './icons/Refresh';
 
 import English from './icons/English';
 import Arabic from './icons/Arabic';
@@ -78,6 +79,7 @@ export const IconMap = {
   bulletArrow: BulletArrow,
   compass: Compass,
   upload: Upload,
+  refresh: Refresh,
   textSize: TextSize,
   accessibility: Accessibility,
   backArrow: BackArrow,

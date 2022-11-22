@@ -62,13 +62,15 @@ const Template = (args) => {
   const colorsArr = Object.keys(colors);
   return (
     <div style={{ display: 'flex', flexWrap: 'wrap', padding: 100 }}>
-      {colorsArr.map((color) => (
-        <ColorDiv
-          backgroundColor={[colors[color]]}
-          colorName={color}
-          {...args}
-        />
-      ))}
+      {colorsArr
+        .filter((item) => !item.includes('Obj'))
+        .map((color) => (
+          <ColorDiv
+            backgroundColor={[colors[color]]}
+            colorName={color}
+            {...args}
+          />
+        ))}
     </div>
   );
 };
