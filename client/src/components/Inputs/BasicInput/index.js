@@ -42,7 +42,7 @@ const BasicInput = ({
         </CS.Label>
       )}
       {helper && (
-        <T.P isSmall color="neutralDark" mb="2">
+        <T.P isSmall color="neutralDark" mb="3">
           {helper}
         </T.P>
       )}

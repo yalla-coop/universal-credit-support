@@ -34,7 +34,7 @@ const AdminOrgProvider = (props) => {
     if (data) {
       _setAdminOrg({
         ...data,
-        contactLinks: data.contactLinks.map((e, i) => ({ ...e, id: i })),
+        contactLinks: data?.contactLinks?.map((e, i) => ({ ...e, id: i })),
         benefitCalculatorLink:
           data.benefitCalculatorLink ||
           benefitCalculator.BENEFIT_CALCULATOR_LINK,
