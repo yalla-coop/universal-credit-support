@@ -18,6 +18,8 @@ import { useAdminOrg } from '../../../context/admin-org';
 import { useAuth } from '../../../context/auth';
 import { t } from '../../../helpers';
 
+import { organisationTypes } from '../../../constants/data-types';
+
 const { Row, Col } = Grid;
 
 const initialState = {
@@ -25,7 +27,9 @@ const initialState = {
     firstName: '',
     lastName: '',
     email: '',
+    backupEmail: '',
     organisationName: '',
+    typeOfOrganisation: '',
     uniqueSlug: '',
   },
   httpError: '',
@@ -50,7 +54,15 @@ const EditDetails = () => {
   const { user, setUser } = useAuth();
   const [state, setState] = useReducer(reducer, initialState);
   const {
-    formData: { firstName, lastName, email, organisationName, uniqueSlug },
+    formData: {
+      firstName,
+      lastName,
+      email,
+      backupEmail,
+      organisationName,
+      typeOfOrganisation,
+      uniqueSlug,
+    },
     loading,
     validationErrs,
     httpError,
@@ -83,6 +95,7 @@ const EditDetails = () => {
     if (adminOrg.id) {
       setFormData({
         organisationName: adminOrg.organisationName,
+        typeOfOrganisation: adminOrg.typeOfOrganisation,
         uniqueSlug: adminOrg.uniqueSlug,
       });
     }
@@ -95,6 +108,7 @@ const EditDetails = () => {
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email,
+        backupEmail: user.backupEmail,
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -105,7 +119,7 @@ const EditDetails = () => {
       validateForm();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [firstName, lastName, email, organisationName, uniqueSlug]);
+  }, [firstName, lastName, email, backupEmail, organisationName, uniqueSlug]);
 
   const handleUpdate = async () => {
     setState({ loading: true });
@@ -135,7 +149,7 @@ const EditDetails = () => {
       }
     } else {
       getAdminOrgInfo();
-      setUser({ ...user, firstName, lastName, email });
+      setUser({ ...user, firstName, lastName, email, backupEmail });
       setState({ isModalVisible: true });
     }
   };
@@ -203,6 +217,16 @@ const EditDetails = () => {
             error={validationErrs?.email}
           />
         </Col>
+        <Col w={[4, 6, 4]} mt={isMobile ? 6 : 0}>
+          <I.BasicInput
+            label="Back up email address"
+            type="email"
+            placeholder="Type email here..."
+            value={backupEmail}
+            handleChange={(backupEmail) => setFormData({ backupEmail })}
+            error={validationErrs?.backupEmail}
+          />
+        </Col>
       </Row>
       <Row mt={6}>
         <Col w={[4, 6, 4]}>
@@ -215,6 +239,23 @@ const EditDetails = () => {
               setFormData({ organisationName })
             }
             error={validationErrs?.organisationName}
+          />
+        </Col>
+        <Col w={[4, 6, 4]}>
+          <I.Dropdown
+            label="Type of organisation"
+            options={Object.entries(organisationTypes).map(([key, value]) => ({
+              label: value,
+              value: key,
+            }))}
+            selected={typeOfOrganisation}
+            handleChange={(selectValue) =>
+              setFormData({
+                typeOfOrganisation: selectValue,
+              })
+            }
+            allowClear={false}
+            error={validationErrs?.typeOfOrganisation?.type}
           />
         </Col>
       </Row>

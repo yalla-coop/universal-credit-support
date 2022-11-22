@@ -9,6 +9,7 @@ import { getClient } from '../../../database/connect';
 const updateOrganisation = async ({
   id,
   organisationName,
+  typeOfOrganisation,
   uniqueSlug,
   contactLinks,
   benefitCalculatorLink,
@@ -20,6 +21,7 @@ const updateOrganisation = async ({
   firstName,
   lastName,
   email,
+  backupEmail,
   withUserDetails,
 }) => {
   let createdMedia;
@@ -69,6 +71,7 @@ const updateOrganisation = async ({
       {
         id,
         organisationName,
+        typeOfOrganisation,
         uniqueSlug,
         contactLinks,
         benefitCalculatorLink,
@@ -85,7 +88,7 @@ const updateOrganisation = async ({
     }
 
     if (withUserDetails) {
-      await User.updateUser({ id: userId, firstName, lastName, email }, client);
+      await User.updateUser({ id: userId, firstName, lastName, email, backupEmail }, client);
     }
     await client.query('COMMIT');
   } catch (error) {

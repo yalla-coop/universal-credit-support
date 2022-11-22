@@ -51,15 +51,16 @@ const updatePassword = async ({ password, userId }, client) => {
   return res.rows[0];
 };
 
-const updateUser = async ({ id, firstName, lastName, email }, client) => {
-  const values = [id, firstName, lastName, email];
+const updateUser = async ({ id, firstName, lastName, email, backupEmail }, client) => {
+  const values = [id, firstName, lastName, email, backupEmail];
 
   const sql = `
     UPDATE users
     SET
       first_name = $2,
       last_name = $3,
-      email = $4
+      email = $4,
+      backup_email = $5
     WHERE
       id = $1
     RETURNING *
