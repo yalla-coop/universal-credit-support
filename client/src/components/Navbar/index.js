@@ -9,6 +9,7 @@ import { ADMIN, GENERAL } from '../../constants/nav-routes';
 import { useAdminOrg } from '../../context/admin-org';
 import { usePublicOrg } from '../../context/public-org';
 import { useAuth } from '../../context/auth';
+import Logo from '../assets/Logo.png';
 
 const NavItems = ({ setOpen, ...props }) => {
   return (
@@ -24,7 +25,7 @@ export const DesktopNav = () => {
   return (
     <S.DesktopContainer>
       <S.LogoLink to={ADMIN.DASHBOARD}>
-        {adminOrg?.logoUrl && <S.LogoImg src={adminOrg.logoUrl} alt="logo" />}
+        <S.LogoImg src={adminOrg.logoUrl || Logo} alt="logo" />
       </S.LogoLink>
       <NavItems />
     </S.DesktopContainer>

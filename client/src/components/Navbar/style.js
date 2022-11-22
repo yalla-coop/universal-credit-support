@@ -43,8 +43,7 @@ export const Drawer = styled(AntDrawer)`
 export const DesktopContainer = styled.div`
   display: flex;
   flex-direction: column;
-  padding: ${({ theme }) =>
-    `${theme.spacings[8]} ${theme.spacings[5]} ${theme.spacings[8]} ${theme.spacings[7]}`};
+  padding: ${({ theme }) => `80px ${theme.spacings[6]} 80px 56px`};
   ${({ theme }) => theme.media.mobile} {
     display: none;
   }

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import * as S from './style';
 import * as T from '../Typography';
 import Icon from '../Icon';
-
+import AdminHelp from './AdminHelp';
 import { linkTypes as cType } from '../../constants/data-types';
 import { usePublicOrg } from '../../context/public-org';
 
@@ -26,6 +26,7 @@ const HelpButton = ({
   parentState,
   parentFunc,
   uniqueSlug,
+  adminHelp,
   ...props
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,50 +40,56 @@ const HelpButton = ({
 
   if (isOpen || parentState)
     return (
-      <S.Modal {...props}>
+      <S.Modal adminHelp={adminHelp} {...props}>
         <S.Header>
-          <T.H3 color="white">Help is here!</T.H3>
+          <T.H3 color="white">{adminHelp ? 'Help' : 'Help is here!'}</T.H3>
           <S.CloseButton onClick={handleClose}>
             <Icon icon="close" color="white" />
           </S.CloseButton>
         </S.Header>
         <S.Content>
-          <T.P color="neutralDark" mb="6">
-            We all need to speak to someone sometimes! Use any of the contact
-            details below to find a person to chat with.
-          </T.P>
-          {publicOrg?.contactLinks?.map((contact) => (
-            <S.ContactItem mb="5">
-              <T.H3 color="neutralMain">{contact.description}</T.H3>
-              <T.P color="neutralDark" isSmall>
-                {contact.availability}
+          {adminHelp ? (
+            <AdminHelp />
+          ) : (
+            <>
+              <T.P color="neutralDark" mb="6">
+                We all need to speak to someone sometimes! Use any of the
+                contact details below to find a person to chat with.
               </T.P>
-              <T.Link
-                external
-                weight="bold"
-                color="secondaryMain"
-                isSmall
-                to={formatLink(contact.type, contact).link}
-              >
-                {formatLink(contact.type, contact).label}
-              </T.Link>
-            </S.ContactItem>
-          ))}
-          <S.ContactItem mb="4">
-            <T.H3 color="neutralMain">Government Helpline</T.H3>
-            <T.P color="neutralDark" isSmall>
-              Monday to Friday, 8am to 6pm
-            </T.P>
-            <T.Link
-              external
-              weight="bold"
-              color="secondaryMain"
-              isSmall
-              to={formatLink('PHONE', { phoneNumber: '02071231234' }).link}
-            >
-              0800 328 5644 (choose Option 3)
-            </T.Link>
-          </S.ContactItem>
+              {publicOrg?.contactLinks?.map((contact) => (
+                <S.ContactItem mb="5">
+                  <T.H3 color="neutralMain">{contact.description}</T.H3>
+                  <T.P color="neutralDark" isSmall>
+                    {contact.availability}
+                  </T.P>
+                  <T.Link
+                    external
+                    weight="bold"
+                    color="secondaryMain"
+                    isSmall
+                    to={formatLink(contact.type, contact).link}
+                  >
+                    {formatLink(contact.type, contact).label}
+                  </T.Link>
+                </S.ContactItem>
+              ))}
+              <S.ContactItem mb="4">
+                <T.H3 color="neutralMain">Government Helpline</T.H3>
+                <T.P color="neutralDark" isSmall>
+                  Monday to Friday, 8am to 6pm
+                </T.P>
+                <T.Link
+                  external
+                  weight="bold"
+                  color="secondaryMain"
+                  isSmall
+                  to={formatLink('PHONE', { phoneNumber: '02071231234' }).link}
+                >
+                  0800 328 5644 (choose Option 3)
+                </T.Link>
+              </S.ContactItem>
+            </>
+          )}
         </S.Content>
       </S.Modal>
     );
