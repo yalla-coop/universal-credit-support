@@ -9,6 +9,7 @@ const initialUserState = {
   uniqueSlug: '',
   benefitCalculatorLink: benefitCalculator.BENEFIT_CALCULATOR_LINK,
   benefitCalculatorLabel: benefitCalculator.BENEFIT_CALCULATOR_LABEL,
+  status: null,
 };
 
 const AdminContext = createContext({

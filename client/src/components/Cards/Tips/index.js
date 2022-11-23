@@ -1,15 +1,11 @@
-import * as S from './style';
-import * as T from '../../Typography';
-import Icon from '../../Icon';
-
-import { Row, Col } from '../../Grid';
+import SingleTip from './SingleTip';
 
 const colorArray = [
   {
-    bg: 'neutralSurface',
-    border: 'neutralMid',
-    text: 'neutralMain',
-    icon: 'neutralDark',
+    bg: 'secondaryMain',
+    border: 'white',
+    text: 'white',
+    icon: 'white',
   },
   {
     bg: 'secondaryLight',
@@ -18,16 +14,16 @@ const colorArray = [
     icon: 'secondaryMain',
   },
   {
-    bg: 'secondaryMain',
-    border: 'white',
-    text: 'white',
-    icon: 'white',
-  },
-  {
     bg: 'primaryLight',
     border: 'primaryMain',
     text: 'neutralMain',
     icon: 'primaryMain',
+  },
+  {
+    bg: 'neutralSurface',
+    border: 'neutralMid',
+    text: 'neutralMain',
+    icon: 'neutralDark',
   },
 ];
 
@@ -38,30 +34,23 @@ const getColor = (index, startingColor) => {
 };
 
 const Tips = ({ tips = [], startingColor = 0, cols, inner, ...props }) => {
-  return (
-    <Row {...props} inner={inner}>
-      {tips
-        .filter((t) => !!t)
-        .map((tip, index) => (
-          <Col w={cols || [4, 12, 12]} key={index} inner>
-            <S.Tip key={index} color={getColor(index, startingColor)} mb="3">
-              <Icon
-                icon="bulb"
-                color={getColor(index, startingColor).icon}
-                mr="2"
-              />
-              {typeof tip === 'string' ? (
-                <T.H3 color={getColor(index, startingColor).text}>
-                  Tip! {tip}
-                </T.H3>
-              ) : (
-                tip
-              )}
-            </S.Tip>
-          </Col>
-        ))}
-    </Row>
-  );
+  return tips
+    .filter((t) => !!t)
+    .map((tip, index) => (
+      <SingleTip
+        key={index}
+        bgColor={getColor(index, startingColor).bg}
+        borderColor={getColor(index, startingColor).border}
+        icon={'bulb'}
+        iconColor={getColor(index, startingColor).icon}
+        tip={tip}
+        textColor={getColor(index, startingColor).text}
+        mb="3"
+        {...props}
+      />
+    ));
 };
+
+export { SingleTip };
 
 export default Tips;

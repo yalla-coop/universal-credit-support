@@ -70,7 +70,7 @@ const getUsers = async () => {
       o.organisation_name
     FROM users u
     LEFT JOIN organisations o ON u.organisation_id = o.id
-    WHERE role IN ('ADMIN', 'SUPER_ADMIN') AND status = $1
+    WHERE role IN ('ADMIN', 'SUPER_ADMIN') AND u.status = $1
   `;
 
   const res = await query(sql, [userStatuses.ACTIVE]);

@@ -7,5 +7,5 @@ CREATE TABLE "migrations" (
 );
 
 
--- INSERT INTO "migrations" ("name") VALUES
-  -- ('/name_of_the_file_goes_here')
+INSERT INTO "migrations" ("name") VALUES
+  ('/20221123121141-add-org-status')

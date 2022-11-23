@@ -32,7 +32,7 @@ export const Modal = styled.section`
   border: 0;
   border-radius: ${({ theme: { borders } }) => borders.radiusLarge};
   min-width: 280px;
-  max-width: 450px;
+  max-width: ${({ adminHelp }) => (adminHelp ? '350px' : '450px')};
   box-sizing: border-box;
   overflow: hidden;
   background: ${({ theme: { colors } }) => colors.white};
@@ -62,4 +62,9 @@ export const Content = styled.div`
 export const ContactItem = styled.div`
   ${setMargin};
   width: 100%;
+`;
+
+export const AdminHelpWrapper = styled.div`
+  margin-bottom: 31px;
+  padding-left: 3px;
 `;

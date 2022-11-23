@@ -141,7 +141,7 @@ function AdminRouter() {
 
         <Route
           exact
-          path={navRoutes.SUPER_ADMIN.EDIT_CONTENT}
+          path={navRoutes.SUPER_ADMIN.ADD_UPDATE_CONTENT}
           element={
             <CustomRoute
               Component={EditContent}
@@ -211,7 +211,7 @@ function AdminRouter() {
 
         <Route
           exact
-          path={navRoutes.ADMIN.EDIT_DETAILS}
+          path={navRoutes.ADMIN.EDIT_ACCOUNT_DETAILS}
           element={
             <CustomRoute
               Component={EditDetails}
