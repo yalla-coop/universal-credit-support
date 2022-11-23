@@ -16,7 +16,7 @@ const PendingDashboard = () => {
   return (
     <>
       <Row jc="space-between">
-        <Col w={[4, 12, 7]} dir="column" ai="flex-start">
+        <Col w={[4, 12, 6]} dir="column" ai="flex-start">
           <T.H1 mtM="5">Welcome</T.H1>
           <T.P mt={6} color="neutralDark">
             Once your account is approved you will be provided with a link to
@@ -86,22 +86,10 @@ const PendingDashboard = () => {
                   Customise resources includes
                 </T.H3>
                 <T.P weight="400" color="secondaryMain">
-                  - Still need help phone number
+                  - Contact details
                 </T.P>
                 <T.P weight="400" color="secondaryMain">
                   - Benefit calculator link
-                </T.P>
-                <T.P weight="400" color="secondaryMain">
-                  - Debt advice link
-                </T.P>
-                <T.P weight="400" color="secondaryMain">
-                  - Budget link
-                </T.P>
-                <T.P weight="400" color="secondaryMain">
-                  - Employment services link
-                </T.P>
-                <T.P weight="400" color="secondaryMain">
-                  - Mental health links
                 </T.P>
               </S.TipsList>,
             ]}

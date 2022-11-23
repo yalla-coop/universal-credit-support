@@ -71,22 +71,10 @@ const DashboardLinks = () => {
               Customise resources includes
             </T.H3>
             <T.P weight="400" color="secondaryMain">
-              - Still need help phone number
+              - Contact details
             </T.P>
             <T.P weight="400" color="secondaryMain">
               - Benefit calculator link
-            </T.P>
-            <T.P weight="400" color="secondaryMain">
-              - Debt advice link
-            </T.P>
-            <T.P weight="400" color="secondaryMain">
-              - Budget link
-            </T.P>
-            <T.P weight="400" color="secondaryMain">
-              - Employment services link
-            </T.P>
-            <T.P weight="400" color="secondaryMain">
-              - Mental health links
             </T.P>
           </S.TipsList>,
         ]}
