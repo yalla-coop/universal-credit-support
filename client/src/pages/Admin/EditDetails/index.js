@@ -7,8 +7,8 @@ import {
   Typography as T,
   Inputs as I,
   Button,
-  TextWithIcon,
   Modal,
+  Cards,
 } from '../../../components';
 import * as S from './style';
 import { editDetails as validate } from '../../../validation/schemas';
@@ -20,6 +20,7 @@ import { t } from '../../../helpers';
 
 import { organisationTypes } from '../../../constants/data-types';
 
+const { Tips } = Cards;
 const { Row, Col } = Grid;
 
 const initialState = {
@@ -179,7 +180,7 @@ const EditDetails = () => {
           </T.H1>
         </Col>{' '}
         <Col w={[4, 12, 6]}>
-          <T.P isSmall color="neutralDark" mt={4}>
+          <T.P isSmall color="neutralDark">
             {t('editDetails.subtitle', lang)}
           </T.P>
         </Col>
@@ -274,7 +275,7 @@ const EditDetails = () => {
           </T.H3>
         </Col>
       </Row>
-      <Row mb={6}>
+      <Row>
         <Col w={[4, 6, 4]}>
           <I.BasicInput
             value={uniqueSlug}
@@ -293,7 +294,7 @@ const EditDetails = () => {
           )}
           {validationErrs?.hasError?.length ? (
             <Col w={[4, 12, 12]}>
-              <T.P mb="2" color="error">
+              <T.P mb={2} color="error">
                 At least one of the input fields has not been filled in or
                 details entered incorrectly. Please check the form above for
                 more details.
@@ -301,12 +302,24 @@ const EditDetails = () => {
             </Col>
           ) : null}
 
+          <Tips
+            cols={[4, 11, 6]}
+            tips={[
+              <T.H3 color="neutralMain">
+                Please note that changing your unique link will mean we need to
+                review your profile again
+              </T.H3>,
+            ]}
+            startingColor={3}
+          />
+
           <Button
             variant="primary"
             disabled={false}
             loading={loading}
             text="Save changes"
             type="submit"
+            mt={6}
           />
         </Col>
       </Row>
