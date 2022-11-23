@@ -55,9 +55,8 @@ export const LanguageSelector = ({ hide, handleHide }) => {
           .map(([lang, code]) => {
             const lng = lang.toLowerCase();
             return (
-              <S.Button>
+              <S.Button onClick={() => changeLanguage({ lang })} key={code}>
                 <TextWithIcon
-                  handleClick={() => changeLanguage({ lang })}
                   text={lang}
                   icon={FlagMap[lng] !== undefined ? lng : null}
                   {...props}
