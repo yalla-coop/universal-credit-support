@@ -1,0 +1,10 @@
+diff a/client/src/components/TextWithIcon/index.js b/client/src/components/TextWithIcon/index.js	(rejected hunks)
+@@ -12,7 +12,7 @@ const TextWithIcon = ({
+   size,
+   to,
+   icon = 'phone',
+-  text = 'Stuck? Call us for advice',
++  text,
+   external,
+   underline,
+   isButton,

@@ -60,3 +60,10 @@ export const LangButton = styled.button`
   align-items: center;
   cursor: pointer;
 `;
+
+export const Container = styled.div`
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+`;
