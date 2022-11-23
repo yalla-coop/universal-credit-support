@@ -12,6 +12,7 @@ const Checkbox = ({
   defaultChecked,
   w,
   m,
+  ai,
   ...props
 }) => {
   return (
@@ -20,6 +21,7 @@ const Checkbox = ({
       disabled={disabled}
       color={color}
       error={error}
+      ai={ai}
       {...props}
       {...m}
     >

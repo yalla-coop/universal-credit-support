@@ -10,6 +10,7 @@ const createOrganisation = async ({
   benefitCalcLabel,
   logoId,
   colors,
+  status,
 }) => {
   const sql = `INSERT INTO organisations (
     organisation_name,
@@ -19,7 +20,8 @@ const createOrganisation = async ({
     benefit_calculator_link,
     benefit_calculator_label,
     logo_id,
-    colors
+    colors,
+    status
   ) VALUES (
     $1,
     $2,
@@ -28,7 +30,8 @@ const createOrganisation = async ({
     $5,
     $6,
     $7,
-    $8
+    $8,
+    $9
   ) RETURNING *`;
   const res = await query(sql, [
     organisationName,
@@ -39,6 +42,7 @@ const createOrganisation = async ({
     benefitCalcLabel,
     logoId,
     colors,
+    status,
   ]);
   return res.rows[0];
 };
@@ -64,6 +68,7 @@ const createOrganisations = async () => {
       secondary: { h: '215', s: '0.35', l: '0.35' },
       neutral: { h: '219', s: '0.25', l: '0.14' },
     },
+    status: 'APPROVED',
   };
   const admin1OrganisationData = {
     ...superAdminOrganisationData,
@@ -75,6 +80,7 @@ const createOrganisations = async () => {
       secondary: { h: '215', s: '0.35', l: '0.35' },
       neutral: { h: '219', s: '0.25', l: '0.14' },
     },
+    status: 'APPROVED',
   };
   const superAdminOrganisation = await createOrganisation(
     superAdminOrganisationData,

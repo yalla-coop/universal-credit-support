@@ -12,6 +12,7 @@ import EditDetails from './EditDetails';
 import Customise from './Customise';
 import Changes from './Changes';
 import EditContent from './EditContent';
+import SuccessSignup from './SuccessSignup';
 import CustomiseResources from './CustomiseResources';
 
 import { Routes, Route } from 'react-router-dom';
@@ -27,10 +28,10 @@ function AdminRouter() {
     <AdminOrgProvider>
       <Routes>
         <Route
-          path={navRoutes.ADMIN.WELCOME1}
+          path={navRoutes.ADMIN.WELCOME}
           element={
             <CustomRoute
-              Component={Welcome.Welcome1}
+              Component={Welcome}
               layout="splitScreen"
               side="left"
               gradient="secondary"
@@ -38,15 +39,17 @@ function AdminRouter() {
             />
           }
         />
+
         <Route
-          path={navRoutes.ADMIN.WELCOME2}
+          path={navRoutes.ADMIN.SUCCESS_SIGNUP}
           element={
             <CustomRoute
-              Component={Welcome.Welcome2}
+              Component={SuccessSignup}
               layout="splitScreen"
               side="left"
               gradient="secondary"
-              publicOnly
+              isPrivate
+              allowedRoles={[userRoles.ADMIN, userRoles.SUPER_ADMIN]}
             />
           }
         />
@@ -138,7 +141,7 @@ function AdminRouter() {
 
         <Route
           exact
-          path={navRoutes.SUPER_ADMIN.EDIT_CONTENT}
+          path={navRoutes.SUPER_ADMIN.ADD_UPDATE_CONTENT}
           element={
             <CustomRoute
               Component={EditContent}
@@ -208,7 +211,7 @@ function AdminRouter() {
 
         <Route
           exact
-          path={navRoutes.ADMIN.EDIT_DETAILS}
+          path={navRoutes.ADMIN.EDIT_ACCOUNT_DETAILS}
           element={
             <CustomRoute
               Component={EditDetails}
