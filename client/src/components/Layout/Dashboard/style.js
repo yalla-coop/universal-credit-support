@@ -26,7 +26,9 @@ export const MenuWrapper = styled.div`
 `;
 
 export const ContentHalf = styled.div`
+  position: relative;
   flex: 1;
+  display: flex;
   background: ${({ theme }) => theme.colors.white};
   padding: ${({ theme: { spacings: s } }) => s[10]};
   ${({ theme }) => theme.media.tablet} {
@@ -38,6 +40,8 @@ export const ContentHalf = styled.div`
 export const MaxWidth = styled.div`
   width: 100%;
   max-width: 935px;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const Link = styled(RLink)`

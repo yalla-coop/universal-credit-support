@@ -90,8 +90,6 @@ const findOrganisationsByStatus = async (status, client) => {
       organisation_name,
       type_of_organisation,
       unique_slug,
-      still_need_help_phone_number,
-      still_need_help_label,
       logo_id,
       colors,
       status,

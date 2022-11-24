@@ -10,6 +10,7 @@ router.use('/content-audit-logs', M.contentAuditLog.controllers);
 router.use('/media', M.media.controllers);
 router.use('/organisations', M.organisation.controllers);
 router.use('/sections', M.section.controllers);
+router.use('/csv', M.csv.controllers);
 
 // catch 404 and forward to error handler
 router.use((req, res, next) => {

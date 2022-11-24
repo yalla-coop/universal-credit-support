@@ -1,1 +1,2 @@
 export const RESET_PASSWORD = 'RESET_PASSWORD';
+export const ORG_EMAIL_UPDATED = 'ORG_EMAIL_UPDATED';

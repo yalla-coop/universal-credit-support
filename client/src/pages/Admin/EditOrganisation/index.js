@@ -1,6 +1,7 @@
 import { useReducer, useEffect, useRef } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { breakpoints } from '../../../theme';
+import { useParams } from 'react-router-dom';
 
 import {
   Grid,
@@ -8,21 +9,13 @@ import {
   Inputs as I,
   Button,
   Modal,
-  Cards,
 } from '../../../components';
 import * as S from './style';
-import { editDetails as validate } from '../../../validation/schemas';
-import { Organisations } from '../../../api-calls';
-import { useLang } from '../../../context/lang';
-import { useAdminOrg } from '../../../context/admin-org';
+import { EditOrganisation as validate } from '../../../validation/schemas';
+import { Organisations, Users } from '../../../api-calls';
 import { useAuth } from '../../../context/auth';
-import { t } from '../../../helpers';
+import { types } from '../../../constants';
 
-import { navRoutes } from '../../../constants';
-
-import { organisationTypes } from '../../../constants/data-types';
-
-const { Tips } = Cards;
 const { Row, Col } = Grid;
 
 const initialState = {
@@ -34,6 +27,7 @@ const initialState = {
     organisationName: '',
     typeOfOrganisation: '',
     uniqueSlug: '',
+    organisationId: null,
   },
   httpError: '',
   validationErrs: {},
@@ -50,11 +44,11 @@ function reducer(state, newState) {
   return { ...state, ...value };
 }
 
-const EditDetails = () => {
-  const { lang } = useLang();
-  const { adminOrg, getAdminOrgInfo } = useAdminOrg();
+const EditOrganisation = () => {
+  const { id } = useParams();
+
   const submitAttempt = useRef(false);
-  const { user, setUser } = useAuth();
+  const { user } = useAuth();
   const [state, setState] = useReducer(reducer, initialState);
   const {
     formData: {
@@ -65,6 +59,7 @@ const EditDetails = () => {
       organisationName,
       typeOfOrganisation,
       uniqueSlug,
+      organisationId,
     },
     loading,
     validationErrs,
@@ -97,43 +92,53 @@ const EditDetails = () => {
   };
 
   useEffect(() => {
-    if (adminOrg.id) {
-      setFormData({
-        organisationName: adminOrg.organisationName,
-        typeOfOrganisation: adminOrg.typeOfOrganisation,
-        uniqueSlug: adminOrg.uniqueSlug,
-      });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [adminOrg.id]);
-
-  useEffect(() => {
+    const getUserInfo = async () => {
+      try {
+        const { data, error } = await Users.getUserById({
+          id,
+          withOrgDetails: true,
+        });
+        if (error) {
+          throw new Error(error);
+        }
+        setFormData(data);
+      } catch (error) {
+        setState({ httpError: error.message });
+      }
+    };
     if (user.id) {
-      setFormData({
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email,
-        backupEmail: user.backupEmail,
-      });
+      getUserInfo();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user.id]);
+  }, [id]);
 
   useEffect(() => {
     if (submitAttempt.current) {
       validateForm();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [firstName, lastName, email, backupEmail, organisationName, uniqueSlug]);
+  }, [
+    firstName,
+    lastName,
+    email,
+    backupEmail,
+    organisationName,
+    typeOfOrganisation,
+    uniqueSlug,
+  ]);
 
   const handleUpdate = async () => {
-    setState({ loading: true });
+    setState({
+      loading: true,
+      validationErrs: { hasError: false },
+      httpError: '',
+    });
     const { error } = await Organisations.updateOrganisation({
-      id: user.organisationId,
+      id: organisationId,
       withUserDetails: true,
       body: {
         ...state.formData,
-        userId: user.id,
+        userId: id,
       },
     });
 
@@ -154,8 +159,6 @@ const EditDetails = () => {
         });
       }
     } else {
-      getAdminOrgInfo();
-      setUser({ ...user, firstName, lastName, email, backupEmail });
       setState({ isModalVisible: true });
     }
   };
@@ -181,17 +184,12 @@ const EditDetails = () => {
       <Row>
         <Col w={[4, 12, 12]}>
           <T.H1 mb="6" weight="bold">
-            {t('editDetails.title', lang)}
+            Organisation details
           </T.H1>
-        </Col>{' '}
-        <Col w={[4, 12, 6]}>
-          <T.P isSmall color="neutralDark">
-            {t('editDetails.subtitle', lang)}
-          </T.P>
         </Col>
       </Row>
       <Row>
-        <Col w={[4, 6, 4]} mt={6}>
+        <Col w={[4, 6, 6]} mt={6}>
           <I.BasicInput
             label="First name"
             type="text"
@@ -201,7 +199,7 @@ const EditDetails = () => {
             error={validationErrs?.firstName}
           />
         </Col>
-        <Col w={[4, 6, 4]} mt={6}>
+        <Col w={[4, 6, 6]} mt={6}>
           <I.BasicInput
             label="Last name"
             type="text"
@@ -213,7 +211,7 @@ const EditDetails = () => {
         </Col>
       </Row>
       <Row mt={6}>
-        <Col w={[4, 6, 4]} mt={isMobile ? 6 : 0}>
+        <Col w={[4, 6, 6]} mt={isMobile ? 6 : 0}>
           <I.BasicInput
             label="Email"
             type="email"
@@ -223,7 +221,7 @@ const EditDetails = () => {
             error={validationErrs?.email}
           />
         </Col>
-        <Col w={[4, 6, 4]} mt={isMobile ? 6 : 0}>
+        <Col w={[4, 6, 6]} mt={isMobile ? 6 : 0}>
           <I.BasicInput
             label="Back up email address"
             type="email"
@@ -235,7 +233,7 @@ const EditDetails = () => {
         </Col>
       </Row>
       <Row mt={6}>
-        <Col w={[4, 6, 4]}>
+        <Col w={[4, 6, 6]}>
           <I.BasicInput
             label="Organisation"
             type="text"
@@ -247,41 +245,40 @@ const EditDetails = () => {
             error={validationErrs?.organisationName}
           />
         </Col>
-        <Col w={[4, 6, 4]}>
+        <Col w={[4, 6, 6]}>
           <I.Dropdown
             label="Type of organisation"
-            options={Object.entries(organisationTypes).map(([key, value]) => ({
-              label: value,
-              value: key,
-            }))}
-            selected={typeOfOrganisation}
-            handleChange={(selectValue) =>
-              setFormData({
-                typeOfOrganisation: selectValue,
-              })
-            }
+            placeholder="Select organisation..."
+            margins={{ mt: '2', mb: '1' }}
+            name="typeOfOrganisation"
             allowClear={false}
-            error={validationErrs?.typeOfOrganisation?.type}
+            selected={typeOfOrganisation}
+            options={Object.values(types.organisationTypes).map((e) => ({
+              label: e,
+              value: e,
+            }))}
+            handleChange={(input) => setFormData({ typeOfOrganisation: input })}
+            error={validationErrs.typeOfOrganisation}
           />
         </Col>
       </Row>
 
-      <Row mt={7}>
-        <Col w={[4, 12, 4]}>
-          <T.H2 mb={5} weight="bold">
-            {t('yourUniqueLink', lang)}
+      <Row mt={6}>
+        <Col w={[4, 12, 6]}>
+          <T.H2 mb={5} weight="semi">
+            Organisation unique link
           </T.H2>
         </Col>
       </Row>
       <Row mb={2}>
-        <Col w={[4, 6, 4]}>
+        <Col w={[4, 6, 6]}>
           <T.H3>
             {window.location.origin}/{uniqueSlug}
           </T.H3>
         </Col>
       </Row>
       <Row>
-        <Col w={[4, 6, 4]}>
+        <Col w={[4, 6, 6]}>
           <I.BasicInput
             value={uniqueSlug}
             handleChange={handleUniqueLink}
@@ -291,7 +288,7 @@ const EditDetails = () => {
       </Row>
 
       <Row mt={7} style={{ flex: Number(isMobile), alignItems: 'flex-end' }}>
-        <Col w={[4, 6, 4]} style={{ alignItems: 'flex-end' }}>
+        <Col w={[4, 6, 6]} style={{ alignItems: 'flex-end' }}>
           {httpError && (
             <T.P mb={2} color="error">
               {httpError}
@@ -307,44 +304,16 @@ const EditDetails = () => {
             </Col>
           ) : null}
 
-          <Tips
-            cols={[4, 11, 6]}
-            tips={[
-              <T.H3 color="neutralMain">
-                Please note that changing your unique link will mean we need to
-                review your profile again
-              </T.H3>,
-            ]}
-            startingColor={2}
-          />
-
           <Button
             variant="primary"
             disabled={false}
             loading={loading}
             text="Save changes"
             type="submit"
-            mt={6}
           />
         </Col>
       </Row>
 
-      <Row mt={7}>
-        <Col w={[4, 6, 6]}>
-          <T.P isSmall color="neutralDark">
-            {t('accountDelete', lang)}{' '}
-            <T.Link
-              to="mailto:ucdigital@hyde-housing.co.uk"
-              color="neutralDark"
-              weight="bold"
-              underline
-              external
-            >
-              {t('hydeHousing', lang)}
-            </T.Link>
-          </T.P>
-        </Col>
-      </Row>
       <Modal
         visible={isModalVisible}
         setIsModalVisible={(e) => setState({ isModalVisible: e })}
@@ -357,4 +326,4 @@ const EditDetails = () => {
   );
 };
 
-export default EditDetails;
+export default EditOrganisation;

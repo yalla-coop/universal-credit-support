@@ -3,9 +3,11 @@ import handleError from './format-error';
 
 const USERS_BASE = '/users';
 
-const getUserById = async ({ id, options }) => {
+const getUserById = async ({ id, withOrgDetails, options }) => {
   try {
-    const { data } = await axios.get(`${USERS_BASE}/${id}`);
+    const { data } = await axios.get(`${USERS_BASE}/${id}`, {
+      params: { withOrgDetails },
+    });
     return { data };
   } catch (error) {
     const err = handleError(error, options);

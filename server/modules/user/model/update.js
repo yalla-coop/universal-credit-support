@@ -51,7 +51,10 @@ const updatePassword = async ({ password, userId }, client) => {
   return res.rows[0];
 };
 
-const updateUser = async ({ id, firstName, lastName, email, backupEmail }, client) => {
+const updateUser = async (
+  { id, firstName, lastName, email, backupEmail },
+  client,
+) => {
   const values = [id, firstName, lastName, email, backupEmail];
 
   const sql = `
