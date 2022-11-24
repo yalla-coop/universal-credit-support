@@ -69,3 +69,18 @@ export const stages = {
   claiming: 'CLAIMING',
   afterClaiming: 'AFTER_CLAIMING',
 };
+
+export const languageCodes = {
+  English: 'EN',
+  French: 'FR',
+  German: 'DE',
+  Spanish: 'ES',
+  Urdu: 'UR',
+  Italian: 'IT',
+  Polish: 'PL',
+  Hindi: 'HI',
+  Russian: 'RU',
+  Arabic: 'AR',
+  Portuguese: 'PT',
+  Welsh: 'CY',
+};

@@ -30,7 +30,7 @@ export const Modal = styled(AntModal)`
     }
   }
 
-  max-width: 420px;
+  max-width: 350px;
 
   .ant-modal-content {
     position: relative;
@@ -42,10 +42,6 @@ export const Modal = styled(AntModal)`
     z-index: 999;
     display: flex;
     flex-direction: column;
-  }
-
-  ${theme.media.mobile} {
-    max-width: 350px;
   }
 
   ${theme.media.mobileXS} {

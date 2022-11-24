@@ -8,9 +8,11 @@ import * as T from '../Typography';
 const TextWithIcon = ({
   color = 'neutralMain',
   iconColor = 'secondaryMain',
+  bgColor,
+  size,
   to,
   icon = 'phone',
-  text = 'Stuck? Call us for advice',
+  text,
   external,
   underline,
   isButton,
@@ -21,6 +23,7 @@ const TextWithIcon = ({
   m,
   mr,
   isText,
+  pointer,
   ...props
 }) => {
   if (isButton)
@@ -36,20 +39,35 @@ const TextWithIcon = ({
           <Icon
             icon={icon}
             color={iconColor}
-            mr={mr || '2'}
+            mr={text ? mr || '2' : '0'}
             direction={direction}
+            pointer={pointer}
           />
         )}
-        <T.H3 weight={weight} color={color} td={underline && 'underline'}>
-          {text}
-        </T.H3>
+        {text && (
+          <T.H3
+            weight={weight}
+            color={color}
+            ml={icon === null && 6}
+            td={underline && 'underline'}
+          >
+            {text}
+          </T.H3>
+        )}
       </S.Button>
     );
 
   if (isText)
     return (
-      <S.Wrapper {...props}>
-        {icon && <Icon icon={icon} color={iconColor} mr="11.5px" />}
+      <S.Wrapper bgColor={bgColor} size={size} {...props}>
+        {icon && (
+          <Icon
+            icon={icon}
+            color={iconColor}
+            pointer={pointer}
+            mr={mr || '11.5px'}
+          />
+        )}
         <T.H3
           to={to}
           color={color}
@@ -63,8 +81,15 @@ const TextWithIcon = ({
     );
 
   return (
-    <S.Wrapper {...props} {...m}>
-      {icon && <Icon icon={icon} color={iconColor} mr="11.5px" />}
+    <S.Wrapper bgColor={bgColor} size={size} {...props} {...m}>
+      {icon && (
+        <Icon
+          icon={icon}
+          color={iconColor}
+          pointer={pointer}
+          mr={mr || '11.5px'}
+        />
+      )}
       <T.Link
         to={to}
         color={color}

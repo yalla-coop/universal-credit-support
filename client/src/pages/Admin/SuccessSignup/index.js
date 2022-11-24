@@ -11,7 +11,7 @@ const SuccessSignup = () => {
         details at any time.
       </T.P>
       <T.P mt="5" color="neutralDark">
-        Someone from the Universal Credit Support Team is making sure that your
+        Someone from the Universal Credit Helper Team is making sure that your
         account looks OK we’ll let you know by email once we’ve done this.
       </T.P>
       <T.P mt="5" color="neutralDark">

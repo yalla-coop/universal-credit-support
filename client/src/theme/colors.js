@@ -11,6 +11,7 @@ export default {
   secondaryMain: formatColor(secondaryMain),
   secondaryMid: formatColor(setColor('secondary', secondaryMain).mid),
   secondaryLight: formatColor(setColor('secondary', secondaryMain).light),
+  tertiaryMain: 'hsl(22, 97%, 66%)',
   neutralMain: 'hsl(219, 25%, 14%)',
   neutralPrimaryMVP: 'hsl(220, 26%, 14%)',
   neutralDark: 'hsl(195, 8%, 38%)',

@@ -1,0 +1,10 @@
+diff a/client/src/components/Layout/General/index.js b/client/src/components/Layout/General/index.js	(rejected hunks)
+@@ -22,7 +20,7 @@ const General = ({ children, goBack, maxWidth, showHelp, ...props }) => {
+   });
+   return (
+     <S.Container>
+-      accessability header goes here
++      <Language />
+       <OrganisationLogo logoUrl={adminOrg?.logoUrl || publicOrg?.logoUrl} />
+       {/* <S.LangButton>
+             <T.P isSmall weight="bold" mr="4px">

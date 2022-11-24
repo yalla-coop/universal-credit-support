@@ -19,6 +19,7 @@ const BasicInput = ({
   m, // margins
   showPasswordInfo,
   optional,
+  suffix,
   resetValue,
   ...props
 }) => {
