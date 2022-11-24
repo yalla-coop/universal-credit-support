@@ -10,6 +10,7 @@ import getUsers from './get-users';
 import updateUser from './update-user';
 import getCSRFToken from './get-csrf-token';
 import deleteUser from './delete-user';
+import getUserById from './get-user-by-id';
 
 import {
   authenticate,
@@ -45,6 +46,13 @@ router.delete(
   authenticate(),
   authorize([userRoles.SUPER_ADMIN]),
   deleteUser,
+);
+
+router.get(
+  '/:id',
+  authenticate(),
+  authorize([userRoles.SUPER_ADMIN]),
+  getUserById,
 );
 
 export default router;

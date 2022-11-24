@@ -6,6 +6,7 @@ import getOrganisation from './get-organisation';
 import updateOrganisation from './update-organisation';
 import getOrganisationByUniqueSlug from './get-organisation-by-unique-slug';
 import getOrganisations from './get-organisations';
+import updateOrganisationStatus from './update-organisation-status';
 
 import {
   authenticate,
@@ -23,6 +24,12 @@ router.get(
   authenticate(),
   authorize([userRoles.SUPER_ADMIN]),
   getOrganisations,
+);
+router.patch(
+  '/:id/status',
+  authenticate(),
+  authorize([userRoles.SUPER_ADMIN]),
+  updateOrganisationStatus,
 );
 
 router.get('/unique-slug/:uniqueSlug', getOrganisationByUniqueSlug);

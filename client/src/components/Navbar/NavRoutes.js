@@ -64,7 +64,7 @@ const DecideRoutes = ({ setOpen }) => {
             </S.Head3>
           </S.Link>
 
-          <S.Link onClick={handleLogout} to={ADMIN.LOG_OUT}>
+          <S.Link onClick={handleLogout}>
             <S.Head3 weight="bold" color="neutralMain">
               {t.english['LOG_OUT']}
             </S.Head3>
@@ -135,7 +135,7 @@ const DecideRoutes = ({ setOpen }) => {
               {t.english['CUSTOMISE_RESOURCES']}
             </S.Head3>
           </S.Link>
-          <S.Link onClick={handleLogout} to={ADMIN.LOG_OUT}>
+          <S.Link onClick={handleLogout}>
             <S.Head3 weight="bold" color="neutralMain">
               {t.english['LOG_OUT']}
             </S.Head3>
