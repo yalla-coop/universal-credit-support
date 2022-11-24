@@ -54,7 +54,7 @@ export default {
   },
 
   editDetails: {
-    title: 'Edit Details',
+    title: 'Edit account details',
     subtitle:
       'Below you can edit details for your customers such as your adviser contact line',
   },

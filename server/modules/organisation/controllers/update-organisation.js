@@ -7,6 +7,7 @@ const updateOrganisation = async (req, res, next) => {
     const { withUserDetails } = req.query;
     const {
       organisationName,
+      typeOfOrganisation,
       uniqueSlug,
       contactLinks,
       benefitCalculatorLink,
@@ -16,12 +17,14 @@ const updateOrganisation = async (req, res, next) => {
       firstName,
       lastName,
       email,
+      backupEmail,
     } = req.body;
 
     const results = await updateOrganisationUseCase({
       id,
       userId,
       organisationName,
+      typeOfOrganisation,
       uniqueSlug,
       contactLinks,
       benefitCalculatorLink,
@@ -32,6 +35,7 @@ const updateOrganisation = async (req, res, next) => {
       firstName,
       lastName,
       email,
+      backupEmail,
       withUserDetails: JSON.parse(withUserDetails || null),
     });
 
