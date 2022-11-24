@@ -27,7 +27,6 @@ const ADMIN = {
   CREATE_ORG_DETAILS_SECOND_STEP: `${admin}/set-organisation/2`,
   ADD_UPDATE_CONTENT: `${admin}/content`,
   SUCCESS_SIGNUP: `${admin}/success-signup`,
-  LOG_OUT: '/log-out',
 };
 
 const SUPER_ADMIN = {
@@ -43,6 +42,8 @@ const SUPER_ADMIN = {
   CHANGES: `${admin}/changes`,
   // CONTENT_REQUESTS: `${admin}/content-requests`,
   CONTENT_REVIEW: `${admin}/content-review`,
+  ORGANISATION_DETAILS: `${admin}/org-user/:id`, // use user id not org id
+  REJECT_ORGANISATION: `${admin}/organisation/:id/reject`,
 };
 
 const EXTERNAL = {

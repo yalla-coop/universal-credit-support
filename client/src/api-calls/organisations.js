@@ -35,6 +35,16 @@ const updateOrganisation = async ({ id, body, withUserDetails, options }) => {
   }
 };
 
+const updateOrganisationStatus = async ({ id, status, options }) => {
+  try {
+    const { data } = await axios.patch(`${ORGS_BASE}/${id}/status`, { status });
+    return { data };
+  } catch (error) {
+    const err = handleError(error, options);
+    return { error: err };
+  }
+};
+
 const getAwaitingApprovalOrganisations = async ({ options } = {}) => {
   try {
     const { data } = await axios.get(`${ORGS_BASE}`, {
@@ -52,4 +62,5 @@ export {
   getOrganisation,
   getOrganisationByUniqueSlug,
   getAwaitingApprovalOrganisations,
+  updateOrganisationStatus,
 };

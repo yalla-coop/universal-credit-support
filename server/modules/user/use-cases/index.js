@@ -6,6 +6,7 @@ import getAccountInfo from './get-account-info';
 import getUsers from './get-users';
 import updateUserRole from './update-user-role';
 import deleteUser from './delete-user';
+import getUserById from './get-user-by-id';
 
 export {
   signup,
@@ -16,4 +17,5 @@ export {
   updateUserRole,
   deleteUser,
   getUsers,
+  getUserById,
 };

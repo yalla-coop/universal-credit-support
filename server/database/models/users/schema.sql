@@ -6,7 +6,7 @@ CREATE TABLE "users" (
   "first_name" VARCHAR(20),
   "last_name" VARCHAR(20),
   "email" VARCHAR UNIQUE,
-  "backup_email" VARCHAR UNIQUE,
+  "backup_email" VARCHAR,
   "password" TEXT,
   "role" user_roles NOT NULL DEFAULT 'ADMIN',
   "status" user_statuses DEFAULT 'ACTIVE',
