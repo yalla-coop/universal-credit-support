@@ -15,7 +15,7 @@ const PageHeader = ({
             text={title}
             customStyles={{
               p: {
-                fontSize: '32px',
+                fontSize: '2rem',
                 fontSizeM: '24px',
                 lineHeight: '44px',
                 lineHeightM: '33.544px',

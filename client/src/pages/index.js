@@ -8,6 +8,7 @@ import Admin from './Admin';
 import MentalHeath from './OrgPublic/MentalHeath';
 import Budgeting from './OrgPublic/Budgeting';
 import SubSections from './OrgPublic/SubSections';
+import Accessibility from './Accessibility';
 
 export {
   Admin,
@@ -20,4 +21,5 @@ export {
   MentalHeath,
   SubSections,
   Budgeting,
+  Accessibility,
 };

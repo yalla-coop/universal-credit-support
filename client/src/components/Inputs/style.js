@@ -5,7 +5,7 @@ import setMargin from '../../helpers/set-margin';
 const commonStyle = `
   font-style: normal;
   font-weight: normal;
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 150%;
 `;
 

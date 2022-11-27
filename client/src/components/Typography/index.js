@@ -40,12 +40,12 @@ const Head0 = styled(Title)`
   ${setMargin};
   ${commonStyle};
   font-family: hero-new-hairline, sans-serif;
-  font-size: 40px !important;
+  font-size: 2.5rem !important;
   line-height: auto !important;
   font-weight: ${({ weight }) => (weight ? weights[weight] : '700 !important')};
 
   ${({ theme }) => theme.media.mobile} {
-    font-size: 24px !important;
+    font-size: 1.5rem !important;
     line-height: auto !important;
   }
 `;
@@ -55,12 +55,12 @@ const Head1 = styled(Title)`
   ${setMargin};
   ${commonStyle};
   font-family: hero-new-hairline, sans-serif;
-  font-size: 32px !important;
+  font-size: 2rem !important;
   line-height: 44px !important;
   font-weight: ${({ weight }) => (weight ? weights[weight] : '700 !important')};
 
   ${({ theme }) => theme.media.mobile} {
-    font-size: 22px !important;
+    font-size: 1.375rem !important;
     line-height: 32px !important;
   }
 `;
@@ -70,7 +70,7 @@ const Head2 = styled(Title)`
   ${setMargin};
   ${commonStyle};
   font-family: hero-new-hairline, sans-serif;
-  font-size: 20px !important;
+  font-size: 1.25rem !important;
   line-height: 28px !important;
   font-weight: ${({ weight }) => (weight ? weights[weight] : '600 !important')};
 `;
@@ -80,7 +80,7 @@ const Head3 = styled(Title)`
   ${setMargin};
   ${commonStyle};
   font-family: hero-new-hairline, sans-serif;
-  font-size: 16px !important;
+  font-size: 1rem !important;
   line-height: 24px !important;
   font-weight: ${({ weight }) => (weight ? weights[weight] : '600 !important')};
   text-decoration: ${({ td }) => td || 'none'};
@@ -100,9 +100,9 @@ export const P = styled(({ isSmall, ...props }) => <Paragraph {...props} />)`
   }
 
   font-size: ${({ isSmall }) =>
-    isSmall ? '14px !important' : '16px !important'};
+    isSmall ? '0.875rem !important' : '1rem !important'};
   line-height: ${({ isSmall }) =>
-    isSmall ? '20px !important' : '24px !important'};
+    isSmall ? '1.25rem !important' : '1.5rem !important'};
 `;
 
 const AntdLink = ({ to, external = false, underline, ...props }) => {
@@ -117,7 +117,7 @@ const AntdLink = ({ to, external = false, underline, ...props }) => {
 export const Link = styled(AntdLink)`
   ${setMargin};
   ${commonStyle};
-  font-size: ${({ fontSize }) => fontSize || '16px'} !important;
+  font-size: ${({ fontSize }) => fontSize || '1rem'} !important;
   line-height: 24px !important;
   font-weight: ${({ weight }) => (weight ? weights[weight] : '400 !important')};
 

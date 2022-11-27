@@ -135,7 +135,7 @@ const Login = () => {
             style={{ display: 'block' }}
             mt="10px"
             ml="13px"
-            fontSize="14px"
+            fontSize="0.875rem"
           >
             Forget password?
           </T.Link>

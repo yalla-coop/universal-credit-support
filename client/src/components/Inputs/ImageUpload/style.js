@@ -21,7 +21,7 @@ export const Wrapper = styled.div`
 
   .ant-upload-list-item-name {
     color: ${({ theme }) => theme.colors.secondaryMain};
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: bold;
   }
 `;

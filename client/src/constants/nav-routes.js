@@ -5,6 +5,7 @@ const GENERAL = {
   FORGET_PASSWORD: `/forget-password`,
   RESET_PASSWORD: `/reset-password/:token`,
   NOT_FOUND: `/not-found`,
+  ACCESSIBILITY: `/accessibility`,
 };
 
 const PUBLIC_ORG = {
