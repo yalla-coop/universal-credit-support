@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import GeneralPaddingSection from '../../../components/Layout/GeneralPaddingSection';
 import { Typography as T, Grid, GoBack } from '../../../components';
 import PageHeader from '../../../components/PageHeader';
@@ -9,8 +10,12 @@ import * as S from './style';
 const { Row, Col } = Grid;
 
 const MentalHeath = () => {
-  const { publicOrg } = usePublicOrg();
+  const { publicOrg, setPageTitle } = usePublicOrg();
 
+  useEffect(() => {
+    setPageTitle('Mental Health Support');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <S.Container>
       <PageHeader

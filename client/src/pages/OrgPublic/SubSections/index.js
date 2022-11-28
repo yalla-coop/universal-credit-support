@@ -13,7 +13,7 @@ const { Col, Row } = Grid;
 
 const SubSections = () => {
   const [data, setData] = useState({});
-  const { publicOrg } = usePublicOrg();
+  const { publicOrg, setPageTitle } = usePublicOrg();
 
   const { id } = useParams();
 
@@ -30,6 +30,7 @@ const SubSections = () => {
           message.error('Something went wrong, please try again later');
         } else {
           setData(_data);
+          setPageTitle(_data.title);
         }
         hideMessage();
       }

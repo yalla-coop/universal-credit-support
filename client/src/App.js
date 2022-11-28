@@ -88,6 +88,24 @@ function App() {
                       />
                     }
                   />
+                </Routes>
+
+                {/* ALL ADMIN PAGES */}
+                <Pages.Admin />
+
+                <Routes>
+                  <Route
+                    exact
+                    path={navRoutes.GENERAL.FORGET_PASSWORD}
+                    element={
+                      <CustomRoute
+                        Component={Pages.ForgotPassword}
+                        layout="splitScreen"
+                        side="left"
+                        gradient="secondary"
+                      />
+                    }
+                  />
                   <Route
                     exact
                     path={navRoutes.GENERAL.RESET_PASSWORD}
@@ -119,6 +137,7 @@ function App() {
                         <CustomRoute
                           Component={Pages.Section}
                           layout="general"
+                          showSocialBanner
                         />
                       }
                     />
@@ -130,6 +149,7 @@ function App() {
                         <CustomRoute
                           Component={Pages.SubSections}
                           layout="general"
+                          showSocialBanner
                         />
                       }
                     />
@@ -140,6 +160,7 @@ function App() {
                         <CustomRoute
                           Component={Pages.Budgeting}
                           layout="general"
+                          showSocialBanner
                         />
                       }
                     />
@@ -150,6 +171,7 @@ function App() {
                         <CustomRoute
                           Component={Pages.MentalHeath}
                           layout="general"
+                          showSocialBanner
                         />
                       }
                     />
