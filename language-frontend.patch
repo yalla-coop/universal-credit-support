@@ -350,13 +350,13 @@ index c0e98fb..750bdb9 100644
 +
 +  .ant-input::placeholder {
 +    color: ${theme.colors.neutralDark};
-+    font-size: 16px !important;
++    font-size: 1rem !important;
 +    line-height: 24px !important;
 +  }
 +
 +  .ant-input {
 +    color: ${theme.colors.neutralDark};
-+    font-size: 16px !important;
++    font-size: 1rem !important;
 +    line-height: 24px !important;
 +  }
  `;

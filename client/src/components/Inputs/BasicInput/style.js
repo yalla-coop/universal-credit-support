@@ -8,7 +8,7 @@ const InputCommonStyle = ({ theme, error, disabled }) => `
 width: 100%;
 padding: ${theme.spacings[3]};
 line-height: 24px;
-height: 40px;
+height: 45px;
 cursor: ${disabled && 'not-allowed'};
 
 transition: all 0.3s ease;
@@ -32,13 +32,13 @@ export const Input = styled(AntdInput)`
 
   .ant-input::placeholder {
     color: ${theme.colors.neutralDark};
-    font-size: 16px !important;
+    font-size: 1rem !important;
     line-height: 24px !important;
   }
 
   .ant-input {
     color: ${theme.colors.neutralDark};
-    font-size: 16px !important;
+    font-size: 1rem !important;
     line-height: 24px !important;
   }
 `;

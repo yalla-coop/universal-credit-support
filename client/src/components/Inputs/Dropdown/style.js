@@ -50,7 +50,7 @@ export const Field = styled.div`
   .ant-select-multiple .ant-select-selection-item {
     height: 100%;
     padding: 0.1rem 0.4rem;
-    font-size: 16px;
+    font-size: 1rem;
   }
 
   .ant-select-show-search.ant-select:not(.ant-select-customize-input)
@@ -88,7 +88,7 @@ export const Field = styled.div`
 
   // STYLE SELECTED ITEM IN SINGLE DROPDOWN
   .ant-select-single.ant-select-show-arrow .ant-select-selection-item {
-    font-size: 16px;
+    font-size: 1rem;
     color: ${({ theme }) => theme.colors.neutralMain};
 
     // SEEMS WEIRD BUT YOU NEED TO DO THIS TO FORCE THE WIDTH TO STAY CONTAINED
@@ -105,7 +105,7 @@ export const Answer = styled.div`
 `;
 
 export const OptionStyle = `
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: normal;
   padding: 0.5rem 1rem;
   display: flex;
