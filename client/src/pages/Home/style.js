@@ -55,7 +55,7 @@ export const Section = styled.section`
 
 export const StyledText = styled(T.P)`
   max-width: 580px;
-  color: ${({ theme: { colors } }) => colors.neutralDark};
+  color: ${({ theme: { colors } }) => colors.secondaryTextMain};
   padding: ${({ theme: { spacings } }) =>
     `${spacings[4]} ${spacings[6]} 0  ${spacings[6]}`};
 `;

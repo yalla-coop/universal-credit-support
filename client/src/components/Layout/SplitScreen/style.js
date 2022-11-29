@@ -32,7 +32,7 @@ export const ContentHalf = styled.div`
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
-  background: ${({ theme }) => theme.colors.white};
+  background: ${({ theme }) => theme.colors.primaryTextMain};
   padding: ${({ theme: { spacings: s } }) =>
     `${s[9]} ${s[0]} ${s[11]} ${s[11]}`};
   ${({ theme }) => theme.media.mobile} {

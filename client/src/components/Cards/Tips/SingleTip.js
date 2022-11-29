@@ -3,7 +3,7 @@ import * as T from '../../Typography';
 import Icon from '../../Icon';
 
 const SingleTip = ({
-  bgColor = 'primaryMain',
+  bgColor = 'primaryDark',
   icon = 'bulb',
   iconColor,
   tip,
