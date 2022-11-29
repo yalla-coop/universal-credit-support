@@ -67,17 +67,21 @@ const findSectionById = async (id) => {
   const res = await query(sql, [id]);
   return res.rows[0];
 };
-const findTopicsBySectionId = async (id) => {
-  const sql = `
-    SELECT
-      id,
-      content
-    FROM topics
-    WHERE section_id = $1
-    ORDER BY position ASC
-  `;
 
-  const res = await query(sql, [id]);
+const findTopicsBySectionId = async (id, lng) => {
+  const sql = `
+  SELECT
+    topics.id,
+    COALESCE (topics_i18n.content_i18n, topics.content) content,
+    topics_i18n.language_code
+  FROM topics
+  LEFT OUTER JOIN topics_i18n
+    ON topics.id = topics_i18n.topic_id 
+   AND topics_i18n.language_code = $2
+  WHERE topics.section_id = $1
+  ORDER BY position ASC`;
+
+  const res = await query(sql, [id, lng]);
   return res.rows;
 };
 

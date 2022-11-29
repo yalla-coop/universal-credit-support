@@ -44,3 +44,18 @@ export const organisationTypes = {
   FAITH_ORGANISATION: 'Faith Organisation',
   HOUSING_ASSOCIATION: 'Housing Association',
 };
+
+export const languageCodes = {
+  ENGLISH: 'en',
+  FRENCH: 'fr',
+  GERMAN: 'de',
+  SPANISH: 'es',
+  URDU: 'ur',
+  ITALIAN: 'it',
+  POLISH: 'pl',
+  HINDI: 'hi',
+  RUSSIAN: 'ru',
+  ARABIC: 'ar',
+  PORTUGUESE: 'pt',
+  WELSH: 'cy',
+};

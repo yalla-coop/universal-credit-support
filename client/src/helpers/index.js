@@ -6,6 +6,7 @@ import rotator from './rotator';
 import authorization from './authorization';
 import formatColor from './format-color';
 import setColor from './set-color-variations';
+import useLanguage from './use-language';
 
 export {
   setMargin,
@@ -15,4 +16,6 @@ export {
   rotator,
   authorization,
   formatColor,
+  setColor,
+  useLanguage,
 };

@@ -1,3 +1,6 @@
+import * as S from './style';
+import * as T from '../../Typography';
+import Icon from '../../Icon';
 import SingleTip from './SingleTip';
 
 const colorArray = [

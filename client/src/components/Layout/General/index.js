@@ -24,13 +24,6 @@ const General = ({
     <S.Container>
       <Language />
       <OrganisationLogo logoUrl={adminOrg?.logoUrl || publicOrg?.logoUrl} />
-      {/* <S.LangButton>
-            <T.P isSmall weight="bold" mr="4px">
-              EN
-            </T.P>
-            <img src={EnglishLang} alt="language" />
-          </S.LangButton> */}
-      {/* <Navbar /> */}
       <S.Content maxWidth={maxWidth}>
         {goBack && (
           <GoBack

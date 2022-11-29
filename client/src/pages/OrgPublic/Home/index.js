@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { message } from 'antd';
-import { generatePath } from 'react-router-dom';
+import { navRoutes, common } from '../../../constants';
+import { generatePath, useParams } from 'react-router-dom';
 import { Sections } from '../../../api-calls';
 import { usePublicOrg } from '../../../context/public-org';
 import {
@@ -10,15 +12,13 @@ import {
   Grid,
   Button,
 } from '../../../components';
-import { navRoutes } from '../../../constants';
 import LandingContent from './LandingContent';
-
 import HelpButton from '../../../components/HelpButton';
-
 import * as S from './style';
 const { Col, Row } = Grid;
 
 const Home = () => {
+  const { t } = useTranslation();
   const [stuck, setStuck] = useState(false);
   const [cardsData, setCardsData] = useState([]);
   const { publicOrg } = usePublicOrg();
@@ -80,11 +80,16 @@ const Home = () => {
       <S.FullSection>
         <S.NeedHelpWrapper>
           <T.H2 color="neutralMain" ta="center" taM="left">
-            Need help with budgeting?
+            {t(
+              'common.section.helpBudget.title',
+              common.section.helpBudget.title
+            )}
           </T.H2>
           <T.P ta="center" mt="4" mb="3" taM="left" color="neutralDark">
-            You know how much is going in and out but if you need a hand, we can
-            help you work it out.
+            {t(
+              'common.section.helpBudget.description',
+              common.section.helpBudget.description
+            )}
           </T.P>
           <S.ReadMoreLink
             to={generatePath(navRoutes.PUBLIC_ORG.BUDGETING, {
@@ -93,8 +98,8 @@ const Home = () => {
           >
             <TextWithIcon
               size="large"
+              text={t('common.buttons.readMore', common.buttons.readMore)}
               bgColor="quartenaryBgMain"
-              text="Read more"
               icon="forwardArrow"
               iconColor="primaryDark"
               jc="center"
@@ -115,18 +120,24 @@ const Home = () => {
               color="neutralMain"
               mb="4"
             >
-              Feeling stressed or overwhelmed
+              {t(
+                'common.section.stressedOrOverwhelmed.title',
+                common.section.stressedOrOverwhelmed.title
+              )}
             </T.H2>
             <Button
               variant="primary"
-              text="See advice"
+              text={t('common.buttons.seeAdvice', common.buttons.seeAdvice)}
               mb="6"
               to={generatePath(navRoutes.PUBLIC_ORG.MENTAL_HEALTH, {
                 uniqueSlug,
               })}
             />
             <TextWithIcon
-              text="Stuck? Talk to someone"
+              text={t(
+                'common.buttons.stuckTalkToSomeOne',
+                common.buttons.stuckTalkToSomeOne
+              )}
               isButton
               handleClick={() => setStuck(true)}
               underline

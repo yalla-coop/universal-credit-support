@@ -6,7 +6,9 @@ import { Row } from '../../Grid';
 import { TextWithIcon } from '../../../components';
 import { useMediaQuery } from 'react-responsive';
 import theme from '../../../theme';
+import { useLanguage } from '../../../helpers';
 import * as R from '../../../constants/nav-routes';
+
 const props = {
   weight: 'medium',
   mr: 2,
@@ -14,10 +16,16 @@ const props = {
   iconColor: 'neutralMain',
 };
 
-const Desktop = ({ dir, showBack, largeText, handleHide }) => {
+const Desktop = ({
+  lngDir,
+  showBack,
+  largeText,
+  handleHide,
+  flag,
+  lngFull,
+}) => {
   const navigate = useNavigate();
   const { isFontLarge, setIsFontLarge } = useAccessibility();
-
   const LTR = (
     <Row>
       <S.DesktopWrapper>
@@ -54,8 +62,8 @@ const Desktop = ({ dir, showBack, largeText, handleHide }) => {
         <S.ButtonWrapper>
           <TextWithIcon
             handleClick={handleHide}
-            text="English"
-            icon="english"
+            text={lngFull}
+            icon={flag}
             {...props}
           />
         </S.ButtonWrapper>
@@ -68,8 +76,8 @@ const Desktop = ({ dir, showBack, largeText, handleHide }) => {
       <S.ButtonWrapper>
         <TextWithIcon
           handleClick={handleHide}
-          text="Arabic"
-          icon="arabic"
+          text={lngFull}
+          icon={flag}
           {...props}
         />
       </S.ButtonWrapper>
@@ -104,10 +112,10 @@ const Desktop = ({ dir, showBack, largeText, handleHide }) => {
     </S.DesktopWrapper>
   );
 
-  return dir === 'rtl' ? RTL : LTR;
+  return lngDir === 'rtl' ? RTL : LTR;
 };
 
-const Tablet = ({ dir, showBack, handleHide }) => {
+const Tablet = ({ lngDir, showBack, handleHide, flag, lng }) => {
   const navigate = useNavigate();
   const { isFontLarge, setIsFontLarge } = useAccessibility();
 
@@ -141,8 +149,8 @@ const Tablet = ({ dir, showBack, handleHide }) => {
         />
         <TextWithIcon
           handleClick={handleHide}
-          text="EN"
-          icon="english"
+          text={lng}
+          icon={flag}
           {...props}
         />
       </S.ButtonWrapper>
@@ -154,8 +162,8 @@ const Tablet = ({ dir, showBack, handleHide }) => {
       <S.ButtonWrapper>
         <TextWithIcon
           handleClick={handleHide}
-          text="AR"
-          icon="arabic"
+          text={lng}
+          icon={flag}
           {...props}
         />
         <TextWithIcon
@@ -187,13 +195,25 @@ const Tablet = ({ dir, showBack, handleHide }) => {
     </S.TabletWrapperRTL>
   );
 
-  return dir === 'rtl' ? RTL : LTR;
+  return lngDir === 'rtl' ? RTL : LTR;
 };
 
-export const LanguageBar = ({ dir, largeText, showBack, handleHide }) => {
-  const props = { dir, largeText, showBack, handleHide };
+export const LanguageBar = ({ largeText, showBack, handleHide }) => {
+  const { lngFull, lngUpperCase, flag, lngDir } = useLanguage();
+
+  const props = {
+    lngDir,
+    largeText,
+    showBack,
+    handleHide,
+    flag,
+    lngFull,
+    lng: lngUpperCase,
+  };
+
   const isTablet = useMediaQuery({
     query: `(max-width: ${theme.breakpoints.tablet})`,
   });
+
   return isTablet ? <Tablet {...props} /> : <Desktop {...props} />;
 };

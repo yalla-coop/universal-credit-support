@@ -11,7 +11,6 @@ CREATE TABLE "organisations_resources" (
   CONSTRAINT organisation_id_key_pkey PRIMARY KEY("organisation_id", "key")
 );
 
-
 CREATE TRIGGER set_timestamp
 BEFORE UPDATE ON "organisations_resources"
 FOR EACH ROW

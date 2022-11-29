@@ -2,13 +2,14 @@ import { useState, useEffect } from 'react';
 import { Sections } from '../../../api-calls';
 import { message } from 'antd';
 
-const useTopics = (id, resources) => {
+const useTopics = (id, lng, resources) => {
   const [topics, setTopics] = useState([]);
   const [markedTopics, setMarkedTopics] = useState([]);
   useEffect(() => {
     const fetchTopics = async () => {
       const { data, error } = await Sections.getTopics({
         sectionId: id,
+        lng,
       });
       if (error) {
         message.error('Something went wrong, please try again later');
@@ -33,7 +34,7 @@ const useTopics = (id, resources) => {
     };
 
     fetchTopics();
-  }, [id, resources]);
+  }, [id, lng, resources]);
 
   useEffect(() => {
     const markedTopicsFromStorage =

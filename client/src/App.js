@@ -7,8 +7,8 @@ import { Route as CustomRoute } from './components';
 import * as Pages from './pages';
 import { navRoutes } from './constants';
 import { ScrollToTop } from './helpers';
-import LangProvider from './context/lang';
 import { AuthProvider } from './context/auth';
+import { CommonProvider } from './context/common';
 import { PublicOrgProvider } from './context/public-org';
 import { createBrowserHistory } from 'history';
 import AccessibilityProvider from './context/accessibility';
@@ -28,9 +28,9 @@ function App() {
     <div className="app" style={{ minHeight: '100vh', display: 'flex' }}>
       <Global styles={globalStyle} />
       <ThemeProvider theme={theme}>
-        <LangProvider>
-          <AccessibilityProvider>
-            <AuthProvider>
+        <AccessibilityProvider>
+          <AuthProvider>
+            <CommonProvider>
               <Router basename={process.env.PUBLIC_URL}>
                 <ScrollToTop />
                 <Routes>
@@ -174,9 +174,10 @@ function App() {
                   </Route>
                 </Routes>
               </Router>
-            </AuthProvider>
-          </AccessibilityProvider>
-        </LangProvider>
+            </CommonProvider>
+          </AuthProvider>
+        </AccessibilityProvider>
+
         {/* <CookieBot domainGroupId={domainGroupId} /> */}
       </ThemeProvider>
     </div>

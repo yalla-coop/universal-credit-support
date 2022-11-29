@@ -4,5 +4,14 @@ import * as media from './media';
 import * as organisation from './organisation';
 import * as section from './section';
 import * as csv from './csv';
+import * as translations from './translations';
 
-export { user, contentAuditLog, media, organisation, section, csv };
+export {
+  user,
+  contentAuditLog,
+  media,
+  organisation,
+  section,
+  csv,
+  translations,
+};
