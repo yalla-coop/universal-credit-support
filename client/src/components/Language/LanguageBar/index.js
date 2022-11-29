@@ -16,14 +16,7 @@ const props = {
   iconColor: 'neutralMain',
 };
 
-const Desktop = ({
-  lngDir,
-  showBack,
-  largeText,
-  handleHide,
-  flag,
-  lngFull,
-}) => {
+const Desktop = ({ dir, showBack, largeText, handleHide, flag, lngFull }) => {
   const navigate = useNavigate();
   const { isFontLarge, setIsFontLarge } = useAccessibility();
   const LTR = (
@@ -112,10 +105,10 @@ const Desktop = ({
     </S.DesktopWrapper>
   );
 
-  return lngDir === 'rtl' ? RTL : LTR;
+  return dir === 'rtl' ? RTL : LTR;
 };
 
-const Tablet = ({ lngDir, showBack, handleHide, flag, lng }) => {
+const Tablet = ({ dir, showBack, handleHide, flag, lng }) => {
   const navigate = useNavigate();
   const { isFontLarge, setIsFontLarge } = useAccessibility();
 
@@ -195,14 +188,14 @@ const Tablet = ({ lngDir, showBack, handleHide, flag, lng }) => {
     </S.TabletWrapperRTL>
   );
 
-  return lngDir === 'rtl' ? RTL : LTR;
+  return dir === 'rtl' ? RTL : LTR;
 };
 
 export const LanguageBar = ({ largeText, showBack, handleHide }) => {
-  const { lngFull, lngUpperCase, flag, lngDir } = useLanguage();
+  const { lngFull, lngUpperCase, flag, dir } = useLanguage();
 
   const props = {
-    lngDir,
+    dir,
     largeText,
     showBack,
     handleHide,

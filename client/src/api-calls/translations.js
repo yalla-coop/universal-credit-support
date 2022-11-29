@@ -1,7 +1,7 @@
 import axios from 'axios';
 import handleError from './format-error';
 
-const TRANSLATION_BASE = 'translations/';
+const TRANSLATION_BASE = 'translations';
 
 const getCommon = async ({ options, lng }) => {
   try {

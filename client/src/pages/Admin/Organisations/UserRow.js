@@ -128,8 +128,6 @@ const UserRow = ({
     }
   };
 
-  console.log('submitRole', submitRole);
-
   return (
     <>
       <Col w={[4, 12, 3]} mbT={2}>

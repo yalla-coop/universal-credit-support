@@ -40,8 +40,8 @@ export const LanguageSelector = ({ hide, handleHide }) => {
   };
 
   const Selector = (
-    <S.Wrapper>
-      <S.ButtonWrapper>
+    <S.Wrapper onClick={handleHide}>
+      <S.ButtonWrapper onClick={(e) => e.stopPropagation()}>
         <BasicInput
           handleChange={(val) => setSearch(val)}
           label="Search Language"

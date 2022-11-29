@@ -21,9 +21,9 @@ const useLanguage = () => {
 
   const flag = lngFull?.charAt(0)?.toLowerCase() + lngFull?.slice(1);
 
-  const lngDir = lng === 'ar' || lng === 'ur' ? 'rtl' : 'ltr';
+  const dir = i18n.dir();
 
-  return { lng, lngUpperCase, lngFull, flag, lngDir };
+  return { lng, lngUpperCase, lngFull, flag, dir };
 };
 
 export default useLanguage;
