@@ -1,4 +1,5 @@
 import { query } from '../../../database';
+import { organisationStatuses } from '../../../constants';
 
 const updateOrganisation = async (
   {
@@ -59,4 +60,30 @@ const updateOrganisationStatus = async ({ id, status }) => {
   return res.rows[0];
 };
 
-export { updateOrganisation, updateOrganisationStatus };
+const updateOrganisationToDeleted = async (id, client) => {
+  const values = [id, organisationStatuses.DELETED];
+
+  const sql = `
+    UPDATE organisations
+    SET
+      organisation_name = NULL,
+      type_of_organisation = NULL,
+      unique_slug = NULL,
+      benefit_calculator_link = NULL,
+      benefit_calculator_label = NULL,
+      logo_id = NULL,
+      contact_links = NULL,
+      status = $2
+    WHERE
+      id = $1;
+  `;
+
+  const res = await query(sql, values, client);
+  return res.rows[0];
+};
+
+export {
+  updateOrganisation,
+  updateOrganisationStatus,
+  updateOrganisationToDeleted,
+};
