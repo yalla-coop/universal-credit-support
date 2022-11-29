@@ -23,7 +23,7 @@ export const Wrapper = styled.div`
 export const Text = styled.span`
   font-style: normal;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 24px;
   color: ${({ color, theme }) => theme.colors[color] || color || '#1A202C'};
 `;
