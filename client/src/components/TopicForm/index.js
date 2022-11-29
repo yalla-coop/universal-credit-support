@@ -69,7 +69,7 @@ const Action = ({ topic, setTopic, topicIndex, setTopics }) => {
                 icon="add"
                 isButton
                 mt="4"
-                iconColor="primaryMain"
+                iconColor="primaryDark"
                 handleClick={() => {
                   handleSetTips([...topic.tips, { content: '' }]);
                 }}
@@ -85,7 +85,7 @@ const Action = ({ topic, setTopic, topicIndex, setTopics }) => {
         pointer
         isButton
         mt="4"
-        iconColor="primaryMain"
+        iconColor="primaryDark"
         handleClick={() =>
           setTopics((old) => {
             return old.filter((topic, idx) => {

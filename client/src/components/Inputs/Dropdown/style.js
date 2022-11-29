@@ -37,7 +37,7 @@ export const Field = styled.div`
     overflow-x: hidden;
     border-color: transparent;
     border-radius: ${({ theme }) => theme.borders.radius};
-    background: ${({ theme }) => theme.colors.white};
+    background: ${({ theme }) => theme.colors.primaryTextMain};
   }
 
   .ant-select-single:not(.ant-select-customize-input) .ant-select-selector {

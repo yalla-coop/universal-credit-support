@@ -226,6 +226,12 @@ export const hexColorOptional = string().when((value, schema) => {
 
 export const hexColor = string().required(errMsgs.DEFAULT_REQUIRED);
 
+export const hslColor = object().shape({
+  h: string().required(),
+  s: string().required(),
+  l: string().required(),
+});
+
 export const resourceObjLink = object().shape({
   label: requiredText,
   value: urlRequired,

@@ -21,7 +21,7 @@ const MentalHeath = () => {
       <PageHeader
         title="**Mental Health Support**"
         textColor="neutralMain"
-        bgColor="tertiaryMain"
+        bgColor="primaryMain"
         borderColor="neutralMain"
       />
       <GeneralPaddingSection>
@@ -65,7 +65,7 @@ const MentalHeath = () => {
             <GoBack
               text="Go back"
               icon="backwardArrow"
-              iconColor="primaryMain"
+              iconColor="primaryDark"
             />
           </Col>
         </Row>

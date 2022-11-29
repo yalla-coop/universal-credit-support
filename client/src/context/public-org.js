@@ -6,7 +6,7 @@ import { matchPath, useLocation, Outlet } from 'react-router-dom';
 import setColor from '../helpers/set-color-variations';
 import formatColor from '../helpers/format-color';
 import updateGradients from '../helpers/update-gradients';
-import colors from '../theme/colors';
+import colors, { defaultColors } from '../theme/colors';
 import { PUBLIC_ORG } from './../constants/nav-routes';
 import { defaultResources } from '../constants/resources';
 
@@ -28,10 +28,10 @@ const PublicOrgContext = createContext({
   setPageTitle: () => {},
 });
 
-const adjustedTheme = (ancestorTheme, updatedColors) => ({
+const adjustedTheme = (ancestorTheme, updatedColors, useBlockColors) => ({
   ...ancestorTheme,
   colors: updatedColors,
-  gradients: updateGradients(updatedColors),
+  gradients: updateGradients(updatedColors, useBlockColors),
 });
 
 // get help details/logo/colors
@@ -51,21 +51,63 @@ const PublicOrg = (props) => {
     setPublicOrg(data);
   };
 
-  const updatedColors = ({ main, secondary }) => {
-    if (!main || !secondary) {
+  const updatedColors = ({
+    primaryBgMain,
+    secondaryBgMain,
+    tertiaryBgMain,
+    quartenaryBgMain,
+    quinaryBgMain,
+    primaryTextMain,
+    secondaryTextMain,
+    tertiaryTextMain,
+    quartenaryTextMain,
+    quinaryTextMain,
+  }) => {
+    if (
+      ![
+        primaryBgMain,
+        secondaryBgMain,
+        tertiaryBgMain,
+        quartenaryBgMain,
+        quinaryBgMain,
+        primaryTextMain,
+        secondaryTextMain,
+        tertiaryTextMain,
+        quartenaryTextMain,
+        quinaryTextMain,
+      ].every((i) => i)
+    ) {
       return colors;
     }
 
     const updated = {
       ...colors,
-      primaryMain: formatColor(main),
-      primaryMid: formatColor(setColor('primary', main).mid),
-      primaryLight: formatColor(setColor('primary', main).light),
-      secondaryMain: formatColor(secondary),
-      secondaryMid: formatColor(setColor('secondary', secondary).mid),
-      secondaryLight: formatColor(setColor('secondary', secondary).light),
-      error: formatColor(main),
-      borderPrimary: formatColor(main),
+      primaryDark: formatColor(setColor('primary', secondaryBgMain).dark),
+      primaryMain: formatColor(secondaryBgMain),
+      primaryMid: formatColor(setColor('primary', secondaryBgMain).mid),
+      primaryLight: formatColor(setColor('primary', secondaryBgMain).light),
+      secondaryMain: formatColor(primaryBgMain),
+      secondaryMid: formatColor(setColor('secondary', primaryBgMain).mid),
+      secondaryLight: formatColor(setColor('secondary', primaryBgMain).light),
+      error: formatColor(secondaryBgMain),
+      borderPrimary: formatColor(secondaryBgMain),
+      primaryBgMain: formatColor(primaryBgMain),
+      secondaryBgMain: formatColor(secondaryBgMain),
+      tertiaryBgMain: formatColor(tertiaryBgMain),
+      quartenaryBgMain: formatColor(quartenaryBgMain),
+      quinaryBgMain: formatColor(quinaryBgMain),
+      primaryTextMain: formatColor(primaryTextMain),
+      secondaryTextMain: formatColor(secondaryTextMain),
+      tertiaryTextMain: formatColor(tertiaryTextMain),
+      quartenaryTextMain: formatColor(quartenaryTextMain),
+      quinaryTextMain: formatColor(quinaryTextMain),
+      neutralMain: formatColor(quinaryBgMain),
+      neutralMid: formatColor(tertiaryBgMain),
+      neutralLight: formatColor(quartenaryBgMain),
+      neutralSurface: formatColor(setColor('quinary', quinaryBgMain).Surface),
+      tertiaryDark: formatColor(setColor('tertiary', tertiaryBgMain).dark),
+      primaryMainObj: secondaryBgMain,
+      secondaryMainObj: secondaryBgMain,
     };
 
     return updated;
@@ -76,11 +118,6 @@ const PublicOrg = (props) => {
       uniqueSlug,
     });
 
-    const defaultColors = {
-      main: colors.primaryMainObj,
-      secondary: colors.secondaryMainObj,
-    };
-
     if (data) {
       _setPublicOrg({
         ...data,
@@ -89,6 +126,7 @@ const PublicOrg = (props) => {
           return resource || r;
         }),
         colors: updatedColors(data.colors || defaultColors),
+        useBlockColors: data?.colors?.useBlockColors || false,
       });
     } else {
       _setPublicOrg(initialPublicOrgState);
@@ -109,9 +147,12 @@ const PublicOrg = (props) => {
     pageTitle,
     setPageTitle,
   };
-
   return (
-    <ThemeProvider theme={(theme) => adjustedTheme(theme, publicOrg.colors)}>
+    <ThemeProvider
+      theme={(theme) =>
+        adjustedTheme(theme, publicOrg.colors, publicOrg.useBlockColors)
+      }
+    >
       <PublicOrgContext.Provider value={value} {...props} />
     </ThemeProvider>
   );

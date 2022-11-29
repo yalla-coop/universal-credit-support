@@ -14,7 +14,8 @@ export const Title = styled.div`
 
 export const TipList = styled.ul`
   ${setMargin};
-  color: ${({ color, theme }) => theme.colors[color] || color || 'white'};
+  color: ${({ color, theme }) =>
+    theme.colors[color] || color || 'primaryTextMain'};
 `;
 
 export const Content = styled.div`

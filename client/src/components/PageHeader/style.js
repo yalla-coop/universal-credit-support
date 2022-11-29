@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
   display: flex;
 `;
 export const Border = styled.div`
-  border: ${({ theme, borderColor = 'white' }) =>
+  border: ${({ theme, borderColor = 'primaryTextMain' }) =>
     `3px solid ${theme.colors[borderColor]}`};
   flex: 1;
   display: flex;

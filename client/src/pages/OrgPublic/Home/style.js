@@ -17,7 +17,7 @@ export const PageHead = styled.header`
   display: flex;
   justify-content: center;
   background: ${({ theme }) => theme.gradients.primary};
-  background-color: ${({ theme }) => theme.gradients.primaryMain};
+  background-color: ${({ theme }) => theme.gradients.primaryDark};
   background-image: ${({ showBGImage }) =>
     showBGImage && `url(${backgroundLogo})`};
   background-position: center;
@@ -92,7 +92,7 @@ export const CardsWrapper = styled.div`
 `;
 export const StyledText = styled(T.P)`
   max-width: 585px;
-  color: ${({ theme: { colors } }) => colors.neutralDark};
+  color: ${({ theme: { colors } }) => colors.secondaryTextMain};
 `;
 
 export const LogoContainer = styled(Link)`

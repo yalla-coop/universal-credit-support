@@ -7,7 +7,7 @@ const StillNeedHelp = ({ phoneNumber, name, ...props }) => {
   return (
     <S.Wrapper {...props}>
       <S.Title>
-        <Icon icon="discover" color="primaryMain" />
+        <Icon icon="discover" color="primaryDark" />
         <T.H2 ml="2" color="neutralMain">
           Still need help?
         </T.H2>
@@ -15,7 +15,7 @@ const StillNeedHelp = ({ phoneNumber, name, ...props }) => {
 
       <S.ContentWrapper>
         <S.IconWrapper>
-          <Icon icon="phone" width="26px" height="26px" color="primaryMain" />
+          <Icon icon="phone" width="26px" height="26px" color="primaryDark" />
         </S.IconWrapper>
         <T.P ml="3" color="neutralDark">
           If you’d like to talk to someone, call{' '}

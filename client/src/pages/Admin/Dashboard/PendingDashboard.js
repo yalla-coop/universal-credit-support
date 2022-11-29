@@ -25,8 +25,8 @@ const PendingDashboard = () => {
           <SingleTip
             style={{ width: '100%' }}
             bgColor="primaryLight"
-            borderColor="primaryMain"
-            iconColor="primaryMain"
+            borderColor="primaryDark"
+            iconColor="primaryDark"
             mt={6}
             mb="0"
             tip={
@@ -42,7 +42,7 @@ const PendingDashboard = () => {
                   'Add or update your account details and edit your unique link'
                 }
                 icon="forwardArrow"
-                iconColor={'primaryMain'}
+                iconColor={'primaryDark'}
                 mr="6px"
                 ai="flex-start"
                 isText
@@ -69,7 +69,7 @@ const PendingDashboard = () => {
                 text={'Add or update logo and brand colours'}
                 icon="forwardArrow"
                 ai="flex-start"
-                iconColor={'tertiaryMain'}
+                iconColor={'primaryMain'}
                 mr="6px"
                 isText
               />

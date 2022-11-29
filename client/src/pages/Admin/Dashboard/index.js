@@ -64,7 +64,7 @@ const Dashboard = () => {
           </T.P>
           <S.LinkWrapper mb={isSuperAdmin && '45px'}>
             <TextWithIcon
-              iconColor="primaryMain"
+              iconColor="primaryDark"
               to={`${window.location.origin}/${adminOrg.uniqueSlug}`}
               icon="open"
               mr={isSuperAdmin ? '15px' : '20px'}
@@ -79,7 +79,7 @@ const Dashboard = () => {
               to={R.ADMIN.EDIT_ACCOUNT_DETAILS}
               text="Edit my organisation details"
               icon="forwardArrow"
-              iconColor="primaryMain"
+              iconColor="primaryDark"
             />
           )}
           {!isSuperAdmin && <DashboardLinks />}

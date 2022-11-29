@@ -3,9 +3,9 @@ import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import SingleButton from './SingleButton';
 
 const colorArray = [
-  'primaryMain',
+  'primaryDark',
   'secondaryMain',
-  'tertiaryMain',
+  'primaryMain',
   'neutralMain',
 ];
 const getColor = (index, startingColor) => {

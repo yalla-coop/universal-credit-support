@@ -42,9 +42,9 @@ const SubSections = () => {
     };
   }, [id]);
   const colorArr = [
-    'primaryMain',
+    'primaryDark',
     'secondaryMain',
-    'tertiaryMain',
+    'primaryMain',
     'neutralMain',
   ];
   return (

@@ -8,7 +8,7 @@ import * as S from './style';
 
 const GoBack = ({
   color,
-  iconColor = 'primaryMain',
+  iconColor = 'primaryDark',
   customFn,
   customLink,
   text = 'Go back',

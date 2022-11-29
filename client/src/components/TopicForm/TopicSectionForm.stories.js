@@ -82,7 +82,7 @@ const TopicForm = ({ topic, topicIndex, setTopics }) => {
             icon="add"
             isButton
             mt="9px"
-            iconColor="primaryMain"
+            iconColor="primaryDark"
             handleClick={() =>
               setResources((old) => [...old, { link: '', value: '' }])
             }
@@ -128,7 +128,7 @@ const TopicSectionFormExamples = (args) => {
             icon="add"
             isButton
             mt="33px"
-            iconColor="primaryMain"
+            iconColor="primaryDark"
             handleClick={() =>
               setTopics((old) => [
                 ...old,

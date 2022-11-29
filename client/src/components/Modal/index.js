@@ -5,7 +5,7 @@ import Button from '../Button';
 import * as S from './style';
 import * as T from '../Typography';
 
-const maskStyle = { backgroundColor: 'white', opacity: '0.9' };
+const maskStyle = { backgroundColor: 'primaryTextMain', opacity: '0.9' };
 
 const Modal = ({
   visible,

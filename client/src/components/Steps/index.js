@@ -26,7 +26,7 @@ const renderChild = (isCompleted, title) => {
   return (
     <T.H2
       weight="bold"
-      color={isCompleted ? 'neutralMain' : 'white'}
+      color={isCompleted ? 'neutralMain' : 'primaryTextMain'}
       ta="center"
     >
       {title}
@@ -77,7 +77,7 @@ const Card = forwardRef(
               <TextWithIcon
                 icon="forwardArrow"
                 text="Check here"
-                iconColor="primaryMain"
+                iconColor="primaryDark"
                 color="neutralMain"
                 to={to}
               />

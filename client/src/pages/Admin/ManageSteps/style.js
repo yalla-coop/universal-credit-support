@@ -8,7 +8,7 @@ export const buttonStyle = {
   minHeight: 52,
   color: theme.colors.neutralMain,
   backgroundColor: theme.colors.white,
-  border: `2px solid ${theme.colors.primaryMain}`,
+  border: `2px solid ${theme.colors.primaryDark}`,
   borderRadius: 12,
   fontSize: '1rem',
   fontWeight: 'bold',

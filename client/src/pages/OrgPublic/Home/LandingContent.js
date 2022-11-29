@@ -14,7 +14,7 @@ const LandingContent = () => {
             <img src={Logo} alt="logo" />
           </S.LogoContainer>
           <S.HeaderText>
-            <S.pageTitle ta="center" weight="bold" color="white">
+            <S.pageTitle ta="center" weight="bold" color="primaryTextMain">
               Cost of Living Helper
             </S.pageTitle>
           </S.HeaderText>
@@ -27,9 +27,7 @@ const LandingContent = () => {
           advice and handy tips about what you can do. You can also bookmark
           actions as you look through.
         </S.StyledText>
-        <T.H2 color="black" mb="4">
-          I’m worried about...
-        </T.H2>
+        <T.H2 mb="4">I’m worried about...</T.H2>
       </S.Section>
     </>
   );
