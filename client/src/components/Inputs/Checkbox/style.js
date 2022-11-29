@@ -15,7 +15,8 @@ export const Field = styled.div`
   }
 
   .ant-checkbox-checked .ant-checkbox-inner {
-    background-color: ${({ theme }) => `${theme.colors.white} !important`};
+    background-color: ${({ theme }) =>
+      `${theme.colors.primaryTextMain} !important`};
     border-color: ${({ theme }) => `${theme.colors.secondaryMain} !important`};
     border-radius: 6px;
     border-width: 2px;
@@ -33,7 +34,7 @@ export const Field = styled.div`
   }
 
   .ant-checkbox-inner {
-    background: ${({ theme }) => theme.colors.white};
+    background: ${({ theme }) => theme.colors.primaryTextMain};
     border-color: ${({ theme, error }) =>
       error ? theme.colors.error : theme.colors.gray5};
     width: 24px;

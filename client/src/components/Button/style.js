@@ -11,7 +11,7 @@ export const decideBackground = (variant, theme) => {
     case 'secondary':
       return theme.colors.neutralSurface;
     case 'tertiary':
-      return theme.colors.white;
+      return theme.colors.primaryTextMain;
     default:
       return 'transparent';
   }
@@ -36,14 +36,16 @@ export const Button = styled.button`
     }
   }};
   color: ${({ variant, theme }) =>
-    variant === 'primary' ? theme.colors.white : theme.colors.neutralMain};
+    variant === 'primary'
+      ? theme.colors.primaryTextMain
+      : theme.colors.neutralMain};
   position: relative;
   background: ${({ variant, theme }) => decideBackground(variant, theme)};
   border: 2px solid;
   border-color: ${({ variant, theme }) =>
     variant === 'secondary'
       ? theme.colors.neutralDark
-      : theme.colors.primaryMain};
+      : theme.colors.primaryDark};
   border-radius: 12px;
   font-size: 1rem;
   font-weight: 600;
@@ -65,7 +67,7 @@ export const Loading = styled(Spin)`
   span {
     line-height: 24px;
     margin-left: 10px;
-    color: ${({ theme }) => theme.colors.white};
+    color: ${({ theme }) => theme.colors.primaryTextMain};
   }
 `;
 

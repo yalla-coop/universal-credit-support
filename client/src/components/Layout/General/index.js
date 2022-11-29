@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as S from './style';
-import { useMediaQuery } from 'react-responsive';
 import { usePublicOrg } from '../../../context/public-org';
 import { useAdminOrg } from '../../../context/admin-org';
 import { OrganisationLogo } from '../../../components';

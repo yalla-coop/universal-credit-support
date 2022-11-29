@@ -341,7 +341,7 @@ const StepForm = () => {
             to={R.ADMIN.PREVIEW_STEP}
             text="Preview changes"
             icon="forwardArrow"
-            iconColor="primaryMain"
+            iconColor="primaryDark"
           /> */}
           <Button
             text="Save changes"
@@ -353,7 +353,7 @@ const StepForm = () => {
             to={R.ADMIN.DELETE_STEP}
             text="Delete step"
             icon="close"
-            iconColor="primaryMain"
+            iconColor="primaryDark"
           /> */}
         </G.Col>
       </G.Row>

@@ -35,6 +35,7 @@ const ImageUpload = ({
   maxSize,
   disabled,
   contentInputMissingError,
+  label = 'Click or drag and drop to upload',
   ...rest
 }) => {
   let updatedFile;
@@ -185,7 +186,7 @@ const ImageUpload = ({
         <S.UploadDetails>
           <Icon icon="upload" />
           <T.P mt="2" ta="center" color="neutralMain" weight="bold">
-            Click or drag and drop to upload
+            {label}
           </T.P>
           <T.P color="neutralMain">(jpeg/jpg or png)</T.P>
         </S.UploadDetails>

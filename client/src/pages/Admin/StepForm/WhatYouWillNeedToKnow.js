@@ -53,7 +53,7 @@ const WhatYouWillNeedToKnow = ({ state, setState, errors }) => {
             isButton
             mt="4"
             color="neutralMain"
-            iconColor="primaryMain"
+            iconColor="primaryDark"
             handleClick={() =>
               setState({
                 whatYouWillNeedToKnow: [...state, newItem],

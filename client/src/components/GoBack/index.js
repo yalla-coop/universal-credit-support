@@ -6,7 +6,13 @@ import Icon from '../Icon';
 
 import * as S from './style';
 
-const GoBack = ({ color = 'gray8', customFn, customLink, text, ...props }) => {
+const GoBack = ({
+  color = 'primaryDark',
+  customFn,
+  customLink,
+  text,
+  ...props
+}) => {
   const navigate = useNavigate();
   const goBack = () => {
     if (customLink) {
