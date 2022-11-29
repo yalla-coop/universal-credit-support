@@ -8,6 +8,7 @@ import {
   Inputs as I,
   Button,
   Modal,
+  TextWithIcon,
   Cards,
 } from '../../../components';
 import * as S from './style';
@@ -21,6 +22,7 @@ import { t } from '../../../helpers';
 import { navRoutes } from '../../../constants';
 
 import { organisationTypes } from '../../../constants/data-types';
+import { useNavigate } from 'react-router-dom';
 
 const { Tips } = Cards;
 const { Row, Col } = Grid;
@@ -54,8 +56,10 @@ const EditDetails = () => {
   const { lang } = useLang();
   const { adminOrg, getAdminOrgInfo } = useAdminOrg();
   const submitAttempt = useRef(false);
-  const { user, setUser } = useAuth();
   const [state, setState] = useReducer(reducer, initialState);
+  const { user, setUser } = useAuth();
+  const navigate = useNavigate();
+
   const {
     formData: {
       firstName,
@@ -174,6 +178,10 @@ const EditDetails = () => {
   const handleUniqueLink = (value) => {
     const uniqueSlug = value.trimStart().replace(' ', '-').toLowerCase();
     setFormData({ uniqueSlug });
+  };
+
+  const handleDelete = async () => {
+    navigate(navRoutes.ADMIN.CONFIRM_DELETION);
   };
 
   return (
@@ -330,19 +338,19 @@ const EditDetails = () => {
       </Row>
 
       <Row mt={7}>
+        <Col w={[4, 8, 8]}>
+          <S.Divider />
+        </Col>
         <Col w={[4, 6, 6]}>
-          <T.P isSmall color="neutralDark">
-            {t('accountDelete', lang)}{' '}
-            <T.Link
-              to="mailto:ucdigital@hyde-housing.co.uk"
-              color="neutralDark"
-              weight="bold"
-              underline
-              external
-            >
-              {t('hydeHousing', lang)}
-            </T.Link>
-          </T.P>
+          <TextWithIcon
+            icon="close"
+            iconColor="primaryMain"
+            text="Delete my account"
+            isButton
+            weight="medium"
+            pointer
+            handleClick={handleDelete}
+          />
         </Col>
       </Row>
       <Modal

@@ -3,8 +3,10 @@ DROP TABLE IF EXISTS "organisations" CASCADE;
 CREATE TABLE "organisations" (
   "id" SERIAL PRIMARY KEY,
   "organisation_name" VARCHAR(50),
-  "type_of_organisation" TEXT NOT NULL,
-  "unique_slug" VARCHAR UNIQUE NOT NULL,
+  "type_of_organisation" TEXT,
+  "unique_slug" VARCHAR UNIQUE,
+  "still_need_help_phone_number" VARCHAR(50),
+  "still_need_help_label" VARCHAR(50),
   "logo_id" INTEGER REFERENCES media(id),
   "colors" JSON,
     -- { 
@@ -29,7 +31,17 @@ CREATE TABLE "organisations" (
   "num_of_visitors" INTEGER DEFAULT 0,
 
   "created_at" TIMESTAMP NOT NULL DEFAULT NOW(),
-  "updated_at" TIMESTAMP NOT NULL DEFAULT NOW()
+  "updated_at" TIMESTAMP NOT NULL DEFAULT NOW(),
+    constraint not_null check
+  (
+    CASE 
+      WHEN status != 'DELETED'  THEN (
+          unique_slug IS NOT NULL AND
+          type_of_organisation IS NOT NULL
+        )
+      ELSE true
+    END
+  )
 );
 
 CREATE TRIGGER set_timestamp

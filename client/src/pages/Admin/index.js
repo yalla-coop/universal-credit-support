@@ -10,6 +10,7 @@ import Organisations from './Organisations';
 import EditLandingPage from './EditLandingPage';
 import ManageSteps from './ManageSteps';
 import EditDetails from './EditDetails';
+import ConfirmDeletion from './ConfirmDeletion';
 import Customise from './Customise';
 import Changes from './Changes';
 import EditContent from './EditContent';
@@ -242,6 +243,20 @@ function AdminRouter() {
           element={
             <CustomRoute
               Component={EditDetails}
+              layout="dashboard"
+              showMobileMenu
+              isPrivate
+              allowedRoles={[userRoles.ADMIN, userRoles.SUPER_ADMIN]}
+            />
+          }
+        />
+
+        <Route
+          exact
+          path={navRoutes.ADMIN.CONFIRM_DELETION}
+          element={
+            <CustomRoute
+              Component={ConfirmDeletion}
               layout="dashboard"
               showMobileMenu
               isPrivate
