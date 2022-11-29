@@ -10,7 +10,7 @@ export default {
 };
 
 const Template = (args) => {
-  const [value, setValue] = useState('*Paying for *\n\nhousing');
+  const [value, setValue] = useState('**Paying for **\n\nhousing');
   return (
     <div style={{ width: '300px' }}>
       <MDEditor

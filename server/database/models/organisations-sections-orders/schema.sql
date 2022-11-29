@@ -6,6 +6,7 @@ CREATE TABLE "organisations_sections_orders" (
   "organisation_id" INTEGER REFERENCES organisations(id),
   "position" INTEGER NOT NULL,
   "hidden" BOOLEAN DEFAULT FALSE,
+  "approval_status" section_approval_statuses DEFAULT 'AWAITING_APPROVAL',
   "created_at" TIMESTAMP NOT NULL DEFAULT NOW(),
   "updated_at" TIMESTAMP NOT NULL DEFAULT NOW()
 );

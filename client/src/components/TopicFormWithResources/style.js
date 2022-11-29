@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
-import setMargin from './../../helpers/set-margin';
+import setMargin from '../../helpers/set-margin';
+import * as T from '../Typography';
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -43,4 +44,8 @@ export const CollapseContent = styled.div`
   padding-right: ${({ theme: { spacings } }) => spacings[5]};
   padding-bottom: ${({ theme: { spacings } }) => spacings[5]};
   margin-top: ${({ theme }) => theme.spacings[4]};
+`;
+
+export const ActionText = styled(T.P)`
+  cursor: pointer;
 `;

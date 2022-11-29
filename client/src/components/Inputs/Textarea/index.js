@@ -14,7 +14,6 @@ const Textarea = ({
   color = 'neutralMain',
   w, // width
   disabled,
-  rows,
   optional,
   m, // margins
   ...props
@@ -51,7 +50,7 @@ const Textarea = ({
         onChange={handleChange && onChange}
         color={decideColor()}
         disabled={disabled}
-        rows={rows}
+        autoSize={{ minRows: 3, maxRows: 7 }}
         error={error}
         {...props}
       />

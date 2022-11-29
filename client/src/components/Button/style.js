@@ -74,7 +74,10 @@ export const Loading = styled(Spin)`
   span {
     line-height: 24px;
     margin-left: 10px;
-    color: ${({ theme }) => theme.colors.primaryTextMain};
+    color: ${({ theme, variant }) =>
+      variant === 'secondary'
+        ? theme.colors.neutralMain
+        : theme.colors.primaryTextMain};
   }
 `;
 

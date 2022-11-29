@@ -69,6 +69,7 @@ export default {
   irlenGreen: '#A8F29A',
   irlenYellow: '#EDDD6E',
   irlenRed: '#E0A6AA',
+  blueLink: '#1890ff',
 };
 
 // HERE FOR REFERENCE ONLY

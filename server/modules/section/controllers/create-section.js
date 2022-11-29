@@ -1,13 +1,12 @@
 import * as Sections from '../use-cases';
 
-const updateSection = async (req, res, next) => {
+const createSection = async (req, res, next) => {
   try {
     const { title, topics } = req.body;
-    const { id: userId, organisationId: userOrganisationId } = req.user;
-    const { id } = req.params;
 
-    const section = await Sections.updateSection({
-      id,
+    const { id: userId, organisationId: userOrganisationId } = req.user;
+
+    const section = await Sections.createSection({
       title,
       userId,
       topics,
@@ -20,4 +19,4 @@ const updateSection = async (req, res, next) => {
   }
 };
 
-export default updateSection;
+export default createSection;

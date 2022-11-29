@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import TopicForm from '.';
+import TopicForm from './TopicForm';
 
 export default {
   title: 'Common Components/TopicForm',

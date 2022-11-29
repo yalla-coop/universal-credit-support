@@ -3,7 +3,8 @@ import Welcome from './Welcome';
 import CreateOrganisationDetails, {
   SecondStep as CreateOrganisationDetails2,
 } from './CreateOrganisationDetails';
-import StepForm from './StepForm';
+import SectionForm from './SectionForm';
+import SectionFormThankYou from './SectionForm/ThankYou';
 import Dashboard from './Dashboard';
 import Organisations from './Organisations';
 import EditLandingPage from './EditLandingPage';
@@ -15,7 +16,6 @@ import EditContent from './EditContent';
 import SuccessSignup from './SuccessSignup';
 import CustomiseResources from './CustomiseResources';
 import EditOrganisation from './EditOrganisation';
-
 import { Routes, Route } from 'react-router-dom';
 import { Route as CustomRoute } from './../../components';
 import { navRoutes } from './../../constants';
@@ -100,14 +100,27 @@ function AdminRouter() {
 
         <Route
           exact
-          path={navRoutes.SUPER_ADMIN.EDIT_STEP}
+          path={navRoutes.ADMIN.SECTION}
           element={
             <CustomRoute
-              Component={StepForm}
+              Component={SectionForm}
               layout="dashboard"
               edit
               isPrivate
-              allowedRoles={[userRoles.SUPER_ADMIN]}
+              allowedRoles={[userRoles.SUPER_ADMIN, userRoles.ADMIN]}
+            />
+          }
+        />
+        <Route
+          exact
+          path={navRoutes.ADMIN.SECTION_ADDED}
+          element={
+            <CustomRoute
+              Component={SectionFormThankYou}
+              layout="dashboard"
+              edit
+              isPrivate
+              allowedRoles={[userRoles.SUPER_ADMIN, userRoles.ADMIN]}
             />
           }
         />
@@ -149,7 +162,7 @@ function AdminRouter() {
               layout="dashboard"
               showMobileMenu
               isPrivate
-              allowedRoles={[userRoles.SUPER_ADMIN]}
+              allowedRoles={[userRoles.SUPER_ADMIN, userRoles.ADMIN]}
             />
           }
         />

@@ -4,7 +4,7 @@ const getCommon = async (lng) => {
   const sql = `
   SELECT
     common.id,
-    COALESCE (common_i18n.content_i18n, common.content) content,
+    COALESCE (common_i18n.content_i18n, common.content) AS content,
     common_i18n.language_code
   FROM common
   LEFT OUTER JOIN common_i18n

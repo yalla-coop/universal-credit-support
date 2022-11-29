@@ -33,7 +33,7 @@ const BasicInput = ({
 
   const Component = type === 'password' ? S.PasswordInput : S.Input;
   return (
-    <CS.Field w={w} disabled={disabled} {...m}>
+    <CS.Field w={w} {...m}>
       {label && (
         <CS.Label htmlFor={label} mb={helper ? '1' : '2'}>
           <T.P weight="semi" color={color} m="0">

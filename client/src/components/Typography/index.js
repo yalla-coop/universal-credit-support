@@ -123,4 +123,5 @@ export const Link = styled(AntdLink)`
 
   text-decoration: ${({ underline }) =>
     underline ? 'underline' : 'none'} !important;
+  display: ${({ display }) => display || 'inline'} !important;
 `;

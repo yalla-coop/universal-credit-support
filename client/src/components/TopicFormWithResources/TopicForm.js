@@ -5,10 +5,36 @@ import * as T from '../Typography';
 import TipInput from './TipInput';
 import TextWithIcon from '../TextWithIcon';
 
-const Action = ({ topic, setTopic, topicIndex, setTopics }) => {
+const TopicForm = ({
+  topic,
+  setTopic,
+  topicIndex,
+  removeTopic,
+  errors = {},
+}) => {
   const [expanded, setExpanded] = useState(false);
 
-  const handleSetTips = (tips) => {
+  const setTip = (value, id) => {
+    const tips = topic.tips.map((t) => {
+      if (t.id === id) return { ...t, content: value };
+      return t;
+    });
+    setTopic({ ...topic, tips });
+  };
+
+  const removeTip = (id) => {
+    const tips = topic.tips.filter((t) => t.id !== id);
+    setTopic({ ...topic, tips });
+  };
+
+  const addTip = () => {
+    const largestTipId = topic.tips.reduce((acc, curr) => {
+      if (curr.id > acc) {
+        return curr.id;
+      }
+      return acc;
+    }, 0);
+    const tips = [...topic.tips, { content: '', id: largestTipId + 1 }];
     setTopic({ ...topic, tips });
   };
 
@@ -25,6 +51,7 @@ const Action = ({ topic, setTopic, topicIndex, setTopics }) => {
             label="Title"
             value={topic.title}
             handleChange={(value) => setTopic({ ...topic, title: value })}
+            error={errors?.title}
           />
 
           {!expanded && (
@@ -45,34 +72,32 @@ const Action = ({ topic, setTopic, topicIndex, setTopics }) => {
           <S.CollapseContent>
             <Textarea
               label="Description"
-              value={topic.description}
-              rows="3"
-              handleChange={(value) =>
-                setTopic({ ...topic, description: value })
-              }
+              value={topic.content}
+              handleChange={(value) => setTopic({ ...topic, content: value })}
+              error={errors?.content}
             />
             {topic?.tips?.length > 0 &&
               topic.tips.map((t, index) => {
                 return (
                   <TipInput
-                    key={t + index}
-                    tip={t}
-                    tips={topic.tips}
-                    setTips={handleSetTips}
-                    index={index}
+                    content={t.content}
+                    id={t.id}
+                    setTip={setTip}
+                    removeTip={removeTip}
+                    key={t.id}
+                    error={errors?.tip1}
                   />
                 );
               })}
             {topic?.tips?.length < 2 && (
               <TextWithIcon
-                text="Add another tip"
+                text={topic?.tips?.length > 0 ? 'Add another tip' : 'Add a tip'}
                 icon="add"
                 isButton
                 mt="4"
                 iconColor="primaryDark"
-                handleClick={() => {
-                  handleSetTips([...topic.tips, { content: '' }]);
-                }}
+                handleClick={addTip}
+                error={errors?.tip1}
               />
             )}
           </S.CollapseContent>
@@ -86,19 +111,13 @@ const Action = ({ topic, setTopic, topicIndex, setTopics }) => {
         isButton
         mt="4"
         iconColor="primaryDark"
-        handleClick={() =>
-          setTopics((old) => {
-            return old.filter((topic, idx) => {
-              return idx !== topicIndex;
-            });
-          })
-        }
+        handleClick={() => removeTopic(topic.id)}
         mb={'5'}
         ml="5"
-        ai="left"
+        ai="center"
       />
     </S.Wrapper>
   );
 };
 
-export default Action;
+export default TopicForm;

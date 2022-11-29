@@ -83,15 +83,15 @@ const addTopics = async ({ sections }) => {
     sectionId: payingForHousingPrivateTenant.id,
     position: 4,
     content: {
-      title: 'Speak to your local authority ',
+      title: 'Speak to your local authority',
       content:
         "If you have no money left for basics like heating and food after you've paid rent, your local council have a duty to help you.",
       tip1: `If you are claiming Universal Credit or housing benefit but you are not receiving enough to cover your housing costs you may be able to claim 'Discretionary Housing Payments' from your local council.`,
       resources: [
         {
-          type: 'external',
+          type: 'EXTERNAL',
           label: 'Find local council',
-          url: 'https://www.gov.uk/find-local-council ',
+          url: 'https://www.gov.uk/find-local-council',
         },
       ],
     },
@@ -102,16 +102,16 @@ const addTopics = async ({ sections }) => {
     content: {
       title: 'Seek independent housing advice',
       content:
-        'There are many organisations offering free advice to tenants who are worried about paying rent. Advice is usually given over the phone, and in some cases face-to- face. ',
+        'There are many organisations offering free advice to tenants who are worried about paying rent. Advice is usually given over the phone, and in some cases face-to- face.',
       tip1: `Remember to let your landlord know that you're seeking advice, so that they're aware you trying to resolve your money issues.`,
       resources: [
         {
-          type: 'external',
+          type: 'EXTERNAL',
           label: 'Find out where to get the right advice',
           url: 'https://england.shelter.org.uk/get_help',
         },
         {
-          type: 'external',
+          type: 'EXTERNAL',
           label: 'Citizens Advice',
           url: 'https://www.citizensadvice.org.uk/',
         },
@@ -127,7 +127,7 @@ const addTopics = async ({ sections }) => {
       content:
         "If you're struggling to pay your rent speak to your landlord as soon as possible, even if you haven't missed a payment yet. There are often many things they can do to help you.",
       tip1: "Read letters from your landlord and speak to them on the phone if they call you. They'll look for ways to offer you help and support, and advise you about the steps you can take. They'll be able to refer you to specialist advice if needed.",
-      tip2: 'In order to help, a landlord will often want to know how much money you have available to spend each month. A budget tool can help you work this out. ',
+      tip2: 'In order to help, a landlord will often want to know how much money you have available to spend each month. A budget tool can help you work this out.',
       resources: [
         {
           type: 'CUSTOM',
@@ -181,7 +181,7 @@ const addTopics = async ({ sections }) => {
       tip1: `You can contact your local council to find out more. Your landlord can support you with your application if you need help.`,
       resources: [
         {
-          type: 'external',
+          type: 'EXTERNAL',
           label: 'Find local council',
           url: 'https://www.gov.uk/find-local-council',
         },
@@ -198,12 +198,12 @@ const addTopics = async ({ sections }) => {
       tip1: `Remember to let your landlord know that you're seeking advice, so that they're aware you trying to resolve your money issues.`,
       resources: [
         {
-          type: 'external',
+          type: 'EXTERNAL',
           label: 'Find out where to get the right advice',
           url: 'https://england.shelter.org.uk/get_help',
         },
         {
-          type: 'external',
+          type: 'EXTERNAL',
           label: 'Citizens Advice',
           url: 'https://www.citizensadvice.org.uk/',
         },
@@ -274,12 +274,12 @@ const addTopics = async ({ sections }) => {
       tip1: `Remember to let your mortgage lender know you're seeking advice, so that they are aware you trying to resolve your money issues.`,
       resources: [
         {
-          type: 'external',
+          type: 'EXTERNAL',
           label: 'Find out where to get the right advice',
           url: 'https://england.shelter.org.uk/get_help',
         },
         {
-          type: 'external',
+          type: 'EXTERNAL',
           label: 'Citizens Advice',
           url: 'https://www.citizensadvice.org.uk/',
         },
@@ -295,7 +295,7 @@ const addTopics = async ({ sections }) => {
       content:
         "If you're struggling to pay your rent speak to your mortgage provider as soon as possible, even if you haven't missed a payment yet. There are often many things they can do to help you.",
       tip1: "Read letters from your landlord and mortgage provider, and speak to them on the phone if they call you. They'll look for ways to offer you help and support, and advise you about the steps you can take.",
-      tip2: 'In order to help, your landlord and mortgage provider will often want to know how much money you have available to spend each month. A budget tool can help you work this out. ',
+      tip2: 'In order to help, your landlord and mortgage provider will often want to know how much money you have available to spend each month. A budget tool can help you work this out.',
       resources: [
         {
           type: 'CUSTOM',
@@ -351,12 +351,12 @@ const addTopics = async ({ sections }) => {
       tip1: `Remember to let your mortgage lender and landlord know you are seeking advice, so that they're aware you trying to resolve your money issues.`,
       resources: [
         {
-          type: 'external',
+          type: 'EXTERNAL',
           label: 'Find out where to get the right advice',
           url: 'https://england.shelter.org.uk/get_help',
         },
         {
-          type: 'external',
+          type: 'EXTERNAL',
           label: 'Citizens Advice',
           url: 'https://www.citizensadvice.org.uk/',
         },
@@ -429,7 +429,7 @@ const addTopics = async ({ sections }) => {
       tip2: `If you're receiving certain benefits, you may be eligible for a 'social tariff' for your water, phone and internet provision. It's worth checking with your provider, but it doesn't always work out cheaper than other deals.`,
       resources: [
         {
-          type: 'external',
+          type: 'EXTERNAL',
           label: 'USwitch',
           url: 'https://www.uswitch.com/',
         },
@@ -465,17 +465,17 @@ const addTopics = async ({ sections }) => {
       tip2: "If you have no money for food you may be able to get help from a food bank. To use a food bank you'll need a referral from an organisation supporting you, like a school, a charity, or GP. You can also contact your nearest Citizen Advice, or your local council.",
       resources: [
         {
-          type: 'external',
+          type: 'EXTERNAL',
           label: 'Trussell Trust Foodbanks',
           url: 'https://www.trusselltrust.org/get-help/',
         },
         {
-          type: 'external',
+          type: 'EXTERNAL',
           label: 'Your Local Pantry',
           url: 'https://www.yourlocalpantry.co.uk/',
         },
         {
-          type: 'external',
+          type: 'EXTERNAL',
           label: 'NHS Health Start',
           url: 'https://services.nhsbsa.nhs.uk/apply-for-healthy-start/',
         },
@@ -492,7 +492,7 @@ const addTopics = async ({ sections }) => {
       tip1: `If you're claiming Universal Credit, you may be able to receive an advance payment to cover essential expenses. This is an interest free loan which is paid back from your future Universal Credit payments. Speak to a DWP advisor to apply.`,
       resources: [
         {
-          type: 'external',
+          type: 'EXTERNAL',
           label: 'Living in squeezed income',
           url: 'https://www.moneyhelper.org.uk/en/money-troubles/way-forward/squeezed-income',
         },
@@ -526,7 +526,7 @@ const addTopics = async ({ sections }) => {
       tip2: `You can request a refund for health related costs from the last 3 months at the same time as you apply to the Low Income Scheme.`,
       resources: [
         {
-          type: 'external',
+          type: 'EXTERNAL',
           label: 'NHS Low Income Scheme',
           url: 'https://www.nhs.uk/nhs-services/help-with-health-costs/nhs-low-income-scheme-lis/',
         },
@@ -543,12 +543,12 @@ const addTopics = async ({ sections }) => {
       tip1: `If you're of state pension age or have a disability, you may be eligible for free bus travel. Families on low income may also be entitled to help with transport to school. Contact your local authority for more information.`,
       resources: [
         {
-          type: 'external',
+          type: 'EXTERNAL',
           label: 'Railcards',
           url: 'https://www.railcard.co.uk/',
         },
         {
-          type: 'external',
+          type: 'EXTERNAL',
           label: 'Find Local Council',
           url: 'https://www.gov.uk/find-local-council',
         },
@@ -599,7 +599,7 @@ const addTopics = async ({ sections }) => {
       tip2: `If you're working with a debt advisor, you may be able to access 'Breathing Space' which pauses debt collection and evictions for up to 60 days to give you time to find the right solution.`,
       resources: [
         {
-          type: 'external',
+          type: 'EXTERNAL',
           label: 'Bill Prioritiser',
           url: 'https://www.moneyhelper.org.uk/en/money-troubles/way-forward/bill-prioritiser',
         },
@@ -617,7 +617,7 @@ const addTopics = async ({ sections }) => {
       tip2: `Resist the temptation to throw creditor letters away. Keep them in a safe place as they may contain important information that you need to refer to later.  If you struggle to open or understand letters from your creditors, please speak to a debt advisor; they can often help you go through it all.`,
       resources: [
         {
-          type: 'external',
+          type: 'EXTERNAL',
           label: 'Talking to your creditors',
           url: 'https://www.moneyhelper.org.uk/en/money-troubles/way-forward/talking-to-your-creditor',
         },
@@ -641,7 +641,7 @@ const addTopics = async ({ sections }) => {
       However if you're unable to do this do this, please don't worry. Speak to a debt advisor, they may be able to help you collate this information in other ways.`,
       resources: [
         {
-          type: 'external',
+          type: 'EXTERNAL',
           label: 'Debt Advice Locator',
           url: 'https://www.moneyhelper.org.uk/en/money-troubles/dealing-with-debt/help-if-youre-struggling-with-debt',
         },
@@ -691,7 +691,7 @@ const addTopics = async ({ sections }) => {
       tip1: `Using a price comparison website is a good way to quickly check if you can save money by switching provider of services such as internet, mobile phones and cable TV.`,
       resources: [
         {
-          type: 'external',
+          type: 'EXTERNAL',
           label: 'USw',
           url: 'https://www.uswitch.com/',
         },
@@ -709,17 +709,17 @@ const addTopics = async ({ sections }) => {
       tip2: `Repairing and mending broken and worn items, and recycling or selling unwanted items are great ways of saving both money and the environment. There are  community organisations that can help you mend and repair broken furniture, clothes or electrical items, or pass on unwanted items to someone who need them.`,
       resources: [
         {
-          type: 'external',
+          type: 'EXTERNAL',
           label: 'Money Saving Expert tips on boosting income',
           url: 'https://www.moneysavingexpert.com/family/boost-your-income/',
         },
         {
-          type: 'external',
+          type: 'EXTERNAL',
           label: 'Repair Cafe',
           url: 'https://www.repaircafe.org/',
         },
         {
-          type: 'external',
+          type: 'EXTERNAL',
           label: 'Freecycle',
           url: 'https://www.freecycle.org/find-towns',
         },

@@ -122,10 +122,30 @@ const findUserByResetToken = async (token, client) => {
   return res.rows[0];
 };
 
+const findSuperAdminByOrgUniqueSlug = async (uniqueSlug) => {
+  const sql = `
+    SELECT
+      u.id,
+      u.first_name,
+      u.last_name,
+      u.email,
+      u.organisation_id,
+      o.organisation_name
+    FROM users u
+    LEFT JOIN organisations o ON u.organisation_id = o.id
+    WHERE o.unique_slug = $1 AND u.role = 'SUPER_ADMIN'
+  `;
+  const values = [uniqueSlug];
+
+  const res = await query(sql, values);
+  return res.rows[0];
+};
+
 export {
   findUserByEmail,
   findUserById,
   findUserByResetToken,
   getUsers,
   findUserWithOrgDetails,
+  findSuperAdminByOrgUniqueSlug,
 };

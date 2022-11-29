@@ -1,6 +1,6 @@
 import signup from './signup';
 import login from './login';
-import StepForm from './StepForm';
+import Section from './Section';
 import createUniqueLink from './create-unique-link';
 import editLandingPage from './edit-landing-page';
 import createOrganisationDetails from './create-organisation-details';
@@ -14,7 +14,7 @@ export {
   login,
   createUniqueLink,
   createOrganisationDetails,
-  StepForm,
+  Section,
   editLandingPage,
   editDetails,
   customise,

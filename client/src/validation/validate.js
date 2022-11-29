@@ -1,48 +1,27 @@
-/**
- * change error plain object to nested object
- * @param {*} error error object
- */
-
-const objFormat = (obj) => {
-  const keys = Object.keys(obj);
-  let newKeys = {};
-  let regex = /(\[\d+\])/;
-  keys.forEach((key) => {
-    let matchedKey = key.match(regex);
-    if (matchedKey !== null) {
-      if (!key.includes('.')) {
-        let number = matchedKey[0].match(/(\d+)/)[0];
-        let newKey = key.split('[')[0];
-        newKeys[newKey] = { ...newKeys[newKey], [number]: obj[key] };
-      }
-    } else if (!key.includes('.')) {
-      newKeys[key] = obj[key];
+const convertYupErrorsToNestedObjectRecursive = (objErrors) => {
+  // objErrors in shape of { topics[0].resources[0].label: ['error1', 'error2'] }
+  Object.entries(objErrors).forEach(([key, value]) => {
+    const [parent, ...children] = key.split('.');
+    objErrors[parent] = objErrors[parent] || {};
+    if (children.length) {
+      objErrors[parent][children.join('.')] = value[0];
+      delete objErrors[key];
     }
   });
-  return newKeys;
+  return objErrors;
 };
 
-const handleValidationError = (error) => {
-  const newErrors = {};
-  if (error.inner)
-    error.inner.forEach(({ path, message: errorMessage }) => {
-      if (path && path.includes('.')) {
-        const segments = path.split('.');
-        const [parent, childrenPath] = segments;
-        newErrors[path] = newErrors[path] || {};
+const makeYupErrorsIntoObject = (errors) => {
+  const errorsObject = {};
+  errors.inner.forEach((error) => {
+    if (errorsObject[error.path]) {
+      errorsObject[error.path].push(error.message);
+    } else {
+      errorsObject[error.path] = [error.message];
+    }
+  });
 
-        newErrors[parent] = {
-          ...newErrors[parent],
-          [childrenPath]: errorMessage,
-        };
-      } else {
-        newErrors[path] = errorMessage;
-      }
-    });
-
-  // eslint-disable-next-line no-param-reassign
-  error.inner = objFormat(newErrors);
-  return error;
+  return convertYupErrorsToNestedObjectRecursive(errorsObject);
 };
 
 const validate = (schema, data, { abortEarly = false, ...options } = {}) => {
@@ -53,8 +32,8 @@ const validate = (schema, data, { abortEarly = false, ...options } = {}) => {
     });
     return { data: validData };
   } catch (error) {
-    const errorData = handleValidationError(error);
-    throw errorData;
+    error.inner = makeYupErrorsIntoObject(error);
+    throw error;
   }
 };
 

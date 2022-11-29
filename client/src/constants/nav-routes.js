@@ -36,6 +36,8 @@ const ADMIN = {
   CREATE_ORG_DETAILS_SECOND_STEP: `${admin}/set-organisation/2`,
   ADD_UPDATE_CONTENT: `${admin}/content`,
   SUCCESS_SIGNUP: `${admin}/success-signup`,
+  SECTION: `${admin}/section/:id`,
+  SECTION_ADDED: `${admin}/section-added`,
 };
 
 const SUPER_ADMIN = {

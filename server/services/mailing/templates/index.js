@@ -7,7 +7,9 @@ const templates = {
   },
   [templatesId.ORG_EMAIL_UPDATED]: {
     english: 'TODO: add template id',
-    // other langs to go here
+  },
+  [templatesId.ADMIN_ORG_ADDED_A_NEW_SECTION]: {
+    english: 'TODO: add template id',
   },
 };
 

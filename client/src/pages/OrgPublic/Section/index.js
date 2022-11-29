@@ -30,6 +30,7 @@ const Section = () => {
     const fetchSectionData = async () => {
       const { data, error } = await Sections.getSectionById({
         id,
+        forPublic: true,
       });
       if (error) {
         if (error.statusCode === 404) {

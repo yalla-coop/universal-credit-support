@@ -12,7 +12,7 @@ CREATE TABLE "topics" (
 --   "tip2": "string",
 --   resources: [
 --     {
---       "type": "string", // external, internal
+--       "type": "string", // EXTERNAL, CUSTOM
 --       "lable": "string",
 --       "url": "string"
 --     }
