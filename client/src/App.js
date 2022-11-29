@@ -88,24 +88,6 @@ function App() {
                       />
                     }
                   />
-                </Routes>
-
-                {/* ALL ADMIN PAGES */}
-                <Pages.Admin />
-
-                <Routes>
-                  <Route
-                    exact
-                    path={navRoutes.GENERAL.FORGET_PASSWORD}
-                    element={
-                      <CustomRoute
-                        Component={Pages.ForgotPassword}
-                        layout="splitScreen"
-                        side="left"
-                        gradient="secondary"
-                      />
-                    }
-                  />
                   <Route
                     exact
                     path={navRoutes.GENERAL.RESET_PASSWORD}
