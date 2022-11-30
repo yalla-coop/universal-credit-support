@@ -56,7 +56,7 @@ const ConfirmDeletion = () => {
             Confirm deletion
           </T.H1>
         </Col>{' '}
-        <Col w={[4, 12, 6]}>
+        <Col w={[4, 12, 10]}>
           <T.P color="neutralDark">
             Are you sure you wish to delete your account? This will permanently
             remove your profile, log in and all account details.
@@ -64,7 +64,7 @@ const ConfirmDeletion = () => {
         </Col>
       </Row>
       <Row>
-        <Col w={[4, 10, 6]} mt={6}>
+        <Col w={[4, 12, 8]} mt={6}>
           <T.P mb="2" color="neutralMain">
             Type{' '}
             <span style={{ fontWeight: 'bold' }}>{adminOrg.uniqueSlug}</span> to
@@ -80,7 +80,7 @@ const ConfirmDeletion = () => {
       </Row>
 
       <Row mt={6}>
-        <Col w={[4, 10, 6]} style={{ alignItems: 'flex-end' }}>
+        <Col w={[4, 12, 8]} style={{ alignItems: 'flex-end' }}>
           {httpError && (
             <T.P mb={2} color="error">
               {httpError}

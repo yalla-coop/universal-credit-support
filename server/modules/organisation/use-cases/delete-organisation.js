@@ -1,7 +1,7 @@
 import * as Organisation from '../model';
 
-function deleteOrganisation({ id }) {
+const deleteOrganisation = (id) => {
   return Organisation.updateOrganisationToDeleted(id);
-}
+};
 
 export default deleteOrganisation;
