@@ -25,7 +25,13 @@ const Desktop = ({ dir, showBack, largeText, handleHide }) => {
       <S.DesktopWrapper>
         <S.ButtonWrapper>
           {showBack && (
-            <TextWithIcon icon="backArrow" iconColor="neutralMain" isButton />
+            <TextWithIcon
+              icon="backArrow"
+              iconColor="neutralMain"
+              isButton
+              pointer
+              handleClick={goBack}
+            />
           )}
           <TextWithIcon
             handleClick={() => navigate(R.GENERAL.ACCESSIBILITY)}
@@ -123,7 +129,13 @@ const Tablet = ({ dir, showBack, handleHide }) => {
   const LTR = (
     <S.TabletWrapperLTR showBack={showBack}>
       {showBack && (
-        <TextWithIcon icon="backArrow" iconColor="neutralMain" isButton />
+        <TextWithIcon
+          icon="backArrow"
+          iconColor="neutralMain"
+          isButton
+          pointer
+          handleClick={goBack}
+        />
       )}
       <S.ButtonWrapper>
         <TextWithIcon

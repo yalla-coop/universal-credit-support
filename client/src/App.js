@@ -138,6 +138,7 @@ function App() {
                         <CustomRoute
                           Component={Pages.Accessibility}
                           layout="general"
+                          showBack
                         />
                       }
                     />
