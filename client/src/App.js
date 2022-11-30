@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
-import { ThemeProvider } from '@emotion/react';
-import { Global } from '@emotion/react';
+import { ThemeProvider, Global } from '@emotion/react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import theme, { globalStyle } from './theme';
 import { Route as CustomRoute } from './components';
