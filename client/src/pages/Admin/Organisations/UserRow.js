@@ -31,7 +31,6 @@ const labels = {
 };
 
 const UserRow = ({
-  name,
   email,
   role,
   setUsers,
@@ -40,7 +39,6 @@ const UserRow = ({
   organisation,
   organisationStatus,
   loggedInUser,
-  setLoading,
   signupDate,
 }) => {
   const originalRole = role;
@@ -51,6 +49,7 @@ const UserRow = ({
   const [confirmUpdateStatus, setConfirmUpdateStatus] = useState(false);
   const [confirmDeleteUser, setConfirmDeleteUser] = useState(null);
   const [confirmDelete, setConfirmDelete] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -119,6 +118,7 @@ const UserRow = ({
     if (error) {
       setError(error.message);
     } else {
+      setConfirmUpdateStatus(true);
       setUsers((old) =>
         old.map((user) =>
           user.id === id ? { ...user, organisationStatus: status } : user
@@ -127,8 +127,6 @@ const UserRow = ({
       setError('');
     }
   };
-
-  console.log('submitRole', submitRole);
 
   return (
     <>
@@ -162,7 +160,7 @@ const UserRow = ({
                 setConfirmUpdateRole(true);
               }
             }}
-            disabled={email === loggedInUser?.email}
+            disabled={email === loggedInUser?.email || loading}
           />
         ) : (
           <Dropdown
@@ -172,7 +170,7 @@ const UserRow = ({
             handleChange={(value) => {
               handleUpdateStatus(value);
             }}
-            disabled={email === loggedInUser?.email}
+            disabled={email === loggedInUser?.email || loading}
           />
         )}
       </Col>

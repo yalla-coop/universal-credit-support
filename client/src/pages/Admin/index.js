@@ -15,6 +15,7 @@ import EditContent from './EditContent';
 import SuccessSignup from './SuccessSignup';
 import CustomiseResources from './CustomiseResources';
 import EditOrganisation from './EditOrganisation';
+import ConfirmRejection from './ConfirmRejection';
 
 import { Routes, Route } from 'react-router-dom';
 import { Route as CustomRoute } from './../../components';
@@ -185,6 +186,20 @@ function AdminRouter() {
           element={
             <CustomRoute
               Component={EditOrganisation}
+              layout="dashboard"
+              showMobileMenu
+              isPrivate
+              allowedRoles={[userRoles.SUPER_ADMIN]}
+            />
+          }
+        />
+
+        <Route
+          exact
+          path={navRoutes.SUPER_ADMIN.REJECT_ORGANISATION}
+          element={
+            <CustomRoute
+              Component={ConfirmRejection}
               layout="dashboard"
               showMobileMenu
               isPrivate
