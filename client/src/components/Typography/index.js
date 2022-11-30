@@ -23,8 +23,13 @@ const commonStyle = ({
   ...props
 }) => `
   font-style:${italic ? 'italic' : 'normal'}  !important;
+  font-family: ${({ theme }) => theme.layoutFontFamily || 'inherit'} !important;
   letter-spacing: 0.2px !important;
-  color: ${theme.colors[color] || color || theme.colors.neutralMain} !important;
+  color: ${
+    color === 'neutralDark' && theme.layoutColor
+      ? theme.colors.neutralMain
+      : theme.colors[color] || color || theme.colors.neutralMain
+  } !important;
   text-transform: ${caps ? 'uppercase' : 'initial'} !important;
   text-align: ${ta || 'left'} !important;
 
@@ -39,7 +44,8 @@ const commonStyle = ({
 const Head0 = styled(Title)`
   ${setMargin};
   ${commonStyle};
-  font-family: hero-new-hairline, sans-serif;
+  font-family: ${({ theme }) =>
+    theme.layoutFontFamily || "'new-hero', sans-serif"};
   font-size: 2.5rem !important;
   line-height: auto !important;
   font-weight: ${({ weight }) => (weight ? weights[weight] : '700 !important')};
@@ -54,7 +60,8 @@ export const H0 = (props) => <Head0 {...props} level={1} />;
 const Head1 = styled(Title)`
   ${setMargin};
   ${commonStyle};
-  font-family: hero-new-hairline, sans-serif;
+  font-family: ${({ theme }) =>
+    theme.layoutFontFamily || "'new-hero', sans-serif"};
   font-size: 2rem !important;
   line-height: 44px !important;
   font-weight: ${({ weight }) => (weight ? weights[weight] : '700 !important')};
@@ -69,7 +76,8 @@ export const H1 = (props) => <Head1 {...props} level={1} />;
 const Head2 = styled(Title)`
   ${setMargin};
   ${commonStyle};
-  font-family: hero-new-hairline, sans-serif;
+  font-family: ${({ theme }) =>
+    theme.layoutFontFamily || "'new-hero', sans-serif"};
   font-size: 1.25rem !important;
   line-height: 28px !important;
   font-weight: ${({ weight }) => (weight ? weights[weight] : '600 !important')};
@@ -79,7 +87,8 @@ export const H2 = (props) => <Head2 {...props} level={2} />;
 const Head3 = styled(Title)`
   ${setMargin};
   ${commonStyle};
-  font-family: hero-new-hairline, sans-serif;
+  font-family: ${({ theme }) =>
+    theme.layoutFontFamily || "'new-hero', sans-serif"};
   font-size: 1rem !important;
   line-height: 24px !important;
   font-weight: ${({ weight }) => (weight ? weights[weight] : '600 !important')};
@@ -87,7 +96,9 @@ const Head3 = styled(Title)`
 `;
 export const H3 = (props) => <Head3 {...props} level={3} />;
 
-export const P = styled(({ isSmall, ...props }) => <Paragraph {...props} />)`
+export const P = styled(({ isSmall, ...props }) => {
+  return <Paragraph {...props} />;
+})`
   ${setMargin};
   ${commonStyle};
   line-height: 24px !important;

@@ -74,6 +74,17 @@ const EXTERNAL = {
     'https://github.com/yalla-coop/universal-credit-support/issues/76',
   ACCESSABILITY_GUIDELINES: 'https://webaim.org/resources/contrastchecker/',
   HYDE_EMAIL: 'hydefoundation@hyde-housing.co.uk',
+  COL_EMAIL: 'CoLdigital@hyde-housing.co.uk',
+  CHROME_GOOGLE_SPEAK:
+    'https://chrome.google.com/webstore/detail/voice-in-voice-typing/pjnefijmagpdjfhhkpljicbbpicelgko',
+  VOICE_ALOUD_READER_ANDROID:
+    'https://play.google.com/store/apps/details?id=com.hyperionics.avar&utm_source=allhunan.com',
+  VOICE_ALOUD_READER_APPLE:
+    'https://apps.apple.com/us/app/voice-aloud-reader/id1446876360',
+  APPLE_ACCESSIBILITY:
+    'https://www.apple.com/uk/accessibility/#:~:text=AssistiveTouch%20%2B%20Apple%20Watch,-AssistiveTouch%20for%20Apple&text=Answer%20incoming%20calls%2C%20control%20an,Centre%2C%20Control%20Centre%20and%20more.&text=You%20can%20also%20use%20AssistiveTouch,Control%20settings%20on%20your%20iPhone.',
+  ANDROID_ACCESSIBILITY:
+    'https://support.google.com/accessibility/android/answer/6006564?hl=en',
 };
 
 export { GENERAL, PUBLIC_ORG, EXTERNAL, ADMIN, SUPER_ADMIN };
