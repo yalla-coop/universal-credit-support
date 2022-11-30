@@ -4,11 +4,12 @@ import organisations from './organisations';
 import sections from './sections';
 import contentAuditLog from './content-audit-log';
 import topics from './topics';
-import topicsi18n from './topics-i18n';
+import topicsI18n from './topics-i18n';
 import organisationsSectionsOrders from './organisations-sections-orders';
 import organisationsResources from './organisations-resources';
 import common from './common';
-import commoni18n from './common-i18n';
+import commonI18n from './common-i18n';
+import sectionsI18n from './sections-i18n';
 
 export {
   users,
@@ -17,9 +18,10 @@ export {
   sections,
   contentAuditLog,
   topics,
-  topicsi18n,
+  topicsI18n,
   organisationsSectionsOrders,
   organisationsResources,
   common,
-  commoni18n,
+  commonI18n,
+  sectionsI18n,
 };

@@ -20,9 +20,9 @@ const buildData = async () => {
   createdData.users = await createUsers(createdData);
   createdData.sections = await createSections();
   createdData.topics = await createTopics(createdData);
-  // createdData.topicsi18n = await createTopicsI18n();
+  createdData.topicsI18n = await createTopicsI18n();
   createdData.common = await createCommon();
-  // createdData.commoni18n = await createCommonI18n();
+  createdData.commonI18n = await createCommonI18n();
   createdData.organisationsSectionsOrders = await organisationsSectionsOrders(
     createdData,
   );

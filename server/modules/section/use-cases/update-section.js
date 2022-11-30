@@ -2,6 +2,7 @@ import Boom from '@hapi/boom';
 import * as Sections from '../model';
 import { getClient } from '../../../database/connect';
 import { errorMsgs } from '../../../services/error-handler';
+import { formatTopics } from '../utils';
 
 const updateSection = async ({
   id,
@@ -10,7 +11,7 @@ const updateSection = async ({
   topics,
   userOrganisationId,
 }) => {
-  const topicIdsToUpdate = topics
+  const topicsToUpdate = topics
     .filter((t) => !t.new)
     .map((t) => ({ ...t, new: undefined }));
   const newTopics = topics.filter((t) => t.new);
@@ -26,7 +27,7 @@ const updateSection = async ({
   }
 
   // check if the topic ids are correct
-  topicIdsToUpdate.forEach((t) => {
+  topicsToUpdate.forEach((t) => {
     if (!sectionOrg.topicsIds.includes(t.id)) {
       throw Boom.badImplementation(errorMsgs.NOT_FOUND); // send error 500 to get in sentry
     }
@@ -42,15 +43,18 @@ const updateSection = async ({
     );
 
     await Sections.deleteTopicsBySectionId(
-      { sectionId: id, topicIdsToKeep: topicIdsToUpdate.map((t) => t.id) },
+      { sectionId: id, topicIdsToKeep: topicsToUpdate.map((t) => t.id) },
       client,
     );
 
-    await Sections.createTopics({ sectionId: id, topics: newTopics }, client);
+    await Sections.createTopics(
+      { sectionId: id, topics: formatTopics(newTopics) },
+      client,
+    );
 
     await Promise.all(
-      topicIdsToUpdate.map((t) =>
-        Sections.updateTopicById({ id: t.id, content: t }, client),
+      formatTopics(topicsToUpdate).map((t) =>
+        Sections.updateTopicById({ id: t.id, content: t.content }, client),
       ),
     );
 

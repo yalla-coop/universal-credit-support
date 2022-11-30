@@ -3,10 +3,10 @@ import handleError from './format-error';
 
 const SECTIONS_BASE = '/sections';
 
-const getSections = async ({ options, uniqueSlug, forPublic }) => {
+const getSections = async ({ options, uniqueSlug, lng, forPublic }) => {
   try {
     const { data } = await axios.get(`${SECTIONS_BASE}`, {
-      params: { uniqueSlug, forPublic },
+      params: { uniqueSlug, forPublic, lng },
     });
 
     return { data };
@@ -37,10 +37,10 @@ const updateSectionWithTopics = async ({ options, body, id }) => {
   }
 };
 
-const getSectionById = async ({ options, id, forPublic }) => {
+const getSectionById = async ({ options, id, forPublic, lng }) => {
   try {
     const { data } = await axios.get(`${SECTIONS_BASE}/${id}`, {
-      params: { forPublic },
+      params: { forPublic, lng },
     });
 
     return { data };
@@ -50,10 +50,10 @@ const getSectionById = async ({ options, id, forPublic }) => {
   }
 };
 
-const getSubSections = async ({ options, id, forPublic }) => {
+const getSubSections = async ({ options, id, forPublic, lng }) => {
   try {
     const { data } = await axios.get(`${SECTIONS_BASE}/sub-sections`, {
-      params: { id, forPublic },
+      params: { id, forPublic, lng },
     });
     return { data };
   } catch (error) {
@@ -62,10 +62,10 @@ const getSubSections = async ({ options, id, forPublic }) => {
   }
 };
 
-const getTopics = async ({ options, sectionId, lng }) => {
+const getTopics = async ({ options, sectionId, lng, forPublic }) => {
   try {
     const { data } = await axios.get(`${SECTIONS_BASE}/${sectionId}/topics`, {
-      params: { lng },
+      params: { lng, forPublic },
     });
     return { data };
   } catch (error) {

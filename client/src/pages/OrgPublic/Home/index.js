@@ -15,6 +15,8 @@ import {
 import LandingContent from './LandingContent';
 import HelpButton from '../../../components/HelpButton';
 import * as S from './style';
+import { useLanguage } from '../../../helpers';
+
 const { Col, Row } = Grid;
 
 const Home = () => {
@@ -23,6 +25,7 @@ const Home = () => {
   const [cardsData, setCardsData] = useState([]);
   const { publicOrg } = usePublicOrg();
   const uniqueSlug = publicOrg?.uniqueSlug;
+  const { lng } = useLanguage();
 
   useEffect(() => {
     let mounted = true;
@@ -31,6 +34,7 @@ const Home = () => {
       const { data, error } = await Sections.getSections({
         uniqueSlug,
         forPublic: true,
+        lng,
       });
       if (mounted) {
         if (error) {

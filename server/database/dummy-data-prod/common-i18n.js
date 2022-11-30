@@ -1,17 +1,17 @@
 import { query } from '../connect';
 import * as T from '../../constants';
 
-const createCommonI18n = async ({ commonId, languageCode, contentI18n }) => {
+const createCommonI18n = async ({ commonId, languageCode, content }) => {
   const sql = `INSERT INTO common_i18n (
     common_id,
     language_code,
-    content_i18n
+    content
   ) VALUES (
     $1,
     $2,
     $3
   ) RETURNING *`;
-  const res = await query(sql, [commonId, languageCode, contentI18n]);
+  const res = await query(sql, [commonId, languageCode, content]);
   return res.rows[0];
 };
 
@@ -19,7 +19,7 @@ const addCommonI18n = async () => {
   const commonAR = await createCommonI18n({
     commonId: 1,
     languageCode: T.languageCodes.ARABIC,
-    contentI18n: {
+    content: {
       buttons: {
         readMore: 'اقرأ المزيد',
         seeAdvice: 'انظر النصيحة',

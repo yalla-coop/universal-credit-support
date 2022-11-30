@@ -5,7 +5,7 @@ const createTopicI18n = async ({ topicId, languageCode, content }) => {
     INSERT INTO topics_i18n (
       topic_id,
       language_code,
-      content_i18n
+      content
     )
     VALUES(
       $1,
@@ -25,7 +25,7 @@ const createCommonI18n = async ({ commonId, languageCode, content }) => {
     INSERT INTO common_i18n (
       common_id,
       language_code,
-      content_i18n
+      content
     )
     VALUES(
       $1,
@@ -40,4 +40,23 @@ const createCommonI18n = async ({ commonId, languageCode, content }) => {
   return res.rows[0];
 };
 
-export { createTopicI18n, createCommonI18n };
+const createSectionI18n = async ({ sectionId, languageCode, title }) => {
+  const sql = `
+    INSERT INTO sections_i18n (
+      section_id,
+      language_code,
+      title
+    )
+    VALUES(
+      $1,
+      $2,
+      $3
+    ) RETURNING *
+  `;
+  const values = [sectionId, languageCode, title];
+
+  const res = await query(sql, values);
+  return res.rows[0];
+};
+
+export { createTopicI18n, createCommonI18n, createSectionI18n };

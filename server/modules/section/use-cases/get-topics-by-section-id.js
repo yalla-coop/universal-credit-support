@@ -2,23 +2,29 @@ import * as Section from '../model';
 import * as Translation from '../../translations/model';
 import translateContent from '../../../services/translation/translate-content';
 
-const getTopicsBySectionId = async ({ id, lng }) => {
-  const topics = await Section.findTopicsBySectionId(id, lng);
+const getTopicsBySectionId = async ({ id, lng, forPublic }) => {
+  if (!forPublic) {
+    const topics = await Section.findTopicsBySectionId(id);
+    return topics;
+  }
+
+  const topics = await Section.findTopicsWithTranslationBySectionId(id, lng);
 
   const topicsT = await translateContent({
     lng,
     contentArray: topics,
   });
 
-  await Promise.all(
-    topicsT.map(async (c) => {
+  Promise.all(
+    topicsT.map((c) => {
       if (!c.isTranslated) {
-        await Translation.createTopicI18n({
+        return Translation.createTopicI18n({
           topicId: c.id,
           languageCode: c.languageCode,
           content: c.content,
         });
       }
+      return Promise.resolve();
     }),
   );
 
@@ -32,16 +38,17 @@ const getTopicsBySectionId = async ({ id, lng }) => {
         resources: Object.values(topicT.content.resources).map(
           (resource, resourceIndex) => {
             const prevResource =
-              topics[topicTIndex].content.resources[resourceIndex];
+              topics[topicTIndex].englishContent.resources[resourceIndex];
             if (prevResource.key) {
               return {
                 type: prevResource.type,
-                key: prevResource.key && prevResource.key,
+                key: prevResource.key,
+                url: prevResource.url,
               };
             }
             return {
               label: resource.label,
-              url: resource.url,
+              url: prevResource.url,
               type: prevResource.type,
             };
           },

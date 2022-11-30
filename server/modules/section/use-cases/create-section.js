@@ -5,7 +5,7 @@ import * as Users from '../../user/model';
 import sendEmail from '../../../services/mailing';
 import * as templatesId from '../../../services/mailing/templates/templates-constants';
 import { appLinks } from '../../../constants';
-
+import { formatTopics } from '../utils';
 import { getClient } from '../../../database/connect';
 import { errorMsgs } from '../../../services/error-handler';
 
@@ -25,7 +25,10 @@ const createSection = async ({ title, userId, topics, userOrganisationId }) => {
       client,
     );
 
-    await Sections.createTopics({ sectionId: section.id, topics }, client);
+    await Sections.createTopics(
+      { sectionId: section.id, topics: formatTopics(topics) },
+      client,
+    );
 
     await Sections.createOrganisationSectionOrder(
       { sectionId: section.id, organisationId: userOrganisationId },

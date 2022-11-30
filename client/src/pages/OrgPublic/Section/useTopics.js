@@ -10,6 +10,7 @@ const useTopics = (id, lng, resources) => {
       const { data, error } = await Sections.getTopics({
         sectionId: id,
         lng,
+        forPublic: true,
       });
       if (error) {
         message.error('Something went wrong, please try again later');

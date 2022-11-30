@@ -1,17 +1,17 @@
 import { query } from '../connect';
 import * as T from '../../constants';
 
-const createTopicsI18n = async ({ topicId, languageCode, contentI18n }) => {
+const createTopicsI18n = async ({ topicId, languageCode, content }) => {
   const sql = `INSERT INTO topics_i18n (
     topic_id,
     language_code,
-    content_i18n
+    content
   ) VALUES (
     $1,
     $2,
     $3
   ) RETURNING *`;
-  const res = await query(sql, [topicId, languageCode, contentI18n]);
+  const res = await query(sql, [topicId, languageCode, content]);
   return res.rows[0];
 };
 
@@ -19,7 +19,7 @@ const addTopicsI18n = async () => {
   const payingForHousingPrivateTenantTopic1AR = await createTopicsI18n({
     topicId: 1,
     languageCode: T.languageCodes.ARABIC,
-    contentI18n: {
+    content: {
       tip1: 'اقرأ الرسائل من المالك وتحدث معهم عبر الهاتف إذا اتصلوا بك. أخبر مالك العقار أنك تحصل على المشورة ، وأنك ستدفع بالكامل عندما يمكنك ذلك. يمكن أن يساعدك مستشار الديون في التفاوض مع المالك.',
       tip2: 'من أجل المساعدة ، غالبًا ما يرغب المالك في معرفة مقدار المال المتاح لديك لإنفاقه كل شهر. يمكن أن تساعدك أداة الميزانية في حل هذا الأمر.',
       title: 'تحدث إلى مالك العقار',
@@ -38,7 +38,7 @@ const addTopicsI18n = async () => {
   const payingForHousingPrivateTenantTopic1FR = await createTopicsI18n({
     topicId: 1,
     languageCode: T.languageCodes.FRENCH,
-    contentI18n: {
+    content: {
       title: 'Parlez à votre propriétaire',
       content:
         "Si vous avez du mal à payer votre loyer, parlez-en à votre propriétaire dès que possible, même si vous n'avez pas encore manqué un paiement. Il y a souvent beaucoup de choses qu'ils peuvent faire pour vous aider.",

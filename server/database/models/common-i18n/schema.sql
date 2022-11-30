@@ -2,9 +2,9 @@ DROP TABLE IF EXISTS "common_i18n" CASCADE;
 
 CREATE TABLE "common_i18n" (
   "id" SERIAL PRIMARY KEY,
-  "common_id" INTEGER REFERENCES common(id),
+  "common_id" INTEGER NOT NULL REFERENCES common(id) ON DELETE CASCADE,
   "language_code" language_codes NOT NULL,
-  "content_i18n" JSONB,
+  "content" JSONB,
 -- {
 --   "title": "string",
 --   "content": "string",

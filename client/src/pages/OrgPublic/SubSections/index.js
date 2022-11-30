@@ -7,6 +7,7 @@ import PageHeader from '../../../components/PageHeader';
 import GeneralPaddingSection from '../../../components/Layout/GeneralPaddingSection';
 import { navRoutes } from '../../../constants';
 import { usePublicOrg } from '../../../context/public-org';
+import { useLanguage } from '../../../helpers';
 
 import * as S from './style';
 const { Col, Row } = Grid;
@@ -14,6 +15,7 @@ const { Col, Row } = Grid;
 const SubSections = () => {
   const [data, setData] = useState({});
   const { publicOrg, setPageTitle } = usePublicOrg();
+  const { lng } = useLanguage();
 
   const { id } = useParams();
 
@@ -24,6 +26,7 @@ const SubSections = () => {
       const { data: _data, error } = await Sections.getSubSections({
         id,
         forPublic: true,
+        lng,
       });
       if (mounted) {
         if (error) {

@@ -25,6 +25,34 @@ const initialState = {
   loading: false,
 };
 
+// to send the same body in the edit and create requests
+const formatTopics = (_topics) => {
+  return _topics.map((t) => ({
+    id: t.id,
+    content: {
+      title: t.title,
+      content: t.content,
+      resources: t.resources.map((r) => {
+        if (r.type === 'CUSTOM') {
+          return {
+            category: r.category,
+            key: r.key,
+            type: r.type,
+          };
+        }
+        return {
+          label: r.label,
+          url: r.url,
+          type: 'EXTERNAL',
+        };
+      }),
+      tip1: t.tips[0]?.content,
+      tip2: t.tips[1]?.content,
+    },
+    new: t.new,
+  }));
+};
+
 function reducer(state, newState) {
   let value = newState;
   if (typeof newState === 'function') {
@@ -77,6 +105,7 @@ const SectionForm = () => {
     const fetchTopics = async () => {
       const { data, error } = await Sections.getTopics({
         sectionId: id,
+        forPublic: false,
       });
       if (error) {
         return setState({ httpError: error.message });
@@ -156,28 +185,7 @@ const SectionForm = () => {
       id: id,
       body: {
         title,
-        topics: topics.map((t) => ({
-          id: t.id,
-          title: t.title,
-          content: t.content,
-          resources: t.resources.map((r) => {
-            if (r.type === 'CUSTOM') {
-              return {
-                category: r.category,
-                key: r.key,
-                type: r.type,
-              };
-            }
-            return {
-              label: r.label,
-              url: r.url,
-              type: 'EXTERNAL',
-            };
-          }),
-          tip1: t.tips[0]?.content,
-          tip2: t.tips[1]?.content,
-          new: t.new,
-        })),
+        topics: formatTopics(topics),
       },
     });
 
@@ -206,16 +214,7 @@ const SectionForm = () => {
     const { error } = await Sections.createSectionWithTopics({
       body: {
         title,
-        topics: topics.map((t) => ({
-          title: t.title,
-          content: t.content,
-          resources: t.resources.map((r) => ({
-            label: r.label,
-            url: r.url,
-          })),
-          tip1: t.tips[0]?.content,
-          tip2: t.tips[1]?.content,
-        })),
+        topics: formatTopics(topics),
       },
     });
 

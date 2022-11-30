@@ -31,6 +31,7 @@ const Section = () => {
       const { data, error } = await Sections.getSectionById({
         id,
         forPublic: true,
+        lng,
       });
       if (error) {
         if (error.statusCode === 404) {
