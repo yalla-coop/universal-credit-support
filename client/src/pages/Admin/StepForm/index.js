@@ -15,6 +15,8 @@ import GeneralTips from './GeneralTips';
 import { StepForm as validate } from '../../../validation/schemas';
 import { Steps } from '../../../api-calls';
 import { whereDoYouNeedToGoTypes } from '../../../constants/data-types';
+import { navRoutes } from '../../../constants';
+import { useAdminOrg } from '../../../context/admin-org';
 
 const initialState = {
   isOptional: false,
@@ -47,6 +49,8 @@ function reducer(state, newState) {
 
 const StepForm = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const saveForPreview = useRef(false);
+  const { adminOrg } = useAdminOrg();
 
   const submitAttempt = useRef(false);
   const [state, setState] = useReducer(reducer, initialState);
@@ -156,10 +160,21 @@ const StepForm = () => {
     if (error) {
       setState({ httpError: error.message });
     } else {
-      setIsModalVisible(true);
+      if (saveForPreview.current) {
+        window.open(
+          navRoutes.GENERAL.STEP_ORG.replace(
+            ':uniqueSlug',
+            adminOrg.uniqueSlug
+          ).replace(':id', stepId),
+          '_blank'
+        );
+      } else {
+        setIsModalVisible(true);
+      }
       // after that the user should be directed to its dashboard
       // history.push(R.ADMIN.HOME);
     }
+    saveForPreview.current = false;
   };
 
   const handleSubmit = (e) => {
@@ -337,24 +352,26 @@ const StepForm = () => {
           </G.Col>
         ) : null}
         <G.Col w={[4, 6, 4]}>
-          {/* <TextWithIcon
-            to={R.ADMIN.PREVIEW_STEP}
-            text="Preview changes"
-            icon="forwardArrow"
-            iconColor="primaryDark"
-          /> */}
           <Button
-            text="Save changes"
+            text="Save"
             handleClick={handleSubmit}
             mb="4"
             mt="4"
+            loading={state.loading}
           />
-          {/* <TextWithIcon
-            to={R.ADMIN.DELETE_STEP}
-            text="Delete step"
-            icon="close"
-            iconColor="primaryDark"
-          /> */}
+        </G.Col>
+        <G.Col w={[4, 6, 4]}>
+          <Button
+            text="Save and preview"
+            handleClick={(e) => {
+              saveForPreview.current = true;
+              handleSubmit(e);
+            }}
+            variant="secondary"
+            mb="4"
+            mt="4"
+            loading={state.loading}
+          />
         </G.Col>
       </G.Row>
       <Modal

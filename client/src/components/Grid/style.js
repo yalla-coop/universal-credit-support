@@ -32,8 +32,7 @@ export const Col = styled('div')`
   flex-shrink: 0;
   position: relative;
   width: 100%;
-  min-height: 1;
-  height: 100%;
+  height: auto;
   flex-wrap: wrap;
   flex-direction: ${({ dir }) => dir || 'row'};
   flex-basis: ${({ theme, c3 }) =>
