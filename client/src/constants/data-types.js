@@ -71,16 +71,16 @@ export const stages = {
 };
 
 export const languageCodes = {
-  English: 'EN',
-  French: 'FR',
-  German: 'DE',
-  Spanish: 'ES',
-  Urdu: 'UR',
-  Italian: 'IT',
-  Polish: 'PL',
-  Hindi: 'HI',
-  Russian: 'RU',
-  Arabic: 'AR',
-  Portuguese: 'PT',
-  Welsh: 'CY',
+  English: 'en',
+  French: 'fr',
+  German: 'de',
+  Spanish: 'es',
+  Urdu: 'ur',
+  Italian: 'it',
+  Polish: 'pl',
+  Hindi: 'hi',
+  Russian: 'ru',
+  Arabic: 'ar',
+  Portuguese: 'pt',
+  Welsh: 'cy',
 };

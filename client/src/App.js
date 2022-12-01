@@ -12,6 +12,7 @@ import { AuthProvider } from './context/auth';
 import { PublicOrgProvider } from './context/public-org';
 import { createBrowserHistory } from 'history';
 import AccessibilityProvider from './context/accessibility';
+import { CommonProvider } from './context/common';
 // import CookieBot from 'react-cookiebot';
 
 import 'antd/dist/antd.css';
@@ -28,10 +29,10 @@ function App() {
     <div className="app">
       <Global styles={globalStyle} />
       <ThemeProvider theme={theme}>
-        <LangProvider>
-          <AccessibilityProvider>
-            <StepsProvider>
-              <AuthProvider>
+        <AccessibilityProvider>
+          <StepsProvider>
+            <AuthProvider>
+              <CommonProvider>
                 <Router basename={process.env.PUBLIC_URL}>
                   <ScrollToTop />
                   <Routes>
@@ -144,10 +145,10 @@ function App() {
                     />
                   </Routes>
                 </Router>
-              </AuthProvider>
-            </StepsProvider>
-          </AccessibilityProvider>
-        </LangProvider>
+              </CommonProvider>
+            </AuthProvider>
+          </StepsProvider>
+        </AccessibilityProvider>
         {/* <CookieBot domainGroupId={domainGroupId} /> */}
       </ThemeProvider>
     </div>

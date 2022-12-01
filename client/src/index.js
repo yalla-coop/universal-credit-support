@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import * as Sentry from '@sentry/react';
 import ReactGA from 'react-ga';
 import { BrowserTracing } from '@sentry/tracing';
-
+import './i18n';
 // import ReactGA from 'react-ga';
 import ErrorBoundary from './ErrorBoundary';
 

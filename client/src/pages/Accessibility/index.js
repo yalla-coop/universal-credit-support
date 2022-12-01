@@ -1,5 +1,4 @@
 import GeneralPaddingSection from '../../components/Layout/GeneralPaddingSection';
-
 import {
   Typography as T,
   Grid,
@@ -10,8 +9,9 @@ import {
 import { navRoutes as R } from '../../constants';
 import { useAccessibility } from '../../context/accessibility';
 import OverlayColor from './OverlayColor';
-
 import * as S from './style';
+import { useTranslation } from 'react-i18next';
+import { common } from '../../constants';
 
 const { Col, Row } = Grid;
 
@@ -23,6 +23,7 @@ const fontsOptions = [
 ];
 
 const Accessibility = () => {
+  const { t } = useTranslation();
   const { isFontLarge, setIsFontLarge, layoutFontFamily, setLayoutFontFamily } =
     useAccessibility();
 
@@ -31,22 +32,37 @@ const Accessibility = () => {
     setLayoutFontFamily(value);
   };
 
+  const increaseTextSize = t(
+    'common.buttons.increaseTextSize',
+    common.buttons.increaseTextSize
+  );
+  const decreaseTextSize = t(
+    'common.buttons.decreaseTextSize',
+    common.buttons.decreaseTextSize
+  );
+
   return (
     <GeneralPaddingSection>
       <Row jc="space-between">
         <Col w={[4, 12, 8]} dir="column" ai="flex-start">
-          <T.H1 mtM="2">Accessibility</T.H1>
+          <T.H1 mtM="2">
+            {t(
+              'common.section.accessibility.title',
+              common.section.accessibility.title
+            )}
+          </T.H1>
           <T.P mt="5">
-            Accessibility on this website is guided by government standards and
-            the Web Content Accessibility Guidelines WCAG are widely accepted as
-            the international standard for accessibility on the web.
+            {t(
+              'common.section.accessibility.description1',
+              common.section.accessibility.description1
+            )}
           </T.P>
-          <T.P mt="5" mtT="0">
-            Whilst we aim to make this website accessible to all users and
-            achieve a conformance level ‘AAA’; we continually work with
-            stakeholders to ensure that conformance level ‘A’ is adhered to as a
-            minimum.
-          </T.P>{' '}
+          <T.P mt="5" mtM="0">
+            {t(
+              'common.section.accessibility.description2',
+              common.section.accessibility.description2
+            )}
+          </T.P>
           <S.Wrapper>
             <C.Tips
               mt="5"
@@ -54,16 +70,21 @@ const Accessibility = () => {
               style={{ maxWidth: '300px', width: '100%' }}
               tips={[
                 <T.H3 color="white">
-                  Tip! If you experience any accessibility issue on this site or
-                  have any comment, please{' '}
+                  {t(
+                    'common.section.accessibility.tip1',
+                    common.section.accessibility.tip1
+                  )}{' '}
                   <T.Link
-                    to={`mailto:${R.EXTERNAL.HYDE_EMAIL}`}
+                    to={`mailto:${R.EXTERNAL.COL_EMAIL}`}
                     color="white"
                     external
                     underline
                     weight="semi"
                   >
-                    contact us
+                    {t(
+                      'common.section.accessibility.contactUs',
+                      common.section.accessibility.contactUs
+                    )}
                   </T.Link>{' '}
                   .
                 </T.H3>,
@@ -77,8 +98,10 @@ const Accessibility = () => {
               style={{ maxWidth: '300px', width: '100%' }}
               tips={[
                 <T.H3 color="secondaryMain">
-                  Tip! There are many accessibility features on devices, which
-                  can be found on links such as{' '}
+                  {t(
+                    'common.section.accessibility.tip2',
+                    common.section.accessibility.tip2
+                  )}{' '}
                   <T.Link
                     to={`mailto:${R.EXTERNAL.APPLE_ACCESSIBILITY}`}
                     color="secondaryMain"
@@ -86,9 +109,12 @@ const Accessibility = () => {
                     underline
                     weight="semi"
                   >
-                    Apple accessability features
+                    {t(
+                      'common.section.accessibility.appleAccessibility',
+                      common.section.accessibility.appleAccessibility
+                    )}{' '}
                   </T.Link>{' '}
-                  and{' '}
+                  {t('common.words.and', common.words.and)}{' '}
                   <T.Link
                     to={`mailto:${R.EXTERNAL.ANDROID_ACCESSIBILITY}`}
                     color="secondaryMain"
@@ -96,7 +122,10 @@ const Accessibility = () => {
                     underline
                     weight="semi"
                   >
-                    Android accessibility
+                    {t(
+                      'common.section.accessibility.androidAccessibility',
+                      common.section.accessibility.androidAccessibility
+                    )}{' '}
                   </T.Link>{' '}
                   .
                 </T.H3>,
@@ -125,8 +154,11 @@ const Accessibility = () => {
       </Row>
       <Row jc="space-between">
         <Col w={[4, 8, 7]}>
-          <T.H2 mt="8" mtT="0">
-            Adjust Text Size
+          <T.H2 mt="8" mtM="6">
+            {t(
+              'common.section.accessibility.adjustTextSize',
+              common.section.accessibility.adjustTextSize
+            )}
           </T.H2>
           <S.Wrapper>
             <Button
@@ -145,9 +177,7 @@ const Accessibility = () => {
               }}
               variant="primary"
               disabled={false}
-              text={
-                isFontLarge ? '- Decrease text size' : '+ Increase text size'
-              }
+              text={isFontLarge ? decreaseTextSize : increaseTextSize}
               type="submit"
               mt={4}
             />
@@ -158,7 +188,10 @@ const Accessibility = () => {
               style={{ width: '100%' }}
               tips={[
                 <T.P color="neutralMain" weight="semi">
-                  Tip! Click increase text size by 25% (e.g. 16px to 20px)
+                  {t(
+                    'common.section.accessibility.tip2',
+                    common.section.accessibility.tip2
+                  )}
                 </T.P>,
               ]}
               startingColor={3}
@@ -170,7 +203,10 @@ const Accessibility = () => {
           <S.ShowInDesktop>
             <S.fontInputWrapper>
               <I.Dropdown
-                label="Change font"
+                label={t(
+                  'common.section.accessibility.changeFont',
+                  common.section.accessibility.changeFont
+                )}
                 options={fontsOptions}
                 selected={layoutFontFamily}
                 handleChange={handleSelect}
@@ -183,27 +219,35 @@ const Accessibility = () => {
       <Row mt="4">
         <Col w={[4, 12, 8]}>
           <T.H3 color="neutralMain" weight="bold">
-            Internet Explorer
+            {t(
+              'common.section.accessibility.internetExplorerTitle',
+              common.section.accessibility.internetExplorerTitle
+            )}
           </T.H3>
         </Col>
         <Col w={[4, 12, 8]} mt="2" mb="4">
           <T.P color="neutralDark">
-            Go to “View” on the menu bar &gt; Select text size / zoom
+            {t(
+              'common.section.accessibility.internetExplorerDescription',
+              common.section.accessibility.internetExplorerDescription
+            )}
           </T.P>
         </Col>
 
         <Col w={[4, 12, 8]}>
           <T.H3 color="neutralMain" weight="bold">
-            Firefox
+            {t(
+              'common.section.accessibility.firefoxTitle',
+              common.section.accessibility.firefoxTitle
+            )}
           </T.H3>
         </Col>
         <Col w={[4, 12, 8]} mt="2">
           <T.P color="neutralDark">
-            Go to “View” on the menu bar &gt; Select text size / zoom.
-            Alternatively hold down the “Ctrl” button on your keyboard and press
-            the plus (+) key to increase text size. To reduce the latter hold
-            down the “Ctrl” button and press the minus (-) key. Please note that
-            the above settings may differ depending on the browser version.
+            {t(
+              'common.section.accessibility.firefoxDescription',
+              common.section.accessibility.firefoxDescription
+            )}
           </T.P>
         </Col>
         <S.HideInDesktop>
@@ -213,7 +257,10 @@ const Accessibility = () => {
           <Col w={[4, 8, 12]}>
             <S.fontInputWrapper>
               <I.Dropdown
-                label="Change font"
+                label={t(
+                  'common.section.accessibility.textToSpeechTitle',
+                  common.section.accessibility.textToSpeechTitle
+                )}
                 options={fontsOptions}
                 selected={layoutFontFamily}
                 handleChange={(selectValue) => setLayoutFontFamily(selectValue)}
@@ -227,21 +274,28 @@ const Accessibility = () => {
         </S.HideInDesktop>
         <Col w={[4, 12, 8]} mt="8" mtT="0">
           <T.H2 color="black" weight="bold">
-            Text To Speech
+            {t(
+              'common.section.accessibility.textToSpeechTitle',
+              common.section.accessibility.textToSpeechTitle
+            )}
           </T.H2>
         </Col>
 
         <Col w={[4, 12, 8]} mt="3">
           <T.P color="neutralDark">
-            Many computers and mobile devices today have built in text-to-speech
-            software. Here are guides for each of the major browsers and
-            devices:
+            {t(
+              'common.section.accessibility.textToSpeechDescription',
+              common.section.accessibility.textToSpeechDescription
+            )}
           </T.P>
         </Col>
 
         <Col w={[4, 12, 8]} mt="4">
           <T.H3 color="neutralMain" weight="bold">
-            Chrome
+            {t(
+              'common.section.accessibility.chromeTitle',
+              common.section.accessibility.chromeTitle
+            )}
           </T.H3>
         </Col>
         <Col w={[4, 12, 8]} mt="2">
@@ -252,27 +306,41 @@ const Accessibility = () => {
               color="neutralMain"
               to={R.EXTERNAL.CHROME_GOOGLE_SPEAK}
             >
-              Click here to download Google Speak
+              {t(
+                'common.section.accessibility.googleSpeak',
+                common.section.accessibility.googleSpeak
+              )}
             </T.Link>{' '}
-            and select the Add to Chrome button
+            {t(
+              'common.section.accessibility.addSpeakButton',
+              common.section.accessibility.addSpeakButton
+            )}
           </T.P>
         </Col>
 
         <Col w={[4, 12, 8]} mt="4">
           <T.H3 color="neutralMain" weight="bold">
-            Windows Edge
+            {t(
+              'common.section.accessibility.windowsEdgeTitle',
+              common.section.accessibility.windowsEdgeTitle
+            )}
           </T.H3>
         </Col>
         <Col w={[4, 12, 8]} mt="2">
           <T.P color="neutralDark">
-            Open the Edge browser and then click on Read Aloud Option or on your
-            keyboard press Ctrl + Shift + U
+            {t(
+              'common.section.accessibility.windowsEdgeDescription',
+              common.section.accessibility.windowsEdgeDescription
+            )}
           </T.P>
         </Col>
 
         <Col w={[4, 12, 8]} mt="4">
           <T.H3 color="neutralMain" weight="bold">
-            Android Apps
+            {t(
+              'common.section.accessibility.androidApps',
+              common.section.accessibility.androidApps
+            )}
           </T.H3>
         </Col>
         <Col w={[4, 12, 8]} mt="2">
@@ -283,15 +351,24 @@ const Accessibility = () => {
               color="neutralMain"
               to={R.EXTERNAL.VOICE_ALOUD_READER_ANDROID}
             >
-              Click here to download Read Aloud
+              {t(
+                'common.section.accessibility.downloadReadAloud',
+                common.section.accessibility.downloadReadAloud
+              )}
             </T.Link>{' '}
-            for Android phones or tablets
+            {t(
+              'common.section.accessibility.forAndroid',
+              common.section.accessibility.forAndroid
+            )}
           </T.P>
         </Col>
 
         <Col w={[4, 12, 8]} mt="4">
           <T.H3 color="neutralMain" weight="bold">
-            Apple
+            {t(
+              'common.section.accessibility.appleTitle',
+              common.section.accessibility.appleTitle
+            )}
           </T.H3>
         </Col>
         <Col w={[4, 12, 8]} mt="2">
@@ -302,10 +379,15 @@ const Accessibility = () => {
               color="neutralMain"
               to={R.EXTERNAL.VOICE_ALOUD_READER_APPLE}
             >
-              Click here to download Voice Aloud Reader for Apple devices.
+              {t(
+                'common.section.accessibility.downloadVoiceAloud',
+                common.section.accessibility.downloadVoiceAloud
+              )}
             </T.Link>{' '}
-            Choose your device when you download. Or go to your Apple App store
-            and search Voice Aloud Reader
+            {t(
+              'common.section.accessibility.searchVoiceAloudReader',
+              common.section.accessibility.searchVoiceAloudReader
+            )}
           </T.P>
         </Col>
       </Row>

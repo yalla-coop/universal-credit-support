@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { message } from 'antd';
-
+import { useTranslation } from 'react-i18next';
 import { Typography as T } from '../../components';
 import { LandingPage } from '../../api-calls';
 import { t } from '../../helpers';
@@ -26,7 +26,8 @@ const formatText = (text) => {
 };
 
 const LandingContent = ({ uniqueSlug }) => {
-  const { lang } = useLang();
+  const { i18n, t } = useTranslation();
+  const { language: lng } = i18n;
   const { publicOrg } = usePublicOrg();
   const [landingContent, setLandingContent] = useState({});
   const [fetchError, setFetchError] = useState('');
@@ -35,10 +36,10 @@ const LandingContent = ({ uniqueSlug }) => {
     let mounted = true;
     async function fetchData() {
       const hideMessage = message.loading('Loading...');
-      const { data, error } = await LandingPage.getLandingPageContent({});
+      const { data, error } = await LandingPage.getLandingPageContent({ lng });
       if (mounted) {
         if (error) {
-          setFetchError(t(`generalError`, lang));
+          setFetchError(t(`generalError`, lng));
         } else {
           setLandingContent(data);
         }
@@ -50,7 +51,16 @@ const LandingContent = ({ uniqueSlug }) => {
     return () => {
       mounted = false;
     };
-  }, [lang]);
+  }, [lng]);
+
+  i18n.addResourceBundle(lng, 'landingContent', {
+    landingContent,
+  });
+
+  const _landingContent = t('landingContent', {
+    ns: 'landingContent',
+    returnObjects: true,
+  });
 
   return (
     <>
@@ -62,14 +72,14 @@ const LandingContent = ({ uniqueSlug }) => {
             <T.P color="error">{fetchError}</T.P>
           ) : (
             <T.H2 weight="bold" color="primaryTextMain">
-              {landingContent.headline}
+              {_landingContent.headline}
             </T.H2>
           )}
         </S.HeaderText>
       </S.PageHead>
       <S.Section>
-        {formatText(landingContent.subtitle)}{' '}
-        <S.StyledText mb="3">{landingContent.instructions}</S.StyledText>
+        {formatText(_landingContent.subtitle)}{' '}
+        <S.StyledText mb="3">{_landingContent.instructions}</S.StyledText>
       </S.Section>
     </>
   );
