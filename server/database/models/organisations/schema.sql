@@ -43,7 +43,7 @@ CREATE TABLE "organisations" (
 
   "created_at" TIMESTAMP NOT NULL DEFAULT NOW(),
   "updated_at" TIMESTAMP NOT NULL DEFAULT NOW(),
-    constraint not_null check
+    CONSTRAINT not_null CHECK
   (
     CASE
       WHEN status != 'DELETED'  THEN (
