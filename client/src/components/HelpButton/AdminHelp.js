@@ -14,7 +14,7 @@ const AdminHelp = () => {
         on how to raise any issues for the administrators
       </T.P>
       <TextWithIcon
-        iconColor="primaryDark"
+        iconColor="primaryMain"
         to={R.EXTERNAL.PRODUCT_SUPPORT}
         icon="open"
         text="Go to Product Support"

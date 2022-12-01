@@ -77,7 +77,7 @@ const InputCMS = ({
           isButton
           mt="4"
           color="neutralMain"
-          iconColor="primaryDark"
+          iconColor="primaryMain"
           handleClick={handleRemove}
           weight="semi"
         />
