@@ -50,3 +50,10 @@ export const organisationTypes = {
   FAITH_ORGANISATION: 'Faith Organisation',
   HOUSING_ASSOCIATION: 'Housing Association',
 };
+
+export const organisationStatuses = {
+  DELETED: 'DELETED',
+  AWAITING_APPROVAL: 'AWAITING_APPROVAL',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED',
+};

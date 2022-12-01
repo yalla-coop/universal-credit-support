@@ -35,9 +35,17 @@ const updateOrganisation = async ({ id, body, withUserDetails, options }) => {
   }
 };
 
-const updateOrganisationStatus = async ({ id, status, options }) => {
+const updateOrganisationStatus = async ({
+  id,
+  status,
+  explanation,
+  options,
+}) => {
   try {
-    const { data } = await axios.patch(`${ORGS_BASE}/${id}/status`, { status });
+    const { data } = await axios.patch(`${ORGS_BASE}/${id}/status`, {
+      status,
+      explanation,
+    });
     return { data };
   } catch (error) {
     const err = handleError(error, options);
