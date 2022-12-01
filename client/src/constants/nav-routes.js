@@ -52,10 +52,10 @@ const SUPER_ADMIN = {
   CUSTOMISE: `${admin}/customise`,
   MANAGE_STEPS: `${admin}/manage-steps`,
   CHANGES: `${admin}/changes`,
+  REJECT_ORGANISATION: `${admin}/organisation/:id/reject`,
   // CONTENT_REQUESTS: `${admin}/content-requests`,
   CONTENT_REVIEW: `${admin}/content-review`,
   ORGANISATION_DETAILS: `${admin}/org-user/:id`, // use user id not org id
-  REJECT_ORGANISATION: `${admin}/organisation/:id/reject`,
 };
 
 const EXTERNAL = {

@@ -7,6 +7,7 @@ import createOrganisationDetails from './create-organisation-details';
 import editDetails from './edit-details';
 import customise from './customise';
 import customiseResources from './customise-resources';
+import rejectOrganisation from './reject-organisation';
 import EditOrganisation from './edit-organisation';
 
 export {
@@ -19,5 +20,6 @@ export {
   editDetails,
   customise,
   customiseResources,
+  rejectOrganisation,
   EditOrganisation,
 };
