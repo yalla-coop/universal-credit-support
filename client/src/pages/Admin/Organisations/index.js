@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { Users } from '../../../api-calls';
 import { Typography as T, Grid } from '../../../components';
 import { useAuth } from './../../../context/auth';
-import Loading from '../../../components/Loading';
 import Button from '../../../components/Button';
 import UserRow from './UserRow';
 import useCsvDownload from './../../../Hooks/useCsvDownload';
@@ -13,8 +12,7 @@ const Organisations = () => {
   const [users, setUsers] = useState([]);
   const [error, setError] = useState('');
   const { user: loggedInUser } = useAuth();
-  const [loading, setLoading] = useState(false);
-  const [, handleClick] = useCsvDownload(`/csv/organisations`);
+  const [data, handleClick] = useCsvDownload(`/csv/organisations`);
 
   useEffect(() => {
     const getUsers = async () => {
@@ -29,7 +27,6 @@ const Organisations = () => {
     getUsers();
   }, []);
 
-  if (loading) return <Loading type={'page'} />;
   return (
     <>
       <Row>
@@ -76,7 +73,6 @@ const Organisations = () => {
                 organisation={user.organisationName}
                 organisationStatus={user.organisationStatus}
                 loggedInUser={loggedInUser}
-                setLoading={setLoading}
                 signupDate={user.createdAt}
               />
             </Row>
@@ -87,7 +83,7 @@ const Organisations = () => {
           <Button
             variant="primary"
             disabled={false}
-            loading={loading}
+            loading={data.loading}
             text="Export organisations"
             type="button"
             onClick={handleClick}

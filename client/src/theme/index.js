@@ -3,6 +3,7 @@ import colors from './colors';
 import borders from './borders';
 import shadows from './shadows';
 import gradients from './gradients';
+import accessabilityStyle from './accessability-style';
 
 const constants = {
   columns: { mobile: 4, tablet: 12, desktop: 12 },
@@ -97,5 +98,5 @@ const theme = {
   gradients,
 };
 
-export { globalStyle };
+export { globalStyle, accessabilityStyle };
 export default theme;
