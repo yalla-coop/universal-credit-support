@@ -4,7 +4,6 @@ import {
   EmailShareButton,
 } from 'react-share';
 import { message } from 'antd';
-
 import FacebookIcon from '../assets/Facebook.svg';
 import WhatsappIcon from '../assets/Whatsapp.svg';
 import EmailIcon from '../assets/Email.svg';
@@ -12,8 +11,11 @@ import CopyImg from '../assets/Copy.svg';
 import { Typography as T } from '..';
 import { usePublicOrg } from '../../context/public-org';
 import * as S from './style';
+import { useTranslation } from 'react-i18next';
+import { common } from '../../constants';
 
 const ShareBox = () => {
+  const { t } = useTranslation();
   const { pageTitle } = usePublicOrg();
   let formattedTitle;
   if (pageTitle) {
@@ -23,7 +25,7 @@ const ShareBox = () => {
   return (
     <S.Box>
       <T.P isSmall color="neutralMain" weight="semi">
-        Share this page
+        {t('common.heading.shareThisPage', common.heading.shareThisPage)}
       </T.P>
       <S.SocialWrapper>
         <FacebookShareButton url={url} quote={`Advice for ${formattedTitle}`}>

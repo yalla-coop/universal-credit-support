@@ -1,15 +1,21 @@
 import Icon from '../Icon';
 import * as T from '../Typography';
+import { useTranslation } from 'react-i18next';
+import { common } from '../../constants';
 
 import * as S from './style';
 
 const HelpfulResources = ({ resources = [], ...props }) => {
+  const { t } = useTranslation();
   return (
     <S.Wrapper {...props}>
       <S.Title>
         <Icon icon="discover" color="primaryDark" />
         <T.H2 ml="2" color="neutralMain">
-          Helpful resources
+          {t(
+            'common.heading.helpfulResources',
+            common.heading.helpfulResources
+          )}
         </T.H2>
       </S.Title>
 

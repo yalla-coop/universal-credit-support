@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useLanguage } from '../../../helpers';
 import { message } from 'antd';
 import { navRoutes, common } from '../../../constants';
 import { generatePath, useParams } from 'react-router-dom';
@@ -15,17 +16,16 @@ import {
 import LandingContent from './LandingContent';
 import HelpButton from '../../../components/HelpButton';
 import * as S from './style';
-import { useLanguage } from '../../../helpers';
 
 const { Col, Row } = Grid;
 
 const Home = () => {
-  const { t } = useTranslation();
+  const { i18n, t } = useTranslation();
+  const { lng } = useLanguage();
   const [stuck, setStuck] = useState(false);
   const [cardsData, setCardsData] = useState([]);
   const { publicOrg } = usePublicOrg();
   const uniqueSlug = publicOrg?.uniqueSlug;
-  const { lng } = useLanguage();
 
   useEffect(() => {
     let mounted = true;
@@ -52,12 +52,18 @@ const Home = () => {
     };
   }, [uniqueSlug]);
 
+  i18n.addResourceBundle(lng, 'cardsDataNS', {
+    cardsData,
+  });
+
+  const _cardsData = t('cardsData', { ns: 'cardsDataNS', returnObjects: true });
+
   return (
     <S.Container>
       <LandingContent />
       <S.Section>
         <S.CardsWrapper>
-          {cardsData.map((item) => {
+          {_cardsData.map((item) => {
             return (
               <Cards.SectionCard
                 key={item.id}

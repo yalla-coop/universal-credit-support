@@ -4,12 +4,15 @@ import { Typography as T, Grid, GoBack } from '../../../components';
 import PageHeader from '../../../components/PageHeader';
 import HelpfulResources from '../../../components/HelpfulResources';
 import { usePublicOrg } from '../../../context/public-org';
+import { useTranslation } from 'react-i18next';
+import { common } from '../../../constants';
 
 import * as S from './style';
 
 const { Row, Col } = Grid;
 
 const MentalHeath = () => {
+  const { t } = useTranslation();
   const { publicOrg, setPageTitle } = usePublicOrg();
 
   useEffect(() => {
@@ -19,7 +22,10 @@ const MentalHeath = () => {
   return (
     <S.Container>
       <PageHeader
-        title="**Mental Health Support**"
+        title={t(
+          'common.section.mentalHealthSupport.title',
+          common.section.mentalHealthSupport.title
+        )}
         textColor="neutralMain"
         bgColor="primaryMain"
         borderColor="neutralMain"
@@ -28,10 +34,10 @@ const MentalHeath = () => {
         <Row>
           <Col w={[4, 8, 6]}>
             <T.P color="neutralDark">
-              Worrying about money can affect your mental health. Taking action,
-              like using this tool, is a good first step. However if you're
-              feeling overwhelmed, support is out there. Many people are feeling
-              the same way.
+              {t(
+                'common.section.mentalHealthSupport.description1',
+                common.section.mentalHealthSupport.description1
+              )}
             </T.P>
           </Col>
         </Row>
@@ -47,23 +53,31 @@ const MentalHeath = () => {
         <Row mb="4">
           <Col w={[4, 8, 6]}>
             <T.P color="neutralDark">
-              If you feel you need to speak to someone right now the Samaritans
-              offer a free 24h confidential listening service. You can talk to
-              them about anything that is upsetting or worrying you.
+              {t(
+                'common.section.mentalHealthSupport.description2',
+                common.section.mentalHealthSupport.description2
+              )}
               <br />
               <br />
-              Samaritans Helpline:{' '}
+              {t(
+                'common.section.mentalHealthSupport.samaritansHelpline',
+                common.section.mentalHealthSupport.samaritansHelpline
+              )}{' '}
               <T.Link weight="bold" external href={`tel:116123`} underline>
                 116 123
-              </T.Link>{' '}
-              (Monday to Sunday at any time)
+              </T.Link>
+              <br />
+              {t(
+                'common.section.mentalHealthSupport.samaritansHours',
+                common.section.mentalHealthSupport.samaritansHours
+              )}
             </T.P>
           </Col>
         </Row>
         <Row mt="4" mb="5">
           <Col w={[4, 8, 6]}>
             <GoBack
-              text="Go back"
+              text={t('common.buttons.goBack', common.buttons.goBack)}
               icon="backwardArrow"
               iconColor="primaryDark"
             />

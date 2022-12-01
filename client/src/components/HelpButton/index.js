@@ -1,5 +1,4 @@
 import { useState } from 'react';
-
 import * as S from './style';
 import * as T from '../Typography';
 import Icon from '../Icon';
@@ -46,7 +45,12 @@ const HelpButton = ({
       <S.Modal adminHelp={adminHelp} {...props}>
         <S.Header>
           <T.H3 color="primaryTextMain">
-            {adminHelp ? 'Help' : 'Help is here!'}
+            {adminHelp
+              ? t('common.section.helpMe.title', common.section.helpMe.title)
+              : t(
+                  'common.section.helpMe.subtitle',
+                  common.section.helpMe.subtitle
+                )}
           </T.H3>
           <S.CloseButton onClick={handleClose}>
             <Icon icon="close" color="primaryTextMain" />
@@ -58,12 +62,15 @@ const HelpButton = ({
           ) : (
             <>
               <T.P color="neutralDark" mb="6">
-                We all need to speak to someone sometimes! Use any of the
-                contact details below to find a person to chat with.
+                {t(
+                  'common.section.helpMe.description',
+                  common.section.helpMe.description
+                )}
               </T.P>
               {publicOrg?.contactLinks?.map((contact) => (
                 <S.ContactItem mb="5">
                   <T.H3 color="neutralMain">{contact.description}</T.H3>
+                  {t('common.section.helpMe.govHelpline', contact.description)}
                   <T.P color="neutralDark" isSmall>
                     {contact.availability}
                   </T.P>
@@ -79,9 +86,17 @@ const HelpButton = ({
                 </S.ContactItem>
               ))}
               <S.ContactItem mb="4">
-                <T.H3 color="neutralMain">Government Helpline</T.H3>
+                <T.H3 color="neutralMain">
+                  {t(
+                    'common.section.helpMe.govHelpline',
+                    common.section.helpMe.govHelpline
+                  )}
+                </T.H3>
                 <T.P color="neutralDark" isSmall>
-                  Monday to Friday, 8am to 6pm
+                  {t(
+                    'common.section.helpMe.govOpeningTimes',
+                    common.section.helpMe.govOpeningTimes
+                  )}
                 </T.P>
                 <T.Link
                   external
@@ -90,7 +105,10 @@ const HelpButton = ({
                   isSmall
                   to={formatLink('PHONE', { phoneNumber: '02071231234' }).link}
                 >
-                  0800 328 5644 (choose Option 3)
+                  {t(
+                    'common.section.helpMe.govPhone',
+                    common.section.helpMe.govPhone
+                  )}
                 </T.Link>
               </S.ContactItem>
             </>

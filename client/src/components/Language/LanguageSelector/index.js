@@ -6,7 +6,7 @@ import * as S from './style';
 import { useMediaQuery } from 'react-responsive';
 import theme from '../../../theme';
 import { useTranslation } from 'react-i18next';
-import { types } from '../../../constants';
+import { types, common } from '../../../constants';
 
 const props = {
   weight: 'medium',
@@ -15,7 +15,7 @@ const props = {
 };
 
 export const LanguageSelector = ({ hide, handleHide }) => {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
   const [search, setSearch] = useState('');
 
   const sliceTo =
@@ -44,10 +44,16 @@ export const LanguageSelector = ({ hide, handleHide }) => {
       <S.ButtonWrapper onClick={(e) => e.stopPropagation()}>
         <BasicInput
           handleChange={(val) => setSearch(val)}
-          label="Search Language"
+          label={t(
+            'common.section.changeLanguage.title',
+            common.section.changeLanguage.title
+          )}
           value={search}
           name="search-language"
-          placeholder="Search"
+          placeholder={t(
+            'common.section.changeLanguage.placeholder',
+            common.section.changeLanguage.placeholder
+          )}
           suffix={<Icon icon="search" color="neutralMain" />}
         />
       </S.ButtonWrapper>

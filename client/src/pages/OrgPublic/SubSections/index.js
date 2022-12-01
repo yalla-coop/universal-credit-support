@@ -7,15 +7,18 @@ import PageHeader from '../../../components/PageHeader';
 import GeneralPaddingSection from '../../../components/Layout/GeneralPaddingSection';
 import { navRoutes } from '../../../constants';
 import { usePublicOrg } from '../../../context/public-org';
+import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../../../helpers';
+import { common } from '../../../constants';
 
 import * as S from './style';
 const { Col, Row } = Grid;
 
 const SubSections = () => {
+  const { i18n, t } = useTranslation();
+  const { lng } = useLanguage();
   const [data, setData] = useState({});
   const { publicOrg, setPageTitle } = usePublicOrg();
-  const { lng } = useLanguage();
 
   const { id } = useParams();
 
@@ -43,26 +46,36 @@ const SubSections = () => {
     return () => {
       mounted = false;
     };
-  }, [id]);
+  }, [id, lng]);
+
   const colorArr = [
     'primaryDark',
     'secondaryMain',
     'primaryMain',
     'neutralMain',
   ];
+
+  i18n.addResourceBundle(lng, 'subsectionNS', {
+    data,
+  });
+
+  const _data = t('data', { ns: 'subsectionNS', returnObjects: true });
+
   return (
     <S.Container>
-      <PageHeader title={data.title} />
+      <PageHeader title={_data.title} />
       <GeneralPaddingSection>
         <Row jc="center" mb="4">
           <Col w={[4, 8, 6]}>
             <T.H2>
-              So we can show you the best information, which one of these best
-              describes you?
+              {t(
+                'common.section.subSection.description',
+                common.section.subSection.description
+              )}
             </T.H2>
           </Col>
         </Row>
-        {data?.childrenSections?.map((item, index) => (
+        {_data?.childrenSections?.map((item, index) => (
           <Row jc="center" mb="2">
             <Col w={[4, 8, 6]}>
               <S.ButtonWrapper
