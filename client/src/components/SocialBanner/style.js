@@ -20,7 +20,7 @@ export const SocialImg = styled.img`
   height: 32px;
   object-fit: cover;
   border-radius: 6.66667px;
-  margin-right: ${({ mr }) => mr || '6px'};
+  margin-inline-end: ${({ mr }) => mr || '6px'};
   cursor: pointer;
 `;
 

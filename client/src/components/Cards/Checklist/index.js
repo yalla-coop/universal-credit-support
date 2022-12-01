@@ -33,11 +33,10 @@ const Checklist = ({
           {(description || thisCanInclude?.length > 0 || tips?.length > 0) && (
             <TextWithIcon
               text={expanded ? 'See less' : 'See more'}
-              icon="circleArrow"
               isButton
               mt="4"
               color="neutralDark"
-              iconColor="neutralDark"
+              iconProps={{ color: 'neutralDark', icon: 'circleArrow' }}
               direction={expanded ? 'up' : 'down'}
               handleClick={() => setExpanded(!expanded)}
               mb={'5'}

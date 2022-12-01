@@ -31,13 +31,13 @@ const commonStyle = ({
       : theme.colors[color] || color || theme.colors.neutralMain
   } !important;
   text-transform: ${caps ? 'uppercase' : 'initial'} !important;
-  text-align: ${ta || 'left'} !important;
+  text-align: ${ta || 'unset'} !important;
 
   ${theme.media.tablet} {
-    text-align: ${taT || ta || 'left'} !important;
+    text-align: ${taT || ta || 'unset'} !important;
   };
   ${theme.media.mobile} {
-    text-align: ${taM || taT || ta || 'left'} !important;
+    text-align: ${taM || taT || ta || 'unset'} !important;
   };
 `;
 

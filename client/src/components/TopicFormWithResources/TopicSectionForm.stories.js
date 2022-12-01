@@ -33,10 +33,8 @@ const TopicSectionFormExamples = (args) => {
         <Col w={[4, 4, 4]}>
           <TextWithIcon
             text="Add another topic"
-            icon="add"
             isButton
             mt="33px"
-            iconColor="primaryMain"
             handleClick={() =>
               setTopics((old) => [
                 ...old,
@@ -49,6 +47,10 @@ const TopicSectionFormExamples = (args) => {
               ])
             }
             mb={'57px'}
+            iconProps={{
+              color: 'primaryMain',
+              icon: 'add',
+            }}
           />
         </Col>
       </Row>

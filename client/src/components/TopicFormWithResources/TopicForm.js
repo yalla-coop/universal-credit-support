@@ -57,14 +57,16 @@ const TopicForm = ({
           {!expanded && (
             <TextWithIcon
               text={expanded ? 'See less' : 'See more'}
-              icon="circleArrow"
               isButton
               mt="4"
               color="neutralDark"
-              iconColor="neutralDark"
-              direction={expanded ? 'up' : 'down'}
               handleClick={() => setExpanded(!expanded)}
               mb={'5'}
+              iconProps={{
+                icon: 'circleArrow',
+                color: 'neutralDark',
+                direction: expanded ? 'up' : 'down',
+              }}
             />
           )}
         </S.TopSection>
@@ -92,12 +94,14 @@ const TopicForm = ({
             {topic?.tips?.length < 2 && (
               <TextWithIcon
                 text={topic?.tips?.length > 0 ? 'Add another tip' : 'Add a tip'}
-                icon="add"
                 isButton
                 mt="4"
-                iconColor="primaryDark"
                 handleClick={addTip}
                 error={errors?.tip1}
+                iconProps={{
+                  icon: 'add',
+                  color: 'primaryDark',
+                }}
               />
             )}
           </S.CollapseContent>
@@ -105,16 +109,18 @@ const TopicForm = ({
       </S.Section>
       <TextWithIcon
         text="Remove"
-        icon="close"
         weight="medium"
-        pointer
         isButton
         mt="4"
-        iconColor="primaryDark"
         handleClick={() => removeTopic(topic.id)}
         mb={'5'}
         ml="5"
         ai="center"
+        iconProps={{
+          icon: 'close',
+          color: 'primaryDark',
+          pointer: true,
+        }}
       />
     </S.Wrapper>
   );

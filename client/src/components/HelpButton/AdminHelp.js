@@ -14,12 +14,14 @@ const AdminHelp = () => {
         on how to raise any issues for the administrators
       </T.P>
       <TextWithIcon
-        iconColor="primaryDark"
         to={R.EXTERNAL.PRODUCT_SUPPORT}
-        icon="open"
         text="Go to Product Support"
         external
         underline
+        iconProps={{
+          color: 'primaryDark',
+          icon: 'open',
+        }}
       />
     </S.AdminHelpWrapper>
   );

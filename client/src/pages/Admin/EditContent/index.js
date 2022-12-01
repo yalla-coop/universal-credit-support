@@ -36,16 +36,20 @@ const EditContent = () => {
           <TextWithIcon
             to={R.SUPER_ADMIN.EDIT_LANDING_PAGE}
             text="Edit landing page content"
-            icon="forwardArrow"
-            iconColor="primaryDark"
             m={{ mtT: 7 }}
+            iconProps={{
+              color: 'primaryDark',
+              icon: 'forwardArrow',
+            }}
           />
           <TextWithIcon
             to={R.SUPER_ADMIN.MANAGE_STEPS}
             text="Manage steps "
-            icon="forwardArrow"
-            iconColor="primaryDark"
             m={{ mt: 4 }}
+            iconProps={{
+              color: 'primaryDark',
+              icon: 'forwardArrow',
+            }}
           />
         </Col>
       </Row>

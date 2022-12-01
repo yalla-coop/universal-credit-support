@@ -25,12 +25,14 @@ function CreateUniqueLinkSuccess({ uniqueSlug }) {
           </T.P>
           <S.LinkWrapper>
             <TextWithIcon
-              iconColor="primaryDark"
               to={`${window.location.origin}/${uniqueSlug}`}
-              icon="open"
               text={`${window.location.origin}/${uniqueSlug}`}
               external
               underline
+              iconProps={{
+                color: 'primaryDark',
+                icon: 'open',
+              }}
             />
           </S.LinkWrapper>
           <Button

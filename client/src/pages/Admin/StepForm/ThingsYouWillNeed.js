@@ -47,11 +47,9 @@ const ThingsYouWillNeed = ({ state, setState, errors }) => {
         <G.Col w={[4, 4, 4]}>
           <TextWithIcon
             text="Add another thing you’ll need"
-            icon="add"
             isButton
             mt="4"
             color="neutralMain"
-            iconColor="primaryDark"
             handleClick={() =>
               setState({
                 thingsYouWillNeed: [...state, newItem],
@@ -59,6 +57,10 @@ const ThingsYouWillNeed = ({ state, setState, errors }) => {
             }
             weight="semi"
             disabled={!state.every((item) => item.title)}
+            iconProps={{
+              color: 'primaryDark',
+              icon: 'add',
+            }}
           />
         </G.Col>
       </G.Row>

@@ -74,9 +74,11 @@ const Changes = () => {
               <TextWithIcon
                 m={{ mt: 3 }}
                 text={change.title}
-                iconColor="primaryDark"
-                icon="forwardArrow"
                 to={R.SUPER_ADMIN.EDIT_STEP.replace(':id', change.stepId)}
+                iconProps={{
+                  color: 'primaryDark',
+                  icon: 'forwardArrow',
+                }}
               />
             </Col>
           ))

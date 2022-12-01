@@ -101,12 +101,14 @@ const TopicFormWithResources = ({
         <Col w={[4, 12, 6]}>
           <TextWithIcon
             text="Add another resource"
-            icon="add"
             isButton
             mt="9px"
-            iconColor="primaryDark"
             handleClick={addResource}
             mb={'57px'}
+            iconProps={{
+              icon: 'add',
+              color: 'primaryDark',
+            }}
           />
         </Col>
       </Row>

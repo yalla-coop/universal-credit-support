@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { types } from '../constants';
 
@@ -26,6 +27,19 @@ const useLanguage = () => {
   const hasNamespace = (namespace) => {
     return i18n.hasResourceBundle(lng, namespace);
   };
+
+  const setDirection = () => {
+    document.documentElement.style.direction = dir;
+  };
+
+  i18n.on('languageChanged', function (lng) {
+    setDirection();
+  });
+
+  useEffect(() => {
+    setDirection();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return { lng, lngUpperCase, lngFull, flag, dir, hasNamespace };
 };

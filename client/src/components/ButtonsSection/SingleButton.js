@@ -14,21 +14,25 @@ const SingleButton = ({
     <S.ButtonWrapper {...props}>
       <S.ButtonContent>
         <TextWithIcon
-          icon="forwardArrow"
-          iconColor={iconColor}
           text={name}
           isText
+          iconProps={{
+            color: iconColor,
+            icon: 'forwardArrow',
+          }}
         />
         {(showMenuIcon || handleEdit) && (
           <S.ButtonWrapper>
             {handleEdit && (
               <TextWithIcon
-                icon="edit"
-                iconColor="primaryDark"
-                pointer
                 isButton
                 text="Edit"
                 mr="1"
+                iconProps={{
+                  color: 'primaryDark',
+                  icon: 'edit',
+                  pointer: true,
+                }}
               />
             )}
             {showMenuIcon && (
@@ -42,12 +46,14 @@ const SingleButton = ({
       {handleHide && (
         <S.HideWrapper ml="2" mb="2">
           <TextWithIcon
-            icon="hide"
-            iconColor="primaryDark"
             isButton
-            pointer
             text={hidden ? 'Show' : 'Hide'}
             mr="1"
+            iconProps={{
+              color: 'primaryDark',
+              icon: 'hide',
+              pointer: true,
+            }}
           />
         </S.HideWrapper>
       )}

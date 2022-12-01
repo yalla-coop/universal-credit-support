@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
-// import theme from './../../theme';
+import { useLanguage } from '../../helpers';
+
 import setMargin from '../../helpers/set-margin';
 import * as T from '../Typography';
 
@@ -117,11 +118,22 @@ const Parent = styled.div`
   align-items: center;
   justify-content: ${({ jc }) => jc || 'flex-start'};
   cursor: ${({ pointer }) => (pointer ? 'pointer' : 'auto')};
+  transform: ${({ rotate }) => (rotate ? 'rotateY(180deg)' : 'none')};
 `;
 
 const Icon = (props) => {
   const theme = useTheme();
-  const { icon, color, text, weight = 'bold', pointer } = props;
+  const {
+    icon,
+    color,
+    text,
+    weight = 'bold',
+    pointer,
+    followLangDirection = true,
+  } = props;
+  const { dir } = useLanguage();
+
+  const rotate = followLangDirection && dir === 'rtl';
 
   if (!IconMap[icon]) {
     // eslint-disable-next-line no-console
@@ -132,7 +144,12 @@ const Icon = (props) => {
   const StyledIcon = IconMap[icon];
 
   return (
-    <Parent {...props} onClick={undefined} pointer={pointer || props.onClick}>
+    <Parent
+      {...props}
+      onClick={undefined}
+      pointer={pointer || props.onClick}
+      rotate={rotate}
+    >
       <StyledIcon
         {...props}
         color={theme.colors[color] || color || 'currentColor'}

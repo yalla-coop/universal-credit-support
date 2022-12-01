@@ -110,12 +110,14 @@ const Home = () => {
               size="large"
               text={t('common.buttons.readMore', common.buttons.readMore)}
               bgColor="quartenaryBgMain"
-              icon="forwardArrow"
-              iconColor="primaryDark"
               jc="center"
               jcT="flex-start"
               mr="6px"
               isText
+              iconProps={{
+                color: 'primaryDark',
+                icon: 'forwardArrow',
+              }}
             />
           </S.ReadMoreLink>
         </S.NeedHelpWrapper>
@@ -151,10 +153,13 @@ const Home = () => {
               isButton
               handleClick={() => setStuck(true)}
               underline
-              iconColor="primaryDark"
               weight="medium"
               mr="3"
               jc="center"
+              iconProps={{
+                color: 'primaryDark',
+                icon: 'forwardArrow',
+              }}
             />
           </S.ButtonsContainer>
         </Col>

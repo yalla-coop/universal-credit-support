@@ -97,16 +97,18 @@ const ResourcesSection = ({
 
       <TextWithIcon
         text="Remove resource"
-        icon="close"
         weight="medium"
-        pointer
         isButton
         mt="4"
-        iconColor="primaryMain"
         handleClick={removeResource}
         ml="5"
         ai="center"
         disabled={!enableEdit}
+        iconProps={{
+          icon: 'close',
+          color: 'primaryMain',
+          pointer: true,
+        }}
       />
     </Row>
   );
