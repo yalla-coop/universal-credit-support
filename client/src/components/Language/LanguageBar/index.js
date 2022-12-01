@@ -17,12 +17,21 @@ const props = {
 const Desktop = ({ dir, showBack, largeText, handleHide }) => {
   const navigate = useNavigate();
   const { isFontLarge, setIsFontLarge } = useAccessibility();
+  const goBack = () => {
+    navigate(-1);
+  };
   const LTR = (
     <Row>
       <S.DesktopWrapper>
         <S.ButtonWrapper>
           {showBack && (
-            <TextWithIcon icon="backArrow" iconColor="neutralMain" isButton />
+            <TextWithIcon
+              icon="backArrow"
+              iconColor="neutralMain"
+              isButton
+              pointer
+              handleClick={goBack}
+            />
           )}
           <TextWithIcon
             handleClick={() => navigate(R.GENERAL.ACCESSIBILITY)}
@@ -96,7 +105,13 @@ const Desktop = ({ dir, showBack, largeText, handleHide }) => {
           {...props}
         />
         {showBack && (
-          <TextWithIcon icon="backArrowRTL" iconColor="neutralMain" isButton />
+          <TextWithIcon
+            handleClick={goBack}
+            pointer
+            icon="backArrowRTL"
+            iconColor="neutralMain"
+            isButton
+          />
         )}
       </S.ButtonWrapper>
     </S.DesktopWrapper>
@@ -108,10 +123,19 @@ const Desktop = ({ dir, showBack, largeText, handleHide }) => {
 const Tablet = ({ dir, showBack, handleHide }) => {
   const navigate = useNavigate();
   const { isFontLarge, setIsFontLarge } = useAccessibility();
+  const goBack = () => {
+    navigate(-1);
+  };
   const LTR = (
     <S.TabletWrapperLTR showBack={showBack}>
       {showBack && (
-        <TextWithIcon icon="backArrow" iconColor="neutralMain" isButton />
+        <TextWithIcon
+          icon="backArrow"
+          iconColor="neutralMain"
+          isButton
+          pointer
+          handleClick={goBack}
+        />
       )}
       <S.ButtonWrapper>
         <TextWithIcon
@@ -179,7 +203,13 @@ const Tablet = ({ dir, showBack, handleHide }) => {
         />
       </S.ButtonWrapper>
       {showBack && (
-        <TextWithIcon icon="backArrowRTL" iconColor="neutralMain" isButton />
+        <TextWithIcon
+          handleClick={goBack}
+          pointer
+          icon="backArrowRTL"
+          iconColor="neutralMain"
+          isButton
+        />
       )}
     </S.TabletWrapperRTL>
   );

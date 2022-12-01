@@ -1,14 +1,13 @@
 import { css } from '@emotion/react';
 
 const style = css`
-  @font-face {
-    font-family: 'Heebo', sans-serif;
-    src: url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&display=swap');
-  }
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&display=swap');
 
   @font-face {
-    font-family: 'hero-new-hairline', sans-serif;
-    src: url('https://use.typekit.net/kqe2fbu.css');
+    font-family: 'new-hero', sans-serif;
+    src: url('https://use.typekit.net/qcz4xls.css');
   }
 
   pre {
@@ -53,7 +52,7 @@ const style = css`
   h5,
   h6 {
     margin: 0;
-    font-family: 'hero-new-hairline', sans-serif;
+    font-family: new-hero, sans-serif;
   }
   p,
   a {
