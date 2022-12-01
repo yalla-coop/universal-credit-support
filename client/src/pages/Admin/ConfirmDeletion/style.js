@@ -1,7 +1,9 @@
 import styled from '@emotion/styled';
+
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
+  max-width: 600px;
 `;
 
 export const Divider = styled.div`

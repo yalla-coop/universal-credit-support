@@ -28,6 +28,7 @@ const ADMIN = {
   CREATE_ORG_DETAILS_SECOND_STEP: `${admin}/set-organisation/2`,
   ADD_UPDATE_CONTENT: `${admin}/content`,
   SUCCESS_SIGNUP: `${admin}/success-signup`,
+  CONFIRM_DELETION: `${admin}/confirm-deletion`,
 };
 
 const SUPER_ADMIN = {
