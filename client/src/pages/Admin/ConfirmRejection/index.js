@@ -120,7 +120,7 @@ const ConfirmRejection = () => {
         </Col>
       </Row>
       <Row>
-        <Col w={[4, 6, 6]} mt={'20px'}>
+        <Col w={[4, 12, 6]} mt={'20px'}>
           <I.Textarea
             label="Explanation"
             rows="4"
@@ -133,7 +133,7 @@ const ConfirmRejection = () => {
       </Row>
 
       <Row mt={'42px'}>
-        <Col w={[4, 6, 6]} style={{ alignItems: 'flex-end' }}>
+        <Col w={[4, 12, 6]} style={{ alignItems: 'flex-end' }}>
           {httpError && (
             <T.P mb={2} color="error">
               {httpError}
