@@ -3,9 +3,9 @@ import * as S from './style';
 
 const PageHeader = ({
   title,
-  textColor = 'primaryTextMain',
+  textColor = 'white',
   bgColor = 'secondaryMain',
-  borderColor = 'primaryTextMain',
+  borderColor = 'white',
 }) => {
   return (
     <S.Wrapper bgColor={bgColor}>

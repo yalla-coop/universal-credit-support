@@ -167,7 +167,7 @@ const Login = () => {
             to={R.ADMIN.WELCOME}
             text="Don’t have an account? Sign up"
             icon="forwardArrow"
-            iconColor="primaryDark"
+            iconColor="primaryMain"
             mr="4px"
           />
         </Col>

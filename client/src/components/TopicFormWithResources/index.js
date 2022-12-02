@@ -104,7 +104,7 @@ const TopicFormWithResources = ({
             icon="add"
             isButton
             mt="9px"
-            iconColor="primaryDark"
+            iconColor="primaryMain"
             handleClick={addResource}
             mb={'57px'}
           />

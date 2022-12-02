@@ -24,9 +24,6 @@ const { Tips } = Cards;
 const { Row, Col } = Grid;
 
 const initialState = {
-  mainColor: '',
-  secondaryColor: '',
-  neutralColor: '',
   httpError: '',
   validationErrs: { hasError: false },
   loading: false,
@@ -36,17 +33,17 @@ const initialState = {
   isModalVisible: false,
   loaded: false,
   // colors
-  primaryBgMain: '',
-  secondaryBgMain: '',
-  tertiaryBgMain: '',
-  quartenaryBgMain: '',
-  quinaryBgMain: '',
-  primaryTextMain: '',
-  secondaryTextMain: '',
-  tertiaryTextMain: '',
-  quartenaryTextMain: '',
-  quinaryTextMain: '',
-  useBlockColors: false,
+  mainHeaderBgColor: '',
+  section1BgColor: '',
+  section2BgColor: '',
+  section3BgColor: '',
+  section4BgColor: '',
+  section5BgColor: '',
+  section1TextColor: '',
+  section2TextColor: '',
+  section3TextColor: '',
+  section4TextColor: '',
+  section5TextColor: '',
 };
 
 function reducer(state, newState) {
@@ -73,17 +70,17 @@ const Customise = () => {
     isModalVisible,
     loaded,
     // colors
-    useBlockColors,
-    primaryBgMain,
-    secondaryBgMain,
-    tertiaryBgMain,
-    quartenaryBgMain,
-    quinaryBgMain,
-    primaryTextMain,
-    secondaryTextMain,
-    tertiaryTextMain,
-    quartenaryTextMain,
-    quinaryTextMain,
+    mainHeaderBgColor,
+    section1BgColor,
+    section2BgColor,
+    section3BgColor,
+    section4BgColor,
+    section5BgColor,
+    section1TextColor,
+    section2TextColor,
+    section3TextColor,
+    section4TextColor,
+    section5TextColor,
   } = state;
 
   const isMobile = useMediaQuery({
@@ -104,25 +101,28 @@ const Customise = () => {
             fileName: data.fileName,
             url: data.logoUrl,
           },
-          useBlockColors: colors?.useBlockColors || false,
-          primaryBgMain: colors?.primaryBgMain || defaultColors.primaryMainObj,
-          secondaryBgMain:
-            colors?.secondaryBgMain || defaultColors.primaryMainObj,
-          tertiaryBgMain:
-            colors?.tertiaryBgMain || defaultColors.primaryMainObj,
-          quartenaryBgMain:
-            colors?.quartenaryBgMain || defaultColors.primaryMainObj,
-          quinaryBgMain: colors?.quinaryBgMain || defaultColors.primaryMainObj,
-          primaryTextMain:
-            colors?.primaryTextMain || defaultColors.primaryMainObj,
-          secondaryTextMain:
-            colors?.secondaryTextMain || defaultColors.primaryMainObj,
-          tertiaryTextMain:
-            colors?.tertiaryTextMain || defaultColors.primaryMainObj,
-          quartenaryTextMain:
-            colors?.quartenaryTextMain || defaultColors.primaryMainObj,
-          quinaryTextMain:
-            colors?.quinaryTextMain || defaultColors.primaryMainObj,
+          mainHeaderBgColor: colors?.mainHeaderBgColor,
+          section1BgColor:
+            colors?.section1BgColor || defaultColors.section1BgColor,
+          section2BgColor:
+            colors?.section2BgColor || defaultColors.section2BgColor,
+          section3BgColor:
+            colors?.section3BgColor || defaultColors.section3BgColor,
+          section4BgColor:
+            colors?.section4BgColor || defaultColors.section4BgColor,
+          section5BgColor:
+            colors?.section5BgColor || defaultColors.section5BgColor,
+          section1TextColor:
+            colors?.section1TextColor || defaultColors.section1TextColor,
+          section2TextColor:
+            colors?.section2TextColor || defaultColors.section2TextColor,
+          section3TextColor:
+            colors?.section3TextColor || defaultColors.section3TextColor,
+          section4TextColor:
+            colors?.section4TextColor || defaultColors.section4TextColor,
+          section5TextColor:
+            colors?.section5TextColor || defaultColors.section5TextColor,
+
           loaded: true,
         });
       } else {
@@ -139,34 +139,34 @@ const Customise = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
-    useBlockColors,
-    primaryBgMain,
-    secondaryBgMain,
-    tertiaryBgMain,
-    quartenaryBgMain,
-    quinaryBgMain,
-    primaryTextMain,
-    secondaryTextMain,
-    tertiaryTextMain,
-    quartenaryTextMain,
-    quinaryTextMain,
+    mainHeaderBgColor,
+    section1BgColor,
+    section2BgColor,
+    section3BgColor,
+    section4BgColor,
+    section5BgColor,
+    section1TextColor,
+    section2TextColor,
+    section3TextColor,
+    section4TextColor,
+    section5TextColor,
   ]);
 
   const validateForm = () => {
     try {
       validate({
         secondStep: true,
-        primaryBgMain,
-        secondaryBgMain,
-        tertiaryBgMain,
-        quartenaryBgMain,
-        quinaryBgMain,
-        primaryTextMain,
-        secondaryTextMain,
-        tertiaryTextMain,
-        quartenaryTextMain,
-        quinaryTextMain,
-        useBlockColors,
+        mainHeaderBgColor,
+        section1BgColor,
+        section2BgColor,
+        section3BgColor,
+        section4BgColor,
+        section5BgColor,
+        section1TextColor,
+        section2TextColor,
+        section3TextColor,
+        section4TextColor,
+        section5TextColor,
         logoFile: logoFile.key,
       });
       setState({ validationErrs: { hasError: false } });
@@ -187,17 +187,17 @@ const Customise = () => {
         userId: user.organisationId,
         logoFile,
         colors: {
-          useBlockColors,
-          primaryBgMain,
-          secondaryBgMain,
-          tertiaryBgMain,
-          quartenaryBgMain,
-          quinaryBgMain,
-          primaryTextMain,
-          secondaryTextMain,
-          tertiaryTextMain,
-          quartenaryTextMain,
-          quinaryTextMain,
+          mainHeaderBgColor,
+          section1BgColor,
+          section2BgColor,
+          section3BgColor,
+          section4BgColor,
+          section5BgColor,
+          section1TextColor,
+          section2TextColor,
+          section3TextColor,
+          section4TextColor,
+          section5TextColor,
         },
       },
     });
@@ -275,95 +275,118 @@ const Customise = () => {
         <Col w={[4, 12, 6]}>
           <T.H2>Colours</T.H2>
         </Col>
+        <Col w={[4, 12, 12]}>
+          <T.P color="neutralDark" mt="4">
+            The default main header is a gradient background. If you would like
+            to change it to your main brand colour you can do that below.
+          </T.P>
+        </Col>
       </Row>
-
-      <Row w mb="6">
+      <Row my="4">
         <Col w={[4, 6, 4]}>
           <I.ColorPicker
-            color={primaryBgMain}
-            onChange={(v) => setState({ primaryBgMain: v })}
-            label="Main Background Color"
-            error={validationErrs.primaryBgMain}
-          />
-        </Col>
-        <Col w={[4, 6, 4]} mt={isMobile ? 6 : 0}>
-          <I.ColorPicker
-            color={primaryTextMain}
-            onChange={(v) => setState({ primaryTextMain: v })}
-            label="Main Text Color"
-            error={validationErrs.primaryTextMain}
+            color={mainHeaderBgColor || ''}
+            onChange={(v) => setState({ mainHeaderBgColor: v })}
+            label="Main header background colour"
+            error={validationErrs.mainHeaderBgColor}
           />
         </Col>
       </Row>
-      <Row w mb="6">
-        <Col w={[4, 6, 4]}>
-          <I.ColorPicker
-            color={secondaryBgMain}
-            onChange={(v) => setState({ secondaryBgMain: v })}
-            label="Secondary Background Color"
-            error={validationErrs.secondaryBgMain}
-          />
-        </Col>
-        <Col w={[4, 6, 4]} mt={isMobile ? 6 : 0}>
-          <I.ColorPicker
-            color={secondaryTextMain}
-            onChange={(v) => setState({ secondaryTextMain: v })}
-            label="Secondary Text Color"
-            error={validationErrs.secondaryTextMain}
-          />
+      <Row>
+        <Col w={[4, 12, 12]}>
+          <T.P color="neutralDark" mt="6">
+            To change the main section cards on the landing page and each
+            section header, please select your brand colours below
+          </T.P>
         </Col>
       </Row>
       <Row w mb="6">
         <Col w={[4, 6, 4]}>
           <I.ColorPicker
-            color={tertiaryBgMain}
-            onChange={(v) => setState({ tertiaryBgMain: v })}
-            label="Tertiary Background Color"
-            error={validationErrs.tertiaryBgMain}
+            color={section1BgColor}
+            onChange={(v) => setState({ section1BgColor: v })}
+            label="Section 1 background colour"
+            error={validationErrs.section1BgColor}
           />
         </Col>
         <Col w={[4, 6, 4]} mt={isMobile ? 6 : 0}>
           <I.ColorPicker
-            color={tertiaryTextMain}
-            onChange={(v) => setState({ tertiaryTextMain: v })}
-            label="Tertiary Text Color"
-            error={validationErrs.tertiaryTextMain}
+            color={section1TextColor}
+            onChange={(v) => setState({ section1TextColor: v })}
+            label="Section 1 text colour"
+            error={validationErrs.section1TextColor}
           />
         </Col>
       </Row>
       <Row w mb="6">
         <Col w={[4, 6, 4]}>
           <I.ColorPicker
-            color={quartenaryBgMain}
-            onChange={(v) => setState({ quartenaryBgMain: v })}
-            label="Quartenary Background Color"
-            error={validationErrs.quartenaryBgMain}
+            color={section2BgColor}
+            onChange={(v) => setState({ section2BgColor: v })}
+            label="Section 2 background colour"
+            error={validationErrs.section2BgColor}
           />
         </Col>
         <Col w={[4, 6, 4]} mt={isMobile ? 6 : 0}>
           <I.ColorPicker
-            color={quartenaryTextMain}
-            onChange={(v) => setState({ quartenaryTextMain: v })}
-            label="Quartenary Text Color"
-            error={validationErrs.quartenaryTextMain}
+            color={section2TextColor}
+            onChange={(v) => setState({ section2TextColor: v })}
+            label="Section 2 text colour"
+            error={validationErrs.section2TextColor}
           />
         </Col>
       </Row>
       <Row w mb="6">
         <Col w={[4, 6, 4]}>
           <I.ColorPicker
-            color={quinaryBgMain}
-            onChange={(v) => setState({ quinaryBgMain: v })}
-            label="Quinary Background Color"
-            error={validationErrs.quinaryBgMain}
+            color={section3BgColor}
+            onChange={(v) => setState({ section3BgColor: v })}
+            label="Section 3 background colour"
+            error={validationErrs.section3BgColor}
           />
         </Col>
         <Col w={[4, 6, 4]} mt={isMobile ? 6 : 0}>
           <I.ColorPicker
-            color={quinaryTextMain}
-            onChange={(v) => setState({ quinaryTextMain: v })}
-            label="Quinary Text Color"
-            error={validationErrs.quinaryTextMain}
+            color={section3TextColor}
+            onChange={(v) => setState({ section3TextColor: v })}
+            label="Section 3 text colour"
+            error={validationErrs.section3TextColor}
+          />
+        </Col>
+      </Row>
+      <Row w mb="6">
+        <Col w={[4, 6, 4]}>
+          <I.ColorPicker
+            color={section4BgColor}
+            onChange={(v) => setState({ section4BgColor: v })}
+            label="Section 4 background colour"
+            error={validationErrs.section4BgColor}
+          />
+        </Col>
+        <Col w={[4, 6, 4]} mt={isMobile ? 6 : 0}>
+          <I.ColorPicker
+            color={section4TextColor}
+            onChange={(v) => setState({ section4TextColor: v })}
+            label="Section 4 text colour"
+            error={validationErrs.section4TextColor}
+          />
+        </Col>
+      </Row>
+      <Row w mb="6">
+        <Col w={[4, 6, 4]}>
+          <I.ColorPicker
+            color={section5BgColor}
+            onChange={(v) => setState({ section5BgColor: v })}
+            label="Section 5 background colour"
+            error={validationErrs.section5BgColor}
+          />
+        </Col>
+        <Col w={[4, 6, 4]} mt={isMobile ? 6 : 0}>
+          <I.ColorPicker
+            color={section5TextColor}
+            onChange={(v) => setState({ section5TextColor: v })}
+            label="Section 5 text colour"
+            error={validationErrs.section5TextColor}
           />
         </Col>
       </Row>
@@ -388,15 +411,7 @@ const Customise = () => {
           />
         </Col>
       </Row>
-      <Row>
-        <Col w={[4, 4, 4]}>
-          <I.Checkbox
-            label="If you prefer a block colour header to default gradient, tick this box"
-            checked={useBlockColors}
-            handleChange={(checked) => setState({ useBlockColors: checked })}
-          />
-        </Col>
-      </Row>
+
       <Row mt="7" style={{ flex: Number(isMobile), alignItems: 'flex-end' }}>
         <Col w={[4, 6, 4]} style={{ alignItems: 'flex-end' }}>
           {httpError && (

@@ -16,10 +16,11 @@ export const PageHead = styled.header`
   width: 100%;
   display: flex;
   justify-content: center;
-  background: ${({ theme }) => theme.gradients.primary};
-  background-color: ${({ theme }) => theme.gradients.primaryDark};
-  background-image: ${({ showBGImage }) =>
-    showBGImage && `url(${backgroundLogo})`};
+  background: ${({ theme }) =>
+    theme.colors.mainHeaderBgColor || theme.gradients.primary};
+  background-color: ${({ theme }) => theme.colors.mainHeaderBgColor};
+  background-image: ${({ theme }) =>
+    theme.colors.mainHeaderBgColor || `url(${backgroundLogo})`};
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -92,7 +93,7 @@ export const CardsWrapper = styled.div`
 `;
 export const StyledText = styled(T.P)`
   max-width: 585px;
-  color: ${({ theme: { colors } }) => colors.secondaryTextMain};
+  color: ${({ theme: { colors } }) => colors.neutralDark};
 `;
 
 export const LogoContainer = styled(Link)`
@@ -146,6 +147,8 @@ export const ButtonsContainer = styled.div`
 export const pageTitle = styled(T.H1)`
   font-size: 2.5rem !important;
   line-height: 55.88px !important;
+  color: ${({ theme }) =>
+    theme.colors.section1TextColor || theme.colors.white} !important;
   ${({ theme }) => theme.media.mobile} {
     font-size: 1.375rem !important;
     line-height: 32px !important;

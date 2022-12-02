@@ -9,7 +9,7 @@ const StillNeedHelp = ({ phoneNumber, name, ...props }) => {
   return (
     <S.Wrapper {...props}>
       <S.Title>
-        <Icon icon="discover" color="primaryDark" />
+        <Icon icon="discover" color="primaryMain" />
         <T.H2 ml="2" color="neutralMain">
           {t(
             'common.section.stillNeedHelp.title',
@@ -20,7 +20,7 @@ const StillNeedHelp = ({ phoneNumber, name, ...props }) => {
 
       <S.ContentWrapper>
         <S.IconWrapper>
-          <Icon icon="phone" width="26px" height="26px" color="primaryDark" />
+          <Icon icon="phone" width="26px" height="26px" color="primaryMain" />
         </S.IconWrapper>
         <T.P ml="3" color="neutralDark">
           {t(

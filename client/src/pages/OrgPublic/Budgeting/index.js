@@ -36,7 +36,7 @@ const BudgetingPage = () => {
         )}
         textColor="secondaryMain"
         bgColor="neutralLight"
-        borderColor="primaryTextMain"
+        borderColor="white"
       />
       <GeneralPaddingSection>
         <S.Content>
@@ -66,19 +66,19 @@ const BudgetingPage = () => {
               <Col w={[4, 12, 12]}>
                 <SingleTip
                   bgColor="secondaryMain"
-                  borderColor="primaryTextMain"
-                  iconColor="primaryTextMain"
+                  borderColor="white"
+                  iconColor="white"
                   tip={
                     <div>
-                      <T.H3 color="primaryTextMain">
+                      <T.H3 color="white">
                         {t(
                           'common.section.budgeting.tip',
                           common.section.budgeting.tip
                         )}
                       </T.H3>
-                      <S.TipList ml="5" color="primaryTextMain">
+                      <S.TipList ml="5" color="white">
                         <li>
-                          <T.H3 color="primaryTextMain">
+                          <T.H3 color="white">
                             {t(
                               'common.section.budgeting.tip1P1',
                               common.section.budgeting.tip1P1
@@ -86,7 +86,7 @@ const BudgetingPage = () => {
                           </T.H3>
                         </li>
                         <li>
-                          <T.H3 color="primaryTextMain">
+                          <T.H3 color="white">
                             {t(
                               'common.section.budgeting.tip1P2',
                               common.section.budgeting.tip1P2
@@ -94,7 +94,7 @@ const BudgetingPage = () => {
                           </T.H3>
                         </li>
                         <li>
-                          <T.H3 color="primaryTextMain">
+                          <T.H3 color="white">
                             {t(
                               'common.section.budgeting.tip1P3',
                               common.section.budgeting.tip1P2

@@ -25,7 +25,7 @@ const TipInput = ({ setTips, tips, index, tip }) => {
           setTips(newTips);
         }}
       >
-        <Icon icon="close" pointer color="primaryDark" />
+        <Icon icon="close" pointer color="primaryMain" />
       </S.CloseTipButton>
     </S.TipInputWrapper>
   );

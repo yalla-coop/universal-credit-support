@@ -19,7 +19,7 @@ const Welcome = () => {
         add any specific contact details for your clients.
       </T.P>
       <TextWithIcon
-        iconColor="primaryDark"
+        iconColor="primaryMain"
         to={n.EXTERNAL.DEMO_VIDEO}
         mr="2"
         icon="open"

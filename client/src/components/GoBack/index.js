@@ -8,7 +8,7 @@ import { common } from '../../constants';
 
 const GoBack = ({
   color,
-  iconColor = 'primaryDark',
+  iconColor = 'primaryMain',
   customFn,
   customLink,
   text,

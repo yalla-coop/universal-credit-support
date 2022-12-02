@@ -20,8 +20,9 @@ export const Wrapper = styled(RouterLink)`
 export const CardHead = styled.div`
   width: 100%;
   height: 206px;
-  background: ${({ theme: { colors }, bg }) =>
-    bg ? colors[bg] : colors.neutralSurface};
+  background: ${({ theme: { colors }, bg }) => {
+    return bg ? colors[bg] : colors.neutralSurface;
+  }};
   display: flex;
   justify-content: center;
   align-items: center;

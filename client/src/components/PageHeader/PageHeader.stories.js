@@ -16,8 +16,8 @@ export const PageHeaderExample = Template.bind({});
 PageHeaderExample.args = {
   title: '*Paying for * housing', // should be markdown
   bgColor: 'secondaryMain',
-  textColor: 'primaryTextMain',
-  borderColor: 'primaryTextMain',
+  textColor: 'white',
+  borderColor: 'white',
 };
 
 export const PageHeaderSecond = Template.bind({});

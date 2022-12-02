@@ -232,6 +232,14 @@ export const hslColor = object().shape({
   l: string().required(),
 });
 
+export const hslColorOptional = object()
+  .shape({
+    h: string().required(),
+    s: string().required(),
+    l: string().required(),
+  })
+  .nullable();
+
 export const resourceObjLink = object().shape({
   label: requiredText,
   value: urlRequired,

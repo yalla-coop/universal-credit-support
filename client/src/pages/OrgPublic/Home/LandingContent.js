@@ -14,7 +14,7 @@ const LandingContent = () => {
             <img src={Logo} alt="logo" />
           </S.LogoContainer>
           <S.HeaderText>
-            <S.pageTitle ta="center" weight="bold" color="primaryTextMain">
+            <S.pageTitle ta="center" weight="bold">
               {t(
                 'common.heading.costOfLivingHelper',
                 common.heading.costOfLivingHelper

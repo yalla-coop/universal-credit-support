@@ -10,7 +10,7 @@ const HelpfulResources = ({ resources = [], ...props }) => {
   return (
     <S.Wrapper {...props}>
       <S.Title>
-        <Icon icon="discover" color="primaryDark" />
+        <Icon icon="discover" color="primaryMain" />
         <T.H2 ml="2" color="neutralMain">
           {t(
             'common.heading.helpfulResources',
@@ -25,7 +25,7 @@ const HelpfulResources = ({ resources = [], ...props }) => {
           target="_blank"
           key={r.label + index}
         >
-          <Icon icon="open" pointer color="primaryDark" />
+          <Icon icon="open" pointer color="primaryMain" />
           <T.P weight="medium" ml="2" underline>
             {r.label}
           </T.P>

@@ -49,9 +49,9 @@ const SubSections = () => {
   }, [id, lng]);
 
   const colorArr = [
-    'primaryDark',
-    'secondaryMain',
     'primaryMain',
+    'secondaryMain',
+    'tertiaryMain',
     'neutralMain',
   ];
 

@@ -27,7 +27,7 @@ const MentalHeath = () => {
           common.section.mentalHealthSupport.title
         )}
         textColor="neutralMain"
-        bgColor="primaryMain"
+        bgColor="tertiaryMain"
         borderColor="neutralMain"
       />
       <GeneralPaddingSection>
@@ -79,7 +79,7 @@ const MentalHeath = () => {
             <GoBack
               text={t('common.buttons.goBack', common.buttons.goBack)}
               icon="backwardArrow"
-              iconColor="primaryDark"
+              iconColor="primaryMain"
             />
           </Col>
         </Row>

@@ -4,9 +4,9 @@ import { useAuth } from '../../context/auth';
 import userRoles from '../../constants/roles';
 
 const colorArray = [
-  'primaryDark',
-  'secondaryMain',
   'primaryMain',
+  'secondaryMain',
+  'tertiaryMain',
   'neutralMain',
 ];
 const getColor = (index, startingColor) => {
