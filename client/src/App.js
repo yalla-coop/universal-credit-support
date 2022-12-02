@@ -120,6 +120,7 @@ function App() {
                           Component={Pages.Section}
                           layout="general"
                           showSocialBanner
+                          showBack
                         />
                       }
                     />
@@ -132,6 +133,7 @@ function App() {
                           Component={Pages.SubSections}
                           layout="general"
                           showSocialBanner
+                          showBack
                         />
                       }
                     />
@@ -143,6 +145,7 @@ function App() {
                           Component={Pages.Budgeting}
                           layout="general"
                           showSocialBanner
+                          showBack
                         />
                       }
                     />
@@ -154,6 +157,7 @@ function App() {
                           Component={Pages.MentalHeath}
                           layout="general"
                           showSocialBanner
+                          showBack
                         />
                       }
                     />

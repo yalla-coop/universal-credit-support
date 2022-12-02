@@ -231,7 +231,7 @@ const Tablet = ({ dir, showBack, handleHide, flag, lng, accessibility }) => {
   return dir === 'rtl' ? RTL : LTR;
 };
 
-export const LanguageBar = ({ largeText, handleHide }) => {
+export const LanguageBar = ({ largeText, handleHide, showBack }) => {
   const { t } = useTranslation();
 
   const accessibility = t(
@@ -247,8 +247,6 @@ export const LanguageBar = ({ largeText, handleHide }) => {
     common.buttons.decreaseTextSize
   );
 
-  const location = useLocation();
-  const showBack = location === '' ? true : false;
   const { lngFull, lngUpperCase, flag, dir } = useLanguage();
 
   const props = {

@@ -4,6 +4,8 @@ import { BasicInput, Textarea } from '../Inputs';
 import * as T from '../Typography';
 import TipInput from './TipInput';
 import TextWithIcon from '../TextWithIcon';
+import { useTranslation } from 'react-i18next';
+import { common } from '../../constants';
 
 const TopicForm = ({
   topic,
@@ -13,6 +15,17 @@ const TopicForm = ({
   errors = {},
 }) => {
   const [expanded, setExpanded] = useState(false);
+
+  const { t } = useTranslation();
+
+  const addATip = t('common.buttons.addATip', common.buttons.addATip);
+  const addAnotherTip = t(
+    'common.buttons.addAnotherTip',
+    common.buttons.addAnotherTip
+  );
+  const seeMore = t('common.buttons.seeMore', common.buttons.seeMore);
+  const seeLess = t('common.buttons.seeLess', common.buttons.seeLess);
+  const seeMoreOrLess = expanded ? seeLess : seeMore;
 
   const setTip = (value, id) => {
     const tips = topic.tips.map((t) => {
@@ -56,7 +69,7 @@ const TopicForm = ({
 
           {!expanded && (
             <TextWithIcon
-              text={expanded ? 'See less' : 'See more'}
+              text={seeMoreOrLess}
               icon="circleArrow"
               isButton
               mt="4"
@@ -91,7 +104,7 @@ const TopicForm = ({
               })}
             {topic?.tips?.length < 2 && (
               <TextWithIcon
-                text={topic?.tips?.length > 0 ? 'Add another tip' : 'Add a tip'}
+                text={topic?.tips?.length > 0 ? addAnotherTip : addATip}
                 icon="add"
                 isButton
                 mt="4"
