@@ -1,20 +1,11 @@
 import { fields, createSchema, validate as _validate } from '..';
 
-const { requiredText, hslColor, optionalCheckbox } = fields;
+const { requiredText, hslColor } = fields;
 
 const schema = createSchema({
+  mainColor: hslColor,
+  secondaryColor: hslColor,
   logoFile: requiredText,
-  primaryBgMain: hslColor,
-  secondaryBgMain: hslColor,
-  tertiaryBgMain: hslColor,
-  quartenaryBgMain: hslColor,
-  quinaryBgMain: hslColor,
-  primaryTextMain: hslColor,
-  secondaryTextMain: hslColor,
-  tertiaryTextMain: hslColor,
-  quartenaryTextMain: hslColor,
-  quinaryTextMain: hslColor,
-  useBlockColors: optionalCheckbox,
 });
 
 const validate = (data) => {

@@ -5,7 +5,7 @@ export const Button = styled.button`
   width: 90px;
   height: 45px;
   background: ${({ theme }) => theme.colors.secondaryMain};
-  color: ${({ theme }) => theme.colors.primaryTextMain};
+  color: ${({ theme }) => theme.colors.white};
   border-radius: 12px 12px 0px 0px;
   transform: rotate(-90deg);
   position: fixed;
@@ -35,7 +35,7 @@ export const Modal = styled.section`
   max-width: ${({ adminHelp }) => (adminHelp ? '350px' : '450px')};
   box-sizing: border-box;
   overflow: hidden;
-  background: ${({ theme: { colors } }) => colors.primaryTextMain};
+  background: ${({ theme: { colors } }) => colors.white};
   box-shadow: ${({ theme: { shadows } }) => shadows.elevation1};
 `;
 

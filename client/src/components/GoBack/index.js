@@ -7,7 +7,7 @@ import Icon from '../Icon';
 import * as S from './style';
 
 const GoBack = ({
-  color = 'primaryDark',
+  color = 'primaryMain',
   customFn,
   customLink,
   text,

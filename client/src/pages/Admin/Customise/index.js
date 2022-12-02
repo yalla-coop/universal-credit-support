@@ -35,18 +35,6 @@ const initialState = {
   logoUploading: false,
   isModalVisible: false,
   loaded: false,
-  // colors
-  primaryBgMain: '',
-  secondaryBgMain: '',
-  tertiaryBgMain: '',
-  quartenaryBgMain: '',
-  quinaryBgMain: '',
-  primaryTextMain: '',
-  secondaryTextMain: '',
-  tertiaryTextMain: '',
-  quartenaryTextMain: '',
-  quinaryTextMain: '',
-  useBlockColors: false,
 };
 
 function reducer(state, newState) {
@@ -65,6 +53,8 @@ const Customise = () => {
 
   const [state, setState] = useReducer(reducer, initialState);
   const {
+    mainColor,
+    secondaryColor,
     loading,
     validationErrs,
     httpError,
@@ -72,18 +62,6 @@ const Customise = () => {
     logoUploading,
     isModalVisible,
     loaded,
-    // colors
-    useBlockColors,
-    primaryBgMain,
-    secondaryBgMain,
-    tertiaryBgMain,
-    quartenaryBgMain,
-    quinaryBgMain,
-    primaryTextMain,
-    secondaryTextMain,
-    tertiaryTextMain,
-    quartenaryTextMain,
-    quinaryTextMain,
   } = state;
 
   const isMobile = useMediaQuery({
@@ -104,25 +82,8 @@ const Customise = () => {
             fileName: data.fileName,
             url: data.logoUrl,
           },
-          useBlockColors: colors?.useBlockColors || false,
-          primaryBgMain: colors?.primaryBgMain || defaultColors.primaryMainObj,
-          secondaryBgMain:
-            colors?.secondaryBgMain || defaultColors.primaryMainObj,
-          tertiaryBgMain:
-            colors?.tertiaryBgMain || defaultColors.primaryMainObj,
-          quartenaryBgMain:
-            colors?.quartenaryBgMain || defaultColors.primaryMainObj,
-          quinaryBgMain: colors?.quinaryBgMain || defaultColors.primaryMainObj,
-          primaryTextMain:
-            colors?.primaryTextMain || defaultColors.primaryMainObj,
-          secondaryTextMain:
-            colors?.secondaryTextMain || defaultColors.primaryMainObj,
-          tertiaryTextMain:
-            colors?.tertiaryTextMain || defaultColors.primaryMainObj,
-          quartenaryTextMain:
-            colors?.quartenaryTextMain || defaultColors.primaryMainObj,
-          quinaryTextMain:
-            colors?.quinaryTextMain || defaultColors.primaryMainObj,
+          mainColor: colors?.main || defaultColors.primaryMainObj,
+          secondaryColor: colors?.secondary || defaultColors.secondaryMainObj,
           loaded: true,
         });
       } else {
@@ -138,35 +99,14 @@ const Customise = () => {
       validateForm();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [
-    useBlockColors,
-    primaryBgMain,
-    secondaryBgMain,
-    tertiaryBgMain,
-    quartenaryBgMain,
-    quinaryBgMain,
-    primaryTextMain,
-    secondaryTextMain,
-    tertiaryTextMain,
-    quartenaryTextMain,
-    quinaryTextMain,
-  ]);
+  }, [mainColor, secondaryColor]);
 
   const validateForm = () => {
     try {
       validate({
         secondStep: true,
-        primaryBgMain,
-        secondaryBgMain,
-        tertiaryBgMain,
-        quartenaryBgMain,
-        quinaryBgMain,
-        primaryTextMain,
-        secondaryTextMain,
-        tertiaryTextMain,
-        quartenaryTextMain,
-        quinaryTextMain,
-        useBlockColors,
+        mainColor,
+        secondaryColor,
         logoFile: logoFile.key,
       });
       setState({ validationErrs: { hasError: false } });
@@ -187,17 +127,8 @@ const Customise = () => {
         userId: user.organisationId,
         logoFile,
         colors: {
-          useBlockColors,
-          primaryBgMain,
-          secondaryBgMain,
-          tertiaryBgMain,
-          quartenaryBgMain,
-          quinaryBgMain,
-          primaryTextMain,
-          secondaryTextMain,
-          tertiaryTextMain,
-          quartenaryTextMain,
-          quinaryTextMain,
+          main: mainColor,
+          secondary: secondaryColor,
         },
       },
     });
@@ -280,93 +211,22 @@ const Customise = () => {
       <Row w mb="6">
         <Col w={[4, 6, 4]}>
           <I.ColorPicker
-            color={primaryBgMain}
-            onChange={(v) => setState({ primaryBgMain: v })}
-            label="Main Background Color"
-            error={validationErrs.primaryBgMain}
+            color={mainColor}
+            onChange={(v) => setState({ mainColor: v })}
+            label="Main colour"
+            error={validationErrs.mainColor}
           />
         </Col>
         <Col w={[4, 6, 4]} mt={isMobile ? 6 : 0}>
           <I.ColorPicker
-            color={primaryTextMain}
-            onChange={(v) => setState({ primaryTextMain: v })}
-            label="Main Text Color"
-            error={validationErrs.primaryTextMain}
+            color={secondaryColor}
+            onChange={(v) => setState({ secondaryColor: v })}
+            label="Secondary colour"
+            error={validationErrs.secondaryColor}
           />
         </Col>
       </Row>
-      <Row w mb="6">
-        <Col w={[4, 6, 4]}>
-          <I.ColorPicker
-            color={secondaryBgMain}
-            onChange={(v) => setState({ secondaryBgMain: v })}
-            label="Secondary Background Color"
-            error={validationErrs.secondaryBgMain}
-          />
-        </Col>
-        <Col w={[4, 6, 4]} mt={isMobile ? 6 : 0}>
-          <I.ColorPicker
-            color={secondaryTextMain}
-            onChange={(v) => setState({ secondaryTextMain: v })}
-            label="Secondary Text Color"
-            error={validationErrs.secondaryTextMain}
-          />
-        </Col>
-      </Row>
-      <Row w mb="6">
-        <Col w={[4, 6, 4]}>
-          <I.ColorPicker
-            color={tertiaryBgMain}
-            onChange={(v) => setState({ tertiaryBgMain: v })}
-            label="Tertiary Background Color"
-            error={validationErrs.tertiaryBgMain}
-          />
-        </Col>
-        <Col w={[4, 6, 4]} mt={isMobile ? 6 : 0}>
-          <I.ColorPicker
-            color={tertiaryTextMain}
-            onChange={(v) => setState({ tertiaryTextMain: v })}
-            label="Tertiary Text Color"
-            error={validationErrs.tertiaryTextMain}
-          />
-        </Col>
-      </Row>
-      <Row w mb="6">
-        <Col w={[4, 6, 4]}>
-          <I.ColorPicker
-            color={quartenaryBgMain}
-            onChange={(v) => setState({ quartenaryBgMain: v })}
-            label="Quartenary Background Color"
-            error={validationErrs.quartenaryBgMain}
-          />
-        </Col>
-        <Col w={[4, 6, 4]} mt={isMobile ? 6 : 0}>
-          <I.ColorPicker
-            color={quartenaryTextMain}
-            onChange={(v) => setState({ quartenaryTextMain: v })}
-            label="Quartenary Text Color"
-            error={validationErrs.quartenaryTextMain}
-          />
-        </Col>
-      </Row>
-      <Row w mb="6">
-        <Col w={[4, 6, 4]}>
-          <I.ColorPicker
-            color={quinaryBgMain}
-            onChange={(v) => setState({ quinaryBgMain: v })}
-            label="Quinary Background Color"
-            error={validationErrs.quinaryBgMain}
-          />
-        </Col>
-        <Col w={[4, 6, 4]} mt={isMobile ? 6 : 0}>
-          <I.ColorPicker
-            color={quinaryTextMain}
-            onChange={(v) => setState({ quinaryTextMain: v })}
-            label="Quinary Text Color"
-            error={validationErrs.quinaryTextMain}
-          />
-        </Col>
-      </Row>
+
       <Row mb="6">
         <Col w={[4, 12, 8]}>
           <Tips
@@ -388,15 +248,7 @@ const Customise = () => {
           />
         </Col>
       </Row>
-      <Row>
-        <Col w={[4, 4, 4]}>
-          <I.Checkbox
-            label="If you prefer a block colour header to default gradient, tick this box"
-            checked={useBlockColors}
-            handleChange={(checked) => setState({ useBlockColors: checked })}
-          />
-        </Col>
-      </Row>
+
       <Row mt="7" style={{ flex: Number(isMobile), alignItems: 'flex-end' }}>
         <Col w={[4, 6, 4]} style={{ alignItems: 'flex-end' }}>
           {httpError && (
