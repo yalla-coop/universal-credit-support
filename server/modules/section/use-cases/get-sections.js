@@ -4,7 +4,7 @@ import * as Translation from '../../translations/model';
 
 const getSections = async ({ lng, uniqueSlug = 'hyde', forPublic }) => {
   if (forPublic) {
-    const sections = await Sections.getSectionsByOrgSlugForPublic(
+    const sections = await Sections.findSectionsByOrgSlugForPublic(
       uniqueSlug,
       lng,
     );
@@ -29,6 +29,8 @@ const getSections = async ({ lng, uniqueSlug = 'hyde', forPublic }) => {
 
     return sectionsT;
   }
+  const sections = await Sections.findSectionsByOrgSlug(uniqueSlug);
+  return sections;
 };
 
 export default getSections;

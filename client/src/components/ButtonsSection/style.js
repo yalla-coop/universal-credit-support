@@ -4,7 +4,7 @@ import theme from '../../theme';
 
 export const Wrapper = styled.div`
   width: 100%;
-  padding: 16px;
+  max-width: 624px;
   border-radius: 4px;
 `;
 
@@ -25,6 +25,11 @@ export const buttonStyle = {
 };
 
 export const ButtonWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  cursor: ${({ cursor }) => cursor || 'pointer'};
+`;
+export const IconsWrapper = styled.div`
   display: flex;
 `;
 export const ButtonContent = styled.div`

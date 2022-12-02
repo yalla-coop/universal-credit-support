@@ -40,6 +40,27 @@ const createOrganisationSectionOrder = async (
   return res.rows[0];
 };
 
+const addDefaultSectionsForOrganisation = async ({ organisationId }) => {
+  const sql = `
+  INSERT INTO organisations_sections_orders (
+    section_id,
+    organisation_id,
+    position,
+    approval_status
+  ) SELECT 
+    id, 
+    $1, 
+    default_position, 
+    'APPROVED' 
+  FROM sections WHERE default_position IS NOT NULL;
+`;
+
+  const values = [organisationId];
+
+  const res = await query(sql, values);
+  return res.rows[0];
+};
+
 const createTopicI18n = async ({ topicId, languageCode, content }) => {
   const sql = `
     INSERT INTO topics_i18n (
@@ -65,4 +86,5 @@ export {
   createSection,
   createTopics,
   createOrganisationSectionOrder,
+  addDefaultSectionsForOrganisation,
 };

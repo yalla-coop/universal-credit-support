@@ -6,6 +6,7 @@ import getSection from './get-section';
 import updateSection from './update-section';
 import getTopicsBySectionId from './get-topics-by-section-id';
 import createSection from './create-section';
+import updateSectionsOrder from './update-sections-order';
 
 import {
   authenticate,
@@ -28,6 +29,14 @@ router.get('/sub-sections', getSubSections);
 
 router.get('/:id', authenticate(true), getSection);
 router.get('/:id/topics', getTopicsBySectionId);
+
+router.patch(
+  '/order',
+  csrfProtection,
+  authenticate(),
+  authorize([userRoles.SUPER_ADMIN, userRoles.ADMIN]),
+  updateSectionsOrder,
+);
 
 router.patch(
   '/:id',

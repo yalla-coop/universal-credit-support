@@ -1,6 +1,6 @@
 import { query } from '../../../database';
 
-const getSectionsByOrgSlugForPublic = async (uniqueSlug, lng) => {
+const findSectionsByOrgSlugForPublic = async (uniqueSlug, lng) => {
   const sql = `
     SELECT
       s.id,
@@ -29,6 +29,38 @@ const getSectionsByOrgSlugForPublic = async (uniqueSlug, lng) => {
   `;
 
   const res = await query(sql, [uniqueSlug, lng]);
+  return res.rows;
+};
+
+const findSectionsByOrgSlug = async (uniqueSlug) => {
+  const sql = `
+    SELECT
+      s.id,
+      s.title,
+      s.default_position,
+      o.id AS organisation_id,
+      oso.position AS position,
+      oso.hidden AS hidden,
+      oso.approval_status AS approval_status,
+      (
+        SELECT
+          COUNT(*)
+        FROM
+          sections AS s2
+        WHERE s2.parent_section_id = s.id
+      ) > 0 AS has_sub_sections
+    FROM organisations AS o
+    INNER JOIN organisations_sections_orders AS oso
+      ON o.id = oso.organisation_id
+    INNER JOIN sections AS s
+      ON oso.section_id = s.id
+    WHERE o.unique_slug = $1
+      AND s.parent_section_id IS NULL
+    ORDER BY oso.position ASC
+  `;
+
+  const res = await query(sql, [uniqueSlug]);
+
   return res.rows;
 };
 
@@ -152,11 +184,12 @@ const findTopicsWithTranslationBySectionId = async (id, lng) => {
 };
 
 export {
-  getSectionsByOrgSlugForPublic,
+  findSectionsByOrgSlugForPublic,
   findSectionById,
   findTopicsBySectionId,
   findTopicsWithTranslationBySectionId,
   getSubSectionsBySectionIdForPublic,
   findSectionWithOrgId,
+  findSectionsByOrgSlug,
   findSectionWithTranslationById,
 };

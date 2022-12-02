@@ -16,6 +16,17 @@ const getSections = async ({ options, uniqueSlug, lng, forPublic }) => {
   }
 };
 
+const updateSectionsOrder = async ({ options, body }) => {
+  try {
+    const { data } = await axios.patch(`${SECTIONS_BASE}/order`, body);
+
+    return { data };
+  } catch (error) {
+    const err = handleError(error, options);
+    return { error: err };
+  }
+};
+
 const createSectionWithTopics = async ({ options, body }) => {
   try {
     const { data } = await axios.post(`${SECTIONS_BASE}`, body);
@@ -81,4 +92,5 @@ export {
   getSubSections,
   createSectionWithTopics,
   updateSectionWithTopics,
+  updateSectionsOrder,
 };

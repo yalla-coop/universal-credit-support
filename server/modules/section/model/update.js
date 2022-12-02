@@ -13,6 +13,23 @@ const updateSection = async ({ id, title, updatedBy }, client) => {
   return res.rows[0];
 };
 
+const updateSectionOrder = async (
+  { id, position, hidden, organisationId },
+  client,
+) => {
+  const sql = `
+    UPDATE organisations_sections_orders
+    SET
+      position = $2,
+      hidden = $3
+    WHERE section_id = $1 AND organisation_id = $4
+    RETURNING *;
+  `;
+
+  const res = await query(sql, [id, position, hidden, organisationId], client);
+  return res.rows[0];
+};
+
 const updateTopicById = async ({ id, content }, client) => {
   const sql = `
     UPDATE topics
@@ -24,4 +41,4 @@ const updateTopicById = async ({ id, content }, client) => {
   return res.rows[0];
 };
 
-export { updateSection, updateTopicById };
+export { updateSection, updateTopicById, updateSectionOrder };

@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../../../helpers';
 import { message } from 'antd';
 import { navRoutes, common } from '../../../constants';
-import { generatePath, useParams } from 'react-router-dom';
+import { generatePath } from 'react-router-dom';
 import { Sections } from '../../../api-calls';
 import { usePublicOrg } from '../../../context/public-org';
 import {

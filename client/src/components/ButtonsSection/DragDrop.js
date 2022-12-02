@@ -1,6 +1,7 @@
-import React from 'react';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import SingleButton from './SingleButton';
+import { useAuth } from '../../context/auth';
+import userRoles from '../../constants/roles';
 
 const colorArray = [
   'primaryDark',
@@ -13,10 +14,11 @@ const getColor = (index, startingColor) => {
   return colorArray[_index];
 };
 
-function DragDrop({ columns, setColumns }) {
+function DragDrop({ columns, setColumns, handleHide, handleEdit }) {
+  const { user } = useAuth();
+
   function handleOnDragEnd(result) {
     if (!result.destination) return;
-
     const items = Array.from(columns);
     const [reorderedItem] = items.splice(result.source.index, 1);
     items.splice(result.destination.index, 0, reorderedItem);
@@ -32,10 +34,11 @@ function DragDrop({ columns, setColumns }) {
             className="buttons"
             {...provided.droppableProps}
             ref={provided.innerRef}
+            style={{ marginBottom: 0 }}
           >
-            {columns.map(({ id, name, hidden }, index) => {
+            {columns.map((item, index) => {
               return (
-                <Draggable key={id} draggableId={id} index={index}>
+                <Draggable key={item.id} draggableId={item.id} index={index}>
                   {(provided) => (
                     <div
                       ref={provided.innerRef}
@@ -43,12 +46,20 @@ function DragDrop({ columns, setColumns }) {
                       {...provided.dragHandleProps}
                     >
                       <SingleButton
-                        name={name}
+                        title={item.title}
                         iconColor={getColor(index, 0)}
                         showMenuIcon
-                        handleEdit={() => {}}
-                        handleHide={() => {}}
-                        hidden={hidden}
+                        cursor="move"
+                        handleEdit={
+                          user.role === userRoles.SUPER_ADMIN ||
+                          !item.defaultPosition
+                            ? () => handleEdit(item)
+                            : null
+                        }
+                        handleHide={
+                          item.isCustomSection ? null : () => handleHide(item)
+                        }
+                        hidden={item.hidden}
                       />
                     </div>
                   )}

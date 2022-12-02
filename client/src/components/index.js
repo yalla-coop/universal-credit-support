@@ -14,6 +14,7 @@ import OrganisationLogo from './OrganisationLogo';
 import PageHeader from './PageHeader';
 import HelpfulResources from './HelpfulResources';
 import StillNeedHelp from './StillNeedHelp';
+import ButtonsSection from './ButtonsSection';
 
 export {
   Button,
@@ -32,4 +33,5 @@ export {
   PageHeader,
   HelpfulResources,
   StillNeedHelp,
+  ButtonsSection,
 };
