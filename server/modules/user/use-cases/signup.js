@@ -1,9 +1,10 @@
 import Boom from '@hapi/boom';
 import uniqid from 'uniqid';
-
+import config from '../../../config';
 import * as User from '../model';
 import * as Organisation from '../../organisation/model';
-
+import sendEmail from '../../../services/mailing';
+import * as templatesId from '../../../services/mailing/templates/templates-constants';
 import { hashPassword, createOrgSlug } from '../../../helpers';
 import { errorMsgs } from '../../../services/error-handler';
 import { validateSignup } from '../utils';
@@ -23,7 +24,7 @@ const signup = async ({
   agreedOnTerms,
 }) => {
   const client = await getClient();
-
+  const { appUrl } = config.common;
   try {
     await client.query('BEGIN');
 
@@ -71,7 +72,14 @@ const signup = async ({
       },
       client,
     );
-
+    sendEmail(
+      templatesId.SIGN_UP,
+      { to: email },
+      {
+        name: firstName,
+        link: `${appUrl}/${slug}`,
+      },
+    );
     await client.query('COMMIT');
     createdUser.password = null;
     return createdUser;
