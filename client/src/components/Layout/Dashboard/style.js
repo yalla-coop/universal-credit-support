@@ -29,7 +29,7 @@ export const ContentHalf = styled.div`
   position: relative;
   flex: 1;
   display: flex;
-  background: ${({ theme }) => theme.colors.primaryTextMain};
+  background: ${({ theme }) => theme.colors.white};
   padding: ${({ theme: { spacings: s } }) => s[10]};
   ${({ theme }) => theme.media.tablet} {
     padding: ${({ theme: { spacings } }) =>

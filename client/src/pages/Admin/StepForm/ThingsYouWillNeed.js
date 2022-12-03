@@ -51,7 +51,7 @@ const ThingsYouWillNeed = ({ state, setState, errors }) => {
             isButton
             mt="4"
             color="neutralMain"
-            iconColor="primaryDark"
+            iconColor="primaryMain"
             handleClick={() =>
               setState({
                 thingsYouWillNeed: [...state, newItem],

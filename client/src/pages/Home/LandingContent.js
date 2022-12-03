@@ -12,12 +12,12 @@ const formatText = (text) => {
   if (!text) return '';
   const arr = text.split(/\. |! |\? /gm);
   const firstSentence = arr[0];
-  if (!arr[1]) return <T.H2 color="primaryDark">{firstSentence}</T.H2>;
+  if (!arr[1]) return <T.H2 color="primaryMain">{firstSentence}</T.H2>;
 
   const remainder = arr.slice(1).join(' ');
   return (
     <>
-      <T.H2 color="primaryDark" mb="2" mr="2" mt="2">
+      <T.H2 color="primaryMain" mb="2" mr="2" mt="2">
         {firstSentence}! <S.Span>{remainder}</S.Span>
       </T.H2>
     </>
@@ -61,7 +61,7 @@ const LandingContent = ({ uniqueSlug }) => {
           {fetchError ? (
             <T.P color="error">{fetchError}</T.P>
           ) : (
-            <T.H2 weight="bold" color="primaryTextMain">
+            <T.H2 weight="bold" color="white">
               {landingContent.headline}
             </T.H2>
           )}

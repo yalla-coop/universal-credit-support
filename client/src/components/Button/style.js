@@ -11,7 +11,7 @@ export const decideBackground = (variant, theme) => {
     case 'secondary':
       return theme.colors.neutralSurface;
     case 'tertiary':
-      return theme.colors.primaryTextMain;
+      return theme.colors.white;
     default:
       return 'transparent';
   }
@@ -36,16 +36,14 @@ export const Button = styled.button`
     }
   }};
   color: ${({ variant, theme }) =>
-    variant === 'primary'
-      ? theme.colors.primaryTextMain
-      : theme.colors.neutralMain};
+    variant === 'primary' ? theme.colors.white : theme.colors.neutralMain};
   position: relative;
   background: ${({ variant, theme }) => decideBackground(variant, theme)};
   border: 2px solid;
   border-color: ${({ variant, theme }) =>
     variant === 'secondary'
       ? theme.colors.neutralDark
-      : theme.colors.primaryDark};
+      : theme.colors.primaryMain};
   border-radius: 12px;
   font-size: 1rem;
   font-weight: 600;
@@ -68,9 +66,7 @@ export const Loading = styled(Spin)`
     line-height: 24px;
     margin-left: 10px;
     color: ${({ theme, variant }) =>
-      variant === 'secondary'
-        ? theme.colors.neutralMain
-        : theme.colors.primaryTextMain};
+      variant === 'secondary' ? theme.colors.neutralMain : theme.colors.white};
   }
 `;
 

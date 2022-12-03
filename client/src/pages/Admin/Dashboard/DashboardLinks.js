@@ -12,7 +12,7 @@ const DashboardLinks = () => {
             bgColor="neutralSurface"
             text={'Change or add to the layout of the tool'}
             icon="forwardArrow"
-            iconColor={'primaryDark'}
+            iconColor={'primaryMain'}
             mr="6px"
             ai="flex-start"
             isText
@@ -41,7 +41,7 @@ const DashboardLinks = () => {
             text={'Customise resources and client contact numbers'}
             icon="forwardArrow"
             ai="flex-start"
-            iconColor={'primaryMain'}
+            iconColor={'tertiaryMain'}
             mr="6px"
             isText
           />

@@ -56,7 +56,7 @@ export const MobileNav = () => {
         maskStyle={{ display: 'none' }}
         headerStyle={{ display: 'none' }}
         width="100%"
-        drawerStyle={{ background: 'primaryTextMain', display: 'flex' }}
+        drawerStyle={{ background: 'white', display: 'flex' }}
       >
         <div
           style={{

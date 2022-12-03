@@ -6,7 +6,7 @@ export const Wrapper = styled('div')`
   flex-direction: column;
   width: 100%;
   z-index: 1;
-  background-color: ${theme.colors.primaryTextMain};
+  background-color: ${theme.colors.white};
   position: ${({ hide }) => (hide ? 'relative' : 'absolute')};
   min-height: ${({ hide }) =>
     hide ? `${theme.constants.translationBar.desktop.height}` : '100%'};
