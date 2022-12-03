@@ -6,9 +6,7 @@ import { errorMsgs } from '../../../services/error-handler';
 import { moveFile } from '../../../services/files-storage';
 import { getClient } from '../../../database/connect';
 import { userRoles } from '../../../constants';
-
-import sendEmail from '../../../services/mailing';
-import * as templatesId from '../../../services/mailing/templates/templates-constants';
+import resetPasswordLink from '../../user/use-cases/reset-password-link';
 
 const updateOrganisation = async ({
   id,
@@ -114,13 +112,7 @@ const updateOrganisation = async ({
     await client.query('COMMIT');
 
     if (isSuperAdminEditingAnotherOrg && emailHasChanged) {
-      sendEmail(
-        templatesId.ORG_EMAIL_UPDATED,
-        { to: email },
-        {
-          name: user.firstName,
-        },
-      );
+      await resetPasswordLink({ email, resetByAdmin: true });
     }
   } catch (error) {
     await client.query('ROLLBACK');

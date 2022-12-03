@@ -1,6 +1,7 @@
 import Boom from '@hapi/boom';
 import * as Sections from '../model';
 import * as Users from '../../user/model';
+import * as Organisation from '../../organisation/model';
 
 import sendEmail from '../../../services/mailing';
 import * as templatesId from '../../../services/mailing/templates/templates-constants';
@@ -38,12 +39,16 @@ const createSection = async ({ title, userId, topics, userOrganisationId }) => {
     await client.query('COMMIT');
 
     const hydeAdmin = await Users.findSuperAdminByOrgUniqueSlug('hyde');
+    const { organisationName } = await Organisation.findOrganisation(
+      userOrganisationId,
+    );
     sendEmail(
       templatesId.ADMIN_ORG_ADDED_A_NEW_SECTION,
       { to: hydeAdmin.email },
       {
-        name: hydeAdmin.firstName,
+        // name: hydeAdmin.firstName,
         link: ADMIN_REVIEW_SECTION.replace(':id', section.id),
+        orgName: organisationName,
       },
     );
 

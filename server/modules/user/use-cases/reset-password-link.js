@@ -8,7 +8,7 @@ const crypto = require('crypto');
 
 const { SET_PASSWORD } = appLinks;
 
-const resetPasswordLink = async ({ email }) => {
+const resetPasswordLink = async ({ email, resetByAdmin }) => {
   const user = await User.findUserByEmail(email);
   if (!user) return;
 
@@ -19,15 +19,25 @@ const resetPasswordLink = async ({ email }) => {
     userId: user.id,
     resetPasswordToken: token,
   });
-
-  sendEmail(
-    templatesId.RESET_PASSWORD,
-    { to: user.email },
-    {
-      name: user.firstName,
-      link: SET_PASSWORD.replace(':token', token),
-    },
-  );
+  if (resetByAdmin) {
+    sendEmail(
+      templatesId.ORG_EMAIL_UPDATED,
+      { to: user.email },
+      {
+        name: user.firstName,
+        link: SET_PASSWORD.replace(':token', token),
+      },
+    );
+  } else {
+    sendEmail(
+      templatesId.RESET_PASSWORD,
+      { to: user.email },
+      {
+        name: user.firstName,
+        link: SET_PASSWORD.replace(':token', token),
+      },
+    );
+  }
 };
 
 export default resetPasswordLink;
