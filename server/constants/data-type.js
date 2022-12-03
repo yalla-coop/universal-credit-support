@@ -57,3 +57,18 @@ export const organisationStatuses = {
   APPROVED: 'APPROVED',
   REJECTED: 'REJECTED',
 };
+
+export const languageCodes = {
+  English: 'en',
+  French: 'fr',
+  German: 'de',
+  Spanish: 'es',
+  Urdu: 'ur',
+  Italian: 'it',
+  Polish: 'pl',
+  Hindi: 'hi',
+  Russian: 'ru',
+  Arabic: 'ar',
+  Portuguese: 'pt',
+  Welsh: 'cy',
+};

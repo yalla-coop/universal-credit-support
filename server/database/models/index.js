@@ -4,6 +4,8 @@ import organisations from './organisations';
 import landingPageContent from './landing-page-content';
 import steps from './steps';
 import contentAuditLog from './content-audit-log';
+import common from './common';
+import commonI18n from './common-i18n';
 
 export {
   users,
@@ -12,4 +14,6 @@ export {
   landingPageContent,
   steps,
   contentAuditLog,
+  common,
+  commonI18n,
 };

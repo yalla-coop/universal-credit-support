@@ -1,6 +1,7 @@
 import * as S from './style';
 import { Typography as T } from '../../components';
 import { useAccessibility } from '../../context/accessibility';
+import { useTranslation } from 'react-i18next';
 
 const colors = [
   {
@@ -22,6 +23,7 @@ const colors = [
 ];
 
 const OverlayColor = () => {
+  const { t } = useTranslation();
   const { layoutColor, setLayoutColor } = useAccessibility();
 
   const handleSelect = (color) => {
@@ -33,6 +35,11 @@ const OverlayColor = () => {
       setLayoutColor(color);
     }
   };
+
+  const _colors = t('common.colors', {
+    defaultValue: colors,
+    returnObjects: true,
+  });
 
   return (
     <>
@@ -55,7 +62,7 @@ const OverlayColor = () => {
                 }
                 weight="normal"
               >
-                {item.label}
+                {_colors[index].label}
               </T.P>
             </S.TextWrapper>
           </S.Button>

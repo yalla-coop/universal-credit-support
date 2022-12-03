@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
 import { message } from 'antd';
-
+import { useTranslation } from 'react-i18next';
 import { Typography as T } from '../../components';
 import { LandingPage } from '../../api-calls';
-import { t } from '../../helpers';
-import { useLang } from '../../context/lang';
+
 import { usePublicOrg } from '../../context/public-org';
 
 import * as S from './style';
@@ -26,7 +25,8 @@ const formatText = (text) => {
 };
 
 const LandingContent = ({ uniqueSlug }) => {
-  const { lang } = useLang();
+  const { i18n, t } = useTranslation();
+  const { language: lng } = i18n;
   const { publicOrg } = usePublicOrg();
   const [landingContent, setLandingContent] = useState({});
   const [fetchError, setFetchError] = useState('');
@@ -35,10 +35,10 @@ const LandingContent = ({ uniqueSlug }) => {
     let mounted = true;
     async function fetchData() {
       const hideMessage = message.loading('Loading...');
-      const { data, error } = await LandingPage.getLandingPageContent({});
+      const { data, error } = await LandingPage.getLandingPageContent({ lng });
       if (mounted) {
         if (error) {
-          setFetchError(t(`generalError`, lang));
+          setFetchError(t(`generalError`, lng));
         } else {
           setLandingContent(data);
         }
@@ -50,7 +50,7 @@ const LandingContent = ({ uniqueSlug }) => {
     return () => {
       mounted = false;
     };
-  }, [lang]);
+  }, [lng]);
 
   return (
     <>

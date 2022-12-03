@@ -1,9 +1,9 @@
 import { createContext, useState, useContext, useEffect } from 'react';
 import { message } from 'antd';
-
+import { useTranslation } from 'react-i18next';
+import { useLanguage } from '../helpers';
 import { Steps } from '../api-calls';
 import { t } from '../helpers';
-import { useLang } from '../context/lang';
 
 const storeStepsIntoStorage = (steps) => {
   localStorage.setItem('steps', JSON.stringify(steps));
@@ -75,6 +75,8 @@ const formateStepsObj = (stepsArr) => {
 };
 
 const StepsProvider = ({ children, ...props }) => {
+  const { i18n } = useTranslation();
+  const { lng } = useLanguage();
   const [steps, setSteps] = useState(getStepsFromStorage);
   const [stepsObj, setStepsObj] = useState({
     beforeClaiming: [],
@@ -84,25 +86,23 @@ const StepsProvider = ({ children, ...props }) => {
   const [justCompletedId, setJustCompletedId] = useState('');
   const [loadingSteps, setLoadingSteps] = useState(false);
   const [stepsError, setStepsError] = useState('');
-  const { lang } = useLang();
 
   useEffect(() => {
     let mounted = true;
     async function fetchData() {
       setLoadingSteps(true);
       const hideLoading = message.loading('loading...');
-      const { data: newSteps, error } = await Steps.getStepsContent({});
+      const { data: newSteps, error } = await Steps.getStepsContent({ lng });
       if (mounted) {
         let updatedSteps = [];
         if (error) {
           setStepsError(error.message);
-          message.error(t(`generalError`, lang), 2);
+          message.error(t(`generalError`, lng), 2);
           // To update stepObj state
           updatedSteps = getStepsFromStorage();
         } else {
           const stepsFromLocal = getStepsFromStorage();
           updatedSteps = updateStepsInStorage(stepsFromLocal, newSteps);
-
           setSteps(updatedSteps);
         }
 
@@ -127,6 +127,9 @@ const StepsProvider = ({ children, ...props }) => {
       return step;
     });
     const _stepsObj = formateStepsObj(updatedSteps);
+    i18n.addResourceBundle(lng, 'stepsObj', {
+      stepsObj: _stepsObj,
+    });
     setStepsObj(_stepsObj);
   }, [justCompletedId, steps]);
 

@@ -22,6 +22,11 @@ const envVarsSchema = yup
       then: yup.string(),
       otherwise: yup.string().required(),
     }),
+    AWS_REGION: yup.string().when('NODE_ENV', {
+      is: 'test',
+      then: yup.string(),
+      otherwise: yup.string().required(),
+    }),
   })
   .required();
 
@@ -39,6 +44,7 @@ const config = () => {
     bucketRegion: envVars.BUCKET_REGION,
     awsAccessKeyId: envVars.AWS_ACCESS_KEY_ID,
     awsSecretAccessKey: envVars.AWS_SECRET_ACCESS_KEY,
+    awsRegion: envVars.AWS_REGION,
   };
 };
 

@@ -4,6 +4,8 @@ import * as T from '../../Typography';
 import { Checkbox } from '../../Inputs';
 import TextWithIcon from '../../TextWithIcon';
 import Tips from '../Tips';
+import { common } from '../../../constants';
+import { useTranslation } from 'react-i18next';
 
 const Checklist = ({
   title,
@@ -15,6 +17,8 @@ const Checklist = ({
   completed,
 }) => {
   const [expanded, setExpanded] = useState(false);
+  const { t } = useTranslation();
+
   return (
     <>
       <S.Section mb="3">
@@ -56,7 +60,10 @@ const Checklist = ({
               {thisCanInclude?.filter((v) => !!v)?.length > 0 && (
                 <>
                   <T.H3 color="neutralDark" mb="3">
-                    This can include things like:
+                    {t(
+                      'common.generalSentence.ThisCanIncludeThingsLike',
+                      common.generalSentence.ThisCanIncludeThingsLike
+                    )}
                   </T.H3>
                   {thisCanInclude
                     .filter((v) => !!v)

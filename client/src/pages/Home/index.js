@@ -3,36 +3,25 @@ import { generatePath } from 'react-router-dom';
 import ReactGA from 'react-ga';
 import Step from '../../components/Steps';
 import { Typography as T } from '../../components';
-import { t } from '../../helpers';
-import { useLang } from '../../context/lang';
 import { useSteps } from '../../context/steps';
-import { navRoutes as n } from '../../constants';
+import { navRoutes as n, common } from '../../constants';
 import LandingContent from './LandingContent';
 import { stageTypes } from './../../constants/data-types';
-
+import { useTranslation } from 'react-i18next';
 import Icon from '../../components/Icon';
 import HelpButton from '../../components/HelpButton';
 import TextWithIcon from '../../components/TextWithIcon';
 import { usePublicOrg } from './../../context/public-org';
 import * as S from './style';
-
-const afterClaimContent = {
-  title: {
-    completed: 'You’re all done!',
-    notCompleted: `What should I do once I am granted Universal Credit?`,
-  },
-  text: {
-    completed: `Got your Universal Credit? Great news! Check out these steps on what to do next:`,
-    notCompleted: `Once you’ve completed your claim there are few additional steps you can take. Open this when you’ve completed the above steps`,
-  },
-};
+import { useLanguage } from '../../helpers';
 
 const Home = () => {
-  const { lang } = useLang();
+  const { t } = useTranslation();
+  const { lng } = useLanguage();
   const { publicOrg } = usePublicOrg();
   const { uniqueSlug } = publicOrg;
 
-  const { steps, justCompletedId, setJustCompletedId, loadingSteps, stepsObj } =
+  const { steps, justCompletedId, setJustCompletedId, loadingSteps } =
     useSteps();
 
   const [showAfterClaim, setShowAfterClaim] = useState(false);
@@ -91,12 +80,37 @@ const Home = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [justCompletedId]);
 
+  const _stepsObj = t('stepsObj', {
+    ns: 'stepsObj',
+    returnObjects: true,
+  });
+
+  const completed = t(
+    'common.section.afterClaimContent.title.completed',
+    common.section.afterClaimContent.title.completed
+  );
+
+  const notCompleted = t(
+    'common.section.afterClaimContent.title.notCompleted',
+    common.section.afterClaimContent.title.notCompleted
+  );
+
+  const completedText = t(
+    'common.section.afterClaimContent.title.completed',
+    common.section.afterClaimContent.title.completed
+  );
+
+  const notCompletedText = t(
+    'common.section.afterClaimContent.text.notCompleted',
+    common.section.afterClaimContent.text.notCompleted
+  );
+
   return (
     <>
       <LandingContent uniqueSlug={uniqueSlug} />
 
       {/* BEFORE CLAIMING */}
-      {stepsObj.BEFORE_CLAIMING?.map((step, i) => {
+      {_stepsObj.BEFORE_CLAIMING?.map((step, i) => {
         const { variant, currentRef, isJustCompletedOne } = getStepStatus(
           step,
           i
@@ -107,7 +121,7 @@ const Home = () => {
             key={step.id}
             title={step.title}
             description={step.description}
-            content={t(`${step.name}.subtitle`, lang)}
+            content={t(`${step.name}.subtitle`, lng)}
             isCompleted={step.isCompleted}
             variant={variant}
             direction={i % 2 === 0 ? 'left' : 'right'}
@@ -125,7 +139,7 @@ const Home = () => {
       })}
 
       {/* CLAIMING */}
-      {stepsObj.CLAIMING?.map((step, i) => {
+      {_stepsObj.CLAIMING?.map((step, i) => {
         const { variant, currentRef, isJustCompletedOne } = getStepStatus(
           step,
           i
@@ -136,7 +150,7 @@ const Home = () => {
             key={step.id}
             title={step.title}
             description={step.description}
-            content={t(`${step.name}.subtitle`, lang)}
+            content={t(`${step.name}.subtitle`, lng)}
             isCompleted={step.isCompleted}
             variant={variant}
             direction={i % 2 === 0 ? 'left' : 'right'}
@@ -157,18 +171,10 @@ const Home = () => {
       <S.Section mt="7">
         <Icon icon="flag" color="primaryMain" mt="6" mb="5" mbM="0" mtM="5" />
         <T.H2 color="neutralMain" mb="1">
-          {
-            afterClaimContent.title[
-              completedClaim ? 'completed' : 'notCompleted'
-            ]
-          }
+          {completedClaim ? completed : notCompleted}
         </T.H2>
         <S.StyledText>
-          {
-            afterClaimContent.text[
-              completedClaim ? 'completed' : 'notCompleted'
-            ]
-          }
+          {completedClaim ? completedText : notCompletedText}
         </S.StyledText>
         {!completedClaim && !showAfterClaim && (
           <S.Container mt="4">
@@ -177,7 +183,7 @@ const Home = () => {
               iconColor="primaryMain"
               isButton
               handleClick={() => setShowAfterClaim(true)}
-              text="View steps"
+              text={t('common.buttons.viewSteps', common.buttons.viewSteps)}
               jc="flex-start"
               weight="500"
             />
@@ -186,7 +192,7 @@ const Home = () => {
       </S.Section>
 
       {(completedClaim || showAfterClaim) &&
-        stepsObj.AFTER_CLAIMING?.map((step, i) => {
+        _stepsObj.AFTER_CLAIMING?.map((step, i) => {
           const { variant, currentRef, isJustCompletedOne } = getStepStatus(
             step,
             i
@@ -197,7 +203,7 @@ const Home = () => {
               key={step.id}
               title={step.title}
               description={step.description}
-              content={t(`${step.name}.subtitle`, lang)}
+              content={t(`${step.name}.subtitle`, lng)}
               isCompleted={step.isCompleted}
               variant={variant}
               direction={i % 2 === 0 ? 'left' : 'right'}

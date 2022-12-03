@@ -12,6 +12,7 @@ router.use('/media', M.media.controllers);
 router.use('/organisations', M.organisation.controllers);
 router.use('/steps', M.step.controllers);
 router.use('/csv', M.csv.controllers);
+router.use('/translations', M.translations.controllers);
 
 // catch 404 and forward to error handler
 router.use((req, res, next) => {
