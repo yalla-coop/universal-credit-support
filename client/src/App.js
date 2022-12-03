@@ -6,7 +6,6 @@ import { Route as CustomRoute } from './components';
 import * as Pages from './pages';
 import { navRoutes } from './constants';
 import { ScrollToTop } from './helpers';
-import LangProvider from './context/lang';
 import StepsProvider from './context/steps';
 import { AuthProvider } from './context/auth';
 import { PublicOrgProvider } from './context/public-org';

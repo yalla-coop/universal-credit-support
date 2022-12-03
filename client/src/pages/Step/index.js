@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import B from '../../constants/benefit-calculator';
+import { common } from '../../constants';
+import { useTranslation } from 'react-i18next';
 
 import {
   TextWithIcon,
@@ -13,8 +15,6 @@ import {
   OrganisationLogo,
 } from '../../components';
 import { useSteps } from '../../context/steps';
-import { useLang } from '../../context/lang';
-import { t } from '../../helpers';
 import { navRoutes as n, types } from '../../constants';
 
 import * as S from './style';
@@ -28,9 +28,9 @@ const Step = () => {
   const [stuck, setStuck] = useState(false);
   const { publicOrg } = usePublicOrg();
   const params = useParams();
-  const { lang } = useLang();
   const navigate = useNavigate();
   const { steps: fullSteps, checkUncheckItem, markAsComplete } = useSteps();
+  const { t } = useTranslation();
 
   const step = fullSteps.find((s) => s.id === Number(params.id));
 
@@ -96,7 +96,12 @@ const Step = () => {
                   color="primaryMain"
                   mr="2"
                 />
-                <T.H2 color="neutralMain">How long does it take?</T.H2>
+                <T.H2 color="neutralMain">
+                  {t(
+                    'common.heading.howLongDoesItTake.title',
+                    common.heading.howLongDoesItTake.title
+                  )}
+                </T.H2>
               </S.SectionHeader>
               <T.P color="neutralDark">
                 {step.howLongDoesItTake.timeRangeText}
@@ -115,7 +120,12 @@ const Step = () => {
                 color="primaryMain"
                 mr="2"
               />
-              <T.H2 color="neutralMain">Things you'll need</T.H2>
+              <T.H2 color="neutralMain">
+                {t(
+                  'common.heading.thingsYouWillNeed.title',
+                  common.heading.thingsYouWillNeed.title
+                )}
+              </T.H2>
             </S.SectionHeader>
             <Row inner>
               {step.thingsYouWillNeed?.length > 0 ? (
@@ -135,8 +145,10 @@ const Step = () => {
               ) : (
                 <Col w={[4, 12, 8]}>
                   <T.P color="neutralDark">
-                    You don't need to provide any physical documents for this
-                    step.
+                    {t(
+                      'common.heading.thingsYouWillNeed.text',
+                      common.heading.thingsYouWillNeed.text
+                    )}
                   </T.P>
                 </Col>
               )}
@@ -155,7 +167,12 @@ const Step = () => {
                   color="primaryMain"
                   mr="2"
                 />
-                <T.H2 color="neutralMain">What you'll need to know</T.H2>
+                <T.H2 color="neutralMain">
+                  {t(
+                    'common.heading.whatYouWillNeedToKnow.title',
+                    common.heading.whatYouWillNeedToKnow.title
+                  )}
+                </T.H2>
               </S.SectionHeader>
               <Row inner>
                 {step.whatYouWillNeedToKnow.map((item, index) => (
@@ -194,11 +211,18 @@ const Step = () => {
                     color="primaryMain"
                     mr="2"
                   />
-                  <T.H2 color="neutralMain">Where do you need to go?</T.H2>
+                  <T.H2 color="neutralMain">
+                    {t(
+                      'common.heading.whereDoYouNeedToGo.title',
+                      common.heading.whereDoYouNeedToGo.title
+                    )}
+                  </T.H2>
                 </S.SectionHeader>
                 <T.P color="neutralDark">
-                  Remember to come back here once you're done so you can mark
-                  this step as complete and see what to do next
+                  {t(
+                    'common.heading.whereDoYouNeedToGo.text',
+                    common.heading.whereDoYouNeedToGo.text
+                  )}
                 </T.P>
               </Col>
             </Row>
@@ -208,6 +232,10 @@ const Step = () => {
                   variant="primary"
                   text={
                     publicOrg?.benefitCalculatorLabel ||
+                    t(
+                      'common.buttons.benefitCalculator',
+                      common.buttons.benefitCalculator
+                    ) ||
                     B.BENEFIT_CALCULATOR_LABEL
                   }
                   to={
@@ -234,11 +262,18 @@ const Step = () => {
                     color="primaryMain"
                     mr="2"
                   />
-                  <T.H2 color="neutralMain">Where do you need to go?</T.H2>
+                  <T.H2 color="neutralMain">
+                    {t(
+                      'common.heading.whereDoYouNeedToGo.title',
+                      common.heading.whereDoYouNeedToGo.title
+                    )}
+                  </T.H2>
                 </S.SectionHeader>
                 <T.P color="neutralDark">
-                  Remember to come back here once you're done so you can mark
-                  this step as complete and see what to do next
+                  {t(
+                    'common.heading.whereDoYouNeedToGo.text',
+                    common.heading.whereDoYouNeedToGo.text
+                  )}
                 </T.P>
               </Col>
             </Row>
@@ -263,7 +298,7 @@ const Step = () => {
         <Row>
           <Col w={[4, 12, 6]} mt="8" mtM="7" mb="5">
             <TextWithIcon
-              text={t('callUsLinkText', lang)}
+              text={t('common.buttons.stuckCallUs', common.buttons.stuckCallUs)}
               isButton
               handleClick={() => setStuck(true)}
               underline
@@ -279,7 +314,10 @@ const Step = () => {
           <Col w={[4, 12, 6]} mt="6" mb="7">
             <Button
               variant="secondary"
-              text="Mark as complete"
+              text={t(
+                'common.buttons.markAsComplete',
+                common.buttons.markAsComplete
+              )}
               to={
                 publicOrg?.uniqueSlug
                   ? n.GENERAL.HOME_ORG.replace(

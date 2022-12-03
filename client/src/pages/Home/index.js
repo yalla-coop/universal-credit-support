@@ -16,12 +16,12 @@ import * as S from './style';
 import { useLanguage } from '../../helpers';
 
 const Home = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const { lng } = useLanguage();
   const { publicOrg } = usePublicOrg();
   const { uniqueSlug } = publicOrg;
 
-  const { steps, justCompletedId, setJustCompletedId, loadingSteps, stepsObj } =
+  const { steps, justCompletedId, setJustCompletedId, loadingSteps } =
     useSteps();
 
   const [showAfterClaim, setShowAfterClaim] = useState(false);

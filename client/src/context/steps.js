@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../helpers';
 import { Steps } from '../api-calls';
 import { t } from '../helpers';
-import { useLang } from '../context/lang';
 
 const storeStepsIntoStorage = (steps) => {
   localStorage.setItem('steps', JSON.stringify(steps));

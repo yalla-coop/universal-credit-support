@@ -3,8 +3,7 @@ import { message } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { Typography as T } from '../../components';
 import { LandingPage } from '../../api-calls';
-import { t } from '../../helpers';
-import { useLang } from '../../context/lang';
+
 import { usePublicOrg } from '../../context/public-org';
 
 import * as S from './style';
@@ -53,15 +52,6 @@ const LandingContent = ({ uniqueSlug }) => {
     };
   }, [lng]);
 
-  i18n.addResourceBundle(lng, 'landingContent', {
-    landingContent,
-  });
-
-  const _landingContent = t('landingContent', {
-    ns: 'landingContent',
-    returnObjects: true,
-  });
-
   return (
     <>
       <S.PageHead
@@ -72,14 +62,14 @@ const LandingContent = ({ uniqueSlug }) => {
             <T.P color="error">{fetchError}</T.P>
           ) : (
             <T.H2 weight="bold" color="primaryTextMain">
-              {_landingContent.headline}
+              {landingContent.headline}
             </T.H2>
           )}
         </S.HeaderText>
       </S.PageHead>
       <S.Section>
-        {formatText(_landingContent.subtitle)}{' '}
-        <S.StyledText mb="3">{_landingContent.instructions}</S.StyledText>
+        {formatText(landingContent.subtitle)}{' '}
+        <S.StyledText mb="3">{landingContent.instructions}</S.StyledText>
       </S.Section>
     </>
   );

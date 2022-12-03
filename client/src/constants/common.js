@@ -6,6 +6,11 @@ const common = {
     accessibility: 'Accessibility',
     decreaseTextSize: '- Decrease text size',
     increaseTextSize: '+ Increase text size',
+    benefitCalculator: 'Benefit Calculator',
+    stuckCallUs: 'Stuck? Call us for advice',
+  },
+  generalSentence: {
+    ThisCanIncludeThingsLike: 'This can include things like:',
   },
   words: { and: 'and' },
   heading: {
