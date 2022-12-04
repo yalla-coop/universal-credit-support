@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import * as S from './style';
-
 import { BasicInput, InputArray } from '../index';
 import TextWithIcon from '../../TextWithIcon';
+import { useTranslation } from 'react-i18next';
+import { common } from '../../../constants';
 
 const InputCMS = ({
   formState = {},
@@ -14,8 +15,13 @@ const InputCMS = ({
   const [expanded, setExpanded] = useState(false);
 
   const { title, description, thisCanInclude, tips } = formState;
-
   const updateState = (val, key) => handleChange({ ...formState, [key]: val });
+
+  const { t } = useTranslation();
+
+  const seeMore = t('common.buttons.seeMore', common.buttons.seeMore);
+  const seeLess = t('common.buttons.seeLess', common.buttons.seeLess);
+  const seeMoreOrLess = expanded ? seeLess : seeMore;
 
   return (
     <>
@@ -28,7 +34,7 @@ const InputCMS = ({
           error={error?.title}
         />
         <TextWithIcon
-          text={expanded ? 'See less' : 'See more'}
+          text={seeMoreOrLess}
           icon="circleArrow"
           isButton
           mt="4"

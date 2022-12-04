@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { Select as AntdSelect } from 'antd';
 import { css } from '@emotion/react';
-
 import * as T from '../../Typography';
 import * as S from './style';
 import * as CS from './../style';
 import Icon from '../../Icon';
+import { useTranslation } from 'react-i18next';
+import { common } from '../../../constants';
 
 const { OptGroup: AntdOptGroup, Option: AntdOption } = AntdSelect;
 
@@ -13,7 +14,7 @@ const Dropdown = ({
   handleChange,
   label,
   color,
-  placeholder = 'Select...',
+  placeholder,
   error,
   helper,
   w,
@@ -30,6 +31,11 @@ const Dropdown = ({
 }) => {
   const [open, setOpen] = useState(false);
   const [focus, setFocus] = useState(false);
+
+  const { t } = useTranslation();
+  const _placeholder = placeholder
+    ? placeholder
+    : t('common.placeholders.select', common.placeholders.select);
 
   const decideColor = () => {
     if (error) return 'error';
@@ -131,7 +137,7 @@ const Dropdown = ({
             multi ? handleChange(val, option) : undefined
           }
           mode={decideMode()}
-          placeholder={placeholder || 'Type here...'}
+          placeholder={_placeholder || 'Type here...'}
           showArrow
           allowClear={allowClear}
           onDropdownVisibleChange={(open) => setOpen(open)}

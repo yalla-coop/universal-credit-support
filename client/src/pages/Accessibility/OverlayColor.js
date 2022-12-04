@@ -2,6 +2,7 @@ import * as S from './style';
 import { Typography as T } from '../../components';
 import { useAccessibility } from '../../context/accessibility';
 import { useTranslation } from 'react-i18next';
+import { common } from '../../constants';
 
 const colors = [
   {
@@ -44,7 +45,7 @@ const OverlayColor = () => {
   return (
     <>
       <T.H2 color="neutralMain" mb="4">
-        Add colour overlay
+        {t('common.buttons.addColourOverlay', common.buttons.addColourOverlay)}
       </T.H2>
       <S.ButtonsWrapper>
         {colors.map((item, index) => (

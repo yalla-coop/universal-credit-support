@@ -5,6 +5,8 @@ import TextWithIcon from '../../TextWithIcon';
 import Tips from '../Tips';
 import Icon from '../../Icon';
 import HelpfulResources from '../../HelpfulResources';
+import { useTranslation } from 'react-i18next';
+import { common } from '../../../constants';
 
 const TopicCard = ({
   title,
@@ -16,6 +18,12 @@ const TopicCard = ({
   topicIndex,
 }) => {
   const [expanded, setExpanded] = useState(false);
+
+  const { t } = useTranslation();
+
+  const seeMore = t('common.buttons.seeMore', common.buttons.seeMore);
+  const seeLess = t('common.buttons.seeLess', common.buttons.seeLess);
+  const seeMoreOrLess = expanded ? seeLess : seeMore;
 
   return (
     <>
@@ -35,7 +43,7 @@ const TopicCard = ({
 
           {(description || tips?.length > 0) && (
             <TextWithIcon
-              text={expanded ? 'See less' : 'See more'}
+              text={seeMoreOrLess}
               icon="circleArrow"
               isButton
               mt="4"
