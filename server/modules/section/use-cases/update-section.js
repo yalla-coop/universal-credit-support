@@ -3,6 +3,8 @@ import * as Sections from '../model';
 import { getClient } from '../../../database/connect';
 import { errorMsgs } from '../../../services/error-handler';
 import { formatTopics } from '../utils';
+import { userRoles } from '../../../constants';
+import updateSectionStatus from './update-section-status';
 
 const updateSection = async ({
   id,
@@ -10,6 +12,8 @@ const updateSection = async ({
   userId,
   topics,
   userOrganisationId,
+  role,
+  approved,
 }) => {
   const topicsToUpdate = topics
     .filter((t) => !t.new)
@@ -17,12 +21,13 @@ const updateSection = async ({
   const newTopics = topics.filter((t) => t.new);
 
   // check if the user is the owner of the section
-  const sectionOrg = await Sections.findSectionWithOrgId({
-    sectionId: id,
-    organisationId: userOrganisationId,
-  });
+  const sectionOrg = await Sections.findSectionWithOrgDetails(id);
 
-  if (!sectionOrg) {
+  if (!sectionOrg) throw Boom.notFound(errorMsgs.NOT_FOUND);
+  if (
+    sectionOrg.organisationId !== userOrganisationId &&
+    role !== userRoles.SUPER_ADMIN
+  ) {
     throw Boom.badImplementation(errorMsgs.NOT_FOUND); // send error 500 to get in sentry
   }
 
@@ -38,9 +43,21 @@ const updateSection = async ({
     await client.query('BEGIN');
 
     const section = await Sections.updateSection(
-      { id, title, updatedBy: userId },
+      {
+        id,
+        title,
+        updatedBy: userId,
+      },
       client,
     );
+
+    if (approved) {
+      await updateSectionStatus({
+        id,
+        status: 'APPROVED',
+        organisationId: sectionOrg.organisationId,
+      });
+    }
 
     await Sections.deleteTopicsBySectionId(
       { sectionId: id, topicIdsToKeep: topicsToUpdate.map((t) => t.id) },

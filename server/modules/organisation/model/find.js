@@ -105,9 +105,29 @@ const findOrganisationsByStatus = async (status, client) => {
   return res.rows;
 };
 
+const findOrganisationsWithUserByOrgId = async (id, client) => {
+  const sql = `
+      SELECT
+        o.id,
+        u.id AS user_id,
+        u.first_name AS user_first_name,
+        u.last_name AS user_last_name,
+        u.email AS user_email
+      FROM organisations AS o
+      INNER JOIN users AS u ON (u.organisation_id = o.id)
+
+      WHERE o.id = $1
+    `;
+  const values = [id];
+
+  const res = await query(sql, values, client);
+  return res.rows;
+};
+
 export {
   findOrganisation,
   findOrganisationBySlug,
   findOrganisationForPublicBySlug,
   findOrganisationsByStatus,
+  findOrganisationsWithUserByOrgId,
 };

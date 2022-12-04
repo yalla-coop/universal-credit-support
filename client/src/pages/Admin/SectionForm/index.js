@@ -1,5 +1,5 @@
 import { useRef, useReducer, useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import {
   Grid,
   Typography as T,
@@ -13,7 +13,8 @@ import { defaultResources } from '../../../constants/resources';
 import { useAdminOrg } from '../../../context/admin-org';
 import { Section as validate } from '../../../validation/schemas';
 import { Sections } from '../../../api-calls';
-import { navRoutes } from '../../../constants';
+import { navRoutes, roles } from '../../../constants';
+import { useAuth } from '../../../context/auth';
 
 const { Row, Col } = Grid;
 
@@ -62,7 +63,12 @@ function reducer(state, newState) {
   return { ...state, ...value };
 }
 
-const SectionForm = () => {
+const SectionForm = ({ review }) => {
+  const location = useLocation();
+  const urlQuery = new URLSearchParams(location.search);
+  const uniqueSlug = urlQuery.get('uniqueSlug');
+  const organisationId = urlQuery.get('organisationId');
+  const { user } = useAuth();
   const [isUpdateModalVisible, setIsUpdateModalVisible] = useState(false);
 
   const navigate = useNavigate();
@@ -178,6 +184,11 @@ const SectionForm = () => {
     }
   };
 
+  const previewPage = navRoutes.PUBLIC_ORG.SECTION.replace(
+    ':uniqueSlug',
+    uniqueSlug || adminOrg.uniqueSlug
+  ).replace(':id', id);
+
   const handleEditSection = async () => {
     setState({ loading: true });
 
@@ -186,6 +197,7 @@ const SectionForm = () => {
       body: {
         title,
         topics: formatTopics(topics),
+        approved: review || null,
       },
     });
 
@@ -194,13 +206,7 @@ const SectionForm = () => {
       setState({ httpError: error.message });
     } else {
       if (saveForPreview.current) {
-        window.open(
-          navRoutes.PUBLIC_ORG.SECTION.replace(
-            ':uniqueSlug',
-            adminOrg.uniqueSlug
-          ).replace(':id', id),
-          '_blank'
-        );
+        window.open(previewPage, '_blank');
       } else {
         setIsUpdateModalVisible(true);
       }
@@ -262,12 +268,24 @@ const SectionForm = () => {
     });
   };
 
+  const pageTitle = () => {
+    if (review) return 'Approve section';
+    if (id === 'new') return 'Add section';
+    return 'Edit section';
+  };
+
+  const saveButtonLabel = () => {
+    if (review) return 'Approve section';
+    if (id === 'new') return 'Publish';
+    return 'Save';
+  };
+
   return (
     <>
       <Row>
         <Col w={[4, 12, 12]}>
           <T.H1 mb="6" weight="bold">
-            {id === 'new' ? 'Add section' : 'Edit section'}
+            {pageTitle()}
           </T.H1>
         </Col>{' '}
         <Col w={[4, 12, 10]}>
@@ -325,7 +343,12 @@ const SectionForm = () => {
         )}
       </>
 
-      <Row mt="10">
+      <Row
+        style={{
+          flex: 1,
+          alignItems: 'flex-end',
+        }}
+      >
         {httpError && (
           <Col w={[4, 12, 12]}>
             <T.P mb="2" color="error">
@@ -343,13 +366,14 @@ const SectionForm = () => {
         ) : null}
         <Col w={[4, 12, 6]}>
           <Button
-            text={id === 'new' ? 'Publish' : 'Save'}
+            text={saveButtonLabel()}
             handleClick={handleSubmit}
             loading={state.loading}
             mt="4"
+            mb="4"
           />
         </Col>
-        {id !== 'new' && (
+        {id !== 'new' && !review && (
           <Col w={[4, 12, 6]}>
             <Button
               text="Save and preview"
@@ -364,15 +388,49 @@ const SectionForm = () => {
             />
           </Col>
         )}
+        {review && (
+          <Col w={[4, 12, 6]}>
+            <Button
+              text="Preview in a new tab"
+              to={previewPage}
+              external
+              variant="secondary"
+              mb="4"
+              mt="4"
+            />
+          </Col>
+        )}
       </Row>
+      {user.role === roles.SUPER_ADMIN && (
+        <TextWithIcon
+          text="Reject section"
+          icon="close"
+          color="neutralMain"
+          iconColor="primaryDark"
+          to={`${navRoutes.SUPER_ADMIN.REJECT_SECTION.replace(
+            ':id',
+            id
+          )}?organisationId=${organisationId}`}
+          weight="medium"
+          m={{
+            mt: 4,
+          }}
+        />
+      )}
       <Modal
         visible={isUpdateModalVisible}
         setIsModalVisible={setIsUpdateModalVisible}
-        parentFunc={() => {}}
+        parentFunc={() => {
+          review && navigate(navRoutes.SUPER_ADMIN.CONTENT_REVIEW);
+        }}
         type="updateSuccess"
-        title="Updated"
-        description="Changes successfully updated."
-        btnText="Okay"
+        title={review ? 'Section approved' : 'Updated'}
+        description={
+          review
+            ? 'Success! The section has been approved.'
+            : 'Changes successfully updated.'
+        }
+        btnText={review ? 'Great, continue' : 'Okay'}
       />
     </>
   );

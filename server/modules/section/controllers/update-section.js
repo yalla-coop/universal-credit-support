@@ -2,8 +2,8 @@ import * as Sections from '../use-cases';
 
 const updateSection = async (req, res, next) => {
   try {
-    const { title, topics } = req.body;
-    const { id: userId, organisationId: userOrganisationId } = req.user;
+    const { title, topics, approved } = req.body;
+    const { id: userId, organisationId: userOrganisationId, role } = req.user;
     const { id } = req.params;
 
     const section = await Sections.updateSection({
@@ -12,6 +12,8 @@ const updateSection = async (req, res, next) => {
       userId,
       topics,
       userOrganisationId,
+      role,
+      approved,
     });
 
     res.json(section);

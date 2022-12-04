@@ -14,19 +14,25 @@ const updateSection = async ({ id, title, updatedBy }, client) => {
 };
 
 const updateSectionOrder = async (
-  { id, position, hidden, organisationId },
+  { id, organisationId, position, hidden, approvalStatus },
   client,
 ) => {
+  console.log({ id, organisationId, position, hidden, approvalStatus });
   const sql = `
     UPDATE organisations_sections_orders
     SET
-      position = $2,
-      hidden = $3
-    WHERE section_id = $1 AND organisation_id = $4
-    RETURNING *;
+      position = COALESCE($3, position),
+      hidden = COALESCE($4, hidden),
+      approval_status = COALESCE($5, approval_status)
+    WHERE section_id = $1 AND organisation_id = $2
+
   `;
 
-  const res = await query(sql, [id, position, hidden, organisationId], client);
+  const res = await query(
+    sql,
+    [id, organisationId, position, hidden, approvalStatus],
+    client,
+  );
   return res.rows[0];
 };
 

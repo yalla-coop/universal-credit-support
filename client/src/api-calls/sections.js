@@ -16,6 +16,17 @@ const getSections = async ({ options, uniqueSlug, lng, forPublic }) => {
   }
 };
 
+const getAwaitingSections = async ({ options }) => {
+  try {
+    const { data } = await axios.get(`${SECTIONS_BASE}/awaiting-review`);
+
+    return { data };
+  } catch (error) {
+    const err = handleError(error, options);
+    return { error: err };
+  }
+};
+
 const updateSectionsOrder = async ({ options, body }) => {
   try {
     const { data } = await axios.patch(`${SECTIONS_BASE}/order`, body);
@@ -85,6 +96,27 @@ const getTopics = async ({ options, sectionId, lng, forPublic }) => {
   }
 };
 
+const updateSectionStatus = async ({
+  id,
+  options,
+  status,
+  explanation,
+  organisationId,
+}) => {
+  try {
+    const { data } = await axios.patch(`${SECTIONS_BASE}/${id}/status`, {
+      status,
+      explanation,
+      organisationId,
+    });
+
+    return { data };
+  } catch (error) {
+    const err = handleError(error, options);
+    return { error: err };
+  }
+};
+
 export {
   getSections,
   getSectionById,
@@ -93,4 +125,6 @@ export {
   createSectionWithTopics,
   updateSectionWithTopics,
   updateSectionsOrder,
+  getAwaitingSections,
+  updateSectionStatus,
 };

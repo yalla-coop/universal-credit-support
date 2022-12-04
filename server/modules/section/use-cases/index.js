@@ -5,6 +5,8 @@ import getTopicsBySectionId from './get-topics-by-section-id';
 import getSubSections from './get-sub-sections';
 import createSection from './create-section';
 import updateSectionsOrder from './update-sections-order';
+import getAwaitingReviewSection from './get-awaiting-review-sections';
+import updateSectionStatus from './update-section-status';
 
 export {
   getSections,
@@ -14,4 +16,6 @@ export {
   getTopicsBySectionId,
   createSection,
   updateSectionsOrder,
+  getAwaitingReviewSection,
+  updateSectionStatus,
 };

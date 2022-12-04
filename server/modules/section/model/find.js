@@ -131,11 +131,12 @@ const findSectionWithTranslationById = async (id, lng) => {
   return res.rows[0];
 };
 
-const findSectionWithOrgId = async ({ sectionId, organisationId }) => {
+const findSectionWithOrgDetails = async (id) => {
   const sql = `
     SELECT
       s.id,
       s.title,
+      oso.organisation_id,
       (
         SELECT
           ARRAY_AGG(id)
@@ -146,10 +147,9 @@ const findSectionWithOrgId = async ({ sectionId, organisationId }) => {
     INNER JOIN organisations_sections_orders AS oso
       ON s.id = oso.section_id
     WHERE s.id = $1
-      AND oso.organisation_id = $2
   `;
 
-  const res = await query(sql, [sectionId, organisationId]);
+  const res = await query(sql, [id]);
   return res.rows[0];
 };
 
@@ -182,6 +182,31 @@ const findTopicsWithTranslationBySectionId = async (id, lng) => {
   const res = await query(sql, [id, lng]);
   return res.rows;
 };
+const findAwaitingReviewSections = async () => {
+  const sql = `
+    SELECT
+      s.id,
+      s.title,
+      o.organisation_name AS "organisation.name",
+      o.id AS "organisation.id",
+      o.unique_slug AS "organisation.unique_slug",
+      u.email AS "user.email",
+      u.id AS "user.id"
+
+      FROM sections AS s
+      INNER JOIN organisations_sections_orders AS oso
+        ON s.id = oso.section_id
+      INNER JOIN organisations AS o
+        ON oso.organisation_id = o.id
+      INNER JOIN users AS u
+        ON u.organisation_id = o.id
+      WHERE oso.approval_status = 'AWAITING_APPROVAL'
+      ORDER BY oso.updated_at DESC
+  `;
+
+  const res = await query(sql);
+  return res.rows;
+};
 
 export {
   findSectionsByOrgSlugForPublic,
@@ -189,7 +214,8 @@ export {
   findTopicsBySectionId,
   findTopicsWithTranslationBySectionId,
   getSubSectionsBySectionIdForPublic,
-  findSectionWithOrgId,
   findSectionsByOrgSlug,
+  findSectionWithOrgDetails,
   findSectionWithTranslationById,
+  findAwaitingReviewSections,
 };

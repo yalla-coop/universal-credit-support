@@ -12,18 +12,18 @@ const getColor = (index, startingColor) => {
   return colorArray[_index];
 };
 
-const UnderReview = ({ sections = [], handleEdit }) => {
+const ContentSection = ({ sections = [], handleEdit, title }) => {
   return (
-    <Row mt="5">
+    <Row mb="5">
       <Col w={[4, 12, 12]}>
-        <T.H2 mb="4">Under review</T.H2>
+        <T.H2 mb="4">{title}</T.H2>
       </Col>
       {sections.map((item, index) => (
         <Col w={[4, 12, 8]} key={item.id}>
           <SingleButton
             title={item.title}
             iconColor={getColor(index, 0)}
-            onClick={() => handleEdit(item)}
+            onClick={() => handleEdit && handleEdit(item)}
           />
         </Col>
       ))}
@@ -31,4 +31,4 @@ const UnderReview = ({ sections = [], handleEdit }) => {
   );
 };
 
-export default UnderReview;
+export default ContentSection;

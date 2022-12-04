@@ -11,13 +11,12 @@ import {
 } from '../../../components';
 import { navRoutes } from '../../../constants';
 import { useNavigate } from 'react-router-dom';
-import UnderReview from './UnderReview';
+import ContentSection from './ContentSection';
 
 const { Col, Row } = Grid;
 
 const EditContent = () => {
   const [sections, setSections] = useState([]);
-  const [pendingSections, setPendingSections] = useState([]);
   const navigate = useNavigate();
 
   const { adminOrg } = useAdminOrg();
@@ -33,39 +32,7 @@ const EditContent = () => {
         if (error) {
           message.error('Something went wrong, please try again later');
         } else {
-          const { approvedSections, _pendingSections } = data.reduce(
-            (accumulator, section) => {
-              return section.approvalStatus === 'APPROVED'
-                ? {
-                    approvedSections: [
-                      ...accumulator.approvedSections,
-                      section,
-                    ],
-                    _pendingSections: accumulator._pendingSections,
-                  }
-                : {
-                    approvedSections: accumulator.approvedSections,
-                    _pendingSections: [
-                      ...accumulator._pendingSections,
-                      section,
-                    ],
-                  };
-            },
-            {
-              approvedSections: [],
-              _pendingSections: [],
-            }
-          );
-
-          setSections(
-            approvedSections.map((item) => ({
-              ...item,
-              id: item.id.toString(),
-            }))
-          );
-          if (_pendingSections.length > 0) {
-            setPendingSections(_pendingSections);
-          }
+          setSections(data);
         }
         hideMessage();
       }
@@ -108,6 +75,21 @@ const EditContent = () => {
     hideMessage();
   };
 
+  const approvedSections = sections.filter(
+    (item) => item.approvalStatus === 'APPROVED'
+  );
+
+  const rejectedSections = sections.filter(
+    (item) => item.approvalStatus === 'REJECTED'
+  );
+  const awaitingApprovalSections = sections.filter(
+    (item) => item.approvalStatus === 'AWAITING_APPROVAL'
+  );
+
+  const totalSectionsNotRejected = sections.filter(
+    (item) => item.approvalStatus !== 'REJECTED'
+  );
+
   return (
     <>
       <Row mb="6">
@@ -124,22 +106,29 @@ const EditContent = () => {
           </T.P>
         </Col>
       </Row>
-      <Row>
+      <Row mb={5}>
         <Col w={[4, 12, 12]}>
           <ButtonsSection
             setButtons={setSections}
-            buttons={sections}
+            buttons={approvedSections}
             handleHide={handleHide}
             handleEdit={handleEdit}
             m="2"
           />
         </Col>
       </Row>
-      {pendingSections?.length > 0 && (
-        <UnderReview sections={pendingSections} handleEdit={handleEdit} />
+      {awaitingApprovalSections?.length > 0 && (
+        <ContentSection
+          sections={awaitingApprovalSections}
+          handleEdit={handleEdit}
+          title="Under review"
+        />
       )}
-      {pendingSections?.length < 2 && (
-        <Row mb="6" mt="5">
+      {rejectedSections?.length > 0 && (
+        <ContentSection sections={rejectedSections} title="Rejected sections" />
+      )}
+      {totalSectionsNotRejected?.length < 7 && (
+        <Row mb="6">
           <Col w={[4, 10, 5]}>
             <Button
               variant="secondary"
@@ -150,7 +139,7 @@ const EditContent = () => {
           </Col>
         </Row>
       )}
-      <Row mt={pendingSections?.length < 2 ? '0' : '5'}>
+      <Row>
         <Col w={[4, 10, 5]}>
           <Button handleClick={handleSaveChange}>Save changes</Button>
         </Col>

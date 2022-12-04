@@ -17,6 +17,11 @@ export const organisationStatuses = {
   APPROVED: 'APPROVED',
   REJECTED: 'REJECTED',
 };
+export const SectionStatuses = {
+  AWAITING_APPROVAL: 'AWAITING_APPROVAL',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED',
+};
 
 export const contactLinksTypes = {
   PHONE: 'PHONE',

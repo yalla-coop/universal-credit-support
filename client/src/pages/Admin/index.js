@@ -22,6 +22,8 @@ import { Routes, Route } from 'react-router-dom';
 import { Route as CustomRoute } from './../../components';
 import { navRoutes } from './../../constants';
 import { AdminOrgProvider } from './../../context/admin-org';
+import ContentReview from './ContentReview';
+import ConfirmRejectSection from './ConfirmRejectSection';
 
 import 'antd/dist/antd.css';
 import userRoles from './../../constants/roles';
@@ -102,12 +104,24 @@ function AdminRouter() {
 
         <Route
           exact
+          path={navRoutes.SUPER_ADMIN.REVIEW_SECTION}
+          element={
+            <CustomRoute
+              Component={SectionForm}
+              layout="dashboard"
+              review
+              isPrivate
+              allowedRoles={[userRoles.SUPER_ADMIN, userRoles.ADMIN]}
+            />
+          }
+        />
+        <Route
+          exact
           path={navRoutes.ADMIN.SECTION}
           element={
             <CustomRoute
               Component={SectionForm}
               layout="dashboard"
-              edit
               isPrivate
               allowedRoles={[userRoles.SUPER_ADMIN, userRoles.ADMIN]}
             />
@@ -120,7 +134,6 @@ function AdminRouter() {
             <CustomRoute
               Component={SectionFormThankYou}
               layout="dashboard"
-              edit
               isPrivate
               allowedRoles={[userRoles.SUPER_ADMIN, userRoles.ADMIN]}
             />
@@ -303,6 +316,30 @@ function AdminRouter() {
               showMobileMenu
               isPrivate
               allowedRoles={[userRoles.ADMIN, userRoles.SUPER_ADMIN]}
+            />
+          }
+        />
+        <Route
+          exact
+          path={navRoutes.SUPER_ADMIN.CONTENT_REVIEW}
+          element={
+            <CustomRoute
+              Component={ContentReview}
+              layout="dashboard"
+              isPrivate
+              allowedRoles={[userRoles.SUPER_ADMIN]}
+            />
+          }
+        />
+        <Route
+          exact
+          path={navRoutes.SUPER_ADMIN.REJECT_SECTION}
+          element={
+            <CustomRoute
+              Component={ConfirmRejectSection}
+              layout="dashboard"
+              isPrivate
+              allowedRoles={[userRoles.SUPER_ADMIN]}
             />
           }
         />
