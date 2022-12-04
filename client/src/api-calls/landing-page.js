@@ -3,9 +3,11 @@ import handleError from './format-error';
 
 const LANDING_PAGE_CONTENT_BASE = '/landing-pages';
 
-const getLandingPageContent = async ({ options }) => {
+const getLandingPageContent = async ({ options, lng }) => {
   try {
-    const { data } = await axios.get(`${LANDING_PAGE_CONTENT_BASE}`);
+    const { data } = await axios.get(`${LANDING_PAGE_CONTENT_BASE}`, {
+      params: { lng },
+    });
     return { data };
   } catch (error) {
     const err = handleError(error, options);

@@ -19,6 +19,10 @@ const Checklist = ({
   const [expanded, setExpanded] = useState(false);
   const { t } = useTranslation();
 
+  const seeMore = t('common.buttons.seeMore', common.buttons.seeMore);
+  const seeLess = t('common.buttons.seeLess', common.buttons.seeLess);
+  const seeMoreOrLess = expanded ? seeLess : seeMore;
+
   return (
     <>
       <S.Section mb="3">
@@ -36,16 +40,18 @@ const Checklist = ({
           />
           {(description || thisCanInclude?.length > 0 || tips?.length > 0) && (
             <TextWithIcon
-              text={expanded ? 'See less' : 'See more'}
-              icon="circleArrow"
+              text={seeMoreOrLess}
               isButton
               mt="4"
               color="neutralDark"
-              iconColor="neutralDark"
-              direction={expanded ? 'up' : 'down'}
               handleClick={() => setExpanded(!expanded)}
               mb={'5'}
               ml="6"
+              iconProps={{
+                icon: 'circleArrow',
+                color: 'neutralDark',
+                direction: expanded ? 'up' : 'down',
+              }}
             />
           )}
         </S.TopSection>
@@ -71,12 +77,14 @@ const Checklist = ({
                       <TextWithIcon
                         key={index}
                         text={thing}
-                        icon="bulletArrow"
-                        iconColor="neutralDark"
                         color="neutralDark"
                         mb={index < thisCanInclude.length && '2'}
                         ai="flex-start"
                         isText
+                        iconProps={{
+                          icon: 'bulletArrow',
+                          color: 'neutralDark',
+                        }}
                       />
                     ))}
                 </>

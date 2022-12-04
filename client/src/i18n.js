@@ -9,8 +9,10 @@ i18n
     ns: ['common'],
     resources: {},
     defaultNS: 'common',
-    fallbacklng: 'en',
+    fallbackLng: 'en',
     debug: false,
+    preload: true,
+    // nsSeparator: '.',
     interpolation: {
       escapeValue: false,
     },

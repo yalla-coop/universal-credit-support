@@ -22,6 +22,7 @@ const addCommonI18n = async () => {
     content: {
       words: {
         and: 'و',
+        completed: 'مكتمل',
       },
       colors: {
         0: {

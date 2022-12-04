@@ -41,11 +41,13 @@ const PendingDashboard = () => {
                 text={
                   'Add or update your account details and edit your unique link'
                 }
-                icon="forwardArrow"
-                iconColor={'primaryMain'}
                 mr="6px"
                 ai="flex-start"
                 isText
+                iconProps={{
+                  icon: 'forwardArrow',
+                  color: 'primaryMain',
+                }}
               />
             </S.ButtonWrapper>
 
@@ -54,11 +56,13 @@ const PendingDashboard = () => {
                 size="large"
                 bgColor="neutralSurface"
                 text={'Customise resources and phone numbers'}
-                icon="forwardArrow"
                 ai="flex-start"
-                iconColor={'secondaryMain'}
                 mr="6px"
                 isText
+                iconProps={{
+                  icon: 'forwardArrow',
+                  color: 'secondaryMain',
+                }}
               />
             </S.ButtonWrapper>
 
@@ -67,11 +71,13 @@ const PendingDashboard = () => {
                 size="large"
                 bgColor="neutralSurface"
                 text={'Add or update logo and brand colours'}
-                icon="forwardArrow"
                 ai="flex-start"
-                iconColor={'tertiaryMain'}
                 mr="6px"
                 isText
+                iconProps={{
+                  icon: 'forwardArrow',
+                  color: 'tertiaryMain',
+                }}
               />
             </S.ButtonWrapper>
           </S.ButtonsContainer>

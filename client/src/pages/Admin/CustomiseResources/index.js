@@ -323,14 +323,16 @@ const CustomiseResources = () => {
             {(i !== 0 || contactLinks.length > 1) && (
               <TextWithIcon
                 text="Remove"
-                icon="close"
                 isButton
                 mt={4}
                 mb={6}
                 color="neutralMain"
-                iconColor="primaryMain"
                 handleClick={() => handleRemoveContactLink(contactLink.id)}
                 weight="semi"
+                iconProps={{
+                  icon: 'close',
+                  color: 'primaryMain',
+                }}
               />
             )}
           </Fragment>
@@ -339,13 +341,15 @@ const CustomiseResources = () => {
         <Col w={[4, 12, 12]} mt={6}>
           <TextWithIcon
             text="Add another contact"
-            icon="add"
             isButton
             color="neutralMain"
-            iconColor="primaryMain"
             handleClick={handleAddNewContactLink}
             weight="semi"
             disabled={isAddButtonDisabled}
+            iconProps={{
+              icon: 'add',
+              color: 'primaryMain',
+            }}
           />
         </Col>
       </S.Section>

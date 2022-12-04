@@ -7,25 +7,34 @@ import * as T from '../Typography';
 
 const TextWithIcon = ({
   color = 'neutralMain',
-  iconColor = 'secondaryMain',
   bgColor,
   size,
   to,
-  icon = 'phone',
+  iconProps: _iconProps,
   text,
   external,
   underline,
   isButton,
-  direction,
   handleClick,
   weight,
   disabled,
   m,
   mr,
   isText,
-  pointer,
   ...props
 }) => {
+  const { _color = 'secondaryMain', icon = 'phone' } = _iconProps || {
+    color: 'secondaryMain',
+    pointer: true,
+    icon: 'phone',
+  };
+  const iconProps = {
+    color: _color,
+    icon,
+    pointer: true,
+    ..._iconProps,
+  };
+
   if (isButton)
     return (
       <S.Button
@@ -35,15 +44,7 @@ const TextWithIcon = ({
         disabled={disabled}
         type="button"
       >
-        {icon && (
-          <Icon
-            icon={icon}
-            color={iconColor}
-            mr={text ? mr || '2' : '0'}
-            direction={direction}
-            pointer={pointer}
-          />
-        )}
+        {icon && <Icon {...iconProps} mr={text ? mr || '2' : '0'} />}
         {text && (
           <T.H3
             weight={weight}
@@ -60,14 +61,7 @@ const TextWithIcon = ({
   if (isText)
     return (
       <S.Wrapper bgColor={bgColor} size={size} {...props}>
-        {icon && (
-          <Icon
-            icon={icon}
-            color={iconColor}
-            pointer={pointer}
-            mr={mr || '11.5px'}
-          />
-        )}
+        {icon && <Icon {...iconProps} mr={mr || '11.5px'} />}
         <T.H3
           to={to}
           color={color}
@@ -82,14 +76,7 @@ const TextWithIcon = ({
 
   return (
     <S.Wrapper bgColor={bgColor} size={size} {...props} {...m}>
-      {icon && (
-        <Icon
-          icon={icon}
-          color={iconColor}
-          pointer={pointer}
-          mr={mr || '11.5px'}
-        />
-      )}
+      {icon && <Icon {...iconProps} mr={mr || '11.5px'} />}
       <T.Link
         to={to}
         color={color}

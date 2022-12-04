@@ -43,7 +43,8 @@ const PublicOrg = (props) => {
     location.pathname
   );
   let { uniqueSlug } = match?.params || {};
-  uniqueSlug = uniqueSlug || 'hyde';
+  uniqueSlug =
+    uniqueSlug && uniqueSlug !== 'accessibility' ? uniqueSlug : 'hyde';
 
   const _setPublicOrg = (data) => {
     // set org in state

@@ -53,21 +53,18 @@ const Step = () => {
 
   return (
     <S.Container>
-      <Row mb="8" mbM="8">
-        <Col w={[4, 12, 12]}>
-          <S.PageHead>
-            <S.CloseWrapper onClick={() => navigate(-1)}>
-              <OrganisationLogo logoUrl={publicOrg.logoUrl} />
-            </S.CloseWrapper>
+      <S.PageHead>
+        <S.CloseWrapper onClick={() => navigate(-1)}>
+          <OrganisationLogo logoUrl={publicOrg.logoUrl} />
+        </S.CloseWrapper>
 
-            <S.CloseWrapper onClick={() => navigate(-1)} padding="10px">
-              <Icon icon="close" width={16} height={16} pointer />
-            </S.CloseWrapper>
-          </S.PageHead>
-        </Col>
-      </Row>
+        <S.CloseWrapper onClick={() => navigate(-1)} padding="10px">
+          <Icon icon="close" width={16} height={16} pointer />
+        </S.CloseWrapper>
+      </S.PageHead>
+
       <S.InnerContainer>
-        <Row mb="8" mbM="6">
+        <Row mb="8" mt="8" mbM="6">
           <Col w={[4, 12, 6]}>
             <T.H1 weight="bold" mb="5">
               {step.pageTitle || step.title}
@@ -302,10 +299,13 @@ const Step = () => {
               isButton
               handleClick={() => setStuck(true)}
               underline
-              iconColor="primaryMain"
               weight="medium"
               mr="3"
               jc="center"
+              iconProps={{
+                icon: 'phone',
+                color: 'primaryMain',
+              }}
             />
           </Col>
         </Row>

@@ -87,7 +87,7 @@ export const TextWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-left: 12px;
+  padding-inline-start: 12px;
 `;
 
 export const fontInputWrapper = styled.div`

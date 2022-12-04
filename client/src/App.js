@@ -31,51 +31,87 @@ function App() {
         <AccessibilityProvider>
           <StepsProvider>
             <AuthProvider>
-              <CommonProvider>
-                <Router basename={process.env.PUBLIC_URL}>
-                  <ScrollToTop />
-                  <Routes>
-                    <Route
-                      path={navRoutes.GENERAL.NOT_FOUND}
-                      element={
-                        <CustomRoute
-                          Component={<p>Page Not Found</p>}
-                          layout="general"
-                        />
-                      }
-                    />
-                    <Route
-                      exact
-                      path={navRoutes.ADMIN.LOGIN}
-                      element={
-                        <CustomRoute
-                          Component={Pages.Login}
-                          layout="splitScreen"
-                          side="left"
-                          gradient="secondary"
-                          publicOnly
-                        />
-                      }
-                    />
-                    <Route
-                      exact
-                      path={navRoutes.ADMIN.SIGNUP}
-                      element={
-                        <CustomRoute
-                          Component={Pages.Signup}
-                          layout="splitScreen"
-                          side="left"
-                          gradient="secondary"
-                          publicOnly
-                        />
-                      }
-                    />
-                  </Routes>
+              <Router basename={process.env.PUBLIC_URL}>
+                <ScrollToTop />
+                <Routes>
+                  <Route
+                    path={navRoutes.GENERAL.NOT_FOUND}
+                    element={
+                      <CustomRoute
+                        Component={<p>Page Not Found</p>}
+                        layout="general"
+                      />
+                    }
+                  />
+                  <Route
+                    exact
+                    path={navRoutes.ADMIN.LOGIN}
+                    element={
+                      <CustomRoute
+                        Component={Pages.Login}
+                        layout="splitScreen"
+                        side="left"
+                        gradient="secondary"
+                        publicOnly
+                      />
+                    }
+                  />
+                  <Route
+                    exact
+                    path={navRoutes.ADMIN.SIGNUP}
+                    element={
+                      <CustomRoute
+                        Component={Pages.Signup}
+                        layout="splitScreen"
+                        side="left"
+                        gradient="secondary"
+                        publicOnly
+                      />
+                    }
+                  />
+                  <Route
+                    exact
+                    path={navRoutes.GENERAL.FORGET_PASSWORD}
+                    element={
+                      <CustomRoute
+                        Component={Pages.ForgotPassword}
+                        layout="splitScreen"
+                        side="left"
+                        gradient="secondary"
+                      />
+                    }
+                  />
+                  <Route
+                    exact
+                    path={navRoutes.GENERAL.RESET_PASSWORD}
+                    element={
+                      <CustomRoute
+                        Component={Pages.ResetPassword}
+                        layout="splitScreen"
+                        side="left"
+                        gradient="secondary"
+                      />
+                    }
+                  />
+                </Routes>
 
-                  {/* ALL ADMIN PAGES */}
-                  <Pages.Admin />
-                  <Routes>
-                    <Route element={<PublicOrgProvider />}>
+                {/* ALL ADMIN PAGES */}
+                <Pages.Admin />
+
+                <Routes>
+                  <Route element={<PublicOrgProvider />}>
+                    <Route element={<CommonProvider />}>
+                      <Route
+                        exact
+                        path={navRoutes.GENERAL.ACCESSIBILITY}
+                        element={
+                          <CustomRoute
+                            Component={Pages.Accessibility}
+                            layout="general"
+                            showBack
+                          />
+                        }
+                      />
                       <Route
                         path={navRoutes.GENERAL.HOME}
                         exact
@@ -105,46 +141,10 @@ function App() {
                           <CustomRoute Component={Pages.Step} layout="step" />
                         }
                       />
-
-                      <Route
-                        exact
-                        path={navRoutes.GENERAL.FORGET_PASSWORD}
-                        element={
-                          <CustomRoute
-                            Component={Pages.ForgotPassword}
-                            layout="splitScreen"
-                            side="left"
-                            gradient="secondary"
-                          />
-                        }
-                      />
                     </Route>
-                    <Route
-                      exact
-                      path={navRoutes.GENERAL.RESET_PASSWORD}
-                      element={
-                        <CustomRoute
-                          Component={Pages.ResetPassword}
-                          layout="splitScreen"
-                          side="left"
-                          gradient="secondary"
-                        />
-                      }
-                    />
-                    <Route
-                      exact
-                      path={navRoutes.GENERAL.ACCESSIBILITY}
-                      element={
-                        <CustomRoute
-                          Component={Pages.Accessibility}
-                          layout="general"
-                          showBack
-                        />
-                      }
-                    />
-                  </Routes>
-                </Router>
-              </CommonProvider>
+                  </Route>
+                </Routes>
+              </Router>
             </AuthProvider>
           </StepsProvider>
         </AccessibilityProvider>

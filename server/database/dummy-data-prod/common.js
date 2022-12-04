@@ -26,7 +26,7 @@ const createCommons = async () => {
       generalSentence: {
         ThisCanIncludeThingsLike: 'This can include things like:',
       },
-      words: { and: 'and' },
+      words: { and: 'and', completed: 'Completed' },
       heading: {
         howLongDoesItTake: { title: 'How long does it take?' },
         thingsYouWillNeed: {

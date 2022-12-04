@@ -17,10 +17,9 @@ import { useLanguage } from '../../helpers';
 
 const Home = () => {
   const { t } = useTranslation();
-  const { lng } = useLanguage();
+  const { lng, dir } = useLanguage();
   const { publicOrg } = usePublicOrg();
   const { uniqueSlug } = publicOrg;
-
   const { steps, justCompletedId, setJustCompletedId, loadingSteps } =
     useSteps();
 
@@ -153,7 +152,7 @@ const Home = () => {
             content={t(`${step.name}.subtitle`, lng)}
             isCompleted={step.isCompleted}
             variant={variant}
-            direction={i % 2 === 0 ? 'left' : 'right'}
+            direction={i % 2 === (dir === 'ltr' ? 0 : 1) ? 'left' : 'right'}
             mt="7"
             isJustCompletedOne={isJustCompletedOne}
             to={decideRoute(step)}
@@ -179,13 +178,15 @@ const Home = () => {
         {!completedClaim && !showAfterClaim && (
           <S.Container mt="4">
             <TextWithIcon
-              icon="bulletArrow"
-              iconColor="primaryMain"
               isButton
               handleClick={() => setShowAfterClaim(true)}
               text={t('common.buttons.viewSteps', common.buttons.viewSteps)}
               jc="flex-start"
               weight="500"
+              iconProps={{
+                icon: 'bulletArrow',
+                color: 'primaryMain',
+              }}
             />
           </S.Container>
         )}

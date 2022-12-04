@@ -73,12 +73,24 @@ const addStepContent = async () => {
     pageDescription: `Using the benefit calculator enables you to find out an estimate of how much Universal Credit you may be entitled to.`,
     howLongDoesItTake: { timeRangeText: `15 to 25 minutes` },
     whereDoYouNeedToGo: {
-      link:
-        'https://www.entitledto.co.uk/benefits-calculator/Intro/Home?cid=0af743fb-414d-4559-a0c9-b88d26a88671',
+      link: 'https://www.entitledto.co.uk/benefits-calculator/Intro/Home?cid=0af743fb-414d-4559-a0c9-b88d26a88671',
       type: T.linkTypes.LINK,
       title: `Our Benefit Calculator`,
     },
-    thingsYouWillNeed: [],
+    thingsYouWillNeed: [
+      {
+        title: `Email address`,
+        description: ``,
+        thisCanInclude: [],
+        tips: [],
+      },
+      {
+        title: `Bank account`,
+        description: `This should be the bank account that your Universal Credit will be paid into. You can set up a free bank account in most high street banks or an online bank if you don’t already have one.`,
+        thisCanInclude: [],
+        tips: [],
+      },
+    ],
     whatYouWillNeedToKnow: [
       {
         title: `Income details`,

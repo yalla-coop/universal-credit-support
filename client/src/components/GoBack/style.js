@@ -9,7 +9,7 @@ export const Wrapper = styled.button`
   align-items: center;
   cursor: pointer;
   padding: 0;
-  padding-right: 3px;
+  padding-inline-end: 3px;
 
   :focus-visible {
     outline: ${({ theme, color }) => `2px ${theme.colors[color]} solid`};
