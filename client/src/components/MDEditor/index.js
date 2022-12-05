@@ -9,6 +9,7 @@ const Editor = ({
   error,
   label,
   helper,
+  placeholder,
   m,
   optional,
   color = 'neutralMain',
@@ -33,6 +34,9 @@ const Editor = ({
         value={value}
         onChange={onChange}
         preview={mode || 'edit'}
+        textareaProps={{
+          placeholder: placeholder,
+        }}
         {...props}
       />
       {error && <T.P color="error">{error}</T.P>}

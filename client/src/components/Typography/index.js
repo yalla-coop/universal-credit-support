@@ -116,9 +116,9 @@ export const P = styled(({ isSmall, ...props }) => {
     isSmall ? '1.25rem !important' : '1.5rem !important'};
 `;
 
-const AntdLink = ({ to, external = false, underline, ...props }) => {
+const AntdLink = ({ to, href, external = false, underline, ...props }) => {
   return external ? (
-    <Typography.Link target="_blank" href={to} {...props} />
+    <Typography.Link target="_blank" href={href || to} {...props} />
   ) : (
     <RouterLink to={to} {...props}>
       {props.children}
@@ -135,4 +135,18 @@ export const Link = styled(AntdLink)`
   text-decoration: ${({ underline }) =>
     underline ? 'underline' : 'none'} !important;
   display: ${({ display }) => display || 'inline'} !important;
+`;
+
+export const Pre = styled((props) => <pre {...props} />)`
+  ${setMargin};
+  ${commonStyle};
+  font-size: ${({ fontSize }) => fontSize || '1rem'} !important;
+  line-height: 24px !important;
+  font-weight: ${({ weight }) => (weight ? weights[weight] : '400 !important')};
+  display: ${({ display }) => display || 'block'};
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
 `;

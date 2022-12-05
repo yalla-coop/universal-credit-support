@@ -1,4 +1,4 @@
-import { Textarea } from '../Inputs';
+import MDEditor from '../MDEditor';
 import Icon from '../Icon';
 
 import * as S from './style';
@@ -6,12 +6,13 @@ import * as S from './style';
 const TipInput = ({ content, id, setTip, removeTip }) => {
   return (
     <S.TipInputWrapper>
-      <Textarea
+      <MDEditor
         label="Tips"
         optional
         rows="3"
         value={content}
-        handleChange={(value) => setTip(value, id)}
+        placeholder={`Tips...`}
+        onChange={(value) => setTip(value, id)}
       />
       <S.CloseTipButton type="button" onClick={() => removeTip(id)}>
         <Icon icon="close" pointer color="primaryDark" />

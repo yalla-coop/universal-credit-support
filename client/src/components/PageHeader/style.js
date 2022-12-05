@@ -32,6 +32,12 @@ export const markDownContainer = styled.div`
     font-style: italic !important;
   }
 
+  div > div {
+    font-size: 2rem !important;
+    line-height: 44px !important;
+    font-style: italic !important;
+  }
+
   strong {
     font-weight: 700;
     font-style: normal !important;
@@ -41,6 +47,11 @@ export const markDownContainer = styled.div`
 
     margin-left: 0;
     div {
+      font-size: 1.5rem !important;
+      line-height: 33.5px !important;
+      text-align: center !important;
+    }
+    div > div {
       font-size: 1.5rem !important;
       line-height: 33.5px !important;
       text-align: center !important;

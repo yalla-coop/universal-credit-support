@@ -1,6 +1,6 @@
 import * as S from './style';
-import * as T from '../../Typography';
 import Icon from '../../Icon';
+import Markdown from '../../Markdown';
 
 const SingleTip = ({
   bgColor = 'primaryMain',
@@ -16,9 +16,23 @@ const SingleTip = ({
     <S.Tip bgColor={bgColor} borderColor={_borderColor} {...props}>
       {icon && <Icon icon="bulb" color={iconColor} mr="2" />}
       {typeof tip === 'string' ? (
-        <T.H3 color={textColor} mb="7px">
-          Tip! {tip}
-        </T.H3>
+        <>
+          <Markdown
+            color={textColor}
+            mb="7px"
+            text={tip}
+            customStyles={{
+              h3: { style: { display: 'inline' }, color: textColor },
+              p: { style: { display: 'inline' }, color: textColor },
+              link: {
+                style: { display: 'inline' },
+                color: textColor,
+                weight: 'bold',
+                underline: true,
+              },
+            }}
+          />
+        </>
       ) : (
         <S.TipContent>{tip}</S.TipContent>
       )}

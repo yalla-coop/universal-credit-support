@@ -27,7 +27,7 @@ const initialState = {
 };
 
 // to send the same body in the edit and create requests
-const formatTopics = (_topics) => {
+const formatTopics = ({ topics: _topics }) => {
   return _topics.map((t) => ({
     id: t.id,
     content: {
@@ -73,7 +73,6 @@ const SectionForm = ({ review }) => {
 
   const navigate = useNavigate();
   const saveForPreview = useRef(false);
-
   const submitAttempt = useRef(false);
   const [state, setState] = useReducer(reducer, initialState);
   const [topics, setTopics] = useState([
@@ -196,7 +195,7 @@ const SectionForm = ({ review }) => {
       id: id,
       body: {
         title,
-        topics: formatTopics(topics),
+        topics: formatTopics({ topics }),
         approved: review || null,
       },
     });
@@ -216,11 +215,10 @@ const SectionForm = ({ review }) => {
 
   const handleCreateSection = async () => {
     setState({ loading: true });
-
     const { error } = await Sections.createSectionWithTopics({
       body: {
         title,
-        topics: formatTopics(topics),
+        topics: formatTopics({ topics }),
       },
     });
 

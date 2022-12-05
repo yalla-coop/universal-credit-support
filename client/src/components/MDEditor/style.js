@@ -12,24 +12,25 @@ export const Wrapper = styled.div`
   [data-name='ordered-list'],
   [data-name='comment'],
   [data-name='code'],
-  [data-name='unordered-list'],
   [data-name='hr'],
-  [data-name='link'],
   [data-name='quote'],
   [data-name='title'],
   [data-name='strikethrough'],
   [data-name='image'],
-  [data-name='italic'],
   .w-md-editor-toolbar-divider,
   .w-md-editor-bar {
     display: none;
   }
 
+  button[data-name='italic']:first-child {
+    display: none;
+  }
+  width: 100%;
   .wmde-markdown-var.w-md-editor.w-md-editor-show-edit {
-    height: 82px !important;
+    min-height: 82px !important;
   }
   .w-md-editor-content {
-    height: 50px;
+    min-height: 50px;
   }
 `;
 
