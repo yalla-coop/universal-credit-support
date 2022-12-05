@@ -138,9 +138,6 @@ export const ButtonsContainer = styled.div`
     max-width: 100%;
     padding-left: 37.5px;
     padding-right: 37.5px;
-    #buttons_text {
-      max-width: 200px;
-    }
   }
 `;
 

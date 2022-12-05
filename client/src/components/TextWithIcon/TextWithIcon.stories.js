@@ -14,9 +14,9 @@ export default {
   component: TextWithIcon,
 };
 
-const Template = (args) => (
+const Template = ({ icon, iconColor, ...args }) => (
   <div style={containerStyle}>
-    <TextWithIcon {...args} />
+    <TextWithIcon {...args} iconProps={{ icon, iconColor }} />
   </div>
 );
 

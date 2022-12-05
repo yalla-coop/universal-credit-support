@@ -51,7 +51,7 @@ const Home = () => {
       mounted = false;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [uniqueSlug]);
+  }, [uniqueSlug, lng]);
 
   i18n.addResourceBundle(lng, 'cardsDataNS', {
     cardsData,
@@ -89,13 +89,13 @@ const Home = () => {
       </S.Section>
       <S.FullSection>
         <S.NeedHelpWrapper>
-          <T.H2 color="neutralMain" ta="center" taM="left">
+          <T.H2 color="neutralMain" ta="center" taM="start">
             {t(
               'common.section.helpBudget.title',
               common.section.helpBudget.title
             )}
           </T.H2>
-          <T.P ta="center" mt="4" mb="3" taM="left" color="neutralDark">
+          <T.P ta="center" mt="4" mb="3" taM="start" color="neutralDark">
             {t(
               'common.section.helpBudget.description',
               common.section.helpBudget.description
@@ -110,12 +110,14 @@ const Home = () => {
               size="large"
               text={t('common.buttons.readMore', common.buttons.readMore)}
               bgColor="neutralLight"
-              icon="forwardArrow"
-              iconColor="tertiaryDark"
               jc="center"
               jcT="flex-start"
               mr="6px"
               isText
+              iconProps={{
+                color: 'tertiaryDark',
+                icon: 'forwardArrow',
+              }}
             />
           </S.ReadMoreLink>
         </S.NeedHelpWrapper>
@@ -123,13 +125,7 @@ const Home = () => {
       <Row jc="center" jcM="flex-start">
         <Col w={[4, 6, 4]} jc="center" jcM="flex-start" mt="8" mtM="6" mb="0">
           <S.ButtonsContainer>
-            <T.H2
-              id="buttons_text"
-              ta="center"
-              taM="left"
-              color="neutralMain"
-              mb="4"
-            >
+            <T.H2 ta="center" taM="start" color="neutralMain" mb="4">
               {t(
                 'common.section.stressedOrOverwhelmed.title',
                 common.section.stressedOrOverwhelmed.title
@@ -151,10 +147,13 @@ const Home = () => {
               isButton
               handleClick={() => setStuck(true)}
               underline
-              iconColor="primaryMain"
               weight="medium"
               mr="3"
               jc="center"
+              iconProps={{
+                color: 'primaryMain',
+                icon: 'forwardArrow',
+              }}
             />
           </S.ButtonsContainer>
         </Col>

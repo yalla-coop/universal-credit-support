@@ -64,13 +64,15 @@ const Dashboard = () => {
           </T.P>
           <S.LinkWrapper mb={isSuperAdmin && '45px'}>
             <TextWithIcon
-              iconColor="primaryMain"
               to={`${window.location.origin}/${adminOrg.uniqueSlug}`}
-              icon="open"
               mr={isSuperAdmin ? '15px' : '20px'}
               text={`${window.location.origin}/${adminOrg.uniqueSlug}`}
               external
               underline
+              iconProps={{
+                color: 'primaryMain',
+                icon: 'open',
+              }}
             />
           </S.LinkWrapper>
 
@@ -78,8 +80,10 @@ const Dashboard = () => {
             <TextWithIcon
               to={R.ADMIN.EDIT_ACCOUNT_DETAILS}
               text="Edit my organisation details"
-              icon="forwardArrow"
-              iconColor="primaryMain"
+              iconProps={{
+                color: 'primaryMain',
+                icon: 'forwardArrow',
+              }}
             />
           )}
           {!isSuperAdmin && <DashboardLinks />}

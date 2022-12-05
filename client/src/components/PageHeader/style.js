@@ -24,7 +24,7 @@ export const Border = styled.div`
 `;
 
 export const markDownContainer = styled.div`
-  margin-left: 11.94vw;
+  margin-inline-start: 11.94vw;
   flex-basis: 100%;
   div {
     font-size: 2rem !important;

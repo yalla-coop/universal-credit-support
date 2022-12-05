@@ -343,13 +343,15 @@ const EditDetails = () => {
         </Col>
         <Col w={[4, 6, 6]}>
           <TextWithIcon
-            icon="close"
-            iconColor="primaryMain"
             text="Delete my account"
             isButton
             weight="medium"
-            pointer
             handleClick={handleDelete}
+            iconProps={{
+              color: 'primaryMain',
+              icon: 'close',
+              pointer: true,
+            }}
           />
         </Col>
       </Row>

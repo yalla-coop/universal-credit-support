@@ -83,7 +83,7 @@ export const Field = styled.div`
     font-size: 1rem;
     color: ${({ theme }) => theme.colors.neutralDark};
     padding-left: ${({ theme }) => theme.spacings[3]};
-    text-align: left;
+    text-align: start;
   }
 
   // STYLE SELECTED ITEM IN SINGLE DROPDOWN

@@ -35,14 +35,16 @@ const InputCMS = ({
         />
         <TextWithIcon
           text={seeMoreOrLess}
-          icon="circleArrow"
           isButton
           mt="4"
           color="neutralDark"
-          iconColor="neutralDark"
-          direction={expanded ? 'up' : 'down'}
           handleClick={() => setExpanded(!expanded)}
           mb={expanded && '5'}
+          iconProps={{
+            color: 'neutralDark',
+            icon: 'circleArrow',
+            direction: expanded ? 'up' : 'down',
+          }}
         />
         {expanded && (
           <>
@@ -79,13 +81,15 @@ const InputCMS = ({
       {!hideRemove && (
         <TextWithIcon
           text="Remove"
-          icon="close"
           isButton
           mt="4"
           color="neutralMain"
-          iconColor="primaryMain"
           handleClick={handleRemove}
           weight="semi"
+          iconProps={{
+            color: 'primaryMain',
+            icon: 'close',
+          }}
         />
       )}
     </>

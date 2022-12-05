@@ -88,12 +88,14 @@ const SubSections = () => {
                   size="large"
                   bgColor="neutralSurface"
                   text={item.title}
-                  icon="forwardArrow"
-                  iconColor={colorArr[index % colorArr.length]}
                   jc="center"
                   jcT="flex-start"
                   mr="6px"
                   isText
+                  iconProps={{
+                    color: colorArr[index % colorArr.length],
+                    icon: 'forwardArrow',
+                  }}
                 />
               </S.ButtonWrapper>
             </Col>

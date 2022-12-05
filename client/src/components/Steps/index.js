@@ -75,11 +75,13 @@ const Card = forwardRef(
                 {description}
               </T.P>
               <TextWithIcon
-                icon="forwardArrow"
                 text="Check here"
-                iconColor="primaryMain"
                 color="neutralMain"
                 to={to}
+                iconProps={{
+                  color: 'primaryMain',
+                  icon: 'forwardArrow',
+                }}
               />
             </S.OptionalContainer>
           </S.StyledLink>

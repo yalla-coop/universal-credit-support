@@ -331,12 +331,14 @@ const SectionForm = ({ review }) => {
             <Col w={[4, 4, 4]}>
               <TextWithIcon
                 text="Add another topic"
-                icon="add"
                 isButton
                 mt="33px"
-                iconColor="primaryDark"
                 handleClick={addNewTopic}
                 mb={'57px'}
+                iconProps={{
+                  color: 'primaryMain',
+                  icon: 'add',
+                }}
               />
             </Col>
           </Row>

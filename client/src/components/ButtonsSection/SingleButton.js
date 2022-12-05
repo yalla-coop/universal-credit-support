@@ -19,18 +19,24 @@ const SingleButton = ({
           iconColor={iconColor}
           text={title.replace(/\*/g, '')}
           isText
+          iconProps={{
+            color: iconColor,
+            icon: 'forwardArrow',
+          }}
         />
         {(showMenuIcon || handleEdit) && (
           <S.IconsWrapper>
             {handleEdit && (
               <TextWithIcon
-                icon="edit"
-                iconColor="primaryMain"
-                pointer
                 isButton
                 handleClick={handleEdit}
                 text="Edit"
                 mr="1"
+                iconProps={{
+                  color: 'primaryMain',
+                  icon: 'edit',
+                  pointer: true,
+                }}
               />
             )}
             {showMenuIcon && (
@@ -44,13 +50,15 @@ const SingleButton = ({
       {handleHide && (
         <S.HideWrapper ml="2" mb="2">
           <TextWithIcon
-            icon="hide"
-            iconColor="primaryMain"
             isButton
-            pointer
             text={hidden ? 'Show' : 'Hide'}
             handleClick={handleHide}
             mr="1"
+            iconProps={{
+              color: 'primaryMain',
+              icon: 'hide',
+              pointer: true,
+            }}
           />
         </S.HideWrapper>
       )}

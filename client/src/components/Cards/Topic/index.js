@@ -44,15 +44,17 @@ const TopicCard = ({
           {(description || tips?.length > 0) && (
             <TextWithIcon
               text={seeMoreOrLess}
-              icon="circleArrow"
               isButton
               mt="4"
               color="neutralDark"
-              iconColor="neutralDark"
-              direction={expanded ? 'up' : 'down'}
               handleClick={() => setExpanded(!expanded)}
               mb={'5'}
               ml="6"
+              iconProps={{
+                color: 'neutralDark',
+                icon: 'circleArrow',
+                direction: expanded ? 'up' : 'down',
+              }}
             />
           )}
         </S.TopSection>

@@ -47,7 +47,7 @@ const getSection = async ({ id, lng, forPublic, role }) => {
     lng,
     sections,
   });
-  console.log('sectionsT[0]', sectionsT[0]);
+
   Promise.all(
     sectionsT.map((c) => {
       if (!c.isTranslated) {

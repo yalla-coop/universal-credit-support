@@ -85,16 +85,18 @@ const InputArray = ({
       </Row>
       <TextWithIcon
         text="Add another example"
-        icon="add"
         isButton
         mt="4"
         color="neutralMain"
-        iconColor="primaryMain"
         handleClick={() => updateValues('')}
         weight="semi"
         disabled={
           disabled || values[values.length - 1] === '' || !values.length
         }
+        iconProps={{
+          color: 'primaryMain',
+          icon: 'add',
+        }}
       />
     </S.Container>
   );

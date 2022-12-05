@@ -11,11 +11,13 @@ const DashboardLinks = () => {
             size="large"
             bgColor="neutralSurface"
             text={'Change or add to the layout of the tool'}
-            icon="forwardArrow"
-            iconColor={'primaryMain'}
             mr="6px"
             ai="flex-start"
             isText
+            iconProps={{
+              color: 'primaryMain',
+              icon: 'forwardArrow',
+            }}
           />
         </S.ButtonWrapper>
 
@@ -26,11 +28,13 @@ const DashboardLinks = () => {
             text={
               'Add or update your account details and edit your unique link'
             }
-            icon="forwardArrow"
             ai="flex-start"
-            iconColor={'secondaryMain'}
             mr="6px"
             isText
+            iconProps={{
+              color: 'secondaryMain',
+              icon: 'forwardArrow',
+            }}
           />
         </S.ButtonWrapper>
 
@@ -39,11 +43,13 @@ const DashboardLinks = () => {
             size="large"
             bgColor="neutralSurface"
             text={'Customise resources and client contact numbers'}
-            icon="forwardArrow"
             ai="flex-start"
-            iconColor={'tertiaryMain'}
             mr="6px"
             isText
+            iconProps={{
+              color: 'tertiaryMain',
+              icon: 'forwardArrow',
+            }}
           />
         </S.ButtonWrapper>
 
@@ -52,11 +58,13 @@ const DashboardLinks = () => {
             size="large"
             bgColor="neutralSurface"
             text={'Add or update logo and brand colours'}
-            icon="forwardArrow"
             ai="flex-start"
-            iconColor={'neutralMain'}
             mr="6px"
             isText
+            iconProps={{
+              color: 'neutralMain',
+              icon: 'forwardArrow',
+            }}
           />
         </S.ButtonWrapper>
       </S.ButtonsContainer>

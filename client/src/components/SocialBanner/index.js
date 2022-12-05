@@ -45,7 +45,6 @@ const ShareBox = () => {
         <S.SocialImg
           alt="copy"
           src={CopyImg}
-          mr="0px"
           onClick={() => {
             navigator.clipboard.writeText(url);
             message.info(`Link copied to clipboard ${url}`);
