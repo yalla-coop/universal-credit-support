@@ -47,13 +47,13 @@ if (config.common.env !== TEST) {
 app.use('/api', router);
 
 if (config.common.env === PRODUCTION) {
-  app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
+  app.use(express.static(path.join(__dirname, '..', '..', 'client', 'build')));
   app.use(
-    favicon(path.join(__dirname, '..', 'client', 'build', 'favicon.ico')),
+    favicon(path.join(__dirname, '..', '..', 'client', 'build', 'favicon.ico')),
   );
 
   app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'));
+    res.sendFile(path.join(__dirname, '..', '..', 'client', 'build', 'index.html'));
   });
 }
 

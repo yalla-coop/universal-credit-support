@@ -1,0 +1,58 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: A stack that creates a public S3 bucket
+Parameters:
+  BucketName:
+    Type: String
+    Description: The name of the S3 bucket
+  UserName:
+    Type: String
+    Description: The name of the user with upload access to the bucket
+  
+Resources:
+  S3Bucket:
+    DeletionPolicy: Retain
+    Type: 'AWS::S3::Bucket'
+    Description: Creating Amazon S3 bucket from CloudFormation
+    Properties:
+      BucketName: !Ref 'BucketName'
+      AccessControl: PublicRead
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls : false
+        BlockPublicPolicy : false
+        IgnorePublicAcls : false
+        RestrictPublicBuckets : false
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      VersioningConfiguration:
+        Status: Enabled
+
+  S3User:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: 
+        !Ref UserName
+      Policies:
+        - PolicyName: bucket-access
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - s3:*
+                Resource:
+                  - !Sub arn:aws:s3:::${S3Bucket}
+                  - !Sub arn:aws:s3:::${S3Bucket}/*
+
+  S3UserAccessKey:
+    Type:
+      AWS::IAM::AccessKey
+    Properties:
+      UserName: !Ref S3User
+
+#Outputs:
+  #AccessKeyID:
+  #  Value: !Ref S3UserAccessKey
+  #SecretAccessKey: 
+  #  Value: !GetAtt S3UserAccessKey.SecretAccessKey
