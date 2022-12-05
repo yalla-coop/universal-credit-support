@@ -165,8 +165,10 @@ const Login = () => {
           <TextWithIcon
             to={R.ADMIN.WELCOME}
             text="Don’t have an account? Sign up"
-            icon="forwardArrow"
-            iconColor="primaryMain"
+            iconProps={{
+              icon: 'forwardArrow',
+              color: 'primaryMain',
+            }}
           />
         </Col>
       </Row>

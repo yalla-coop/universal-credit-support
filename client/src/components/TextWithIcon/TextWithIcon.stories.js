@@ -6,6 +6,7 @@ const containerStyle = {
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
+  maxWidth: 500,
 };
 
 export default {
@@ -13,9 +14,9 @@ export default {
   component: TextWithIcon,
 };
 
-const Template = (args) => (
+const Template = ({ icon, iconColor, ...args }) => (
   <div style={containerStyle}>
-    <TextWithIcon {...args} />
+    <TextWithIcon {...args} iconProps={{ icon, iconColor }} />
   </div>
 );
 
@@ -35,4 +36,15 @@ InternalLink.args = {
   to: '/',
   text: 'Don’t have an account? Sign up',
   icon: 'forwardArrow',
+};
+export const largeLink = Template.bind({});
+largeLink.args = {
+  size: 'large',
+  bgColor: 'neutralLight',
+  to: '/',
+  text: 'Read more',
+  icon: 'forwardArrow',
+  iconColor: 'tertiaryDark',
+  jc: 'center',
+  jcT: 'flex-start',
 };

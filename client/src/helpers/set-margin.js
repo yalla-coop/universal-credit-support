@@ -46,13 +46,13 @@ const margins = ({
   const _mbM = mbM || mbT || mb;
 
   return css`
-    margin-left: ${theme.spacings[ml] ||
+    margin-inline-start: ${theme.spacings[ml] ||
     ml ||
     theme.spacings[mx] ||
     mx ||
     theme.spacings[m] ||
     0} !important;
-    margin-right: ${theme.spacings[mr] ||
+    margin-inline-end: ${theme.spacings[mr] ||
     mr ||
     theme.spacings[mx] ||
     mx ||
@@ -71,13 +71,13 @@ const margins = ({
     theme.spacings[m] ||
     0} !important;
     ${theme.media.tablet} {
-      margin-left: ${theme.spacings[_mlT] ||
+      margin-inline-start: ${theme.spacings[_mlT] ||
       _mlT ||
       theme.spacings[_mxT] ||
       _mxT ||
       theme.spacings[_mT] ||
       0} !important;
-      margin-right: ${theme.spacings[_mrT] ||
+      margin-inline-end: ${theme.spacings[_mrT] ||
       _mrT ||
       theme.spacings[_mxT] ||
       _mxT ||
@@ -97,13 +97,13 @@ const margins = ({
       0} !important;
     }
     ${theme.media.mobile} {
-      margin-left: ${theme.spacings[_mlM] ||
+      margin-inline-start: ${theme.spacings[_mlM] ||
       _mlM ||
       theme.spacings[_mxM] ||
       _mxM ||
       theme.spacings[_mM] ||
       0} !important;
-      margin-right: ${theme.spacings[_mrM] ||
+      margin-inline-end: ${theme.spacings[_mrM] ||
       _mrM ||
       theme.spacings[_mxM] ||
       _mxM ||

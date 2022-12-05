@@ -322,13 +322,15 @@ const CreateOrganisationDetails = () => {
           {(i !== 0 || contactLinks.length > 1) && (
             <TextWithIcon
               text="Remove"
-              icon="close"
               isButton
               mt="4"
               color="neutralMain"
-              iconColor="primaryMain"
               handleClick={() => handleRemoveContactLink(contactLink.id)}
               weight="semi"
+              iconProps={{
+                icon: 'close',
+                color: 'primaryMain',
+              }}
             />
           )}
         </div>
@@ -338,14 +340,16 @@ const CreateOrganisationDetails = () => {
         <Col w={[4, 11, 6]}>
           <TextWithIcon
             text="Add another contact"
-            icon="add"
             isButton
             mt="5"
             color="neutralMain"
-            iconColor="primaryMain"
             handleClick={handleAddNewContactLink}
             weight="semi"
             disabled={isAddButtonDisabled}
+            iconProps={{
+              icon: 'add',
+              color: 'primaryMain',
+            }}
           />
         </Col>
       </Row>

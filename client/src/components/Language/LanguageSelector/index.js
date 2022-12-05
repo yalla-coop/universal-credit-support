@@ -65,8 +65,10 @@ export const LanguageSelector = ({ hide, handleHide }) => {
               <S.Button onClick={() => changeLanguage({ lng })} key={code}>
                 <TextWithIcon
                   text={lng}
-                  icon={FlagMap[_lng] !== undefined ? _lng : null}
-                  pointer
+                  iconProps={{
+                    icon: FlagMap[_lng] !== undefined ? _lng : null,
+                    pointer: true,
+                  }}
                   {...props}
                 />
               </S.Button>

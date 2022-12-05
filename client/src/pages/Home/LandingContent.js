@@ -3,7 +3,7 @@ import { message } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { Typography as T } from '../../components';
 import { LandingPage } from '../../api-calls';
-
+import { useLanguage } from '../../helpers';
 import { usePublicOrg } from '../../context/public-org';
 
 import * as S from './style';
@@ -25,8 +25,9 @@ const formatText = (text) => {
 };
 
 const LandingContent = ({ uniqueSlug }) => {
-  const { i18n, t } = useTranslation();
-  const { language: lng } = i18n;
+  const { t } = useTranslation();
+  const { lng } = useLanguage();
+
   const { publicOrg } = usePublicOrg();
   const [landingContent, setLandingContent] = useState({});
   const [fetchError, setFetchError] = useState('');

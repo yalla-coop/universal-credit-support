@@ -8,17 +8,17 @@ CREATE TABLE "steps" (
   "description" TEXT,
   "page_title" TEXT,
   "page_description" TEXT,
-  "how_long_does_it_take" JSON,
+  "how_long_does_it_take" JSONB,
     -- {
     --   time_range_text: '' //30 to 45 mins
     -- }
-  "where_do_you_need_to_go" JSON,
+  "where_do_you_need_to_go" JSONB,
     -- {
     --   link: '', //[PHONE, LINK]
     --   type: '',
     --   title: ''
     -- }
-  "things_you_will_need" JSON[],
+  "things_you_will_need" JSONB[],
     -- [
     --   {
     --     title: '',
@@ -27,7 +27,7 @@ CREATE TABLE "steps" (
     --     tips: ['']
     --   }
     -- ]
-  "what_you_will_need_to_know" JSON[],
+  "what_you_will_need_to_know" JSONB[],
     -- [
     --   {
     --     title: '',

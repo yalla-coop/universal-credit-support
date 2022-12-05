@@ -2,7 +2,8 @@ import * as steps from '../use-cases';
 
 const getSteps = async (req, res, next) => {
   try {
-    const landingPageContent = await steps.getSteps({});
+    const { lng } = req.query;
+    const landingPageContent = await steps.getSteps({ lng });
 
     res.json(landingPageContent);
   } catch (error) {

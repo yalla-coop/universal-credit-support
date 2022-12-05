@@ -117,7 +117,7 @@ const StepsProvider = ({ children, ...props }) => {
     return () => {
       mounted = false;
     };
-  }, []);
+  }, [lng]);
 
   useEffect(() => {
     const updatedSteps = steps.map((step) => {

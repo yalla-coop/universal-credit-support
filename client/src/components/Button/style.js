@@ -64,7 +64,7 @@ export const Button = styled.button`
 export const Loading = styled(Spin)`
   span {
     line-height: 24px;
-    margin-left: 10px;
+    margin-inline-start: 10px;
     color: ${({ theme, variant }) =>
       variant === 'secondary' ? theme.colors.neutralMain : theme.colors.white};
   }

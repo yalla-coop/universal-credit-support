@@ -22,9 +22,9 @@ const getStepById = async (id, { options } = {}) => {
   }
 };
 
-const getStepsContent = async ({ options }) => {
+const getStepsContent = async ({ options, lng }) => {
   try {
-    const { data } = await axios.get(`${STEPS_BASE}`);
+    const { data } = await axios.get(`${STEPS_BASE}`, { params: { lng } });
     return { data };
   } catch (error) {
     const err = handleError(error, options);
