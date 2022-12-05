@@ -11,7 +11,12 @@ const translateContent = async ({ lng, contentArray }) => {
           isTranslated: true,
         };
       }
-      return translate({ source: 'en', target: [lng], json: content, id });
+      try {
+        return translate({ source: 'en', target: [lng], json: content, id });
+      } catch (e) {
+        console.warn(`Could not translate ${content} to ${lng}`, e);
+        return '';
+      }
     }),
   );
 
