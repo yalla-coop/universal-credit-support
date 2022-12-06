@@ -16,6 +16,7 @@ import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../../../helpers';
 
 const Section = () => {
+  const [loading, setLoading] = useState(false);
   const { i18n, t } = useTranslation();
   const { lng } = useLanguage();
   const { publicOrg, setPageTitle } = usePublicOrg();
@@ -29,6 +30,7 @@ const Section = () => {
   const { topics, toggleMark } = useTopics(id, lng, publicOrg?.resources);
 
   useEffect(() => {
+    setLoading(true);
     const fetchSectionData = async () => {
       const { data, error } = await Sections.getSectionById({
         id,
@@ -44,6 +46,7 @@ const Section = () => {
         setSectionData(data);
         setPageTitle(data.title);
       }
+      setLoading(false);
     };
     fetchSectionData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -76,6 +79,7 @@ const Section = () => {
 
   return (
     <S.Container>
+      {loading && message.loading('...loading')}
       <PageHeader
         title={pageTitle}
         bgColor={colors.bg}
