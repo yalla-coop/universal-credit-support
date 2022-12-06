@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": false,
   "scripts": {
-    "dev": "DEBUG=server nodemon -L --exec babel-node src/index.js",
+    "dev": "cross-env DEBUG=server nodemon -L --exec babel-node src/index.js",
     "old-dev": "concurrently --kill-others-on-fail \"cd client && npm start\" \"cross-env DEBUG=server nodemon --exec babel-node ./server/index.js\"",
     "dev:server": "cross-env DEBUG=server nodemon --exec babel-node ./server/index.js",
     "dev:client": "cd client && npm start",

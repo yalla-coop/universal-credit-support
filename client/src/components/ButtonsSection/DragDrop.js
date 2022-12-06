@@ -38,7 +38,13 @@ function DragDrop({ columns, setColumns, handleHide, handleEdit }) {
           >
             {columns.map((item, index) => {
               return (
-                <Draggable key={item.id} draggableId={item.id} index={index}>
+                <Draggable
+                  key={item.id}
+                  draggableId={
+                    typeof item.id === 'number' ? item.id.toString() : item.id
+                  }
+                  index={index}
+                >
                   {(provided) => (
                     <div
                       ref={provided.innerRef}
