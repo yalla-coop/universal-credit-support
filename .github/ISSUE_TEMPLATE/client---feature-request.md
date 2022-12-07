@@ -2,8 +2,8 @@
 name: Client / Feature request
 about: Suggest an idea for this project
 title: ''
-labels: sla
-assignees: 'cyberteenie, yalla-coop-sla'
+labels: 
+assignees: ''
 
 ---
 
