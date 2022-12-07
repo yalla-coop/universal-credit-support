@@ -12,6 +12,7 @@ import {
 import * as S from './style';
 import { useAuth } from './../../context/auth';
 import validate from '../../validation/schemas/signup';
+import { validateBackupEmail } from '../../validation';
 import { Users } from '../../api-calls';
 
 import { navRoutes as R, types } from '../../constants';
@@ -105,6 +106,8 @@ const SignUp = () => {
         typeOfOrganisation,
         agreedOnTerms,
       });
+      validateBackupEmail({ email, backupEmail });
+
       setState({ validationErrs: {} });
       return true;
     } catch (error) {

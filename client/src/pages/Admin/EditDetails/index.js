@@ -15,6 +15,7 @@ import * as S from './style';
 import { editDetails as validate } from '../../../validation/schemas';
 import { Organisations } from '../../../api-calls';
 import { useLang } from '../../../context/lang';
+import { validateBackupEmail } from '../../../validation';
 import { useAdminOrg } from '../../../context/admin-org';
 import { useAuth } from '../../../context/auth';
 import { t } from '../../../helpers';
@@ -88,6 +89,8 @@ const EditDetails = () => {
       validate({
         ...state.formData,
       });
+      validateBackupEmail({ email, backupEmail });
+
       setState({ validationErrs: { hasError: false } });
       return true;
     } catch (error) {

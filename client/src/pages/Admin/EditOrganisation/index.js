@@ -13,6 +13,7 @@ import {
 import * as S from './style';
 import { EditOrganisation as validate } from '../../../validation/schemas';
 import { Organisations, Users } from '../../../api-calls';
+import { validateBackupEmail } from '../../../validation';
 import { useAuth } from '../../../context/auth';
 import { types } from '../../../constants';
 
@@ -79,6 +80,7 @@ const EditOrganisation = () => {
       validate({
         ...state.formData,
       });
+      validateBackupEmail({ email, backupEmail });
       setState({ validationErrs: { hasError: false } });
       return true;
     } catch (error) {

@@ -18,13 +18,11 @@ export const organisationName = string()
   .required(errMsgs.DEFAULT_REQUIRED);
 
 export const firstName = string()
-  .min(1, errMsgs.DEFAULT_REQUIRED)
-  .max(20)
+  .max(20, errMsgs.TOO_LONG_MAX_20)
   .required(errMsgs.DEFAULT_REQUIRED);
 
 export const lastName = string()
-  .min(1, errMsgs.DEFAULT_REQUIRED)
-  .max(20)
+  .max(20, errMsgs.TOO_LONG_MAX_20)
   .required(errMsgs.DEFAULT_REQUIRED);
 
 export const email = string()

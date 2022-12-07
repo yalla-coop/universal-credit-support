@@ -1,6 +1,7 @@
 export const DEFAULT_REQUIRED = 'This field is required';
 export const INVALID_EMAIL = 'Invalid email';
 export const TOO_LONG_MAX_7 = 'Too long - should be 7 characters maximum';
+export const TOO_LONG_MAX_20 = 'Too long - should be 20 characters maximum';
 export const TOO_LONG_MAX_50 = 'Too long - should be 50 characters maximum';
 export const TOO_LONG_MAX_100 = 'Too long - should be 100 characters maximum';
 export const TOO_LONG_MAX_200 = 'Too long - should be 200 characters maximum';
