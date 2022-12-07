@@ -1,4 +1,4 @@
-import { string, number, boolean, array, object } from 'yup';
+import { string, number, boolean, array, object, lazy } from 'yup';
 import * as errMsgs from './err-msgs';
 import './custom-functions';
 import { whereDoYouNeedToGoTypes } from '../constants/data-types';
@@ -230,6 +230,17 @@ export const hslColor = object().shape({
   l: string().required(),
 });
 
+export const customColor = lazy((value) => {
+  switch (typeof value) {
+    case 'object':
+      return hslColor;
+    case 'string':
+      return hexColor;
+    default:
+      return hexColor;
+  }
+});
+
 export const hslColorOptional = object()
   .shape({
     h: string().required(),
@@ -237,6 +248,17 @@ export const hslColorOptional = object()
     l: string().required(),
   })
   .nullable();
+
+export const customColorOptional = lazy((value) => {
+  switch (typeof value) {
+    case 'object':
+      return hslColorOptional;
+    case 'string':
+      return hexColorOptional;
+    default:
+      return hexColorOptional;
+  }
+});
 
 export const resourceObjLink = object().shape({
   label: requiredText,

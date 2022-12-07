@@ -1,10 +1,7 @@
 import PropTypes from 'prop-types';
 import * as S from './style';
-import { usePublicOrg } from '../../../context/public-org';
-import { useAdminOrg } from '../../../context/admin-org';
 import { useAccessibility } from '../../../context/accessibility';
 
-import { OrganisationLogo } from '../../../components';
 import Language from '../../Language';
 import SocialBanner from '../../../components/SocialBanner';
 // import Navbar from '../../Navbar';
@@ -20,14 +17,11 @@ const General = ({
   showSocialBanner,
   ...props
 }) => {
-  const { publicOrg } = usePublicOrg();
-  const { adminOrg } = useAdminOrg();
   const { layoutColor } = useAccessibility();
 
   return (
     <S.Container bgColor={layoutColor}>
       <Language showBack={showBack} />
-      <OrganisationLogo logoUrl={adminOrg?.logoUrl || publicOrg?.logoUrl} />
       <S.Content maxWidth={maxWidth}>
         {goBack && (
           <GoBack

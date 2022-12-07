@@ -1,20 +1,20 @@
 import { fields, createSchema, validate as _validate } from '..';
 
-const { requiredText, hslColor, hslColorOptional } = fields;
+const { requiredText, customColor, customColorOptional } = fields;
 
 const schema = createSchema({
   logoFile: requiredText,
-  mainHeaderBgColor: hslColorOptional,
-  section1BgColor: hslColor,
-  section2BgColor: hslColor,
-  section3BgColor: hslColor,
-  section4BgColor: hslColor,
-  section5BgColor: hslColor,
-  section1TextColor: hslColor,
-  section2TextColor: hslColor,
-  section3TextColor: hslColor,
-  section4TextColor: hslColor,
-  section5TextColor: hslColor,
+  mainHeaderBgColor: customColorOptional,
+  section1BgColor: customColor,
+  section2BgColor: customColor,
+  section3BgColor: customColor,
+  section4BgColor: customColor,
+  section5BgColor: customColor,
+  section1TextColor: customColor,
+  section2TextColor: customColor,
+  section3TextColor: customColor,
+  section4TextColor: customColor,
+  section5TextColor: customColor,
 });
 
 const validate = (data) => {

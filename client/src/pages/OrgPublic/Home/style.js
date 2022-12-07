@@ -19,8 +19,10 @@ export const PageHead = styled.header`
   background: ${({ theme }) =>
     theme.colors.mainHeaderBgColor || theme.gradients.primary};
   background-color: ${({ theme }) => theme.colors.mainHeaderBgColor};
-  background-image: ${({ theme }) =>
-    theme.colors.mainHeaderBgColor || `url(${backgroundLogo})`};
+  background-image: ${({ theme, showBGImage }) =>
+    showBGImage
+      ? theme.colors.mainHeaderBgColor
+      : theme.colors.mainHeaderBgColor || `url(${backgroundLogo})`};
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -101,10 +103,15 @@ export const LogoContainer = styled(Link)`
   height: 30px;
   margin: 0;
   margin-bottom: ${({ theme }) => theme.spacings[7]};
-
   ${({ theme }) => theme.media.mobile} {
     margin-left: 37px;
     margin-bottom: ${({ theme }) => theme.spacings[5]};
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
 `;
 

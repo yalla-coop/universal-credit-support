@@ -27,19 +27,15 @@ const ImageUpload = ({
   w, // width
   fileCategory = 'LOGO',
   setUploading,
-  uploading,
   setFileInfo,
   fileInfo = {},
   setError,
   error,
   maxSize,
-  disabled,
-  contentInputMissingError,
+
   label = 'Click or drag and drop to upload',
-  ...rest
 }) => {
   let updatedFile;
-
   // get signed url to be used as action / upload url
   const getSignedURL = async (file) => {
     const { data, error: _error } = await Media.getSignedURL({
@@ -112,7 +108,7 @@ const ImageUpload = ({
   const uploadFile = async (options) => {
     const { onSuccess, onError, file, onProgress } = options;
     // check if signed URL is present
-    if (fileInfo.url && fileInfo.isNew) {
+    if (updatedFile.url && updatedFile.isNew) {
       //  add custom progress to axios
       const config = {
         onUploadProgress: (event) => {
@@ -123,20 +119,20 @@ const ImageUpload = ({
       // upload file
       const { data: newUploadedFileInfo, error: _error } =
         await Media.uploadToS3({
-          signedURL: fileInfo.url,
+          signedURL: updatedFile.url,
           file,
           options: config,
         });
-
       if (_error) {
         onError(setError(_error.message));
       } else {
         updatedFile = {
-          ...fileInfo,
+          ...updatedFile,
           ...newUploadedFileInfo,
           uploadedToS3: true,
           fileCategory,
         };
+
         setFileInfo(updatedFile);
         onSuccess('OK');
       }
@@ -161,7 +157,6 @@ const ImageUpload = ({
     customRequest: (options) => uploadFile(options),
     format: (percent) => `${parseFloat(percent.toFixed(2))}%`,
   };
-
   return (
     <S.Wrapper error={error}>
       <Dragger
@@ -170,8 +165,8 @@ const ImageUpload = ({
           fileInfo?.key
             ? [
                 {
-                  id: fileInfo.fileName,
-                  name: fileInfo?.fileName,
+                  id: fileInfo?.name || fileInfo?.fileName,
+                  name: fileInfo?.name || fileInfo?.fileName,
                   status: 'done',
                   url: fileInfo.url,
                 },

@@ -1,7 +1,8 @@
 import { useReducer, useEffect, useRef } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { breakpoints } from '../../../theme';
-import defaultColors from '../../../theme/colors';
+import { defaultColors } from '../../../theme/colors';
+import formatColor from '../../../helpers/format-color';
 
 import {
   Grid,
@@ -101,27 +102,39 @@ const Customise = () => {
             fileName: data.fileName,
             url: data.logoUrl,
           },
-          mainHeaderBgColor: colors?.mainHeaderBgColor,
+          mainHeaderBgColor: colors?.mainHeaderBgColor
+            ? formatColor(colors.mainHeaderBgColor)
+            : '',
           section1BgColor:
-            colors?.section1BgColor || defaultColors.section1BgColor,
+            colors?.section1BgColor ||
+            formatColor(defaultColors.section1BgColor),
           section2BgColor:
-            colors?.section2BgColor || defaultColors.section2BgColor,
+            colors?.section2BgColor ||
+            formatColor(defaultColors.section2BgColor),
           section3BgColor:
-            colors?.section3BgColor || defaultColors.section3BgColor,
+            colors?.section3BgColor ||
+            formatColor(defaultColors.section3BgColor),
           section4BgColor:
-            colors?.section4BgColor || defaultColors.section4BgColor,
+            colors?.section4BgColor ||
+            formatColor(defaultColors.section4BgColor),
           section5BgColor:
-            colors?.section5BgColor || defaultColors.section5BgColor,
+            colors?.section5BgColor ||
+            formatColor(defaultColors.section5BgColor),
           section1TextColor:
-            colors?.section1TextColor || defaultColors.section1TextColor,
+            colors?.section1TextColor ||
+            formatColor(defaultColors.section1TextColor),
           section2TextColor:
-            colors?.section2TextColor || defaultColors.section2TextColor,
+            colors?.section2TextColor ||
+            formatColor(defaultColors.section2TextColor),
           section3TextColor:
-            colors?.section3TextColor || defaultColors.section3TextColor,
+            colors?.section3TextColor ||
+            formatColor(defaultColors.section3TextColor),
           section4TextColor:
-            colors?.section4TextColor || defaultColors.section4TextColor,
+            colors?.section4TextColor ||
+            formatColor(defaultColors.section4TextColor),
           section5TextColor:
-            colors?.section5TextColor || defaultColors.section5TextColor,
+            colors?.section5TextColor ||
+            formatColor(defaultColors.section5TextColor),
 
           loaded: true,
         });

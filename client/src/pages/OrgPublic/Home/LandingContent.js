@@ -2,16 +2,20 @@ import { useTranslation } from 'react-i18next';
 import { Typography as T } from '../../../components';
 import Logo from '../../../components/assets/Logo.png';
 import { navRoutes, common } from '../../../constants';
+import { usePublicOrg } from '../../../context/public-org';
+
 import * as S from './style';
 
 const LandingContent = () => {
   const { t } = useTranslation();
+  const { publicOrg } = usePublicOrg();
+
   return (
     <>
-      <S.PageHead showBGImage>
+      <S.PageHead showBGImage={!!publicOrg?.logoUrl}>
         <S.HeaderContent>
           <S.LogoContainer to={navRoutes.PUBLIC_ORG.HOME}>
-            <img src={Logo} alt="logo" />
+            <img src={publicOrg?.logoUrl || Logo} alt="logo" />
           </S.LogoContainer>
           <S.HeaderText>
             <S.pageTitle ta="center" weight="bold">
