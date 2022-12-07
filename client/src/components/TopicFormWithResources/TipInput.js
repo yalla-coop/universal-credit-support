@@ -15,7 +15,7 @@ const TipInput = ({ content, id, setTip, removeTip }) => {
         onChange={(value) => setTip(value, id)}
       />
       <S.CloseTipButton type="button" onClick={() => removeTip(id)}>
-        <Icon icon="close" pointer color="primaryDark" />
+        <Icon icon="close" pointer color="primaryMain" />
       </S.CloseTipButton>
     </S.TipInputWrapper>
   );
