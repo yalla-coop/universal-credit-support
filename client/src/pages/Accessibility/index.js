@@ -103,7 +103,7 @@ const Accessibility = () => {
                     common.section.accessibility.tip2
                   )}{' '}
                   <T.Link
-                    to={`mailto:${R.EXTERNAL.APPLE_ACCESSIBILITY}`}
+                    to={R.EXTERNAL.APPLE_ACCESSIBILITY}
                     color="secondaryMain"
                     external
                     underline
@@ -116,7 +116,7 @@ const Accessibility = () => {
                   </T.Link>{' '}
                   {t('common.words.and', common.words.and)}{' '}
                   <T.Link
-                    to={`mailto:${R.EXTERNAL.ANDROID_ACCESSIBILITY}`}
+                    to={R.EXTERNAL.ANDROID_ACCESSIBILITY}
                     color="secondaryMain"
                     external
                     underline
@@ -181,6 +181,7 @@ const Accessibility = () => {
               type="submit"
               mt={4}
             />
+
             <C.Tips
               mlM="0"
               mt="4"
@@ -189,8 +190,8 @@ const Accessibility = () => {
               tips={[
                 <T.P color="neutralMain" weight="semi">
                   {t(
-                    'common.section.accessibility.tip2',
-                    common.section.accessibility.tip2
+                    'common.section.accessibility.textSizetip',
+                    common.section.accessibility.textSizetip
                   )}
                 </T.P>,
               ]}

@@ -56,7 +56,6 @@ const CustomiseResources = () => {
       MENTAL_HEALTH_1,
       MENTAL_HEALTH_2,
       MENTAL_HEALTH_3,
-      MENTAL_HEALTH_4,
       STILL_NEED_HELP,
     },
     loading,
@@ -123,7 +122,6 @@ const CustomiseResources = () => {
     MENTAL_HEALTH_1,
     MENTAL_HEALTH_2,
     MENTAL_HEALTH_3,
-    MENTAL_HEALTH_4,
     STILL_NEED_HELP,
   ]);
 
@@ -474,33 +472,6 @@ const CustomiseResources = () => {
             }
             resetValue={defaultResourcesObj.MENTAL_HEALTH_3.label}
             error={validationErrs?.MENTAL_HEALTH_3?.label}
-          />
-        </Col>
-
-        <Col w={[4, 12, 6]} mt={4}>
-          <I.BasicInput
-            label="Mental health link 4"
-            type="text"
-            value={MENTAL_HEALTH_4?.value}
-            helper="Enter your preferred mental health link here"
-            handleChange={(value) =>
-              setFormData(value, 'MENTAL_HEALTH_4', 'value')
-            }
-            resetValue={defaultResourcesObj.MENTAL_HEALTH_4.value}
-            error={validationErrs?.MENTAL_HEALTH_4?.value}
-          />
-        </Col>
-        <Col w={[4, 12, 6]} mt={4} mtT={4}>
-          <I.BasicInput
-            label="Mental health button label 4"
-            type="text"
-            helper="Enter your preferred button label here"
-            value={MENTAL_HEALTH_4?.label}
-            handleChange={(value) =>
-              setFormData(value, 'MENTAL_HEALTH_4', 'label')
-            }
-            resetValue={defaultResourcesObj.MENTAL_HEALTH_4.label}
-            error={validationErrs?.MENTAL_HEALTH_4?.label}
           />
         </Col>
       </S.Section>

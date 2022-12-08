@@ -12,7 +12,6 @@ const schema = createSchema({
   MENTAL_HEALTH_1: resourceObjLink,
   MENTAL_HEALTH_2: resourceObjLink,
   MENTAL_HEALTH_3: resourceObjLink,
-  MENTAL_HEALTH_4: resourceObjLink,
   STILL_NEED_HELP: resourceObjPhone,
 });
 

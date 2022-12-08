@@ -36,7 +36,7 @@ const createOrganisations = async ({ organisations }) => {
         'https://www.moneyhelper.org.uk/en/everyday-money/budgeting/use-our-budget-planner.html',
     },
     {
-      key: 'BUDGET_PRINTABLE_PDF',
+      key: 'BUDGET_PLANNER_PDF',
       category: 'BUDGET',
       label: 'Budget Printable PDF',
       value:
