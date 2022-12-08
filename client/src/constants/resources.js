@@ -10,17 +10,9 @@ export const defaultResources = [
   {
     key: 'BUDGET_PLANNER_PDF',
     category: 'BUDGET',
-    label: 'Budget Printable PDF',
-    value:
-      'https://www.moneyhelper.org.uk/en/everyday-money/budgeting/use-our-budget-planner.html',
+    label: 'Stepchange free budget templates',
+    value: 'https://www.stepchange.org/debt-info/how-to-make-a-budget.aspx',
     type: 'link',
-  },
-  {
-    key: 'BUDGET_PRINTABLE_PDF',
-    category: 'BUDGET',
-    label: 'Budget Printable PDF',
-    value:
-      'https://www.moneyhelper.org.uk/en/everyday-money/budgeting/use-our-budget-planner.html',
   },
   {
     key: 'BENEFIT_CALCULATOR',
@@ -79,13 +71,6 @@ export const defaultResources = [
     category: 'MENTAL_HEALTH',
     label: 'NHS Every Mind Matters',
     value: 'https://www.nhs.uk/every-mind-matters/',
-    type: 'link',
-  },
-  {
-    key: 'MENTAL_HEALTH_4',
-    category: 'MENTAL_HEALTH',
-    label: 'TODO: get this link',
-    value: 'TODO: get this link',
     type: 'link',
   },
 ];
