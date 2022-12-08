@@ -4,7 +4,7 @@ import * as S from './style';
 const PageHeader = ({
   title,
   textColor = 'white',
-  bgColor = 'secondaryMain',
+  bgColor = 'section1BgColor',
   borderColor = 'white',
 }) => {
   return (
@@ -21,6 +21,7 @@ const PageHeader = ({
                 lineHeightM: '33.544px',
                 color: textColor,
               },
+              color: textColor,
             }}
           />
         </S.markDownContainer>
