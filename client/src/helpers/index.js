@@ -7,6 +7,7 @@ import authorization from './authorization';
 import formatColor from './format-color';
 import setColor from './set-color-variations';
 import useLanguage from './use-language';
+import checkLink from './check-link';
 
 export {
   setMargin,
@@ -18,4 +19,5 @@ export {
   formatColor,
   setColor,
   useLanguage,
+  checkLink,
 };
