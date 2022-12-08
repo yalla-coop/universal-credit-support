@@ -71,7 +71,7 @@ const EXTERNAL = {
   ONLINE_APPLICATION_FORM: 'https://www.universal-credit.service.gov.uk',
   MAKE_YOUR_CLAIM: 'https://www.universal-credit.service.gov.uk/sign-in',
   GETTING_YOUR_FIRST_PAYMENT: 'https://www.universal-credit.service.gov.uk',
-  Call_0800_328_5644: 'tel:0800 328 5644',
+  Call_0800_328_5644: 'tel:0800 138 7777',
   DEMO_VIDEO:
     'https://github.com/yalla-coop/universal-credit-support/issues/76',
   ACCESSABILITY_GUIDELINES: 'https://webaim.org/resources/contrastchecker/',

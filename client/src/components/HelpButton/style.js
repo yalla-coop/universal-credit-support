@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import setMargin from '../../helpers/set-margin';
 
 export const Button = styled.button`
   width: 90px;
@@ -56,11 +55,6 @@ export const CloseButton = styled.button`
 
 export const Content = styled.div`
   padding: ${({ theme: { spacings } }) => spacings[4]};
-  width: 100%;
-`;
-
-export const ContactItem = styled.div`
-  ${setMargin};
   width: 100%;
 `;
 
