@@ -31,6 +31,7 @@ export const ButtonWrapper = styled.div`
 `;
 export const IconsWrapper = styled.div`
   display: flex;
+  min-width: 96px;
 `;
 export const ButtonContent = styled.div`
   background: ${({ theme }) => theme.colors.neutralSurface};
@@ -44,7 +45,7 @@ export const ButtonContent = styled.div`
 export const HideWrapper = styled.div`
   ${setMargin};
   display: flex;
-  min-width: 65px;
+  min-width: 72px;
 `;
 
 export const MenuButton = styled.button`
