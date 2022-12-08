@@ -71,7 +71,7 @@ const translateJSON = async ({
 };
 
 const translate = async ({ source, target, json, id }) => {
-  if (!source || !target || !json || !id) {
+  if (!source || !target || !json) {
     throw new Error('translation API missing params');
   }
 
