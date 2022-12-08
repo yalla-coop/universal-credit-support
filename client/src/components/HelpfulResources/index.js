@@ -2,6 +2,7 @@ import Icon from '../Icon';
 import * as T from '../Typography';
 import { useTranslation } from 'react-i18next';
 import { common } from '../../constants';
+import { checkLink } from '../../helpers';
 
 import * as S from './style';
 
@@ -21,7 +22,7 @@ const HelpfulResources = ({ resources = [], ...props }) => {
 
       {resources.map((r, index) => (
         <S.LinkWrapper
-          href={r.value || r.url}
+          href={checkLink(r.value || r.url)}
           target="_blank"
           key={r.label + index}
         >
