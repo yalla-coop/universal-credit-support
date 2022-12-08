@@ -46,6 +46,7 @@ const SubSections = () => {
     return () => {
       mounted = false;
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, lng]);
 
   const colorArr = [
