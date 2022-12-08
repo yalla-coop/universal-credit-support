@@ -89,18 +89,13 @@ const Home = () => {
       </S.Section>
       <S.FullSection>
         <S.NeedHelpWrapper>
-          <T.H2 color="neutralMain" ta="center" taM="start">
+          <T.H2 color="neutralMain" ta="center" taM="start" mb="4">
             {t(
               'common.section.helpBudget.title',
               common.section.helpBudget.title
             )}
           </T.H2>
-          <T.P ta="center" mt="4" mb="3" taM="start" color="neutralDark">
-            {t(
-              'common.section.helpBudget.description',
-              common.section.helpBudget.description
-            )}
-          </T.P>
+
           <S.ReadMoreLink
             to={generatePath(navRoutes.PUBLIC_ORG.BUDGETING, {
               uniqueSlug,

@@ -56,7 +56,7 @@ export default {
   editDetails: {
     title: 'Edit account details',
     subtitle:
-      'Below you can edit details for your customers such as your adviser contact line',
+      'Below you can edit the details of your account; add a back up email account; change your unique link, or delete the account.',
   },
 
   contact: {
@@ -106,7 +106,7 @@ export default {
     secondaryTitle: 'Attend Interview',
     subtitle:
       "This might be in person or by phone. If you haven't been able to verify your identity online you might need to have an extra interview to sort that out first.",
-    externalButtonTitle: 'Call 0800 328 5644',
+    externalButtonTitle: 'Call 0800 138 7777',
 
     checkListItems: {
       nationalNumber: 'National Insurance number',
