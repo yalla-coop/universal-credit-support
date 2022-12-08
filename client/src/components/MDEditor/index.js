@@ -16,7 +16,7 @@ const Editor = ({
   ...props
 }) => {
   return (
-    <S.Wrapper {...m}>
+    <S.Wrapper data-color-mode="light" {...m}>
       {label && (
         <S.Label htmlFor={label} mb={helper ? '1' : '2'}>
           <T.P weight="bold" color={color} m="0">
