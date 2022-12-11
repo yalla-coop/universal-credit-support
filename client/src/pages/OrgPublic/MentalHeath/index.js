@@ -63,7 +63,13 @@ const MentalHeath = () => {
                 'common.section.mentalHealthSupport.samaritansHelpline',
                 common.section.mentalHealthSupport.samaritansHelpline
               )}{' '}
-              <T.Link weight="bold" external href={`tel:116123`} underline>
+              <T.Link
+                weight="bold"
+                external
+                href={`tel:116123`}
+                underline
+                dir={'ltr'}
+              >
                 116 123
               </T.Link>
               <br />

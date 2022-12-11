@@ -32,6 +32,7 @@ const StillNeedHelp = ({ phoneNumber, name, ...props }) => {
             external
             href={`tel:${phoneNumber}`}
             underline={!!name}
+            dir={'ltr'}
           >
             {name || phoneNumber}
           </T.Link>{' '}
