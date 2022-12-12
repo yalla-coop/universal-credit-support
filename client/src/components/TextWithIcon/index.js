@@ -21,6 +21,7 @@ const TextWithIcon = ({
   m,
   mr,
   isText,
+  dir,
   ...props
 }) => {
   const { _color = 'secondaryMain', icon = 'phone' } = _iconProps || {
@@ -38,6 +39,7 @@ const TextWithIcon = ({
   if (isButton)
     return (
       <S.Button
+        dir={dir}
         {...m}
         {...props}
         onClick={handleClick}

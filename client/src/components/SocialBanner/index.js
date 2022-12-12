@@ -14,7 +14,7 @@ import * as S from './style';
 import { useTranslation } from 'react-i18next';
 import { common } from '../../constants';
 
-const ShareBox = () => {
+const ShareBox = ({ dir }) => {
   const { t } = useTranslation();
   const { pageTitle } = usePublicOrg();
   let formattedTitle;
@@ -23,7 +23,7 @@ const ShareBox = () => {
   }
   const url = window.location.href;
   return (
-    <S.Box>
+    <S.Box dir={dir}>
       <T.P isSmall color="neutralMain" weight="semi">
         {t('common.heading.shareThisPage', common.heading.shareThisPage)}
       </T.P>
