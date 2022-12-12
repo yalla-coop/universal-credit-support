@@ -9,12 +9,16 @@ import * as S from './style';
 const LandingContent = () => {
   const { t } = useTranslation();
   const { publicOrg } = usePublicOrg();
-
   return (
     <>
       <S.PageHead showBGImage={!!publicOrg?.logoUrl}>
         <S.HeaderContent>
-          <S.LogoContainer to={navRoutes.PUBLIC_ORG.HOME}>
+          <S.LogoContainer
+            to={navRoutes.PUBLIC_ORG.HOME_ORG.replace(
+              ':uniqueSlug',
+              publicOrg.uniqueSlug
+            )}
+          >
             <img src={publicOrg?.logoUrl || Logo} alt="logo" />
           </S.LogoContainer>
           <S.HeaderText>

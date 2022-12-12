@@ -70,12 +70,14 @@ const Desktop = ({
             {...props}
           />
           <TextWithIcon
-            handleClick={() => navigate(R.GENERAL.ACCESSIBILITY)}
+            to={R.GENERAL.ACCESSIBILITY}
             text={accessibility}
             iconProps={{
               icon: 'accessibility',
             }}
             {...props}
+            isButton={false}
+            isText
           />
         </S.ButtonWrapper>
         <S.ButtonWrapper>
