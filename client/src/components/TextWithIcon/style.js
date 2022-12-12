@@ -4,7 +4,6 @@ import setMargin from '../../helpers/set-margin';
 export const Wrapper = styled.div`
   ${setMargin};
   display: flex;
-  width: 100%;
   align-items: ${({ ai }) => ai || 'center'};
   justify-content: ${({ jc }) => jc || 'flex-start'};
   padding: ${({ theme, size }) => (size === 'large' ? theme.spacings[4] : 0)};
