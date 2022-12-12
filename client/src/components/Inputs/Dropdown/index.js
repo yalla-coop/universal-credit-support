@@ -32,7 +32,7 @@ const Dropdown = ({
   const [open, setOpen] = useState(false);
   const [focus, setFocus] = useState(false);
 
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const _placeholder = placeholder
     ? placeholder
     : t('common.placeholders.select', common.placeholders.select);
@@ -113,6 +113,7 @@ const Dropdown = ({
       color={decideColor()}
       error={error}
       search={search}
+      dir={i18n.dir()}
       {...m}
     >
       {label && (
