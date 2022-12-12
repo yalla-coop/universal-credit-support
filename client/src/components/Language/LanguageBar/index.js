@@ -21,7 +21,7 @@ const Desktop = ({
   dir,
   handleHide,
   showBack,
-  flag,
+  lng,
   lngFull,
   accessibility,
   increaseTextSize,
@@ -83,7 +83,7 @@ const Desktop = ({
             handleClick={handleHide}
             text={lngFull}
             iconProps={{
-              icon: flag,
+              icon: lng,
               followLangDirection: false,
             }}
             {...props}
@@ -100,7 +100,7 @@ const Desktop = ({
           handleClick={handleHide}
           text={lngFull}
           iconProps={{
-            icon: flag,
+            icon: lng,
             followLangDirection: false,
           }}
           {...props}
@@ -152,7 +152,7 @@ const Desktop = ({
   return dir === 'rtl' ? RTL : LTR;
 };
 
-const Tablet = ({ dir, showBack, handleHide, flag, lng, accessibility }) => {
+const Tablet = ({ dir, showBack, handleHide, lng, lngFull, accessibility }) => {
   const navigate = useNavigate();
   const { isFontLarge, setIsFontLarge } = useAccessibility();
   const goBack = () => {
@@ -176,7 +176,7 @@ const Tablet = ({ dir, showBack, handleHide, flag, lng, accessibility }) => {
           handleClick={() => navigate(R.GENERAL.ACCESSIBILITY)}
           text={accessibility}
           iconProps={{
-            icon: 'backArrow',
+            icon: 'accessibility',
           }}
           {...props}
         />
@@ -200,9 +200,9 @@ const Tablet = ({ dir, showBack, handleHide, flag, lng, accessibility }) => {
         />
         <TextWithIcon
           handleClick={handleHide}
-          text={lng}
+          text={lngFull}
           iconProps={{
-            icon: flag,
+            icon: lng,
             followLangDirection: false,
           }}
           {...props}
@@ -216,9 +216,9 @@ const Tablet = ({ dir, showBack, handleHide, flag, lng, accessibility }) => {
       <S.ButtonWrapper>
         <TextWithIcon
           handleClick={handleHide}
-          text={lng}
+          text={lngFull}
           iconProps={{
-            icon: flag,
+            icon: lng,
             followLangDirection: false,
           }}
           {...props}
@@ -283,16 +283,15 @@ export const LanguageBar = ({ largeText, handleHide, showBack }) => {
     common.buttons.decreaseTextSize
   );
 
-  const { lngFull, lngUpperCase, flag, dir } = useLanguage();
+  const { lngFull, lng, dir } = useLanguage();
 
   const props = {
     dir,
     largeText,
     showBack,
     handleHide,
-    flag,
     lngFull,
-    lng: lngUpperCase,
+    lng,
     accessibility,
     increaseTextSize,
     decreaseTextSize,

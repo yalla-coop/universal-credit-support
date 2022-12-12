@@ -1,4 +1,4 @@
-const Urdu = ({ width, height, color, ...props }) => (
+const UR = ({ width, height, color, ...props }) => (
   <svg
     width={width || '24'}
     height={height || '24'}
@@ -53,4 +53,4 @@ const Urdu = ({ width, height, color, ...props }) => (
   </svg>
 );
 
-export default Urdu;
+export default UR;

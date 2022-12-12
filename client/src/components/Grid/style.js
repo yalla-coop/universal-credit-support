@@ -27,8 +27,10 @@ export const Row = styled.div`
 export const Col = styled('div')`
   ${setMargin};
   box-sizing: border-box;
-  padding-inline-start: ${({ theme }) => theme.constants.gridGutter.desktop / 2}px;
-  padding-inline-end: ${({ theme }) => theme.constants.gridGutter.desktop / 2}px;
+  padding-inline-start: ${({ theme }) =>
+    theme.constants.gridGutter.desktop / 2}px;
+  padding-inline-end: ${({ theme }) =>
+    theme.constants.gridGutter.desktop / 2}px;
   flex-shrink: 0;
   position: relative;
   width: 100%;
@@ -52,8 +54,10 @@ export const Col = styled('div')`
     max-width: ${({ theme, c2 }) =>
       `calc(${(c2 / theme.constants.columns.tablet) * 100}%)`};
 
-    padding-inline-start: ${({ theme }) => theme.constants.gridGutter.tablet / 2}px;
-    padding-inline-end: ${({ theme }) => theme.constants.gridGutter.tablet / 2}px;
+    padding-inline-start: ${({ theme }) =>
+      theme.constants.gridGutter.tablet / 2}px;
+    padding-inline-end: ${({ theme }) =>
+      theme.constants.gridGutter.tablet / 2}px;
   }
 
   ${({ theme }) => theme.media.mobile} {
@@ -63,7 +67,9 @@ export const Col = styled('div')`
       `calc(${(c1 / theme.constants.columns.mobile) * 100}%)`};
     max-width: ${({ theme, c1 }) =>
       `calc(${(c1 / theme.constants.columns.mobile) * 100}%)`};
-    padding-inline-start: ${({ theme }) => theme.constants.gridGutter.mobile / 2}px;
-    padding-inline-end: ${({ theme }) => theme.constants.gridGutter.mobile / 2}px;
+    padding-inline-start: ${({ theme }) =>
+      theme.constants.gridGutter.mobile / 2}px;
+    padding-inline-end: ${({ theme }) =>
+      theme.constants.gridGutter.mobile / 2}px;
   }
 `;

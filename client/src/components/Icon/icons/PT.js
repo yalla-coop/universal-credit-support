@@ -1,4 +1,4 @@
-const Portuguese = ({ width, height, color, ...props }) => (
+const PT = ({ width, height, color, ...props }) => (
   <svg
     width={width || '24'}
     height={height || '24'}
@@ -44,4 +44,4 @@ const Portuguese = ({ width, height, color, ...props }) => (
   </svg>
 );
 
-export default Portuguese;
+export default PT;

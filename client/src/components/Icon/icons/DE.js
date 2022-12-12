@@ -1,4 +1,4 @@
-const German = ({ width, height, color, ...props }) => (
+const DE = ({ width, height, color, ...props }) => (
   <svg
     width={width || '24'}
     height={height || '24'}
@@ -115,4 +115,4 @@ const German = ({ width, height, color, ...props }) => (
   </svg>
 );
 
-export default German;
+export default DE;
