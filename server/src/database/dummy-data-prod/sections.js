@@ -32,7 +32,7 @@ const addSections = async () => {
     defaultPosition: 4,
   });
   const maximisingYourIncome = await createSections({
-    title: 'Maximising your **income**',
+    title: 'Maximising my **income**',
     defaultPosition: 5,
   });
   const payingForHousingPrivateTenant = await createSections({

@@ -94,6 +94,16 @@ export const Field = styled.div`
     // SEEMS WEIRD BUT YOU NEED TO DO THIS TO FORCE THE WIDTH TO STAY CONTAINED
     width: 1px;
   }
+
+  .ant-select-selection-item {
+  ${({ dir }) =>
+    dir === 'rtl'
+      ? `
+        display: flex;
+        flex-direction: row-reverse;
+        `
+      : ''}};
+  }
 `;
 
 export const menuStyle = styled`

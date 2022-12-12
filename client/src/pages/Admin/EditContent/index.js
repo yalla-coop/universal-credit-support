@@ -100,8 +100,8 @@ const EditContent = () => {
       <Row mb="5">
         <Col w={[4, 12, 8]}>
           <T.P color="neutralDark">
-            Drag the sections to reorder the content that your clients see or
-            click you can hide any sections that isn't relevant to your
+            Drag the sections to reorder the content that your clients see, add
+            a new section or hide any sections that isn't relevant to your
             organisation.
           </T.P>
         </Col>

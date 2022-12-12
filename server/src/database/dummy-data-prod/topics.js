@@ -494,7 +494,7 @@ const addTopics = async ({ sections }) => {
       resources: [
         {
           type: 'EXTERNAL',
-          label: 'Living in squeezed income',
+          label: 'Living on a squeezed income',
           url: 'https://www.moneyhelper.org.uk/en/money-troubles/way-forward/squeezed-income',
         },
       ],
