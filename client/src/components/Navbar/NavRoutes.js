@@ -2,6 +2,7 @@ import { SUPER_ADMIN, ADMIN } from '../../constants/nav-routes';
 import t from '../../constants/translations';
 import R from '../../constants/roles';
 import * as S from './style';
+import { useAdminOrg } from '../../context/admin-org';
 import { useAuth } from '../../context/auth';
 import { useNavigate } from 'react-router-dom';
 const handleClick = (cb) => {
@@ -12,6 +13,8 @@ const handleClick = (cb) => {
 };
 
 const DecideRoutes = ({ setOpen }) => {
+  const { adminOrg } = useAdminOrg();
+
   const {
     user: { role },
     logout,
@@ -24,6 +27,7 @@ const DecideRoutes = ({ setOpen }) => {
 
     navigate(ADMIN.LOGIN);
   };
+  const isPending = adminOrg.status === 'AWAITING_APPROVAL';
 
   switch (role) {
     case R.ADMIN:
@@ -42,14 +46,17 @@ const DecideRoutes = ({ setOpen }) => {
               {t.english['EDIT_ACCOUNT_DETAILS']}
             </S.Head3>
           </S.Link>
-          <S.Link
-            to={ADMIN.ADD_UPDATE_CONTENT}
-            onClick={() => handleClick(setOpen)}
-          >
-            <S.Head3 weight="bold" color="neutralMain">
-              {t.english['ADD_UPDATE_CONTENT']}
-            </S.Head3>
-          </S.Link>
+          {!isPending && (
+            <S.Link
+              to={ADMIN.ADD_UPDATE_CONTENT}
+              onClick={() => handleClick(setOpen)}
+            >
+              <S.Head3 weight="bold" color="neutralMain">
+                {t.english['ADD_UPDATE_CONTENT']}
+              </S.Head3>
+            </S.Link>
+          )}
+
           <S.Link
             to={ADMIN.CUSTOMISE_RESOURCES}
             onClick={() => handleClick(setOpen)}
@@ -63,7 +70,6 @@ const DecideRoutes = ({ setOpen }) => {
               {t.english['CUSTOMISE_COLORS']}
             </S.Head3>
           </S.Link>
-
           <S.Link onClick={handleLogout}>
             <S.Head3 weight="bold" color="neutralMain">
               {t.english['LOG_OUT']}

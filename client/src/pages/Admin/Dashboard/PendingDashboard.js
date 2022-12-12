@@ -51,21 +51,6 @@ const PendingDashboard = () => {
               />
             </S.ButtonWrapper>
 
-            <S.ButtonWrapper to={R.ADMIN.CUSTOMISE_RESOURCES}>
-              <TextWithIcon
-                size="large"
-                bgColor="neutralSurface"
-                text={'Customise resources and client contact numbers'}
-                ai="flex-start"
-                mr="6px"
-                isText
-                iconProps={{
-                  color: 'secondaryMain',
-                  icon: 'forwardArrow',
-                }}
-              />
-            </S.ButtonWrapper>
-
             <S.ButtonWrapper to={R.ADMIN.CUSTOMISE}>
               <TextWithIcon
                 size="large"
