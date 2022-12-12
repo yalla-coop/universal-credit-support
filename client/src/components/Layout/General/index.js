@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import * as S from './style';
 import { useAccessibility } from '../../../context/accessibility';
-
+import { useLanguage } from '../../../helpers';
 import Language from '../../Language';
 import SocialBanner from '../../../components/SocialBanner';
 // import Navbar from '../../Navbar';
@@ -18,11 +18,11 @@ const General = ({
   ...props
 }) => {
   const { layoutColor } = useAccessibility();
-
+  const { dir } = useLanguage();
   return (
     <S.Container bgColor={layoutColor}>
       <Language showBack={showBack} />
-      <S.Content maxWidth={maxWidth}>
+      <S.Content maxWidth={maxWidth} dir={dir}>
         {goBack && (
           <GoBack
             mb="6"
@@ -34,7 +34,7 @@ const General = ({
         )}
         {children}
       </S.Content>
-      {showSocialBanner && <SocialBanner />}
+      {showSocialBanner && <SocialBanner dir={dir} />}
     </S.Container>
   );
 };

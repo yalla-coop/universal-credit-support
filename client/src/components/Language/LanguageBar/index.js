@@ -176,7 +176,7 @@ const Tablet = ({ dir, showBack, handleHide, flag, lng, accessibility }) => {
           handleClick={() => navigate(R.GENERAL.ACCESSIBILITY)}
           text={accessibility}
           iconProps={{
-            icon: 'backArrow',
+            icon: 'accessibility',
           }}
           {...props}
         />
@@ -242,6 +242,7 @@ const Tablet = ({ dir, showBack, handleHide, flag, lng, accessibility }) => {
           {...props}
         />
         <TextWithIcon
+          dir={dir}
           text={accessibility}
           handleClick={() => navigate(R.GENERAL.ACCESSIBILITY)}
           iconProps={{

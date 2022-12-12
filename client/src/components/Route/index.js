@@ -8,7 +8,7 @@ import Redirect from './Redirect';
 
 const Route = (props) => {
   useCommon();
-  const { isPrivate, layout, Component, allowedRoles, publicOnly } = props;
+  const { isPrivate, layout, Component, allowedRoles, publicOnly, dir } = props;
 
   const { user } = useAuth();
   if (publicOnly && user.id) {

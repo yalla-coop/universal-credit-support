@@ -10,7 +10,6 @@ const CommonLogic = ({ children }) => {
   const { i18n } = useTranslation();
   const { lng } = useLanguage();
   const [data, setData] = useState(null);
-  const dir = i18n.dir();
 
   useEffect(() => {
     const fetchCommon = async () => {
@@ -28,22 +27,6 @@ const CommonLogic = ({ children }) => {
       }
     };
     fetchCommon();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [lng]);
-
-  const setDirection = (_dir) => {
-    document.documentElement.style.direction = _dir;
-  };
-
-  i18n.on('languageChanged', function (lng) {
-    setDirection(dir);
-  });
-
-  useEffect(() => {
-    setDirection(dir);
-    return () => {
-      setDirection('ltr');
-    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lng]);
 
