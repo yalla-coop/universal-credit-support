@@ -1,4 +1,4 @@
-const Arabic = ({ width, height, color, ...props }) => (
+const AR = ({ width, height, color, ...props }) => (
   <svg
     width={width || '24'}
     height={height || '18'}
@@ -48,4 +48,4 @@ const Arabic = ({ width, height, color, ...props }) => (
   </svg>
 );
 
-export default Arabic;
+export default AR;
