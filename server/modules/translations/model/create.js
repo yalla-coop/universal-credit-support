@@ -11,7 +11,9 @@ const createCommonI18n = async ({ commonId, languageCode, content }) => {
       $1,
       $2,
       $3
-    ) RETURNING *
+    )
+    ON CONFLICT (common_id, language_code) DO NOTHING
+    RETURNING *
   `;
 
   const values = [commonId, languageCode, content];
@@ -40,7 +42,9 @@ const createLandingPageI18n = async ({
       $3,
       $4,
       $5
-    ) RETURNING *
+    )
+    ON CONFLICT (landing_page_content_id, language_code) DO NOTHING
+    RETURNING *
   `;
 
   const values = [
@@ -93,7 +97,9 @@ const createStepI18n = async ({
       $9,
       $10::jsonb[],
       $11
-    ) RETURNING *
+    )
+    ON CONFLICT (step_id, language_code) DO NOTHING
+    RETURNING *
   `;
   const values = [
     stepId,

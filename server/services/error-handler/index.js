@@ -1,4 +1,4 @@
 import errorMsgs from './messages';
-import configureSentry from './configure-sentry';
+import Sentry from './sentry';
 
-export { errorMsgs, configureSentry };
+export { errorMsgs, Sentry };
