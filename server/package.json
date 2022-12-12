@@ -31,13 +31,12 @@
     "prepare": "cd .. && husky install"
   },
   "dependencies": {
+    "@babel/register": "^7.17.7",
     "@hapi/boom": "^10.0.0",
     "@sendgrid/mail": "^7.7.0",
     "@sentry/node": "^7.17.4",
     "@sentry/tracing": "^7.17.4",
     "aws-sdk": "^2.971.0",
-    "@babel/register": "^7.17.7",
-    "aws-translate-json": "^0.0.3",
     "axios": "^0.27.2",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.5",
