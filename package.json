@@ -28,7 +28,8 @@
     "init:both": "npm i && cd server && npm i && cd ../client && npm i && npm run build",
     "heroku-postbuild": "npm run init:both && npm run build"
   },
-  "devDependencies": {
-    "concurrently": "^6.5.1"
+  "dependencies": {
+    "concurrently": "^6.5.1",
+    "cross-env": "^7.0.3"
   }
 }
