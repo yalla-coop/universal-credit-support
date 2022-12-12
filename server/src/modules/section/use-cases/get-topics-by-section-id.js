@@ -28,34 +28,32 @@ const getTopicsBySectionId = async ({ id, lng, forPublic }) => {
     }),
   );
 
-  const topicsTranslated = topicsT.map((topicT, topicTIndex) => {
-    return {
-      id: topicT.id,
-      languageCode: topicT.languageCode,
-      isTranslated: topicT.isTranslated,
-      content: {
-        ...topicT.content,
-        resources: Object.values(topicT.content.resources).map(
-          (resource, resourceIndex) => {
-            const prevResource =
-              topics[topicTIndex].englishContent.resources[resourceIndex];
-            if (prevResource.key) {
-              return {
-                type: prevResource.type,
-                key: prevResource.key,
-                url: prevResource.url,
-              };
-            }
+  const topicsTranslated = topicsT.map((topicT, topicTIndex) => ({
+    id: topicT.id,
+    languageCode: topicT.languageCode,
+    isTranslated: topicT.isTranslated,
+    content: {
+      ...topicT.content,
+      resources: Object.values(topicT.content.resources).map(
+        (resource, resourceIndex) => {
+          const prevResource =
+            topics[topicTIndex].englishContent.resources[resourceIndex];
+          if (prevResource.key) {
             return {
-              label: resource.label,
-              url: prevResource.url,
               type: prevResource.type,
+              key: prevResource.key,
+              url: prevResource.url,
             };
-          },
-        ),
-      },
-    };
-  });
+          }
+          return {
+            label: resource.label,
+            url: prevResource.url,
+            type: prevResource.type,
+          };
+        },
+      ),
+    },
+  }));
 
   return topicsTranslated;
 };

@@ -5,6 +5,7 @@ import favicon from 'serve-favicon';
 import logger from 'morgan';
 import Debug from 'debug';
 import Boom from '@hapi/boom';
+import app from './express-app';
 
 import router from './api';
 import config from './config';
@@ -15,16 +16,13 @@ import {
   csrfProtection,
   createCSRFToken,
 } from './api/middlewares';
-import { configureSentry } from './services/error-handler';
+import { Sentry } from './services/error-handler';
 
 const { PRODUCTION, TEST } = constants.envTypes;
 
 // eslint-disable-next-line no-unused-vars
 const debug = Debug('server');
 
-const app = express();
-
-const Sentry = configureSentry(app);
 app.use(Sentry.Handlers.requestHandler());
 // TracingHandler creates a trace for every incoming request
 app.use(Sentry.Handlers.tracingHandler());
@@ -53,7 +51,9 @@ if (config.common.env === PRODUCTION) {
   );
 
   app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', '..', 'client', 'build', 'index.html'));
+    res.sendFile(
+      path.join(__dirname, '..', '..', 'client', 'build', 'index.html'),
+    );
   });
 }
 
