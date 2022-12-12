@@ -258,8 +258,8 @@ const Accessibility = () => {
             <S.fontInputWrapper>
               <I.Dropdown
                 label={t(
-                  'common.section.accessibility.textToSpeechTitle',
-                  common.section.accessibility.textToSpeechTitle
+                  'common.section.accessibility.changeFont',
+                  common.section.accessibility.changeFont
                 )}
                 options={fontsOptions}
                 selected={layoutFontFamily}

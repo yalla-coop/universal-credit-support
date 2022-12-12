@@ -75,6 +75,7 @@ const Dropdown = ({
           className={css`
             ${S.OptionStyle}
           `}
+          style={{ fontFamily: _label }}
           key={_value}
           value={_value}
           label={_label}
