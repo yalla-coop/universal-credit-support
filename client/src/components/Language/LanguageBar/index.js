@@ -77,7 +77,6 @@ const Desktop = ({
             }}
             {...props}
             isButton={false}
-            isText
           />
         </S.ButtonWrapper>
         <S.ButtonWrapper>
@@ -178,7 +177,7 @@ const Tablet = ({ dir, showBack, handleHide, flag, lng, accessibility }) => {
           handleClick={() => navigate(R.GENERAL.ACCESSIBILITY)}
           text={accessibility}
           iconProps={{
-            icon: 'backArrow',
+            icon: 'accessibility',
           }}
           {...props}
         />
