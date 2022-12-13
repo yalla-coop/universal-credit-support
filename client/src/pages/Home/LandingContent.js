@@ -51,7 +51,7 @@ const LandingContent = ({ uniqueSlug }) => {
     return () => {
       mounted = false;
     };
-  }, [lng]);
+  }, [lng, t]);
 
   return (
     <>
