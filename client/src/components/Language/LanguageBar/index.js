@@ -134,6 +134,7 @@ const Desktop = ({
             icon: 'accessibility',
           }}
           {...props}
+          isButton={false}
         />
         {showBack && (
           <TextWithIcon
@@ -180,6 +181,7 @@ const Tablet = ({ dir, showBack, handleHide, flag, lng, accessibility }) => {
             icon: 'accessibility',
           }}
           {...props}
+          isButton={false}
         />
         <TextWithIcon
           handleClick={() => {
@@ -249,6 +251,7 @@ const Tablet = ({ dir, showBack, handleHide, flag, lng, accessibility }) => {
             icon: 'accessibility',
           }}
           {...props}
+          isButton={false}
         />
       </S.ButtonWrapper>
       {showBack && (
