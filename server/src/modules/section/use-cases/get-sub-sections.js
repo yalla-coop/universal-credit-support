@@ -46,6 +46,10 @@ const getSubSections = async ({ id, forPublic, lng }) => {
       })),
     };
   }
+
+  const section = await Sections.getSubSectionsBySectionIdForPublic(id, lng);
+
+  return section;
 };
 
 export default getSubSections;

@@ -206,7 +206,7 @@ const Accessibility = () => {
         </Col>
         <Col w={[4, 4, 4]} mt="8">
           <S.ShowInDesktop>
-            <S.fontInputWrapper>
+            <S.FontInputWrapper>
               <I.Dropdown
                 label={t(
                   'common.section.accessibility.changeFont',
@@ -216,8 +216,9 @@ const Accessibility = () => {
                 selected={layoutFontFamily || 'default'}
                 handleChange={handleSelect}
                 allowClear={false}
+                customFont
               />
-            </S.fontInputWrapper>
+            </S.FontInputWrapper>
           </S.ShowInDesktop>
         </Col>
       </Row>
@@ -260,7 +261,7 @@ const Accessibility = () => {
             <S.Divider />
           </Col>
           <Col w={[4, 8, 12]}>
-            <S.fontInputWrapper>
+            <S.FontInputWrapper>
               <I.Dropdown
                 label={t(
                   'common.section.accessibility.changeFont',
@@ -270,8 +271,9 @@ const Accessibility = () => {
                 selected={layoutFontFamily || 'default'}
                 handleChange={(selectValue) => setLayoutFontFamily(selectValue)}
                 allowClear={false}
+                customFont
               />
-            </S.fontInputWrapper>
+            </S.FontInputWrapper>
           </Col>
           <Col w={[4, 12, 12]}>
             <S.Divider />
