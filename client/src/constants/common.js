@@ -42,7 +42,7 @@ const common = {
       title: 'Need help with budgeting?',
     },
     stressedOrOverwhelmed: {
-      title: 'Feeling stressed or overwhelmed',
+      title: 'Feeling stressed or overwhelmed?',
     },
     accessibility: {
       title: 'Accessibility',
