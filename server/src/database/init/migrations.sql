@@ -10,4 +10,5 @@ CREATE TABLE "migrations" (
 INSERT INTO "migrations" ("name") VALUES
   ('/20221123121141-add-org-status'),
   ('/20221124140906-remove-backup-email-unique-constraint'),
-  ('/20221201042815-add-deleted-status-for-organisations');
+  ('/20221201042815-add-deleted-status-for-organisations'),
+  ('/20221214090033-add-languages-tables');
