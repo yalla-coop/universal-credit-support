@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useAccessibility } from '../../../context/accessibility';
 import * as S from './style';
 import { Row } from '../../Grid';
@@ -128,7 +128,7 @@ const Desktop = ({
           {...props}
         />
         <TextWithIcon
-          handleClick={() => navigate(R.GENERAL.ACCESSIBILITY)}
+          to={R.GENERAL.ACCESSIBILITY}
           text={accessibility}
           iconProps={{
             icon: 'accessibility',
@@ -174,7 +174,7 @@ const Tablet = ({ dir, showBack, handleHide, flag, lng, accessibility }) => {
       )}
       <S.ButtonWrapper>
         <TextWithIcon
-          handleClick={() => navigate(R.GENERAL.ACCESSIBILITY)}
+          to={R.GENERAL.ACCESSIBILITY}
           text={accessibility}
           iconProps={{
             icon: 'accessibility',
@@ -244,7 +244,7 @@ const Tablet = ({ dir, showBack, handleHide, flag, lng, accessibility }) => {
         />
         <TextWithIcon
           text={accessibility}
-          handleClick={() => navigate(R.GENERAL.ACCESSIBILITY)}
+          to={R.GENERAL.ACCESSIBILITY}
           iconProps={{
             icon: 'accessibility',
           }}
