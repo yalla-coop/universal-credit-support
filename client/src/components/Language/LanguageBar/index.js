@@ -1,4 +1,4 @@
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useAccessibility } from '../../../context/accessibility';
 import * as S from './style';
 import { Row } from '../../Grid';
