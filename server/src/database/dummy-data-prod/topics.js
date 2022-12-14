@@ -213,7 +213,7 @@ const addTopics = async ({ sections }) => {
     content: {
       title: 'Talk to your mortgage provider',
       content:
-        "If you're struggling to pay your mortgage speak to your mortgage provider as soon as possible, even if you haven't missed a payment yet. There are often many things they can do to help you.",
+        "If you're struggling to pay your rent and/or mortgage speak to your landlord and  mortgage provider as soon as possible, even if you haven't missed a payment yet. There are often many things they can do to help you.",
       tip1: `**Tip! Read letters from your mortgage provider and speak to them on the phone if they call you. They'll look for ways to offer you help and support, and advise you about the steps you can take.**`,
       tip2: `**Tip! In order to help, your mortgage provider will often want to know how much money you have available to spend each month. A budget tool can help you work this out.**`,
       resources: [
