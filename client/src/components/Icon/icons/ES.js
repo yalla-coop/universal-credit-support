@@ -1,4 +1,4 @@
-const Spanish = ({ width, height, color, ...props }) => (
+const ES = ({ width, height, color, ...props }) => (
   <svg
     width={width || '24'}
     height={height || '24'}
@@ -82,4 +82,4 @@ const Spanish = ({ width, height, color, ...props }) => (
   </svg>
 );
 
-export default Spanish;
+export default ES;

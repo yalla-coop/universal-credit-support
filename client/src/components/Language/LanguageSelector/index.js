@@ -60,14 +60,14 @@ export const LanguageSelector = ({ hide, handleHide }) => {
       <S.ButtonWrapper>
         {languages
           .map(([lng, code]) => {
-            const _lng = lng.toLowerCase();
             return (
               <S.Button onClick={() => changeLanguage({ lng })} key={code}>
                 <TextWithIcon
                   text={lng}
                   iconProps={{
-                    icon: FlagMap[_lng] !== undefined ? _lng : null,
+                    icon: FlagMap[code] !== undefined ? code : null,
                     pointer: true,
+                    followLangDirection: false,
                   }}
                   {...props}
                 />
