@@ -27,6 +27,7 @@ const Dropdown = ({
   search,
   addNew,
   optional,
+  customFont,
   allowClear = true,
 }) => {
   const [open, setOpen] = useState(false);
@@ -81,7 +82,7 @@ const Dropdown = ({
           className={css`
             ${S.OptionStyle}
           `}
-          style={{ fontFamily: _label }}
+          style={{ fontFamily: customFont ? _label : 'inherit' }}
           key={_value}
           value={_value}
           label={_label}
