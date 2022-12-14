@@ -77,7 +77,6 @@ const Desktop = ({
             }}
             {...props}
             isButton={false}
-            isText
           />
         </S.ButtonWrapper>
         <S.ButtonWrapper>
@@ -129,12 +128,13 @@ const Desktop = ({
           {...props}
         />
         <TextWithIcon
-          handleClick={() => navigate(R.GENERAL.ACCESSIBILITY)}
+          to={R.GENERAL.ACCESSIBILITY}
           text={accessibility}
           iconProps={{
             icon: 'accessibility',
           }}
           {...props}
+          isButton={false}
         />
         {showBack && (
           <TextWithIcon
@@ -175,12 +175,13 @@ const Tablet = ({ dir, showBack, handleHide, lng, accessibility }) => {
       )}
       <S.ButtonWrapper>
         <TextWithIcon
-          handleClick={() => navigate(R.GENERAL.ACCESSIBILITY)}
+          to={R.GENERAL.ACCESSIBILITY}
           text={accessibility}
           iconProps={{
             icon: 'accessibility',
           }}
           {...props}
+          isButton={false}
         />
         <TextWithIcon
           handleClick={() => {
@@ -246,11 +247,12 @@ const Tablet = ({ dir, showBack, handleHide, lng, accessibility }) => {
         <TextWithIcon
           dir={dir}
           text={accessibility}
-          handleClick={() => navigate(R.GENERAL.ACCESSIBILITY)}
+          to={R.GENERAL.ACCESSIBILITY}
           iconProps={{
             icon: 'accessibility',
           }}
           {...props}
+          isButton={false}
         />
       </S.ButtonWrapper>
       {showBack && (
