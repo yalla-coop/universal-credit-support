@@ -119,7 +119,7 @@ const Dashboard = () => {
                   <T.H3 color="neutralMain">
                     Interested in more specific statistics? Get in touch with{' '}
                     <span style={{ lineBreak: 'anywhere' }}>
-                      {R.EXTERNAL.HYDE_EMAIL}
+                      {R.EXTERNAL.COL_EMAIL}
                     </span>
                   </T.H3>
                 </a>,
