@@ -36,6 +36,7 @@ export const IconsWrapper = styled.div`
 export const ButtonContent = styled.div`
   background: ${({ theme }) => theme.colors.neutralSurface};
   display: flex;
+  justify-content: space-between;
   border-radius: 8px;
   padding: 24px;
   margin-bottom: 8px;

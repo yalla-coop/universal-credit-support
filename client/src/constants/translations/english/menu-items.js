@@ -1,6 +1,6 @@
 export default {
   HOME: 'Home',
-  ADD_UPDATE_CONTENT: 'Add/update content',
+  ADD_UPDATE_CONTENT: 'Add/edit content',
   EDIT_ACCOUNT_DETAILS: 'Edit account details',
   ORGANISATIONS: 'Organisations',
   CUSTOMISE: 'Customise',

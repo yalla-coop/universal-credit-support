@@ -6,21 +6,6 @@ const DashboardLinks = () => {
   return (
     <>
       <S.ButtonsContainer>
-        <S.ButtonWrapper to={R.ADMIN.ADD_UPDATE_CONTENT}>
-          <TextWithIcon
-            size="large"
-            bgColor="neutralSurface"
-            text={'Add or edit content of the tool'}
-            mr="6px"
-            ai="flex-start"
-            isText
-            iconProps={{
-              color: 'primaryMain',
-              icon: 'forwardArrow',
-            }}
-          />
-        </S.ButtonWrapper>
-
         <S.ButtonWrapper to={R.ADMIN.EDIT_ACCOUNT_DETAILS}>
           <TextWithIcon
             size="large"
@@ -33,6 +18,21 @@ const DashboardLinks = () => {
             isText
             iconProps={{
               color: 'secondaryMain',
+              icon: 'forwardArrow',
+            }}
+          />
+        </S.ButtonWrapper>
+
+        <S.ButtonWrapper to={R.ADMIN.ADD_UPDATE_CONTENT}>
+          <TextWithIcon
+            size="large"
+            bgColor="neutralSurface"
+            text={'Add or edit content of the tool'}
+            mr="6px"
+            ai="flex-start"
+            isText
+            iconProps={{
+              color: 'primaryMain',
               icon: 'forwardArrow',
             }}
           />
