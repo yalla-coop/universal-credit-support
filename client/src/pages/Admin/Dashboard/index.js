@@ -115,7 +115,7 @@ const Dashboard = () => {
             <C.Tips
               style={{ width: '100%' }}
               tips={[
-                <a href={`mailto:${R.EXTERNAL.HYDE_EMAIL}`}>
+                <a href={`mailto:${R.EXTERNAL.COL_EMAIL}`}>
                   <T.H3 color="neutralMain">
                     Interested in more specific statistics? Get in touch with{' '}
                     <span style={{ lineBreak: 'anywhere' }}>
