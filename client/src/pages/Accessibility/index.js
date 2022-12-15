@@ -211,7 +211,7 @@ const Accessibility = () => {
                 selected={layoutFontFamily}
                 handleChange={handleSelect}
                 allowClear={false}
-                customFont={true}
+                customFont
               />
             </S.FontInputWrapper>
           </S.ShowInDesktop>
@@ -266,7 +266,7 @@ const Accessibility = () => {
                 selected={layoutFontFamily}
                 handleChange={(selectValue) => setLayoutFontFamily(selectValue)}
                 allowClear={false}
-                customFont={true}
+                customFont
               />
             </S.FontInputWrapper>
           </Col>
