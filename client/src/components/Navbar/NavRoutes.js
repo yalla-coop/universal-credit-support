@@ -35,12 +35,6 @@ const DecideRoutes = ({ setOpen }) => {
             </S.Head3>
           </S.Link>
 
-          <S.Link to={ADMIN.CUSTOMISE} onClick={() => handleClick(setOpen)}>
-            <S.Head3 weight="bold" color="neutralMain">
-              {t.english['ADD_UPDATE_CONTENT']}
-            </S.Head3>
-          </S.Link>
-
           <S.Link
             to={ADMIN.EDIT_ACCOUNT_DETAILS}
             onClick={() => handleClick(setOpen)}
