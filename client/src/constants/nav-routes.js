@@ -49,9 +49,10 @@ const SUPER_ADMIN = {
 };
 
 const EXTERNAL = {
-  TERMS_OF_USE: 'https://www.hyde-housing.co.uk/privacy/disclaimer/',
-  PRIVACY_POLICY: 'https://www.hyde-housing.co.uk/privacy/disclaimer/',
-
+  TERMS_OF_USE:
+    'https://www.hyde-housing.co.uk/privacy/hyde-foundation-privacy/hyde-foundation-digital-tools-terms-of-use/',
+  PRIVACY_POLICY:
+    'https://www.hyde-housing.co.uk/privacy/hyde-foundation-privacy/',
   CALL_US: '//www.google.com/',
   ELIGIBILITY_CALCULATOR: 'https://benefits-calculator.turn2us.org.uk/',
   CREATE_UNIVERSAL_CREDIT_ACCOUNT:
