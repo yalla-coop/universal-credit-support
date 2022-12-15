@@ -12,5 +12,6 @@ CREATE TYPE organisation_statuses AS ENUM('AWAITING_APPROVAL', 'APPROVED', 'REJE
 CREATE TYPE stage_types AS ENUM('BEFORE_CLAIMING', 'CLAIMING', 'AFTER_CLAIMING');
 CREATE TYPE content_audit_log_types AS ENUM('ADD', 'UPDATE', 'DELETE');
 CREATE TYPE media_file_categories AS ENUM('LOGO'); -- add categories here
-CREATE TYPE language_codes AS ENUM('en','fr','de','es','ur','it','pl','hi','ru','ar','pt','cy');
+CREATE TYPE language_codes AS ENUM('af','sq','am','ar','hy','az','bn','bs','bg','zh','hr','cs','da','nl','en','et','fa','tl','fi','fr','ka','de','el','gu','ht','he','hi','hu','is','id','ga','it','ja','kk','ko','lv','lt','mk','ms','ml','mt','mr','mn','no','ps','pl','pt','pa','ro','ru','sr','si','sk','sl','so','es','sw','sv','ta','te','th','tr','uk','ur','uz','vi','cy');
+
 

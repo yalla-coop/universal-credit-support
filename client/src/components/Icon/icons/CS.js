@@ -1,4 +1,4 @@
-const Hindi = ({ width, height, color, ...props }) => (
+const CS = ({ width, height, color, ...props }) => (
   <svg
     width={width || '24'}
     height={height || '24'}
@@ -9,16 +9,16 @@ const Hindi = ({ width, height, color, ...props }) => (
   >
     <rect
       x="0.25"
-      y="3.67859"
+      y="3.67999"
       width="23.5"
       height="16.6429"
-      rx="1.46429"
+      rx="1.75"
       fill="white"
       stroke="#F5F5F5"
       strokeWidth="0.5"
     />
     <mask
-      id="mask0_0_89"
+      id="mask0_54_4012"
       maskUnits="userSpaceOnUse"
       x="0"
       y="3"
@@ -27,42 +27,30 @@ const Hindi = ({ width, height, color, ...props }) => (
     >
       <rect
         x="0.25"
-        y="3.67859"
+        y="3.67999"
         width="23.5"
         height="16.6429"
-        rx="1.46429"
+        rx="1.75"
         fill="white"
         stroke="white"
         strokeWidth="0.5"
       />
     </mask>
-    <g mask="url(#mask0_0_89)">
+    <g mask="url(#mask0_54_4012)">
       <path
         fillRule="evenodd"
         clipRule="evenodd"
-        d="M0 9.14287H24V3.42859H0V9.14287Z"
-        fill="#FFA44A"
+        d="M0 20.5729H24V11.43H0V20.5729Z"
+        fill="#E8252A"
       />
       <path
         fillRule="evenodd"
         clipRule="evenodd"
-        d="M0 20.5715H24V14.8572H0V20.5715Z"
-        fill="#1A9F0B"
+        d="M0 3.42999L11.4286 12.0014L0 20.5728V3.42999Z"
+        fill="#17579E"
       />
-      <circle
-        cx="12"
-        cy="12"
-        r="2"
-        fill="#181A93"
-        fillOpacity="0.15"
-        stroke="#181A93"
-        strokeWidth="0.571429"
-      />
-      <circle cx="12" cy="12" r="0.571429" fill="#181A93" />
     </g>
-    <rect opacity="0.01" width="24" height="24" fill="#D8D8D8" />
-    <rect opacity="0.01" width="24" height="24" fill="#D8D8D8" />
   </svg>
 );
 
-export default Hindi;
+export default CS;

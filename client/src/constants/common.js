@@ -8,6 +8,8 @@ const common = {
     increaseTextSize: '+ Increase text size',
     benefitCalculator: 'Benefit Calculator',
     stuckCallUs: 'Stuck? Call us for advice',
+    seeMore: 'See more',
+    seeLess: 'See less',
   },
   generalSentence: {
     ThisCanIncludeThingsLike: 'This can include things like:',

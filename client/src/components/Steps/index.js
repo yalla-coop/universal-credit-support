@@ -79,7 +79,7 @@ const Card = forwardRef(
                 {description}
               </T.P>
               <TextWithIcon
-                text="Check here"
+                text={t('common.buttons.checkHere', common.buttons.checkHere)}
                 color="neutralMain"
                 iconProps={{
                   color: 'primaryMain',

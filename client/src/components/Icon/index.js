@@ -34,30 +34,142 @@ import BackArrowRTL from './icons/BackArrowRTL';
 import Search from './icons/Search';
 import Refresh from './icons/Refresh';
 
-import English from './icons/English';
-import Arabic from './icons/Arabic';
-import French from './icons/French';
-import Italian from './icons/Italian';
-import German from './icons/German';
-import Urdu from './icons/Urdu';
-import Polish from './icons/Polish';
-import Russian from './icons/Russian';
-import Portuguese from './icons/Portuguese';
-import Spanish from './icons/Spanish';
-import Hindi from './icons/Hindi';
+import AF from './icons/AF';
+import SQ from './icons/SQ';
+import AM from './icons/AM';
+import AR from './icons/AR';
+import HY from './icons/HY';
+import AZ from './icons/AZ';
+import BN from './icons/BN';
+import BS from './icons/BS';
+import BG from './icons/BG';
+import ZH from './icons/ZH';
+import HR from './icons/HR';
+import CS from './icons/CS';
+import DA from './icons/DA';
+import NL from './icons/NL';
+import EN from './icons/EN';
+import ET from './icons/ET';
+import FA from './icons/FA';
+import TL from './icons/TL';
+import FI from './icons/FI';
+import FR from './icons/FR';
+import KA from './icons/KA';
+import DE from './icons/DE';
+import EL from './icons/EL';
+import GU from './icons/GU';
+import HT from './icons/HT';
+import HE from './icons/HE';
+import HI from './icons/HI';
+import HU from './icons/HU';
+import IS from './icons/IS';
+import ID from './icons/ID';
+import GA from './icons/GA';
+import IT from './icons/IT';
+import JA from './icons/JA';
+import KK from './icons/KK';
+import KO from './icons/KO';
+import LV from './icons/LV';
+import LT from './icons/LT';
+import MK from './icons/MK';
+import MS from './icons/MS';
+import ML from './icons/ML';
+import MT from './icons/MT';
+import MR from './icons/MR';
+import MN from './icons/MN';
+import NO from './icons/NO';
+import PS from './icons/PS';
+import PL from './icons/PL';
+import PT from './icons/PT';
+import PA from './icons/PA';
+import RO from './icons/RO';
+import RU from './icons/RU';
+import SR from './icons/SR';
+import SI from './icons/SI';
+import SK from './icons/SK';
+import SL from './icons/SL';
+import SO from './icons/SO';
+import ES from './icons/ES';
+import SW from './icons/SW';
+import SV from './icons/SV';
+import TA from './icons/TA';
+import TE from './icons/TE';
+import TH from './icons/TH';
+import TR from './icons/TR';
+import UK from './icons/UK';
+import UR from './icons/UR';
+import UZ from './icons/UZ';
+import VI from './icons/VI';
+import CY from './icons/CY';
 
 export const FlagMap = {
-  english: English,
-  arabic: Arabic,
-  french: French,
-  italian: Italian,
-  german: German,
-  urdu: Urdu,
-  polish: Polish,
-  russian: Russian,
-  portuguese: Portuguese,
-  spanish: Spanish,
-  hindi: Hindi,
+  af: AF,
+  sq: SQ,
+  am: AM,
+  ar: AR,
+  hy: HY,
+  az: AZ,
+  bn: BN,
+  bs: BS,
+  bg: BG,
+  zh: ZH,
+  hr: HR,
+  cs: CS,
+  da: DA,
+  nl: NL,
+  en: EN,
+  et: ET,
+  fa: FA,
+  tl: TL,
+  fi: FI,
+  fr: FR,
+  ka: KA,
+  de: DE,
+  el: EL,
+  gu: GU,
+  ht: HT,
+  he: HE,
+  hi: HI,
+  hu: HU,
+  is: IS,
+  id: ID,
+  ga: GA,
+  it: IT,
+  ja: JA,
+  kk: KK,
+  ko: KO,
+  lv: LV,
+  lt: LT,
+  mk: MK,
+  ms: MS,
+  ml: ML,
+  mt: MT,
+  mr: MR,
+  mn: MN,
+  no: NO,
+  ps: PS,
+  pl: PL,
+  pt: PT,
+  pa: PA,
+  ro: RO,
+  ru: RU,
+  sr: SR,
+  si: SI,
+  sk: SK,
+  sl: SL,
+  so: SO,
+  es: ES,
+  sw: SW,
+  sv: SV,
+  ta: TA,
+  te: TE,
+  th: TH,
+  tr: TR,
+  uk: UK,
+  ur: UR,
+  uz: UZ,
+  vi: VI,
+  cy: CY,
 };
 
 export const IconMap = {

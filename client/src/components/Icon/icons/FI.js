@@ -1,4 +1,4 @@
-const Italian = ({ width, height, color, ...props }) => (
+const FI = ({ width, height, color, ...props }) => (
   <svg
     width={width || '24'}
     height={height || '24'}
@@ -9,16 +9,16 @@ const Italian = ({ width, height, color, ...props }) => (
   >
     <rect
       x="0.25"
-      y="3.67859"
+      y="3.67999"
       width="23.5"
       height="16.6429"
-      rx="1.46429"
+      rx="1.75"
       fill="white"
       stroke="#F5F5F5"
       strokeWidth="0.5"
     />
     <mask
-      id="mask0_0_87"
+      id="mask0_54_3105"
       maskUnits="userSpaceOnUse"
       x="0"
       y="3"
@@ -27,27 +27,24 @@ const Italian = ({ width, height, color, ...props }) => (
     >
       <rect
         x="0.25"
-        y="3.67859"
+        y="3.67999"
         width="23.5"
         height="16.6429"
-        rx="1.46429"
+        rx="1.75"
         fill="white"
         stroke="white"
         strokeWidth="0.5"
       />
     </mask>
-    <g mask="url(#mask0_0_87)">
-      <rect x="16" y="3.42859" width="8" height="17.1429" fill="#E43D4C" />
+    <g mask="url(#mask0_54_3105)">
       <path
         fillRule="evenodd"
         clipRule="evenodd"
-        d="M0 20.5714H8V3.42859H0V20.5714Z"
-        fill="#1BB65D"
+        d="M-1.1429 13.7157H6.8571V21.7157H10.2857V13.7157H25.1428V10.2872H10.2857V2.28717H6.8571V10.2872H-1.1429V13.7157Z"
+        fill="#0848A6"
       />
     </g>
-    <rect opacity="0.01" width="24" height="24" fill="#D8D8D8" />
-    <rect opacity="0.01" width="24" height="24" fill="#D8D8D8" />
   </svg>
 );
 
-export default Italian;
+export default FI;

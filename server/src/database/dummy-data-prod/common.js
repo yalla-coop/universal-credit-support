@@ -22,6 +22,8 @@ const createCommons = async () => {
         increaseTextSize: '+ Increase text size',
         benefitCalculator: 'Benefit calculator',
         stuckCallUs: 'Stuck? Call us for advice',
+        seeMore: 'See more',
+        seeLess: 'See less',
       },
       generalSentence: {
         ThisCanIncludeThingsLike: 'This can include things like:',
