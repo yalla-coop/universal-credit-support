@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import setMargin from '../../helpers/set-margin';
 import * as T from '../../components/Typography';
 import backgroundLogo from '../../components/assets/BackgroundHydeLogo.svg';
+import { Link } from 'react-router-dom';
 
 export const PageHead = styled.header`
   width: 100%;
@@ -71,4 +72,33 @@ export const Container = styled.div`
   padding: ${({ theme: { spacings } }) => `${spacings[4]} ${spacings[6]}`};
   display: flex;
   justify-content: flex-start;
+`;
+
+export const HeaderContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  max-width: 580px;
+  width: 100%;
+  margin: 0 auto;
+  ${({ theme }) => theme.media.mobile} {
+    max-width: 90vw;
+    margin: 0;
+  }
+`;
+
+export const LogoContainer = styled(Link)`
+  width: 72px;
+  height: 30px;
+  margin: 0;
+  margin-bottom: ${({ theme }) => theme.spacings[7]};
+  ${({ theme }) => theme.media.mobile} {
+    margin-left: 37px;
+    margin-bottom: ${({ theme }) => theme.spacings[5]};
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
 `;
