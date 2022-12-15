@@ -47,7 +47,6 @@ const General = ({
         )}
         {children}
       </S.Content>
-      footer goes here
     </S.Container>
   );
 };
