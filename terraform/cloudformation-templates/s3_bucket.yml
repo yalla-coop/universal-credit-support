@@ -54,6 +54,15 @@ Resources:
                 Resource:
                   - !Sub arn:aws:s3:::${S3Bucket}
                   - !Sub arn:aws:s3:::${S3Bucket}/*
+        - PolicyName: translate
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - translate:*
+                Resource:
+                  - "*"
 
   S3UserAccessKey:
     Type:
