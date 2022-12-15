@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
-import { Grid as G, Typography as T, Modal, Button } from '../../../components';
+import { Grid as G, Typography as T, Modal } from '../../../components';
 
 import DragDrop from './DragDrop';
 import { stages } from '../../../constants/data-types';
-import { Steps } from '../../../api-calls';
 import { useSteps } from '../../../context/steps';
 
 const columnsFromBackend = {
@@ -46,7 +45,8 @@ const ManageSteps = () => {
   const [afterClaiming, setAfterClaiming] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [columns, setColumns] = useState(columnsFromBackend);
-  const [error, setError] = useState('');
+  // Commented for linter because handleSubmit is not used
+  //const [error, setError] = useState('');
 
   const { steps } = useSteps();
   useEffect(() => {
@@ -90,6 +90,8 @@ const ManageSteps = () => {
     });
   }, [beforeClaiming, claiming, afterClaiming]);
 
+  /*
+  // Commented for linter because handleSubmit is not used
   const handleSubmit = () => {
     const newSteps = reorderSteps(columns);
     const { error } = Steps.updateSteps({ data: newSteps });
@@ -100,6 +102,7 @@ const ManageSteps = () => {
     }
     return true;
   };
+  */
 
   return (
     <div style={{ maxWidth: '900px' }}>

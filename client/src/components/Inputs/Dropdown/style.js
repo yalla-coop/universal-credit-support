@@ -33,7 +33,7 @@ export const Field = styled.div`
     border: none;
     border-radius: 0;
     padding: ${({ theme }) => theme.spacings[1]};
-    padding-left: ${({ theme }) => theme.spacings[3]};
+    padding-inline-start: ${({ theme }) => theme.spacings[3]};
     overflow-x: hidden;
     border-color: transparent;
     border-radius: ${({ theme }) => theme.borders.radius};
@@ -43,7 +43,7 @@ export const Field = styled.div`
   .ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
     height: 100%;
     padding: ${({ theme }) => theme.spacings[1]};
-    padding-left: ${({ theme }) => theme.spacings[3]};
+    padding-inline-start: ${({ theme }) => theme.spacings[3]};
   }
 
   // STYLE SELECTED ITEM IN INPUT FOR MULTIPLE SELECT
@@ -82,8 +82,8 @@ export const Field = styled.div`
   .ant-select-selection-placeholder {
     font-size: 1rem;
     color: ${({ theme }) => theme.colors.neutralDark};
-    padding-left: ${({ theme }) => theme.spacings[3]};
-    text-align: left;
+    padding-inline-start: ${({ theme }) => theme.spacings[3]};
+    text-align: start;
   }
 
   // STYLE SELECTED ITEM IN SINGLE DROPDOWN

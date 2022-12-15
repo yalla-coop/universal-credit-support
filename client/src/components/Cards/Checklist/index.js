@@ -19,6 +19,11 @@ const Checklist = ({
   const [expanded, setExpanded] = useState(false);
   const { t } = useTranslation();
 
+  const seeMore = t('common.buttons.seeMore', common.buttons.seeMore);
+  const seeLess = t('common.buttons.seeLess', common.buttons.seeLess);
+  const seeMoreOrLess = expanded ? seeLess : seeMore;
+  const _thisCanInclude = thisCanInclude?.length ? thisCanInclude : [];
+
   return (
     <>
       <S.Section mb="3">
@@ -34,30 +39,32 @@ const Checklist = ({
             checked={completed}
             m={{ mb: '5' }}
           />
-          {(description || thisCanInclude?.length > 0 || tips?.length > 0) && (
+          {(description || _thisCanInclude?.length > 0 || tips?.length > 0) && (
             <TextWithIcon
-              text={expanded ? 'See less' : 'See more'}
-              icon="circleArrow"
+              text={seeMoreOrLess}
               isButton
               mt="4"
               color="neutralDark"
-              iconColor="neutralDark"
-              direction={expanded ? 'up' : 'down'}
               handleClick={() => setExpanded(!expanded)}
               mb={'5'}
               ml="6"
+              iconProps={{
+                icon: 'circleArrow',
+                color: 'neutralDark',
+                direction: expanded ? 'up' : 'down',
+              }}
             />
           )}
         </S.TopSection>
         {expanded &&
-          (description || thisCanInclude?.filter((e) => !!e)?.length > 0) && (
+          (description || _thisCanInclude?.filter((e) => !!e)?.length > 0) && (
             <S.ExtraDetails>
               {description && (
                 <T.P color="neutralDark" mb="4">
                   {description}
                 </T.P>
               )}
-              {thisCanInclude?.filter((v) => !!v)?.length > 0 && (
+              {_thisCanInclude?.filter((v) => !!v)?.length > 0 && (
                 <>
                   <T.H3 color="neutralDark" mb="3">
                     {t(
@@ -65,18 +72,20 @@ const Checklist = ({
                       common.generalSentence.ThisCanIncludeThingsLike
                     )}
                   </T.H3>
-                  {thisCanInclude
+                  {_thisCanInclude
                     .filter((v) => !!v)
                     .map((thing, index) => (
                       <TextWithIcon
                         key={index}
                         text={thing}
-                        icon="bulletArrow"
-                        iconColor="neutralDark"
                         color="neutralDark"
-                        mb={index < thisCanInclude.length && '2'}
+                        mb={index < _thisCanInclude.length && '2'}
                         ai="flex-start"
                         isText
+                        iconProps={{
+                          icon: 'bulletArrow',
+                          color: 'neutralDark',
+                        }}
                       />
                     ))}
                 </>

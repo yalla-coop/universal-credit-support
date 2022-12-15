@@ -34,7 +34,9 @@ const getColor = (index, startingColor) => {
 };
 
 const Tips = ({ tips = [], startingColor = 0, cols, inner, ...props }) => {
-  return tips
+  const _tips = tips?.length ? tips : [];
+
+  return _tips
     .filter((t) => !!t)
     .map((tip, index) => (
       <SingleTip

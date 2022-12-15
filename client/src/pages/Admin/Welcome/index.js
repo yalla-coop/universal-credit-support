@@ -24,14 +24,16 @@ const Welcome = () => {
         add any specific contact details for your clients
       </T.P>
       <TextWithIcon
-        iconColor="primaryMain"
         to={n.EXTERNAL.DEMO_VIDEO}
         mr="2"
-        icon="open"
         text="View demo video"
         weight="medium"
         external
         underline
+        iconProps={{
+          icon: 'open',
+          color: 'primaryMain',
+        }}
       />
       <S.ButtonWrapper>
         <Button text="Sign up" variant="primary" to={n.ADMIN.SIGNUP} />

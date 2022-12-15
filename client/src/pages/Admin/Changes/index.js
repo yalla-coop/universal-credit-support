@@ -71,8 +71,10 @@ const Changes = () => {
                 <TextWithIcon
                   m={{ mt: 3 }}
                   text="Landing page edited"
-                  iconColor="primaryMain"
-                  icon="forwardArrow"
+                  iconProps={{
+                    color: 'primaryMain',
+                    icon: 'forwardArrow',
+                  }}
                   to={R.GENERAL.HOME}
                 />
               ) : (
@@ -83,8 +85,10 @@ const Changes = () => {
                   <TextWithIcon
                     m={{ mt: 3 }}
                     text={change.title}
-                    iconColor="primaryMain"
-                    icon="forwardArrow"
+                    iconProps={{
+                      color: 'primaryMain',
+                      icon: 'forwardArrow',
+                    }}
                     to={R.SUPER_ADMIN.EDIT_STEP.replace(':id', change.stepId)}
                   />
                 </>

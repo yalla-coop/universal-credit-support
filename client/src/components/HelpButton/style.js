@@ -15,7 +15,7 @@ export const Button = styled.button`
   bottom: ${({ position }) => position.bottom && position.bottom};
   padding: 0;
   margin: 0;
-  margin-right: ${({ mr }) => mr || '-25px'};
+  margin-inline-start: ${({ mr }) => mr || '-25px'};
   border: 0;
   display: flex;
   justify-content: center;
@@ -27,7 +27,7 @@ export const Modal = styled.section`
   z-index: 100;
   position: fixed;
   right: ${({ theme: { spacings } }) => spacings[3]};
-  margin-left: 20px;
+  margin-inline-start: 20px;
   bottom: ${({ theme: { spacings } }) => spacings[5]};
   border: 0;
   border-radius: ${({ theme: { borders } }) => borders.radiusLarge};
@@ -66,5 +66,5 @@ export const ContactItem = styled.div`
 
 export const AdminHelpWrapper = styled.div`
   margin-bottom: 31px;
-  padding-left: 3px;
+  padding-inline-start: 3px;
 `;

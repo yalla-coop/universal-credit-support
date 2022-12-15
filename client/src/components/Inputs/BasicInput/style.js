@@ -55,7 +55,7 @@ export const PasswordInput = styled(AntdInput.Password)`
 
 export const InfoWrapper = styled.button`
   margin-bottom: ${({ theme }) => theme.spacings[2]};
-  margin-left: ${({ theme }) => theme.spacings[2]};
+  margin-inline-start: ${({ theme }) => theme.spacings[2]};
   display: flex;
   background: none;
   border: none;

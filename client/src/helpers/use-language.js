@@ -23,7 +23,11 @@ const useLanguage = () => {
 
   const dir = i18n.dir();
 
-  return { lng, lngUpperCase, lngFull, flag, dir };
+  const hasNamespace = (namespace) => {
+    return i18n.hasResourceBundle(lng, namespace);
+  };
+
+  return { lng, lngUpperCase, lngFull, flag, dir, hasNamespace };
 };
 
 export default useLanguage;

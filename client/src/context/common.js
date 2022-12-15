@@ -2,10 +2,13 @@ import { useState, useEffect, createContext, useContext } from 'react';
 import { Translations } from '../api-calls';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../helpers';
+import { Outlet } from 'react-router-dom';
+
 export const CommonContextData = createContext(null);
-const CommonProvider = ({ children }) => {
+
+const CommonLogic = ({ children }) => {
   const { i18n } = useTranslation();
-  const { lng } = useLanguage();
+  const { lng, dir } = useLanguage();
   const [data, setData] = useState(null);
 
   useEffect(() => {
@@ -24,7 +27,24 @@ const CommonProvider = ({ children }) => {
       }
     };
     fetchCommon();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lng]);
+
+  const setDirection = (_dir) => {
+    document.documentElement.style.direction = _dir;
+  };
+
+  i18n.on('languageChanged', function (lng) {
+    setDirection(dir);
+  });
+
+  useEffect(() => {
+    setDirection(dir);
+    return () => {
+      setDirection(dir);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dir]);
 
   return (
     <CommonContextData.Provider value={{ data }}>
@@ -36,6 +56,14 @@ const CommonProvider = ({ children }) => {
 const useCommon = () => {
   const data = useContext(CommonContextData);
   return data;
+};
+
+const CommonProvider = () => {
+  return (
+    <CommonLogic>
+      <Outlet />
+    </CommonLogic>
+  );
 };
 
 export { CommonProvider, useCommon };

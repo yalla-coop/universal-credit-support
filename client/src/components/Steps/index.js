@@ -5,6 +5,8 @@ import * as S from './style';
 import * as T from '../Typography';
 import Icon from '../Icon';
 import TextWithIcon from '../TextWithIcon';
+import { useTranslation } from 'react-i18next';
+import { common } from '../../constants';
 
 const renderChild = (isCompleted, title) => {
   if (isCompleted) {
@@ -53,6 +55,8 @@ const Card = forwardRef(
     },
     ref
   ) => {
+    const { t } = useTranslation();
+
     const bgColor = `${variant}Light`;
     const borderColor =
       variant === 'neutral' ? `${variant}Light` : `${variant}Mid`;
@@ -75,10 +79,12 @@ const Card = forwardRef(
                 {description}
               </T.P>
               <TextWithIcon
-                icon="forwardArrow"
-                text="Check here"
-                iconColor="primaryMain"
+                text={t('common.buttons.checkHere', common.buttons.checkHere)}
                 color="neutralMain"
+                iconProps={{
+                  color: 'primaryMain',
+                  icon: 'forwardArrow',
+                }}
                 to={to}
               />
             </S.OptionalContainer>
@@ -97,7 +103,7 @@ const Card = forwardRef(
                 style={{ alignSelf: 'flex-start' }}
                 mb="2"
               >
-                Completed!
+                {t('common.words.completed', common.words.completed)}!
               </T.P>
             )}
             <T.P

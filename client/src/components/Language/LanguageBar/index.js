@@ -1,8 +1,8 @@
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useAccessibility } from '../../../context/accessibility';
 import * as S from './style';
 import { Row } from '../../Grid';
-import { TextWithIcon, GoBack } from '../../../components';
+import { TextWithIcon } from '../../../components';
 import { useMediaQuery } from 'react-responsive';
 import theme from '../../../theme';
 import { useLanguage } from '../../../helpers';
@@ -21,7 +21,7 @@ const Desktop = ({
   dir,
   handleHide,
   showBack,
-  flag,
+  lng,
   lngFull,
   accessibility,
   increaseTextSize,
@@ -40,10 +40,12 @@ const Desktop = ({
           {showBack && (
             <TextWithIcon
               handleClick={goBack}
-              pointer
-              icon="backArrow"
-              iconColor="neutralMain"
               isButton
+              iconProps={{
+                color: 'neutralMain',
+                icon: 'backArrow',
+                pointer: true,
+              }}
             />
           )}
 
@@ -62,21 +64,29 @@ const Desktop = ({
               }
             }}
             text={isFontLarge ? decreaseTextSize : increaseTextSize}
-            icon="textSize"
+            iconProps={{
+              icon: 'textSize',
+            }}
             {...props}
           />
           <TextWithIcon
-            handleClick={() => navigate(R.GENERAL.ACCESSIBILITY)}
+            to={R.GENERAL.ACCESSIBILITY}
             text={accessibility}
-            icon="accessibility"
+            iconProps={{
+              icon: 'accessibility',
+            }}
             {...props}
+            isButton={false}
           />
         </S.ButtonWrapper>
         <S.ButtonWrapper>
           <TextWithIcon
             handleClick={handleHide}
             text={lngFull}
-            icon={flag}
+            iconProps={{
+              icon: lng,
+              followLangDirection: false,
+            }}
             {...props}
           />
         </S.ButtonWrapper>
@@ -90,7 +100,10 @@ const Desktop = ({
         <TextWithIcon
           handleClick={handleHide}
           text={lngFull}
-          icon={flag}
+          iconProps={{
+            icon: lng,
+            followLangDirection: false,
+          }}
           {...props}
         />
       </S.ButtonWrapper>
@@ -109,21 +122,28 @@ const Desktop = ({
             }
           }}
           text={isFontLarge ? decreaseTextSize : increaseTextSize}
-          icon="textSize"
+          iconProps={{
+            icon: 'textSize',
+          }}
           {...props}
         />
         <TextWithIcon
-          handleClick={() => navigate(R.GENERAL.ACCESSIBILITY)}
+          to={R.GENERAL.ACCESSIBILITY}
           text={accessibility}
-          icon="accessibility"
+          iconProps={{
+            icon: 'accessibility',
+          }}
           {...props}
+          isButton={false}
         />
         {showBack && (
           <TextWithIcon
             handleClick={goBack}
-            pointer
-            icon="backArrowRTL"
-            iconColor="neutralMain"
+            iconProps={{
+              color: 'neutralMain',
+              icon: 'backArrowRTL',
+              pointer: true,
+            }}
             isButton
           />
         )}
@@ -134,7 +154,7 @@ const Desktop = ({
   return dir === 'rtl' ? RTL : LTR;
 };
 
-const Tablet = ({ dir, showBack, handleHide, flag, lng, accessibility }) => {
+const Tablet = ({ dir, showBack, handleHide, lng, lngFull, accessibility }) => {
   const navigate = useNavigate();
   const { isFontLarge, setIsFontLarge } = useAccessibility();
   const goBack = () => {
@@ -145,18 +165,23 @@ const Tablet = ({ dir, showBack, handleHide, flag, lng, accessibility }) => {
       {showBack && (
         <TextWithIcon
           handleClick={goBack}
-          pointer
-          icon="backArrow"
-          iconColor="neutralMain"
           isButton
+          iconProps={{
+            color: 'neutralMain',
+            icon: 'backArrow',
+            pointer: true,
+          }}
         />
       )}
       <S.ButtonWrapper>
         <TextWithIcon
-          handleClick={() => navigate(R.GENERAL.ACCESSIBILITY)}
+          to={R.GENERAL.ACCESSIBILITY}
           text={accessibility}
-          icon="accessibility"
+          iconProps={{
+            icon: 'accessibility',
+          }}
           {...props}
+          isButton={false}
         />
         <TextWithIcon
           handleClick={() => {
@@ -171,13 +196,18 @@ const Tablet = ({ dir, showBack, handleHide, flag, lng, accessibility }) => {
               setIsFontLarge(false);
             }
           }}
-          icon="textSize"
+          iconProps={{
+            icon: 'textSize',
+          }}
           {...props}
         />
         <TextWithIcon
           handleClick={handleHide}
-          text={lng}
-          icon={flag}
+          text={lngFull}
+          iconProps={{
+            icon: lng,
+            followLangDirection: false,
+          }}
           {...props}
         />
       </S.ButtonWrapper>
@@ -189,8 +219,11 @@ const Tablet = ({ dir, showBack, handleHide, flag, lng, accessibility }) => {
       <S.ButtonWrapper>
         <TextWithIcon
           handleClick={handleHide}
-          text={lng}
-          icon={flag}
+          text={lngFull}
+          iconProps={{
+            icon: lng,
+            followLangDirection: false,
+          }}
           {...props}
         />
         <TextWithIcon
@@ -206,22 +239,29 @@ const Tablet = ({ dir, showBack, handleHide, flag, lng, accessibility }) => {
               setIsFontLarge(false);
             }
           }}
-          icon="textSize"
+          iconProps={{
+            icon: 'textSize',
+          }}
           {...props}
         />
         <TextWithIcon
           text={accessibility}
-          handleClick={() => navigate(R.GENERAL.ACCESSIBILITY)}
-          icon="accessibility"
+          to={R.GENERAL.ACCESSIBILITY}
+          iconProps={{
+            icon: 'accessibility',
+          }}
           {...props}
+          isButton={false}
         />
       </S.ButtonWrapper>
       {showBack && (
         <TextWithIcon
           handleClick={goBack}
-          pointer
-          icon="backArrowRTL"
-          iconColor="neutralMain"
+          iconProps={{
+            color: 'neutralMain',
+            icon: 'backArrowRTL',
+            pointer: true,
+          }}
           isButton
         />
       )}
@@ -247,16 +287,15 @@ export const LanguageBar = ({ largeText, handleHide, showBack }) => {
     common.buttons.decreaseTextSize
   );
 
-  const { lngFull, lngUpperCase, flag, dir } = useLanguage();
+  const { lngFull, lng, dir } = useLanguage();
 
   const props = {
     dir,
     largeText,
     showBack,
     handleHide,
-    flag,
     lngFull,
-    lng: lngUpperCase,
+    lng,
     accessibility,
     increaseTextSize,
     decreaseTextSize,

@@ -3,6 +3,8 @@ import * as S from './style';
 
 import { BasicInput, InputArray } from '../index';
 import TextWithIcon from '../../TextWithIcon';
+import { common } from '../../../constants';
+import { useTranslation } from 'react-i18next';
 
 const InputCMS = ({
   formState = {},
@@ -12,6 +14,11 @@ const InputCMS = ({
   error = {},
 }) => {
   const [expanded, setExpanded] = useState(false);
+  const { t } = useTranslation();
+
+  const seeMore = t('common.buttons.seeMore', common.buttons.seeMore);
+  const seeLess = t('common.buttons.seeLess', common.buttons.seeLess);
+  const seeMoreOrLess = expanded ? seeLess : seeMore;
 
   const { title, description, thisCanInclude, tips } = formState;
 
@@ -28,15 +35,17 @@ const InputCMS = ({
           error={error?.title}
         />
         <TextWithIcon
-          text={expanded ? 'See less' : 'See more'}
-          icon="circleArrow"
+          text={seeMoreOrLess}
           isButton
           mt="4"
           color="neutralDark"
-          iconColor="neutralDark"
-          direction={expanded ? 'up' : 'down'}
           handleClick={() => setExpanded(!expanded)}
           mb={expanded && '5'}
+          iconProps={{
+            icon: 'circleArrow',
+            color: 'neutralDark',
+            direction: expanded ? 'up' : 'down',
+          }}
         />
         {expanded && (
           <>
@@ -73,13 +82,15 @@ const InputCMS = ({
       {!hideRemove && (
         <TextWithIcon
           text="Remove"
-          icon="close"
           isButton
           mt="4"
           color="neutralMain"
-          iconColor="primaryMain"
           handleClick={handleRemove}
           weight="semi"
+          iconProps={{
+            icon: 'close',
+            color: 'primaryMain',
+          }}
         />
       )}
     </>

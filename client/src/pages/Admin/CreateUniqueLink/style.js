@@ -8,6 +8,6 @@ export const LinkWrapper = styled.div`
   border-radius: 12px;
   padding: ${({ theme }) => theme.spacings[3]};
   margin-bottom: ${({ theme }) => theme.spacings[7]};
-  padding-left: ${({ theme }) => theme.spacings[5]};
+  padding-inline-start: ${({ theme }) => theme.spacings[5]};
   width: 100%;
 `;

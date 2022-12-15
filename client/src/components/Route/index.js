@@ -2,10 +2,12 @@ import React from 'react';
 import Layout from './../../components/Layout';
 import { authorization } from '../../helpers';
 import { useAuth } from '../../context/auth';
+import { useCommon } from '../../context/common';
 import { navRoutes } from '../../constants';
 import Redirect from './Redirect';
 
 const Route = (props) => {
+  useCommon();
   const { isPrivate, layout, Component, allowedRoles, publicOnly } = props;
 
   const { user } = useAuth();

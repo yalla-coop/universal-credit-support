@@ -117,7 +117,7 @@ const StepsProvider = ({ children, ...props }) => {
     return () => {
       mounted = false;
     };
-  }, []);
+  }, [lng]);
 
   useEffect(() => {
     const updatedSteps = steps.map((step) => {
@@ -131,7 +131,7 @@ const StepsProvider = ({ children, ...props }) => {
       stepsObj: _stepsObj,
     });
     setStepsObj(_stepsObj);
-  }, [justCompletedId, steps]);
+  }, [justCompletedId, steps, i18n, lng]);
 
   const checkUncheckItem = (stepId, itemKey) => {
     setSteps((prevSteps) => {

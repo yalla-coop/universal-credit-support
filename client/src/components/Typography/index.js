@@ -22,7 +22,7 @@ const commonStyle = ({ theme, color, caps, ta, italic, ...props }) => `
       : theme.colors[color] || color || theme.colors.neutralMain
   } !important;
   text-transform: ${caps ? 'uppercase' : 'initial'} !important;
-  text-align: ${ta || 'left'} !important;
+  text-align: ${ta || 'start'} !important;
 `;
 
 const Head0 = styled(Title)`
