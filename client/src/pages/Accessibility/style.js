@@ -90,7 +90,7 @@ export const TextWrapper = styled.div`
   padding-inline-start: 12px;
 `;
 
-export const fontInputWrapper = styled.div`
+export const FontInputWrapper = styled.div`
   width: 100%;
 `;
 

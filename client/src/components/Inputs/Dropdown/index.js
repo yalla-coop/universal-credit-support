@@ -26,6 +26,7 @@ const Dropdown = ({
   search,
   addNew,
   optional,
+  customFont,
   allowClear = true,
 }) => {
   const [open, setOpen] = useState(false);
@@ -69,13 +70,12 @@ const Dropdown = ({
     }
     return options.map((options) => {
       const { value: _value, label: _label } = options;
-
       return (
         <AntdOption
           className={css`
             ${S.OptionStyle}
           `}
-          style={{ fontFamily: _label }}
+          style={{ fontFamily: customFont ? _value : 'inherit' }}
           key={_value}
           value={_value}
           label={_label}
