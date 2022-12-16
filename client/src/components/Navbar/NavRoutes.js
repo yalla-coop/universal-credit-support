@@ -34,6 +34,7 @@ const DecideRoutes = ({ setOpen }) => {
               {t.english['HOME']}
             </S.Head3>
           </S.Link>
+
           <S.Link
             to={ADMIN.EDIT_ACCOUNT_DETAILS}
             onClick={() => handleClick(setOpen)}
@@ -42,14 +43,7 @@ const DecideRoutes = ({ setOpen }) => {
               {t.english['EDIT_ACCOUNT_DETAILS']}
             </S.Head3>
           </S.Link>
-          <S.Link
-            to={ADMIN.ADD_UPDATE_CONTENT}
-            onClick={() => handleClick(setOpen)}
-          >
-            <S.Head3 weight="bold" color="neutralMain">
-              {t.english['ADD_UPDATE_CONTENT']}
-            </S.Head3>
-          </S.Link>
+
           <S.Link
             to={ADMIN.CUSTOMISE_RESOURCES}
             onClick={() => handleClick(setOpen)}
@@ -58,6 +52,7 @@ const DecideRoutes = ({ setOpen }) => {
               {t.english['CUSTOMISE_RESOURCES']}
             </S.Head3>
           </S.Link>
+
           <S.Link to={ADMIN.CUSTOMISE} onClick={() => handleClick(setOpen)}>
             <S.Head3 weight="bold" color="neutralMain">
               {t.english['CUSTOMISE_COLORS']}
