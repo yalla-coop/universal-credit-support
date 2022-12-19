@@ -91,7 +91,6 @@ const StepsProvider = ({ children, ...props }) => {
     let mounted = true;
     async function fetchData() {
       setLoadingSteps(true);
-      const hideLoading = message.loading('loading...');
       const { data: newSteps, error } = await Steps.getStepsContent({ lng });
       if (mounted) {
         let updatedSteps = [];
@@ -109,7 +108,6 @@ const StepsProvider = ({ children, ...props }) => {
         const _stepsObj = formateStepsObj(updatedSteps);
         setStepsObj(_stepsObj);
         setLoadingSteps(false);
-        hideLoading();
       }
     }
 
