@@ -126,6 +126,7 @@ const CustomiseResources = () => {
           benefitCalculatorLabel === benefitCalculator.BENEFIT_CALCULATOR_LABEL
             ? ''
             : benefitCalculatorLabel,
+        userId: user.id,
       },
     });
 
