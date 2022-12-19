@@ -195,9 +195,9 @@ const Customise = () => {
   const handleUpdate = async () => {
     setState({ loading: true });
     const { error } = await Organisations.updateOrganisation({
-      id: user.id,
+      id: user.organisationId,
       body: {
-        userId: user.organisationId,
+        userId: user.id,
         logoFile,
         colors: {
           mainHeaderBgColor,
