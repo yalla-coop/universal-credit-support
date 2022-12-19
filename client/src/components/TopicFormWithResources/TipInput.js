@@ -8,6 +8,7 @@ const TipInput = ({ content, id, setTip, removeTip }) => {
     <S.TipInputWrapper>
       <MDEditor
         label="Tips"
+        helper="- When creating a link you need to enter the full address, e.g. https://www.example.com"
         optional
         rows="3"
         value={content}

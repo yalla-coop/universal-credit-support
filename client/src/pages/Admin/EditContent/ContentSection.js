@@ -1,5 +1,8 @@
 import { Typography as T, Grid } from '../../../components';
 import { SingleButton } from '../../../components/ButtonsSection';
+import { useNavigate } from 'react-router-dom';
+import { navRoutes } from '../../../constants';
+
 const { Row, Col } = Grid;
 const colorArray = [
   'secondaryMain',
@@ -12,9 +15,15 @@ const getColor = (index, startingColor) => {
   return colorArray[_index];
 };
 
-const ContentSection = ({ sections = [], handleEdit, title }) => {
+const ContentSection = ({ sections = [], title, mt, allowEdit }) => {
+  const navigate = useNavigate();
+
+  const handleEdit = (item) => {
+    navigate(navRoutes.ADMIN.SECTION.replace(':id', item.id));
+  };
+
   return (
-    <Row mb="5">
+    <Row mb="5" mt={mt}>
       <Col w={[4, 12, 12]}>
         <T.H2 mb="4">{title}</T.H2>
       </Col>
@@ -24,6 +33,7 @@ const ContentSection = ({ sections = [], handleEdit, title }) => {
             title={item.title}
             iconColor={getColor(index, 0)}
             onClick={() => handleEdit && handleEdit(item)}
+            allowEdit={allowEdit}
           />
         </Col>
       ))}

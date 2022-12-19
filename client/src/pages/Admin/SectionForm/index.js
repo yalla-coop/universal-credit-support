@@ -16,6 +16,7 @@ import { Sections } from '../../../api-calls';
 import { navRoutes, roles } from '../../../constants';
 import { useAuth } from '../../../context/auth';
 import { message } from 'antd';
+import ContentSection from '../EditContent/ContentSection';
 
 const { Row, Col } = Grid;
 
@@ -85,40 +86,10 @@ const SectionForm = ({ review }) => {
     },
   ]);
   const [subSections, setSubSections] = useState();
-  const [displaySubsection, setDisplaySubsection] = useState('');
   const { title, httpError, validationErrs } = state;
 
   const { id } = useParams();
   const { adminOrg } = useAdminOrg();
-
-  useEffect(() => {
-    let mounted = true;
-    async function fetchData() {
-      const hideMessage = message.loading('Loading...');
-      const { data, error } = await Sections.getSubSections({
-        id,
-        forPublic: false,
-      });
-      if (mounted) {
-        if (error) {
-          message.error('Something went wrong, please try again later');
-        } else {
-          setSubSections(
-            data?.childrenSections.map(({ id: value, title: label }) => {
-              return { value, label };
-            })
-          );
-        }
-        hideMessage();
-      }
-    }
-
-    fetchData();
-    return () => {
-      mounted = false;
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id]);
 
   useEffect(() => {
     const getSectionData = async () => {
@@ -177,9 +148,31 @@ const SectionForm = ({ review }) => {
       }
     };
 
+    async function fetchData() {
+      const hideMessage = message.loading('Loading...');
+      const { data, error } = await Sections.getSubSections({
+        id,
+        forPublic: false,
+      });
+
+      if (error) {
+        message.error('Something went wrong, please try again later');
+      } else {
+        setSubSections(
+          data?.childrenSections.map(({ id, title }) => {
+            return { id, title };
+          })
+        );
+      }
+      hideMessage();
+    }
+
     if (id !== 'new') {
       getSectionData();
       fetchTopics();
+      if (Number(id) === 1) {
+        fetchData();
+      }
     }
   }, [id, navigate]);
 
@@ -215,10 +208,16 @@ const SectionForm = ({ review }) => {
     }
   };
 
-  const previewPage = navRoutes.PUBLIC_ORG.SECTION.replace(
-    ':uniqueSlug',
-    uniqueSlug || adminOrg.uniqueSlug
-  ).replace(':id', id);
+  const previewPage =
+    Number(id) === 1
+      ? navRoutes.PUBLIC_ORG.SUBSECTIONS.replace(
+          ':uniqueSlug',
+          uniqueSlug || adminOrg.uniqueSlug
+        ).replace(':id', id)
+      : navRoutes.PUBLIC_ORG.SECTION.replace(
+          ':uniqueSlug',
+          uniqueSlug || adminOrg.uniqueSlug
+        ).replace(':id', id);
 
   const handleEditSection = async () => {
     setState({ loading: true });
@@ -310,11 +309,6 @@ const SectionForm = ({ review }) => {
     return 'Save';
   };
 
-  const handleSelect = (value) => {
-    setDisplaySubsection(value);
-    navigate(navRoutes.ADMIN.SECTION.replace(':id', value));
-  };
-
   return (
     <>
       <Row>
@@ -347,19 +341,7 @@ const SectionForm = ({ review }) => {
           />
         </Col>
       </Row>
-      {[1, 6, 7, 8, 9].some((v) => v === Number(id)) && (
-        <Row>
-          <Col w={[4, 6, 4]} mt={6}>
-            <I.Dropdown
-              label={'Sub-section title'}
-              options={subSections}
-              selected={displaySubsection}
-              handleChange={handleSelect}
-              allowClear={false}
-            />
-          </Col>
-        </Row>
-      )}
+
       <>
         {topics.map((topic, topicIndex) => (
           <TopicFormWithResources
@@ -391,6 +373,15 @@ const SectionForm = ({ review }) => {
           </Row>
         )}
       </>
+
+      {Number(id) === 1 && subSections?.length && (
+        <ContentSection
+          sections={subSections}
+          title="Sub-sections"
+          mt={7}
+          allowEdit
+        />
+      )}
 
       <Row
         style={{

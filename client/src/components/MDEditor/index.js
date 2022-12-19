@@ -26,7 +26,7 @@ const Editor = ({
         </S.Label>
       )}
       {helper && (
-        <T.P isSmall mb="2" ml="2">
+        <T.P isSmall mb="2" ml="2" color="#656565">
           {helper}
         </T.P>
       )}

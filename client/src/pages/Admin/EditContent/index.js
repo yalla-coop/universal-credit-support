@@ -52,10 +52,6 @@ const EditContent = () => {
     );
   };
 
-  const handleEdit = (item) => {
-    navigate(navRoutes.ADMIN.SECTION.replace(':id', item.id));
-  };
-
   const handleSaveChange = async () => {
     const orderedItems = sections.map((item, index) => ({
       ...item,
@@ -112,7 +108,6 @@ const EditContent = () => {
             setButtons={setSections}
             buttons={approvedSections}
             handleHide={handleHide}
-            handleEdit={handleEdit}
             m="2"
           />
         </Col>
@@ -120,7 +115,6 @@ const EditContent = () => {
       {awaitingApprovalSections?.length > 0 && (
         <ContentSection
           sections={awaitingApprovalSections}
-          handleEdit={handleEdit}
           title="Under review"
         />
       )}
