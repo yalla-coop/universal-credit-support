@@ -38,7 +38,10 @@ const LandingContent = ({ uniqueSlug }) => {
     let mounted = true;
     async function fetchData() {
       const hideMessage = message.loading('Loading...');
-      const { data, error } = await LandingPage.getLandingPageContent({ lng });
+      const { data, error } = await LandingPage.getLandingPageContent({
+        lng,
+        forPublic: true,
+      });
       if (mounted) {
         if (error) {
           setFetchError(t(`generalError`, lng));

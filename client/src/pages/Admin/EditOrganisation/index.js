@@ -45,7 +45,7 @@ function reducer(state, newState) {
 }
 
 const EditOrganisation = () => {
-  const { id } = useParams();
+  const { id } = useParams(); // id of the user
 
   const submitAttempt = useRef(false);
   const { user } = useAuth();

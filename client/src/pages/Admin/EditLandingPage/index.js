@@ -98,7 +98,9 @@ const EditLandingPage = () => {
     const getLandingPageData = async () => {
       setState({ loading: false });
 
-      const { error, data } = await LandingPage.getLandingPageContent({});
+      const { error, data } = await LandingPage.getLandingPageContent({
+        forPublic: false,
+      });
 
       setState({ loading: false });
       if (error) {
