@@ -81,11 +81,21 @@ const getStepById = async (id, lng) => {
     FROM steps AS s
     LEFT JOIN steps_i18n AS s_i18n
       ON s.id = s_i18n.step_id AND s_i18n.language_code = $2
-    WHERE id = $1
+    WHERE s.id = $1
   `;
 
   const res = await query(sql, [id, lng]);
-  return res.rows[0];
+  const step = res.rows[0];
+  if (!step) return null;
+
+  const _step = {
+    ...step,
+    ...(step.languageCode ? step.sI18n : step.sEn),
+  };
+
+  delete _step.sEn;
+  delete _step.sI18n;
+  return _step;
 };
 
 export { getSteps, getStepById };
