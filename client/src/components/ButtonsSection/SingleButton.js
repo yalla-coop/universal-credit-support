@@ -9,6 +9,7 @@ const SingleButton = ({
   handleHide,
   hidden,
   cursor,
+  allowEdit,
   ...props
 }) => {
   return (
@@ -24,9 +25,9 @@ const SingleButton = ({
             icon: 'forwardArrow',
           }}
         />
-        {(showMenuIcon || handleEdit) && (
+        {(showMenuIcon || handleEdit || allowEdit) && (
           <S.IconsWrapper>
-            {handleEdit && (
+            {(handleEdit || allowEdit) && (
               <TextWithIcon
                 isButton
                 handleClick={handleEdit}
