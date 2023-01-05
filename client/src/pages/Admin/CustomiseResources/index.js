@@ -42,6 +42,8 @@ const initialState = {
   isModalVisible: false,
 };
 
+const defaultState = initialState.formData.contactLinks;
+
 function reducer(state, newState) {
   let value = newState;
   if (typeof newState === 'function') {
@@ -194,7 +196,13 @@ const CustomiseResources = () => {
   const handleRemoveContactLink = (id) => {
     setState(({ formData }) => {
       const _contactLinks = formData.contactLinks.map((e) => e);
-      const itemsToUpdate = _contactLinks.filter((e) => e.id !== id);
+      const defaultState = [
+        { ...initialState.formData.contactLinks, type: '' },
+      ];
+      const itemsToUpdate =
+        _contactLinks.length > 1
+          ? _contactLinks.filter((e) => e.id !== id)
+          : defaultState;
 
       return { formData: { ...formData, contactLinks: itemsToUpdate } };
     });
@@ -235,7 +243,7 @@ const CustomiseResources = () => {
 
         {contactLinks.map((contactLink, i) => (
           <Fragment key={contactLink.id} style={{ width: '100%' }}>
-            <Col w={[4, 12, 6]}>
+            <Col w={[12, 12, 6]}>
               <I.Dropdown
                 label="Type of contact"
                 selected={contactLink.type}
@@ -293,7 +301,7 @@ const CustomiseResources = () => {
 
             {contactLink.type && (
               <>
-                <Col w={[4, 12, 6]} mt={6}>
+                <Col w={[4, 12, 6]} mt={7}>
                   <I.BasicInput
                     label="Availability"
                     helper="e.g. Monday to Friday (9am to 5pm)"
@@ -318,23 +326,25 @@ const CustomiseResources = () => {
                     error={validationErrs?.contactLinks[i]?.description}
                   />
                 </Col>
+                <Row>
+                  <Col w={[12, 12, 6]} mt={4}>
+                    <TextWithIcon
+                      text="Remove"
+                      isButton
+                      mb={contactLinks.length > 1 ? 6 : 0}
+                      color="neutralMain"
+                      handleClick={() =>
+                        handleRemoveContactLink(contactLink.id)
+                      }
+                      weight="semi"
+                      iconProps={{
+                        icon: 'close',
+                        color: 'primaryMain',
+                      }}
+                    />
+                  </Col>
+                </Row>
               </>
-            )}
-
-            {(i !== 0 || contactLinks.length > 1) && (
-              <TextWithIcon
-                text="Remove"
-                isButton
-                mt={4}
-                mb={6}
-                color="neutralMain"
-                handleClick={() => handleRemoveContactLink(contactLink.id)}
-                weight="semi"
-                iconProps={{
-                  icon: 'close',
-                  color: 'primaryMain',
-                }}
-              />
             )}
           </Fragment>
         ))}
