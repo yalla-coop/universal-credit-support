@@ -65,7 +65,7 @@ const EXTERNAL = {
   DEMO_VIDEO:
     'https://github.com/yalla-coop/universal-credit-support/issues/76',
   ACCESSABILITY_GUIDELINES: 'https://webaim.org/resources/contrastchecker/',
-  HYDE_EMAIL: 'hydefoundation@hyde-housing.co.uk',
+  HYDE_EMAIL: 'UCdigital@hyde-housing.co.uk',
   CHROME_GOOGLE_SPEAK:
     'https://chrome.google.com/webstore/detail/voice-in-voice-typing/pjnefijmagpdjfhhkpljicbbpicelgko',
   VOICE_ALOUD_READER_ANDROID:
