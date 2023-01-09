@@ -93,14 +93,6 @@ const DecideRoutes = ({ setOpen }) => {
               {t.english['ORGANISATIONS']}
             </S.Head3>
           </S.Link>
-          <S.Link
-            to={SUPER_ADMIN.CONTENT_REVIEW}
-            onClick={() => handleClick(setOpen)}
-          >
-            <S.Head3 weight="bold" color="neutralMain">
-              {t.english['CONTENT_REVIEW']}
-            </S.Head3>
-          </S.Link>
           <S.Link to={SUPER_ADMIN.CHANGES} onClick={() => handleClick(setOpen)}>
             <S.Head3 weight="bold" color="neutralMain">
               {t.english['CHANGES']}
