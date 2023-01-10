@@ -6,21 +6,6 @@ const DashboardLinks = () => {
   return (
     <>
       <S.ButtonsContainer>
-        <S.ButtonWrapper to={R.ADMIN.CUSTOMISE}>
-          <TextWithIcon
-            size="large"
-            bgColor="neutralSurface"
-            text={'Change or add to the layout of the tool'}
-            mr="6px"
-            ai="flex-start"
-            isText
-            iconProps={{
-              icon: 'forwardArrow',
-              color: 'primaryMain',
-            }}
-          />
-        </S.ButtonWrapper>
-
         <S.ButtonWrapper to={R.ADMIN.EDIT_ACCOUNT_DETAILS}>
           <TextWithIcon
             size="large"
