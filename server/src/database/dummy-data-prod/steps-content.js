@@ -167,17 +167,18 @@ const addStepContent = async () => {
         tips: [],
       },
       {
-        title: `Access to your mobile phone (if you have one)`,
+        title: 'Access to your mobile phone (if you have one)',
         description: ``,
         thisCanInclude: [],
         tips: [],
       },
       {
-        title: `Your partner's Universal Credit linking code (if you have a partner and they have one)`,
+        title:
+          'Your partner`s Universal Credit linking code (if you have a partner and they have one)',
         description: ``,
         thisCanInclude: [],
         tips: [
-          `If with a partner BOTH will need to do this separately and then the accounts will need to be ‘LINKED’ via a linking code that will be given on the screen during this process.`,
+          'If with a partner BOTH will need to do this separately and then the accounts will need to be ‘LINKED’ via a linking code that will be given on the screen during this process.',
         ],
       },
     ],

@@ -71,6 +71,7 @@ const createStepI18n = async ({
   thingsYouWillNeed,
   whatYouWillNeedToKnow,
   topTip,
+  otherTips,
 }) => {
   const sql = `
     INSERT INTO steps_i18n (
@@ -84,7 +85,8 @@ const createStepI18n = async ({
       where_do_you_need_to_go,
       things_you_will_need,
       what_you_will_need_to_know,
-      top_tip
+      top_tip,
+      other_tips
     ) VALUES(
       $1,
       $2,
@@ -96,11 +98,13 @@ const createStepI18n = async ({
       $8,
       $9,
       $10::jsonb[],
-      $11
+      $11,
+      $12
     )
     ON CONFLICT (step_id, language_code) DO NOTHING
     RETURNING *
   `;
+
   const values = [
     stepId,
     languageCode,
@@ -113,6 +117,7 @@ const createStepI18n = async ({
     thingsYouWillNeed,
     whatYouWillNeedToKnow,
     topTip,
+    otherTips,
   ];
 
   const res = await query(sql, values);

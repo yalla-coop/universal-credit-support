@@ -16,8 +16,8 @@ const awsConfig = {
 
 const translateAWS = new AWS.Translate(awsConfig);
 
-const translateText = async ({ text = '', sourceLang, targetLang }) => {
-  if (!targetLang || !sourceLang) {
+const translateText = async ({ text, sourceLang, targetLang }) => {
+  if (!targetLang || !sourceLang || !text) {
     throw new Error('Missing source or target lang');
   }
   const params = {
@@ -80,9 +80,11 @@ const translate = async ({ source, target, json, id }) => {
     targetLang: target[0],
     sourceLang: source,
   });
+
   if (value) {
     return { id, content: { ...value[target] }, languageCode: target[0] };
   }
+
   throw new Error('translation API error');
 };
 

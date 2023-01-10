@@ -14,6 +14,7 @@ const translateSteps = async ({ lng, steps }) => {
         whatYouWillNeedToKnow,
         languageCode,
         topTip,
+        otherTips,
         id,
       } = step;
 
@@ -38,6 +39,7 @@ const translateSteps = async ({ lng, steps }) => {
           thingsYouWillNeed,
           whatYouWillNeedToKnow,
           topTip,
+          otherTips,
         },
         id,
       });
@@ -54,6 +56,7 @@ const translateSteps = async ({ lng, steps }) => {
         whatYouWillNeedToKnow: Object.values(res.content.whatYouWillNeedToKnow),
         topTip: res.content.topTip,
         languageCode: lng,
+        otherTips: Object.values(res.content.otherTips),
       };
     }),
   );

@@ -3,7 +3,7 @@ import translateLandingPage from '../../../services/translation/translate-landin
 import * as Translation from '../../translations/model';
 
 const getLandingPage = async ({ lng, forPublic }) => {
-  if (forPublic) return LandingPage.getLandingPageContent('en');
+  if (!forPublic) return LandingPage.getLandingPageContent('en');
 
   const landingPage = await LandingPage.getLandingPageContent(lng);
   const landingPageT = await translateLandingPage({
