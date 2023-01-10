@@ -11,9 +11,9 @@ import { CommonProvider } from './context/common';
 import { PublicOrgProvider } from './context/public-org';
 import { createBrowserHistory } from 'history';
 import AccessibilityProvider from './context/accessibility';
-// import CookieBot from 'react-cookiebot';
-
 import 'antd/dist/antd.css';
+import CookieBot from 'react-cookiebot';
+const domainGroupId = 'c3a532f5-4d84-4594-a389-41aa105c1da2';
 
 export const history = createBrowserHistory({ basename: window.BASE_URL });
 
@@ -183,7 +183,7 @@ function App() {
           </AuthProvider>
         </AccessibilityProvider>
 
-        {/* <CookieBot domainGroupId={domainGroupId} /> */}
+        <CookieBot domainGroupId={domainGroupId} />
       </ThemeProvider>
     </div>
   );
