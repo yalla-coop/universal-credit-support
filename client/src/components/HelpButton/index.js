@@ -104,6 +104,7 @@ const HelpButton = ({
                   color="secondaryMain"
                   isSmall
                   to={formatLink('PHONE', { phoneNumber: '02071231234' }).link}
+                  dir={'ltr'}
                 >
                   {t(
                     'common.section.helpMe.govPhone',
