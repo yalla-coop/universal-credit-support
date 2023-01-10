@@ -39,7 +39,8 @@ const helmetMiddleware = helmet({
   // },
   contentSecurityPolicy: false,
   dnsPrefetchControl: { allow: true },
-  referrerPolicy: { policy: 'strict-origin' },
+  // referrerPolicy: { policy: 'strict-origin' },
+  crossOriginEmbedderPolicy: false,
 });
 
 export default helmetMiddleware;
