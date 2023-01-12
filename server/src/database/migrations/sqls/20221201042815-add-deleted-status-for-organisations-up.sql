@@ -1,7 +1,5 @@
 BEGIN;
 
-ALTER TYPE organisation_statuses ADD VALUE IF NOT EXISTS 'DELETED'; 
-
 ALTER TABLE organisations ALTER COLUMN type_of_organisation DROP NOT NULL;
 ALTER TABLE organisations ALTER COLUMN unique_slug DROP NOT NULL;
 

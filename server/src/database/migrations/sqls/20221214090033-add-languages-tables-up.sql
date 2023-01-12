@@ -2,8 +2,22 @@ BEGIN;
 
 CREATE TYPE language_codes AS ENUM('af','sq','am','ar','hy','az','bn','bs','bg','zh','hr','cs','da','nl','en','et','fa','tl','fi','fr','ka','de','el','gu','ht','he','hi','hu','is','id','ga','it','ja','kk','ko','lv','lt','mk','ms','ml','mt','mr','mn','no','ps','pl','pt','pa','ro','ru','sr','si','sk','sl','so','es','sw','sv','ta','te','th','tr','uk','ur','uz','vi','cy');
 
-DROP TABLE IF EXISTS "steps_i18n" CASCADE;
+DROP TABLE IF EXISTS "common" CASCADE;
 
+CREATE TABLE "common" (
+  "id" SERIAL PRIMARY KEY,
+  "content" JSONB,
+
+  "created_at" TIMESTAMP NOT NULL DEFAULT NOW(),
+  "updated_at" TIMESTAMP NOT NULL DEFAULT NOW()
+);
+
+CREATE TRIGGER set_timestamp
+BEFORE UPDATE ON "common"
+FOR EACH ROW
+EXECUTE PROCEDURE trigger_set_timestamp();
+
+DROP TABLE IF EXISTS "steps_i18n" CASCADE;
 CREATE TABLE "steps_i18n" (
   "id" SERIAL PRIMARY KEY,
   "step_id" INTEGER NOT NULL REFERENCES steps(id) ON DELETE CASCADE,
