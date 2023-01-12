@@ -18,6 +18,8 @@ DROP FUNCTION IF EXISTS delete_old_common_i18n_on_update_content_fn() CASCADE;
 DROP TRIGGER IF EXISTS delete_old_common_i18n_on_update_content_tr 
   ON common CASCADE;
 
+DROP TABLE IF EXISTS "common" CASCADE;
+
 DROP TYPE IF EXISTS language_codes CASCADE;
 
 COMMIT;
