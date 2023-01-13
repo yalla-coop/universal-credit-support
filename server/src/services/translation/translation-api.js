@@ -57,7 +57,7 @@ const translateJSON = async ({
         word = await translateText({ text: obj[key], sourceLang, targetLang });
       }
     } catch (error) {
-      Sentry.captureException('translateJSON API error:', error);
+      Sentry.captureException(error);
       word = '';
     }
     if (displayLang) {
