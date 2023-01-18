@@ -16,7 +16,7 @@ const CommonLogic = ({ children }) => {
       const { data, error } = await Translations.getCommon({
         lng,
       });
-      const common = data[0].content;
+      const common = data?.[0]?.content;
       if (error) {
         // message.error('Something went wrong, please try again later');
       } else {

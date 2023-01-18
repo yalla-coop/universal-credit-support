@@ -69,7 +69,7 @@ const Home = () => {
               <Cards.SectionCard
                 key={item.id}
                 id={item.id}
-                text={item.title.replaceAll('*', '')}
+                text={item.title.replace(/\*/g, '')}
                 to={
                   item.hasSubSections
                     ? generatePath(navRoutes.PUBLIC_ORG.SUBSECTIONS, {

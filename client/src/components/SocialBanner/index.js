@@ -19,7 +19,7 @@ const ShareBox = ({ dir }) => {
   const { pageTitle } = usePublicOrg();
   let formattedTitle;
   if (pageTitle) {
-    formattedTitle = pageTitle.replaceAll('*', '');
+    formattedTitle = pageTitle.replace(/\*/g, '');
   }
   const url = window.location.href;
   return (

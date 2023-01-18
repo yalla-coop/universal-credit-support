@@ -121,7 +121,7 @@ const findOrganisationsWithUserByOrgId = async (id, client) => {
   const values = [id];
 
   const res = await query(sql, values, client);
-  return res.rows;
+  return res.rows[0];
 };
 
 export {

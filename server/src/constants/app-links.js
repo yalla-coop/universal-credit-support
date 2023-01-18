@@ -7,6 +7,7 @@ const appLinks = {
   LOGIN: `${appUrl}/login`,
   SET_PASSWORD: `${appUrl}/reset-password/:token`,
   ADMIN_REVIEW_SECTION: `${appUrl}/admin/section/:id/review`,
+  ADMIN_CONTENT: `${appUrl}/admin/content`,
 };
 
 export { appLinks };
