@@ -12,6 +12,7 @@ const buildTables = async () => {
   await models.users.createTable();
 
   await models.landingPageContent.createTable();
+  await models.landingPageContentI18n.createTable();
   await models.landingPageContentI18n.createTriggers();
 
   await models.steps.createTable();
