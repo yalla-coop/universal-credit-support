@@ -51,7 +51,12 @@ const translateSteps = async ({ lng, steps }) => {
         pageTitle: res.content.pageTitle,
         pageDescription: res.content.pageDescription,
         howLongDoesItTake: res.content.howLongDoesItTake,
-        whereDoYouNeedToGo: res.content.whereDoYouNeedToGo,
+        whereDoYouNeedToGo: whereDoYouNeedToGo
+          ? {
+              ...res.content.whereDoYouNeedToGo,
+              type: whereDoYouNeedToGo && whereDoYouNeedToGo.type,
+            }
+          : null,
         thingsYouWillNeed: Object.values(res.content.thingsYouWillNeed),
         whatYouWillNeedToKnow: Object.values(res.content.whatYouWillNeedToKnow),
         topTip: res.content.topTip,
