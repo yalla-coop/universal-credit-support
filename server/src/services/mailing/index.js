@@ -2,7 +2,7 @@ import sgMail from '@sendgrid/mail';
 import getTemplate from './templates';
 import config from '../../config';
 import { envTypes } from '../../constants';
-// import { Sentry } from '../errorHandler'; // TODO: use this when sentry is merged
+import { Sentry } from '../error-handler';
 
 const { sendGridApiKey, senderEmail } = config.emails;
 const { env } = config.common;
@@ -51,8 +51,8 @@ const sendEmail = (templateName, receiversObj = {}, paramsObj) => {
     return sgMail.send(msg).catch((err) => {
       // TODO Sentry Logging sys
       // eslint-disable-next-line no-console
-      console.error('MAILING SERVICE ERROR: ', JSON.stringify(err));
-      // Sentry.captureException(err);
+      console.error('MAILING SERVICE ERROR: ', err);
+      Sentry.captureException(err);
     });
   }
 };
