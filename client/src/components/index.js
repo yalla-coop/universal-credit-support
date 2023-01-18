@@ -15,6 +15,7 @@ import PageHeader from './PageHeader';
 import HelpfulResources from './HelpfulResources';
 import StillNeedHelp from './StillNeedHelp';
 import ButtonsSection from './ButtonsSection';
+import Image from './Image';
 
 export {
   Button,
@@ -34,4 +35,5 @@ export {
   HelpfulResources,
   StillNeedHelp,
   ButtonsSection,
+  Image,
 };

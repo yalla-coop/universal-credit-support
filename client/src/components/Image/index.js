@@ -2,7 +2,9 @@ import React from 'react';
 import styled from '@emotion/styled';
 import setMargin from '../../helpers/set-margin';
 
-const imgMap = {};
+const imgMap = {
+  mayorOfLondon: '/images/MoL_Supported_By_Grey_RGB.png',
+};
 
 const StyledImage = styled.img`
   max-width: 100%;
