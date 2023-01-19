@@ -74,8 +74,7 @@ const EXTERNAL = {
   MAKE_YOUR_CLAIM: 'https://www.universal-credit.service.gov.uk/sign-in',
   GETTING_YOUR_FIRST_PAYMENT: 'https://www.universal-credit.service.gov.uk',
   Call_0800_328_5644: 'tel:0800 138 7777',
-  DEMO_VIDEO:
-    'https://www.loom.com/share/507a13763af34ed58be0588e9e315613',
+  DEMO_VIDEO: 'https://www.loom.com/share/507a13763af34ed58be0588e9e315613',
   ACCESSABILITY_GUIDELINES: 'https://webaim.org/resources/contrastchecker/',
   HYDE_EMAIL: 'hydefoundation@hyde-housing.co.uk',
   COL_EMAIL: 'coldigital@hyde-housing.co.uk',
