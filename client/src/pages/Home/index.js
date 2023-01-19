@@ -9,6 +9,7 @@ import LandingContent from './LandingContent';
 import { stageTypes } from './../../constants/data-types';
 import { useTranslation } from 'react-i18next';
 import Icon from '../../components/Icon';
+import Image from '../../components/Image';
 import HelpButton from '../../components/HelpButton';
 import TextWithIcon from '../../components/TextWithIcon';
 import { usePublicOrg } from './../../context/public-org';
@@ -221,6 +222,13 @@ const Home = () => {
           );
         })}
       <HelpButton />
+      <S.Section>
+        <Image
+          image="mayorOfLondon"
+          width={'300px'}
+          customStyle={{ paddingTop: '40px', alignItems: 'center' }}
+        />
+      </S.Section>
     </>
   );
 };

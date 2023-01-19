@@ -7,6 +7,9 @@ const envVarsSchema = yup
     PORT: isProduction ? yup.number().nullable() : yup.number().required(),
     DOMAIN: isProduction ? yup.string().required() : yup.string().nullable(),
     SECRET: yup.string().required(),
+    HOST: isProduction
+      ? yup.string().oneOf(['HEROKU', 'AWS']).required()
+      : yup.string().nullable(), // to equal 'HEROKU' OR AWS
   })
   .required();
 
@@ -26,6 +29,7 @@ const config = () => {
     port: envVars.PORT,
     secret: envVars.SECRET,
     domain: envVars.DOMAIN,
+    host: envVars.HOST || 'LOCAL',
   };
 };
 

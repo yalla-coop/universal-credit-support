@@ -1,6 +1,7 @@
 import express from 'express';
 import path from 'path';
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
 import favicon from 'serve-favicon';
 import logger from 'morgan';
 import Debug from 'debug';
@@ -16,6 +17,7 @@ import {
   csrfProtection,
   createCSRFToken,
 } from './api/middlewares';
+
 import { Sentry } from './services/error-handler';
 
 const { PRODUCTION, TEST } = constants.envTypes;
@@ -29,7 +31,13 @@ app.use(Sentry.Handlers.tracingHandler());
 
 app.use(logger('dev'));
 
+app.use(cors());
+
 if (config.common.env === PRODUCTION) {
+  if (config.server.host === 'HEROKU') {
+    // set header response for preflight CORS requests (option request handling)
+    app.options('*', cors());
+  }
   app.use(helmet);
   app.use(requireHTTPS);
 }

@@ -8,6 +8,9 @@ const common = {
     increaseTextSize: '+ Increase text size',
     benefitCalculator: 'Benefit Calculator',
     stuckCallUs: 'Stuck? Call us for advice',
+    seeMore: 'See more',
+    seeLess: 'See less',
+    addColourOverlay: 'Add colour overlay',
   },
   generalSentence: {
     ThisCanIncludeThingsLike: 'This can include things like:',
@@ -24,6 +27,7 @@ const common = {
       title: 'Where do you need to go?',
       text: "Remember to come back here once you're done so you can mark this step as complete and see what to do next",
     },
+    tip: 'Tip!',
   },
   section: {
     changeLanguage: {

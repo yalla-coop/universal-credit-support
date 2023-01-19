@@ -49,9 +49,10 @@ const SUPER_ADMIN = {
 };
 
 const EXTERNAL = {
-  TERMS_OF_USE: 'https://www.hyde-housing.co.uk/privacy/disclaimer/',
-  PRIVACY_POLICY: 'https://www.hyde-housing.co.uk/privacy/disclaimer/',
-
+  TERMS_OF_USE:
+    'https://www.hyde-housing.co.uk/privacy/hyde-foundation-privacy/hyde-foundation-digital-tools-terms-of-use/',
+  PRIVACY_POLICY:
+    'https://www.hyde-housing.co.uk/privacy/hyde-foundation-privacy/',
   CALL_US: '//www.google.com/',
   ELIGIBILITY_CALCULATOR: 'https://benefits-calculator.turn2us.org.uk/',
   CREATE_UNIVERSAL_CREDIT_ACCOUNT:
@@ -61,10 +62,9 @@ const EXTERNAL = {
   MAKE_YOUR_CLAIM: 'https://www.universal-credit.service.gov.uk/sign-in',
   GETTING_YOUR_FIRST_PAYMENT: 'https://www.universal-credit.service.gov.uk',
   Call_0800_328_5644: 'tel:0800 328 5644',
-  DEMO_VIDEO:
-    'https://github.com/yalla-coop/universal-credit-support/issues/76',
+  DEMO_VIDEO: 'https://www.loom.com/share/4367b7586cc24c0fad366fa7ba7805c5',
   ACCESSABILITY_GUIDELINES: 'https://webaim.org/resources/contrastchecker/',
-  HYDE_EMAIL: 'hydefoundation@hyde-housing.co.uk',
+  HYDE_EMAIL: 'UCdigital@hyde-housing.co.uk',
   CHROME_GOOGLE_SPEAK:
     'https://chrome.google.com/webstore/detail/voice-in-voice-typing/pjnefijmagpdjfhhkpljicbbpicelgko',
   VOICE_ALOUD_READER_ANDROID:

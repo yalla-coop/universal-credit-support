@@ -19,7 +19,7 @@ const fontsOptions = [
   { value: 'Roboto', label: 'Roboto' },
   { value: 'Heebo', label: 'Heebo' },
   { value: 'Comic Neue', label: 'Comic Neue' },
-  { value: '', label: 'none' },
+  { value: '', label: 'default' },
 ];
 
 const Accessibility = () => {
@@ -201,7 +201,7 @@ const Accessibility = () => {
         </Col>
         <Col w={[4, 4, 4]} mt="8">
           <S.ShowInDesktop>
-            <S.fontInputWrapper>
+            <S.FontInputWrapper>
               <I.Dropdown
                 label={t(
                   'common.section.accessibility.changeFont',
@@ -211,8 +211,9 @@ const Accessibility = () => {
                 selected={layoutFontFamily}
                 handleChange={handleSelect}
                 allowClear={false}
+                customFont
               />
-            </S.fontInputWrapper>
+            </S.FontInputWrapper>
           </S.ShowInDesktop>
         </Col>
       </Row>
@@ -255,7 +256,7 @@ const Accessibility = () => {
             <S.Divider />
           </Col>
           <Col w={[4, 8, 12]}>
-            <S.fontInputWrapper>
+            <S.FontInputWrapper>
               <I.Dropdown
                 label={t(
                   'common.section.accessibility.changeFont',
@@ -265,8 +266,9 @@ const Accessibility = () => {
                 selected={layoutFontFamily}
                 handleChange={(selectValue) => setLayoutFontFamily(selectValue)}
                 allowClear={false}
+                customFont
               />
-            </S.fontInputWrapper>
+            </S.FontInputWrapper>
           </Col>
           <Col w={[4, 12, 12]}>
             <S.Divider />

@@ -12,13 +12,27 @@ import { PublicOrgProvider } from './context/public-org';
 import { createBrowserHistory } from 'history';
 import AccessibilityProvider from './context/accessibility';
 import { CommonProvider } from './context/common';
-// import CookieBot from 'react-cookiebot';
-
+import hotJarConfig from './hotJarConfig';
 import 'antd/dist/antd.css';
+import CookieBot from 'react-cookiebot';
+const domainGroupId = 'b3a35499-2627-481c-8669-f1ee39a3071c';
 
 export const history = createBrowserHistory({ basename: window.BASE_URL });
 
+const isProduction = process.env.NODE_ENV === 'production';
+
 function App() {
+  useEffect(() => {
+    if (isProduction) {
+      hotJarConfig(
+        window,
+        document,
+        'https://static.hotjar.com/c/hotjar-',
+        '.js?sv='
+      );
+    }
+  }, []);
+
   useEffect(() => {
     localStorage.getItem('isFontLarge') === 'true'
       ? (document.getElementsByTagName('html')[0].style.fontSize = '1.25rem')
@@ -148,7 +162,7 @@ function App() {
             </AuthProvider>
           </StepsProvider>
         </AccessibilityProvider>
-        {/* <CookieBot domainGroupId={domainGroupId} /> */}
+        <CookieBot domainGroupId={domainGroupId} />
       </ThemeProvider>
     </div>
   );

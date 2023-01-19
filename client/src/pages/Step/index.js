@@ -285,6 +285,7 @@ const Step = () => {
                   )}
                   target="_blank"
                   rel="noopener noreferrer"
+                  dir={step.whereDoYouNeedToGo.type === 'PHONE' ? 'ltr' : null}
                   external
                 />
               </Col>

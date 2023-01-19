@@ -22,6 +22,7 @@ const Checklist = ({
   const seeMore = t('common.buttons.seeMore', common.buttons.seeMore);
   const seeLess = t('common.buttons.seeLess', common.buttons.seeLess);
   const seeMoreOrLess = expanded ? seeLess : seeMore;
+  const _thisCanInclude = thisCanInclude?.length ? thisCanInclude : [];
 
   return (
     <>
@@ -38,7 +39,7 @@ const Checklist = ({
             checked={completed}
             m={{ mb: '5' }}
           />
-          {(description || thisCanInclude?.length > 0 || tips?.length > 0) && (
+          {(description || _thisCanInclude?.length > 0 || tips?.length > 0) && (
             <TextWithIcon
               text={seeMoreOrLess}
               isButton
@@ -56,14 +57,14 @@ const Checklist = ({
           )}
         </S.TopSection>
         {expanded &&
-          (description || thisCanInclude?.filter((e) => !!e)?.length > 0) && (
+          (description || _thisCanInclude?.filter((e) => !!e)?.length > 0) && (
             <S.ExtraDetails>
               {description && (
                 <T.P color="neutralDark" mb="4">
                   {description}
                 </T.P>
               )}
-              {thisCanInclude?.filter((v) => !!v)?.length > 0 && (
+              {_thisCanInclude?.filter((v) => !!v)?.length > 0 && (
                 <>
                   <T.H3 color="neutralDark" mb="3">
                     {t(
@@ -71,14 +72,14 @@ const Checklist = ({
                       common.generalSentence.ThisCanIncludeThingsLike
                     )}
                   </T.H3>
-                  {thisCanInclude
+                  {_thisCanInclude
                     .filter((v) => !!v)
                     .map((thing, index) => (
                       <TextWithIcon
                         key={index}
                         text={thing}
                         color="neutralDark"
-                        mb={index < thisCanInclude.length && '2'}
+                        mb={index < _thisCanInclude.length && '2'}
                         ai="flex-start"
                         isText
                         iconProps={{

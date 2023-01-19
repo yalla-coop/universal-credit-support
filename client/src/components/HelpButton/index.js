@@ -67,12 +67,12 @@ const HelpButton = ({
                   common.section.helpMe.description
                 )}
               </T.P>
+
               {publicOrg?.contactLinks?.map((contact) => (
                 <S.ContactItem mb="5">
                   <T.H3 color="neutralMain">{contact.description}</T.H3>
-                  {t('common.section.helpMe.govHelpline', contact.description)}
                   <T.P color="neutralDark" isSmall>
-                    {contact.availability}
+                    {contact.description && contact.availability}
                   </T.P>
                   <T.Link
                     external
@@ -103,7 +103,8 @@ const HelpButton = ({
                   weight="bold"
                   color="secondaryMain"
                   isSmall
-                  to={formatLink('PHONE', { phoneNumber: '02071231234' }).link}
+                  to={formatLink('PHONE', { phoneNumber: '08003285644' }).link}
+                  dir={'ltr'}
                 >
                   {t(
                     'common.section.helpMe.govPhone',
