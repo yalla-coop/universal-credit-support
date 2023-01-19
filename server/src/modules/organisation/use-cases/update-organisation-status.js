@@ -6,13 +6,12 @@ import { organisationStatuses } from '../../../constants';
 import config from '../../../config';
 
 const updateOrganisationStatus = async ({ id, status, explanation }) => {
-  await Organisation.updateOrganisationStatus({ id, status });
+  const user = await User.findUserWithOrgDetails(id);
   const { uniqueSlug } = await Organisation.updateOrganisationStatus({
-    id,
+    id: user.organisationId,
     status,
   });
   const { appUrl } = config.common;
-  const user = await User.findUserWithOrgDetails(id);
   if (status === organisationStatuses.APPROVED) {
     sendEmail(
       templatesId.ORG_APPROVED,
