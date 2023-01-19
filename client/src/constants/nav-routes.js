@@ -63,7 +63,7 @@ const EXTERNAL = {
   GETTING_YOUR_FIRST_PAYMENT: 'https://www.universal-credit.service.gov.uk',
   Call_0800_328_5644: 'tel:0800 328 5644',
   DEMO_VIDEO:
-    'https://github.com/yalla-coop/universal-credit-support/issues/76',
+    'https://www.loom.com/share/4367b7586cc24c0fad366fa7ba7805c5',
   ACCESSABILITY_GUIDELINES: 'https://webaim.org/resources/contrastchecker/',
   HYDE_EMAIL: 'UCdigital@hyde-housing.co.uk',
   CHROME_GOOGLE_SPEAK:
