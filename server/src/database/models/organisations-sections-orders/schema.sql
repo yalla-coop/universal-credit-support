@@ -11,6 +11,10 @@ CREATE TABLE "organisations_sections_orders" (
   "updated_at" TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
+CREATE UNIQUE INDEX 
+  section_id_organisation_id ON organisations_sections_orders
+ (section_id, organisation_id);
+
 CREATE TRIGGER set_timestamp
 BEFORE UPDATE ON "organisations_sections_orders"
 FOR EACH ROW
