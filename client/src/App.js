@@ -43,9 +43,9 @@ function App() {
       <Global styles={globalStyle} />
       <ThemeProvider theme={theme}>
         <AccessibilityProvider>
-          <StepsProvider>
-            <AuthProvider>
-              <Router basename={process.env.PUBLIC_URL}>
+          <AuthProvider>
+            <Router basename={process.env.PUBLIC_URL}>
+              <StepsProvider>
                 <ScrollToTop />
                 <Routes>
                   <Route
@@ -158,9 +158,9 @@ function App() {
                     </Route>
                   </Route>
                 </Routes>
-              </Router>
-            </AuthProvider>
-          </StepsProvider>
+              </StepsProvider>
+            </Router>
+          </AuthProvider>
         </AccessibilityProvider>
         <CookieBot domainGroupId={domainGroupId} />
       </ThemeProvider>

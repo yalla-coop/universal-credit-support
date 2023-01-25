@@ -11,24 +11,20 @@ const getSteps = async ({ lng }) => {
 
   stepsT.forEach((c) => {
     if (!c.isTranslated) {
-      Translation.createStepI18n({ stepId: c.id, ...c });
+      Translation.createStepI18n({
+        stepId: c.id,
+        title: c.title,
+        description: c.description,
+        languageCode: c.languageCode,
+        allFieldsTranslated: false,
+      });
     }
   });
 
-  const stepsTWithChecklist = stepsT.map((step, index) => {
+  const stepsTWithChecklist = stepsT.map((step) => {
     return {
       ...step,
-      id: index + 1,
-      checklist: [
-        step.thingsYouWillNeed.map((item) => ({
-          ...item,
-          stage: 'thingsYouWillNeed',
-        })),
-        step.whatYouWillNeedToKnow.map((item) => ({
-          ...item,
-          stage: 'whatYouWillNeedToKnow',
-        })),
-      ].flat(),
+      id: step.id,
     };
   });
 

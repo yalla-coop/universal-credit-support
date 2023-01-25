@@ -14,6 +14,7 @@ CREATE TABLE "steps_i18n" (
   "what_you_will_need_to_know" JSONB[],
   "top_tip" TEXT,
   "other_tips" TEXT[],
+  "all_fields_translated" BOOLEAN DEFAULT FALSE,
   "created_at" TIMESTAMP NOT NULL DEFAULT NOW(),
   "updated_at" TIMESTAMP NOT NULL DEFAULT NOW()
 );

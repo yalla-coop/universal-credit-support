@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import B from '../../constants/benefit-calculator';
 import { common } from '../../constants';
 import { useTranslation } from 'react-i18next';
+import { message } from 'antd';
 
 import {
   TextWithIcon,
@@ -16,8 +17,9 @@ import {
 } from '../../components';
 import { useSteps } from '../../context/steps';
 import { navRoutes as n, types } from '../../constants';
-
+import * as Steps from '../../api-calls/steps';
 import * as S from './style';
+import { useLanguage } from '../../helpers';
 
 import { usePublicOrg } from '../../context/public-org';
 
@@ -25,14 +27,33 @@ const { Row, Col } = Grid;
 const { Tips, Checklist } = Cards;
 
 const Step = () => {
+  const [step, setStep] = useState([]);
   const [stuck, setStuck] = useState(false);
   const { publicOrg } = usePublicOrg();
   const params = useParams();
   const navigate = useNavigate();
-  const { steps: fullSteps, checkUncheckItem, markAsComplete } = useSteps();
+  const { checkUncheckItem, markAsComplete } = useSteps();
   const { t } = useTranslation();
+  const { lng } = useLanguage();
 
-  const step = fullSteps.find((s) => s.id === Number(params.id));
+  useEffect(() => {
+    const getSteps = async () => {
+      const hideMessage = message.loading('Loading...', 0);
+
+      const { data, error } = await Steps.getStepById({
+        id: params.id,
+        lng,
+        forPublic: true,
+      });
+
+      hideMessage();
+      if (error) {
+        navigate(n.GENERAL.NOT_FOUND);
+      }
+      setStep(data);
+    };
+    getSteps();
+  }, [lng, navigate, params.id]);
 
   if (!step) {
     navigate(n.GENERAL.NOT_FOUND);
@@ -47,7 +68,7 @@ const Step = () => {
   };
 
   const checkItem = (itemTitle) => {
-    const foundItem = step.checklist.find((c) => c.title === itemTitle);
+    const foundItem = step?.checklist?.find((c) => c.title === itemTitle);
     return foundItem?.isChecked;
   };
 

@@ -8,27 +8,12 @@ const getSteps = async (lng) => {
       s.step_order,
       s.title AS "s_en.title",
       s.description AS "s_en.description",
-      s.page_title AS "s_en.page_title",
-      s.page_description AS "s_en.page_description",
-      s.how_long_does_it_take AS "s_en.how_long_does_it_take",
-      s.where_do_you_need_to_go AS "s_en.where_do_you_need_to_go",
-      s.things_you_will_need AS "s_en.things_you_will_need",
-      s.what_you_will_need_to_know AS "s_en.what_you_will_need_to_know",
-      s.top_tip AS "s_en.top_tip",
-      s.other_tips AS "s_en.other_tips",
 
       s_i18n.title AS "s_i18n.title",
       s_i18n.description AS "s_i18n.description",
-      s_i18n.page_title AS "s_i18n.page_title",
-      s_i18n.page_description AS "s_i18n.page_description",
-      s_i18n.how_long_does_it_take AS "s_i18n.how_long_does_it_take",
-      s_i18n.where_do_you_need_to_go AS "s_i18n.where_do_you_need_to_go",
-      s_i18n.things_you_will_need AS "s_i18n.things_you_will_need",
-      s_i18n.what_you_will_need_to_know AS "s_i18n.what_you_will_need_to_know",
-      s_i18n.top_tip AS "s_i18n.top_tip",
-      s_i18n.other_tips AS "s_i18n.other_tips",
 
       s.is_optional,
+      s_i18n.all_fields_translated,
       s_i18n.language_code
     FROM steps AS s
     LEFT JOIN steps_i18n AS s_i18n
@@ -67,16 +52,19 @@ const getStepById = async (id, lng) => {
       s.top_tip AS "s_en.top_tip",
       s.other_tips AS "s_en.other_tips",
 
-      s_i18n.title AS "s_i18n.title",
-      s_i18n.description AS "s_i18n.description",
-      s_i18n.page_title AS "s_i18n.page_title",
-      s_i18n.page_description AS "s_i18n.page_description",
-      s_i18n.how_long_does_it_take AS "s_i18n.how_long_does_it_take",
-      s_i18n.where_do_you_need_to_go AS "s_i18n.where_do_you_need_to_go",
-      s_i18n.things_you_will_need AS "s_i18n.things_you_will_need",
-      s_i18n.what_you_will_need_to_know AS "s_i18n.what_you_will_need_to_know",
-      s_i18n.top_tip AS "s_i18n.top_tip",
-      s_i18n.other_tips AS "s_i18n.other_tips",
+      COALESCE(s_i18n.title, s.title) AS "s_i18n.title",
+      COALESCE(s_i18n.description, s.description) AS "s_i18n.description",
+      COALESCE(s_i18n.page_title, s.page_title) AS "s_i18n.page_title",
+      COALESCE(s_i18n.page_description, s.page_description) AS "s_i18n.page_description",
+      COALESCE(s_i18n.how_long_does_it_take, s.how_long_does_it_take) AS "s_i18n.how_long_does_it_take",
+      COALESCE(s_i18n.where_do_you_need_to_go, s.where_do_you_need_to_go) AS "s_i18n.where_do_you_need_to_go",
+      COALESCE(s_i18n.things_you_will_need, s.things_you_will_need) AS "s_i18n.things_you_will_need",
+      COALESCE(s_i18n.what_you_will_need_to_know, s.what_you_will_need_to_know) AS "s_i18n.what_you_will_need_to_know",
+      COALESCE(s_i18n.top_tip, s.top_tip) AS "s_i18n.top_tip",
+      COALESCE(s_i18n.other_tips, s.other_tips) AS "s_i18n.other_tips",
+      
+      s_i18n.language_code,
+      s_i18n.all_fields_translated,
       s.is_optional
     FROM steps AS s
     LEFT JOIN steps_i18n AS s_i18n

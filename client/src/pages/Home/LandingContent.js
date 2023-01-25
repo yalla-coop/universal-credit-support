@@ -37,7 +37,7 @@ const LandingContent = ({ uniqueSlug }) => {
   useEffect(() => {
     let mounted = true;
     async function fetchData() {
-      const hideMessage = message.loading('Loading...');
+      const hideMessage = message.loading('Loading...', 0);
       const { data, error } = await LandingPage.getLandingPageContent({
         lng,
         forPublic: true,

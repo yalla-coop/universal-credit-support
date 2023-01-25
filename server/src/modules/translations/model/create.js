@@ -72,6 +72,7 @@ const createStepI18n = async ({
   whatYouWillNeedToKnow,
   topTip,
   otherTips,
+  allFieldsTranslated,
 }) => {
   const sql = `
     INSERT INTO steps_i18n (
@@ -86,7 +87,8 @@ const createStepI18n = async ({
       things_you_will_need,
       what_you_will_need_to_know,
       top_tip,
-      other_tips
+      other_tips,
+      all_fields_translated
     ) VALUES(
       $1,
       $2,
@@ -99,9 +101,21 @@ const createStepI18n = async ({
       $9,
       $10::jsonb[],
       $11,
-      $12
+      $12,
+      $13
     )
-    ON CONFLICT (step_id, language_code) DO NOTHING
+    ON CONFLICT (step_id, language_code) DO UPDATE SET
+      title = COALESCE($3, steps_i18n.title),
+      description = COALESCE($4, steps_i18n.description),
+      page_title = COALESCE($5, steps_i18n.page_title),
+      page_description = COALESCE($6, steps_i18n.page_description),
+      how_long_does_it_take = COALESCE($7, steps_i18n.how_long_does_it_take),
+      where_do_you_need_to_go = COALESCE($8, steps_i18n.where_do_you_need_to_go),
+      things_you_will_need = COALESCE($9, steps_i18n.things_you_will_need),
+      what_you_will_need_to_know = COALESCE($10, steps_i18n.what_you_will_need_to_know),
+      top_tip = COALESCE($11, steps_i18n.top_tip),
+      other_tips = COALESCE($12, steps_i18n.other_tips),
+      all_fields_translated = COALESCE($13, steps_i18n.all_fields_translated)
     RETURNING *
   `;
 
@@ -118,6 +132,7 @@ const createStepI18n = async ({
     whatYouWillNeedToKnow,
     topTip,
     otherTips,
+    allFieldsTranslated,
   ];
 
   const res = await query(sql, values);
