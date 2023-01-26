@@ -16,9 +16,10 @@ const translateSteps = async ({ lng, steps }) => {
         topTip,
         otherTips,
         id,
+        allFieldsTranslated,
       } = step;
 
-      if (languageCode === lng || lng === 'en') {
+      if ((languageCode === lng && allFieldsTranslated) || lng === 'en') {
         return {
           ...step,
           languageCode: lng,

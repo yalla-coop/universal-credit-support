@@ -75,7 +75,11 @@ const StepForm = () => {
   useEffect(() => {
     const getStepData = async () => {
       setState({ loading: true });
-      const { error, data } = await Steps.getStepById(stepId);
+      const { error, data } = await Steps.getStepById({
+        id: stepId,
+        lng: 'en',
+        forPublic: false,
+      });
 
       setState({ loading: false });
       if (error) {

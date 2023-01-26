@@ -1,21 +1,40 @@
 import * as Steps from '../model';
-// import translateSteps from '../../../services/translation/translate-steps';
-// import * as Translation from '../../translations/model';
+import translateSteps from '../../../services/translation/translate-steps';
+import * as Translation from '../../translations/model';
 
-const getStep = async ({ id /* lng */ }) => {
-  const step = await Steps.getStepById(id, 'en');
-  return step;
-  // return step as is for now, because we don't use this route for public
-  // const [stepT] = await translateSteps({
-  //   lng,
-  //   steps: [step],
-  // });
+const getStep = async ({ id, lng, forPublic }) => {
+  const step = await Steps.getStepById(id, lng);
+  if (!forPublic) {
+    return step;
+  }
 
-  // if (!stepT.isTranslated) {
-  //   Translation.createStepI18n({ stepId: stepT.id, ...stepT });
-  // }
+  const [stepT] = await translateSteps({
+    lng,
+    steps: [step],
+  });
 
-  // return stepT;
+  if (!stepT.isTranslated || !step.allFieldsTranslated) {
+    Translation.createStepI18n({
+      stepId: stepT.id,
+      ...stepT,
+      allFieldsTranslated: true,
+    });
+  }
+
+  return {
+    ...stepT,
+    id: step.id,
+    checklist: [
+      stepT.thingsYouWillNeed.map((item) => ({
+        ...item,
+        stage: 'thingsYouWillNeed',
+      })),
+      stepT.whatYouWillNeedToKnow.map((item) => ({
+        ...item,
+        stage: 'whatYouWillNeedToKnow',
+      })),
+    ].flat(),
+  };
 };
 
 export default getStep;

@@ -1,4 +1,5 @@
 import { createContext, useState, useContext, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { message } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../helpers';
@@ -86,12 +87,17 @@ const StepsProvider = ({ children, ...props }) => {
   const [justCompletedId, setJustCompletedId] = useState('');
   const [loadingSteps, setLoadingSteps] = useState(false);
   const [stepsError, setStepsError] = useState('');
+  const location = useLocation();
+
+  const adminPages = location?.pathname?.includes('/admin/');
 
   useEffect(() => {
     let mounted = true;
     async function fetchData() {
       setLoadingSteps(true);
-      const { data: newSteps, error } = await Steps.getStepsContent({ lng });
+      const { data: newSteps, error } = await Steps.getStepsContent({
+        lng: adminPages ? 'en' : lng,
+      });
       if (mounted) {
         let updatedSteps = [];
         if (error) {
@@ -115,7 +121,7 @@ const StepsProvider = ({ children, ...props }) => {
     return () => {
       mounted = false;
     };
-  }, [lng]);
+  }, [lng, adminPages]);
 
   useEffect(() => {
     const updatedSteps = steps.map((step) => {
