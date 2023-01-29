@@ -23,7 +23,7 @@ const SplitScreen = ({
   const { adminOrg } = useAdminOrg();
 
   return (
-    <S.Main side={side} {...props}>
+    <S.Main side={side} dir={'ltr'} {...props}>
       <S.ColoredHalf
         gradient={gradient}
         color={color}
