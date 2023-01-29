@@ -1,13 +1,13 @@
-# universal-credit-support
+# cost-of-living-support
 
 ## About the App:
 
 ## Summary
-In this repo you can find links to all documentation required. For those working on the project who need real log ins and production env vars, please refer to the Admin issue #1 and reach out to ucdigital@hyde-housing.co.uk for access.
+In this repo you can find links to all documentation required. For those working on the project who need real log ins and production env vars, please refer to the Admin issue #1 and reach out to coldigital@hyde-housing.co.uk for access.
 
 ## Link to app
-- Production version: https://uc-digital-prod.herokuapp.com
-- Staging version: https://hyde-dev.herokuapp.com
+- Production version: https://col-helper.co.uk 
+- Staging version: https://staging.col-helper.co.uk
 
 
 ## Tech stack
@@ -72,17 +72,19 @@ NODE_ENV=development
 APP_URL=http://localhost:3000
 PORT=8080
 SECRET=[ENTER YOUR SECRET HERE]
+
+# POSTGRES
 DATABASE_URL=[ENTER DB URL]
 DATABASE_URL_TEST=[ENTER TEST DB URL]
 
 # AWS
-# tempo dev
 BUCKET = [YOUR AWS BUCKET]
 BUCKET_REGION = [YOUR AWS BUCKET REGION]
 AWS_ACCESS_KEY_ID = [YOUR AWS ACCESS KEY ID]
 AWS_SECRET_ACCESS_KEY = [YOUR AWS ACCESS KEY]
+AWS_REGION=eu-west-2
 
-
+# SENDGRID
 SENDER_EMAIL= [EMAIL ADDRESS TO SEND EMAILS AS]
 SENDGRID_API_KEY= [YOUR SENDGRID API KEY]
 ```
@@ -106,4 +108,4 @@ $ npm run test:server
 ```
 
 ### Contributing to this codebase
-If you are interested in contributing to the codebase please reach out to ucdigital@hyde-housing.co.uk
+If you are interested in contributing to the codebase please reach out to coldigital@hyde-housing.co.uk
