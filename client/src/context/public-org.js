@@ -44,7 +44,7 @@ const PublicOrg = (props) => {
   );
   let { uniqueSlug } = match?.params || {};
   uniqueSlug =
-    uniqueSlug && uniqueSlug !== 'accessibility' ? uniqueSlug : 'hyde';
+    uniqueSlug && uniqueSlug !== 'accessibility' ? uniqueSlug : 'hyde-housing';
 
   const _setPublicOrg = (data) => {
     // set org in state
