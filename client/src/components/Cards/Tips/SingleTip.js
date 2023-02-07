@@ -22,8 +22,8 @@ const SingleTip = ({
             mb="7px"
             text={tip}
             customStyles={{
-              h3: { style: { display: 'inline' }, color: textColor },
-              p: { style: { display: 'inline' }, color: textColor },
+              h3: { style: { display: 'block' }, color: textColor },
+              p: { style: { display: 'block' }, color: textColor },
               link: {
                 style: { display: 'inline' },
                 color: textColor,
