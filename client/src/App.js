@@ -20,7 +20,7 @@ export const history = createBrowserHistory({ basename: window.BASE_URL });
 
 const isProduction = process.env.NODE_ENV === 'production';
 
-function App() {
+function App({ ReactGA }) {
   useEffect(() => {
     if (isProduction) {
       hotJarConfig(
@@ -37,6 +37,14 @@ function App() {
       ? (document.getElementsByTagName('html')[0].style.fontSize = '1.25rem')
       : (document.getElementsByTagName('html')[0].style.fontSize = '1rem');
   }, []);
+  useEffect(() => {
+    ReactGA?.send({
+      hitType: 'pageview',
+      page: window.location.pathname + window.location.search,
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [window.location.pathname, window.location.search, ReactGA]);
+
   return (
     <div className="app" style={{ minHeight: '100vh', display: 'flex' }}>
       <Global styles={globalStyle} />
