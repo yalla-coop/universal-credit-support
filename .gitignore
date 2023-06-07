@@ -102,3 +102,10 @@ dist
 
 # TernJS port file
 .tern-port
+
+# production data file
+prod-data.js
+server/database/dummy-data-prod/prod-data-local.js
+server/database/dummy-data-prod/users-local.js
+
+.DS_Store

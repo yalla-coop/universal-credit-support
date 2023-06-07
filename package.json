@@ -1,0 +1,35 @@
+{
+  "name": "hyde-universal-credit-support",
+  "version": "0.0.0",
+  "private": false,
+  "engines": {
+    "node": "14.x",
+    "npm": "6.x"
+  },
+  "scripts": {
+    "dev": "concurrently --kill-others-on-fail \"cd client && npm start\" \"cd server && npm run dev\"",
+    "dev:server": "cd server && npm run start",
+    "dev:client": "cd client && npm start",
+    "storybook": "cd client/ && npm run storybook",
+    "start": "cd server && npm start",
+    "build:server": "cd server && npm run build",
+    "build": "npm run clean && npm run build:server",
+    "migrate:up": "db-migrate -m server/database/migrations up",
+    "migrate:down": "db-migrate -m server/database/migrations down",
+    "migrate:create": "func() { db-migrate -m server/database/migrations create \"$1\" --sql-file; }; func",
+    "clean": "rm -rf dist && mkdir dist",
+    "lint:server": "eslint server",
+    "test:client": "cd client && npm run test",
+    "test:server": "cd server && npm run test",
+    "cover": "nyc npm t",
+    "report-coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
+    "build:db": "cd server && npm run build:db",
+    "build:db:prod": "cd server && babel-node ./database/dummy-data-prod/build.script.js",
+    "init:both": "npm i && cd server && npm i && cd ../client && npm i && npm run build",
+    "heroku-postbuild": "npm run init:both && npm run build"
+  },
+  "dependencies": {
+    "concurrently": "^6.5.1",
+    "cross-env": "^7.0.3"
+  }
+}
