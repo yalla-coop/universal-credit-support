@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import * as Sentry from '@sentry/react';
-import ReactGA from 'react-ga';
+import ReactGA from 'react-ga4';
 import { BrowserTracing } from '@sentry/tracing';
 import './i18n';
 // import ReactGA from 'react-ga';
