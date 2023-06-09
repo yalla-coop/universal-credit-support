@@ -3,7 +3,7 @@ name: Bug report
 about: Create a report to help us improve
 title: ''
 labels: 'bug, sla'
-assignees: 'cyberteenie, yalla-coop-sla'
+assignees: 'cyberteenie, yalla-coop-sla, bethanyios'
 
 ---
 
@@ -44,6 +44,5 @@ If applicable, add screenshots to help explain your problem or a link to a Loom 
 Add any other context about the problem here.
 
 **Team - do not edit**
-@thejoefriel
 @dupreesi
 @Ibrahim-Jarada
