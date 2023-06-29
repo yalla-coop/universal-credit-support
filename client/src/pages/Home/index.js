@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { generatePath } from 'react-router-dom';
-import ReactGA from 'react-ga';
+import ReactGA from 'react-ga4';
 import Step from '../../components/Steps';
 import { Typography as T } from '../../components';
 import { useSteps } from '../../context/steps';
