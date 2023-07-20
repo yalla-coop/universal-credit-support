@@ -13,7 +13,7 @@ import colors from '../theme/colors';
 const initialPublicOrgState = {
   id: null,
   logoUrl: '',
-  uniqueSlug: '',
+  uniqueSlug: 'hyde-housing',
   colors: colors,
   contactLinks: [],
   benefitCalculatorLink: B.BENEFIT_CALCULATOR_LINK,
