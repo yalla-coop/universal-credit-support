@@ -3,8 +3,8 @@ const GENERAL = {
   HOME_ORG: '/:uniqueSlug',
   STEP_ORG: '/:uniqueSlug/steps/:id',
   UNAUTHORIZED: '/unauthorized',
-  FORGET_PASSWORD: '/forget-password',
-  RESET_PASSWORD: '/reset-password/:token',
+  FORGET_PASSWORD: '/admin/forget-password',
+  RESET_PASSWORD: '/admin/reset-password/:token',
   NOT_FOUND: '/not-found',
   ACCESSIBILITY: `/accessibility`,
 };

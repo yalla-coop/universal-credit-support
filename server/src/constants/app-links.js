@@ -4,8 +4,8 @@ const { appUrl } = config.common;
 
 const appLinks = {
   // GENERAL
-  LOGIN: `${appUrl}/login`,
-  SET_PASSWORD: `${appUrl}/reset-password/:token`,
+  LOGIN: `${appUrl}/admin/login`,
+  SET_PASSWORD: `${appUrl}/admin/reset-password/:token`,
 };
 
 export { appLinks };

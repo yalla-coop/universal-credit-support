@@ -12,9 +12,11 @@ const editStep = async ({ id, form, options } = {}) => {
     return { error: err };
   }
 };
-const getStepById = async (id, { options } = {}) => {
+const getStepById = async ({ id, lng, forPublic, options = {} } = {}) => {
   try {
-    const { data } = await axios.get(`${STEPS_BASE}/${id}`);
+    const { data } = await axios.get(`${STEPS_BASE}/${id}`, {
+      params: { lng, forPublic },
+    });
     return { data };
   } catch (error) {
     const err = handleError(error, options);
