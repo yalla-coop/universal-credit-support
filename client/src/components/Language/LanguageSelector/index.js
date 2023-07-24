@@ -7,6 +7,7 @@ import { useMediaQuery } from 'react-responsive';
 import theme from '../../../theme';
 import { useTranslation } from 'react-i18next';
 import { types, common } from '../../../constants/';
+import ReactGA from 'react-ga4';
 
 const props = {
   weight: 'medium',
@@ -37,6 +38,12 @@ export const LanguageSelector = ({ hide, handleHide }) => {
   const changeLanguage = ({ lng }) => {
     i18n.changeLanguage(types.languageCodes[lng]);
     handleHide();
+
+    if (process.env.NODE_ENV === 'production') {
+      ReactGA.event('change_language', {
+        selected_language: lng,
+      });
+    }
   };
 
   const Selector = (
