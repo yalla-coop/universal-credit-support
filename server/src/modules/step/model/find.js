@@ -8,7 +8,8 @@ const getSteps = async (lng) => {
       s.step_order,
       s.title AS "s_en.title",
       s.description AS "s_en.description",
-
+      s.things_you_will_need AS "things_you_will_need",
+      s.what_you_will_need_to_know AS "what_you_will_need_to_know",
       s_i18n.title AS "s_i18n.title",
       s_i18n.description AS "s_i18n.description",
 

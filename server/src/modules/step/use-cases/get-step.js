@@ -24,16 +24,14 @@ const getStep = async ({ id, lng, forPublic }) => {
   return {
     ...stepT,
     id: step.id,
-    checklist: [
-      stepT.thingsYouWillNeed.map((item) => ({
-        ...item,
-        stage: 'thingsYouWillNeed',
-      })),
-      stepT.whatYouWillNeedToKnow.map((item) => ({
-        ...item,
-        stage: 'whatYouWillNeedToKnow',
-      })),
-    ].flat(),
+    thingsYouWillNeed: stepT.thingsYouWillNeed.map((item) => ({
+      ...item,
+      stage: 'thingsYouWillNeed',
+    })),
+    whatYouWillNeedToKnow: stepT.whatYouWillNeedToKnow.map((item) => ({
+      ...item,
+      stage: 'whatYouWillNeedToKnow',
+    })),
   };
 };
 

@@ -32,9 +32,11 @@ const Step = () => {
   const { publicOrg } = usePublicOrg();
   const params = useParams();
   const navigate = useNavigate();
-  const { checkUncheckItem, markAsComplete } = useSteps();
+  const { steps, checkUncheckItem, markAsComplete } = useSteps();
   const { t } = useTranslation();
   const { lng } = useLanguage();
+
+  const stepFromStorage = steps.find((step) => step.id === Number(params.id));
 
   useEffect(() => {
     const getSteps = async () => {
@@ -67,8 +69,8 @@ const Step = () => {
     return link;
   };
 
-  const checkItem = (itemTitle) => {
-    const foundItem = step?.checklist?.find((c) => c.title === itemTitle);
+  const checkItem = (index, key) => {
+    const foundItem = stepFromStorage?.[key]?.[index];
     return foundItem?.isChecked;
   };
 
@@ -150,8 +152,10 @@ const Step = () => {
                 step.thingsYouWillNeed.map((item, index) => (
                   <Col w={[4, 12, 6]} key={index} isFirst={index === 0}>
                     <Checklist
-                      completed={checkItem(item.title)}
-                      handleChange={() => checkUncheckItem(step.id, item.title)}
+                      completed={checkItem(index, 'thingsYouWillNeed')}
+                      handleChange={() =>
+                        checkUncheckItem(step.id, index, 'thingsYouWillNeed')
+                      }
                       title={item.title}
                       description={item.description}
                       thisCanInclude={item.thisCanInclude}
@@ -196,8 +200,14 @@ const Step = () => {
                 {step.whatYouWillNeedToKnow.map((item, index) => (
                   <Col w={[4, 12, 6]} key={index}>
                     <Checklist
-                      completed={checkItem(item.title)}
-                      handleChange={() => checkUncheckItem(step.id, item.title)}
+                      completed={checkItem(index, 'whatYouWillNeedToKnow')}
+                      handleChange={() =>
+                        checkUncheckItem(
+                          step.id,
+                          index,
+                          'whatYouWillNeedToKnow'
+                        )
+                      }
                       title={item.title}
                       description={item.description}
                       thisCanInclude={item.thisCanInclude}
