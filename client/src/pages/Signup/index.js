@@ -226,7 +226,7 @@ const SignUp = () => {
             helper="Enter your prefer back up email address in the event you leave the organisation"
           />
           {state?.showBackupEmailTip && (
-            <Cards.Tips tips={[BackupEmailTipsContent]} indexShift={1} />
+            <Cards.Tips tips={[BackupEmailTipsContent]} startingColor={1} />
           )}
         </Col>
       </Row>
@@ -256,7 +256,7 @@ const SignUp = () => {
           />
 
           {passwordTipVisible && (
-            <Cards.Tips tips={[PasswordTipsContent]} indexShift={3} />
+            <Cards.Tips tips={[PasswordTipsContent]} startingColor={3} />
           )}
         </Col>
       </Row>

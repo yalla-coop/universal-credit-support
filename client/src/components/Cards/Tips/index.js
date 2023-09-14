@@ -33,34 +33,24 @@ const getColor = (index, startingColor) => {
   return colorArray[_index];
 };
 
-const Tips = ({
-  tips = [],
-  startingColor = 0,
-  cols,
-  inner,
-  indexShift,
-  ...props
-}) => {
+const Tips = ({ tips = [], startingColor = 0, cols, inner, ...props }) => {
   const _tips = tips?.length ? tips : [];
 
   return _tips
     .filter((t) => !!t)
-    .map((tip, i) => {
-      const index = i + (indexShift || 0);
-      return (
-        <SingleTip
-          key={index}
-          bgColor={getColor(index, startingColor).bg}
-          borderColor={getColor(index, startingColor).border}
-          icon={'bulb'}
-          iconColor={getColor(index, startingColor).icon}
-          tip={tip}
-          textColor={getColor(index, startingColor).text}
-          mb="3"
-          {...props}
-        />
-      );
-    });
+    .map((tip, index) => (
+      <SingleTip
+        key={index}
+        bgColor={getColor(index, startingColor).bg}
+        borderColor={getColor(index, startingColor).border}
+        icon={'bulb'}
+        iconColor={getColor(index, startingColor).icon}
+        tip={tip}
+        textColor={getColor(index, startingColor).text}
+        mb="3"
+        {...props}
+      />
+    ));
 };
 
 export { SingleTip };
