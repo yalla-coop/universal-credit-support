@@ -10,6 +10,7 @@ const getSteps = async ({ lng }) => {
     steps: steps.map(
       ({ thingsYouWillNeed, whatYouWillNeedToKnow, ...step }) => ({
         ...step,
+        // ignore thingsYouWillNeed and whatYouWillNeedToKnow, as they should not be translated
       }),
     ),
   });
