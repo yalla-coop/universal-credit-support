@@ -42,12 +42,9 @@ const sendEmail = (templateName, receiversObj = {}, paramsObj) => {
     },
   };
 
-  if (env === envTypes.DEVELOPMENT) {
-    // eslint-disable-next-line no-console
-    console.log(msg);
-  }
-
   if (env === envTypes.DEVELOPMENT || env === envTypes.PRODUCTION) {
+    console.log(msg);
+
     return sgMail.send(msg).catch((err) => {
       // TODO Sentry Logging sys
       // eslint-disable-next-line no-console
