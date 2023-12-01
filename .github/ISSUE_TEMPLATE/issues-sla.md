@@ -3,7 +3,7 @@ name: Issues - SLA
 about: Not for client use. This issue template is for use by developers or project admin for issues covered by SLA.
 title: ''
 labels: 'sla'
-assignees: 'RamyAlshurafa, yalla-coop-sla, cyberteenie'
+assignees: 'RamyAlshurafa, yalla-coop-sla'
 
 ---
 
