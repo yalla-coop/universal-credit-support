@@ -31,6 +31,8 @@ const LandingContent = ({ uniqueSlug }) => {
   const { lng } = useLanguage();
 
   const { publicOrg } = usePublicOrg();
+  const logo = publicOrg?.logoUrl || Logo;
+
   const [landingContent, setLandingContent] = useState({});
   const [fetchError, setFetchError] = useState('');
 
@@ -71,7 +73,7 @@ const LandingContent = ({ uniqueSlug }) => {
               publicOrg.uniqueSlug
             )}
           >
-            <img src={publicOrg?.logoUrl || Logo} alt="logo" />
+            {logo && <img src={logo} alt="logo" />}
           </S.LogoContainer>
           <S.HeaderText>
             {fetchError ? (
