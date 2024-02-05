@@ -15,6 +15,7 @@ import {
   helmet,
   csrfProtection,
   createCSRFToken,
+  timeoutMonitor,
 } from './api/middlewares';
 import { Sentry } from './services/error-handler';
 
@@ -42,6 +43,7 @@ if (config.common.env !== TEST) {
   app.use('/api', createCSRFToken);
 }
 
+app.use(timeoutMonitor());
 app.use('/api', router);
 
 if (config.common.env === PRODUCTION) {
